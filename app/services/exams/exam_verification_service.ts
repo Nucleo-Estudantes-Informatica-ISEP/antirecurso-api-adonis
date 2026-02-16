@@ -1,0 +1,246 @@
+import db from '@adonisjs/lucid/services/db'
+import Answer from '#models/answer'
+import AnswerQuestion from '#models/answer_question'
+import Option from '#models/option'
+import Question from '#models/question'
+import Score from '#models/score'
+import Subject from '#models/subject'
+import {
+  DEFAULT_EXAM_RULE,
+  type ExamMode,
+  MAX_SCORE,
+  getSubjectExamRule,
+} from '#services/exams/exam_config'
+
+export type VerifyExamAnswerInput = {
+  question_id: number
+  selected_option?: string | null
+}
+
+export type VerifyExamInput = {
+  subject: Subject
+  mode: ExamMode
+  answers: VerifyExamAnswerInput[]
+  userId: number | null
+  time: number | null
+  nOfQuestions: number | null
+  penalizingFactor: number | null
+}
+
+export type VerifyExamResult = {
+  id: number
+  score: number
+  wrong_answers: number
+  passed: boolean
+  subject: string
+}
+
+type TransactionClient = Awaited<ReturnType<typeof db.transaction>>
+
+export default class ExamVerificationService {
+  async verify(input: VerifyExamInput): Promise<VerifyExamResult> {
+    const questionMap = await this.getQuestionMap(input.answers, input.subject.id)
+
+    const nOfQuestions = this.resolveQuestionCount(
+      input.mode,
+      input.subject.slug,
+      input.nOfQuestions
+    )
+    const questionScore = MAX_SCORE / nOfQuestions
+
+    let correctAnswers = 0
+    let nOfNotAnswered = 0
+
+    const trx = await db.transaction()
+    try {
+      const userAnswer = await Answer.create(
+        {
+          score: 0,
+          userId: input.userId,
+          mode: input.mode,
+          time: input.time,
+          subjectId: input.subject.id,
+        },
+        { client: trx }
+      )
+
+      const questionIds = [...questionMap.keys()]
+      const optionMap = await this.getOptionMap(questionIds, trx)
+
+      for (const answerPayload of input.answers) {
+        const question = questionMap.get(answerPayload.question_id)
+        if (!question) {
+          continue
+        }
+
+        const selectedOption = answerPayload.selected_option ?? null
+        const optionId = selectedOption
+          ? (optionMap.get(this.toOptionMapKey(question.id, selectedOption)) ?? null)
+          : null
+
+        const isWrong = question.correctOption !== selectedOption
+        if (!isWrong) {
+          correctAnswers++
+        }
+
+        if (optionId === null) {
+          nOfNotAnswered++
+        }
+
+        await AnswerQuestion.create(
+          {
+            answerId: userAnswer.id,
+            questionId: question.id,
+            optionId,
+            isWrong,
+          },
+          { client: trx }
+        )
+      }
+
+      const wrongAnswers = Math.max(0, nOfQuestions - nOfNotAnswered - correctAnswers)
+      const rawScore = this.calculateScore({
+        mode: input.mode,
+        subjectSlug: input.subject.slug,
+        correctAnswers,
+        wrongAnswers,
+        questionScore,
+        penalizingFactor: input.penalizingFactor,
+      })
+
+      const normalizedScore = Number(Math.max(0, rawScore).toFixed(2))
+      const persistedScore = Math.round(normalizedScore)
+      const passed = normalizedScore >= MAX_SCORE / 2 - 5
+
+      userAnswer.score = persistedScore
+      userAnswer.useTransaction(trx)
+      await userAnswer.save()
+
+      if (input.userId !== null) {
+        await this.updateScoreboard(input.subject.id, input.userId, persistedScore, trx)
+      }
+
+      await trx.commit()
+
+      return {
+        id: userAnswer.id,
+        score: normalizedScore,
+        wrong_answers: wrongAnswers,
+        passed,
+        subject: input.subject.name,
+      }
+    } catch (error) {
+      await trx.rollback()
+      throw error
+    }
+  }
+
+  private resolveQuestionCount(
+    mode: ExamMode,
+    subjectSlug: string,
+    nOfQuestions: number | null
+  ): number {
+    if (mode === 'realistic') {
+      return getSubjectExamRule(subjectSlug).n_of_questions
+    }
+
+    if (mode === 'custom') {
+      if (nOfQuestions === null) {
+        throw new Error('Custom exams require n_of_questions')
+      }
+
+      return nOfQuestions
+    }
+
+    return DEFAULT_EXAM_RULE.n_of_questions
+  }
+
+  private calculateScore(input: {
+    mode: ExamMode
+    subjectSlug: string
+    correctAnswers: number
+    wrongAnswers: number
+    questionScore: number
+    penalizingFactor: number | null
+  }): number {
+    let score = input.correctAnswers * input.questionScore
+
+    if (input.mode === 'realistic') {
+      const penalizingFactor = getSubjectExamRule(input.subjectSlug).penalizing_factor
+      score -= input.wrongAnswers * input.questionScore * penalizingFactor
+    } else if (input.mode === 'custom') {
+      const penalizingFactor = input.penalizingFactor ?? 0
+      score -= input.wrongAnswers * input.questionScore * penalizingFactor
+    }
+
+    return score
+  }
+
+  private async getQuestionMap(
+    answers: VerifyExamAnswerInput[],
+    subjectId: number
+  ): Promise<Map<number, Question>> {
+    const questionIds = [...new Set(answers.map((answer) => answer.question_id))]
+    const questions = await Question.query().whereIn('id', questionIds)
+
+    if (questions.length !== questionIds.length) {
+      throw new Error('Invalid question list')
+    }
+
+    for (const question of questions) {
+      if (question.subjectId !== subjectId) {
+        throw new Error('Question does not belong to the selected subject')
+      }
+    }
+
+    const questionMap = new Map<number, Question>()
+    for (const question of questions) {
+      questionMap.set(question.id, question)
+    }
+
+    return questionMap
+  }
+
+  private async getOptionMap(questionIds: number[], trx: TransactionClient) {
+    const options = await Option.query({ client: trx }).whereIn('questionId', questionIds)
+
+    const optionMap = new Map<string, number>()
+    for (const option of options) {
+      optionMap.set(this.toOptionMapKey(option.questionId, option.order), option.id)
+    }
+
+    return optionMap
+  }
+
+  private async updateScoreboard(
+    subjectId: number,
+    userId: number,
+    scoreToAdd: number,
+    trx: TransactionClient
+  ): Promise<void> {
+    const userScore = await Score.query({ client: trx })
+      .where('subjectId', subjectId)
+      .where('userId', userId)
+      .first()
+
+    if (userScore) {
+      userScore.score += scoreToAdd
+      userScore.useTransaction(trx)
+      await userScore.save()
+      return
+    }
+
+    await Score.create(
+      {
+        score: scoreToAdd,
+        userId,
+        subjectId,
+      },
+      { client: trx }
+    )
+  }
+
+  private toOptionMapKey(questionId: number, optionOrder: string): string {
+    return `${questionId}:${optionOrder}`
+  }
+}
