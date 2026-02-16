@@ -28,7 +28,15 @@ const MIN_GRADES: Record<string, number> = {
   default: 9.5,
 }
 
-export const EXAM_MODES = ['default', 'hard', 'wrong', 'custom', 'realistic', 'new'] as const
+export const EXAM_MODES = [
+  'default',
+  'hard',
+  'wrong',
+  'custom',
+  'realistic',
+  'new',
+  'random',
+] as const
 const EXAM_MAX_GRADE = 100
 
 export default class StatsService {
@@ -104,7 +112,7 @@ export default class StatsService {
 
     const questionStats = questionStatsResult.rows?.[0]
     const totalQuestions = Number(questionStats?.total_questions ?? 0)
-    const nOfAnswers = Number(questionStats?.n_of_answers ?? 0)
+    const nOfAnswerQuestions = Number(questionStats?.n_of_answers ?? 0)
     const nOfDistinctQuestionsAnswered = Number(
       questionStats?.n_of_distinct_questions_answered ?? 0
     )
@@ -158,12 +166,12 @@ export default class StatsService {
     const placeInScoreboard = rankResult.rows?.[0]?.rank ? Number(rankResult.rows[0].rank) : null
 
     return {
-      n_of_answers: nOfDistinctQuestionsAnswered,
+      n_of_answers: nOfAnswerQuestions,
       total_of_questions: totalQuestions,
       n_of_wrong_answers: nOfWrongDistinctQuestionsAnswered,
       n_of_correct: nOfCorrectAnswers,
       min_grade: minGrade,
-      n_of_answered: nOfAnswers,
+      n_of_answered: nOfDistinctQuestionsAnswered,
       average_grade: Number(averageGrade.toFixed(2)),
       n_of_exams_taken: examsTaken,
       n_of_exams_passed: nOfExamsPassed,

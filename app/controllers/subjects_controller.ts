@@ -140,7 +140,7 @@ export default class SubjectsController {
       .select('users.email as user_email')
       .select(db.raw('avg(answers.score) as s'))
       .select(db.raw('count(answers.score) as c'))
-      .havingRaw(`count(answers.score) >= ${MIN_ANSWERS}`)
+      .havingRaw('count(answers.score) >= ?', [MIN_ANSWERS])
       .orderByRaw('s desc, c desc')
       .limit(SCOREBOARD_LIMIT)
 

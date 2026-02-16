@@ -31,7 +31,7 @@ export default class User extends BaseModel {
   declare createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime | null
+  declare updatedAt: DateTime
 
   @hasMany(() => Score)
   declare scores: HasMany<typeof Score>

@@ -32,17 +32,25 @@ export default class QuestionsController {
                 question.correctOption = data.correct_option
                 await question.save()
 
-                const results = await Promise.all(
-                    data.options.map((o) =>
-                        Option.query({ client: trx })
+                const normalizeAffectedRows = (result: number | number[] | unknown[]): number => {
+                    if (Array.isArray(result)) {
+                        return Number(result[0] ?? 0)
+                    }
+                    return Number(result)
+                }
+
+                const affectedRows = await Promise.all(
+                    data.options.map(async (o) => {
+                        const result = await Option.query({ client: trx })
                             .where('id', o.id)
                             .where('question_id', question.id)
                             .update({ name: o.name })
-                    )
+                        return normalizeAffectedRows(result)
+                    })
                 )
 
                 // Each result is the number of affected rows; must be exactly 1
-                const allMatched = results.every((count) => count[0] === 1)
+                const allMatched = affectedRows.every((count) => count === 1)
                 if (!allMatched) {
                     throw new Error('One or more option IDs do not belong to this question')
                 }

@@ -25,8 +25,14 @@ export default class CommentsController {
             query.orderBy(sort, order)
         }
 
-        const page = Math.max(1, request.input('page', 1))
-        const perPage = Math.min(100, Math.max(1, request.input('per_page', 20)))
+        const pageInput = Number(request.input('page', 1))
+        const perPageInput = Number(request.input('per_page', 20))
+
+        const normalizedPage = Number.isFinite(pageInput) ? Math.trunc(pageInput) : 1
+        const normalizedPerPage = Number.isFinite(perPageInput) ? Math.trunc(perPageInput) : 20
+
+        const page = Math.max(1, normalizedPage)
+        const perPage = Math.min(100, Math.max(1, normalizedPerPage))
 
         const comments = await query.paginate(page, perPage)
 
