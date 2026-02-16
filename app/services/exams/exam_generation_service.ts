@@ -1,3 +1,4 @@
+import { randomInt } from 'node:crypto'
 import Answer from '#models/answer'
 import AnswerQuestion from '#models/answer_question'
 import Question from '#models/question'
@@ -195,11 +196,11 @@ export default class ExamGenerationService {
     subjectId: number
   ): Promise<Map<number, boolean>> {
     const answerQuestions = await AnswerQuestion.query()
-      .whereHas('answer', (query) => {
-        query.where('userId', userId).where('subjectId', subjectId)
-      })
-      .orderBy('id', 'asc')
-      .select(['questionId', 'isWrong'])
+      .join('answers', 'answer_questions.answer_id', 'answers.id')
+      .where('answers.user_id', userId)
+      .where('answers.subject_id', subjectId)
+      .orderBy('answer_questions.id', 'asc')
+      .select(['answer_questions.question_id', 'answer_questions.is_wrong'])
 
     const statusByQuestion = new Map<number, boolean>()
     for (const answerQuestion of answerQuestions) {
@@ -210,22 +211,19 @@ export default class ExamGenerationService {
   }
 
   private async getWrongCountByQuestion(subjectId: number): Promise<Map<number, number>> {
-    const answerQuestions = await AnswerQuestion.query()
-      .whereHas('answer', (query) => {
-        query.where('subjectId', subjectId)
-      })
-      .select(['questionId', 'isWrong'])
+    const wrongCounts = await AnswerQuestion.query()
+      .join('answers', 'answer_questions.answer_id', 'answers.id')
+      .where('answers.subject_id', subjectId)
+      .where('answer_questions.is_wrong', true)
+      .select('answer_questions.question_id as grouped_question_id')
+      .count('* as wrong_count')
+      .groupBy('answer_questions.question_id')
 
     const wrongCountByQuestion = new Map<number, number>()
-    for (const answerQuestion of answerQuestions) {
-      if (!answerQuestion.isWrong) {
-        continue
-      }
-
-      wrongCountByQuestion.set(
-        answerQuestion.questionId,
-        (wrongCountByQuestion.get(answerQuestion.questionId) ?? 0) + 1
-      )
+    for (const wrongCount of wrongCounts) {
+      const questionId = Number(wrongCount.$extras.grouped_question_id)
+      const count = Number(wrongCount.$extras.wrong_count)
+      wrongCountByQuestion.set(questionId, count)
     }
 
     return wrongCountByQuestion
@@ -278,6 +276,16 @@ export default class ExamGenerationService {
   }
 
   private shuffle<T>(items: T[]): T[] {
-    return [...items].sort(() => Math.random() - 0.5)
+    const shuffledItems = [...items]
+
+    for (let currentIndex = shuffledItems.length - 1; currentIndex > 0; currentIndex--) {
+      const randomIndex = randomInt(currentIndex + 1)
+      ;[shuffledItems[currentIndex], shuffledItems[randomIndex]] = [
+        shuffledItems[randomIndex],
+        shuffledItems[currentIndex],
+      ]
+    }
+
+    return shuffledItems
   }
 }

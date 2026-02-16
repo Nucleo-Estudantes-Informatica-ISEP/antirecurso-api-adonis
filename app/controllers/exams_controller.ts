@@ -1,5 +1,4 @@
 import { createHash } from 'node:crypto'
-import { DateTime } from 'luxon'
 import type { HttpContext } from '@adonisjs/core/http'
 import Answer from '#models/answer'
 import Subject from '#models/subject'
@@ -14,8 +13,8 @@ import {
 } from '#services/exams/exam_config'
 import ExamVerificationService from '#services/exams/exam_verification_service'
 import {
-  examAdminStatsValidator,
   examHistoryValidator,
+  examShowValidator,
   generateExamValidator,
   verifyExamValidator,
 } from '#validators/exam'
@@ -31,7 +30,7 @@ export default class ExamsController {
   async generate({ params, request, response }: HttpContext) {
     const subjectId = this.parseNumericInput(params.subject_id)
     if (subjectId === null) {
-      return response.badRequest({ error: 'Invalid subject id' })
+      return response.badRequest({ message: 'Invalid subject id' })
     }
 
     const data = await request.validateUsing(generateExamValidator, {
@@ -46,21 +45,21 @@ export default class ExamsController {
     const mode: ExamMode = data.mode ?? 'default'
     const subject = await Subject.find(subjectId)
     if (!subject) {
-      return response.notFound({ error: 'Invalid subject' })
+      return response.notFound({ message: 'Invalid subject' })
     }
 
     const userId = await this.resolveUserId(data.user_id ?? null)
     if (data.user_id !== undefined && userId === null) {
-      return response.badRequest({ error: 'Invalid user' })
+      return response.badRequest({ message: 'Invalid user' })
     }
 
     if (modeRequiresUser(mode) && userId === null) {
-      return response.unauthorized({ error: 'You must be logged in to generate this exam mode' })
+      return response.unauthorized({ message: 'You must be logged in to generate this exam mode' })
     }
 
     if (mode === 'custom' && data.n_of_questions === undefined) {
       return response.badRequest({
-        error: `Custom mode requires n_of_questions (${MIN_CUSTOM_QUESTIONS}-${MAX_CUSTOM_QUESTIONS})`,
+        message: `Custom mode requires n_of_questions (${MIN_CUSTOM_QUESTIONS}-${MAX_CUSTOM_QUESTIONS})`,
       })
     }
 
@@ -85,17 +84,17 @@ export default class ExamsController {
 
     const subject = await Subject.find(data.subject_id)
     if (!subject) {
-      return response.notFound({ error: 'Invalid subject' })
+      return response.notFound({ message: 'Invalid subject' })
     }
 
     const userId = await this.resolveUserId(data.user_id ?? null)
     if (data.user_id !== undefined && userId === null) {
-      return response.badRequest({ error: 'Invalid user' })
+      return response.badRequest({ message: 'Invalid user' })
     }
 
     if (mode === 'custom' && data.n_of_questions === undefined) {
       return response.badRequest({
-        error: `Custom mode requires n_of_questions (${MIN_CUSTOM_QUESTIONS}-${MAX_CUSTOM_QUESTIONS})`,
+        message: `Custom mode requires n_of_questions (${MIN_CUSTOM_QUESTIONS}-${MAX_CUSTOM_QUESTIONS})`,
       })
     }
 
@@ -113,25 +112,40 @@ export default class ExamsController {
       return response.ok(result)
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Invalid exam payload'
-      return response.badRequest({ error: message })
+      return response.badRequest({ message })
     }
   }
 
   /**
    * List a user's exam history (paginated).
-   * GET /exams?user_id=...&page=...
+   * GET /exams?requesting_user_id=...&user_id=...&page=...
    */
   async index({ request, response }: HttpContext) {
     const data = await request.validateUsing(examHistoryValidator, {
       data: {
+        requesting_user_id:
+          this.parseNumericInput(request.input('requesting_user_id')) ?? undefined,
         user_id: this.parseNumericInput(request.input('user_id')) ?? undefined,
         page: this.parseNumericInput(request.input('page')) ?? undefined,
       },
     })
 
+    const requestingUser = await User.find(data.requesting_user_id)
+    if (!requestingUser) {
+      return response.badRequest({ message: 'Invalid requesting user' })
+    }
+
+    // Temporary guard while auth middleware is pending.
+    // Replace this with ctx.auth.user-based authorization once auth is integrated.
+    if (!requestingUser.isAdmin && requestingUser.id !== data.user_id) {
+      return response.forbidden({
+        message: 'You are not authorized to view this exam history',
+      })
+    }
+
     const user = await User.find(data.user_id)
     if (!user) {
-      return response.badRequest({ error: 'Invalid user' })
+      return response.badRequest({ message: 'Invalid user' })
     }
 
     const page = data.page ?? 1
@@ -158,10 +172,32 @@ export default class ExamsController {
    * Show a detailed exam attempt with selected option, correct answer and comments.
    * GET /exams/:id
    */
-  async show({ params, response }: HttpContext) {
+  async show({ params, request, response }: HttpContext) {
     const examId = this.parseNumericInput(params.id)
     if (examId === null) {
-      return response.badRequest({ error: 'Invalid exam id' })
+      return response.badRequest({ message: 'Invalid exam id' })
+    }
+
+    const data = await request.validateUsing(examShowValidator, {
+      data: {
+        user_id: this.parseNumericInput(request.input('user_id')) ?? undefined,
+      },
+    })
+
+    const requestingUser = await User.find(data.user_id)
+    if (!requestingUser) {
+      return response.badRequest({ message: 'Invalid user' })
+    }
+
+    const examOwnership = await Answer.query().where('id', examId).first()
+    if (!examOwnership) {
+      return response.notFound({ message: 'Invalid answer' })
+    }
+
+    if (!requestingUser.isAdmin && examOwnership.userId !== requestingUser.id) {
+      return response.forbidden({
+        message: 'You are not authorized to view this exam attempt',
+      })
     }
 
     const exam = await Answer.query()
@@ -178,7 +214,7 @@ export default class ExamsController {
       .first()
 
     if (!exam) {
-      return response.notFound({ error: 'Invalid answer' })
+      return response.notFound({ message: 'Invalid answer' })
     }
 
     const questions = exam.questions.map((answerQuestion) => {
@@ -218,60 +254,16 @@ export default class ExamsController {
 
   /**
    * Aggregated admin exam statistics.
-   * GET /admin/exams?user_id=...
+   * GET /admin/exams
    */
-  async stats({ request, response }: HttpContext) {
-    const data = await request.validateUsing(examAdminStatsValidator, {
-      data: {
-        user_id: this.parseNumericInput(request.input('user_id')) ?? undefined,
-      },
-    })
-
-    const adminUser = await User.find(data.user_id)
-    if (!adminUser) {
-      return response.badRequest({ error: 'Invalid user' })
-    }
-
-    if (!adminUser.isAdmin) {
-      return response.forbidden({ message: 'You are not an admin' })
-    }
-
-    const answers = await Answer.query().preload('subject')
-    const lastWeekThreshold = DateTime.now().minus({ days: 7 }).startOf('day')
-
-    const examsPerDayMap = new Map<string, number>()
-    const examsPerSubjectMap = new Map<string, number>()
-    const examsPerModeMap = new Map<string, number>()
-
-    for (const answer of answers) {
-      examsPerSubjectMap.set(
-        answer.subject.name,
-        (examsPerSubjectMap.get(answer.subject.name) ?? 0) + 1
-      )
-      examsPerModeMap.set(answer.mode, (examsPerModeMap.get(answer.mode) ?? 0) + 1)
-
-      if (answer.createdAt.toMillis() >= lastWeekThreshold.toMillis()) {
-        const date = answer.createdAt.toISODate()
-        if (date) {
-          examsPerDayMap.set(date, (examsPerDayMap.get(date) ?? 0) + 1)
-        }
-      }
-    }
-
-    const examsPerDay = [...examsPerDayMap.entries()]
-      .sort((left, right) => left[0].localeCompare(right[0]))
-      .map(([date, count]) => ({ date, count }))
-
-    const examsPerSubject = [...examsPerSubjectMap.entries()].map(([name, count]) => ({
-      name,
-      count,
-    }))
-    const examsPerMode = [...examsPerModeMap.entries()].map(([mode, count]) => ({ mode, count }))
-
-    return response.ok({
-      exams_per_day: examsPerDay,
-      exams_per_subject: examsPerSubject,
-      exams_per_mode: examsPerMode,
+  async stats({ response }: HttpContext) {
+    // Security hard-stop: this endpoint must use authenticated session context,
+    // never client-provided user identifiers.
+    // TODO: Replace with auth middleware + admin check from ctx.auth.user.
+    // TODO: When re-enabling stats, compute aggregates at database level
+    // (GROUP BY + COUNT) to avoid loading all answers in memory.
+    return response.unauthorized({
+      message: 'Authentication is required to access admin exam stats',
     })
   }
 

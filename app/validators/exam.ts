@@ -32,7 +32,11 @@ export const verifyExamValidator = vine.compile(
       .array(
         vine.object({
           question_id: vine.number().withoutDecimals().positive(),
-          selected_option: vine.string().trim().nullable().optional(),
+          selected_option: vine
+            .string()
+            .trim()
+            .regex(/^[A-Za-z]$/)
+            .optional(),
         })
       )
       .minLength(1),
@@ -41,12 +45,13 @@ export const verifyExamValidator = vine.compile(
 
 export const examHistoryValidator = vine.compile(
   vine.object({
+    requesting_user_id: vine.number().withoutDecimals().positive(),
     user_id: vine.number().withoutDecimals().positive(),
     page: vine.number().withoutDecimals().positive().optional(),
   })
 )
 
-export const examAdminStatsValidator = vine.compile(
+export const examShowValidator = vine.compile(
   vine.object({
     user_id: vine.number().withoutDecimals().positive(),
   })

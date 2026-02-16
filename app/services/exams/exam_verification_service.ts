@@ -9,12 +9,13 @@ import {
   DEFAULT_EXAM_RULE,
   type ExamMode,
   MAX_SCORE,
+  PASSING_SCORE_TOLERANCE,
   getSubjectExamRule,
 } from '#services/exams/exam_config'
 
 export type VerifyExamAnswerInput = {
   question_id: number
-  selected_option?: string | null
+  selected_option?: string
 }
 
 export type VerifyExamInput = {
@@ -39,13 +40,16 @@ type TransactionClient = Awaited<ReturnType<typeof db.transaction>>
 
 export default class ExamVerificationService {
   async verify(input: VerifyExamInput): Promise<VerifyExamResult> {
-    const questionMap = await this.getQuestionMap(input.answers, input.subject.id)
-
     const nOfQuestions = this.resolveQuestionCount(
       input.mode,
       input.subject.slug,
       input.nOfQuestions
     )
+    this.validateExpectedAnswerCount(input.answers, nOfQuestions)
+    this.validateUniqueQuestionAnswers(input.answers)
+
+    const questionMap = await this.getQuestionMap(input.answers, input.subject.id)
+
     const questionScore = MAX_SCORE / nOfQuestions
 
     let correctAnswers = 0
@@ -73,12 +77,13 @@ export default class ExamVerificationService {
           continue
         }
 
-        const selectedOption = answerPayload.selected_option ?? null
+        const selectedOption = this.normalizeOptionValue(answerPayload.selected_option)
+        const correctOption = this.getValidatedCorrectOption(question)
         const optionId = selectedOption
           ? (optionMap.get(this.toOptionMapKey(question.id, selectedOption)) ?? null)
           : null
 
-        const isWrong = question.correctOption !== selectedOption
+        const isWrong = correctOption !== selectedOption
         if (!isWrong) {
           correctAnswers++
         }
@@ -110,7 +115,7 @@ export default class ExamVerificationService {
 
       const normalizedScore = Number(Math.max(0, rawScore).toFixed(2))
       const persistedScore = Math.round(normalizedScore)
-      const passed = normalizedScore >= MAX_SCORE / 2 - 5
+      const passed = normalizedScore >= MAX_SCORE / 2 - PASSING_SCORE_TOLERANCE
 
       userAnswer.score = persistedScore
       userAnswer.useTransaction(trx)
@@ -155,6 +160,36 @@ export default class ExamVerificationService {
     return DEFAULT_EXAM_RULE.n_of_questions
   }
 
+  private validateExpectedAnswerCount(
+    answers: VerifyExamAnswerInput[],
+    expectedQuestionsCount: number
+  ): void {
+    if (answers.length !== expectedQuestionsCount) {
+      throw new Error(
+        `Invalid answers payload: expected ${expectedQuestionsCount} answers, received ${answers.length}`
+      )
+    }
+  }
+
+  private validateUniqueQuestionAnswers(answers: VerifyExamAnswerInput[]): void {
+    const seenQuestionIds = new Set<number>()
+    const duplicateQuestionIds = new Set<number>()
+
+    for (const answer of answers) {
+      if (seenQuestionIds.has(answer.question_id)) {
+        duplicateQuestionIds.add(answer.question_id)
+      } else {
+        seenQuestionIds.add(answer.question_id)
+      }
+    }
+
+    if (duplicateQuestionIds.size > 0) {
+      throw new Error(
+        `Invalid answers payload: duplicate question IDs [${[...duplicateQuestionIds].join(', ')}]`
+      )
+    }
+  }
+
   private calculateScore(input: {
     mode: ExamMode
     subjectSlug: string
@@ -184,13 +219,24 @@ export default class ExamVerificationService {
     const questions = await Question.query().whereIn('id', questionIds)
 
     if (questions.length !== questionIds.length) {
-      throw new Error('Invalid question list')
+      const foundQuestionIds = new Set(questions.map((question) => question.id))
+      const missingQuestionIds = questionIds.filter(
+        (questionId) => !foundQuestionIds.has(questionId)
+      )
+
+      throw new Error(
+        `Invalid question list: unknown question IDs [${missingQuestionIds.join(', ')}]`
+      )
     }
 
-    for (const question of questions) {
-      if (question.subjectId !== subjectId) {
-        throw new Error('Question does not belong to the selected subject')
-      }
+    const subjectMismatches = questions
+      .filter((question) => question.subjectId !== subjectId)
+      .map((question) => `${question.id}(subject:${question.subjectId})`)
+
+    if (subjectMismatches.length > 0) {
+      throw new Error(
+        `Question-subject mismatch: expected subject ${subjectId}, but found questions [${subjectMismatches.join(', ')}]`
+      )
     }
 
     const questionMap = new Map<number, Question>()
@@ -242,5 +288,24 @@ export default class ExamVerificationService {
 
   private toOptionMapKey(questionId: number, optionOrder: string): string {
     return `${questionId}:${optionOrder}`
+  }
+
+  private normalizeOptionValue(value: string | null | undefined): string | null {
+    if (typeof value !== 'string') {
+      return null
+    }
+
+    const normalizedValue = value.trim().toUpperCase()
+    return normalizedValue.length > 0 ? normalizedValue : null
+  }
+
+  private getValidatedCorrectOption(question: Question): string {
+    const correctOption = this.normalizeOptionValue(question.correctOption)
+
+    if (!correctOption || !/^[A-Z]$/.test(correctOption)) {
+      throw new Error(`Question ${question.id} has no valid correct option configured`)
+    }
+
+    return correctOption
   }
 }
