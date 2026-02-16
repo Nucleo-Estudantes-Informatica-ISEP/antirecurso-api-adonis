@@ -72,14 +72,13 @@ export default class StatsService {
           .innerJoin('answers', 'answer_questions.answer_id', 'answers.id')
           .where('answers.user_id', userId)
           .where('answer_questions.is_wrong', false)
-          .whereIn('answer_questions.question_id', (innerQuery) => {
+          .whereIn('answer_questions.id', (innerQuery) => {
             innerQuery
-              .from('answer_questions')
-              .select('answer_questions.question_id')
-              .innerJoin('answers', 'answer_questions.answer_id', 'answers.id')
-              .where('answers.user_id', userId)
-              .groupBy('answer_questions.question_id')
-              .havingRaw('MAX(answer_questions.id) = answer_questions.id')
+              .from('answer_questions as aq2')
+              .select(db.raw('MAX(aq2.id)'))
+              .innerJoin('answers as a2', 'aq2.answer_id', 'a2.id')
+              .where('a2.user_id', userId)
+              .groupBy('aq2.question_id')
           })
       })
       .countDistinct('question_id as total')
