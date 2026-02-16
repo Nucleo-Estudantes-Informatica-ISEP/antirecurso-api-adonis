@@ -15,7 +15,7 @@ const SubjectsController = () => import('#controllers/subjects_controller')
 
 // Health check
 router.get('/', async () => {
-    return { status: 'ok' }
+  return { status: 'ok' }
 })
 
 // Subjects
