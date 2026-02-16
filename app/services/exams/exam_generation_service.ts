@@ -240,7 +240,15 @@ export default class ExamGenerationService {
     fallbackPool: Question[],
     targetSize: number
   ): Question[] {
-    const selectedPrimaryQuestions = this.takeRandom(primaryPool, targetSize)
+    const availableUniqueQuestions = new Set(fallbackPool.map((question) => question.id)).size
+    if (availableUniqueQuestions < targetSize) {
+      throw new Error(
+        `Insufficient questions to generate exam: requested ${targetSize}, available ${availableUniqueQuestions}`
+      )
+    }
+
+    const selectedPrimaryCount = Math.min(targetSize, primaryPool.length)
+    const selectedPrimaryQuestions = this.takeRandom(primaryPool, selectedPrimaryCount)
 
     if (selectedPrimaryQuestions.length >= targetSize) {
       return selectedPrimaryQuestions
@@ -272,6 +280,12 @@ export default class ExamGenerationService {
   }
 
   private takeRandom<T>(items: T[], count: number): T[] {
+    if (items.length < count) {
+      throw new Error(
+        `Insufficient questions to generate exam: requested ${count}, available ${items.length}`
+      )
+    }
+
     return this.shuffle(items).slice(0, count)
   }
 

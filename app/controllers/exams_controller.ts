@@ -63,15 +63,20 @@ export default class ExamsController {
       })
     }
 
-    const questions = await this.examGenerationService.generate({
-      subject,
-      mode,
-      userId,
-      nOfQuestions: data.n_of_questions ?? null,
-      filter: data.filter ?? null,
-    })
+    try {
+      const questions = await this.examGenerationService.generate({
+        subject,
+        mode,
+        userId,
+        nOfQuestions: data.n_of_questions ?? null,
+        filter: data.filter ?? null,
+      })
 
-    return response.ok(questions)
+      return response.ok(questions)
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unable to generate exam'
+      return response.badRequest({ message })
+    }
   }
 
   /**
