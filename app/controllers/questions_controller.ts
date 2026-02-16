@@ -39,9 +39,14 @@ export default class QuestionsController {
                 question.correctOption = data.correct_option
                 await question.save()
 
+                // Knex .update() returns different types depending on the DB driver:
+                //   - PostgreSQL (pg): returns number (affected row count directly)
+                //   - MySQL (mysql2): returns number[] with affected count at index 0
+                //   - SQLite (better-sqlite3): returns number[] with affected count at index 0
+                // We normalize to a plain number, defaulting to 0 if the array is empty.
                 const normalizeAffectedRows = (result: number | number[] | unknown[]): number => {
                     if (Array.isArray(result)) {
-                        return Number(result[0] ?? 0)
+                        return result.length > 0 ? Number(result[0]) : 0
                     }
                     return Number(result)
                 }
@@ -66,6 +71,9 @@ export default class QuestionsController {
             return response.noContent()
         } catch (error: unknown) {
             if (error instanceof QuestionOptionOwnershipError) {
+                return response.unprocessableEntity({ message: error.message })
+            }
+            if (error instanceof Error && error.message.startsWith('correct_option must be')) {
                 return response.unprocessableEntity({ message: error.message })
             }
             throw error

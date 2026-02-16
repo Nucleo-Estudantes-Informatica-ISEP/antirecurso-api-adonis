@@ -160,11 +160,12 @@ export default class StatsService {
       }
     }
 
-    // Times and mean time (null time values count as 0 to match previous behavior)
+    // Times and mean time — exclude exams with no recorded time from the average
     const times = userScores.map((answer) => ({ time: answer.time }))
+    const recordedTimes = userScores.filter((a) => a.time != null)
     const meanTime =
-      examsTaken > 0
-        ? userScores.reduce((sum, answer) => sum + (answer.time ?? 0), 0) / examsTaken
+      recordedTimes.length > 0
+        ? recordedTimes.reduce((sum, a) => sum + a.time!, 0) / recordedTimes.length
         : null
 
     const placeInScoreboard = rankResult.rows?.[0]?.rank ? Number(rankResult.rows[0].rank) : null
