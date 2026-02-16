@@ -24,7 +24,7 @@ export default class User extends BaseModel {
   @column()
   declare isAdmin: boolean
 
-  @column()
+  @column({ serializeAs: null })
   declare rememberToken: string | null
 
   @column.dateTime({ autoCreate: true })

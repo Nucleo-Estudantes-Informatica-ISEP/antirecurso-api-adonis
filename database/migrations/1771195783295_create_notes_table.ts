@@ -14,21 +14,19 @@ export default class extends BaseSchema {
       table.string('upload_id').nullable()
       table
         .integer('user_id')
-        .unsigned()
         .notNullable()
         .references('id')
         .inTable('users')
         .onDelete('CASCADE')
       table
         .integer('subject_id')
-        .unsigned()
         .notNullable()
         .references('id')
         .inTable('subjects')
         .onDelete('CASCADE')
 
-      table.timestamp('created_at')
-      table.timestamp('updated_at')
+      table.timestamp('created_at').notNullable()
+      table.timestamp('updated_at').notNullable()
     })
   }
 

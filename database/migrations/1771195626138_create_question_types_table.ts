@@ -9,14 +9,13 @@ export default class extends BaseSchema {
       table.string('name').notNullable()
       table
         .integer('subject_id')
-        .unsigned()
         .notNullable()
         .references('id')
         .inTable('subjects')
         .onDelete('CASCADE')
 
-      table.timestamp('created_at')
-      table.timestamp('updated_at')
+      table.timestamp('created_at').notNullable()
+      table.timestamp('updated_at').notNullable()
     })
   }
 

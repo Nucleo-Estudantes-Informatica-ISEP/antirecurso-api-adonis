@@ -9,14 +9,12 @@ export default class extends BaseSchema {
       table.text('reason').nullable()
       table
         .integer('question_id')
-        .unsigned()
         .notNullable()
         .references('id')
         .inTable('questions')
         .onDelete('CASCADE')
       table
         .integer('user_id')
-        .unsigned()
         .notNullable()
         .references('id')
         .inTable('users')
@@ -24,15 +22,14 @@ export default class extends BaseSchema {
       table.dateTime('reviewed_at').nullable()
       table
         .integer('reviewed_by')
-        .unsigned()
         .nullable()
         .references('id')
         .inTable('users')
         .onDelete('SET NULL')
       table.boolean('solved').notNullable().defaultTo(false)
 
-      table.timestamp('created_at')
-      table.timestamp('updated_at')
+      table.timestamp('created_at').notNullable()
+      table.timestamp('updated_at').notNullable()
     })
   }
 

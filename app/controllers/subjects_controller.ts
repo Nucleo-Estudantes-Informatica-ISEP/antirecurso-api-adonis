@@ -2,10 +2,8 @@ import type { HttpContext } from '@adonisjs/core/http'
 import db from '@adonisjs/lucid/services/db'
 import { createHash } from 'node:crypto'
 import Subject from '#models/subject'
-import Question from '#models/question'
 import Answer from '#models/answer'
 import Score from '#models/score'
-import User from '#models/user'
 import StatsService from '#services/stats_service'
 import { scoreboardVisibilityValidator, tempAuthValidator } from '#validators/subject'
 
@@ -24,7 +22,7 @@ export default class SubjectsController {
     const withQuestions = request.input('with_questions')
 
     if (withQuestions === 'true') {
-      const subjects = await Subject.query().whereHas('questions')
+      const subjects = await Subject.query().whereHas('questions', (q) => q)
 
       return response.ok({
         data: subjects.map((s) => ({

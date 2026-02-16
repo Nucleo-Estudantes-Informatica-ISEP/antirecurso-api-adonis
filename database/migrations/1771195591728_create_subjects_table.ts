@@ -10,8 +10,8 @@ export default class extends BaseSchema {
       table.string('slug').notNullable()
       table.integer('year').notNullable()
 
-      table.timestamp('created_at')
-      table.timestamp('updated_at')
+      table.timestamp('created_at').notNullable()
+      table.timestamp('updated_at').notNullable()
     })
   }
 

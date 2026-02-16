@@ -12,21 +12,19 @@ export default class extends BaseSchema {
       table.string('exam').notNullable()
       table
         .integer('subject_id')
-        .unsigned()
         .notNullable()
         .references('id')
         .inTable('subjects')
         .onDelete('CASCADE')
       table
         .integer('question_type_id')
-        .unsigned()
         .notNullable()
         .references('id')
         .inTable('question_types')
         .onDelete('CASCADE')
 
-      table.timestamp('created_at')
-      table.timestamp('updated_at')
+      table.timestamp('created_at').notNullable()
+      table.timestamp('updated_at').notNullable()
     })
   }
 

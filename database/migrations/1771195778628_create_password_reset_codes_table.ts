@@ -10,14 +10,13 @@ export default class extends BaseSchema {
       table.boolean('validated').notNullable().defaultTo(false)
       table
         .integer('user_id')
-        .unsigned()
         .notNullable()
         .references('id')
         .inTable('users')
         .onDelete('CASCADE')
 
-      table.timestamp('created_at')
-      table.timestamp('updated_at')
+      table.timestamp('created_at').notNullable()
+      table.timestamp('updated_at').notNullable()
     })
   }
 
