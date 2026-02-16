@@ -2,6 +2,7 @@ import { DateTime } from 'luxon'
 import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
 import type { HasMany } from '@adonisjs/lucid/types/relations'
 import Score from '#models/score'
+import Question from '#models/question'
 
 export default class Subject extends BaseModel {
   @column({ isPrimary: true })
@@ -24,4 +25,7 @@ export default class Subject extends BaseModel {
 
   @hasMany(() => Score)
   declare scores: HasMany<typeof Score>
+
+  @hasMany(() => Question)
+  declare questions: HasMany<typeof Question>
 }
