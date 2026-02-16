@@ -167,10 +167,15 @@ export default class SubjectsController {
     const { user_id: userId } = await request.validateUsing(tempAuthValidator)
     const data = await request.validateUsing(scoreboardVisibilityValidator)
 
-    await Score.updateOrCreate(
+    // Use firstOrCreate to handle the NOT NULL score column —
+    // if no row exists yet, create one with score defaulting to 0.
+    // Then update showScoreboard without overwriting the existing score.
+    const scoreRecord = await Score.firstOrCreate(
       { userId, subjectId: Number(params.id) },
-      { showScoreboard: data.visibility }
+      { score: 0, showScoreboard: data.visibility }
     )
+    scoreRecord.showScoreboard = data.visibility
+    await scoreRecord.save()
 
     return response.ok({ message: 'Scoreboard visibility updated.' })
   }
