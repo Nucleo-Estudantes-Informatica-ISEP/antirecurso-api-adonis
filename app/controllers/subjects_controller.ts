@@ -4,13 +4,31 @@ import { createHash } from 'node:crypto'
 import Subject from '#models/subject'
 import Answer from '#models/answer'
 import Score from '#models/score'
-import StatsService from '#services/stats_service'
+import StatsService, { EXAM_MODES } from '#services/stats_service'
 import { scoreboardVisibilityValidator, tempAuthValidator } from '#validators/subject'
 
 const SCOREBOARD_LIMIT = 30
 const MIN_ANSWERS = 3
+const SCOREBOARD_MODES = new Set<string>(['all', ...EXAM_MODES])
 
 export default class SubjectsController {
+  private parseSubjectId(rawId: unknown): number | null {
+    const subjectId = Number(rawId)
+    if (!Number.isInteger(subjectId) || subjectId <= 0) {
+      return null
+    }
+    return subjectId
+  }
+
+  private serializeSubject(subject: Subject) {
+    return {
+      id: subject.id,
+      name: subject.name,
+      slug: subject.slug,
+      year: subject.year,
+    }
+  }
+
   /**
    * List all subjects.
    * GET /subjects?with_questions=true
@@ -20,28 +38,13 @@ export default class SubjectsController {
    */
   async index({ request, response }: HttpContext) {
     const withQuestions = request.input('with_questions')
+    const subjects =
+      withQuestions === 'true'
+        ? await Subject.query().whereHas('questions', (q) => q)
+        : await Subject.all()
 
-    if (withQuestions === 'true') {
-      const subjects = await Subject.query().whereHas('questions', (q) => q)
-
-      return response.ok({
-        data: subjects.map((s) => ({
-          id: s.id,
-          name: s.name,
-          slug: s.slug,
-          year: s.year,
-        })),
-      })
-    }
-
-    const subjects = await Subject.all()
     return response.ok({
-      data: subjects.map((s) => ({
-        id: s.id,
-        name: s.name,
-        slug: s.slug,
-        year: s.year,
-      })),
+      data: subjects.map((subject) => this.serializeSubject(subject)),
     })
   }
 
@@ -56,12 +59,7 @@ export default class SubjectsController {
       return response.notFound({ message: 'Invalid subject' })
     }
 
-    return response.ok({
-      id: subject.id,
-      name: subject.name,
-      slug: subject.slug,
-      year: subject.year,
-    })
+    return response.ok(this.serializeSubject(subject))
   }
 
   /**
@@ -73,11 +71,29 @@ export default class SubjectsController {
   async stats({ params, request, response }: HttpContext) {
     // TODO: Replace with auth middleware when auth service is integrated
     const { user_id: userId } = await request.validateUsing(tempAuthValidator)
+    const subjectId = this.parseSubjectId(params.id)
 
-    const statsService = new StatsService()
-    const stats = await statsService.getStats(Number(params.id), userId)
+    if (subjectId === null) {
+      return response.unprocessableEntity({ message: 'Invalid subject id' })
+    }
 
-    return response.ok(stats)
+    try {
+      const statsService = new StatsService()
+      const stats = await statsService.getStats(subjectId, userId)
+
+      return response.ok(stats)
+    } catch (error: unknown) {
+      if (
+        typeof error === 'object' &&
+        error !== null &&
+        'code' in error &&
+        error.code === 'E_ROW_NOT_FOUND'
+      ) {
+        return response.notFound({ message: 'Invalid subject' })
+      }
+
+      throw error
+    }
   }
 
   /**
@@ -87,8 +103,18 @@ export default class SubjectsController {
    * The `mode` param can be 'all' or any specific exam mode (default, hard, wrong, etc.).
    */
   async scoreboard({ params, response }: HttpContext) {
-    const subjectId = Number(params.id)
-    const mode = params.mode
+    const subjectId = this.parseSubjectId(params.id)
+    const mode = String(params.mode ?? '').toLowerCase()
+
+    if (subjectId === null) {
+      return response.unprocessableEntity({ message: 'Invalid subject id' })
+    }
+
+    if (!SCOREBOARD_MODES.has(mode)) {
+      return response.unprocessableEntity({
+        message: `Invalid mode. Allowed values: all, ${EXAM_MODES.join(', ')}`,
+      })
+    }
 
     const subject = await Subject.find(subjectId)
     if (!subject) {
@@ -133,12 +159,16 @@ export default class SubjectsController {
 
     // Build the response — no extra queries needed, user data is already joined
     const scoreEntries = scores.map(
-      (score: { user_id: number; user_name: string; user_email: string; s: number; c: number }) => ({
+      (score: {
+        user_id: number
+        user_name: string
+        user_email: string
+        s: number
+        c: number
+      }) => ({
         user_id: score.user_id,
         user_name: score.user_name,
-        avatar: createHash('md5')
-          .update(score.user_email.toLowerCase().trim())
-          .digest('hex'),
+        avatar: createHash('md5').update(score.user_email.toLowerCase().trim()).digest('hex'),
         score: Number(Number(score.s).toFixed(2)),
         exams: Number(score.c),
       })
@@ -165,7 +195,11 @@ export default class SubjectsController {
     const { user_id: userId } = await request.validateUsing(tempAuthValidator)
     const data = await request.validateUsing(scoreboardVisibilityValidator)
 
-    const subjectId = Number(params.id)
+    const subjectId = this.parseSubjectId(params.id)
+    if (subjectId === null) {
+      return response.unprocessableEntity({ message: 'Invalid subject id' })
+    }
+
     const subject = await Subject.find(subjectId)
     if (!subject) {
       return response.notFound({ message: 'Subject not found' })
