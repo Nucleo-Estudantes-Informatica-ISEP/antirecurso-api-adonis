@@ -13,19 +13,9 @@ export default class extends BaseSchema {
         .references('id')
         .inTable('questions')
         .onDelete('CASCADE')
-      table
-        .integer('user_id')
-        .notNullable()
-        .references('id')
-        .inTable('users')
-        .onDelete('CASCADE')
+      table.integer('user_id').notNullable().references('id').inTable('users').onDelete('CASCADE')
       table.dateTime('reviewed_at').nullable()
-      table
-        .integer('reviewed_by')
-        .nullable()
-        .references('id')
-        .inTable('users')
-        .onDelete('SET NULL')
+      table.integer('reviewed_by').nullable().references('id').inTable('users').onDelete('SET NULL')
       table.boolean('solved').notNullable().defaultTo(false)
 
       table.unique(['question_id', 'user_id'])

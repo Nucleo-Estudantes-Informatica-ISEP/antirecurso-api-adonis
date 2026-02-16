@@ -7,12 +7,7 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.text('comment').notNullable()
-      table
-        .integer('user_id')
-        .notNullable()
-        .references('id')
-        .inTable('users')
-        .onDelete('CASCADE')
+      table.integer('user_id').notNullable().references('id').inTable('users').onDelete('CASCADE')
       table
         .integer('question_id')
         .notNullable()

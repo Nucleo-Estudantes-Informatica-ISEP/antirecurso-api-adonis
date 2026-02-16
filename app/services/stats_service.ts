@@ -162,7 +162,7 @@ export default class StatsService {
 
     // Times and mean time — exclude exams with no recorded time from the average
     const times = userScores.map((answer) => ({ time: answer.time }))
-    const recordedTimes = userScores.filter((a) => a.time != null)
+    const recordedTimes = userScores.filter((a) => a.time !== null && a.time !== undefined)
     const meanTime =
       recordedTimes.length > 0
         ? recordedTimes.reduce((sum, a) => sum + a.time!, 0) / recordedTimes.length

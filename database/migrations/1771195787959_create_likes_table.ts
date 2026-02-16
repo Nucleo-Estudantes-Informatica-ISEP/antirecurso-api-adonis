@@ -6,18 +6,8 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table
-        .integer('user_id')
-        .notNullable()
-        .references('id')
-        .inTable('users')
-        .onDelete('CASCADE')
-      table
-        .integer('note_id')
-        .notNullable()
-        .references('id')
-        .inTable('notes')
-        .onDelete('CASCADE')
+      table.integer('user_id').notNullable().references('id').inTable('users').onDelete('CASCADE')
+      table.integer('note_id').notNullable().references('id').inTable('notes').onDelete('CASCADE')
 
       table.unique(['user_id', 'note_id'])
 

@@ -8,12 +8,7 @@ export default class extends BaseSchema {
       table.increments('id')
       table.string('code').notNullable()
       table.boolean('validated').notNullable().defaultTo(false)
-      table
-        .integer('user_id')
-        .notNullable()
-        .references('id')
-        .inTable('users')
-        .onDelete('CASCADE')
+      table.integer('user_id').notNullable().references('id').inTable('users').onDelete('CASCADE')
 
       table.timestamp('created_at').notNullable()
       table.timestamp('updated_at').notNullable()

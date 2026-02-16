@@ -18,12 +18,7 @@ export default class extends BaseSchema {
         .references('id')
         .inTable('questions')
         .onDelete('CASCADE')
-      table
-        .integer('option_id')
-        .nullable()
-        .references('id')
-        .inTable('options')
-        .onDelete('SET NULL')
+      table.integer('option_id').nullable().references('id').inTable('options').onDelete('SET NULL')
       table.boolean('is_wrong').notNullable().defaultTo(true)
 
       table.unique(['answer_id', 'question_id'])
