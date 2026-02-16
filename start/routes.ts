@@ -14,7 +14,7 @@ const QuestionsController = () => import('#controllers/questions_controller')
 
 // Health check
 router.get('/', async () => {
-    return { status: 'ok' }
+  return { status: 'ok' }
 })
 
 // Comments
