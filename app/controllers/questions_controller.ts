@@ -4,6 +4,13 @@ import Question from '#models/question'
 import Option from '#models/option'
 import { updateQuestionValidator } from '#validators/question'
 
+class QuestionOptionOwnershipError extends Error {
+    constructor() {
+        super('One or more option IDs do not belong to this question')
+        this.name = 'QuestionOptionOwnershipError'
+    }
+}
+
 export default class QuestionsController {
     /**
      * Update a question's text, correct option, and option names.
@@ -52,13 +59,13 @@ export default class QuestionsController {
                 // Each result is the number of affected rows; must be exactly 1
                 const allMatched = affectedRows.every((count) => count === 1)
                 if (!allMatched) {
-                    throw new Error('One or more option IDs do not belong to this question')
+                    throw new QuestionOptionOwnershipError()
                 }
             })
 
             return response.noContent()
-        } catch (error: any) {
-            if (error.message === 'One or more option IDs do not belong to this question') {
+        } catch (error: unknown) {
+            if (error instanceof QuestionOptionOwnershipError) {
                 return response.unprocessableEntity({ message: error.message })
             }
             throw error

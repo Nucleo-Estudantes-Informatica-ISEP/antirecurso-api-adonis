@@ -143,7 +143,11 @@ export default class StatsService {
 
     // Suggested mode heuristic
     let suggestedMode = 'default'
-    if (nOfDistinctQuestionsAnswered >= totalQuestions * 0.4 && nOfDistinctQuestionsAnswered > 0) {
+    if (
+      totalQuestions > 0 &&
+      nOfDistinctQuestionsAnswered > 0 &&
+      nOfDistinctQuestionsAnswered >= totalQuestions * 0.4
+    ) {
       const wrongRatio = nOfWrongDistinctQuestionsAnswered / nOfDistinctQuestionsAnswered
       if (wrongRatio >= 0.3) {
         suggestedMode = 'wrong'
