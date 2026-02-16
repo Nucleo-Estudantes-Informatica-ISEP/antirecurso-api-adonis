@@ -8,7 +8,7 @@ export default class extends BaseSchema {
       table.increments('id')
       table.string('question').notNullable()
       table.string('image').notNullable()
-      table.string('correct_option').notNullable()
+      table.string('correct_option', 1).notNullable()
       table.string('exam').notNullable()
       table
         .integer('subject_id')

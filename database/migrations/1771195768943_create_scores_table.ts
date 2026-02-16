@@ -20,6 +20,7 @@ export default class extends BaseSchema {
         .inTable('subjects')
         .onDelete('CASCADE')
       table.boolean('show_scoreboard').notNullable().defaultTo(true)
+      table.unique(['user_id', 'subject_id'])
 
       table.timestamp('created_at').notNullable()
       table.timestamp('updated_at').notNullable()

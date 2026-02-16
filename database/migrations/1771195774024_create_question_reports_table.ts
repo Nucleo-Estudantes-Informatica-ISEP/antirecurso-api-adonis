@@ -28,6 +28,8 @@ export default class extends BaseSchema {
         .onDelete('SET NULL')
       table.boolean('solved').notNullable().defaultTo(false)
 
+      table.unique(['question_id', 'user_id'])
+
       table.timestamp('created_at').notNullable()
       table.timestamp('updated_at').notNullable()
     })
