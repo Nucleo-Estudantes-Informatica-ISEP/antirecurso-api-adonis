@@ -125,16 +125,18 @@ export default class StatsService {
         ? userScores.reduce((sum, a) => sum + a.score, 0) / userScores.length
         : 0
 
-    // Per-mode exam counts
+    // Per-mode exam counts — single query instead of one per mode
+    const modeCountRows = await Answer.query()
+      .where('user_id', userId)
+      .where('subject_id', subjectId)
+      .groupBy('mode')
+      .select('mode')
+      .count('* as total')
+
     const modeScores: Record<string, number> = {}
     for (const mode of EXAM_MODES) {
-      const result = await Answer.query()
-        .where('user_id', userId)
-        .where('subject_id', subjectId)
-        .where('mode', mode)
-        .count('* as total')
-        .first()
-      modeScores[mode] = Number(result?.$extras.total ?? 0)
+      const row = modeCountRows.find((r) => r.mode === mode)
+      modeScores[mode] = Number(row?.$extras.total ?? 0)
     }
 
     // Suggested mode heuristic
@@ -160,29 +162,35 @@ export default class StatsService {
     const meanTime =
       times.length > 0 ? times.reduce((sum, a) => sum + (a.time ?? 0), 0) / times.length : null
 
-    // Place in scoreboard
-    const scoreboardEntries = await db
-      .from('answers')
-      .where('answers.subject_id', subjectId)
-      .whereNotNull('answers.user_id')
-      .whereExists((builder) => {
-        builder
-          .from('scores')
-          .whereRaw('scores.user_id = answers.user_id')
-          .where('scores.subject_id', subjectId)
-          .where('scores.show_scoreboard', true)
-      })
-      .groupBy('answers.user_id')
-      .select('answers.user_id')
-      .select(db.raw('sum(answers.score) / count(answers.score) as s'))
-      .select(db.raw('count(answers.score) as c'))
-      .havingRaw('count(answers.score) >= 3')
-      .orderByRaw('s desc, c desc')
-
-    const placeIndex = scoreboardEntries.findIndex(
-      (entry: { user_id: number }) => entry.user_id === userId
+    // Place in scoreboard — computed in SQL via dense_rank() to avoid loading all users
+    const rankResult = await db.rawQuery(
+      `
+      WITH ranked AS (
+        SELECT
+          answers.user_id,
+          avg(answers.score) AS s,
+          count(answers.score) AS c,
+          dense_rank() OVER (ORDER BY avg(answers.score) DESC, count(answers.score) DESC) AS rank
+        FROM answers
+        WHERE answers.subject_id = ?
+          AND answers.user_id IS NOT NULL
+          AND EXISTS (
+            SELECT 1 FROM scores
+            WHERE scores.user_id = answers.user_id
+              AND scores.subject_id = ?
+              AND scores.show_scoreboard = true
+          )
+        GROUP BY answers.user_id
+        HAVING count(answers.score) >= 3
+      )
+      SELECT rank FROM ranked WHERE user_id = ?
+      `,
+      [subjectId, subjectId, userId]
     )
-    const placeInScoreboard = placeIndex === -1 ? null : placeIndex + 1
+
+    const placeInScoreboard = rankResult.rows?.[0]?.rank
+      ? Number(rankResult.rows[0].rank)
+      : null
 
     return {
       n_of_answers: nOfDistinctQuestionsAnswered,
@@ -199,7 +207,9 @@ export default class StatsService {
       percentage_of_exams_passed:
         examsTaken > 0 ? Number(((nOfExamsPassed / examsTaken) * 100).toFixed(2)) : 0,
       percentage_of_correct_answers:
-        nOfAnswers > 0 ? Number(((nOfCorrectAnswers / nOfAnswers) * 100).toFixed(2)) : 0,
+        nOfDistinctQuestionsAnswered > 0
+          ? Number(((nOfCorrectAnswers / nOfDistinctQuestionsAnswered) * 100).toFixed(2))
+          : 0,
       percentage_of_questions_seen:
         totalQuestions > 0
           ? Number(((nOfDistinctQuestionsAnswered / totalQuestions) * 100).toFixed(2))

@@ -7,7 +7,7 @@ import Answer from '#models/answer'
 import Score from '#models/score'
 import User from '#models/user'
 import StatsService from '#services/stats_service'
-import { scoreboardVisibilityValidator } from '#validators/subject'
+import { scoreboardVisibilityValidator, tempAuthValidator } from '#validators/subject'
 
 const SCOREBOARD_LIMIT = 30
 const MIN_ANSWERS = 3
@@ -24,13 +24,7 @@ export default class SubjectsController {
     const withQuestions = request.input('with_questions')
 
     if (withQuestions === 'true') {
-      // Get distinct subject_ids that have questions, then load those subjects
-      const subjectIds = await Question.query()
-        .distinct('subject_id')
-        .select('subject_id')
-
-      const ids = subjectIds.map((q) => q.subjectId)
-      const subjects = await Subject.query().whereIn('id', ids)
+      const subjects = await Subject.query().whereHas('questions')
 
       return response.ok({
         data: subjects.map((s) => ({
@@ -80,13 +74,10 @@ export default class SubjectsController {
    */
   async stats({ params, request, response }: HttpContext) {
     // TODO: Replace with auth middleware when auth service is integrated
-    const userId = request.input('user_id')
-    if (!userId) {
-      return response.unauthorized({ message: 'You must be logged in to see your stats' })
-    }
+    const { user_id: userId } = await request.validateUsing(tempAuthValidator)
 
     const statsService = new StatsService()
-    const stats = await statsService.getStats(Number(params.id), Number(userId))
+    const stats = await statsService.getStats(Number(params.id), userId)
 
     return response.ok(stats)
   }
@@ -106,10 +97,10 @@ export default class SubjectsController {
       return response.notFound({ message: 'Invalid subject' })
     }
 
-    // Build the scoreboard query
-    // Users must have show_scoreboard=true in the scores table and >= MIN_ANSWERS exams
+    // Build the scoreboard query — joins users to avoid N+1 queries
     let query = db
       .from('answers')
+      .innerJoin('users', 'users.id', 'answers.user_id')
       .where('answers.subject_id', subjectId)
       .whereNotNull('answers.user_id')
       .whereExists((builder) => {
@@ -119,9 +110,11 @@ export default class SubjectsController {
           .where('scores.subject_id', subjectId)
           .where('scores.show_scoreboard', true)
       })
-      .groupBy('answers.user_id')
+      .groupBy('answers.user_id', 'users.id', 'users.name', 'users.email')
       .select('answers.user_id')
-      .select(db.raw('sum(answers.score) / count(answers.score) as s'))
+      .select('users.name as user_name')
+      .select('users.email as user_email')
+      .select(db.raw('avg(answers.score) as s'))
       .select(db.raw('count(answers.score) as c'))
       .havingRaw(`count(answers.score) >= ${MIN_ANSWERS}`)
       .orderByRaw('s desc, c desc')
@@ -140,19 +133,16 @@ export default class SubjectsController {
       .first()
     const total = Number(totalResult?.$extras.total ?? 0)
 
-    // Build the response with user details
-    const scoreEntries = await Promise.all(
-      scores.map(async (score: { user_id: number; s: number; c: number }) => {
-        const user = await User.find(score.user_id)
-        return {
-          user_id: score.user_id,
-          user_name: user?.name ?? 'Unknown',
-          avatar: createHash('md5')
-            .update((user?.email ?? '').toLowerCase().trim())
-            .digest('hex'),
-          score: Number(Number(score.s).toFixed(2)),
-          exams: Number(score.c),
-        }
+    // Build the response — no extra queries needed, user data is already joined
+    const scoreEntries = scores.map(
+      (score: { user_id: number; user_name: string; user_email: string; s: number; c: number }) => ({
+        user_id: score.user_id,
+        user_name: score.user_name,
+        avatar: createHash('md5')
+          .update(score.user_email.toLowerCase().trim())
+          .digest('hex'),
+        score: Number(Number(score.s).toFixed(2)),
+        exams: Number(score.c),
       })
     )
 
@@ -174,19 +164,13 @@ export default class SubjectsController {
    */
   async scoreboardVisibility({ params, request, response }: HttpContext) {
     // TODO: Replace with auth middleware when auth service is integrated
-    const userId = request.input('user_id')
-    if (!userId) {
-      return response.unauthorized({
-        message: 'You must be logged in to toggle the scoreboard visibility',
-      })
-    }
-
+    const { user_id: userId } = await request.validateUsing(tempAuthValidator)
     const data = await request.validateUsing(scoreboardVisibilityValidator)
 
-    await Score.query()
-      .where('user_id', Number(userId))
-      .where('subject_id', Number(params.id))
-      .update({ showScoreboard: data.visibility })
+    await Score.updateOrCreate(
+      { userId, subjectId: Number(params.id) },
+      { showScoreboard: data.visibility }
+    )
 
     return response.ok({ message: 'Scoreboard visibility updated.' })
   }
