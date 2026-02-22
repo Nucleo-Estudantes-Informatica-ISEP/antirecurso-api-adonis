@@ -1,7 +1,9 @@
 import type { HttpContext } from '@adonisjs/core/http'
+import db from '@adonisjs/lucid/services/db'
+import Like from '#models/like'
 import Note from '#models/note'
 import Subject from '#models/subject'
-import { createNoteValidator, updateNoteValidator } from '#validators/note'
+import { createNoteValidator, likeNoteValidator, updateNoteValidator } from '#validators/note'
 
 export default class NotesController {
   /**
@@ -42,12 +44,22 @@ export default class NotesController {
    */
   async index({ params, request, response }: HttpContext) {
     const subjectId = params.id
-    let limit = Number(request.input('limit', 15))
-    if (!Number.isFinite(limit) || limit < 1) {
-      limit = 10
+
+    const subject = await Subject.find(subjectId)
+    if (!subject) {
+      return response.notFound({ message: 'Subject not found' })
     }
 
-    const page = Number(request.input('page', 1))
+    let limit = Number(request.input('limit', 15))
+    if (!Number.isFinite(limit) || limit < 1) {
+      limit = 15
+    }
+    limit = Math.min(limit, 100)
+
+    let page = Number(request.input('page', 1))
+    if (!Number.isFinite(page) || page < 1) {
+      page = 1
+    }
 
     const notes = await Note.query()
       .where('subjectId', subjectId)
@@ -124,7 +136,6 @@ export default class NotesController {
     note.merge({
       title: data.title ?? note.title,
       description: data.description ?? note.description,
-      userId: data.author_id ?? note.userId,
       subjectId: data.subject_id ?? note.subjectId,
       uploadId: data.upload_id ?? note.uploadId,
       nPages: data.n_pages ?? note.nPages,
@@ -166,19 +177,22 @@ export default class NotesController {
     const note = await Note.findOrFail(params.id)
 
     // TODO: replace with auth user id when auth service is integrated
-    const userId = request.input('user_id') as number
+    const data = await request.validateUsing(likeNoteValidator)
+    const userId = data.user_id
 
-    const existingLike = await note
-      .related('likes')
-      .query()
-      .where('userId', userId)
-      .first()
+    await db.transaction(async (trx) => {
+      const existingLike = await Like.query({ client: trx })
+        .where('noteId', note.id)
+        .where('userId', userId)
+        .forUpdate()
+        .first()
 
-    if (!existingLike) {
-      await note.related('likes').create({ userId })
-    } else {
-      await existingLike.delete()
-    }
+      if (!existingLike) {
+        await Like.create({ noteId: note.id, userId }, { client: trx })
+      } else {
+        await existingLike.useTransaction(trx).delete()
+      }
+    })
 
     await note.load('user')
     await note.load('subject')

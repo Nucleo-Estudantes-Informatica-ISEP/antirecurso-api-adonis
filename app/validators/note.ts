@@ -19,10 +19,19 @@ export const createNoteValidator = vine.compile(
 export const updateNoteValidator = vine.compile(
   vine.object({
     upload_id: vine.string().minLength(1).optional(),
-    author_id: vine.number().optional(),
     subject_id: vine.number().optional(),
     title: vine.string().minLength(1).optional(),
     description: vine.string().minLength(1).optional(),
     n_pages: vine.number().optional(),
+  })
+)
+
+/**
+ * Validator for liking a note.
+ * TODO: remove when auth service is integrated — use auth user instead
+ */
+export const likeNoteValidator = vine.compile(
+  vine.object({
+    user_id: vine.number(),
   })
 )

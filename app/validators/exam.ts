@@ -53,6 +53,6 @@ export const examHistoryValidator = vine.compile(
 
 export const examShowValidator = vine.compile(
   vine.object({
-    user_id: vine.number().withoutDecimals().positive(),
+    requesting_user_id: vine.number().withoutDecimals().positive(),
   })
 )

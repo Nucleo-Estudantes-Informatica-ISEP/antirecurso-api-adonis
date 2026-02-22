@@ -21,6 +21,8 @@ export default class extends BaseSchema {
         .inTable('notes')
         .onDelete('CASCADE')
 
+      table.unique(['note_id', 'user_id'])
+
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })

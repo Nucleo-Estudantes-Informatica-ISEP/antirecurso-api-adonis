@@ -31,17 +31,16 @@ router.get('/comments/:id', [CommentsController, 'show'])
 router.put('/questions/:id', [QuestionsController, 'update'])
 router.get('/questions/:id', [QuestionsController, 'show'])
 
-// Notes
-// TODO: add auth middleware when auth service is integrated
+// Notes (public)
 router.get('/subjects/:id/notes', [NotesController, 'index'])
-router.post('/subjects/:id/notes', [NotesController, 'store'])
 router.get('/notes/:id', [NotesController, 'show'])
-router.patch('/notes/:id', [NotesController, 'update'])
+router.patch('/notes/:id', [NotesController, 'update']) // admin check in controller
 router.post('/notes/:id/like', [NotesController, 'like'])
-router.post('/notes/:id/view', [NotesController, 'view'])
 
-// Uploads
+// Notes & Uploads (auth required)
 // TODO: add auth middleware when auth service is integrated
+router.post('/subjects/:id/notes', [NotesController, 'store']) // admin check in controller
+router.post('/notes/:id/view', [NotesController, 'view'])
 router.post('/upload', [UploadsController, 'upload'])
 
 // Exams
