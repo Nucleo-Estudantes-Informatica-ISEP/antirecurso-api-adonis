@@ -5,6 +5,6 @@ import vine from '@vinejs/vine'
  */
 export const searchUsersValidator = vine.compile(
   vine.object({
-    query: vine.string().minLength(1),
+    query: vine.string().trim().minLength(1),
   })
 )

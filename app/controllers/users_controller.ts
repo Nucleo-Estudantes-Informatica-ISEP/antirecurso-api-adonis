@@ -54,7 +54,7 @@ export default class UsersController {
     }
 
     await user.load('scores', (query) => {
-      query.preload('subject').preload('user')
+      query.preload('subject')
     })
 
     return response.ok(
@@ -62,7 +62,7 @@ export default class UsersController {
         score: score.score,
         subject_id: score.subjectId,
         subject: score.subject.name,
-        user: score.user.name,
+        user: user.name,
         show_scoreboard: score.showScoreboard,
       }))
     )
@@ -85,7 +85,7 @@ export default class UsersController {
     }
 
     await user.load('answers', (query) => {
-      query.preload('subject').preload('user')
+      query.preload('subject')
     })
 
     return response.ok(
@@ -93,7 +93,7 @@ export default class UsersController {
         id: answer.id,
         score: answer.score,
         subject: answer.subject.name,
-        user_name: answer.user.name,
+        user_name: user.name,
         mode: answer.mode,
         time: answer.time,
         created_at: answer.createdAt.toISO(),
@@ -112,10 +112,15 @@ export default class UsersController {
       data: { query: request.input('query') },
     })
 
+    let page = Number(request.input('page', 1))
+    if (!Number.isFinite(page) || page < 1) {
+      page = 1
+    }
+
     const users = await User.query()
       .where('name', 'ilike', `%${data.query}%`)
       .orWhere('email', 'ilike', `%${data.query}%`)
-      .paginate(1, 15)
+      .paginate(page, 15)
 
     return response.ok({
       meta: users.getMeta(),
@@ -127,12 +132,20 @@ export default class UsersController {
    * List all users (admin only).
    * GET /users
    */
-  async listUsers({ response }: HttpContext) {
+  async listUsers({ request, response }: HttpContext) {
     // TODO: replace with ctx.auth.user admin check when auth service is integrated
 
-    const users = await User.all()
+    let page = Number(request.input('page', 1))
+    if (!Number.isFinite(page) || page < 1) {
+      page = 1
+    }
 
-    return response.ok(users.map((user) => this.serializeUser(user)))
+    const users = await User.query().paginate(page, 15)
+
+    return response.ok({
+      meta: users.getMeta(),
+      data: users.all().map((user) => this.serializeUser(user)),
+    })
   }
 
   /**

@@ -1,5 +1,4 @@
 import type { HttpContext } from '@adonisjs/core/http'
-import db from '@adonisjs/lucid/services/db'
 import Like from '#models/like'
 import Note from '#models/note'
 import Subject from '#models/subject'
@@ -43,7 +42,10 @@ export default class NotesController {
    * GET /subjects/:id/notes
    */
   async index({ params, request, response }: HttpContext) {
-    const subjectId = params.id
+    const subjectId = Number(params.id)
+    if (!Number.isFinite(subjectId)) {
+      return response.badRequest({ message: 'Invalid subject id' })
+    }
 
     const subject = await Subject.find(subjectId)
     if (!subject) {
@@ -88,9 +90,10 @@ export default class NotesController {
     // TODO: replace with auth middleware + admin check when auth service is integrated
     // if (!auth.user?.isAdmin) return response.unauthorized({ message: 'Unauthorized' })
 
-    const subjectId = params.id
-
-    // Verify the subject exists
+    const subjectId = Number(params.id)
+    if (!Number.isFinite(subjectId)) {
+      return response.badRequest({ message: 'Invalid subject id' })
+    }
     const subject = await Subject.find(subjectId)
     if (!subject) {
       return response.notFound({ message: 'Subject not found' })
@@ -154,10 +157,8 @@ export default class NotesController {
    * GET /notes/:id
    */
   async show({ params, response }: HttpContext) {
+    await Note.query().where('id', params.id).increment('views', 1)
     const note = await Note.findOrFail(params.id)
-
-    note.views = (note.views ?? 0) + 1
-    await note.save()
 
     await note.load('user')
     await note.load('subject')
@@ -180,19 +181,25 @@ export default class NotesController {
     const data = await request.validateUsing(likeNoteValidator)
     const userId = data.user_id
 
-    await db.transaction(async (trx) => {
-      const existingLike = await Like.query({ client: trx })
-        .where('noteId', note.id)
-        .where('userId', userId)
-        .forUpdate()
-        .first()
+    // Delete-first toggle: if a like exists, remove it; otherwise, create one.
+    // The unique constraint on (note_id, user_id) prevents duplicates if two
+    // concurrent requests both try to insert.
+    const deleted = await Like.query()
+      .where('noteId', note.id)
+      .where('userId', userId)
+      .delete()
 
-      if (!existingLike) {
-        await Like.create({ noteId: note.id, userId }, { client: trx })
-      } else {
-        await existingLike.useTransaction(trx).delete()
+    if (deleted[0] === 0) {
+      try {
+        await Like.create({ noteId: note.id, userId })
+      } catch (error: any) {
+        // Unique constraint violation — another concurrent request already created the like.
+        // This is a harmless race; the like now exists, which is the intended outcome.
+        if (error.code !== '23505') {
+          throw error
+        }
       }
-    })
+    }
 
     await note.load('user')
     await note.load('subject')
@@ -206,10 +213,8 @@ export default class NotesController {
    * POST /notes/:id/view
    */
   async view({ params, response }: HttpContext) {
+    await Note.query().where('id', params.id).increment('views', 1)
     const note = await Note.findOrFail(params.id)
-
-    note.views = (note.views ?? 0) + 1
-    await note.save()
 
     // If the note has a direct URL stored, return it
     if (note.url) {
