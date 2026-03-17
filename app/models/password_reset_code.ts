@@ -7,7 +7,7 @@ export default class PasswordResetCode extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
-  @column()
+  @column({ serializeAs: null })
   declare code: string
 
   @column()
