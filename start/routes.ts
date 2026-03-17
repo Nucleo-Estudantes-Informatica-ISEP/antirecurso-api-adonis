@@ -11,7 +11,9 @@ import router from '@adonisjs/core/services/router'
 
 const CommentsController = () => import('#controllers/comments_controller')
 const ExamsController = () => import('#controllers/exams_controller')
+const NotesController = () => import('#controllers/notes_controller')
 const QuestionsController = () => import('#controllers/questions_controller')
+const UploadsController = () => import('#controllers/uploads_controller')
 const SubjectsController = () => import('#controllers/subjects_controller')
 
 // Health check
@@ -37,6 +39,18 @@ router.get('/comments/:id', [CommentsController, 'show'])
 // TODO: add auth middleware when auth service is integrated
 router.put('/questions/:id', [QuestionsController, 'update'])
 router.get('/questions/:id', [QuestionsController, 'show'])
+
+// Notes (public)
+router.get('/subjects/:id/notes', [NotesController, 'index'])
+router.get('/notes/:id', [NotesController, 'show'])
+router.patch('/notes/:id', [NotesController, 'update']) // admin check in controller
+router.post('/notes/:id/like', [NotesController, 'like'])
+
+// Notes & Uploads (auth required)
+// TODO: add auth middleware when auth service is integrated
+router.post('/subjects/:id/notes', [NotesController, 'store']) // admin check in controller
+router.post('/notes/:id/view', [NotesController, 'view'])
+router.post('/upload', [UploadsController, 'upload'])
 
 // Exams
 // TODO: add auth middleware when auth service is integrated

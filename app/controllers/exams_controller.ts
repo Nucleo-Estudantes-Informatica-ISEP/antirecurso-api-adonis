@@ -185,13 +185,15 @@ export default class ExamsController {
 
     const data = await request.validateUsing(examShowValidator, {
       data: {
-        user_id: this.parseNumericInput(request.input('user_id')) ?? undefined,
+        requesting_user_id:
+          this.parseNumericInput(request.input('requesting_user_id')) ?? undefined,
       },
     })
 
-    const requestingUser = await User.find(data.user_id)
+    // TODO: replace requesting_user_id with ctx.auth.user when auth service is integrated
+    const requestingUser = await User.find(data.requesting_user_id)
     if (!requestingUser) {
-      return response.badRequest({ message: 'Invalid user' })
+      return response.badRequest({ message: 'Invalid requesting user' })
     }
 
     const examOwnership = await Answer.query().where('id', examId).first()
@@ -199,6 +201,8 @@ export default class ExamsController {
       return response.notFound({ message: 'Invalid answer' })
     }
 
+    // Temporary guard while auth middleware is pending.
+    // Replace this with ctx.auth.user-based authorization once auth is integrated.
     if (!requestingUser.isAdmin && examOwnership.userId !== requestingUser.id) {
       return response.forbidden({
         message: 'You are not authorized to view this exam attempt',
@@ -241,7 +245,7 @@ export default class ExamsController {
           comment: comment.comment,
           user: comment.user.name,
           question_id: comment.questionId,
-          created_at: comment.createdAt.toRelative() ?? comment.createdAt.toISO(),
+          created_at: comment.createdAt.toISO(),
           is_admin: comment.user.isAdmin,
           user_avatar: this.md5(comment.user.email.trim().toLowerCase()),
         })),
