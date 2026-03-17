@@ -14,6 +14,7 @@ const ExamsController = () => import('#controllers/exams_controller')
 const NotesController = () => import('#controllers/notes_controller')
 const QuestionsController = () => import('#controllers/questions_controller')
 const UploadsController = () => import('#controllers/uploads_controller')
+const UsersController = () => import('#controllers/users_controller')
 const SubjectsController = () => import('#controllers/subjects_controller')
 
 // Health check
@@ -59,6 +60,16 @@ router.post('/exams/verify', [ExamsController, 'verify'])
 router.get('/exams', [ExamsController, 'index'])
 router.get('/exams/:id', [ExamsController, 'show'])
 
-// Admin
+// User (auth required)
+// TODO: add auth middleware when auth service is integrated
+router.get('/user', [UsersController, 'session'])
+router.get('/user/scores', [UsersController, 'scores'])
+router.get('/user/answers', [UsersController, 'answers'])
+
+// Admin (auth + admin required)
 // TODO: add auth middleware + admin policy when auth service is integrated
+router.get('/search', [UsersController, 'search'])
+router.get('/users', [UsersController, 'listUsers'])
+router.get('/admin', [UsersController, 'adminSession'])
 router.get('/admin/exams', [ExamsController, 'stats'])
+

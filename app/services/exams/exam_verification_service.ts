@@ -275,6 +275,7 @@ export default class ExamVerificationService {
     const userScore = await Score.query({ client: trx })
       .where('subjectId', subjectId)
       .where('userId', userId)
+      .forUpdate()
       .first()
 
     if (userScore) {
@@ -284,14 +285,31 @@ export default class ExamVerificationService {
       return
     }
 
-    await Score.create(
-      {
-        score: scoreToAdd,
-        userId,
-        subjectId,
-      },
-      { client: trx }
-    )
+    try {
+      await Score.create(
+        {
+          score: scoreToAdd,
+          userId,
+          subjectId,
+        },
+        { client: trx }
+      )
+    } catch (error: any) {
+      // Unique constraint violation — a concurrent request created the row
+      // between our SELECT and INSERT. Re-read with lock and update.
+      if (error.code === '23505') {
+        const existing = await Score.query({ client: trx })
+          .where('subjectId', subjectId)
+          .where('userId', userId)
+          .forUpdate()
+          .firstOrFail()
+        existing.score += scoreToAdd
+        existing.useTransaction(trx)
+        await existing.save()
+      } else {
+        throw error
+      }
+    }
   }
 
   private toOptionMapKey(questionId: number, optionOrder: string): string {
