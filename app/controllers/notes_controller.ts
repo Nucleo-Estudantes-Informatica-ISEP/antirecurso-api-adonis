@@ -3,6 +3,7 @@ import db from '@adonisjs/lucid/services/db'
 import Like from '#models/like'
 import Note from '#models/note'
 import Subject from '#models/subject'
+import User from '#models/user'
 import { createNoteValidator, likeNoteValidator, updateNoteValidator } from '#validators/note'
 
 export default class NotesController {
@@ -96,6 +97,12 @@ export default class NotesController {
       return response.notFound({ message: 'Subject not found' })
     }
 
+    // Verify the author exists
+    const author = await User.find(data.author_id)
+    if (!author) {
+      return response.notFound({ message: 'Author not found' })
+    }
+
     // TODO: integrate storage service (Firebase or Supabase) to move file
     // from "uploaded/notes/{upload_id}" to "distribution/notes/{upload_id}"
     // and delete the original uploaded file.
@@ -105,7 +112,7 @@ export default class NotesController {
       title: data.title,
       description: data.description ?? null,
       nPages: data.n_pages ?? null,
-      userId: data.author_id,
+      userId: author.id,
       subjectId: subjectId,
     })
 
@@ -179,6 +186,12 @@ export default class NotesController {
     // TODO: replace with auth user id when auth service is integrated
     const data = await request.validateUsing(likeNoteValidator)
     const userId = data.user_id
+
+    // Verify the user exists
+    const user = await User.find(userId)
+    if (!user) {
+      return response.notFound({ message: 'User not found' })
+    }
 
     await db.transaction(async (trx) => {
       const existingLike = await Like.query({ client: trx })
