@@ -1,6 +1,7 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import Comment from '#models/comment'
 import Question from '#models/question'
+import User from '#models/user'
 import { createCommentValidator } from '#validators/comment'
 
 export default class CommentsController {
@@ -9,8 +10,14 @@ export default class CommentsController {
    * GET /comments?sort=created_at&order=desc
    */
   async index({ request, response }: HttpContext) {
-    const sort = request.input('sort')
-    const order = request.input('order', 'asc')
+    const ALLOWED_SORT_COLUMNS = ['created_at', 'id'] as const
+    const ALLOWED_ORDER_DIRS = ['asc', 'desc'] as const
+
+    const sortInput = request.input('sort')
+    const orderInput = request.input('order', 'asc')
+
+    const sort = ALLOWED_SORT_COLUMNS.includes(sortInput) ? sortInput : null
+    const order = ALLOWED_ORDER_DIRS.includes(orderInput) ? orderInput : 'asc'
 
     const query = Comment.query().preload('user')
 
@@ -18,18 +25,33 @@ export default class CommentsController {
       query.orderBy(sort, order)
     }
 
-    const comments = await query.exec()
+    const pageInput = Number(request.input('page', 1))
+    const perPageInput = Number(request.input('per_page', 20))
 
-    return response.ok(
-      comments.map((comment) => ({
+    const normalizedPage = Number.isFinite(pageInput) ? Math.trunc(pageInput) : 1
+    const normalizedPerPage = Number.isFinite(perPageInput) ? Math.trunc(perPageInput) : 20
+
+    const page = Math.max(1, normalizedPage)
+    const perPage = Math.min(100, Math.max(1, normalizedPerPage))
+
+    const comments = await query.paginate(page, perPage)
+
+    return response.ok({
+      meta: {
+        total: comments.total,
+        per_page: comments.perPage,
+        current_page: comments.currentPage,
+        last_page: comments.lastPage,
+      },
+      data: comments.all().map((comment) => ({
         id: comment.id,
         comment: comment.comment,
         user: comment.user.name,
         question_id: comment.questionId,
         created_at: comment.createdAt.toISO(),
         is_admin: comment.user.isAdmin,
-      }))
-    )
+      })),
+    })
   }
 
   /**
@@ -45,7 +67,12 @@ export default class CommentsController {
       return response.notFound({ message: 'Question not found' })
     }
 
+    // Verify the user exists
     // TODO: replace user_id with authenticated user when auth service is integrated
+    const user = await User.find(data.user_id)
+    if (!user) {
+      return response.notFound({ message: 'User not found' })
+    }
     const comment = await Comment.create({
       comment: data.comment,
       questionId: data.question_id,
