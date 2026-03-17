@@ -45,7 +45,7 @@ export default defineConfig({
     },
     () => import('@adonisjs/core/providers/vinejs_provider'),
     () => import('@adonisjs/core/providers/edge_provider'),
-    () => import('@adonisjs/vite/vite_provider'),
+
     () => import('@adonisjs/shield/shield_provider'),
     () => import('@adonisjs/static/static_provider'),
     () => import('@adonisjs/lucid/database_provider'),
@@ -98,7 +98,4 @@ export default defineConfig({
   ],
 
   assetsBundler: false,
-  hooks: {
-    onBuildStarting: [() => import('@adonisjs/vite/build_hook')],
-  },
 })

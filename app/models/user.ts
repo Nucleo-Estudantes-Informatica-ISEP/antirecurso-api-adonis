@@ -24,14 +24,14 @@ export default class User extends BaseModel {
   @column()
   declare isAdmin: boolean
 
-  @column()
+  @column({ serializeAs: null })
   declare rememberToken: string | null
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime | null
+  declare updatedAt: DateTime
 
   @hasMany(() => Score)
   declare scores: HasMany<typeof Score>

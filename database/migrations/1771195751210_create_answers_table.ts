@@ -7,25 +7,19 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.integer('score').notNullable()
-      table
-        .integer('user_id')
-        .unsigned()
-        .nullable()
-        .references('id')
-        .inTable('users')
-        .onDelete('SET NULL')
+      table.integer('user_id').nullable().references('id').inTable('users').onDelete('SET NULL')
       table
         .integer('subject_id')
-        .unsigned()
         .notNullable()
         .references('id')
         .inTable('subjects')
         .onDelete('CASCADE')
       table.string('mode').notNullable().defaultTo('random')
-      table.integer('time').unsigned().nullable()
+      table.integer('time').nullable()
+      table.check('time >= 0', {}, 'answers_time_nonneg')
 
-      table.timestamp('created_at')
-      table.timestamp('updated_at')
+      table.timestamp('created_at').notNullable()
+      table.timestamp('updated_at').notNullable()
     })
   }
 

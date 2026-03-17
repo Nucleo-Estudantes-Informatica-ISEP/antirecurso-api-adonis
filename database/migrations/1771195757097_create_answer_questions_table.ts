@@ -8,29 +8,23 @@ export default class extends BaseSchema {
       table.increments('id')
       table
         .integer('answer_id')
-        .unsigned()
         .notNullable()
         .references('id')
         .inTable('answers')
         .onDelete('CASCADE')
       table
         .integer('question_id')
-        .unsigned()
         .notNullable()
         .references('id')
         .inTable('questions')
         .onDelete('CASCADE')
-      table
-        .integer('option_id')
-        .unsigned()
-        .nullable()
-        .references('id')
-        .inTable('options')
-        .onDelete('SET NULL')
+      table.integer('option_id').nullable().references('id').inTable('options').onDelete('SET NULL')
       table.boolean('is_wrong').notNullable().defaultTo(true)
 
-      table.timestamp('created_at')
-      table.timestamp('updated_at')
+      table.unique(['answer_id', 'question_id'])
+
+      table.timestamp('created_at').notNullable()
+      table.timestamp('updated_at').notNullable()
     })
   }
 

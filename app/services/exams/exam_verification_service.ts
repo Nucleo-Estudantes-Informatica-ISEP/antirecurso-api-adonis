@@ -79,16 +79,24 @@ export default class ExamVerificationService {
 
         const selectedOption = this.normalizeOptionValue(answerPayload.selected_option)
         const correctOption = this.getValidatedCorrectOption(question)
-        const optionId = selectedOption
-          ? (optionMap.get(this.toOptionMapKey(question.id, selectedOption)) ?? null)
-          : null
+
+        let optionId: number | null = null
+        if (selectedOption !== null) {
+          const resolvedOptionId = optionMap.get(this.toOptionMapKey(question.id, selectedOption))
+          if (resolvedOptionId === undefined) {
+            throw new Error(
+              `Invalid selected_option "${answerPayload.selected_option}" for question ${question.id}`
+            )
+          }
+          optionId = resolvedOptionId
+        }
 
         const isWrong = correctOption !== selectedOption
         if (!isWrong) {
           correctAnswers++
         }
 
-        if (optionId === null) {
+        if (selectedOption === null) {
           nOfNotAnswered++
         }
 
