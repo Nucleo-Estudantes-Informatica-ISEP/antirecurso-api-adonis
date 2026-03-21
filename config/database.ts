@@ -13,7 +13,7 @@ const dbConfig = defineConfig({
         ...(dbSslEnabled
           ? {
               ssl: {
-                rejectUnauthorized: env.get('DB_SSL_REJECT_UNAUTHORIZED'),
+                rejectUnauthorized: env.get('DB_SSL_REJECT_UNAUTHORIZED') ?? true,
               },
             }
           : {}),
