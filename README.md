@@ -166,6 +166,7 @@ likes                  (User likes on notes/comments)
 | Variable      | Description                                  | How to Get                                 |
 | ------------- | -------------------------------------------- | ------------------------------------------ |
 | `NODE_ENV`    | Environment (`development`, `production`)    | Set locally or on host                     |
+| `LOG_LEVEL`   | Runtime log verbosity                        | `info`                                    |
 | `APP_KEY`     | AdonisJS secure key for cookies and sessions | Run `node ace generate:key`                |
 | `HOST`        | Interface the server binds to                | `0.0.0.0` in containers                    |
 | `DB_URL`      | Supabase direct connection string            | Supabase Dashboard -> Connect              |
@@ -234,7 +235,9 @@ Ensure you set:
 
 - `NODE_ENV=production`
 - `HOST=0.0.0.0`
+- `LOG_LEVEL=info`
 - `APP_KEY=<your-secure-key>`
+- `SESSION_DRIVER=cookie`
 - `DB_URL=<Supabase direct connection string on port 5432>`
 - `DB_SSL=true`
 - `DB_SSL_REJECT_UNAUTHORIZED=false` unless strict certificate validation is known to work in your runtime
@@ -253,6 +256,7 @@ This repository includes a production-ready `Dockerfile`, so the simplest Coolif
 NODE_ENV=production
 HOST=0.0.0.0
 PORT=3333
+LOG_LEVEL=info
 APP_KEY=generate-a-long-random-string
 SESSION_DRIVER=cookie
 DB_URL=postgresql://postgres:<password>@<host>:5432/postgres
