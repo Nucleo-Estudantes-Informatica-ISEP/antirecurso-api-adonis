@@ -188,41 +188,27 @@ export default class NotesController {
     const data = await request.validateUsing(likeNoteValidator)
     const userId = data.user_id
 
-    // Delete-first toggle: if a like exists, remove it; otherwise, create one.
-    // The unique constraint on (note_id, user_id) prevents duplicates if two
-    // concurrent requests both try to insert.
-    const deleted = await Like.query()
-      .where('noteId', note.id)
-      .where('userId', userId)
-      .delete()
-
-    if (deleted[0] === 0) {
-      try {
-        await Like.create({ noteId: note.id, userId })
-      } catch (error: any) {
-        // Unique constraint violation — another concurrent request already created the like.
-        // This is a harmless race; the like now exists, which is the intended outcome.
-        if (error.code !== '23505') {
-          throw error
-        }
-    // Verify the user exists
+    // Keep the placeholder user-based toggle for now until auth is integrated.
     const user = await User.find(userId)
     if (!user) {
       return response.notFound({ message: 'User not found' })
     }
 
-    await db.transaction(async (trx) => {
-      const existingLike = await Like.query({ client: trx })
-        .where('noteId', note.id)
-        .where('userId', userId)
-        .forUpdate()
-        .first()
+    const existingLike = await Like.query()
+      .where('noteId', note.id)
+      .where('userId', userId)
+      .first()
 
-      if (!existingLike) {
-        await Like.create({ noteId: note.id, userId }, { client: trx })
-      } else {
-        await existingLike.useTransaction(trx).delete()
+    if (!existingLike) {
+      try {
+        await Like.create({ noteId: note.id, userId })
+      } catch (error: any) {
+        if (error.code !== '23505') {
+          throw error
+        }
       }
+    } else {
+      await existingLike.delete()
     }
 
     await note.load('user')
