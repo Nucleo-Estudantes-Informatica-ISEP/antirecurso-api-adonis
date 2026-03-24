@@ -56,17 +56,15 @@ Copy the example environment file to create your local `.env`:
 cp .env.example .env
 ```
 
-To connect to your **Supabase PostgreSQL** instance, ensure you configure the direct connection (usually port `5432` rather than `6543`) in your `.env` file:
+To connect to your **Supabase PostgreSQL** instance, ensure you configure the direct connection string (port `5432`, not `6543`) in your `.env` file:
 
 | Variable      | Description                     | Example                 |
 | ------------- | ------------------------------- | ----------------------- |
 | `PORT`        | Application Port                | `3333`                  |
 | `NODE_ENV`    | Application environment         | `development`           |
-| `DB_HOST`     | Supabase PostgreSQL host        | `aws-0-eu-central-1...` |
-| `DB_PORT`     | Supabase direct connection port | `5432`                  |
-| `DB_USER`     | Supabase database user          | `postgres`              |
-| `DB_PASSWORD` | Supabase database password      | `your-secure-password`  |
-| `DB_DATABASE` | Supabase database name          | `postgres`              |
+| `DB_URL`      | Supabase direct Postgres connection string | `postgresql://postgres:...@db.xxx.supabase.co:5432/postgres` |
+| `DB_SSL`      | Enable SSL for Postgres         | `true`                  |
+| `DB_SSL_REJECT_UNAUTHORIZED` | Require full certificate validation | `false` |
 
 ### 4. Database Setup
 
@@ -134,12 +132,12 @@ Open [http://localhost:3333](http://localhost:3333) in your browser. You should 
 **Database Connection (Supabase)**
 
 - The application uses `config/database.ts` to manage the connection.
-- **SSL configuration is environment-aware**. Supabase requires SSL connections. In `config/database.ts`, it conditionally rejects unauthorized connections based on the environment (e.g., `ssl: env.get('NODE_ENV') === 'production' ? { rejectUnauthorized: true } : undefined`).
+- **SSL configuration is environment-driven**. Supabase requires SSL connections. In `config/database.ts`, SSL is enabled when `DB_SSL=true`, and certificate verification is controlled by `DB_SSL_REJECT_UNAUTHORIZED`.
 - **Connection Mode**: Supabase provides both a _Direct Connection_ (port 5432) and a _Connection Pooler_ (port 6543, using PgBouncer in transaction mode). Because Lucid/Knex uses prepared statements by default (which transaction-mode PgBouncer does not support), **the direct connection (port 5432) is required and recommended**.
 
 **Authentication (WIP)**
 
-- Authentication relies on `@adonisjs/auth`. Note that the integration relies on standard Adonis mechanisms (and custom user tables) rather than integrating with external Supabase Auth.
+- Authentication relies on `@adonisjs/auth`. Note that the integration relies on standard Adonis mechanisms (and custom user tables) rather than integrating with external Supabase Auth. Route-level auth wiring is still intentionally left as TODO in the codebase.
 
 ### Database Schema
 
@@ -169,11 +167,10 @@ likes                  (User likes on notes/comments)
 | ------------- | -------------------------------------------- | ------------------------------------------ |
 | `NODE_ENV`    | Environment (`development`, `production`)    | Set locally or on host                     |
 | `APP_KEY`     | AdonisJS secure key for cookies and sessions | Run `node ace generate:key`                |
-| `DB_HOST`     | Supabase host                                | Supabase Dashboard -> Database -> Settings |
-| `DB_PORT`     | Supabase direct port (5432)                  | Supabase Dashboard                         |
-| `DB_USER`     | Postgres user                                | Default is `postgres`                      |
-| `DB_PASSWORD` | Postgres password                            | Set during Supabase project creation       |
-| `DB_DATABASE` | Database name                                | Default is `postgres`                      |
+| `HOST`        | Interface the server binds to                | `0.0.0.0` in containers                    |
+| `DB_URL`      | Supabase direct connection string            | Supabase Dashboard -> Connect              |
+| `DB_SSL`      | Whether Postgres SSL should be enabled       | `true` for Supabase                        |
+| `DB_SSL_REJECT_UNAUTHORIZED` | Whether to reject untrusted cert chains | Often `false` on hosted platforms          |
 
 ---
 
@@ -232,14 +229,43 @@ npm ci --omit=dev
 
 ### 3. Configure Production Environment
 
-Provide your production environment variables (e.g., via your PaaS dashboard like Render, Railway, or Fly.io).
+Provide your production environment variables (e.g., via your PaaS dashboard like Coolify, Render, Railway, or Fly.io).
 Ensure you set:
 
 - `NODE_ENV=production`
+- `HOST=0.0.0.0`
 - `APP_KEY=<your-secure-key>`
-- All `DB_*` Supabase credentials. Ensure `DB_PORT` is set to `5432` for direct connection.
+- `DB_URL=<Supabase direct connection string on port 5432>`
+- `DB_SSL=true`
+- `DB_SSL_REJECT_UNAUTHORIZED=false` unless strict certificate validation is known to work in your runtime
 
-_Note: In production mode, the application will automatically strictly enforce SSL on the database connection._
+### Coolify
+
+This repository includes a production-ready `Dockerfile`, so the simplest Coolify setup is:
+
+1. Create a new **Application** from your Git repository.
+2. Select **Dockerfile** as the build pack.
+3. Set the **Port** to `3333`.
+4. Set the health check path to `/`.
+5. Add these environment variables in Coolify:
+
+```env
+NODE_ENV=production
+HOST=0.0.0.0
+PORT=3333
+APP_KEY=generate-a-long-random-string
+SESSION_DRIVER=cookie
+DB_URL=postgresql://postgres:<password>@<host>:5432/postgres
+DB_SSL=true
+DB_SSL_REJECT_UNAUTHORIZED=false
+RUN_MIGRATIONS=true
+```
+
+Notes:
+
+- Use the **direct Supabase connection** on port `5432`, not the pooler on `6543`.
+- `RUN_MIGRATIONS=true` is optional but useful on first deploy. The container entrypoint runs `node ace.js migration:run --force` before starting the server.
+- Authentication is still intentionally left as TODO in the codebase. This deployment only wires the API runtime and Supabase database connection.
 
 ### 4. Start the Application
 
@@ -267,11 +293,11 @@ node bin/server.js
 **Error:** `prepared statement "..." already exists` or `named portals cannot be used in transaction mode`
 
 **Solution:**
-You are connecting to the Supabase PgBouncer pooler (port 6543) in transaction mode. Update `DB_PORT` to `5432` to bypass the pooler and connect directly to PostgreSQL, as Lucid relies heavily on prepared statements.
+You are connecting to the Supabase PgBouncer pooler (port 6543) in transaction mode. Update `DB_URL` to use port `5432` to bypass the pooler and connect directly to PostgreSQL, as Lucid relies heavily on prepared statements.
 
 ### Missing SSL Connection Error
 
 **Error:** `no pg_hba.conf entry for host ... SSL off`
 
 **Solution:**
-Supabase enforces SSL. Ensure `NODE_ENV` is set to `production` to trigger the `rejectUnauthorized: true` flag in `config/database.ts`, or manually pass the SSL configuration to the pg connection in development if required.
+Supabase enforces SSL. Set `DB_SSL=true`. If your platform fails certificate validation against Supabase's chain, set `DB_SSL_REJECT_UNAUTHORIZED=false`.
