@@ -88,6 +88,10 @@ export default defineConfig({
 
   metaFiles: [
     {
+      pattern: 'database/seeders/**/*.json',
+      reloadServer: false,
+    },
+    {
       pattern: 'resources/views/**/*.edge',
       reloadServer: false,
     },
