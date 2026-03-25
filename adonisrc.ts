@@ -88,7 +88,7 @@ export default defineConfig({
 
   metaFiles: [
     {
-      pattern: 'database/seeders/**/*.json',
+      pattern: 'database/data/**/*.json',
       reloadServer: false,
     },
     {

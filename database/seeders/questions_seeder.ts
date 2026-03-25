@@ -20,7 +20,7 @@ type LegacyQuestionDataset = Record<string, LegacyQuestion[]>
 
 export default class extends BaseSeeder {
   private async loadDataset(): Promise<LegacyQuestionDataset> {
-    const fileUrl = new URL('./data/questions.json', import.meta.url)
+    const fileUrl = new URL('../data/questions.json', import.meta.url)
     const fileContents = await readFile(fileUrl, 'utf8')
 
     return JSON.parse(fileContents) as LegacyQuestionDataset
