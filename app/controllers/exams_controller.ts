@@ -1,8 +1,8 @@
 import { createHash } from 'node:crypto'
 import type { HttpContext } from '@adonisjs/core/http'
+import db from '@adonisjs/lucid/services/db'
 import Answer from '#models/answer'
 import Subject from '#models/subject'
-import User from '#models/user'
 import ExamGenerationService from '#services/exams/exam_generation_service'
 import type { ExamMode } from '#services/exams/exam_config'
 import {
@@ -12,12 +12,8 @@ import {
   modeRequiresUser,
 } from '#services/exams/exam_config'
 import ExamVerificationService from '#services/exams/exam_verification_service'
-import {
-  examHistoryValidator,
-  examShowValidator,
-  generateExamValidator,
-  verifyExamValidator,
-} from '#validators/exam'
+import { examHistoryValidator, generateExamValidator, verifyExamValidator } from '#validators/exam'
+import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
 
 export default class ExamsController {
   private examGenerationService = new ExamGenerationService()
@@ -27,7 +23,7 @@ export default class ExamsController {
    * Generate an exam using one of the available modes.
    * GET /exams/generate/:subject_id
    */
-  async generate({ params, request, response }: HttpContext) {
+  async generate({ authUser, params, request, response }: HttpContext) {
     const subjectId = this.parseNumericInput(params.subject_id)
     if (subjectId === null) {
       return response.badRequest({ message: 'Invalid subject id' })
@@ -37,7 +33,6 @@ export default class ExamsController {
       data: {
         mode: request.input('mode'),
         filter: request.input('filter'),
-        user_id: this.parseNumericInput(request.input('user_id')) ?? undefined,
         n_of_questions: this.parseNumericInput(request.input('n_of_questions')) ?? undefined,
       },
     })
@@ -48,7 +43,7 @@ export default class ExamsController {
       return response.notFound({ message: 'Invalid subject' })
     }
 
-    const userId = request.ctx?.authUser?.id ?? null
+    const userId = authUser?.id ?? null
 
     if (modeRequiresUser(mode) && userId === null) {
       return response.unauthorized({ message: 'You must be logged in to generate this exam mode' })
@@ -80,7 +75,7 @@ export default class ExamsController {
    * Verify an exam and calculate the final score.
    * POST /exams/verify
    */
-  async verify({ request, response }: HttpContext) {
+  async verify({ authUser, request, response }: HttpContext) {
     const data = await request.validateUsing(verifyExamValidator)
     const mode: ExamMode = data.mode ?? 'default'
 
@@ -89,7 +84,7 @@ export default class ExamsController {
       return response.notFound({ message: 'Invalid subject' })
     }
 
-    const userId = request.ctx?.authUser?.id ?? null
+    const userId = authUser?.id ?? null
 
     if (mode === 'custom' && data.n_of_questions === undefined) {
       return response.badRequest({

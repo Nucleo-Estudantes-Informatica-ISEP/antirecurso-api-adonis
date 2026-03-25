@@ -74,8 +74,6 @@ export default class UsersController {
    * GET /search?query=...
    */
   async search({ request, response }: HttpContext) {
-    // TODO: replace with ctx.auth.user admin check when auth service is integrated
-
     const data = await request.validateUsing(searchUsersValidator, {
       data: { query: request.input('query') },
     })
@@ -101,8 +99,6 @@ export default class UsersController {
    * GET /users
    */
   async listUsers({ request, response }: HttpContext) {
-    // TODO: replace with ctx.auth.user admin check when auth service is integrated
-
     let page = Number(request.input('page', 1))
     if (!Number.isFinite(page) || page < 1) {
       page = 1

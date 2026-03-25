@@ -2,8 +2,7 @@ import type { HttpContext } from '@adonisjs/core/http'
 import Like from '#models/like'
 import Note from '#models/note'
 import Subject from '#models/subject'
-import User from '#models/user'
-import { createNoteValidator, likeNoteValidator, updateNoteValidator } from '#validators/note'
+import { createNoteValidator, updateNoteValidator } from '#validators/note'
 
 export default class NotesController {
   /**
@@ -42,7 +41,7 @@ export default class NotesController {
    * Paginated list of notes for a subject.
    * GET /subjects/:id/notes
    */
-  async index({ params, request, response }: HttpContext) {
+  async index({ authUser, params, request, response }: HttpContext) {
     const subjectId = Number(params.id)
     if (!Number.isFinite(subjectId)) {
       return response.badRequest({ message: 'Invalid subject id' })
@@ -71,7 +70,7 @@ export default class NotesController {
       .preload('likes')
       .paginate(page, limit)
 
-    const userId = request.ctx?.authUser?.id
+    const userId = authUser?.id
 
     return response.ok({
       meta: notes.getMeta(),
@@ -157,7 +156,7 @@ export default class NotesController {
    * Show a single note and increment views.
    * GET /notes/:id
    */
-  async show({ params, request, response }: HttpContext) {
+  async show({ authUser, params, response }: HttpContext) {
     await Note.query().where('id', params.id).increment('views', 1)
     const note = await Note.findOrFail(params.id)
 
@@ -165,7 +164,7 @@ export default class NotesController {
     await note.load('subject')
     await note.load('likes')
 
-    const userId = request.ctx?.authUser?.id
+    const userId = authUser?.id
 
     return response.ok(this.serialize(note, userId))
   }
