@@ -43,9 +43,7 @@ export default class SubjectsController {
         ? await Subject.query().whereHas('questions', (q) => q)
         : await Subject.all()
 
-    return response.ok({
-      data: subjects.map((subject) => this.serializeSubject(subject)),
-    })
+    return response.ok(subjects.map((subject) => this.serializeSubject(subject)))
   }
 
   /**
