@@ -119,6 +119,19 @@ export default class ZitadelAuthService {
     const header = this.decodeBase64UrlJson<JwtHeader>(encodedHeader)
     const payload = this.decodeBase64UrlJson<JwtPayload>(encodedPayload)
 
+    if (env.get('AUTH_DEBUG')) {
+      console.info('[auth][api-token]', {
+        hasKid: Boolean(header.kid),
+        alg: header.alg ?? null,
+        issuer: payload.iss ?? null,
+        audience: payload.aud ?? null,
+        subject: payload.sub ?? null,
+        hasEmail: typeof payload.email === 'string',
+        hasName: typeof payload.name === 'string',
+        exp: payload.exp ?? null,
+      })
+    }
+
     if (!header.alg || !header.kid) {
       throw new UnauthorizedError('Unsupported token header')
     }
@@ -198,6 +211,15 @@ export default class ZitadelAuthService {
 
     if (!email) {
       throw new UnauthorizedError('User email is missing from the identity provider response')
+    }
+
+    if (env.get('AUTH_DEBUG')) {
+      console.info('[auth][api-claims]', {
+        subject: payload.sub ?? null,
+        hasEmail: Boolean(email),
+        hasName: Boolean(name ?? email.split('@')[0]),
+        emailVerified: payload.email_verified ?? null,
+      })
     }
 
     return {
