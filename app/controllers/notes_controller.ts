@@ -1,4 +1,5 @@
 import type { HttpContext } from '@adonisjs/core/http'
+import { createHash } from 'node:crypto'
 import Like from '#models/like'
 import Note from '#models/note'
 import Subject from '#models/subject'
@@ -18,6 +19,7 @@ export default class NotesController {
    */
   private serialize(note: Note, userId?: number) {
     const isLiked = userId ? note.likes.some((like) => like.userId === userId) : false
+    const userEmail = note.user.email.trim().toLowerCase()
 
     return {
       id: note.id,
@@ -27,6 +29,9 @@ export default class NotesController {
       user: {
         id: note.user.id,
         name: note.user.name,
+        email: note.user.email,
+        avatar: createHash('md5').update(userEmail).digest('hex'),
+        is_admin: note.user.isAdmin,
       },
       description: note.description,
       n_pages: note.nPages,
