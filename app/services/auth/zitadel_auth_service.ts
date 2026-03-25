@@ -1,4 +1,5 @@
 import { randomUUID, webcrypto } from 'node:crypto'
+import { DateTime } from 'luxon'
 import env from '#start/env'
 import User from '#models/user'
 
@@ -210,7 +211,7 @@ export default class ZitadelAuthService {
   private async fetchUserInfo(
     userinfoEndpoint: string,
     accessToken: string
-  ): Promise<Pick<AuthClaims, 'email' | 'name'> & { preferred_username?: string }> {
+  ): Promise<{ email: string; name?: string; preferred_username?: string }> {
     const response = await fetch(userinfoEndpoint, {
       headers: {
         accept: 'application/json',
@@ -241,7 +242,9 @@ export default class ZitadelAuthService {
       existingBySubject.merge({
         email: claims.email,
         name: claims.name,
-        emailVerifiedAt: claims.email_verified ? new Date() : existingBySubject.emailVerifiedAt,
+        emailVerifiedAt: claims.email_verified
+          ? DateTime.now()
+          : existingBySubject.emailVerifiedAt,
       })
       await existingBySubject.save()
       return existingBySubject
@@ -252,7 +255,7 @@ export default class ZitadelAuthService {
       existingByEmail.merge({
         authSubject: claims.sub,
         name: claims.name,
-        emailVerifiedAt: claims.email_verified ? new Date() : existingByEmail.emailVerifiedAt,
+        emailVerifiedAt: claims.email_verified ? DateTime.now() : existingByEmail.emailVerifiedAt,
       })
       await existingByEmail.save()
       return existingByEmail
@@ -262,7 +265,7 @@ export default class ZitadelAuthService {
       authSubject: claims.sub,
       email: claims.email,
       name: claims.name,
-      emailVerifiedAt: claims.email_verified ? new Date() : null,
+      emailVerifiedAt: claims.email_verified ? DateTime.now() : null,
       password: `oidc-managed:${randomUUID()}`,
       isAdmin: false,
       rememberToken: null,
@@ -347,12 +350,12 @@ export default class ZitadelAuthService {
     )
   }
 
-  private getAlgorithm(alg: string): RsaHashedImportParams {
-    const hash =
+  private getAlgorithm(alg: string) {
+    const hash: 'SHA-256' | 'SHA-384' | 'SHA-512' =
       alg === 'RS512' ? 'SHA-512' : alg === 'RS384' ? 'SHA-384' : 'SHA-256'
 
     return {
-      name: 'RSASSA-PKCS1-v1_5',
+      name: 'RSASSA-PKCS1-v1_5' as const,
       hash,
     }
   }
