@@ -35,7 +35,7 @@ export const verifyExamValidator = vine.compile(
           selected_option: vine
             .string()
             .trim()
-            .regex(/^[A-Za-z]$/)
+            .regex(/^[A-Za-z0-9]$/)
             .optional(),
         })
       )

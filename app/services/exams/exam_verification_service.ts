@@ -328,7 +328,7 @@ export default class ExamVerificationService {
   private getValidatedCorrectOption(question: Question): string {
     const correctOption = this.normalizeOptionValue(question.correctOption)
 
-    if (!correctOption || !/^[A-Z]$/.test(correctOption)) {
+    if (!correctOption || !/^[A-Z0-9]$/.test(correctOption)) {
       throw new Error(`Question ${question.id} has no valid correct option configured`)
     }
 
