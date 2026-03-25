@@ -47,4 +47,13 @@ export default await Env.create(new URL('../', import.meta.url), {
   AUTH_ISSUER_URL: Env.schema.string(),
   AUTH_ALLOWED_AUDIENCES: Env.schema.string.optional(),
   AUTH_DEBUG: Env.schema.boolean.optional(),
+
+  /*
+  |----------------------------------------------------------
+  | Variables for configuring Supabase Storage
+  |----------------------------------------------------------
+  */
+  SUPABASE_URL: Env.schema.string.optional(),
+  SUPABASE_SERVICE_ROLE_KEY: Env.schema.string.optional(),
+  SUPABASE_STORAGE_BUCKET: Env.schema.string.optional(),
 })

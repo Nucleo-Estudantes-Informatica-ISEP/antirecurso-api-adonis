@@ -65,6 +65,9 @@ To connect to your **Supabase PostgreSQL** instance, ensure you configure the di
 | `DB_URL`      | Supabase direct Postgres connection string | `postgresql://postgres:...@db.xxx.supabase.co:5432/postgres` |
 | `DB_SSL`      | Enable SSL for Postgres         | `true`                  |
 | `DB_SSL_REJECT_UNAUTHORIZED` | Require full certificate validation | `false` |
+| `SUPABASE_URL` | Supabase project URL for Storage API | `https://xxx.supabase.co` |
+| `SUPABASE_SERVICE_ROLE_KEY` | Service role key used server-side for Storage operations | `eyJ...` |
+| `SUPABASE_STORAGE_BUCKET` | Private bucket that stores note PDFs | `notes` |
 
 ### 4. Database Setup
 
@@ -172,6 +175,9 @@ likes                  (User likes on notes/comments)
 | `DB_URL`      | Supabase direct connection string            | Supabase Dashboard -> Connect              |
 | `DB_SSL`      | Whether Postgres SSL should be enabled       | `true` for Supabase                        |
 | `DB_SSL_REJECT_UNAUTHORIZED` | Whether to reject untrusted cert chains | Often `false` on hosted platforms          |
+| `SUPABASE_URL` | Supabase project URL used by Storage REST API | Supabase Dashboard -> Project Settings     |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server-side key for signing uploads/downloads and moving files | Supabase Dashboard -> API                  |
+| `SUPABASE_STORAGE_BUCKET` | Bucket containing the uploaded and distribution note files | Supabase Storage                           |
 
 ---
 

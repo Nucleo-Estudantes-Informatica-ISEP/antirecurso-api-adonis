@@ -3,6 +3,13 @@ import Like from '#models/like'
 import Note from '#models/note'
 import Subject from '#models/subject'
 import { createNoteValidator, updateNoteValidator } from '#validators/note'
+import StorageService, {
+  StorageNotConfiguredError,
+  StorageObjectNotFoundError,
+  StorageRequestError,
+} from '#services/storage_service'
+
+const storageService = new StorageService()
 
 export default class NotesController {
   /**
@@ -10,9 +17,7 @@ export default class NotesController {
    * Expects `user`, `subject`, and `likes` to be preloaded.
    */
   private serialize(note: Note, userId?: number) {
-    const isLiked = userId
-      ? note.likes.some((like) => like.userId === userId)
-      : false
+    const isLiked = userId ? note.likes.some((like) => like.userId === userId) : false
 
     return {
       id: note.id,
@@ -98,9 +103,11 @@ export default class NotesController {
       return response.notFound({ message: 'Subject not found' })
     }
 
-    // TODO: integrate storage service (Firebase or Supabase) to move file
-    // from "uploaded/notes/{upload_id}" to "distribution/notes/{upload_id}"
-    // and delete the original uploaded file.
+    try {
+      await storageService.promoteUploadedNote(data.upload_id)
+    } catch (error) {
+      return this.handleStorageError(error, response, 'Invalid upload id')
+    }
 
     const note = await Note.create({
       uploadId: data.upload_id,
@@ -131,9 +138,11 @@ export default class NotesController {
     const note = await Note.findOrFail(params.id)
 
     if (data.upload_id) {
-      // TODO: integrate storage service (Firebase or Supabase) to move file
-      // from "uploaded/notes/{upload_id}" to "distribution/notes/{upload_id}"
-      // and delete the original uploaded file.
+      try {
+        await storageService.promoteUploadedNote(data.upload_id)
+      } catch (error) {
+        return this.handleStorageError(error, response, 'Invalid upload id')
+      }
     }
 
     note.merge({
@@ -180,10 +189,7 @@ export default class NotesController {
       return response.unauthorized({ message: 'Authentication required' })
     }
 
-    const existingLike = await Like.query()
-      .where('noteId', note.id)
-      .where('userId', userId)
-      .first()
+    const existingLike = await Like.query().where('noteId', note.id).where('userId', userId).first()
 
     if (!existingLike) {
       try {
@@ -217,16 +223,42 @@ export default class NotesController {
       return response.ok({ url: note.url })
     }
 
-    // TODO: integrate storage service (Firebase or Supabase) to generate
-    // a signed download URL for "distribution/notes/{upload_id}"
-    // with ~5 minute expiry.
-    //
-    // Example (Firebase):
-    //   const url = await storageService.getSignedDownloadUrl(note.uploadId)
-    //   return response.ok({ url })
+    if (!note.uploadId) {
+      return response.notFound({ message: 'No file available for this note' })
+    }
 
-    return response.serviceUnavailable({
-      message: 'Storage service not yet configured. Please configure Firebase or Supabase.',
-    })
+    try {
+      const url = await storageService.createSignedDownloadUrl(
+        storageService.buildDistributionPath('notes', note.uploadId)
+      )
+
+      return response.ok({ url })
+    } catch (error) {
+      return this.handleStorageError(error, response, 'File not found')
+    }
+  }
+
+  private handleStorageError(
+    error: unknown,
+    response: HttpContext['response'],
+    notFoundMessage: string
+  ) {
+    if (error instanceof StorageNotConfiguredError) {
+      return response.serviceUnavailable({ message: error.message })
+    }
+
+    if (error instanceof StorageObjectNotFoundError) {
+      return response.badRequest({ message: notFoundMessage })
+    }
+
+    if (error instanceof StorageRequestError) {
+      if (error.status === 400 || error.status === 404) {
+        return response.badRequest({ message: notFoundMessage })
+      }
+
+      return response.internalServerError({ message: error.message, status: error.status })
+    }
+
+    throw error
   }
 }
