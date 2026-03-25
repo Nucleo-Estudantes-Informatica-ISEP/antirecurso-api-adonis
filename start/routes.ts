@@ -12,6 +12,7 @@ import CommentsController from '#controllers/comments_controller'
 import ExamsController from '#controllers/exams_controller'
 import NotesController from '#controllers/notes_controller'
 import QuestionsController from '#controllers/questions_controller'
+import QuestionReportsController from '#controllers/question_reports_controller'
 import UploadsController from '#controllers/uploads_controller'
 import UsersController from '#controllers/users_controller'
 import SubjectsController from '#controllers/subjects_controller'
@@ -22,6 +23,7 @@ const commentsController = new CommentsController()
 const examsController = new ExamsController()
 const notesController = new NotesController()
 const questionsController = new QuestionsController()
+const questionReportsController = new QuestionReportsController()
 const uploadsController = new UploadsController()
 const usersController = new UsersController()
 const subjectsController = new SubjectsController()
@@ -52,37 +54,51 @@ router
 router.get('/comments/:id', (ctx) => commentsController.show(ctx)).use(middleware.auth())
 
 // Questions
-router.put('/questions/:id', (ctx) => questionsController.update(ctx)).use([
-  middleware.auth(),
-  middleware.admin(),
-])
+router
+  .put('/questions/:id', (ctx) => questionsController.update(ctx))
+  .use([middleware.auth(), middleware.admin()])
 router.get('/questions/:id', (ctx) => questionsController.show(ctx))
 
+// Question reports
+router
+  .post('/question-reports', (ctx) =>
+    questionReportsController.store(ctx as AuthenticatedHttpContext)
+  )
+  .use(middleware.auth())
+
 // Notes (public)
-router.get('/subjects/:id/notes', (ctx) => notesController.index(ctx)).use(middleware.optionalAuth())
+router
+  .get('/subjects/:id/notes', (ctx) => notesController.index(ctx))
+  .use(middleware.optionalAuth())
 router.get('/notes/:id', (ctx) => notesController.show(ctx)).use(middleware.optionalAuth())
-router.patch('/notes/:id', (ctx) => notesController.update(ctx)).use([
-  middleware.auth(),
-  middleware.admin(),
-])
+router
+  .patch('/notes/:id', (ctx) => notesController.update(ctx))
+  .use([middleware.auth(), middleware.admin()])
 router.post('/notes/:id/like', (ctx) => notesController.like(ctx)).use(middleware.auth())
 
 // Notes & Uploads (auth required)
-router.post('/subjects/:id/notes', (ctx) => notesController.store(ctx)).use([
-  middleware.auth(),
-  middleware.admin(),
-])
+router
+  .post('/subjects/:id/notes', (ctx) => notesController.store(ctx))
+  .use([middleware.auth(), middleware.admin()])
 router.post('/notes/:id/view', (ctx) => notesController.view(ctx)).use(middleware.auth())
 router.post('/upload', (ctx) => uploadsController.upload(ctx)).use(middleware.auth())
 
 // Exams
-router.get('/exams/generate/:subject_id', (ctx) => examsController.generate(ctx)).use(middleware.optionalAuth())
+router
+  .get('/exams/generate/:subject_id', (ctx) => examsController.generate(ctx))
+  .use(middleware.optionalAuth())
 router.post('/exams/verify', (ctx) => examsController.verify(ctx)).use(middleware.optionalAuth())
-router.get('/exams', (ctx) => examsController.index(ctx as AuthenticatedHttpContext)).use(middleware.auth())
-router.get('/exams/:id', (ctx) => examsController.show(ctx as AuthenticatedHttpContext)).use(middleware.auth())
+router
+  .get('/exams', (ctx) => examsController.index(ctx as AuthenticatedHttpContext))
+  .use(middleware.auth())
+router
+  .get('/exams/:id', (ctx) => examsController.show(ctx as AuthenticatedHttpContext))
+  .use(middleware.auth())
 
 // User (auth required)
-router.get('/user', (ctx) => usersController.session(ctx as AuthenticatedHttpContext)).use(middleware.auth())
+router
+  .get('/user', (ctx) => usersController.session(ctx as AuthenticatedHttpContext))
+  .use(middleware.auth())
 router
   .get('/user/scores', (ctx) => usersController.scores(ctx as AuthenticatedHttpContext))
   .use(middleware.auth())
@@ -91,19 +107,26 @@ router
   .use(middleware.auth())
 
 // Admin (auth + admin required)
-router.get('/search', (ctx) => usersController.search(ctx)).use([
-  middleware.auth(),
-  middleware.admin(),
-])
-router.get('/users', (ctx) => usersController.listUsers(ctx)).use([
-  middleware.auth(),
-  middleware.admin(),
-])
-router.get('/admin', (ctx) => usersController.adminSession(ctx as AuthenticatedHttpContext)).use([
-  middleware.auth(),
-  middleware.admin(),
-])
-router.get('/admin/exams', (ctx) => examsController.stats(ctx)).use([
-  middleware.auth(),
-  middleware.admin(),
-])
+router
+  .get('/search', (ctx) => usersController.search(ctx))
+  .use([middleware.auth(), middleware.admin()])
+router
+  .get('/users', (ctx) => usersController.listUsers(ctx))
+  .use([middleware.auth(), middleware.admin()])
+router
+  .get('/admin', (ctx) => usersController.adminSession(ctx as AuthenticatedHttpContext))
+  .use([middleware.auth(), middleware.admin()])
+router
+  .get('/admin/exams', (ctx) => examsController.stats(ctx))
+  .use([middleware.auth(), middleware.admin()])
+router
+  .get('/question-reports', (ctx) => questionReportsController.index(ctx))
+  .use([middleware.auth(), middleware.admin()])
+router
+  .post('/question-reports/review', (ctx) =>
+    questionReportsController.review(ctx as AuthenticatedHttpContext)
+  )
+  .use([middleware.auth(), middleware.admin()])
+router
+  .get('/question-reports/:id', (ctx) => questionReportsController.show(ctx))
+  .use([middleware.auth(), middleware.admin()])
