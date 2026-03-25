@@ -167,6 +167,32 @@ export default class NotesController {
   }
 
   /**
+   * Delete an existing note (admin only).
+   * DELETE /notes/:id
+   */
+  async destroy({ authUser, params, response }: HttpContext) {
+    if (!authUser?.isAdmin) {
+      return response.forbidden({ message: 'You are not an admin' })
+    }
+
+    const note = await Note.findOrFail(params.id)
+
+    if (note.uploadId) {
+      try {
+        await storageService.deleteNoteAssets(note.uploadId)
+      } catch (error) {
+        if (!(error instanceof StorageNotConfiguredError)) {
+          return this.handleStorageError(error, response, 'File not found')
+        }
+      }
+    }
+
+    await note.delete()
+
+    return response.noContent()
+  }
+
+  /**
    * Show a single note and increment views.
    * GET /notes/:id
    */

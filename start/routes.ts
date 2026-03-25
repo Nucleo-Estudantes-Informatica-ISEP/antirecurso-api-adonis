@@ -74,6 +74,9 @@ router.get('/notes/:id', (ctx) => notesController.show(ctx)).use(middleware.opti
 router
   .patch('/notes/:id', (ctx) => notesController.update(ctx))
   .use([middleware.auth(), middleware.admin()])
+router
+  .delete('/notes/:id', (ctx) => notesController.destroy(ctx))
+  .use([middleware.auth(), middleware.admin()])
 router.post('/notes/:id/like', (ctx) => notesController.like(ctx)).use(middleware.auth())
 
 // Notes & Uploads (auth required)

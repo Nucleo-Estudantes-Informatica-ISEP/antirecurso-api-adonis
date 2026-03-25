@@ -145,6 +145,30 @@ export default class StorageService {
     return this.buildAbsoluteStorageUrl(payload.signedURL)
   }
 
+  async deleteNoteAssets(uploadId: string) {
+    this.assertConfigured()
+
+    const paths = [
+      this.buildUploadedPath('notes', uploadId),
+      this.buildDistributionPath('notes', uploadId),
+    ]
+
+    const resolvedPaths = await Promise.all(
+      paths.map(async (path) => ((await this.exists(path)) ? path : null))
+    )
+    const existingPaths = resolvedPaths.filter((path): path is string => path !== null)
+
+    if (!existingPaths.length) {
+      return
+    }
+
+    await this.requestJson('DELETE', `${this.storageApiBase()}/object/${this.bucket}`, {
+      body: {
+        prefixes: existingPaths,
+      },
+    })
+  }
+
   async exists(path: string) {
     this.assertConfigured()
 
