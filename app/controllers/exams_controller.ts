@@ -48,10 +48,7 @@ export default class ExamsController {
       return response.notFound({ message: 'Invalid subject' })
     }
 
-    const userId = await this.resolveUserId(data.user_id ?? null)
-    if (data.user_id !== undefined && userId === null) {
-      return response.badRequest({ message: 'Invalid user' })
-    }
+    const userId = request.ctx?.authUser?.id ?? null
 
     if (modeRequiresUser(mode) && userId === null) {
       return response.unauthorized({ message: 'You must be logged in to generate this exam mode' })
@@ -92,10 +89,7 @@ export default class ExamsController {
       return response.notFound({ message: 'Invalid subject' })
     }
 
-    const userId = await this.resolveUserId(data.user_id ?? null)
-    if (data.user_id !== undefined && userId === null) {
-      return response.badRequest({ message: 'Invalid user' })
-    }
+    const userId = request.ctx?.authUser?.id ?? null
 
     if (mode === 'custom' && data.n_of_questions === undefined) {
       return response.badRequest({
@@ -123,39 +117,18 @@ export default class ExamsController {
 
   /**
    * List a user's exam history (paginated).
-   * GET /exams?requesting_user_id=...&user_id=...&page=...
+   * GET /exams?page=...
    */
-  async index({ request, response }: HttpContext) {
+  async index({ authUser, request, response }: AuthenticatedHttpContext) {
     const data = await request.validateUsing(examHistoryValidator, {
       data: {
-        requesting_user_id:
-          this.parseNumericInput(request.input('requesting_user_id')) ?? undefined,
-        user_id: this.parseNumericInput(request.input('user_id')) ?? undefined,
         page: this.parseNumericInput(request.input('page')) ?? undefined,
       },
     })
 
-    const requestingUser = await User.find(data.requesting_user_id)
-    if (!requestingUser) {
-      return response.badRequest({ message: 'Invalid requesting user' })
-    }
-
-    // Temporary guard while auth middleware is pending.
-    // Replace this with ctx.auth.user-based authorization once auth is integrated.
-    if (!requestingUser.isAdmin && requestingUser.id !== data.user_id) {
-      return response.forbidden({
-        message: 'You are not authorized to view this exam history',
-      })
-    }
-
-    const user = await User.find(data.user_id)
-    if (!user) {
-      return response.badRequest({ message: 'Invalid user' })
-    }
-
     const page = data.page ?? 1
     const exams = await Answer.query()
-      .where('userId', user.id)
+      .where('userId', authUser.id)
       .preload('subject')
       .orderBy('createdAt', 'desc')
       .paginate(page, EXAM_HISTORY_PAGE_SIZE)
@@ -177,23 +150,10 @@ export default class ExamsController {
    * Show a detailed exam attempt with selected option, correct answer and comments.
    * GET /exams/:id
    */
-  async show({ params, request, response }: HttpContext) {
+  async show({ authUser, params, response }: AuthenticatedHttpContext) {
     const examId = this.parseNumericInput(params.id)
     if (examId === null) {
       return response.badRequest({ message: 'Invalid exam id' })
-    }
-
-    const data = await request.validateUsing(examShowValidator, {
-      data: {
-        requesting_user_id:
-          this.parseNumericInput(request.input('requesting_user_id')) ?? undefined,
-      },
-    })
-
-    // TODO: replace requesting_user_id with ctx.auth.user when auth service is integrated
-    const requestingUser = await User.find(data.requesting_user_id)
-    if (!requestingUser) {
-      return response.badRequest({ message: 'Invalid requesting user' })
     }
 
     const examOwnership = await Answer.query().where('id', examId).first()
@@ -201,9 +161,7 @@ export default class ExamsController {
       return response.notFound({ message: 'Invalid answer' })
     }
 
-    // Temporary guard while auth middleware is pending.
-    // Replace this with ctx.auth.user-based authorization once auth is integrated.
-    if (!requestingUser.isAdmin && examOwnership.userId !== requestingUser.id) {
+    if (!authUser.isAdmin && examOwnership.userId !== authUser.id) {
       return response.forbidden({
         message: 'You are not authorized to view this exam attempt',
       })
@@ -266,13 +224,34 @@ export default class ExamsController {
    * GET /admin/exams
    */
   async stats({ response }: HttpContext) {
-    // Security hard-stop: this endpoint must use authenticated session context,
-    // never client-provided user identifiers.
-    // TODO: Replace with auth middleware + admin check from ctx.auth.user.
-    // TODO: When re-enabling stats, compute aggregates at database level
-    // (GROUP BY + COUNT) to avoid loading all answers in memory.
-    return response.unauthorized({
-      message: 'Authentication is required to access admin exam stats',
+    const [examsPerDay, examsPerSubject, examsPerMode] = await Promise.all([
+      Answer.query()
+        .select(db.raw('DATE(created_at) as date'))
+        .count('* as count')
+        .where('created_at', '>=', db.raw("CURRENT_TIMESTAMP - INTERVAL '7 days'"))
+        .groupByRaw('DATE(created_at)')
+        .orderByRaw('DATE(created_at)'),
+      Answer.query()
+        .join('subjects', 'subjects.id', 'answers.subject_id')
+        .select('subjects.name')
+        .count('* as count')
+        .groupBy('subjects.name'),
+      Answer.query().select('mode').count('* as count').groupBy('mode'),
+    ])
+
+    return response.ok({
+      exams_per_day: examsPerDay.map((row) => ({
+        date: row.$extras.date,
+        count: Number(row.$extras.count),
+      })),
+      exams_per_subject: examsPerSubject.map((row) => ({
+        name: row.$extras.name,
+        count: Number(row.$extras.count),
+      })),
+      exams_per_mode: examsPerMode.map((row) => ({
+        mode: row.mode,
+        count: Number(row.$extras.count),
+      })),
     })
   }
 
@@ -290,16 +269,6 @@ export default class ExamsController {
 
     return null
   }
-
-  private async resolveUserId(userId: number | null): Promise<number | null> {
-    if (userId === null) {
-      return null
-    }
-
-    const user = await User.find(userId)
-    return user ? user.id : null
-  }
-
   private md5(value: string): string {
     return createHash('md5').update(value).digest('hex')
   }

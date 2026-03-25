@@ -8,6 +8,7 @@
 */
 
 import router from '@adonisjs/core/services/router'
+import { middleware } from './kernel.js'
 
 const CommentsController = () => import('#controllers/comments_controller')
 const ExamsController = () => import('#controllers/exams_controller')
@@ -25,51 +26,54 @@ router.get('/', async () => {
 // Subjects
 router.get('/subjects', [SubjectsController, 'index'])
 router.get('/subjects/:id', [SubjectsController, 'show'])
-// TODO: add auth middleware when auth service is integrated
-router.get('/subjects/:id/stats', [SubjectsController, 'stats'])
+router.get('/subjects/:id/stats', [SubjectsController, 'stats']).use(middleware.auth())
 router.get('/subjects/:id/scoreboard/:mode', [SubjectsController, 'scoreboard'])
-router.post('/subjects/:id/scoreboard', [SubjectsController, 'scoreboardVisibility'])
+router
+  .post('/subjects/:id/scoreboard', [SubjectsController, 'scoreboardVisibility'])
+  .use(middleware.auth())
 
 // Comments
-// TODO: add auth middleware when auth service is integrated
-router.get('/comments', [CommentsController, 'index'])
-router.post('/comments', [CommentsController, 'store'])
-router.get('/comments/:id', [CommentsController, 'show'])
+router.get('/comments', [CommentsController, 'index']).use(middleware.auth())
+router.post('/comments', [CommentsController, 'store']).use(middleware.auth())
+router.get('/comments/:id', [CommentsController, 'show']).use(middleware.auth())
 
 // Questions
-// TODO: add auth middleware when auth service is integrated
-router.put('/questions/:id', [QuestionsController, 'update'])
+router.put('/questions/:id', [QuestionsController, 'update']).use([
+  middleware.auth(),
+  middleware.admin(),
+])
 router.get('/questions/:id', [QuestionsController, 'show'])
 
 // Notes (public)
-router.get('/subjects/:id/notes', [NotesController, 'index'])
-router.get('/notes/:id', [NotesController, 'show'])
-router.patch('/notes/:id', [NotesController, 'update']) // admin check in controller
-router.post('/notes/:id/like', [NotesController, 'like'])
+router.get('/subjects/:id/notes', [NotesController, 'index']).use(middleware.optionalAuth())
+router.get('/notes/:id', [NotesController, 'show']).use(middleware.optionalAuth())
+router.patch('/notes/:id', [NotesController, 'update']).use([
+  middleware.auth(),
+  middleware.admin(),
+])
+router.post('/notes/:id/like', [NotesController, 'like']).use(middleware.auth())
 
 // Notes & Uploads (auth required)
-// TODO: add auth middleware when auth service is integrated
-router.post('/subjects/:id/notes', [NotesController, 'store']) // admin check in controller
-router.post('/notes/:id/view', [NotesController, 'view'])
-router.post('/upload', [UploadsController, 'upload'])
+router.post('/subjects/:id/notes', [NotesController, 'store']).use([
+  middleware.auth(),
+  middleware.admin(),
+])
+router.post('/notes/:id/view', [NotesController, 'view']).use(middleware.auth())
+router.post('/upload', [UploadsController, 'upload']).use(middleware.auth())
 
 // Exams
-// TODO: add auth middleware when auth service is integrated
-router.get('/exams/generate/:subject_id', [ExamsController, 'generate'])
-router.post('/exams/verify', [ExamsController, 'verify'])
-router.get('/exams', [ExamsController, 'index'])
-router.get('/exams/:id', [ExamsController, 'show'])
+router.get('/exams/generate/:subject_id', [ExamsController, 'generate']).use(middleware.optionalAuth())
+router.post('/exams/verify', [ExamsController, 'verify']).use(middleware.optionalAuth())
+router.get('/exams', [ExamsController, 'index']).use(middleware.auth())
+router.get('/exams/:id', [ExamsController, 'show']).use(middleware.auth())
 
 // User (auth required)
-// TODO: add auth middleware when auth service is integrated
-router.get('/user', [UsersController, 'session'])
-router.get('/user/scores', [UsersController, 'scores'])
-router.get('/user/answers', [UsersController, 'answers'])
+router.get('/user', [UsersController, 'session']).use(middleware.auth())
+router.get('/user/scores', [UsersController, 'scores']).use(middleware.auth())
+router.get('/user/answers', [UsersController, 'answers']).use(middleware.auth())
 
 // Admin (auth + admin required)
-// TODO: add auth middleware + admin policy when auth service is integrated
-router.get('/search', [UsersController, 'search'])
-router.get('/users', [UsersController, 'listUsers'])
-router.get('/admin', [UsersController, 'adminSession'])
-router.get('/admin/exams', [ExamsController, 'stats'])
-
+router.get('/search', [UsersController, 'search']).use([middleware.auth(), middleware.admin()])
+router.get('/users', [UsersController, 'listUsers']).use([middleware.auth(), middleware.admin()])
+router.get('/admin', [UsersController, 'adminSession']).use([middleware.auth(), middleware.admin()])
+router.get('/admin/exams', [ExamsController, 'stats']).use([middleware.auth(), middleware.admin()])

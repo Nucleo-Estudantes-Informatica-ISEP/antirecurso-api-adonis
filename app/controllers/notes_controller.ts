@@ -71,8 +71,7 @@ export default class NotesController {
       .preload('likes')
       .paginate(page, limit)
 
-    // TODO: get authenticated user id when auth service is integrated
-    const userId: number | undefined = undefined
+    const userId = request.ctx?.authUser?.id
 
     return response.ok({
       meta: notes.getMeta(),
@@ -85,11 +84,11 @@ export default class NotesController {
    * Moves the uploaded file from the temp path to the distribution path.
    * POST /subjects/:id/notes
    */
-  async store({ params, request, response }: HttpContext) {
+  async store({ authUser, params, request, response }: HttpContext) {
     const data = await request.validateUsing(createNoteValidator)
-
-    // TODO: replace with auth middleware + admin check when auth service is integrated
-    // if (!auth.user?.isAdmin) return response.unauthorized({ message: 'Unauthorized' })
+    if (!authUser?.isAdmin) {
+      return response.forbidden({ message: 'You are not an admin' })
+    }
 
     const subjectId = Number(params.id)
     if (!Number.isFinite(subjectId)) {
@@ -98,12 +97,6 @@ export default class NotesController {
     const subject = await Subject.find(subjectId)
     if (!subject) {
       return response.notFound({ message: 'Subject not found' })
-    }
-
-    // Verify the author exists
-    const author = await User.find(data.author_id)
-    if (!author) {
-      return response.notFound({ message: 'Author not found' })
     }
 
     // TODO: integrate storage service (Firebase or Supabase) to move file
@@ -115,7 +108,7 @@ export default class NotesController {
       title: data.title,
       description: data.description ?? null,
       nPages: data.n_pages ?? null,
-      userId: author.id,
+      userId: authUser.id,
       subjectId: subjectId,
     })
 
@@ -130,9 +123,10 @@ export default class NotesController {
    * Update an existing note (admin only).
    * PATCH /notes/:id
    */
-  async update({ params, request, response }: HttpContext) {
-    // TODO: replace with auth middleware + admin check when auth service is integrated
-    // if (!auth.user?.isAdmin) return response.unauthorized({ message: 'Unauthorized' })
+  async update({ authUser, params, request, response }: HttpContext) {
+    if (!authUser?.isAdmin) {
+      return response.forbidden({ message: 'You are not an admin' })
+    }
 
     const data = await request.validateUsing(updateNoteValidator)
     const note = await Note.findOrFail(params.id)
@@ -163,7 +157,7 @@ export default class NotesController {
    * Show a single note and increment views.
    * GET /notes/:id
    */
-  async show({ params, response }: HttpContext) {
+  async show({ params, request, response }: HttpContext) {
     await Note.query().where('id', params.id).increment('views', 1)
     const note = await Note.findOrFail(params.id)
 
@@ -171,8 +165,7 @@ export default class NotesController {
     await note.load('subject')
     await note.load('likes')
 
-    // TODO: get authenticated user id when auth service is integrated
-    const userId: number | undefined = undefined
+    const userId = request.ctx?.authUser?.id
 
     return response.ok(this.serialize(note, userId))
   }
@@ -181,17 +174,11 @@ export default class NotesController {
    * Toggle like on a note.
    * POST /notes/:id/like
    */
-  async like({ params, request, response }: HttpContext) {
+  async like({ authUser, params, response }: HttpContext) {
     const note = await Note.findOrFail(params.id)
-
-    // TODO: replace with auth user id when auth service is integrated
-    const data = await request.validateUsing(likeNoteValidator)
-    const userId = data.user_id
-
-    // Keep the placeholder user-based toggle for now until auth is integrated.
-    const user = await User.find(userId)
-    if (!user) {
-      return response.notFound({ message: 'User not found' })
+    const userId = authUser?.id
+    if (!userId) {
+      return response.unauthorized({ message: 'Authentication required' })
     }
 
     const existingLike = await Like.query()

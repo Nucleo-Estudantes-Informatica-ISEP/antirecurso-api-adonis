@@ -5,7 +5,8 @@ import Subject from '#models/subject'
 import Answer from '#models/answer'
 import Score from '#models/score'
 import StatsService, { EXAM_MODES } from '#services/stats_service'
-import { scoreboardVisibilityValidator, tempAuthValidator } from '#validators/subject'
+import { scoreboardVisibilityValidator } from '#validators/subject'
+import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
 
 const SCOREBOARD_LIMIT = 30
 const MIN_ANSWERS = 3
@@ -66,9 +67,8 @@ export default class SubjectsController {
    *
    * Requires authentication.
    */
-  async stats({ params, request, response }: HttpContext) {
-    // TODO: Replace with auth middleware when auth service is integrated
-    const { user_id: userId } = await request.validateUsing(tempAuthValidator)
+  async stats({ authUser, params, response }: AuthenticatedHttpContext) {
+    const userId = authUser.id
     const subjectId = this.parseSubjectId(params.id)
 
     if (subjectId === null) {
@@ -188,9 +188,8 @@ export default class SubjectsController {
    *
    * Requires authentication.
    */
-  async scoreboardVisibility({ params, request, response }: HttpContext) {
-    // TODO: Replace with auth middleware when auth service is integrated
-    const { user_id: userId } = await request.validateUsing(tempAuthValidator)
+  async scoreboardVisibility({ authUser, params, request, response }: AuthenticatedHttpContext) {
+    const userId = authUser.id
     const data = await request.validateUsing(scoreboardVisibilityValidator)
 
     const subjectId = this.parseSubjectId(params.id)

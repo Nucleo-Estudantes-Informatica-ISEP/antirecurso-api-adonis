@@ -38,4 +38,12 @@ export default await Env.create(new URL('../', import.meta.url), {
   DB_URL: Env.schema.string(),
   DB_SSL: Env.schema.boolean.optional(),
   DB_SSL_REJECT_UNAUTHORIZED: Env.schema.boolean.optional(),
+
+  /*
+  |----------------------------------------------------------
+  | Variables for verifying ZITADEL-issued OIDC tokens
+  |----------------------------------------------------------
+  */
+  AUTH_ISSUER_URL: Env.schema.string(),
+  AUTH_ALLOWED_AUDIENCES: Env.schema.string.optional(),
 })

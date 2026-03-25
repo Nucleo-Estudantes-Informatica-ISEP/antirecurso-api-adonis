@@ -16,8 +16,11 @@ export default class QuestionsController {
    * Update a question's text, correct option, and option names.
    * PUT /questions/:id
    */
-  async update({ params, request, response }: HttpContext) {
-    // TODO: add auth middleware + admin check when auth service is integrated
+  async update({ authUser, params, request, response }: HttpContext) {
+    if (!authUser?.isAdmin) {
+      return response.forbidden({ message: 'You are not an admin' })
+    }
+
     const data = await request.validateUsing(updateQuestionValidator)
 
     const question = await Question.query().where('id', params.id).preload('options').firstOrFail()

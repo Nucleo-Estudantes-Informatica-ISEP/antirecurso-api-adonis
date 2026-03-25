@@ -15,6 +15,9 @@ export default class User extends BaseModel {
   @column()
   declare email: string
 
+  @column()
+  declare authSubject: string | null
+
   @column.dateTime()
   declare emailVerifiedAt: DateTime | null
 

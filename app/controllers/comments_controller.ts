@@ -1,8 +1,8 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import Comment from '#models/comment'
 import Question from '#models/question'
-import User from '#models/user'
 import { createCommentValidator } from '#validators/comment'
+import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
 
 export default class CommentsController {
   /**
@@ -58,7 +58,7 @@ export default class CommentsController {
    * Create a new comment on a question.
    * POST /comments
    */
-  async store({ request, response }: HttpContext) {
+  async store({ authUser, request, response }: AuthenticatedHttpContext) {
     const data = await request.validateUsing(createCommentValidator)
 
     // Verify the question exists
@@ -67,16 +67,10 @@ export default class CommentsController {
       return response.notFound({ message: 'Question not found' })
     }
 
-    // Verify the user exists
-    // TODO: replace user_id with authenticated user when auth service is integrated
-    const user = await User.find(data.user_id)
-    if (!user) {
-      return response.notFound({ message: 'User not found' })
-    }
     const comment = await Comment.create({
       comment: data.comment,
       questionId: data.question_id,
-      userId: data.user_id,
+      userId: authUser.id,
     })
 
     await comment.load('user')

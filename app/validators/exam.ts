@@ -4,7 +4,6 @@ import { EXAM_MODES, MAX_CUSTOM_QUESTIONS, MIN_CUSTOM_QUESTIONS } from '#service
 export const generateExamValidator = vine.compile(
   vine.object({
     mode: vine.enum(EXAM_MODES).optional(),
-    user_id: vine.number().withoutDecimals().positive().optional(),
     n_of_questions: vine
       .number()
       .withoutDecimals()
@@ -19,7 +18,6 @@ export const verifyExamValidator = vine.compile(
   vine.object({
     subject_id: vine.number().withoutDecimals().positive(),
     mode: vine.enum(EXAM_MODES).optional(),
-    user_id: vine.number().withoutDecimals().positive().optional(),
     time: vine.number().withoutDecimals().positive().optional(),
     n_of_questions: vine
       .number()
@@ -45,14 +43,6 @@ export const verifyExamValidator = vine.compile(
 
 export const examHistoryValidator = vine.compile(
   vine.object({
-    requesting_user_id: vine.number().withoutDecimals().positive(),
-    user_id: vine.number().withoutDecimals().positive(),
     page: vine.number().withoutDecimals().positive().optional(),
-  })
-)
-
-export const examShowValidator = vine.compile(
-  vine.object({
-    requesting_user_id: vine.number().withoutDecimals().positive(),
   })
 )

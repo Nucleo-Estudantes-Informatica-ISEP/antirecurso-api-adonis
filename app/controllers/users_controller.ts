@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto'
 import type { HttpContext } from '@adonisjs/core/http'
 import User from '#models/user'
 import { searchUsersValidator } from '#validators/user'
+import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
 
 export default class UsersController {
   /**
@@ -22,47 +23,25 @@ export default class UsersController {
    * Get the current user's session info.
    * GET /user
    */
-  async session({ request, response }: HttpContext) {
-    // TODO: replace with ctx.auth.user when auth service is integrated
-    const userId = Number(request.input('user_id'))
-    if (!Number.isFinite(userId)) {
-      return response.unauthorized({ message: 'Authentication required' })
-    }
-
-    const user = await User.find(userId)
-    if (!user) {
-      return response.unauthorized({ message: 'Invalid user' })
-    }
-
-    return response.ok(this.serializeUser(user))
+  async session({ authUser, response }: AuthenticatedHttpContext) {
+    return response.ok(this.serializeUser(authUser))
   }
 
   /**
    * Get the current user's scores.
    * GET /user/scores
    */
-  async scores({ request, response }: HttpContext) {
-    // TODO: replace with ctx.auth.user when auth service is integrated
-    const userId = Number(request.input('user_id'))
-    if (!Number.isFinite(userId)) {
-      return response.unauthorized({ message: 'Authentication required' })
-    }
-
-    const user = await User.find(userId)
-    if (!user) {
-      return response.unauthorized({ message: 'Invalid user' })
-    }
-
-    await user.load('scores', (query) => {
+  async scores({ authUser, response }: AuthenticatedHttpContext) {
+    await authUser.load('scores', (query) => {
       query.preload('subject')
     })
 
     return response.ok(
-      user.scores.map((score) => ({
+      authUser.scores.map((score) => ({
         score: score.score,
         subject_id: score.subjectId,
         subject: score.subject.name,
-        user: user.name,
+        user: authUser.name,
         show_scoreboard: score.showScoreboard,
       }))
     )
@@ -72,28 +51,17 @@ export default class UsersController {
    * Get the current user's answers (exam history).
    * GET /user/answers
    */
-  async answers({ request, response }: HttpContext) {
-    // TODO: replace with ctx.auth.user when auth service is integrated
-    const userId = Number(request.input('user_id'))
-    if (!Number.isFinite(userId)) {
-      return response.unauthorized({ message: 'Authentication required' })
-    }
-
-    const user = await User.find(userId)
-    if (!user) {
-      return response.unauthorized({ message: 'Invalid user' })
-    }
-
-    await user.load('answers', (query) => {
+  async answers({ authUser, response }: AuthenticatedHttpContext) {
+    await authUser.load('answers', (query) => {
       query.preload('subject')
     })
 
     return response.ok(
-      user.answers.map((answer) => ({
+      authUser.answers.map((answer) => ({
         id: answer.id,
         score: answer.score,
         subject: answer.subject.name,
-        user_name: user.name,
+        user_name: authUser.name,
         mode: answer.mode,
         time: answer.time,
         created_at: answer.createdAt.toISO(),
@@ -152,23 +120,8 @@ export default class UsersController {
    * Get admin session info.
    * GET /admin
    */
-  async adminSession({ request, response }: HttpContext) {
-    // TODO: replace with ctx.auth.user when auth service is integrated
-    const userId = Number(request.input('user_id'))
-    if (!Number.isFinite(userId)) {
-      return response.unauthorized({ message: 'Authentication required' })
-    }
-
-    const user = await User.find(userId)
-    if (!user) {
-      return response.unauthorized({ message: 'Invalid user' })
-    }
-
-    if (!user.isAdmin) {
-      return response.forbidden({ message: 'You are not an admin' })
-    }
-
-    return response.ok(this.serializeUser(user))
+  async adminSession({ authUser, response }: AuthenticatedHttpContext) {
+    return response.ok(this.serializeUser(authUser))
   }
 
   private md5(value: string): string {
