@@ -134,6 +134,9 @@ router
   .patch('/events/:id', (ctx) => eventsController.update(ctx))
   .use([middleware.auth(), middleware.admin()])
 router
+  .delete('/events/:id', (ctx) => eventsController.destroy(ctx))
+  .use([middleware.auth(), middleware.admin()])
+router
   .get('/question-reports', (ctx) => questionReportsController.index(ctx))
   .use([middleware.auth(), middleware.admin()])
 router

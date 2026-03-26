@@ -308,6 +308,16 @@ Exam generation and verification use these modes from [`app/services/exams/exam_
   - `400` when the resulting date range is invalid
   - `404` when the event does not exist
 
+#### `DELETE /events/:id`
+
+- Auth: `Admin`
+- Path parameters:
+  - `id`: numeric event id
+- Purpose: permanently removes an event
+- Response: `204 No Content`
+- Errors:
+  - `404` when the event does not exist
+
 ### Questions
 
 #### `GET /questions/:id`

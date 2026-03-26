@@ -78,4 +78,11 @@ export default class EventsController {
 
     return response.ok(this.serialize(event))
   }
+
+  async destroy({ params, response }: HttpContext) {
+    const event = await Event.findOrFail(params.id)
+    await event.delete()
+
+    return response.noContent()
+  }
 }

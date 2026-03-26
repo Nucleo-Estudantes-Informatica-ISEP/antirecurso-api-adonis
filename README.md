@@ -114,6 +114,7 @@ The events feature is covered by these admin-only routes:
 - `GET /events`
 - `POST /events/new`
 - `PATCH /events/:id`
+- `DELETE /events/:id`
 
 ---
 
