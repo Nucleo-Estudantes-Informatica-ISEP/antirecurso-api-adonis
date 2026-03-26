@@ -249,7 +249,7 @@ npm ci --omit=dev
 
 ### 3. Configure Production Environment
 
-Provide your production environment variables (e.g., via your PaaS dashboard like Coolify, Render, Railway, or Fly.io).
+Provide your production environment variables through your deployment platform or runtime environment.
 Ensure you set:
 
 - `NODE_ENV=production`
@@ -261,15 +261,14 @@ Ensure you set:
 - `DB_SSL=true`
 - `DB_SSL_REJECT_UNAUTHORIZED=false` unless strict certificate validation is known to work in your runtime
 
-### Coolify
+### Dockerfile-Based Deployment
 
-This repository includes a production-ready `Dockerfile`, so the simplest Coolify setup is:
+This repository includes a production-ready `Dockerfile`, so a simple container-based deployment is:
 
-1. Create a new **Application** from your Git repository.
-2. Select **Dockerfile** as the build pack.
-3. Set the **Port** to `3333`.
-4. Set the health check path to `/`.
-5. Add these environment variables in Coolify:
+1. Build and deploy the image from this repository's `Dockerfile`.
+2. Expose the container on port `3333`.
+3. Set the health check path to `/`.
+4. Provide these environment variables:
 
 ```env
 NODE_ENV=production
