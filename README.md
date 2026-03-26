@@ -1,12 +1,13 @@
 # Antirecurso API
 
-A robust backend API built with AdonisJS 6 for the Antirecurso platform. It provides RESTful endpoints to manage users, subjects, questions, exams, notes, comments, and scores, persisting all data to a Supabase-hosted PostgreSQL database.
+A robust backend API built with AdonisJS 6 for the Antirecurso platform. It provides RESTful endpoints to manage users, subjects, questions, exams, notes, comments, scores, and admin-managed events, persisting all data to a Supabase-hosted PostgreSQL database.
 
 ## Key Features
 
 - **Subject & Question Management**: Endpoints for retrieving, creating, and updating subjects, question types, and multiple-choice options.
 - **Exams System**: Generate practice exams, verify answers, and track user scores.
 - **Notes & Comments**: Allow users to upload, view, and comment on educational materials.
+- **Events Management**: Admin endpoints for listing, creating, and updating platform events.
 - **User Engagement**: Track scores, answer history, and content likes.
 - **Bearer Authentication**: ZITADEL-issued access tokens protect authenticated and admin routes.
 - **Health Check**: Native `/` endpoint to verify application liveness.
@@ -81,7 +82,7 @@ Once your `.env` file is populated with the Supabase credentials, execute all th
 node ace migration:run
 ```
 
-This will create 13 tables: `users`, `subjects`, `question_types`, `questions`, `options`, `answers`, `answer_questions`, `comments`, `scores`, `question_reports`, `password_reset_codes`, `notes`, and `likes`.
+This will create 14 tables: `users`, `subjects`, `question_types`, `questions`, `options`, `answers`, `answer_questions`, `comments`, `scores`, `question_reports`, `password_reset_codes`, `notes`, `likes`, and `events`.
 
 You can verify the status of the migrations at any time using:
 
@@ -108,6 +109,12 @@ Open [http://localhost:3333](http://localhost:3333) in your browser. You should 
 
 Use these two documents as the source of truth for request contracts, response shapes, relationships, and database constraints.
 
+The events feature is covered by these admin-only routes:
+
+- `GET /events`
+- `POST /events/new`
+- `PATCH /events/:id`
+
 ---
 
 ## Architecture
@@ -116,7 +123,7 @@ Use these two documents as the source of truth for request contracts, response s
 
 ```text
 ├── app/
-│   ├── controllers/      # Route controllers (Exams, Notes, Users, Subjects, etc.)
+│   ├── controllers/      # Route controllers (Exams, Notes, Events, Users, Subjects, etc.)
 │   ├── exceptions/       # Custom application exceptions
 │   ├── models/           # Lucid ORM models mapping to PostgreSQL tables
 │   ├── middleware/       # HTTP middleware (e.g., auth, admin checks)

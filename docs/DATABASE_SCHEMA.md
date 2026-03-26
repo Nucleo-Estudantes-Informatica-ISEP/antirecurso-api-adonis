@@ -12,6 +12,7 @@ This document reflects the Lucid migrations in [`database/migrations/`](../datab
   - subjects, question types, questions, and options
   - exams, answers, and score aggregation
   - collaborative content through comments, notes, likes, and question reports
+  - admin-managed events
 
 ## Entity Relationship Diagram
 
@@ -42,6 +43,7 @@ erDiagram
     answers ||--o{ answer_questions : "contains"
     options ||--o{ answer_questions : "selected by"
     notes ||--o{ likes : "liked by"
+    events
 ```
 
 ## Tables
@@ -293,6 +295,20 @@ Additional constraints:
 
 - unique composite key on `user_id, note_id`
 
+### `events`
+
+Admin-managed event windows shown in the Antirecurso dashboard.
+
+| Column        | Type      | Null | Constraints / Notes            |
+| ------------- | --------- | ---- | ------------------------------ |
+| `id`          | serial    | no   | primary key                    |
+| `name`        | varchar   | no   | event title                    |
+| `description` | text      | yes  | optional long-form description |
+| `start_date`  | date      | no   | serialized as `YYYY-MM-DD`     |
+| `end_date`    | date      | no   | serialized as `YYYY-MM-DD`     |
+| `created_at`  | timestamp | no   |                                |
+| `updated_at`  | timestamp | no   |                                |
+
 ## Foreign Key Deletion Behavior
 
 The current schema uses these deletion rules:
@@ -315,3 +331,4 @@ Some important rules are enforced in application code rather than by database co
 - exam payload validation requires a fixed number of answers based on exam mode
 - `scores.score` is cumulative and updated transactionally after authenticated exam verification
 - notes can resolve their content either from `url` or from `upload_id`; the schema does not require exactly one of them
+- events must satisfy `end_date >= start_date`

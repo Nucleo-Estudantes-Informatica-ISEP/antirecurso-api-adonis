@@ -29,6 +29,7 @@ Route protection levels used in this API:
 
 - Paginated endpoints return `{ meta, data }`
 - Most timestamps are ISO 8601 strings
+- Event `start_date` and `end_date` values are serialized as `YYYY-MM-DD`
 - `GET /exams/:id` returns `taken_at` as `dd/MM/yyyy`
 - Question report `created_at` and `updated_at` are relative strings in `pt-PT`
 - User avatars are MD5 hashes of the normalized email address
@@ -233,6 +234,79 @@ Exam generation and verification use these modes from [`app/services/exams/exam_
 
 - Auth: `Authenticated`
 - Response shape: same item shape as `POST /comments`
+
+### Events
+
+#### `GET /events`
+
+- Auth: `Admin`
+- Query parameters:
+  - `page`: positive integer, default `1`
+  - `limit`: positive integer, default `15`, max `100`
+- Purpose: lists admin-managed events for the dashboard
+- Response shape:
+
+```json
+{
+  "meta": {
+    "total": 1,
+    "perPage": 15,
+    "currentPage": 1,
+    "lastPage": 1,
+    "firstPage": 1,
+    "firstPageUrl": "/?page=1",
+    "lastPageUrl": "/?page=1",
+    "nextPageUrl": null,
+    "previousPageUrl": null
+  },
+  "data": [
+    {
+      "id": 1,
+      "name": "Semana de Testes",
+      "description": "Atividades especiais para a semana académica.",
+      "start_date": "2026-04-01",
+      "end_date": "2026-04-05",
+      "created_at": "2026-03-26T12:00:00.000+00:00",
+      "updated_at": "2026-03-26T12:00:00.000+00:00"
+    }
+  ]
+}
+```
+
+#### `POST /events/new`
+
+- Auth: `Admin`
+- Body:
+
+```json
+{
+  "name": "Semana de Testes",
+  "description": "Atividades especiais para a semana académica.",
+  "start_date": "2026-04-01",
+  "end_date": "2026-04-05"
+}
+```
+
+- Validation:
+  - `name`: string, trimmed, minimum 2 characters
+  - `description`: optional string
+  - `start_date`: date in `YYYY-MM-DD`
+  - `end_date`: date in `YYYY-MM-DD`, must be the same as or after `start_date`
+- Response: `201 Created` with the created event object
+
+#### `PATCH /events/:id`
+
+- Auth: `Admin`
+- Path parameters:
+  - `id`: numeric event id
+- Body: any subset of the create payload
+- Validation:
+  - all fields are optional
+  - the resulting date range must satisfy `end_date >= start_date`
+- Response: `200 OK` with the updated event object
+- Errors:
+  - `400` when the resulting date range is invalid
+  - `404` when the event does not exist
 
 ### Questions
 
