@@ -9,6 +9,7 @@
 
 import router from '@adonisjs/core/services/router'
 import CommentsController from '#controllers/comments_controller'
+import EventsController from '#controllers/events_controller'
 import ExamsController from '#controllers/exams_controller'
 import NotesController from '#controllers/notes_controller'
 import QuestionsController from '#controllers/questions_controller'
@@ -20,6 +21,7 @@ import type { AuthenticatedHttpContext } from '../contracts/auth.js'
 import { middleware } from './kernel.js'
 
 const commentsController = new CommentsController()
+const eventsController = new EventsController()
 const examsController = new ExamsController()
 const notesController = new NotesController()
 const questionsController = new QuestionsController()
@@ -121,6 +123,15 @@ router
   .use([middleware.auth(), middleware.admin()])
 router
   .get('/admin/exams', (ctx) => examsController.stats(ctx))
+  .use([middleware.auth(), middleware.admin()])
+router
+  .get('/events', (ctx) => eventsController.index(ctx))
+  .use([middleware.auth(), middleware.admin()])
+router
+  .post('/events/new', (ctx) => eventsController.store(ctx))
+  .use([middleware.auth(), middleware.admin()])
+router
+  .patch('/events/:id', (ctx) => eventsController.update(ctx))
   .use([middleware.auth(), middleware.admin()])
 router
   .get('/question-reports', (ctx) => questionReportsController.index(ctx))

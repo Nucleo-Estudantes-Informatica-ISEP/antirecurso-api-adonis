@@ -8,7 +8,8 @@ A robust backend API built with AdonisJS 6 for the Antirecurso platform. It prov
 - **Exams System**: Generate practice exams, verify answers, and track user scores.
 - **Notes & Comments**: Allow users to upload, view, and comment on educational materials.
 - **User Engagement**: Track scores, answer history, and content likes.
-- **Health Check**: Native `/` endpoint to instantly verify application status and database connectivity at startup.
+- **Bearer Authentication**: ZITADEL-issued access tokens protect authenticated and admin routes.
+- **Health Check**: Native `/` endpoint to verify application liveness.
 
 ---
 
@@ -19,7 +20,7 @@ A robust backend API built with AdonisJS 6 for the Antirecurso platform. It prov
 - **Database**: PostgreSQL 15+ (hosted on Supabase)
 - **ORM**: Lucid ORM
 - **Validation**: VineJS
-- **Authentication**: @adonisjs/auth (Pending full integration)
+- **Authentication**: Custom Bearer-token validation for ZITADEL OIDC access tokens
 - **Testing**: Japa
 - **Linting & Formatting**: ESLint and Prettier
 
@@ -30,6 +31,7 @@ A robust backend API built with AdonisJS 6 for the Antirecurso platform. It prov
 - Node.js 20 or higher
 - `npm` (or `pnpm`/`yarn`)
 - A **Supabase** account to host the PostgreSQL database instance.
+- ZITADEL issuer and audience details if you need to exercise authenticated routes locally.
 
 ---
 
@@ -58,16 +60,18 @@ cp .env.example .env
 
 To connect to your **Supabase PostgreSQL** instance, ensure you configure the direct connection string (port `5432`, not `6543`) in your `.env` file:
 
-| Variable      | Description                     | Example                 |
-| ------------- | ------------------------------- | ----------------------- |
-| `PORT`        | Application Port                | `3333`                  |
-| `NODE_ENV`    | Application environment         | `development`           |
-| `DB_URL`      | Supabase direct Postgres connection string | `postgresql://postgres:...@db.xxx.supabase.co:5432/postgres` |
-| `DB_SSL`      | Enable SSL for Postgres         | `true`                  |
-| `DB_SSL_REJECT_UNAUTHORIZED` | Require full certificate validation | `false` |
-| `SUPABASE_URL` | Supabase project URL for Storage API | `https://xxx.supabase.co` |
-| `SUPABASE_SERVICE_ROLE_KEY` | Service role key used server-side for Storage operations | `eyJ...` |
-| `SUPABASE_STORAGE_BUCKET` | Private bucket that stores note PDFs | `notes` |
+| Variable                     | Description                                              | Example                                                      |
+| ---------------------------- | -------------------------------------------------------- | ------------------------------------------------------------ |
+| `PORT`                       | Application Port                                         | `3333`                                                       |
+| `NODE_ENV`                   | Application environment                                  | `development`                                                |
+| `DB_URL`                     | Supabase direct Postgres connection string               | `postgresql://postgres:...@db.xxx.supabase.co:5432/postgres` |
+| `DB_SSL`                     | Enable SSL for Postgres                                  | `true`                                                       |
+| `DB_SSL_REJECT_UNAUTHORIZED` | Require full certificate validation                      | `false`                                                      |
+| `AUTH_ISSUER_URL`            | ZITADEL issuer URL used to validate JWTs                 | `https://zitadel.example.com`                                |
+| `AUTH_ALLOWED_AUDIENCES`     | Comma-separated accepted token audiences                 | `api,web`                                                    |
+| `SUPABASE_URL`               | Supabase project URL for Storage API                     | `https://xxx.supabase.co`                                    |
+| `SUPABASE_SERVICE_ROLE_KEY`  | Service role key used server-side for Storage operations | `eyJ...`                                                     |
+| `SUPABASE_STORAGE_BUCKET`    | Private bucket that stores note PDFs                     | `notes`                                                      |
 
 ### 4. Database Setup
 
@@ -93,7 +97,16 @@ Run the AdonisJS development server with Hot Module Replacement (HMR) enabled:
 npm run dev
 ```
 
-Open [http://localhost:3333](http://localhost:3333) in your browser. You should receive a JSON response `{ "status": "ok" }`, confirming end-to-end data flow and startup connectivity.
+Open [http://localhost:3333](http://localhost:3333) in your browser. You should receive a JSON response `{ "status": "ok" }`, confirming the API is running.
+
+---
+
+## Documentation
+
+- [API reference](./docs/API.md)
+- [Database schema reference](./docs/DATABASE_SCHEMA.md)
+
+Use these two documents as the source of truth for request contracts, response shapes, relationships, and database constraints.
 
 ---
 
@@ -138,27 +151,16 @@ Open [http://localhost:3333](http://localhost:3333) in your browser. You should 
 - **SSL configuration is environment-driven**. Supabase requires SSL connections. In `config/database.ts`, SSL is enabled when `DB_SSL=true`, and certificate verification is controlled by `DB_SSL_REJECT_UNAUTHORIZED`.
 - **Connection Mode**: Supabase provides both a _Direct Connection_ (port 5432) and a _Connection Pooler_ (port 6543, using PgBouncer in transaction mode). Because Lucid/Knex uses prepared statements by default (which transaction-mode PgBouncer does not support), **the direct connection (port 5432) is required and recommended**.
 
-**Authentication (WIP)**
+**Authentication (ZITADEL Bearer Tokens)**
 
-- Authentication relies on `@adonisjs/auth`. Note that the integration relies on standard Adonis mechanisms (and custom user tables) rather than integrating with external Supabase Auth. Route-level auth wiring is still intentionally left as TODO in the codebase.
+- Authenticated routes use [`app/middleware/auth_middleware.ts`](./app/middleware/auth_middleware.ts), which validates Bearer tokens against the configured ZITADEL issuer.
+- Optional-auth routes use [`app/middleware/optional_auth_middleware.ts`](./app/middleware/optional_auth_middleware.ts) so the same endpoint can return user-aware fields like `is_liked`.
+- Admin-only routes additionally pass through [`app/middleware/admin_middleware.ts`](./app/middleware/admin_middleware.ts) and require `authUser.isAdmin === true`.
+- Token verification is implemented in [`app/services/auth/zitadel_auth_service.ts`](./app/services/auth/zitadel_auth_service.ts), including issuer, audience, signature, and expiry checks.
 
 ### Database Schema
 
-```text
-users                  (Core users table)
-password_reset_codes   (Auth recovery)
-subjects               (Educational subjects)
-question_types         (Types of questions)
-questions              (Exam questions mapping to subjects)
-options                (Multiple choice options for questions)
-answers                (User submitted answers)
-answer_questions       (Junction table for answers and questions)
-comments               (User comments on questions/subjects)
-scores                 (User exam scores tracking)
-question_reports       (User reports on faulty questions)
-notes                  (Study materials and notes)
-likes                  (User likes on notes/comments)
-```
+The full table-by-table schema, constraints, deletion rules, and ER diagram live in [Database schema reference](./docs/DATABASE_SCHEMA.md).
 
 ---
 
@@ -166,18 +168,21 @@ likes                  (User likes on notes/comments)
 
 ### Required Variables
 
-| Variable      | Description                                  | How to Get                                 |
-| ------------- | -------------------------------------------- | ------------------------------------------ |
-| `NODE_ENV`    | Environment (`development`, `production`)    | Set locally or on host                     |
-| `LOG_LEVEL`   | Runtime log verbosity                        | `info`                                    |
-| `APP_KEY`     | AdonisJS secure key for cookies and sessions | Run `node ace generate:key`                |
-| `HOST`        | Interface the server binds to                | `0.0.0.0` in containers                    |
-| `DB_URL`      | Supabase direct connection string            | Supabase Dashboard -> Connect              |
-| `DB_SSL`      | Whether Postgres SSL should be enabled       | `true` for Supabase                        |
-| `DB_SSL_REJECT_UNAUTHORIZED` | Whether to reject untrusted cert chains | Often `false` on hosted platforms          |
-| `SUPABASE_URL` | Supabase project URL used by Storage REST API | Supabase Dashboard -> Project Settings     |
-| `SUPABASE_SERVICE_ROLE_KEY` | Server-side key for signing uploads/downloads and moving files | Supabase Dashboard -> API                  |
-| `SUPABASE_STORAGE_BUCKET` | Bucket containing the uploaded and distribution note files | Supabase Storage                           |
+| Variable                     | Description                                                    | How to Get                              |
+| ---------------------------- | -------------------------------------------------------------- | --------------------------------------- |
+| `NODE_ENV`                   | Environment (`development`, `production`)                      | Set locally or on host                  |
+| `LOG_LEVEL`                  | Runtime log verbosity                                          | `info`                                  |
+| `APP_KEY`                    | AdonisJS secure key for cookies and sessions                   | Run `node ace generate:key`             |
+| `HOST`                       | Interface the server binds to                                  | `0.0.0.0` in containers                 |
+| `DB_URL`                     | Supabase direct connection string                              | Supabase Dashboard -> Connect           |
+| `DB_SSL`                     | Whether Postgres SSL should be enabled                         | `true` for Supabase                     |
+| `DB_SSL_REJECT_UNAUTHORIZED` | Whether to reject untrusted cert chains                        | Often `false` on hosted platforms       |
+| `AUTH_ISSUER_URL`            | ZITADEL issuer used for JWT validation                         | ZITADEL -> OpenID configuration         |
+| `AUTH_ALLOWED_AUDIENCES`     | Optional comma-separated accepted audiences                    | ZITADEL API/client configuration        |
+| `AUTH_DEBUG`                 | Enables verbose auth logging                                   | `true` only while debugging auth issues |
+| `SUPABASE_URL`               | Supabase project URL used by Storage REST API                  | Supabase Dashboard -> Project Settings  |
+| `SUPABASE_SERVICE_ROLE_KEY`  | Server-side key for signing uploads/downloads and moving files | Supabase Dashboard -> API               |
+| `SUPABASE_STORAGE_BUCKET`    | Bucket containing the uploaded and distribution note files     | Supabase Storage                        |
 
 ---
 
