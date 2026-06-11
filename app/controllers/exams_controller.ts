@@ -168,6 +168,7 @@ export default class ExamsController {
       .preload('questions', (answerQuestionsQuery) => {
         answerQuestionsQuery.preload('question', (questionQuery) => {
           questionQuery.preload('options')
+          questionQuery.preload('questionType')
           questionQuery.preload('comments', (commentsQuery) => {
             commentsQuery.orderBy('createdAt', 'desc').preload('user')
           })
@@ -183,8 +184,13 @@ export default class ExamsController {
       const question = answerQuestion.question
 
       return {
-        question_id: question.id,
-        question: question.question,
+        question: {
+          id: question.id,
+          question: question.question,
+          correct_option: question.correctOption,
+          question_type: question.questionType?.name ?? 'Multiple Choice',
+          image: question.image ?? '',
+        },
         selected_option_id: answerQuestion.optionId,
         options: question.options.map((option) => ({
           id: option.id,
