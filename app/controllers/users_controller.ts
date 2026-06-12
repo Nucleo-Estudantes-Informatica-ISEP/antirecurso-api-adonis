@@ -27,23 +27,39 @@ export default class UsersController {
     return response.ok(this.serializeUser(authUser))
   }
 
-  /**
-   * Get the current user's scores.
-   * GET /user/scores
-   */
   async scores({ authUser, response }: AuthenticatedHttpContext) {
     await authUser.load('scores', (query) => {
       query.preload('subject')
     })
 
+    const subjectIds = authUser.scores.map(s => s.subjectId)
+    
+    let countsMap = new Map<number, number>()
+    if (subjectIds.length > 0) {
+      const { default: Answer } = await import('#models/answer')
+      const answersCountQuery = await Answer.query()
+        .where('userId', authUser.id)
+        .whereIn('subjectId', subjectIds)
+        .select('subjectId')
+        .count('* as total')
+        .groupBy('subjectId')
+  
+      for (const row of answersCountQuery) {
+        countsMap.set(row.subjectId, Number(row.$extras.total))
+      }
+    }
+
     return response.ok(
-      authUser.scores.map((score) => ({
-        score: score.score,
-        subject_id: score.subjectId,
-        subject: score.subject.name,
-        user: authUser.name,
-        show_scoreboard: score.showScoreboard,
-      }))
+      authUser.scores.map((score) => {
+        const totalTests = countsMap.get(score.subjectId) || 1
+        return {
+          score: score.score / totalTests,
+          subject_id: score.subjectId,
+          subject: score.subject.name,
+          user: authUser.name,
+          show_scoreboard: score.showScoreboard,
+        }
+      })
     )
   }
 
