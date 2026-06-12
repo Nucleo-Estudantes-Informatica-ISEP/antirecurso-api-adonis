@@ -166,6 +166,7 @@ export default class ExamsController {
       .where('id', examId)
       .preload('subject')
       .preload('questions', (answerQuestionsQuery) => {
+        answerQuestionsQuery.orderBy('id', 'asc')
         answerQuestionsQuery.preload('question', (questionQuery) => {
           questionQuery.preload('options')
           questionQuery.preload('questionType')
