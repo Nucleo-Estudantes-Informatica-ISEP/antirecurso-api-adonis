@@ -50,6 +50,7 @@ router.get('/exams/generate/:subject_id', [ExamsController, 'generate'])
 router.post('/exams/verify', [ExamsController, 'verify'])
 router.get('/exams', [ExamsController, 'index'])
 router.get('/exams/:id', [ExamsController, 'show'])
+router.get('/exams/:id/review', [ExamsController, 'publicReview'])
 
 // User (auth required)
 // TODO: add auth middleware when auth service is integrated
