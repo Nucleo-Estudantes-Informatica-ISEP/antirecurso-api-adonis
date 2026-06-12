@@ -222,6 +222,68 @@ export default class ExamsController {
   }
 
   /**
+   * Show a detailed exam attempt for public review (no auth required).
+   * GET /exams/:id/review
+   */
+  async publicReview({ params, response }: HttpContext) {
+    const examId = this.parseNumericInput(params.id)
+    if (examId === null) {
+      return response.badRequest({ message: 'Invalid exam id' })
+    }
+
+    const exam = await Answer.query()
+      .where('id', examId)
+      .preload('subject')
+      .preload('questions', (answerQuestionsQuery) => {
+        answerQuestionsQuery.preload('question', (questionQuery) => {
+          questionQuery.preload('options')
+          questionQuery.preload('comments', (commentsQuery) => {
+            commentsQuery.orderBy('createdAt', 'desc').preload('user')
+          })
+        })
+      })
+      .first()
+
+    if (!exam) {
+      return response.notFound({ message: 'Invalid answer' })
+    }
+
+    const questions = exam.questions.map((answerQuestion) => {
+      const question = answerQuestion.question
+
+      return {
+        question_id: question.id,
+        question: question.question,
+        selected_option_id: answerQuestion.optionId,
+        options: question.options.map((option) => ({
+          id: option.id,
+          name: option.name,
+          order: option.order,
+        })),
+        is_wrong: answerQuestion.isWrong,
+        correct_option: question.correctOption,
+        comments: question.comments.map((comment) => ({
+          id: comment.id,
+          comment: comment.comment,
+          user: comment.user.name,
+          question_id: comment.questionId,
+          created_at: comment.createdAt.toISO(),
+          is_admin: comment.user.isAdmin,
+          user_avatar: this.md5(comment.user.email.trim().toLowerCase()),
+        })),
+      }
+    })
+
+    return response.ok({
+      id: exam.id,
+      score: exam.score,
+      taken_at: exam.createdAt.toFormat('dd/MM/yyyy'),
+      subject: exam.subject.name,
+      questions,
+    })
+  }
+
+  /**
    * Aggregated admin exam statistics.
    * GET /admin/exams
    */
