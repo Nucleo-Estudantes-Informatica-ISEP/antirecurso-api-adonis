@@ -56,4 +56,17 @@ export default await Env.create(new URL('../', import.meta.url), {
   SUPABASE_URL: Env.schema.string.optional(),
   SUPABASE_SERVICE_ROLE_KEY: Env.schema.string.optional(),
   SUPABASE_STORAGE_BUCKET: Env.schema.string.optional(),
+
+  /*
+  |----------------------------------------------------------
+  | Variables for configuring code runner worker
+  |----------------------------------------------------------
+  */
+  REDIS_HOST: Env.schema.string(),
+  REDIS_PORT: Env.schema.number(),
+  REDIS_PASSWORD: Env.schema.string.optional(),
+  JUDGE0_URL: Env.schema.string(),
+  JUDGE0_SECRET: Env.schema.string(),
+  CALLBACK_PORT: Env.schema.number(),
+  WORKER_CONCURRENCY: Env.schema.number(),
 })
