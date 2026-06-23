@@ -3,6 +3,8 @@ import type { HttpContext } from '@adonisjs/core/http'
 import db from '@adonisjs/lucid/services/db'
 import Answer from '#models/answer'
 import Subject from '#models/subject'
+import User from '#models/user'
+import ExamState from '#models/exam_state'
 import ExamGenerationService from '#services/exams/exam_generation_service'
 import type { ExamMode } from '#services/exams/exam_config'
 import {
@@ -317,6 +319,99 @@ export default class ExamsController {
         count: Number(row.$extras.count),
       })),
     })
+  }
+
+  /**
+   * Save the current exam state for a user.
+   * POST /exams/state
+   */
+  async saveState({ request, response }: HttpContext) {
+    const userId = Number(request.input('user_id'))
+    if (!Number.isFinite(userId)) {
+      return response.unauthorized({ message: 'Authentication required' })
+    }
+
+    const user = await User.find(userId)
+    if (!user) {
+      return response.unauthorized({ message: 'Invalid user' })
+    }
+
+    const subjectId = Number(request.input('subject_id'))
+    const mode = request.input('mode')
+    const state = request.input('state')
+
+    if (!subjectId || !mode || !state) {
+      return response.badRequest({ message: 'Missing subject_id, mode, or state' })
+    }
+
+    const examState = await ExamState.updateOrCreate(
+      { userId: user.id, subjectId },
+      { mode, state }
+    )
+
+    return response.ok(examState)
+  }
+
+  /**
+   * Get the saved exam state for a user and subject.
+   * GET /exams/state/:subject_id
+   */
+  async getState({ params, request, response }: HttpContext) {
+    const userId = Number(request.input('user_id'))
+    if (!Number.isFinite(userId)) {
+      return response.unauthorized({ message: 'Authentication required' })
+    }
+
+    const subjectId = Number(params.subject_id)
+    if (!Number.isFinite(subjectId)) {
+      return response.badRequest({ message: 'Invalid subject id' })
+    }
+
+    const examState = await ExamState.query()
+      .where('userId', userId)
+      .where('subjectId', subjectId)
+      .first()
+
+    if (!examState) {
+      return response.notFound({ message: 'Exam state not found' })
+    }
+
+    // Expiry check: 3 days = 3 * 24 * 60 * 60 * 1000 ms
+    const expiryMs = 3 * 24 * 60 * 60 * 1000
+    const ageMs = Date.now() - examState.updatedAt.toMillis()
+    if (ageMs > expiryMs) {
+      await examState.delete()
+      return response.notFound({ message: 'Exam state expired' })
+    }
+
+    return response.ok(examState)
+  }
+
+  /**
+   * Delete/clear the saved exam state for a user and subject.
+   * DELETE /exams/state/:subject_id
+   */
+  async clearState({ params, request, response }: HttpContext) {
+    const userId = Number(request.input('user_id'))
+    if (!Number.isFinite(userId)) {
+      return response.unauthorized({ message: 'Authentication required' })
+    }
+
+    const subjectId = Number(params.subject_id)
+    if (!Number.isFinite(subjectId)) {
+      return response.badRequest({ message: 'Invalid subject id' })
+    }
+
+    const examState = await ExamState.query()
+      .where('userId', userId)
+      .where('subjectId', subjectId)
+      .first()
+
+    if (examState) {
+      await examState.delete()
+    }
+
+    return response.noContent()
   }
 
   private parseNumericInput(value: unknown): number | null {

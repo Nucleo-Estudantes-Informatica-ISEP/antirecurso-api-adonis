@@ -94,6 +94,15 @@ router
   .use(middleware.optionalAuth())
 router.post('/exams/verify', (ctx) => examsController.verify(ctx)).use(middleware.optionalAuth())
 router
+  .post('/exams/state', (ctx) => examsController.saveState(ctx as AuthenticatedHttpContext))
+  .use(middleware.auth())
+router
+  .get('/exams/state/:subject_id', (ctx) => examsController.getState(ctx as AuthenticatedHttpContext))
+  .use(middleware.auth())
+router
+  .delete('/exams/state/:subject_id', (ctx) => examsController.clearState(ctx as AuthenticatedHttpContext))
+  .use(middleware.auth())
+router
   .get('/exams', (ctx) => examsController.index(ctx as AuthenticatedHttpContext))
   .use(middleware.auth())
 router
@@ -113,6 +122,7 @@ router
   .use(middleware.auth())
 
 // Admin (auth + admin required)
+<<<<<<< HEAD
 router
   .get('/search', (ctx) => usersController.search(ctx))
   .use([middleware.auth(), middleware.admin()])
@@ -148,3 +158,10 @@ router
 router
   .get('/question-reports/:id', (ctx) => questionReportsController.show(ctx))
   .use([middleware.auth(), middleware.admin()])
+=======
+// TODO: add auth middleware + admin policy when auth service is integrated
+router.get('/search', [UsersController, 'search'])
+router.get('/users', [UsersController, 'listUsers'])
+router.get('/admin', [UsersController, 'adminSession'])
+router.get('/admin/exams', [ExamsController, 'stats'])
+>>>>>>> 182c957 (feat(exams): add auto-save and restore exam state)
