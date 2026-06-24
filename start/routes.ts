@@ -97,14 +97,13 @@ router
   .post('/exams/state', (ctx) => examsController.saveState(ctx as AuthenticatedHttpContext))
   .use(middleware.auth())
 router
-  .get('/exams/state/:subject_id', (ctx) =>
-    examsController.getState(ctx as AuthenticatedHttpContext)
-  )
+  .get('/exams/state', (ctx) => examsController.getState(ctx as AuthenticatedHttpContext))
   .use(middleware.auth())
 router
-  .delete('/exams/state/:subject_id', (ctx) =>
-    examsController.clearState(ctx as AuthenticatedHttpContext)
-  )
+  .delete('/exams/state', (ctx) => examsController.clearState(ctx as AuthenticatedHttpContext))
+  .use(middleware.auth())
+router
+  .get('/exams/pending', (ctx) => examsController.pending(ctx as AuthenticatedHttpContext))
   .use(middleware.auth())
 router
   .get('/exams', (ctx) => examsController.index(ctx as AuthenticatedHttpContext))
@@ -117,6 +116,11 @@ router.get('/exams/:id/review', (ctx) => examsController.publicReview(ctx))
 // User (auth required)
 router
   .get('/user', (ctx) => usersController.session(ctx as AuthenticatedHttpContext))
+  .use(middleware.auth())
+router
+  .post('/user/account-resolution', (ctx) =>
+    usersController.accountResolution(ctx as AuthenticatedHttpContext)
+  )
   .use(middleware.auth())
 router
   .get('/user/scores', (ctx) => usersController.scores(ctx as AuthenticatedHttpContext))

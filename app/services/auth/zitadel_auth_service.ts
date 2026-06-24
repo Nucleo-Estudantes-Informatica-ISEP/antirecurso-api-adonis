@@ -271,11 +271,33 @@ export default class ZitadelAuthService {
     }
 
     const existingByEmail = await User.findBy('email', claims.email)
-    if (existingByEmail && !existingByEmail.authSubject) {
+    if (existingByEmail) {
+      if (existingByEmail.authSubject === claims.sub) {
+        existingByEmail.merge({
+          name: claims.name,
+          emailVerifiedAt: claims.email_verified
+            ? DateTime.now()
+            : existingByEmail.emailVerifiedAt,
+        })
+        await existingByEmail.save()
+        return existingByEmail
+      }
+
+      const { default: AccountLinkPending } = await import('#models/account_link_pending')
+      const existingPending = await AccountLinkPending.findBy('userId', existingByEmail.id)
+      if (!existingPending) {
+        await AccountLinkPending.create({
+          userId: existingByEmail.id,
+          authSubject: claims.sub,
+        })
+      }
+
       existingByEmail.merge({
-        authSubject: claims.sub,
+        email: claims.email,
         name: claims.name,
-        emailVerifiedAt: claims.email_verified ? DateTime.now() : existingByEmail.emailVerifiedAt,
+        emailVerifiedAt: claims.email_verified
+          ? DateTime.now()
+          : existingByEmail.emailVerifiedAt,
       })
       await existingByEmail.save()
       return existingByEmail

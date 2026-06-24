@@ -1,6 +1,8 @@
 import { createHash } from 'node:crypto'
 import type { HttpContext } from '@adonisjs/core/http'
+import db from '@adonisjs/lucid/services/db'
 import User from '#models/user'
+import AccountLinkPending from '#models/account_link_pending'
 import { searchUsersValidator } from '#validators/user'
 import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
 
@@ -24,7 +26,33 @@ export default class UsersController {
    * GET /user
    */
   async session({ authUser, response }: AuthenticatedHttpContext) {
-    return response.ok(this.serializeUser(authUser))
+    const pending = await AccountLinkPending.findBy('userId', authUser.id)
+    const requiresAccountResolution = pending !== null
+
+    let accountSummary = null
+    if (requiresAccountResolution && pending) {
+      const scoresCount = await User.query()
+        .where('id', authUser.id)
+        .withCount('scores')
+        .first()
+      const answersCount = await db.from('answers')
+        .where('userId', authUser.id)
+        .count('* as total')
+        .first()
+
+      accountSummary = {
+        email: authUser.email,
+        pending_auth_subject: pending.authSubject,
+        scores: Number((scoresCount as any)?.['$extras.scores_count'] ?? 0),
+        answers: Number(Number(answersCount?.total ?? 0)),
+      }
+    }
+
+    return response.ok({
+      ...this.serializeUser(authUser),
+      requires_account_resolution: requiresAccountResolution,
+      account_summary: accountSummary,
+    })
   }
 
   async scores({ authUser, response }: AuthenticatedHttpContext) {
@@ -61,6 +89,40 @@ export default class UsersController {
         }
       })
     )
+  }
+
+  async accountResolution(
+    { authUser, request, response }: AuthenticatedHttpContext
+  ) {
+    const action = request.input('action')
+
+    if (action !== 'keep' && action !== 'discard') {
+      return response.badRequest({ message: 'Invalid action' })
+    }
+
+    const pending = await AccountLinkPending.findBy('userId', authUser.id)
+    if (!pending) {
+      return response.badRequest({ message: 'No pending account resolution' })
+    }
+
+    if (action === 'discard') {
+      await db.transaction(async (trx) => {
+        await trx.from('answers').where('userId', authUser.id).delete()
+        await trx.from('scores').where('userId', authUser.id).delete()
+        await trx.from('question_reports').where('userId', authUser.id).delete()
+        await trx.from('account_link_pending').where('id', pending.id).delete()
+        await trx.from('users').where('id', authUser.id).delete()
+      })
+
+      return response.ok({ message: 'Account data discarded successfully' })
+    }
+
+    await AccountLinkPending.query().where('id', pending.id).delete()
+    await User.query()
+      .where('id', authUser.id)
+      .update({ authSubject: pending.authSubject })
+
+    return response.ok({ message: 'Account linked successfully' })
   }
 
   /**

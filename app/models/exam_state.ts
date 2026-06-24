@@ -23,6 +23,9 @@ export default class ExamState extends BaseModel {
   })
   declare state: any
 
+  @column()
+  declare isCompleted: boolean
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 

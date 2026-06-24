@@ -2,9 +2,8 @@ import { createHash } from 'node:crypto'
 import type { HttpContext } from '@adonisjs/core/http'
 import db from '@adonisjs/lucid/services/db'
 import Answer from '#models/answer'
-import Subject from '#models/subject'
-import User from '#models/user'
 import ExamState from '#models/exam_state'
+import Subject from '#models/subject'
 import ExamGenerationService from '#services/exams/exam_generation_service'
 import type { ExamMode } from '#services/exams/exam_config'
 import {
@@ -322,98 +321,111 @@ export default class ExamsController {
   }
 
   /**
-   * Save the current exam state for a user.
+   * Save exam state for the authenticated user.
    * POST /exams/state
    */
-  async saveState({ request, response }: HttpContext) {
-    const userId = Number(request.input('user_id'))
-    if (!Number.isFinite(userId)) {
-      return response.unauthorized({ message: 'Authentication required' })
-    }
-
-    const user = await User.find(userId)
-    if (!user) {
-      return response.unauthorized({ message: 'Invalid user' })
-    }
-
-    const subjectId = Number(request.input('subject_id'))
-    const mode = request.input('mode')
-    const state = request.input('state')
-
-    if (!subjectId || !mode || !state) {
-      return response.badRequest({ message: 'Missing subject_id, mode, or state' })
-    }
-
-    const examState = await ExamState.updateOrCreate(
-      { userId: user.id, subjectId },
-      { mode, state }
-    )
-
-    return response.ok(examState)
-  }
-
-  /**
-   * Get the saved exam state for a user and subject.
-   * GET /exams/state/:subject_id
-   */
-  async getState({ params, request, response }: HttpContext) {
-    const userId = Number(request.input('user_id'))
-    if (!Number.isFinite(userId)) {
-      return response.unauthorized({ message: 'Authentication required' })
-    }
-
-    const subjectId = Number(params.subject_id)
-    if (!Number.isFinite(subjectId)) {
+  async saveState({ authUser, request, response }: AuthenticatedHttpContext) {
+    const subjectId = this.parseNumericInput(request.input('subject_id'))
+    if (subjectId === null) {
       return response.badRequest({ message: 'Invalid subject id' })
     }
 
-    const examState = await ExamState.query()
-      .where('userId', userId)
+    const mode = request.input('mode', 'default')
+
+    const state = await ExamState.query()
+      .where('userId', authUser.id)
       .where('subjectId', subjectId)
+      .where('mode', mode)
       .first()
 
-    if (!examState) {
-      return response.notFound({ message: 'Exam state not found' })
+    const payload = request.input('state') || {}
+
+    if (state) {
+      await state.merge({ state: payload }).save()
+      return response.ok({ id: state.id, state: state.state })
     }
 
-    // Expiry check: 3 days = 3 * 24 * 60 * 60 * 1000 ms
-    const expiryMs = 3 * 24 * 60 * 60 * 1000
-    const ageMs = Date.now() - examState.updatedAt.toMillis()
-    if (ageMs > expiryMs) {
-      await examState.delete()
-      return response.notFound({ message: 'Exam state expired' })
-    }
+    const newState = await ExamState.create({
+      userId: authUser.id,
+      subjectId,
+      mode,
+      state: payload,
+      isCompleted: false,
+    })
 
-    return response.ok(examState)
+    return response.ok({ id: newState.id, state: newState.state })
   }
 
   /**
-   * Delete/clear the saved exam state for a user and subject.
-   * DELETE /exams/state/:subject_id
+   * Get exam state for the authenticated user.
+   * GET /exams/state?subject_id=1&mode=default
    */
-  async clearState({ params, request, response }: HttpContext) {
-    const userId = Number(request.input('user_id'))
-    if (!Number.isFinite(userId)) {
-      return response.unauthorized({ message: 'Authentication required' })
-    }
-
-    const subjectId = Number(params.subject_id)
-    if (!Number.isFinite(subjectId)) {
+  async getState({ authUser, request, response }: AuthenticatedHttpContext) {
+    const subjectId = this.parseNumericInput(request.input('subject_id'))
+    if (subjectId === null) {
       return response.badRequest({ message: 'Invalid subject id' })
     }
 
-    const examState = await ExamState.query()
-      .where('userId', userId)
+    const mode = request.input('mode', 'default')
+
+    const state = await ExamState.query()
+      .where('userId', authUser.id)
       .where('subjectId', subjectId)
+      .where('mode', mode)
+      .where('isCompleted', false)
       .first()
 
-    if (examState) {
-      await examState.delete()
+    if (!state) {
+      return response.ok({ state: null })
     }
+
+    return response.ok({ state: state.state, id: state.id })
+  }
+
+  /**
+   * Clear exam state for the authenticated user.
+   * DELETE /exams/state?subject_id=1&mode=default
+   */
+  async clearState({ authUser, request, response }: AuthenticatedHttpContext) {
+    const subjectId = this.parseNumericInput(request.input('subject_id'))
+    if (subjectId === null) {
+      return response.badRequest({ message: 'Invalid subject id' })
+    }
+
+    const mode = request.input('mode', 'default')
+
+    await ExamState.query()
+      .where('userId', authUser.id)
+      .where('subjectId', subjectId)
+      .where('mode', mode)
+      .delete()
 
     return response.noContent()
   }
 
+  /**
+   * List pending (in-progress) exams for the authenticated user.
+   * GET /exams/pending
+   */
+  async pending({ authUser, response }: AuthenticatedHttpContext) {
+    const states = await ExamState.query()
+      .where('userId', authUser.id)
+      .where('isCompleted', false)
+      .preload('subject')
+      .orderBy('updatedAt', 'desc')
+
+    return response.ok({
+      data: states.map((state) => ({
+        id: state.id,
+        subject: state.subject.name,
+        subject_id: state.subjectId,
+        mode: state.mode,
+        state: state.state,
+        created_at: state.createdAt.toISO(),
+        updated_at: state.updatedAt.toISO(),
+      })),
+    })
+  }
   private parseNumericInput(value: unknown): number | null {
     if (typeof value === 'number' && Number.isFinite(value)) {
       return value
