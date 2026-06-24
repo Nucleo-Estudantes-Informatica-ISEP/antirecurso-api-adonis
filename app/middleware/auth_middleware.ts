@@ -14,19 +14,27 @@ export default class AuthMiddleware {
       ctx.authUser = session.user
       ctx.authClaims = session.claims
 
-      const { default: AccountLinkPending } = await import('#models/account_link_pending')
-      const pending = await AccountLinkPending.findBy('userId', session.user.id)
-      if (pending) {
-        const rawPath = ctx.request.url()
-        const path = rawPath.includes('?') ? rawPath.split('?')[0] : rawPath
-        const isAllowed =
-          (path === '/user' && ctx.request.method() === 'GET') ||
-          (path === '/user/account-resolution' && ctx.request.method() === 'POST')
+      try {
+        const { default: AccountLinkPending } = await import('#models/account_link_pending')
+        const pending = await AccountLinkPending.findBy('userId', session.user.id)
+        if (pending) {
+          const rawPath = ctx.request.url()
+          const path = rawPath.includes('?') ? rawPath.split('?')[0] : rawPath
+          const isAllowed =
+            (path === '/user' && ctx.request.method() === 'GET') ||
+            (path === '/user/account-resolution' && ctx.request.method() === 'POST')
 
-        if (!isAllowed) {
-          return ctx.response.forbidden({
-            message: 'Account resolution required',
-            requires_account_resolution: true,
+          if (!isAllowed) {
+            return ctx.response.forbidden({
+              message: 'Account resolution required',
+              requires_account_resolution: true,
+            })
+          }
+        }
+      } catch (error) {
+        if (env.get('AUTH_DEBUG')) {
+          console.warn('[auth][pending-check] failed', {
+            message: (error as any)?.message ?? String(error),
           })
         }
       }
