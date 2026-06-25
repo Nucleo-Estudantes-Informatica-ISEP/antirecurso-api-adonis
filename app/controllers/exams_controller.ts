@@ -124,7 +124,7 @@ export default class ExamsController {
 
     const page = data.page ?? 1
     const exams = await Answer.query()
-      .where('userId', authUser.id)
+      .where('user_id', authUser.id)
       .preload('subject')
       .orderBy('createdAt', 'desc')
       .paginate(page, EXAM_HISTORY_PAGE_SIZE)
@@ -333,8 +333,8 @@ export default class ExamsController {
     const mode = request.input('mode', 'default')
 
     const state = await ExamState.query()
-      .where('userId', authUser.id)
-      .where('subjectId', subjectId)
+      .where('user_id', authUser.id)
+      .where('subject_id', subjectId)
       .where('mode', mode)
       .first()
 
@@ -369,8 +369,8 @@ export default class ExamsController {
     const mode = request.input('mode', 'default')
 
     const state = await ExamState.query()
-      .where('userId', authUser.id)
-      .where('subjectId', subjectId)
+      .where('user_id', authUser.id)
+      .where('subject_id', subjectId)
       .where('mode', mode)
       .where('isCompleted', false)
       .first()
@@ -395,8 +395,8 @@ export default class ExamsController {
     const mode = request.input('mode', 'default')
 
     await ExamState.query()
-      .where('userId', authUser.id)
-      .where('subjectId', subjectId)
+      .where('user_id', authUser.id)
+      .where('subject_id', subjectId)
       .where('mode', mode)
       .delete()
 
@@ -409,7 +409,7 @@ export default class ExamsController {
    */
   async pending({ authUser, response }: AuthenticatedHttpContext) {
     const states = await ExamState.query()
-      .where('userId', authUser.id)
+      .where('user_id', authUser.id)
       .where('isCompleted', false)
       .preload('subject')
       .orderBy('updatedAt', 'desc')

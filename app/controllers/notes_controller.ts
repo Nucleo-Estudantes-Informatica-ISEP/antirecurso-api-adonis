@@ -220,7 +220,7 @@ export default class NotesController {
       return response.unauthorized({ message: 'Authentication required' })
     }
 
-    const existingLike = await Like.query().where('noteId', note.id).where('userId', userId).first()
+    const existingLike = await Like.query().where('note_id', note.id).where('user_id', userId).first()
 
     if (!existingLike) {
       try {
