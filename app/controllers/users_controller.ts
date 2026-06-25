@@ -3,6 +3,9 @@ import type { HttpContext } from '@adonisjs/core/http'
 import db from '@adonisjs/lucid/services/db'
 import User from '#models/user'
 import AccountLinkPending from '#models/account_link_pending'
+import Answer from '#models/answer'
+import Score from '#models/score'
+import QuestionReport from '#models/question_report'
 import { searchUsersValidator } from '#validators/user'
 import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
 
@@ -31,20 +34,18 @@ export default class UsersController {
 
     let accountSummary = null
     if (requiresAccountResolution && pending) {
-      const scoresCount = await User.query()
+      // Fazemos as duas contagens na mesma query usando as relações do Model!
+      const userCounts = await User.query()
         .where('id', authUser.id)
         .withCount('scores')
-        .first()
-      const answersCount = await db.from('answers')
-        .where('userId', authUser.id)
-        .count('* as total')
+        .withCount('answers')
         .first()
 
       accountSummary = {
         email: authUser.email,
         pending_auth_subject: pending.authSubject,
-        scores: Number((scoresCount as any)?.['$extras.scores_count'] ?? 0),
-        answers: Number(Number(answersCount?.total ?? 0)),
+        scores: Number((userCounts as any)?.['$extras.scores_count'] ?? 0),
+        answers: Number((userCounts as any)?.['$extras.answers_count'] ?? 0),
       }
     }
 
@@ -107,11 +108,12 @@ export default class UsersController {
 
     if (action === 'discard') {
       await db.transaction(async (trx) => {
-        await trx.from('answers').where('userId', authUser.id).delete()
-        await trx.from('scores').where('userId', authUser.id).delete()
-        await trx.from('question_reports').where('userId', authUser.id).delete()
-        await trx.from('account_link_pending').where('id', pending.id).delete()
-        await trx.from('users').where('id', authUser.id).delete()
+        // Usamos os Models e passamos a transação para dentro da query
+        await Answer.query().useTransaction(trx).where('userId', authUser.id).delete()
+        await Score.query().useTransaction(trx).where('userId', authUser.id).delete()
+        await QuestionReport.query().useTransaction(trx).where('userId', authUser.id).delete()
+        await AccountLinkPending.query().useTransaction(trx).where('id', pending.id).delete()
+        await User.query().useTransaction(trx).where('id', authUser.id).delete()
       })
 
       return response.ok({ message: 'Account data discarded successfully' })
