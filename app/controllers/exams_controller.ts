@@ -293,7 +293,7 @@ export default class ExamsController {
       Answer.query()
         .select(db.raw('DATE(created_at) as date'))
         .count('* as count')
-        .where('created_at', '>=', db.raw("CURRENT_TIMESTAMP - INTERVAL '7 days'"))
+        .where('created_at', '>=', new Date(Date.now() - 7 * 24 * 60 * 60 * 1000))
         .groupByRaw('DATE(created_at)')
         .orderByRaw('DATE(created_at)'),
       Answer.query()

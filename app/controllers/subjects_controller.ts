@@ -136,6 +136,22 @@ export default class SubjectsController {
       .select('answers.user_id')
       .select('users.name as user_name')
       .select('users.email as user_email')
+    const scoresRow = await db
+      .from('answers')
+      .innerJoin('users', 'users.id', 'answers.user_id')
+      .where('answers.subject_id', subjectId)
+      .whereNotNull('answers.user_id')
+      .whereExists((builder) => {
+        builder
+          .from('scores')
+          .whereRaw('scores.user_id = answers.user_id')
+          .where('scores.subject_id', subjectId)
+          .where('scores.show_scoreboard', true)
+      })
+      .groupBy('answers.user_id', 'users.id', 'users.name', 'users.email')
+      .select('answers.user_id')
+      .select('users.name as user_name')
+      .select('users.email as user_email')
       .select(db.raw('avg(answers.score) as s'))
       .select(db.raw('count(answers.score) as c'))
       .havingRaw('count(answers.score) >= ?', [MIN_ANSWERS])
@@ -143,34 +159,30 @@ export default class SubjectsController {
       .limit(SCOREBOARD_LIMIT)
 
     if (mode !== 'all') {
-      query = query.where('answers.mode', mode)
+      scoresRow = scoresRow.where('answers.mode', mode)
     }
 
-    const scores = await query
+    const scoresRowResult = await scoresRow
+      answers_user_id: score.answers_user_id,
+      users_name: score.users_name,
+      users_email: score.users_email,
+      s: score.s,
+      c: score.c,
+    }))
 
-    // Get total answers for the subject
     const totalResult = await Answer.query()
       .where('subject_id', subjectId)
       .count('* as total')
       .first()
     const total = Number(totalResult?.$extras.total ?? 0)
 
-    // Build the response — no extra queries needed, user data is already joined
-    const scoreEntries = scores.map(
-      (score: {
-        user_id: number
-        user_name: string
-        user_email: string
-        s: number
-        c: number
-      }) => ({
-        user_id: score.user_id,
-        user_name: score.user_name,
-        avatar: createHash('md5').update(score.user_email.toLowerCase().trim()).digest('hex'),
-        score: Number(Number(score.s).toFixed(2)),
-        exams: Number(score.c),
-      })
-    )
+    const scoreEntries = scores.map((score) => ({
+      user_id: score.answers_user_id,
+      user_name: score.users_name,
+      avatar: createHash('md5').update(score.users_email.toLowerCase().trim()).digest('hex'),
+      score: Number(Number(score.s).toFixed(2)),
+      exams: Number(score.c),
+    }))
 
     return response.ok({
       subject_id: subjectId,
@@ -178,7 +190,7 @@ export default class SubjectsController {
       scores: scoreEntries,
       limit: SCOREBOARD_LIMIT,
       min_answers: MIN_ANSWERS,
-      total: total,
+      total,
     })
   }
 
