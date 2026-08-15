@@ -2,6 +2,7 @@ import { randomUUID, webcrypto } from 'node:crypto'
 import { DateTime } from 'luxon'
 import env from '#start/env'
 import User from '#models/user'
+import { getAuthNeiRoles, hasAuthNeiRole, type AuthNeiRole } from '#services/auth/auth_nei_roles'
 
 type JsonWebKey = {
   alg?: string
@@ -39,6 +40,7 @@ type JwtPayload = {
   name?: string
   preferred_username?: string
   sub?: string
+  nbf?: number
   [key: string]: unknown
 }
 
@@ -46,6 +48,7 @@ export type AuthClaims = JwtPayload & {
   sub: string
   email: string
   name: string
+  authNeiRoles: AuthNeiRole[]
 }
 
 export type AuthSession = {
@@ -60,6 +63,15 @@ class UnauthorizedError extends Error {
   constructor(message: string) {
     super(message)
     this.name = 'UnauthorizedError'
+  }
+}
+
+class ForbiddenError extends Error {
+  status = 403
+
+  constructor(message: string) {
+    super(message)
+    this.name = 'ForbiddenError'
   }
 }
 
@@ -87,6 +99,9 @@ export default class ZitadelAuthService {
     const accessToken = this.extractBearerToken(authorizationHeader)
     const claims = await this.verifyAccessToken(accessToken)
     const completeClaims = await this.resolveClaims(accessToken, claims)
+    if (!hasAuthNeiRole(completeClaims, 'student')) {
+      throw new ForbiddenError('The student role is required')
+    }
     const user = await this.findOrCreateUser(completeClaims)
 
     return {
@@ -132,7 +147,7 @@ export default class ZitadelAuthService {
       })
     }
 
-    if (!header.alg || !header.kid) {
+    if (!header.alg || !header.kid || !['RS256', 'RS384', 'RS512'].includes(header.alg)) {
       throw new UnauthorizedError('Unsupported token header')
     }
 
@@ -144,6 +159,10 @@ export default class ZitadelAuthService {
     const nowInSeconds = Math.floor(Date.now() / 1000)
     if (!payload.exp || payload.exp <= nowInSeconds) {
       throw new UnauthorizedError('Access token expired')
+    }
+
+    if (payload.nbf && payload.nbf > nowInSeconds) {
+      throw new UnauthorizedError('Access token is not active yet')
     }
 
     if (!payload.sub) {
@@ -178,12 +197,12 @@ export default class ZitadelAuthService {
   private assertAudience(payload: JwtPayload) {
     const configuredAudiences = env
       .get('AUTH_ALLOWED_AUDIENCES')
-      ?.split(',')
+      .split(',')
       .map((audience) => audience.trim())
       .filter(Boolean)
 
-    if (!configuredAudiences?.length) {
-      return
+    if (!configuredAudiences.length) {
+      throw new UnauthorizedError('Token audience validation is not configured')
     }
 
     const audiences = Array.isArray(payload.aud) ? payload.aud : payload.aud ? [payload.aud] : []
@@ -197,8 +216,15 @@ export default class ZitadelAuthService {
   private async resolveClaims(accessToken: string, payload: JwtPayload): Promise<AuthClaims> {
     let email = typeof payload.email === 'string' ? payload.email : undefined
     let name = typeof payload.name === 'string' ? payload.name : undefined
+    let mergedClaims: JwtPayload = payload
+    const roleClaim = env.get('AUTH_ROLE_CLAIM') ?? 'urn:zitadel:iam:org:project:roles'
 
-    if (!email || !name) {
+    if (
+      !email ||
+      !name ||
+      payload.email_verified === undefined ||
+      getAuthNeiRoles(payload, roleClaim).length === 0
+    ) {
       const discovery = await this.getDiscoveryDocument()
 
       if (discovery.userinfo_endpoint) {
@@ -206,6 +232,11 @@ export default class ZitadelAuthService {
 
         email = email ?? userinfo.email
         name = name ?? userinfo.name ?? userinfo.preferred_username
+        mergedClaims = {
+          ...userinfo,
+          ...payload,
+          email_verified: payload.email_verified ?? userinfo.email_verified,
+        }
       }
     }
 
@@ -213,27 +244,29 @@ export default class ZitadelAuthService {
       throw new UnauthorizedError('User email is missing from the identity provider response')
     }
 
+    if (mergedClaims.email_verified !== true) {
+      throw new UnauthorizedError('A verified identity-provider email is required')
+    }
+
     if (env.get('AUTH_DEBUG')) {
       console.info('[auth][api-claims]', {
         subject: payload.sub ?? null,
         hasEmail: Boolean(email),
         hasName: Boolean(name ?? email.split('@')[0]),
-        emailVerified: payload.email_verified ?? null,
+        emailVerified: mergedClaims.email_verified ?? null,
       })
     }
 
     return {
-      ...payload,
+      ...mergedClaims,
       sub: payload.sub!,
       email,
       name: name ?? email.split('@')[0],
+      authNeiRoles: getAuthNeiRoles(mergedClaims, roleClaim),
     }
   }
 
-  private async fetchUserInfo(
-    userinfoEndpoint: string,
-    accessToken: string
-  ): Promise<{ email: string; name?: string; preferred_username?: string }> {
+  private async fetchUserInfo(userinfoEndpoint: string, accessToken: string): Promise<JwtPayload> {
     const response = await fetch(userinfoEndpoint, {
       headers: {
         accept: 'application/json',
@@ -245,17 +278,7 @@ export default class ZitadelAuthService {
       throw new UnauthorizedError('Unable to fetch user profile from ZITADEL')
     }
 
-    const data = (await response.json()) as {
-      email?: string
-      name?: string
-      preferred_username?: string
-    }
-
-    return {
-      email: data.email ?? '',
-      name: data.name,
-      preferred_username: data.preferred_username,
-    }
+    return (await response.json()) as JwtPayload
   }
 
   private async findOrCreateUser(claims: AuthClaims): Promise<User> {
@@ -264,7 +287,7 @@ export default class ZitadelAuthService {
       existingBySubject.merge({
         email: claims.email,
         name: claims.name,
-        emailVerifiedAt: claims.email_verified ? DateTime.now() : existingBySubject.emailVerifiedAt,
+        emailVerifiedAt: existingBySubject.emailVerifiedAt ?? DateTime.now(),
       })
       await existingBySubject.save()
       return existingBySubject
@@ -275,9 +298,7 @@ export default class ZitadelAuthService {
       if (existingByEmail.authSubject === claims.sub) {
         existingByEmail.merge({
           name: claims.name,
-          emailVerifiedAt: claims.email_verified
-            ? DateTime.now()
-            : existingByEmail.emailVerifiedAt,
+          emailVerifiedAt: existingByEmail.emailVerifiedAt ?? DateTime.now(),
         })
         await existingByEmail.save()
         return existingByEmail
@@ -295,9 +316,7 @@ export default class ZitadelAuthService {
       existingByEmail.merge({
         email: claims.email,
         name: claims.name,
-        emailVerifiedAt: claims.email_verified
-          ? DateTime.now()
-          : existingByEmail.emailVerifiedAt,
+        emailVerifiedAt: existingByEmail.emailVerifiedAt ?? DateTime.now(),
       })
       await existingByEmail.save()
       return existingByEmail
@@ -307,7 +326,7 @@ export default class ZitadelAuthService {
       authSubject: claims.sub,
       email: claims.email,
       name: claims.name,
-      emailVerifiedAt: claims.email_verified ? DateTime.now() : null,
+      emailVerifiedAt: DateTime.now(),
       password: `oidc-managed:${randomUUID()}`,
       isAdmin: false,
       rememberToken: null,
@@ -342,6 +361,9 @@ export default class ZitadelAuthService {
     }
 
     const document = (await response.json()) as OpenIdConfiguration
+    if (document.issuer.replace(/\/$/, '') !== issuer) {
+      throw new UnauthorizedError('OIDC discovery issuer mismatch')
+    }
     ZitadelAuthService.discoveryCache = {
       expiresAt: Date.now() + DISCOVERY_CACHE_TTL_MS,
       value: document,
@@ -403,4 +425,4 @@ export default class ZitadelAuthService {
   }
 }
 
-export { UnauthorizedError }
+export { ForbiddenError, UnauthorizedError }

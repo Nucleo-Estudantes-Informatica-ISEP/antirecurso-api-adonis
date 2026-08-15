@@ -45,7 +45,8 @@ export default await Env.create(new URL('../', import.meta.url), {
   |----------------------------------------------------------
   */
   AUTH_ISSUER_URL: Env.schema.string(),
-  AUTH_ALLOWED_AUDIENCES: Env.schema.string.optional(),
+  AUTH_ALLOWED_AUDIENCES: Env.schema.string(),
+  AUTH_ROLE_CLAIM: Env.schema.string.optional(),
   AUTH_DEBUG: Env.schema.boolean.optional(),
 
   /*

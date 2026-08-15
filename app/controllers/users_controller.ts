@@ -8,6 +8,7 @@ import Score from '#models/score'
 import QuestionReport from '#models/question_report'
 import { searchUsersValidator } from '#validators/user'
 import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
+import { hasAuthNeiRole } from '#services/auth/auth_nei_roles'
 
 export default class UsersController {
   /**
@@ -28,7 +29,7 @@ export default class UsersController {
    * Get the current user's session info.
    * GET /user
    */
-  async session({ authUser, response }: AuthenticatedHttpContext) {
+  async session({ authUser, authClaims, response }: AuthenticatedHttpContext) {
     const pending = await AccountLinkPending.findBy('userId', authUser.id)
     const requiresAccountResolution = pending !== null
 
@@ -51,6 +52,7 @@ export default class UsersController {
 
     return response.ok({
       ...this.serializeUser(authUser),
+      is_admin: hasAuthNeiRole(authClaims, 'admin'),
       requires_account_resolution: requiresAccountResolution,
       account_summary: accountSummary,
     })
@@ -65,7 +67,6 @@ export default class UsersController {
 
     let countsMap = new Map<number, number>()
     if (subjectIds.length > 0) {
-      const { default: Answer } = await import('#models/answer')
       const answersCountQuery = await Answer.query()
         .where('userId', authUser.id)
         .whereIn('subjectId', subjectIds)
@@ -92,9 +93,7 @@ export default class UsersController {
     )
   }
 
-  async accountResolution(
-    { authUser, request, response }: AuthenticatedHttpContext
-  ) {
+  async accountResolution({ authUser, request, response }: AuthenticatedHttpContext) {
     const action = request.input('action')
 
     if (action !== 'keep' && action !== 'discard') {
@@ -120,9 +119,7 @@ export default class UsersController {
     }
 
     await AccountLinkPending.query().where('id', pending.id).delete()
-    await User.query()
-      .where('id', authUser.id)
-      .update({ authSubject: pending.authSubject })
+    await User.query().where('id', authUser.id).update({ authSubject: pending.authSubject })
 
     return response.ok({ message: 'Account linked successfully' })
   }
@@ -196,8 +193,11 @@ export default class UsersController {
    * Get admin session info.
    * GET /admin
    */
-  async adminSession({ authUser, response }: AuthenticatedHttpContext) {
-    return response.ok(this.serializeUser(authUser))
+  async adminSession({ authUser, authClaims, response }: AuthenticatedHttpContext) {
+    return response.ok({
+      ...this.serializeUser(authUser),
+      is_admin: hasAuthNeiRole(authClaims, 'admin'),
+    })
   }
 
   private md5(value: string): string {

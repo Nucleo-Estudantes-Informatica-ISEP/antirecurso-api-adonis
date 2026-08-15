@@ -15,6 +15,7 @@ import {
 import ExamVerificationService from '#services/exams/exam_verification_service'
 import { examHistoryValidator, generateExamValidator, verifyExamValidator } from '#validators/exam'
 import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
+import { hasAuthNeiRole } from '#services/auth/auth_nei_roles'
 
 export default class ExamsController {
   private examGenerationService = new ExamGenerationService()
@@ -146,7 +147,7 @@ export default class ExamsController {
    * Show a detailed exam attempt with selected option, correct answer and comments.
    * GET /exams/:id
    */
-  async show({ authUser, params, response }: AuthenticatedHttpContext) {
+  async show({ authUser, authClaims, params, response }: AuthenticatedHttpContext) {
     const examId = this.parseNumericInput(params.id)
     if (examId === null) {
       return response.badRequest({ message: 'Invalid exam id' })
@@ -157,7 +158,7 @@ export default class ExamsController {
       return response.notFound({ message: 'Invalid answer' })
     }
 
-    if (!authUser.isAdmin && examOwnership.userId !== authUser.id) {
+    if (!hasAuthNeiRole(authClaims, 'admin') && examOwnership.userId !== authUser.id) {
       return response.forbidden({
         message: 'You are not authorized to view this exam attempt',
       })
