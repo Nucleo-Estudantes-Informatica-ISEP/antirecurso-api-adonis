@@ -9,6 +9,7 @@ import StorageService, {
   StorageObjectNotFoundError,
   StorageRequestError,
 } from '#services/storage_service'
+import { hasAuthNeiRole } from '#services/auth/auth_nei_roles'
 
 const storageService = new StorageService()
 
@@ -93,9 +94,9 @@ export default class NotesController {
    * Moves the uploaded file from the temp path to the distribution path.
    * POST /subjects/:id/notes
    */
-  async store({ authUser, params, request, response }: HttpContext) {
+  async store({ authUser, authClaims, params, request, response }: HttpContext) {
     const data = await request.validateUsing(createNoteValidator)
-    if (!authUser?.isAdmin) {
+    if (!hasAuthNeiRole(authClaims, 'admin')) {
       return response.forbidden({ message: 'You are not an admin' })
     }
 
@@ -134,8 +135,8 @@ export default class NotesController {
    * Update an existing note (admin only).
    * PATCH /notes/:id
    */
-  async update({ authUser, params, request, response }: HttpContext) {
-    if (!authUser?.isAdmin) {
+  async update({ authClaims, params, request, response }: HttpContext) {
+    if (!hasAuthNeiRole(authClaims, 'admin')) {
       return response.forbidden({ message: 'You are not an admin' })
     }
 
@@ -170,8 +171,8 @@ export default class NotesController {
    * Delete an existing note (admin only).
    * DELETE /notes/:id
    */
-  async destroy({ authUser, params, response }: HttpContext) {
-    if (!authUser?.isAdmin) {
+  async destroy({ authClaims, params, response }: HttpContext) {
+    if (!hasAuthNeiRole(authClaims, 'admin')) {
       return response.forbidden({ message: 'You are not an admin' })
     }
 
@@ -220,7 +221,10 @@ export default class NotesController {
       return response.unauthorized({ message: 'Authentication required' })
     }
 
-    const existingLike = await Like.query().where('note_id', note.id).where('user_id', userId).first()
+    const existingLike = await Like.query()
+      .where('note_id', note.id)
+      .where('user_id', userId)
+      .first()
 
     if (!existingLike) {
       try {

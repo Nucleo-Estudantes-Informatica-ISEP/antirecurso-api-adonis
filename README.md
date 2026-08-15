@@ -163,7 +163,7 @@ The events feature is covered by these admin-only routes:
 
 - Authenticated routes use [`app/middleware/auth_middleware.ts`](./app/middleware/auth_middleware.ts), which validates Bearer tokens against the configured ZITADEL issuer.
 - Optional-auth routes use [`app/middleware/optional_auth_middleware.ts`](./app/middleware/optional_auth_middleware.ts) so the same endpoint can return user-aware fields like `is_liked`.
-- Admin-only routes additionally pass through [`app/middleware/admin_middleware.ts`](./app/middleware/admin_middleware.ts) and require `authUser.isAdmin === true`.
+- Authenticated routes require the validated AuthNEI `student` role. Admin-only routes additionally pass through [`app/middleware/admin_middleware.ts`](./app/middleware/admin_middleware.ts) and require the validated AuthNEI `admin` role.
 - Token verification is implemented in [`app/services/auth/zitadel_auth_service.ts`](./app/services/auth/zitadel_auth_service.ts), including issuer, audience, signature, and expiry checks.
 
 ### Database Schema
@@ -186,7 +186,8 @@ The full table-by-table schema, constraints, deletion rules, and ER diagram live
 | `DB_SSL`                     | Whether Postgres SSL should be enabled                         | `true` for Supabase                     |
 | `DB_SSL_REJECT_UNAUTHORIZED` | Whether to reject untrusted cert chains                        | Often `false` on hosted platforms       |
 | `AUTH_ISSUER_URL`            | ZITADEL issuer used for JWT validation                         | ZITADEL -> OpenID configuration         |
-| `AUTH_ALLOWED_AUDIENCES`     | Optional comma-separated accepted audiences                    | ZITADEL API/client configuration        |
+| `AUTH_ALLOWED_AUDIENCES`     | Required comma-separated accepted audiences                    | ZITADEL API/client configuration        |
+| `AUTH_ROLE_CLAIM`            | Optional shared-project role claim override                     | ZITADEL project configuration           |
 | `AUTH_DEBUG`                 | Enables verbose auth logging                                   | `true` only while debugging auth issues |
 | `SUPABASE_URL`               | Supabase project URL used by Storage REST API                  | Supabase Dashboard -> Project Settings  |
 | `SUPABASE_SERVICE_ROLE_KEY`  | Server-side key for signing uploads/downloads and moving files | Supabase Dashboard -> API               |
@@ -323,3 +324,19 @@ You are connecting to the Supabase PgBouncer pooler (port 6543) in transaction m
 
 **Solution:**
 Supabase enforces SSL. Set `DB_SSL=true`. If your platform fails certificate validation against Supabase's chain, set `DB_SSL_REJECT_UNAUTHORIZED=false`.
+
+## AuthNEI shared-project authorization
+
+The API treats ZITADEL/AuthNEI as the source of truth for authorization. Bearer tokens must have a
+valid signature, exact configured issuer, unexpired lifetime, and at least one audience from the
+required `AUTH_ALLOWED_AUDIENCES` list. Only RSA `RS256`, `RS384`, and `RS512` signatures are
+accepted.
+
+Project roles are normalized to `student`, `nei_member`, `admin`, and `employee` from the standard
+ZITADEL project-role claim (including project-ID claim variants). Authenticated application routes
+require `student`; admin middleware and controller defense-in-depth checks require `admin` from the
+validated token. The legacy database `is_admin` column remains temporarily for compatibility and
+display of historical authors, but it no longer authorizes requests.
+
+Set `AUTH_ROLE_CLAIM` only when the shared NEI Platform project emits a custom claim name. The
+default is `urn:zitadel:iam:org:project:roles`.
