@@ -219,7 +219,12 @@ export default class ZitadelAuthService {
     let mergedClaims: JwtPayload = payload
     const roleClaim = env.get('AUTH_ROLE_CLAIM') ?? 'urn:zitadel:iam:org:project:roles'
 
-    if (!email || !name || getAuthNeiRoles(payload, roleClaim).length === 0) {
+    if (
+      !email ||
+      !name ||
+      payload.email_verified === undefined ||
+      getAuthNeiRoles(payload, roleClaim).length === 0
+    ) {
       const discovery = await this.getDiscoveryDocument()
 
       if (discovery.userinfo_endpoint) {
@@ -227,7 +232,11 @@ export default class ZitadelAuthService {
 
         email = email ?? userinfo.email
         name = name ?? userinfo.name ?? userinfo.preferred_username
-        mergedClaims = { ...userinfo, ...payload }
+        mergedClaims = {
+          ...userinfo,
+          ...payload,
+          email_verified: payload.email_verified ?? userinfo.email_verified,
+        }
       }
     }
 
@@ -244,7 +253,7 @@ export default class ZitadelAuthService {
         subject: payload.sub ?? null,
         hasEmail: Boolean(email),
         hasName: Boolean(name ?? email.split('@')[0]),
-        emailVerified: payload.email_verified ?? null,
+        emailVerified: mergedClaims.email_verified ?? null,
       })
     }
 
@@ -278,7 +287,7 @@ export default class ZitadelAuthService {
       existingBySubject.merge({
         email: claims.email,
         name: claims.name,
-        emailVerifiedAt: claims.email_verified ? DateTime.now() : existingBySubject.emailVerifiedAt,
+        emailVerifiedAt: existingBySubject.emailVerifiedAt ?? DateTime.now(),
       })
       await existingBySubject.save()
       return existingBySubject
@@ -289,7 +298,7 @@ export default class ZitadelAuthService {
       if (existingByEmail.authSubject === claims.sub) {
         existingByEmail.merge({
           name: claims.name,
-          emailVerifiedAt: claims.email_verified ? DateTime.now() : existingByEmail.emailVerifiedAt,
+          emailVerifiedAt: existingByEmail.emailVerifiedAt ?? DateTime.now(),
         })
         await existingByEmail.save()
         return existingByEmail
@@ -307,7 +316,7 @@ export default class ZitadelAuthService {
       existingByEmail.merge({
         email: claims.email,
         name: claims.name,
-        emailVerifiedAt: claims.email_verified ? DateTime.now() : existingByEmail.emailVerifiedAt,
+        emailVerifiedAt: existingByEmail.emailVerifiedAt ?? DateTime.now(),
       })
       await existingByEmail.save()
       return existingByEmail
@@ -317,7 +326,7 @@ export default class ZitadelAuthService {
       authSubject: claims.sub,
       email: claims.email,
       name: claims.name,
-      emailVerifiedAt: claims.email_verified ? DateTime.now() : null,
+      emailVerifiedAt: DateTime.now(),
       password: `oidc-managed:${randomUUID()}`,
       isAdmin: false,
       rememberToken: null,

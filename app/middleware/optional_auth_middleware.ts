@@ -25,7 +25,10 @@ export default class OptionalAuthMiddleware {
       await next()
     } catch (error) {
       if (error instanceof ForbiddenError) {
-        return ctx.response.forbidden({ message: error.message })
+        // Route is public. A valid AuthNEI identity without the app's student role
+        // continues anonymously; malformed/invalid credentials still receive 401 below.
+        await next()
+        return
       }
 
       if (error instanceof UnauthorizedError) {
