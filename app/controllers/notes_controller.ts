@@ -10,6 +10,7 @@ import StorageService, {
   StorageRequestError,
 } from '#services/storage_service'
 import { hasAuthNeiRole } from '#services/auth/auth_nei_roles'
+import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
 
 const storageService = new StorageService()
 
@@ -94,7 +95,7 @@ export default class NotesController {
    * Moves the uploaded file from the temp path to the distribution path.
    * POST /subjects/:id/notes
    */
-  async store({ authUser, authClaims, params, request, response }: HttpContext) {
+  async store({ authUser, authClaims, params, request, response }: AuthenticatedHttpContext) {
     const data = await request.validateUsing(createNoteValidator)
     if (!hasAuthNeiRole(authClaims, 'admin')) {
       return response.forbidden({ message: 'You are not an admin' })

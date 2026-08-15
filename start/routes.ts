@@ -83,7 +83,7 @@ router.post('/notes/:id/like', (ctx) => notesController.like(ctx)).use(middlewar
 
 // Notes & Uploads (auth required)
 router
-  .post('/subjects/:id/notes', (ctx) => notesController.store(ctx))
+  .post('/subjects/:id/notes', (ctx) => notesController.store(ctx as AuthenticatedHttpContext))
   .use([middleware.auth(), middleware.admin()])
 router.post('/notes/:id/view', (ctx) => notesController.view(ctx)).use(middleware.auth())
 router.post('/upload', (ctx) => uploadsController.upload(ctx)).use(middleware.auth())
