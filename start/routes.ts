@@ -18,6 +18,7 @@ import UploadsController from '#controllers/uploads_controller'
 import UsersController from '#controllers/users_controller'
 import SubjectsController from '#controllers/subjects_controller'
 import type { AuthenticatedHttpContext } from '../contracts/auth.js'
+import { getHealthStatus } from '#services/health_service'
 import { middleware } from './kernel.js'
 
 const commentsController = new CommentsController()
@@ -32,7 +33,7 @@ const subjectsController = new SubjectsController()
 
 // Health check
 router.get('/', async () => {
-  return { status: 'ok' }
+  return getHealthStatus()
 })
 
 // Subjects
