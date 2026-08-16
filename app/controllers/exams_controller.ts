@@ -16,6 +16,7 @@ import ExamVerificationService from '#services/exams/exam_verification_service'
 import { examHistoryValidator, generateExamValidator, verifyExamValidator } from '#validators/exam'
 import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
 import { hasAuthNeiRole } from '#services/auth/auth_nei_roles'
+import { canViewExamAttempt } from '#services/exams/exam_access_policy'
 
 export default class ExamsController {
   private examGenerationService = new ExamGenerationService()
@@ -158,7 +159,13 @@ export default class ExamsController {
       return response.notFound({ message: 'Invalid answer' })
     }
 
-    if (!hasAuthNeiRole(authClaims, 'admin') && examOwnership.userId !== authUser.id) {
+    if (
+      !canViewExamAttempt({
+        authenticatedUserId: authUser.id,
+        ownerUserId: examOwnership.userId,
+        isAdmin: hasAuthNeiRole(authClaims, 'admin'),
+      })
+    ) {
       return response.forbidden({
         message: 'You are not authorized to view this exam attempt',
       })
@@ -194,68 +201,6 @@ export default class ExamsController {
           question_type: question.questionType?.name ?? 'Multiple Choice',
           image: question.image ?? '',
         },
-        selected_option_id: answerQuestion.optionId,
-        options: question.options.map((option) => ({
-          id: option.id,
-          name: option.name,
-          order: option.order,
-        })),
-        is_wrong: answerQuestion.isWrong,
-        correct_option: question.correctOption,
-        comments: question.comments.map((comment) => ({
-          id: comment.id,
-          comment: comment.comment,
-          user: comment.user.name,
-          question_id: comment.questionId,
-          created_at: comment.createdAt.toISO(),
-          is_admin: comment.user.isAdmin,
-          user_avatar: this.md5(comment.user.email.trim().toLowerCase()),
-        })),
-      }
-    })
-
-    return response.ok({
-      id: exam.id,
-      score: exam.score,
-      taken_at: exam.createdAt.toFormat('dd/MM/yyyy'),
-      subject: exam.subject.name,
-      questions,
-    })
-  }
-
-  /**
-   * Show a detailed exam attempt for public review (no auth required).
-   * GET /exams/:id/review
-   */
-  async publicReview({ params, response }: HttpContext) {
-    const examId = this.parseNumericInput(params.id)
-    if (examId === null) {
-      return response.badRequest({ message: 'Invalid exam id' })
-    }
-
-    const exam = await Answer.query()
-      .where('id', examId)
-      .preload('subject')
-      .preload('questions', (answerQuestionsQuery) => {
-        answerQuestionsQuery.preload('question', (questionQuery) => {
-          questionQuery.preload('options')
-          questionQuery.preload('comments', (commentsQuery) => {
-            commentsQuery.orderBy('createdAt', 'desc').preload('user')
-          })
-        })
-      })
-      .first()
-
-    if (!exam) {
-      return response.notFound({ message: 'Invalid answer' })
-    }
-
-    const questions = exam.questions.map((answerQuestion) => {
-      const question = answerQuestion.question
-
-      return {
-        question_id: question.id,
-        question: question.question,
         selected_option_id: answerQuestion.optionId,
         options: question.options.map((option) => ({
           id: option.id,

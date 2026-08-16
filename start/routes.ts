@@ -112,8 +112,6 @@ router
 router
   .get('/exams/:id', (ctx) => examsController.show(ctx as AuthenticatedHttpContext))
   .use(middleware.auth())
-router.get('/exams/:id/review', (ctx) => examsController.publicReview(ctx))
-
 // User (auth required)
 router
   .get('/user', (ctx) => usersController.session(ctx as AuthenticatedHttpContext))
