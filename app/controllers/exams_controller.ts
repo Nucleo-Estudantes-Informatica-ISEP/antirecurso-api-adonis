@@ -3,6 +3,7 @@ import type { HttpContext } from '@adonisjs/core/http'
 import db from '@adonisjs/lucid/services/db'
 import Answer from '#models/answer'
 import ExamState from '#models/exam_state'
+import Question from '#models/question'
 import Subject from '#models/subject'
 import ExamGenerationService from '#services/exams/exam_generation_service'
 import type { ExamMode } from '#services/exams/exam_config'
@@ -13,10 +14,17 @@ import {
   modeRequiresUser,
 } from '#services/exams/exam_config'
 import ExamVerificationService from '#services/exams/exam_verification_service'
-import { examHistoryValidator, generateExamValidator, verifyExamValidator } from '#validators/exam'
+import {
+  examHistoryValidator,
+  examStateIdentifierValidator,
+  generateExamValidator,
+  saveExamStateValidator,
+  verifyExamValidator,
+} from '#validators/exam'
 import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
 import { hasAuthNeiRole } from '#services/auth/auth_nei_roles'
 import { canViewExamAttempt } from '#services/exams/exam_access_policy'
+import { InvalidExamStateError, normalizeSavedExamState } from '#services/exams/exam_state_policy'
 
 export default class ExamsController {
   private examGenerationService = new ExamGenerationService()
@@ -271,30 +279,47 @@ export default class ExamsController {
    * POST /exams/state
    */
   async saveState({ authUser, request, response }: AuthenticatedHttpContext) {
-    const subjectId = this.parseNumericInput(request.input('subject_id'))
-    if (subjectId === null) {
-      return response.badRequest({ message: 'Invalid subject id' })
+    const data = await request.validateUsing(saveExamStateValidator)
+    const subject = await Subject.find(data.subject_id)
+    if (!subject) return response.notFound({ message: 'Invalid subject' })
+
+    let payload
+    try {
+      payload = normalizeSavedExamState(data.state, data.subject_id, data.mode)
+    } catch (error) {
+      if (error instanceof InvalidExamStateError) {
+        return response.badRequest({ message: error.message })
+      }
+      throw error
     }
 
-    const mode = request.input('mode', 'default')
+    const matchingQuestionCount = await Question.query()
+      .where('subject_id', data.subject_id)
+      .whereIn('id', payload.questionIds)
+      .count('* as total')
+      .first()
+    if (Number(matchingQuestionCount?.$extras.total ?? 0) !== payload.questionIds.length) {
+      return response.badRequest({ message: 'Exam state contains questions from another subject' })
+    }
 
     const state = await ExamState.query()
       .where('user_id', authUser.id)
-      .where('subject_id', subjectId)
-      .where('mode', mode)
+      .where('subject_id', data.subject_id)
+      .where('mode', data.mode)
       .first()
 
-    const payload = request.input('state') || {}
-
     if (state) {
+      if (state.isCompleted) {
+        return response.conflict({ message: 'Completed exam state cannot be modified' })
+      }
       await state.merge({ state: payload }).save()
       return response.ok({ id: state.id, state: state.state })
     }
 
     const newState = await ExamState.create({
       userId: authUser.id,
-      subjectId,
-      mode,
+      subjectId: data.subject_id,
+      mode: data.mode,
       state: payload,
       isCompleted: false,
     })
@@ -307,17 +332,17 @@ export default class ExamsController {
    * GET /exams/state?subject_id=1&mode=default
    */
   async getState({ authUser, request, response }: AuthenticatedHttpContext) {
-    const subjectId = this.parseNumericInput(request.input('subject_id'))
-    if (subjectId === null) {
-      return response.badRequest({ message: 'Invalid subject id' })
-    }
-
-    const mode = request.input('mode', 'default')
+    const data = await request.validateUsing(examStateIdentifierValidator, {
+      data: {
+        subject_id: this.parseNumericInput(request.input('subject_id')) ?? undefined,
+        mode: request.input('mode', 'default'),
+      },
+    })
 
     const state = await ExamState.query()
       .where('user_id', authUser.id)
-      .where('subject_id', subjectId)
-      .where('mode', mode)
+      .where('subject_id', data.subject_id)
+      .where('mode', data.mode)
       .where('isCompleted', false)
       .first()
 
@@ -325,7 +350,18 @@ export default class ExamsController {
       return response.ok({ state: null })
     }
 
-    return response.ok({ state: state.state, id: state.id })
+    try {
+      const normalizedState = normalizeSavedExamState(state.state, data.subject_id, data.mode)
+      return response.ok({
+        state: { ...normalizedState, savedAt: state.updatedAt.toMillis() },
+        id: state.id,
+      })
+    } catch (error) {
+      if (error instanceof InvalidExamStateError) {
+        return response.ok({ state: null })
+      }
+      throw error
+    }
   }
 
   /**
@@ -333,17 +369,17 @@ export default class ExamsController {
    * DELETE /exams/state?subject_id=1&mode=default
    */
   async clearState({ authUser, request, response }: AuthenticatedHttpContext) {
-    const subjectId = this.parseNumericInput(request.input('subject_id'))
-    if (subjectId === null) {
-      return response.badRequest({ message: 'Invalid subject id' })
-    }
-
-    const mode = request.input('mode', 'default')
+    const data = await request.validateUsing(examStateIdentifierValidator, {
+      data: {
+        subject_id: this.parseNumericInput(request.input('subject_id')) ?? undefined,
+        mode: request.input('mode', 'default'),
+      },
+    })
 
     await ExamState.query()
       .where('user_id', authUser.id)
-      .where('subject_id', subjectId)
-      .where('mode', mode)
+      .where('subject_id', data.subject_id)
+      .where('mode', data.mode)
       .delete()
 
     return response.noContent()
@@ -361,15 +397,29 @@ export default class ExamsController {
       .orderBy('updatedAt', 'desc')
 
     return response.ok({
-      data: states.map((state) => ({
-        id: state.id,
-        subject: state.subject.name,
-        subject_id: state.subjectId,
-        mode: state.mode,
-        state: state.state,
-        created_at: state.createdAt.toISO(),
-        updated_at: state.updatedAt.toISO(),
-      })),
+      data: states.flatMap((state) => {
+        try {
+          const normalizedState = normalizeSavedExamState(
+            state.state,
+            state.subjectId,
+            state.mode as ExamMode
+          )
+          return [
+            {
+              id: state.id,
+              subject: state.subject.name,
+              subject_id: state.subjectId,
+              mode: state.mode,
+              state: { ...normalizedState, savedAt: state.updatedAt.toMillis() },
+              created_at: state.createdAt.toISO(),
+              updated_at: state.updatedAt.toISO(),
+            },
+          ]
+        } catch (error) {
+          if (error instanceof InvalidExamStateError) return []
+          throw error
+        }
+      }),
     })
   }
   private parseNumericInput(value: unknown): number | null {
