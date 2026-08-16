@@ -23,6 +23,7 @@ env:
   APP_KEY: ci-only-app-key-with-at-least-32-characters
   DB_URL: postgres://postgres:postgres@127.0.0.1:5432/antirecurso_test
   AUTH_ISSUER_URL: https://auth.example.test
+  AUTH_ALLOWED_AUDIENCES: antirecurso-ci
 
 jobs:
   quality:
