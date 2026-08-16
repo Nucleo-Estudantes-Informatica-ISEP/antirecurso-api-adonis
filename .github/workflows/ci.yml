@@ -1,0 +1,116 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_ENV: test
+  PORT: 3333
+  HOST: 127.0.0.1
+  LOG_LEVEL: silent
+  SESSION_DRIVER: memory
+  APP_KEY: ci-only-app-key-with-at-least-32-characters
+  DB_URL: postgres://postgres:postgres@127.0.0.1:5432/antirecurso_test
+  AUTH_ISSUER_URL: https://auth.example.test
+  AUTH_ALLOWED_AUDIENCES: antirecurso-ci
+
+jobs:
+  quality:
+    name: Lint, typecheck, test, migrate & build
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: antirecurso_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d antirecurso_test"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        run: node ace test --no-assets
+
+      - name: Apply migrations to an isolated database
+        run: node ace migration:run --force
+
+      - name: Production build
+        run: npm run build
+
+      - name: Reject critical production dependency advisories
+        run: npm audit --omit=dev --audit-level=critical
+
+  docker:
+    name: Production Docker image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Build image
+        run: docker build -t antirecurso-api-check .
+
+      - name: Verify non-root runtime
+        run: test "$(docker inspect --format '{{.Config.User}}' antirecurso-api-check)" = "node"
+
+  secret-scan:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Install verified Gitleaks binary
+        env:
+          GITLEAKS_VERSION: 8.30.1
+        run: |
+          asset="gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          base="https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}"
+          curl --fail --silent --show-error --location --output "$asset" "$base/$asset"
+          curl --fail --silent --show-error --location --output checksums.txt "$base/gitleaks_${GITLEAKS_VERSION}_checksums.txt"
+          grep " $asset$" checksums.txt | sha256sum --check --strict
+          tar -xzf "$asset" gitleaks
+
+      - name: Scan pull-request commits
+        if: github.event_name == 'pull_request'
+        run: ./gitleaks git --redact --no-banner --log-opts="${{ github.event.pull_request.base.sha }}..${{ github.sha }}" .
+
+      - name: Scan pushed commit
+        if: github.event_name != 'pull_request'
+        run: ./gitleaks git --redact --no-banner --log-opts=-1 .
