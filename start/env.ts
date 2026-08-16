@@ -48,6 +48,7 @@ export default await Env.create(new URL('../', import.meta.url), {
   AUTH_ALLOWED_AUDIENCES: Env.schema.string(),
   AUTH_ROLE_CLAIM: Env.schema.string.optional(),
   AUTH_DEBUG: Env.schema.boolean.optional(),
+  CORS_ALLOWED_ORIGINS: Env.schema.string.optional(),
 
   /*
   |----------------------------------------------------------
