@@ -32,8 +32,8 @@ export default class UsersController {
       query.preload('subject')
     })
 
-    const subjectIds = authUser.scores.map(s => s.subjectId)
-    
+    const subjectIds = authUser.scores.map((s) => s.subjectId)
+
     let countsMap = new Map<number, number>()
     if (subjectIds.length > 0) {
       const { default: Answer } = await import('#models/answer')
@@ -43,7 +43,7 @@ export default class UsersController {
         .select('subjectId')
         .count('* as total')
         .groupBy('subjectId')
-  
+
       for (const row of answersCountQuery) {
         countsMap.set(row.subjectId, Number(row.$extras.total))
       }
