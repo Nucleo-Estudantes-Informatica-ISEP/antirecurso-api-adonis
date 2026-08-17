@@ -264,9 +264,7 @@ export default class ZitadelAuthService {
       existingBySubject.merge({
         email: claims.email,
         name: claims.name,
-        emailVerifiedAt: claims.email_verified
-          ? DateTime.now()
-          : existingBySubject.emailVerifiedAt,
+        emailVerifiedAt: claims.email_verified ? DateTime.now() : existingBySubject.emailVerifiedAt,
       })
       await existingBySubject.save()
       return existingBySubject
