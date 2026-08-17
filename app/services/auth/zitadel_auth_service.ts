@@ -2,7 +2,7 @@ import { randomUUID, webcrypto } from 'node:crypto'
 import { DateTime } from 'luxon'
 import env from '#start/env'
 import User from '#models/user'
-import { getAuthNeiRoles, hasAuthNeiRole, type AuthNeiRole } from '#services/auth/auth_nei_roles'
+import { getAuthNeiRoles, type AuthNeiRole } from '#services/auth/auth_nei_roles'
 
 type JsonWebKey = {
   alg?: string
@@ -99,9 +99,6 @@ export default class ZitadelAuthService {
     const accessToken = this.extractBearerToken(authorizationHeader)
     const claims = await this.verifyAccessToken(accessToken)
     const completeClaims = await this.resolveClaims(accessToken, claims)
-    if (!hasAuthNeiRole(completeClaims, 'student')) {
-      throw new ForbiddenError('The student role is required')
-    }
     const user = await this.findOrCreateUser(completeClaims)
 
     return {
@@ -218,13 +215,9 @@ export default class ZitadelAuthService {
     let name = typeof payload.name === 'string' ? payload.name : undefined
     let mergedClaims: JwtPayload = payload
     const roleClaim = env.get('AUTH_ROLE_CLAIM') ?? 'urn:zitadel:iam:org:project:roles'
+    const hasRoleClaim = Object.prototype.hasOwnProperty.call(payload, roleClaim)
 
-    if (
-      !email ||
-      !name ||
-      payload.email_verified === undefined ||
-      getAuthNeiRoles(payload, roleClaim).length === 0
-    ) {
+    if (!email || !name || payload.email_verified === undefined || !hasRoleClaim) {
       const discovery = await this.getDiscoveryDocument()
 
       if (discovery.userinfo_endpoint) {
