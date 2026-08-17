@@ -13,6 +13,31 @@ jobs:
     name: Full-history secret scan
     runs-on: ubuntu-latest
     steps:
-      - uses: Nucleo-Estudantes-Informatica-ISEP/.github/.github/actions/secret-scan@master
+      - name: Checkout full history
+        uses: actions/checkout@v5
         with:
-          full-history: "true"
+          fetch-depth: 0
+
+      - name: Install verified Gitleaks
+        shell: bash
+        run: |
+          set -euo pipefail
+          version=8.30.1
+          asset="gitleaks_${version}_linux_x64.tar.gz"
+          base="https://github.com/gitleaks/gitleaks/releases/download/v${version}"
+          curl -fsSL -o "$RUNNER_TEMP/$asset" "$base/$asset"
+          curl -fsSL -o "$RUNNER_TEMP/checksums.txt" "$base/gitleaks_${version}_checksums.txt"
+          (cd "$RUNNER_TEMP" && grep " $asset$" checksums.txt | sha256sum --check --strict)
+          tar -xzf "$RUNNER_TEMP/$asset" -C "$RUNNER_TEMP" gitleaks
+
+      - name: Scan full history and print sanitized metadata
+        shell: bash
+        run: |
+          set +e
+          "$RUNNER_TEMP/gitleaks" git --redact --no-banner --report-format json --report-path "$RUNNER_TEMP/gitleaks.json" .
+          status=$?
+          set -e
+          if [ -s "$RUNNER_TEMP/gitleaks.json" ]; then
+            jq -r '.[] | "rule=\(.RuleID) file=\(.File) commit=\(.Commit) line=\(.StartLine)"' "$RUNNER_TEMP/gitleaks.json"
+          fi
+          exit "$status"
