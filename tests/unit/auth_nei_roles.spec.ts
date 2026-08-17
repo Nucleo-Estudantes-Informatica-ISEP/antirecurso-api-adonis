@@ -2,28 +2,38 @@ import { test } from '@japa/runner'
 import { getAuthNeiRoles, hasAuthNeiRole } from '#services/auth/auth_nei_roles'
 
 test.group('AuthNEI roles', () => {
-  test('normalizes shared-project role object and filters unknown roles', ({ assert }) => {
+  test('normalizes AntiRecurso admin and filters unknown roles', ({ assert }) => {
     const roles = getAuthNeiRoles({
       'urn:zitadel:iam:org:project:roles': {
-        student: { 'org-id': 'org-id' },
         admin: { 'org-id': 'org-id' },
         unsupported: { 'org-id': 'org-id' },
       },
     })
 
-    assert.deepEqual(roles, ['student', 'admin'])
+    assert.deepEqual(roles, ['admin'])
     assert.isTrue(hasAuthNeiRole({ authNeiRoles: roles }, 'admin'))
   })
 
-  test('supports project-id claim variants and configured claims', ({ assert }) => {
+  test('supports an explicitly configured AntiRecurso role claim', ({ assert }) => {
     const roles = getAuthNeiRoles(
       {
-        'urn:zitadel:iam:org:project:id:project-id:roles': ['employee'],
-        'custom_roles': 'student,nei_member',
+        custom_roles: 'admin',
       },
       'custom_roles'
     )
 
-    assert.deepEqual(roles, ['student', 'nei_member', 'employee'])
+    assert.deepEqual(roles, ['admin'])
+  })
+
+  test('does not aggregate roles from another ZITADEL project', ({ assert }) => {
+    const roles = getAuthNeiRoles({
+      'urn:zitadel:iam:org:project:roles': {},
+      'urn:zitadel:iam:org:project:id:orbit-project:roles': {
+        admin: { 'org-id': 'org-id' },
+        nei_member: { 'org-id': 'org-id' },
+      },
+    })
+
+    assert.deepEqual(roles, [])
   })
 })
