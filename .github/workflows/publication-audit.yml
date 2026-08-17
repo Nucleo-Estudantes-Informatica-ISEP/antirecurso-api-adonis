@@ -38,6 +38,14 @@ jobs:
           status=$?
           set -e
           if [ -s "$RUNNER_TEMP/gitleaks.json" ]; then
-            jq -r '.[] | "rule=\(.RuleID) file=\(.File) commit=\(.Commit) line=\(.StartLine)"' "$RUNNER_TEMP/gitleaks.json"
+            while IFS= read -r row; do
+              rule=$(printf '%s' "$row" | base64 -d | jq -r '.RuleID')
+              file=$(printf '%s' "$row" | base64 -d | jq -r '.File')
+              commit=$(printf '%s' "$row" | base64 -d | jq -r '.Commit')
+              line=$(printf '%s' "$row" | base64 -d | jq -r '.StartLine')
+              raw=$(git show "$commit:$file" | sed -n "${line}p")
+              context=$(printf '%s' "$raw" | sed -E 's/([=:]).*/\1 [REDACTED]/')
+              printf 'rule=%s file=%s commit=%s line=%s context=%s\n' "$rule" "$file" "$commit" "$line" "$context"
+            done < <(jq -r '.[] | @base64' "$RUNNER_TEMP/gitleaks.json")
           fi
           exit "$status"
