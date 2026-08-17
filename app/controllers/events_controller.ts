@@ -53,9 +53,7 @@ export default class EventsController {
     const data = await request.validateUsing(updateEventValidator)
     const event = await Event.findOrFail(params.id)
 
-    const nextStartDate = data.start_date
-      ? DateTime.fromJSDate(data.start_date)
-      : event.startDate
+    const nextStartDate = data.start_date ? DateTime.fromJSDate(data.start_date) : event.startDate
     const nextEndDate = data.end_date ? DateTime.fromJSDate(data.end_date) : event.endDate
 
     if (nextEndDate < nextStartDate) {
