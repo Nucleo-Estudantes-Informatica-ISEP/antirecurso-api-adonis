@@ -2,7 +2,7 @@ import { test } from '@japa/runner'
 import { getAuthNeiRoles, hasAuthNeiRole } from '#services/auth/auth_nei_roles'
 
 test.group('AuthNEI roles', () => {
-  test('normalizes AntiRecurso admin and filters unknown roles', ({ assert }) => {
+  test('normalizes the generic admin claim when no override is configured', ({ assert }) => {
     const roles = getAuthNeiRoles({
       'urn:zitadel:iam:org:project:roles': {
         admin: { 'org-id': 'org-id' },
@@ -14,25 +14,35 @@ test.group('AuthNEI roles', () => {
     assert.isTrue(hasAuthNeiRole({ authNeiRoles: roles }, 'admin'))
   })
 
-  test('supports an explicitly configured AntiRecurso role claim', ({ assert }) => {
+  test('reads admin from an explicitly configured global project claim', ({ assert }) => {
+    const globalClaim = 'urn:zitadel:iam:org:project:nei-global-project:roles'
     const roles = getAuthNeiRoles(
       {
-        custom_roles: 'admin',
+        [globalClaim]: {
+          admin: { 'org-id': 'org-id' },
+        },
       },
-      'custom_roles'
+      globalClaim
     )
 
     assert.deepEqual(roles, ['admin'])
   })
 
-  test('does not aggregate roles from another ZITADEL project', ({ assert }) => {
-    const roles = getAuthNeiRoles({
-      'urn:zitadel:iam:org:project:roles': {},
-      'urn:zitadel:iam:org:project:id:orbit-project:roles': {
-        admin: { 'org-id': 'org-id' },
-        nei_member: { 'org-id': 'org-id' },
+  test('does not fall back to generic or other project claims when a global claim is configured', ({
+    assert,
+  }) => {
+    const globalClaim = 'urn:zitadel:iam:org:project:nei-global-project:roles'
+    const roles = getAuthNeiRoles(
+      {
+        'urn:zitadel:iam:org:project:roles': {
+          admin: { 'org-id': 'org-id' },
+        },
+        'urn:zitadel:iam:org:project:orbit-project:roles': {
+          admin: { 'org-id': 'org-id' },
+        },
       },
-    })
+      globalClaim
+    )
 
     assert.deepEqual(roles, [])
   })
