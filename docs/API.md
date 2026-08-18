@@ -22,8 +22,8 @@ Route protection levels used in this API:
 
 - `Public`: no token required
 - `Optional auth`: token is optional; if present, the request is authenticated
-- `Authenticated`: valid Bearer token required
-- `Admin`: valid Bearer token required and `authUser.isAdmin === true`
+- `Authenticated`: valid Bearer token with the AuthNEI `student` role required
+- `Admin`: authenticated token with the AuthNEI `admin` role required
 
 ## Response Conventions
 

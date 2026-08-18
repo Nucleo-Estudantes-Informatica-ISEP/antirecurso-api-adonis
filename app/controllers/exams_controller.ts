@@ -2,6 +2,8 @@ import { createHash } from 'node:crypto'
 import type { HttpContext } from '@adonisjs/core/http'
 import db from '@adonisjs/lucid/services/db'
 import Answer from '#models/answer'
+import ExamState from '#models/exam_state'
+import Question from '#models/question'
 import Subject from '#models/subject'
 import ExamGenerationService from '#services/exams/exam_generation_service'
 import type { ExamMode } from '#services/exams/exam_config'
@@ -12,8 +14,17 @@ import {
   modeRequiresUser,
 } from '#services/exams/exam_config'
 import ExamVerificationService from '#services/exams/exam_verification_service'
-import { examHistoryValidator, generateExamValidator, verifyExamValidator } from '#validators/exam'
+import {
+  examHistoryValidator,
+  examStateIdentifierValidator,
+  generateExamValidator,
+  saveExamStateValidator,
+  verifyExamValidator,
+} from '#validators/exam'
 import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
+import { hasAuthNeiRole } from '#services/auth/auth_nei_roles'
+import { canViewExamAttempt } from '#services/exams/exam_access_policy'
+import { InvalidExamStateError, normalizeSavedExamState } from '#services/exams/exam_state_policy'
 
 export default class ExamsController {
   private examGenerationService = new ExamGenerationService()
@@ -123,7 +134,7 @@ export default class ExamsController {
 
     const page = data.page ?? 1
     const exams = await Answer.query()
-      .where('userId', authUser.id)
+      .where('user_id', authUser.id)
       .preload('subject')
       .orderBy('createdAt', 'desc')
       .paginate(page, EXAM_HISTORY_PAGE_SIZE)
@@ -145,7 +156,7 @@ export default class ExamsController {
    * Show a detailed exam attempt with selected option, correct answer and comments.
    * GET /exams/:id
    */
-  async show({ authUser, params, response }: AuthenticatedHttpContext) {
+  async show({ authUser, authClaims, params, response }: AuthenticatedHttpContext) {
     const examId = this.parseNumericInput(params.id)
     if (examId === null) {
       return response.badRequest({ message: 'Invalid exam id' })
@@ -156,7 +167,13 @@ export default class ExamsController {
       return response.notFound({ message: 'Invalid answer' })
     }
 
-    if (!authUser.isAdmin && examOwnership.userId !== authUser.id) {
+    if (
+      !canViewExamAttempt({
+        authenticatedUserId: authUser.id,
+        ownerUserId: examOwnership.userId,
+        isAdmin: hasAuthNeiRole(authClaims, 'admin'),
+      })
+    ) {
       return response.forbidden({
         message: 'You are not authorized to view this exam attempt',
       })
@@ -230,7 +247,7 @@ export default class ExamsController {
       Answer.query()
         .select(db.raw('DATE(created_at) as date'))
         .count('* as count')
-        .where('created_at', '>=', db.raw("CURRENT_TIMESTAMP - INTERVAL '7 days'"))
+        .where('created_at', '>=', new Date(Date.now() - 7 * 24 * 60 * 60 * 1000))
         .groupByRaw('DATE(created_at)')
         .orderByRaw('DATE(created_at)'),
       Answer.query()
@@ -257,6 +274,154 @@ export default class ExamsController {
     })
   }
 
+  /**
+   * Save exam state for the authenticated user.
+   * POST /exams/state
+   */
+  async saveState({ authUser, request, response }: AuthenticatedHttpContext) {
+    const data = await request.validateUsing(saveExamStateValidator)
+    const subject = await Subject.find(data.subject_id)
+    if (!subject) return response.notFound({ message: 'Invalid subject' })
+
+    let payload
+    try {
+      payload = normalizeSavedExamState(data.state, data.subject_id, data.mode)
+    } catch (error) {
+      if (error instanceof InvalidExamStateError) {
+        return response.badRequest({ message: error.message })
+      }
+      throw error
+    }
+
+    const matchingQuestionCount = await Question.query()
+      .where('subject_id', data.subject_id)
+      .whereIn('id', payload.questionIds)
+      .count('* as total')
+      .first()
+    if (Number(matchingQuestionCount?.$extras.total ?? 0) !== payload.questionIds.length) {
+      return response.badRequest({ message: 'Exam state contains questions from another subject' })
+    }
+
+    const state = await ExamState.query()
+      .where('user_id', authUser.id)
+      .where('subject_id', data.subject_id)
+      .where('mode', data.mode)
+      .first()
+
+    if (state) {
+      if (state.isCompleted) {
+        return response.conflict({ message: 'Completed exam state cannot be modified' })
+      }
+      await state.merge({ state: payload }).save()
+      return response.ok({ id: state.id, state: state.state })
+    }
+
+    const newState = await ExamState.create({
+      userId: authUser.id,
+      subjectId: data.subject_id,
+      mode: data.mode,
+      state: payload,
+      isCompleted: false,
+    })
+
+    return response.ok({ id: newState.id, state: newState.state })
+  }
+
+  /**
+   * Get exam state for the authenticated user.
+   * GET /exams/state?subject_id=1&mode=default
+   */
+  async getState({ authUser, request, response }: AuthenticatedHttpContext) {
+    const data = await request.validateUsing(examStateIdentifierValidator, {
+      data: {
+        subject_id: this.parseNumericInput(request.input('subject_id')) ?? undefined,
+        mode: request.input('mode', 'default'),
+      },
+    })
+
+    const state = await ExamState.query()
+      .where('user_id', authUser.id)
+      .where('subject_id', data.subject_id)
+      .where('mode', data.mode)
+      .where('isCompleted', false)
+      .first()
+
+    if (!state) {
+      return response.ok({ state: null })
+    }
+
+    try {
+      const normalizedState = normalizeSavedExamState(state.state, data.subject_id, data.mode)
+      return response.ok({
+        state: { ...normalizedState, savedAt: state.updatedAt.toMillis() },
+        id: state.id,
+      })
+    } catch (error) {
+      if (error instanceof InvalidExamStateError) {
+        return response.ok({ state: null })
+      }
+      throw error
+    }
+  }
+
+  /**
+   * Clear exam state for the authenticated user.
+   * DELETE /exams/state?subject_id=1&mode=default
+   */
+  async clearState({ authUser, request, response }: AuthenticatedHttpContext) {
+    const data = await request.validateUsing(examStateIdentifierValidator, {
+      data: {
+        subject_id: this.parseNumericInput(request.input('subject_id')) ?? undefined,
+        mode: request.input('mode', 'default'),
+      },
+    })
+
+    await ExamState.query()
+      .where('user_id', authUser.id)
+      .where('subject_id', data.subject_id)
+      .where('mode', data.mode)
+      .delete()
+
+    return response.noContent()
+  }
+
+  /**
+   * List pending (in-progress) exams for the authenticated user.
+   * GET /exams/pending
+   */
+  async pending({ authUser, response }: AuthenticatedHttpContext) {
+    const states = await ExamState.query()
+      .where('user_id', authUser.id)
+      .where('isCompleted', false)
+      .preload('subject')
+      .orderBy('updatedAt', 'desc')
+
+    return response.ok({
+      data: states.flatMap((state) => {
+        try {
+          const normalizedState = normalizeSavedExamState(
+            state.state,
+            state.subjectId,
+            state.mode as ExamMode
+          )
+          return [
+            {
+              id: state.id,
+              subject: state.subject.name,
+              subject_id: state.subjectId,
+              mode: state.mode,
+              state: { ...normalizedState, savedAt: state.updatedAt.toMillis() },
+              created_at: state.createdAt.toISO(),
+              updated_at: state.updatedAt.toISO(),
+            },
+          ]
+        } catch (error) {
+          if (error instanceof InvalidExamStateError) return []
+          throw error
+        }
+      }),
+    })
+  }
   private parseNumericInput(value: unknown): number | null {
     if (typeof value === 'number' && Number.isFinite(value)) {
       return value

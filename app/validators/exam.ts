@@ -25,7 +25,7 @@ export const verifyExamValidator = vine.compile(
       .min(MIN_CUSTOM_QUESTIONS)
       .max(MAX_CUSTOM_QUESTIONS)
       .optional(),
-    penalizing_factor: vine.number().min(0).optional(),
+    penalizing_factor: vine.number().min(0).max(1).optional(),
     answers: vine
       .array(
         vine.object({
@@ -44,5 +44,20 @@ export const verifyExamValidator = vine.compile(
 export const examHistoryValidator = vine.compile(
   vine.object({
     page: vine.number().withoutDecimals().positive().optional(),
+  })
+)
+
+export const examStateIdentifierValidator = vine.compile(
+  vine.object({
+    subject_id: vine.number().withoutDecimals().positive(),
+    mode: vine.enum(EXAM_MODES),
+  })
+)
+
+export const saveExamStateValidator = vine.compile(
+  vine.object({
+    subject_id: vine.number().withoutDecimals().positive(),
+    mode: vine.enum(EXAM_MODES),
+    state: vine.any(),
   })
 )

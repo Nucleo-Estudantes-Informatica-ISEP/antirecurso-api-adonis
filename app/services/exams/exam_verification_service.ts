@@ -1,6 +1,7 @@
 import db from '@adonisjs/lucid/services/db'
 import Answer from '#models/answer'
 import AnswerQuestion from '#models/answer_question'
+import ExamState from '#models/exam_state'
 import Option from '#models/option'
 import Question from '#models/question'
 import Score from '#models/score'
@@ -131,6 +132,11 @@ export default class ExamVerificationService {
 
       if (input.userId !== null) {
         await this.updateScoreboard(input.subject.id, input.userId, persistedScore, trx)
+        await ExamState.query({ client: trx })
+          .where('user_id', input.userId)
+          .where('subject_id', input.subject.id)
+          .where('mode', input.mode)
+          .update({ isCompleted: true })
       }
 
       await trx.commit()
