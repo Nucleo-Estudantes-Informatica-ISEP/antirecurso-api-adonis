@@ -4,9 +4,9 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      NODE_ENV: production
-      PORT: 3333
-      HOST: 0.0.0.0
+      NODE_ENV: ${NODE_ENV:-production}
+      PORT: ${PORT:-3333}
+      HOST: ${HOST:-0.0.0.0}
       LOG_LEVEL: ${LOG_LEVEL:-info}
       APP_KEY: ${APP_KEY:?}
       SESSION_DRIVER: ${SESSION_DRIVER:-cookie}
@@ -15,15 +15,15 @@ services:
       DB_SSL: ${DB_SSL:-true}
       DB_SSL_REJECT_UNAUTHORIZED: ${DB_SSL_REJECT_UNAUTHORIZED:-false}
 
-      AUTH_ISSUER_URL: ${AUTH_ISSUER_URL:?}
+      AUTH_ISSUER_URL: ${AUTH_ISSUER_URL:-https://auth.nei-isep.org}
       AUTH_ALLOWED_AUDIENCES: ${AUTH_ALLOWED_AUDIENCES:?}
-      AUTH_ROLE_CLAIM: ${AUTH_ROLE_CLAIM:-urn:zitadel:iam:org:project:roles}
+      AUTH_ROLE_CLAIM: ${AUTH_ROLE_CLAIM:?}
       AUTH_DEBUG: ${AUTH_DEBUG:-false}
-      CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS:?}
+      CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS:-http://localhost:3000,https://antirecurso.nei-isep.org}
 
       SUPABASE_URL: ${SUPABASE_URL:?}
       SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY:?}
-      SUPABASE_STORAGE_BUCKET: ${SUPABASE_STORAGE_BUCKET:?}
+      SUPABASE_STORAGE_BUCKET: ${SUPABASE_STORAGE_BUCKET:-notes}
 
       LIMITER_STORE: ${LIMITER_STORE:-database}
       RUN_MIGRATIONS: ${RUN_MIGRATIONS:-false}
