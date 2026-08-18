@@ -27,15 +27,12 @@ export function getAuthNeiRoles(
 ): AuthNeiRole[] {
   if (!claims) return []
 
-  // AntiRecurso has its own ZITADEL Project. Only consume that Project's role
-  // claim; project-ID claims belonging to other NEI applications are ignored.
-  const claimKeys = new Set([configuredClaim, DEFAULT_ROLE_CLAIM])
-
+  // When a project-specific claim is configured, only that claim may grant
+  // application privileges. This prevents an admin role from another ZITADEL
+  // project (or the legacy generic claim) from being accepted accidentally.
   const roles = new Set<AuthNeiRole>()
-  for (const key of claimKeys) {
-    for (const role of rolesFromValue(claims[key])) {
-      if (ROLE_SET.has(role)) roles.add(role as AuthNeiRole)
-    }
+  for (const role of rolesFromValue(claims[configuredClaim])) {
+    if (ROLE_SET.has(role)) roles.add(role as AuthNeiRole)
   }
 
   return AUTH_NEI_ROLES.filter((role) => roles.has(role))
