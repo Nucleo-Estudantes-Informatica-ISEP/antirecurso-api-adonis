@@ -1,4 +1,5 @@
 import env from '#start/env'
+import { validateUploadedPdf } from '#services/uploads/upload_policy'
 
 type JsonValue = Record<string, any> | string | null
 
@@ -113,10 +114,7 @@ export default class StorageService {
     const uploadedPath = this.buildUploadedPath('notes', uploadId)
     const distributionPath = this.buildDistributionPath('notes', uploadId)
 
-    const exists = await this.exists(uploadedPath)
-    if (!exists) {
-      throw new StorageObjectNotFoundError(uploadedPath)
-    }
+    await this.validateUploadedNote(uploadedPath)
 
     await this.requestJson('POST', `${this.storageApiBase()}/object/move`, {
       body: {
@@ -124,6 +122,45 @@ export default class StorageService {
         sourceKey: uploadedPath,
         destinationKey: distributionPath,
       },
+    })
+  }
+
+  private async validateUploadedNote(path: string) {
+    this.assertConfigured()
+
+    const metadataResponse = await fetch(this.objectUrl(path), {
+      method: 'HEAD',
+      headers: this.authHeaders(),
+    })
+    if (metadataResponse.status === 400 || metadataResponse.status === 404) {
+      throw new StorageObjectNotFoundError(path)
+    }
+    if (!metadataResponse.ok) {
+      throw new StorageRequestError(
+        `Supabase storage metadata request failed with status ${metadataResponse.status}.`,
+        metadataResponse.status
+      )
+    }
+
+    const prefixResponse = await fetch(this.objectUrl(path), {
+      headers: this.authHeaders({ Range: 'bytes=0-4' }),
+    })
+    if (!prefixResponse.ok || prefixResponse.status !== 206) {
+      throw new StorageRequestError(
+        `Supabase storage content validation failed with status ${prefixResponse.status}.`,
+        prefixResponse.status
+      )
+    }
+
+    const contentLengthHeader = metadataResponse.headers.get('content-length')
+    const parsedContentLength = contentLengthHeader ? Number(contentLengthHeader) : null
+    validateUploadedPdf({
+      contentType: metadataResponse.headers.get('content-type'),
+      contentLength:
+        parsedContentLength !== null && Number.isFinite(parsedContentLength)
+          ? parsedContentLength
+          : null,
+      prefix: new Uint8Array(await prefixResponse.arrayBuffer()),
     })
   }
 

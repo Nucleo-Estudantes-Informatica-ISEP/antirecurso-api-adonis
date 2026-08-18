@@ -1,0 +1,30 @@
+name: Release
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, reopened, synchronize, labeled, unlabeled, closed]
+
+jobs:
+  validate-release-label:
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - uses: Nucleo-Estudantes-Informatica-ISEP/.github/.github/actions/release-policy@master
+        with:
+          github-token: ${{ github.token }}
+
+  publish-release:
+    if: github.event.action == 'closed' && github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+    steps:
+      - uses: Nucleo-Estudantes-Informatica-ISEP/.github/.github/actions/release-publish@master
+        with:
+          github-token: ${{ github.token }}
+          product-name: Antirecurso API

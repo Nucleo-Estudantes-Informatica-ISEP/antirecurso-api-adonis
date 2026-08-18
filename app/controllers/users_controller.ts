@@ -1,8 +1,18 @@
 import { createHash } from 'node:crypto'
 import type { HttpContext } from '@adonisjs/core/http'
+import db from '@adonisjs/lucid/services/db'
 import User from '#models/user'
+import AccountLinkPending from '#models/account_link_pending'
+import Answer from '#models/answer'
+import Score from '#models/score'
+import QuestionReport from '#models/question_report'
 import { searchUsersValidator } from '#validators/user'
 import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
+import { hasAuthNeiRole } from '#services/auth/auth_nei_roles'
+import {
+  performAccountResolution,
+  type AccountResolutionAction,
+} from '#services/auth/account_resolution_service'
 
 export default class UsersController {
   /**
@@ -23,8 +33,33 @@ export default class UsersController {
    * Get the current user's session info.
    * GET /user
    */
-  async session({ authUser, response }: AuthenticatedHttpContext) {
-    return response.ok(this.serializeUser(authUser))
+  async session({ authUser, authClaims, response }: AuthenticatedHttpContext) {
+    const pending = await AccountLinkPending.findBy('userId', authUser.id)
+    const requiresAccountResolution = pending !== null
+
+    let accountSummary = null
+    if (requiresAccountResolution && pending) {
+      // Fazemos as duas contagens na mesma query usando as relações do Model!
+      const userCounts = await User.query()
+        .where('id', authUser.id)
+        .withCount('scores')
+        .withCount('answers')
+        .first()
+
+      accountSummary = {
+        email: authUser.email,
+        pending_auth_subject: pending.authSubject,
+        scores: Number((userCounts as any)?.['$extras.scores_count'] ?? 0),
+        answers: Number((userCounts as any)?.['$extras.answers_count'] ?? 0),
+      }
+    }
+
+    return response.ok({
+      ...this.serializeUser(authUser),
+      is_admin: hasAuthNeiRole(authClaims, 'admin'),
+      requires_account_resolution: requiresAccountResolution,
+      account_summary: accountSummary,
+    })
   }
 
   async scores({ authUser, response }: AuthenticatedHttpContext) {
@@ -36,7 +71,6 @@ export default class UsersController {
 
     let countsMap = new Map<number, number>()
     if (subjectIds.length > 0) {
-      const { default: Answer } = await import('#models/answer')
       const answersCountQuery = await Answer.query()
         .where('userId', authUser.id)
         .whereIn('subjectId', subjectIds)
@@ -61,6 +95,57 @@ export default class UsersController {
         }
       })
     )
+  }
+
+  async accountResolution({ authUser, request, response }: AuthenticatedHttpContext) {
+    const action = request.input('action')
+
+    if (action !== 'keep' && action !== 'discard') {
+      return response.badRequest({ message: 'Invalid action' })
+    }
+
+    const resolved = await db.transaction(async (trx) => {
+      const pending = await AccountLinkPending.query()
+        .useTransaction(trx)
+        .where('userId', authUser.id)
+        .forUpdate()
+        .first()
+
+      if (!pending) return false
+
+      await performAccountResolution(action as AccountResolutionAction, {
+        discardAccountData: async () => {
+          await Answer.query().useTransaction(trx).where('userId', authUser.id).delete()
+          await Score.query().useTransaction(trx).where('userId', authUser.id).delete()
+          await QuestionReport.query().useTransaction(trx).where('userId', authUser.id).delete()
+        },
+        deletePendingMarker: async () => {
+          await AccountLinkPending.query().useTransaction(trx).where('id', pending.id).delete()
+        },
+        deleteUser: async () => {
+          await User.query().useTransaction(trx).where('id', authUser.id).delete()
+        },
+        updateAuthSubject: async () => {
+          await User.query()
+            .useTransaction(trx)
+            .where('id', authUser.id)
+            .update({ authSubject: pending.authSubject })
+        },
+      })
+
+      return true
+    })
+
+    if (!resolved) {
+      return response.badRequest({ message: 'No pending account resolution' })
+    }
+
+    return response.ok({
+      message:
+        action === 'discard'
+          ? 'Account data discarded successfully'
+          : 'Account linked successfully',
+    })
   }
 
   /**
@@ -132,8 +217,11 @@ export default class UsersController {
    * Get admin session info.
    * GET /admin
    */
-  async adminSession({ authUser, response }: AuthenticatedHttpContext) {
-    return response.ok(this.serializeUser(authUser))
+  async adminSession({ authUser, authClaims, response }: AuthenticatedHttpContext) {
+    return response.ok({
+      ...this.serializeUser(authUser),
+      is_admin: hasAuthNeiRole(authClaims, 'admin'),
+    })
   }
 
   private md5(value: string): string {

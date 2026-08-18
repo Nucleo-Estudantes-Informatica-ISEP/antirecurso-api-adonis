@@ -29,8 +29,8 @@ A robust backend API built with AdonisJS 6 for the Antirecurso platform. It prov
 
 ## Prerequisites
 
-- Node.js 20 or higher
-- `npm` (or `pnpm`/`yarn`)
+- Node.js 22 LTS
+- npm with the committed `package-lock.json`
 - A **Supabase** account to host the PostgreSQL database instance.
 - ZITADEL issuer and audience details if you need to exercise authenticated routes locally.
 
@@ -48,7 +48,7 @@ cd antirecurso-api-adonis
 ### 2. Install Dependencies
 
 ```bash
-npm install
+npm ci
 ```
 
 ### 3. Environment Setup
@@ -82,7 +82,7 @@ Once your `.env` file is populated with the Supabase credentials, execute all th
 node ace migration:run
 ```
 
-This will create 14 tables: `users`, `subjects`, `question_types`, `questions`, `options`, `answers`, `answer_questions`, `comments`, `scores`, `question_reports`, `password_reset_codes`, `notes`, `likes`, and `events`.
+This applies the complete, versioned migration history, including pending-account and shared rate-limit state. Do not rely on a hard-coded table count; `node ace migration:status` is authoritative.
 
 You can verify the status of the migrations at any time using:
 
@@ -163,7 +163,7 @@ The events feature is covered by these admin-only routes:
 
 - Authenticated routes use [`app/middleware/auth_middleware.ts`](./app/middleware/auth_middleware.ts), which validates Bearer tokens against the configured ZITADEL issuer.
 - Optional-auth routes use [`app/middleware/optional_auth_middleware.ts`](./app/middleware/optional_auth_middleware.ts) so the same endpoint can return user-aware fields like `is_liked`.
-- Admin-only routes additionally pass through [`app/middleware/admin_middleware.ts`](./app/middleware/admin_middleware.ts) and require `authUser.isAdmin === true`.
+- Authenticated routes require the validated AuthNEI `student` role. Admin-only routes additionally pass through [`app/middleware/admin_middleware.ts`](./app/middleware/admin_middleware.ts) and require the validated AuthNEI `admin` role.
 - Token verification is implemented in [`app/services/auth/zitadel_auth_service.ts`](./app/services/auth/zitadel_auth_service.ts), including issuer, audience, signature, and expiry checks.
 
 ### Database Schema
@@ -186,11 +186,14 @@ The full table-by-table schema, constraints, deletion rules, and ER diagram live
 | `DB_SSL`                     | Whether Postgres SSL should be enabled                         | `true` for Supabase                     |
 | `DB_SSL_REJECT_UNAUTHORIZED` | Whether to reject untrusted cert chains                        | Often `false` on hosted platforms       |
 | `AUTH_ISSUER_URL`            | ZITADEL issuer used for JWT validation                         | ZITADEL -> OpenID configuration         |
-| `AUTH_ALLOWED_AUDIENCES`     | Optional comma-separated accepted audiences                    | ZITADEL API/client configuration        |
+| `AUTH_ALLOWED_AUDIENCES`     | Required comma-separated accepted audiences                    | ZITADEL API/client configuration        |
+| `AUTH_ROLE_CLAIM`            | Optional shared-project role claim override                     | ZITADEL project configuration           |
 | `AUTH_DEBUG`                 | Enables verbose auth logging                                   | `true` only while debugging auth issues |
+| `CORS_ALLOWED_ORIGINS`       | Exact comma-separated production browser origins                | `https://antirecurso.nei-isep.org`       |
 | `SUPABASE_URL`               | Supabase project URL used by Storage REST API                  | Supabase Dashboard -> Project Settings  |
 | `SUPABASE_SERVICE_ROLE_KEY`  | Server-side key for signing uploads/downloads and moving files | Supabase Dashboard -> API               |
 | `SUPABASE_STORAGE_BUCKET`    | Bucket containing the uploaded and distribution note files     | Supabase Storage                        |
+| `LIMITER_STORE`              | Shared limiter backend; use `database` in production             | `database`                              |
 
 ---
 
@@ -225,6 +228,8 @@ node ace test
 ```
 
 Test files are located in the `tests/` directory.
+
+For regressions and security fixes, prefer TDD: add the focused failing Japa test first, implement the smallest correction, then refactor with all suites green. Repository-wide requirements are in [`AGENTS.md`](./AGENTS.md).
 
 ---
 
@@ -287,7 +292,9 @@ Notes:
 
 - Use the **direct Supabase connection** on port `5432`, not the pooler on `6543`.
 - `RUN_MIGRATIONS=true` is optional but useful on first deploy. The container entrypoint runs `node ace.js migration:run --force` before starting the server.
-- Authentication is still intentionally left as TODO in the codebase. This deployment only wires the API runtime and Supabase database connection.
+- Authentication is active and fail-closed: ZITADEL issuer, audience, signature, expiry, and AuthNEI roles are validated. Do not deploy without exact `AUTH_ALLOWED_AUDIENCES` and `CORS_ALLOWED_ORIGINS`.
+- Use `LIMITER_STORE=database` so every replica shares rate-limit state.
+- Deploy and verify this API and its migrations before a dependent Antirecurso web release.
 
 ### 4. Start the Application
 
@@ -323,3 +330,23 @@ You are connecting to the Supabase PgBouncer pooler (port 6543) in transaction m
 
 **Solution:**
 Supabase enforces SSL. Set `DB_SSL=true`. If your platform fails certificate validation against Supabase's chain, set `DB_SSL_REJECT_UNAUTHORIZED=false`.
+
+## AuthNEI shared-project authorization
+
+The API treats ZITADEL/AuthNEI as the source of truth for authorization. Bearer tokens must have a
+valid signature, exact configured issuer, unexpired lifetime, and at least one audience from the
+required `AUTH_ALLOWED_AUDIENCES` list. Only RSA `RS256`, `RS384`, and `RS512` signatures are
+accepted.
+
+Project roles are normalized to `student`, `nei_member`, `admin`, and `employee` from the standard
+ZITADEL project-role claim (including project-ID claim variants). Authenticated application routes
+require `student`; admin middleware and controller defense-in-depth checks require `admin` from the
+validated token. The legacy database `is_admin` column remains temporarily for compatibility and
+display of historical authors, but it no longer authorizes requests.
+
+Set `AUTH_ROLE_CLAIM` only when the shared NEI Platform project emits a custom claim name. The
+default is `urn:zitadel:iam:org:project:roles`.
+
+## CI/CD gate
+
+Every PR to `main` uses `npm ci` and must pass lint, typecheck, Japa tests, migrations against isolated PostgreSQL, production build and dependency audit, a non-root production Docker image, and Gitleaks. Green CI does not prove deployment: confirm the deployed SHA, migration status, `GET /`, exact CORS behavior, shared limits, storage promotion, and owner/admin boundaries after rollout.

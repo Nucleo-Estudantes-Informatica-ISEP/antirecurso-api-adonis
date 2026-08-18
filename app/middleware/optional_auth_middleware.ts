@@ -1,5 +1,8 @@
 import type { HttpContext } from '@adonisjs/core/http'
-import ZitadelAuthService, { UnauthorizedError } from '#services/auth/zitadel_auth_service'
+import ZitadelAuthService, {
+  ForbiddenError,
+  UnauthorizedError,
+} from '#services/auth/zitadel_auth_service'
 import env from '#start/env'
 
 export default class OptionalAuthMiddleware {
@@ -21,6 +24,13 @@ export default class OptionalAuthMiddleware {
 
       await next()
     } catch (error) {
+      if (error instanceof ForbiddenError) {
+        // Route is public. A valid AuthNEI identity without the app's student role
+        // continues anonymously; malformed/invalid credentials still receive 401 below.
+        await next()
+        return
+      }
+
       if (error instanceof UnauthorizedError) {
         if (env.get('AUTH_DEBUG')) {
           console.warn('[auth][api]', {

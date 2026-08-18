@@ -3,6 +3,7 @@ import db from '@adonisjs/lucid/services/db'
 import Question from '#models/question'
 import Option from '#models/option'
 import { updateQuestionValidator } from '#validators/question'
+import { hasAuthNeiRole } from '#services/auth/auth_nei_roles'
 
 class QuestionOptionOwnershipError extends Error {
   constructor() {
@@ -16,8 +17,8 @@ export default class QuestionsController {
    * Update a question's text, correct option, and option names.
    * PUT /questions/:id
    */
-  async update({ authUser, params, request, response }: HttpContext) {
-    if (!authUser?.isAdmin) {
+  async update({ authClaims, params, request, response }: HttpContext) {
+    if (!hasAuthNeiRole(authClaims, 'admin')) {
       return response.forbidden({ message: 'You are not an admin' })
     }
 
