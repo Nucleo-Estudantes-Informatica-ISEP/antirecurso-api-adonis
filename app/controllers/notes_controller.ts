@@ -11,6 +11,7 @@ import StorageService, {
 } from '#services/storage_service'
 import { hasAuthNeiRole } from '#services/auth/auth_nei_roles'
 import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
+import { InvalidUploadedObjectError } from '#services/uploads/upload_policy'
 
 const storageService = new StorageService()
 
@@ -285,6 +286,10 @@ export default class NotesController {
 
     if (error instanceof StorageObjectNotFoundError) {
       return response.badRequest({ message: notFoundMessage })
+    }
+
+    if (error instanceof InvalidUploadedObjectError) {
+      return response.badRequest({ message: error.message })
     }
 
     if (error instanceof StorageRequestError) {

@@ -5,6 +5,7 @@ import StorageService, {
   StorageNotConfiguredError,
   StorageRequestError,
 } from '#services/storage_service'
+import { NOTE_UPLOAD_POLICY } from '#services/uploads/upload_policy'
 
 /**
  * Upload target configuration.
@@ -12,8 +13,8 @@ import StorageService, {
  */
 const UPLOAD_TARGETS: Record<string, { types: string[]; maxSize: number }> = {
   notes: {
-    types: ['application/pdf'],
-    maxSize: 64 * 1024 * 1024, // 64 MB
+    types: [...NOTE_UPLOAD_POLICY.contentTypes],
+    maxSize: NOTE_UPLOAD_POLICY.maxSize,
   },
 }
 

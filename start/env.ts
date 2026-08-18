@@ -48,6 +48,7 @@ export default await Env.create(new URL('../', import.meta.url), {
   AUTH_ALLOWED_AUDIENCES: Env.schema.string(),
   AUTH_ROLE_CLAIM: Env.schema.string.optional(),
   AUTH_DEBUG: Env.schema.boolean.optional(),
+  CORS_ALLOWED_ORIGINS: Env.schema.string.optional(),
 
   /*
   |----------------------------------------------------------
@@ -57,4 +58,11 @@ export default await Env.create(new URL('../', import.meta.url), {
   SUPABASE_URL: Env.schema.string.optional(),
   SUPABASE_SERVICE_ROLE_KEY: Env.schema.string.optional(),
   SUPABASE_STORAGE_BUCKET: Env.schema.string.optional(),
+
+  /*
+  |----------------------------------------------------------
+  | Variables for configuring the limiter package
+  |----------------------------------------------------------
+  */
+  LIMITER_STORE: Env.schema.enum.optional(['database', 'memory'] as const),
 })

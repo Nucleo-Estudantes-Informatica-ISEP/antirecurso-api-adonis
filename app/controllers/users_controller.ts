@@ -9,6 +9,10 @@ import QuestionReport from '#models/question_report'
 import { searchUsersValidator } from '#validators/user'
 import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
 import { hasAuthNeiRole } from '#services/auth/auth_nei_roles'
+import {
+  performAccountResolution,
+  type AccountResolutionAction,
+} from '#services/auth/account_resolution_service'
 
 export default class UsersController {
   /**
@@ -100,28 +104,48 @@ export default class UsersController {
       return response.badRequest({ message: 'Invalid action' })
     }
 
-    const pending = await AccountLinkPending.findBy('userId', authUser.id)
-    if (!pending) {
+    const resolved = await db.transaction(async (trx) => {
+      const pending = await AccountLinkPending.query()
+        .useTransaction(trx)
+        .where('userId', authUser.id)
+        .forUpdate()
+        .first()
+
+      if (!pending) return false
+
+      await performAccountResolution(action as AccountResolutionAction, {
+        discardAccountData: async () => {
+          await Answer.query().useTransaction(trx).where('userId', authUser.id).delete()
+          await Score.query().useTransaction(trx).where('userId', authUser.id).delete()
+          await QuestionReport.query().useTransaction(trx).where('userId', authUser.id).delete()
+        },
+        deletePendingMarker: async () => {
+          await AccountLinkPending.query().useTransaction(trx).where('id', pending.id).delete()
+        },
+        deleteUser: async () => {
+          await User.query().useTransaction(trx).where('id', authUser.id).delete()
+        },
+        updateAuthSubject: async () => {
+          await User.query()
+            .useTransaction(trx)
+            .where('id', authUser.id)
+            .update({ authSubject: pending.authSubject })
+        },
+      })
+
+      return true
+    })
+
+    if (!resolved) {
       return response.badRequest({ message: 'No pending account resolution' })
     }
 
-    if (action === 'discard') {
-      await db.transaction(async (trx) => {
-        // Usamos os Models e passamos a transação para dentro da query
-        await Answer.query().useTransaction(trx).where('userId', authUser.id).delete()
-        await Score.query().useTransaction(trx).where('userId', authUser.id).delete()
-        await QuestionReport.query().useTransaction(trx).where('userId', authUser.id).delete()
-        await AccountLinkPending.query().useTransaction(trx).where('id', pending.id).delete()
-        await User.query().useTransaction(trx).where('id', authUser.id).delete()
-      })
-
-      return response.ok({ message: 'Account data discarded successfully' })
-    }
-
-    await AccountLinkPending.query().where('id', pending.id).delete()
-    await User.query().where('id', authUser.id).update({ authSubject: pending.authSubject })
-
-    return response.ok({ message: 'Account linked successfully' })
+    return response.ok({
+      message:
+        action === 'discard'
+          ? 'Account data discarded successfully'
+          : 'Account linked successfully',
+    })
   }
 
   /**

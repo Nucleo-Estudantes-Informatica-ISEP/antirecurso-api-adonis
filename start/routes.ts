@@ -19,6 +19,12 @@ import UsersController from '#controllers/users_controller'
 import SubjectsController from '#controllers/subjects_controller'
 import type { AuthenticatedHttpContext } from '../contracts/auth.js'
 import { getHealthStatus } from '#services/health_service'
+import {
+  accountResolutionThrottle,
+  examThrottle,
+  mutationThrottle,
+  uploadThrottle,
+} from '#start/limiter'
 import { middleware } from './kernel.js'
 
 const commentsController = new CommentsController()
@@ -47,19 +53,19 @@ router
   .post('/subjects/:id/scoreboard', (ctx) =>
     subjectsController.scoreboardVisibility(ctx as AuthenticatedHttpContext)
   )
-  .use(middleware.auth())
+  .use([middleware.auth(), mutationThrottle])
 
 // Comments
 router.get('/comments', (ctx) => commentsController.index(ctx)).use(middleware.auth())
 router
   .post('/comments', (ctx) => commentsController.store(ctx as AuthenticatedHttpContext))
-  .use(middleware.auth())
+  .use([middleware.auth(), mutationThrottle])
 router.get('/comments/:id', (ctx) => commentsController.show(ctx)).use(middleware.auth())
 
 // Questions
 router
   .put('/questions/:id', (ctx) => questionsController.update(ctx))
-  .use([middleware.auth(), middleware.admin()])
+  .use([middleware.auth(), middleware.admin(), mutationThrottle])
 router.get('/questions/:id', (ctx) => questionsController.show(ctx))
 
 // Question reports
@@ -67,7 +73,7 @@ router
   .post('/question-reports', (ctx) =>
     questionReportsController.store(ctx as AuthenticatedHttpContext)
   )
-  .use(middleware.auth())
+  .use([middleware.auth(), mutationThrottle])
 
 // Notes (public)
 router
@@ -76,33 +82,41 @@ router
 router.get('/notes/:id', (ctx) => notesController.show(ctx)).use(middleware.optionalAuth())
 router
   .patch('/notes/:id', (ctx) => notesController.update(ctx))
-  .use([middleware.auth(), middleware.admin()])
+  .use([middleware.auth(), middleware.admin(), mutationThrottle])
 router
   .delete('/notes/:id', (ctx) => notesController.destroy(ctx))
-  .use([middleware.auth(), middleware.admin()])
-router.post('/notes/:id/like', (ctx) => notesController.like(ctx)).use(middleware.auth())
+  .use([middleware.auth(), middleware.admin(), mutationThrottle])
+router
+  .post('/notes/:id/like', (ctx) => notesController.like(ctx))
+  .use([middleware.auth(), mutationThrottle])
 
 // Notes & Uploads (auth required)
 router
   .post('/subjects/:id/notes', (ctx) => notesController.store(ctx as AuthenticatedHttpContext))
-  .use([middleware.auth(), middleware.admin()])
-router.post('/notes/:id/view', (ctx) => notesController.view(ctx)).use(middleware.auth())
-router.post('/upload', (ctx) => uploadsController.upload(ctx)).use(middleware.auth())
+  .use([middleware.auth(), middleware.admin(), mutationThrottle])
+router
+  .post('/notes/:id/view', (ctx) => notesController.view(ctx))
+  .use([middleware.auth(), mutationThrottle])
+router
+  .post('/upload', (ctx) => uploadsController.upload(ctx))
+  .use([middleware.auth(), uploadThrottle])
 
 // Exams
 router
   .get('/exams/generate/:subject_id', (ctx) => examsController.generate(ctx))
-  .use(middleware.optionalAuth())
-router.post('/exams/verify', (ctx) => examsController.verify(ctx)).use(middleware.optionalAuth())
+  .use([middleware.optionalAuth(), examThrottle])
+router
+  .post('/exams/verify', (ctx) => examsController.verify(ctx))
+  .use([middleware.optionalAuth(), examThrottle])
 router
   .post('/exams/state', (ctx) => examsController.saveState(ctx as AuthenticatedHttpContext))
-  .use(middleware.auth())
+  .use([middleware.auth(), mutationThrottle])
 router
   .get('/exams/state', (ctx) => examsController.getState(ctx as AuthenticatedHttpContext))
   .use(middleware.auth())
 router
   .delete('/exams/state', (ctx) => examsController.clearState(ctx as AuthenticatedHttpContext))
-  .use(middleware.auth())
+  .use([middleware.auth(), mutationThrottle])
 router
   .get('/exams/pending', (ctx) => examsController.pending(ctx as AuthenticatedHttpContext))
   .use(middleware.auth())
@@ -112,8 +126,6 @@ router
 router
   .get('/exams/:id', (ctx) => examsController.show(ctx as AuthenticatedHttpContext))
   .use(middleware.auth())
-router.get('/exams/:id/review', (ctx) => examsController.publicReview(ctx))
-
 // User (auth required)
 router
   .get('/user', (ctx) => usersController.session(ctx as AuthenticatedHttpContext))
@@ -122,7 +134,7 @@ router
   .post('/user/account-resolution', (ctx) =>
     usersController.accountResolution(ctx as AuthenticatedHttpContext)
   )
-  .use(middleware.auth())
+  .use([middleware.auth(), accountResolutionThrottle])
 router
   .get('/user/scores', (ctx) => usersController.scores(ctx as AuthenticatedHttpContext))
   .use(middleware.auth())
@@ -148,13 +160,13 @@ router
   .use([middleware.auth(), middleware.admin()])
 router
   .post('/events/new', (ctx) => eventsController.store(ctx))
-  .use([middleware.auth(), middleware.admin()])
+  .use([middleware.auth(), middleware.admin(), mutationThrottle])
 router
   .patch('/events/:id', (ctx) => eventsController.update(ctx))
-  .use([middleware.auth(), middleware.admin()])
+  .use([middleware.auth(), middleware.admin(), mutationThrottle])
 router
   .delete('/events/:id', (ctx) => eventsController.destroy(ctx))
-  .use([middleware.auth(), middleware.admin()])
+  .use([middleware.auth(), middleware.admin(), mutationThrottle])
 router
   .get('/question-reports', (ctx) => questionReportsController.index(ctx))
   .use([middleware.auth(), middleware.admin()])
@@ -162,7 +174,7 @@ router
   .post('/question-reports/review', (ctx) =>
     questionReportsController.review(ctx as AuthenticatedHttpContext)
   )
-  .use([middleware.auth(), middleware.admin()])
+  .use([middleware.auth(), middleware.admin(), mutationThrottle])
 router
   .get('/question-reports/:id', (ctx) => questionReportsController.show(ctx))
   .use([middleware.auth(), middleware.admin()])
