@@ -5,7 +5,7 @@ import ExamState from '#models/exam_state'
 import Option from '#models/option'
 import Question from '#models/question'
 import Score from '#models/score'
-import Subject from '#models/subject'
+import type Subject from '#models/subject'
 import {
   DEFAULT_EXAM_RULE,
   type ExamMode,
