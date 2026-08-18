@@ -2,7 +2,7 @@ import { randomInt } from 'node:crypto'
 import Answer from '#models/answer'
 import AnswerQuestion from '#models/answer_question'
 import Question from '#models/question'
-import Subject from '#models/subject'
+import type Subject from '#models/subject'
 import { DEFAULT_EXAM_RULE, type ExamMode, getSubjectExamRule } from '#services/exams/exam_config'
 
 export type GeneratedQuestionOption = {

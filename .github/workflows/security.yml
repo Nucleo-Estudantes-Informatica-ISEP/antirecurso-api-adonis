@@ -6,6 +6,14 @@ on:
   workflow_dispatch:
 
 jobs:
+  secret-scan:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: Nucleo-Estudantes-Informatica-ISEP/.github/.github/actions/secret-scan@master
+
   dependency-review:
     if: github.event_name == 'pull_request' && github.event.repository.private == false
     uses: Nucleo-Estudantes-Informatica-ISEP/.github/.github/workflows/dependency-review.yml@master
