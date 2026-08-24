@@ -18,11 +18,15 @@ Send tokens with:
 Authorization: Bearer <access-token>
 ```
 
+The frontend requests the ZITADEL project-audience scope
+`urn:zitadel:iam:org:project:id:<AUTH_PROJECT_ID>:aud`; the API validates the resulting signed
+`aud` claim against `AUTH_ALLOWED_AUDIENCES`.
+
 Route protection levels used in this API:
 
 - `Public`: no token required
 - `Optional auth`: token is optional; if present, the request is authenticated
-- `Authenticated`: valid Bearer token with the AuthNEI `student` role required
+- `Authenticated`: valid Bearer access token for the configured AntiRecurso audience
 - `Admin`: authenticated token with the AuthNEI `admin` role required
 
 ## Response Conventions
