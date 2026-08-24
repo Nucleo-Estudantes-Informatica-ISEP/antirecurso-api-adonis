@@ -39,6 +39,7 @@ type JwtPayload = {
   iss?: string
   name?: string
   preferred_username?: string
+  scope?: string | string[]
   sub?: string
   nbf?: number
   [key: string]: unknown
@@ -78,10 +79,18 @@ class ForbiddenError extends Error {
 const DISCOVERY_CACHE_TTL_MS = 5 * 60 * 1000
 const JWKS_CACHE_TTL_MS = 5 * 60 * 1000
 
+type Fetch = typeof fetch
+
+type ZitadelAuthServiceOptions = {
+  fetchImpl?: Fetch
+  resolveUser?: (claims: AuthClaims) => Promise<User>
+}
+
 export default class ZitadelAuthService {
   private static discoveryCache:
     | {
         expiresAt: number
+        issuer: string
         value: OpenIdConfiguration
       }
     | undefined
@@ -89,9 +98,23 @@ export default class ZitadelAuthService {
   private static jwksCache:
     | {
         expiresAt: number
+        jwksUri: string
         value: JsonWebKeySet
       }
     | undefined
+
+  private fetchImpl: Fetch
+  private resolveUser?: (claims: AuthClaims) => Promise<User>
+
+  constructor(options: ZitadelAuthServiceOptions = {}) {
+    this.fetchImpl = options.fetchImpl ?? fetch
+    this.resolveUser = options.resolveUser
+  }
+
+  static clearCachesForTests() {
+    ZitadelAuthService.discoveryCache = undefined
+    ZitadelAuthService.jwksCache = undefined
+  }
 
   async authenticateAuthorizationHeader(
     authorizationHeader: string | undefined
@@ -99,7 +122,9 @@ export default class ZitadelAuthService {
     const accessToken = this.extractBearerToken(authorizationHeader)
     const claims = await this.verifyAccessToken(accessToken)
     const completeClaims = await this.resolveClaims(accessToken, claims)
-    const user = await this.findOrCreateUser(completeClaims)
+    const user = this.resolveUser
+      ? await this.resolveUser(completeClaims)
+      : await this.findOrCreateUser(completeClaims)
 
     return {
       accessToken,
@@ -113,8 +138,9 @@ export default class ZitadelAuthService {
       throw new UnauthorizedError('Authentication required')
     }
 
-    const [scheme, token] = authorizationHeader.split(' ')
-    if (scheme !== 'Bearer' || !token) {
+    const parts = authorizationHeader.trim().split(/\s+/)
+    const [scheme, token] = parts
+    if (parts.length !== 2 || scheme !== 'Bearer' || !token) {
       throw new UnauthorizedError('Invalid authorization header')
     }
 
@@ -148,8 +174,8 @@ export default class ZitadelAuthService {
       throw new UnauthorizedError('Unsupported token header')
     }
 
-    const issuer = env.get('AUTH_ISSUER_URL')
-    if (payload.iss !== issuer) {
+    const issuer = this.normalizeIssuer(env.get('AUTH_ISSUER_URL'))
+    if (!payload.iss || this.normalizeIssuer(payload.iss) !== issuer) {
       throw new UnauthorizedError('Token issuer mismatch')
     }
 
@@ -170,7 +196,15 @@ export default class ZitadelAuthService {
 
     const discovery = await this.getDiscoveryDocument()
     const jwks = await this.getJwks(discovery.jwks_uri)
-    const signingKey = jwks.keys.find((key) => key.kid === header.kid)
+    let signingKey = jwks.keys.find((key) => key.kid === header.kid)
+
+    // A new signing key may appear before the five-minute cache expires.
+    // Refresh once for an unknown kid so normal AuthNEI key rotation does not
+    // reject otherwise valid production tokens.
+    if (!signingKey) {
+      const refreshedJwks = await this.getJwks(discovery.jwks_uri, true)
+      signingKey = refreshedJwks.keys.find((key) => key.kid === header.kid)
+    }
 
     if (!signingKey) {
       throw new UnauthorizedError('Unable to resolve token signing key')
@@ -223,6 +257,10 @@ export default class ZitadelAuthService {
       if (discovery.userinfo_endpoint) {
         const userinfo = await this.fetchUserInfo(discovery.userinfo_endpoint, accessToken)
 
+        if (userinfo.sub && userinfo.sub !== payload.sub) {
+          throw new UnauthorizedError('User profile subject mismatch')
+        }
+
         email = email ?? userinfo.email
         name = name ?? userinfo.name ?? userinfo.preferred_username
         mergedClaims = {
@@ -260,7 +298,7 @@ export default class ZitadelAuthService {
   }
 
   private async fetchUserInfo(userinfoEndpoint: string, accessToken: string): Promise<JwtPayload> {
-    const response = await fetch(userinfoEndpoint, {
+    const response = await this.fetchImpl(userinfoEndpoint, {
       headers: {
         accept: 'application/json',
         authorization: `Bearer ${accessToken}`,
@@ -335,15 +373,16 @@ export default class ZitadelAuthService {
   }
 
   private async getDiscoveryDocument(): Promise<OpenIdConfiguration> {
+    const issuer = this.normalizeIssuer(env.get('AUTH_ISSUER_URL'))
     if (
       ZitadelAuthService.discoveryCache &&
-      ZitadelAuthService.discoveryCache.expiresAt > Date.now()
+      ZitadelAuthService.discoveryCache.expiresAt > Date.now() &&
+      ZitadelAuthService.discoveryCache.issuer === issuer
     ) {
       return ZitadelAuthService.discoveryCache.value
     }
 
-    const issuer = env.get('AUTH_ISSUER_URL').replace(/\/$/, '')
-    const response = await fetch(`${issuer}/.well-known/openid-configuration`, {
+    const response = await this.fetchImpl(`${issuer}/.well-known/openid-configuration`, {
       headers: {
         accept: 'application/json',
       },
@@ -354,23 +393,33 @@ export default class ZitadelAuthService {
     }
 
     const document = (await response.json()) as OpenIdConfiguration
-    if (document.issuer.replace(/\/$/, '') !== issuer) {
+    if (
+      typeof document.issuer !== 'string' ||
+      typeof document.jwks_uri !== 'string' ||
+      this.normalizeIssuer(document.issuer) !== issuer
+    ) {
       throw new UnauthorizedError('OIDC discovery issuer mismatch')
     }
     ZitadelAuthService.discoveryCache = {
       expiresAt: Date.now() + DISCOVERY_CACHE_TTL_MS,
+      issuer,
       value: document,
     }
 
     return document
   }
 
-  private async getJwks(jwksUri: string): Promise<JsonWebKeySet> {
-    if (ZitadelAuthService.jwksCache && ZitadelAuthService.jwksCache.expiresAt > Date.now()) {
+  private async getJwks(jwksUri: string, forceRefresh = false): Promise<JsonWebKeySet> {
+    if (
+      !forceRefresh &&
+      ZitadelAuthService.jwksCache &&
+      ZitadelAuthService.jwksCache.expiresAt > Date.now() &&
+      ZitadelAuthService.jwksCache.jwksUri === jwksUri
+    ) {
       return ZitadelAuthService.jwksCache.value
     }
 
-    const response = await fetch(jwksUri, {
+    const response = await this.fetchImpl(jwksUri, {
       headers: {
         accept: 'application/json',
       },
@@ -383,6 +432,7 @@ export default class ZitadelAuthService {
     const jwks = (await response.json()) as JsonWebKeySet
     ZitadelAuthService.jwksCache = {
       expiresAt: Date.now() + JWKS_CACHE_TTL_MS,
+      jwksUri,
       value: jwks,
     }
 
@@ -415,6 +465,10 @@ export default class ZitadelAuthService {
       name: 'RSASSA-PKCS1-v1_5' as const,
       hash,
     }
+  }
+
+  private normalizeIssuer(issuer: string) {
+    return issuer.replace(/\/+$/, '')
   }
 }
 
