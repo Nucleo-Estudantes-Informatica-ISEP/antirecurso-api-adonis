@@ -1,6 +1,6 @@
 # Antirecurso API
 
-A robust backend API built with AdonisJS 6 for the Antirecurso platform. It provides RESTful endpoints to manage users, subjects, questions, exams, notes, comments, scores, and admin-managed events, persisting all data to a Supabase-hosted PostgreSQL database.
+A robust backend API built with AdonisJS 7 for the Antirecurso platform. It provides RESTful endpoints to manage users, subjects, questions, exams, notes, comments, scores, and admin-managed events, persisting all data to a Supabase-hosted PostgreSQL database.
 
 ## Key Features
 
@@ -16,8 +16,8 @@ A robust backend API built with AdonisJS 6 for the Antirecurso platform. It prov
 
 ## Tech Stack
 
-- **Language**: TypeScript
-- **Framework**: AdonisJS 6
+- **Language**: TypeScript 6
+- **Framework**: AdonisJS 7
 - **Database**: PostgreSQL 15+ (hosted on Supabase)
 - **ORM**: Lucid ORM
 - **Validation**: VineJS
@@ -29,7 +29,7 @@ A robust backend API built with AdonisJS 6 for the Antirecurso platform. It prov
 
 ## Prerequisites
 
-- Node.js 22 LTS
+- Node.js 24 LTS
 - npm with the committed `package-lock.json`
 - A **Supabase** account to host the PostgreSQL database instance.
 - ZITADEL issuer and audience details if you need to exercise authenticated routes locally.
