@@ -60,6 +60,9 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
+      - name: Verify code generation
+        run: node ace codegen
+
       - name: Test
         run: node ace test --no-assets
 
