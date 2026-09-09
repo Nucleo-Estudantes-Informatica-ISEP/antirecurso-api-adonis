@@ -28,7 +28,7 @@ Use an isolated test database for migrations and API/integration tests. Never ru
 
 ## CI/CD
 
-`.github/workflows/ci.yml` requires frozen install, lint, typecheck, Japa tests, migrations against isolated PostgreSQL, production build/audit, non-root Docker build, and Gitleaks for every PR to `dev` or `main`.
+`.github/workflows/ci.yml` requires frozen install, lint, typecheck, Japa tests, migrations against isolated PostgreSQL, production build/audit, and non-root Docker build for every PR to `dev` or `main`.
 
 Deployment is a reviewed `main` image rollout. `RUN_MIGRATIONS=true` makes the entrypoint apply migrations before serving; verify the migration result before web traffic. Health is `GET /`. For cross-repository contract changes, deploy and smoke this API before the Antirecurso web PR.
 
