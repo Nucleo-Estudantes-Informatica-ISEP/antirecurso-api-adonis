@@ -4,7 +4,9 @@ Engineering instructions for the current Antirecurso backend. This AdonisJS repo
 
 ## Workflow and tests
 
-- Branch from `main`, use a conventional branch prefix, Conventional Commits, and one logical commit per issue when practical.
+- `dev` is the work integration branch; `main` is the release and default branch.
+- Branch from `dev`, use a conventional branch prefix and Conventional Commits, and open the PR into `dev`, never directly into `main`.
+- Promote reviewed work from `dev` to `main` through a release PR. Keep one logical commit per issue when practical.
 - Put `Closes #N` in the PR body only when the issue is fully resolved. Preserve useful work and close superseded PRs so reviewers have one path.
 - Prefer TDD for security boundaries, authorization/ownership, validators, transactions, exam state, rate limiting, and services: write a focused failing Japa test, implement the smallest correction, then refactor green. If a hosted Storage behavior cannot be deterministic locally, add the closest service/API regression and document the staging verification.
 - Every bug/security fix requires regression coverage. Never make CI green by weakening lint, types, tests, migrations, builds, or scans.
@@ -26,7 +28,7 @@ Use an isolated test database for migrations and API/integration tests. Never ru
 
 ## CI/CD
 
-`.github/workflows/ci.yml` requires frozen install, lint, typecheck, Japa tests, migrations against isolated PostgreSQL, production build/audit, non-root Docker build, and Gitleaks for every PR to `main`.
+`.github/workflows/ci.yml` requires frozen install, lint, typecheck, Japa tests, migrations against isolated PostgreSQL, production build/audit, non-root Docker build, and Gitleaks for every PR to `dev` or `main`.
 
 Deployment is a reviewed `main` image rollout. `RUN_MIGRATIONS=true` makes the entrypoint apply migrations before serving; verify the migration result before web traffic. Health is `GET /`. For cross-repository contract changes, deploy and smoke this API before the Antirecurso web PR.
 
