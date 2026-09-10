@@ -49,7 +49,6 @@ export default class CommentsController {
         user: comment.user.name,
         question_id: comment.questionId,
         created_at: comment.createdAt.toISO(),
-        is_admin: comment.user.isAdmin,
       })),
     })
   }
@@ -81,7 +80,6 @@ export default class CommentsController {
       user: comment.user.name,
       question_id: comment.questionId,
       created_at: comment.createdAt.toISO(),
-      is_admin: comment.user.isAdmin,
     })
   }
 
@@ -98,7 +96,6 @@ export default class CommentsController {
       user: comment.user.name,
       question_id: comment.questionId,
       created_at: comment.createdAt.toISO(),
-      is_admin: comment.user.isAdmin,
     })
   }
 }

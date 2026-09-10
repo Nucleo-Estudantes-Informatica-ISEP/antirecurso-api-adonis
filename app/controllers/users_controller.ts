@@ -1,4 +1,3 @@
-import { createHash } from 'node:crypto'
 import type { HttpContext } from '@adonisjs/core/http'
 import db from '@adonisjs/lucid/services/db'
 import User from '#models/user'
@@ -8,27 +7,13 @@ import Score from '#models/score'
 import QuestionReport from '#models/question_report'
 import { searchUsersValidator } from '#validators/user'
 import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
-import { hasAuthNeiRole } from '#services/auth/auth_nei_roles'
+import { serializeUserIdentity } from '#services/auth/user_identity'
 import {
   performAccountResolution,
   type AccountResolutionAction,
 } from '#services/auth/account_resolution_service'
 
 export default class UsersController {
-  /**
-   * Serialize a user into the API response shape.
-   * Matches Laravel's UserResource.
-   */
-  private serializeUser(user: User) {
-    return {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      avatar: this.md5(user.email.trim().toLowerCase()),
-      is_admin: user.isAdmin,
-    }
-  }
-
   /**
    * Get the current user's session info.
    * GET /user
@@ -47,7 +32,7 @@ export default class UsersController {
         .first()
 
       accountSummary = {
-        email: authUser.email,
+        email: authClaims.email,
         pending_auth_subject: pending.authSubject,
         scores: Number((userCounts as any)?.['$extras.scores_count'] ?? 0),
         answers: Number((userCounts as any)?.['$extras.answers_count'] ?? 0),
@@ -55,14 +40,13 @@ export default class UsersController {
     }
 
     return response.ok({
-      ...this.serializeUser(authUser),
-      is_admin: hasAuthNeiRole(authClaims, 'admin'),
+      ...serializeUserIdentity(authUser, authClaims),
       requires_account_resolution: requiresAccountResolution,
       account_summary: accountSummary,
     })
   }
 
-  async scores({ authUser, response }: AuthenticatedHttpContext) {
+  async scores({ authUser, authClaims, response }: AuthenticatedHttpContext) {
     await authUser.load('scores', (query) => {
       query.preload('subject')
     })
@@ -90,7 +74,7 @@ export default class UsersController {
           score: score.score / totalTests,
           subject_id: score.subjectId,
           subject: score.subject.name,
-          user: authUser.name,
+          user: authClaims.name,
           show_scoreboard: score.showScoreboard,
         }
       })
@@ -152,7 +136,7 @@ export default class UsersController {
    * Get the current user's answers (exam history).
    * GET /user/answers
    */
-  async answers({ authUser, response }: AuthenticatedHttpContext) {
+  async answers({ authUser, authClaims, response }: AuthenticatedHttpContext) {
     await authUser.load('answers', (query) => {
       query.preload('subject')
     })
@@ -162,7 +146,7 @@ export default class UsersController {
         id: answer.id,
         score: answer.score,
         subject: answer.subject.name,
-        user_name: authUser.name,
+        user_name: authClaims.name,
         mode: answer.mode,
         time: answer.time,
         created_at: answer.createdAt.toISO(),
@@ -191,7 +175,7 @@ export default class UsersController {
 
     return response.ok({
       meta: users.getMeta(),
-      data: users.all().map((user) => this.serializeUser(user)),
+      data: users.all().map((user) => serializeUserIdentity(user)),
     })
   }
 
@@ -209,7 +193,7 @@ export default class UsersController {
 
     return response.ok({
       meta: users.getMeta(),
-      data: users.all().map((user) => this.serializeUser(user)),
+      data: users.all().map((user) => serializeUserIdentity(user)),
     })
   }
 
@@ -219,12 +203,7 @@ export default class UsersController {
    */
   async adminSession({ authUser, authClaims, response }: AuthenticatedHttpContext) {
     return response.ok({
-      ...this.serializeUser(authUser),
-      is_admin: hasAuthNeiRole(authClaims, 'admin'),
+      ...serializeUserIdentity(authUser, authClaims),
     })
-  }
-
-  private md5(value: string): string {
-    return createHash('md5').update(value).digest('hex')
   }
 }

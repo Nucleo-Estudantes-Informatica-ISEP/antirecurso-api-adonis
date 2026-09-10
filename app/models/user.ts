@@ -21,15 +21,6 @@ export default class User extends BaseModel {
   @column.dateTime()
   declare emailVerifiedAt: DateTime | null
 
-  @column({ serializeAs: null })
-  declare password: string
-
-  @column()
-  declare isAdmin: boolean
-
-  @column({ serializeAs: null })
-  declare rememberToken: string | null
-
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
