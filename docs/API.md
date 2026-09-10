@@ -1,817 +1,759 @@
-# API Documentation
+# Frontend-to-Adonis API Contract
 
-This document describes the HTTP contract implemented in [`start/routes.ts`](../start/routes.ts), the request validators under [`app/validators/`](../app/validators), and the controller/service behavior in [`app/controllers/`](../app/controllers) and [`app/services/`](../app/services).
+This file is the canonical HTTP contract for the Antirecurso frontend. It reflects
+[`start/routes.ts`](../start/routes.ts), request validators, controllers, and services. Contract
+changes must update this file in the same pull request.
 
-## Base URL
+## Transport and authentication
 
-- Local development: `http://localhost:3333`
-- Content type: JSON unless noted otherwise
-- Health endpoint: `GET /`
+- Local base URL: `http://localhost:3333`
+- Request and response bodies are JSON unless stated otherwise.
+- Send AuthNEI/ZITADEL access tokens as `Authorization: Bearer <access-token>`.
+- Bearer tokens are validated for signature, issuer, audience, expiry, subject, and verified email.
+- `Public`: no token required.
+- `Optional`: a request with no token is accepted; a supplied invalid token returns `401`.
+- `Student`: valid token with the AuthNEI `student` application role.
+- `Admin`: valid token with the AuthNEI `admin` application role.
+- AuthNEI owns current name, email, verification, picture, and roles. Local name/email values are
+  synchronized caches for lookup, search, account resolution, and historical display.
+- Roles come only from validated AuthNEI claims. Persisted user rows never grant access.
 
-## Authentication
+Authenticated requests resolve the token subject to one local `users.id`. That local id owns scores,
+answers, comments, notes, likes, reports, and saved exam state. Clients must never send an actor or
+owner id unless a request schema below explicitly includes one.
 
-The API uses Bearer access tokens issued by ZITADEL and validated by [`app/services/auth/zitadel_auth_service.ts`](../app/services/auth/zitadel_auth_service.ts).
+## Common response and error rules
 
-Send tokens with:
+Schema notation uses TypeScript: `?` means optional, `| null` means nullable, and `T[]` means an
+array. Undocumented fields must not be assumed stable.
 
-```http
-Authorization: Bearer <access-token>
+Successful status codes:
+
+- `200 OK` for reads and mutations returning a body.
+- `201 Created` for new comments, events, notes, and question reports.
+- `204 No Content` for successful updates/deletes without a body.
+
+Controller/domain errors use `type MessageError = { message: string }`. Vine validation errors
+return `422 Unprocessable Entity` with Adonis validation details. Common cross-endpoint errors:
+
+- `401 Unauthorized`: token missing where required, malformed, invalid, expired, wrong issuer or
+  audience, or identity-provider email not verified.
+- `403 Forbidden`: required AuthNEI role missing, exam belongs to another user, or account resolution
+  is pending.
+- `404 Not Found`: route exists but referenced row does not.
+- `422 Unprocessable Entity`: request fails its Vine or domain schema.
+- `429 Too Many Requests`: a route-specific limiter was exceeded.
+- `500 Internal Server Error`: unhandled database or upstream failure.
+
+When account resolution is pending, every route using required-auth middleware except `GET /user`
+and `POST /user/account-resolution` returns:
+
+```json
+{
+  "message": "Account resolution required",
+  "requires_account_resolution": true
+}
 ```
 
-Route protection levels used in this API:
+### Pagination
 
-- `Public`: no token required
-- `Optional auth`: token is optional; if present, the request is authenticated
-- `Authenticated`: valid Bearer token with the AuthNEI `student` role required
-- `Admin`: authenticated token with the AuthNEI `admin` role required
+Lucid-paginated endpoints return:
 
-## Response Conventions
+```ts
+type PageMeta = {
+  total: number
+  perPage: number
+  currentPage: number
+  lastPage: number
+  firstPage: number
+  firstPageUrl: string
+  lastPageUrl: string
+  nextPageUrl: string | null
+  previousPageUrl: string | null
+}
 
-- Paginated endpoints return `{ meta, data }`
-- Most timestamps are ISO 8601 strings
-- Event `start_date` and `end_date` values are serialized as `YYYY-MM-DD`
-- `GET /exams/:id` returns `taken_at` as `dd/MM/yyyy`
-- Question report `created_at` and `updated_at` are relative strings in `pt-PT`
-- User avatars are MD5 hashes of the normalized email address
+type Page<T> = { meta: PageMeta; data: T[] }
+```
 
-## Error Conventions
+`GET /comments` is the one legacy exception:
 
-Common status codes returned by this API:
+```ts
+type CommentPageMeta = {
+  total: number
+  per_page: number
+  current_page: number
+  last_page: number
+}
+```
 
-- `200 OK`: successful read or mutation with response body
-- `201 Created`: resource created
-- `204 No Content`: successful update/delete without body
-- `400 Bad Request`: malformed route/query/body combination
-- `401 Unauthorized`: missing or invalid Bearer token
-- `403 Forbidden`: authenticated but not allowed
-- `404 Not Found`: missing subject/question/note/exam/report
-- `422 Unprocessable Entity`: Vine validation failure or domain validation failure
+Invalid numeric `page`/`limit` values are normalized only where explicitly noted below. Consumers
+should always send positive integers.
 
-## Exam Modes
+### Rate limits
 
-Exam generation and verification use these modes from [`app/services/exams/exam_config.ts`](../app/services/exams/exam_config.ts):
+Limits use authenticated local user id when available, otherwise request IP.
 
-| Mode        | Generation auth              | Behavior                                                                            |
-| ----------- | ---------------------------- | ----------------------------------------------------------------------------------- |
-| `default`   | Public                       | Random questions using default rule set                                             |
-| `realistic` | Public                       | Uses subject-specific question count and penalty rules                              |
-| `new`       | Authenticated                | Prioritizes unseen questions for the user, then fills from fallback pool            |
-| `wrong`     | Authenticated                | Prioritizes questions the user most recently got wrong                              |
-| `hard`      | Authenticated                | Prioritizes globally hard questions based on wrong-answer counts                    |
-| `custom`    | Authenticated for generation | Uses `n_of_questions`; `filter=new` is currently the only supported filter behavior |
+| Policy             | Routes                                                                                                    | Limit / block    |
+| ------------------ | --------------------------------------------------------------------------------------------------------- | ---------------- |
+| Exam               | `GET /exams/generate/:subject_id`, `POST /exams/verify`                                                   | 20/min; 5 min    |
+| Mutation           | Scoreboard/comment/question/report/note/event mutations, note view, exam-state save/delete, report review | 30/min; 5 min    |
+| Upload             | `POST /upload`                                                                                            | 10/5 min; 15 min |
+| Account resolution | `POST /user/account-resolution`                                                                           | 5/15 min; 1 hour |
 
-## Endpoint Reference
+## Shared schemas
+
+```ts
+type Subject = { id: number; name: string; slug: string; year: number }
+
+type UserSummary = {
+  id: number
+  name: string
+  email: string
+  avatar: string // MD5 of trim(lowercase(email))
+}
+
+type CurrentUserSummary = {
+  id: number
+  name: string // current AuthNEI claim/UserInfo
+  email: string // current AuthNEI claim/UserInfo
+  avatar: string // AuthNEI picture, falling back to normalized-email MD5
+  is_admin: boolean
+}
+
+type Comment = {
+  id: number
+  comment: string
+  user: string
+  question_id: number
+  created_at: string // ISO 8601
+}
+
+type Event = {
+  id: number
+  name: string
+  description: string | null
+  start_date: string // YYYY-MM-DD
+  end_date: string // YYYY-MM-DD
+  created_at: string // ISO 8601
+  updated_at: string // ISO 8601
+}
+
+type QuestionOption = { id: number; name: string; order: string }
+
+type Question = {
+  id: number
+  question: string
+  exam: string
+  image: string
+  question_type: string
+  options: QuestionOption[]
+}
+
+type QuestionReport = {
+  id: number
+  reason: string | null
+  question: {
+    id: number
+    title: string
+    image: string
+    exam: string
+    correct_option: string
+    options: QuestionOption[]
+  }
+  created_at: string | null // relative pt-PT text, ISO fallback
+  updated_at: string | null // relative pt-PT text, ISO fallback
+  user: string
+  email: string
+  reviewed_at: string | null // ISO 8601
+  solved: boolean
+  reviewed_by: { name: string; email: string } | null
+}
+
+type Note = {
+  id: number
+  title: string
+  url: string | null
+  views: number
+  user: UserSummary
+  description: string | null
+  n_pages: number | null
+  subject: { id: number; name: string; slug: string }
+  likes: number
+  is_liked: boolean
+  created_at: string // ISO 8601
+  upload_id: string | null
+}
+
+type GeneratedQuestion = {
+  id: number
+  question: string
+  exam: string
+  image: string
+  question_type: string
+  options: { name: string; order: string }[]
+}
+
+type ExamMode = 'default' | 'realistic' | 'new' | 'wrong' | 'hard' | 'custom'
+
+type SavedExamState = {
+  version: 2
+  subjectId: number
+  mode: ExamMode
+  questionIds: number[]
+  answers: [number, string][] // [question id, one alphanumeric option]
+  time: number // integer seconds, 0..28800
+  currentQuestionIndex: number
+  n_of_questions?: number // 5..50; required for custom
+  penalizing_factor?: number // 0..1; required for custom
+  filter?: string // max 100 characters
+  totalQuestions: number // server-derived
+  answered: number // server-derived
+}
+```
+
+## Route matrix
+
+| Method | Path                             | Access                                  | Success                     | Request summary                |
+| ------ | -------------------------------- | --------------------------------------- | --------------------------- | ------------------------------ |
+| GET    | `/`                              | Public                                  | `200`                       | none                           |
+| GET    | `/subjects`                      | Public                                  | `200 Subject[]`             | query `with_questions?`        |
+| GET    | `/subjects/:id`                  | Public                                  | `200 Subject`               | positive subject id            |
+| GET    | `/subjects/:id/stats`            | Student; current user                   | `200 SubjectStats`          | positive subject id            |
+| GET    | `/subjects/:id/scoreboard/:mode` | Public                                  | `200 Scoreboard`            | subject id and scoreboard mode |
+| POST   | `/subjects/:id/scoreboard`       | Student; current user                   | `200 Message`               | `{ visibility }`               |
+| GET    | `/comments`                      | Student                                 | `200 CommentPage`           | sort and pagination query      |
+| POST   | `/comments`                      | Student; actor from token               | `201 Comment`               | `{ comment, question_id }`     |
+| GET    | `/comments/:id`                  | Student                                 | `200 Comment`               | comment id                     |
+| GET    | `/questions/:id`                 | Public                                  | `200 Question`              | question id                    |
+| PUT    | `/questions/:id`                 | Admin                                   | `204`                       | question and option updates    |
+| POST   | `/question-reports`              | Student; actor from token               | `201 QuestionReport`        | `{ question_id, reason? }`     |
+| GET    | `/subjects/:id/notes`            | Optional                                | `200 Page<Note>`            | pagination query               |
+| GET    | `/notes/:id`                     | Optional                                | `200 Note`                  | note id                        |
+| PATCH  | `/notes/:id`                     | Admin                                   | `200 Note`                  | partial note update            |
+| DELETE | `/notes/:id`                     | Admin                                   | `204`                       | note id                        |
+| POST   | `/notes/:id/like`                | Student; actor from token               | `200 Note`                  | note id                        |
+| POST   | `/subjects/:id/notes`            | Admin; actor from token                 | `201 Note`                  | note metadata and upload id    |
+| POST   | `/notes/:id/view`                | Student                                 | `200 { url }`               | note id                        |
+| POST   | `/upload`                        | Student                                 | `200 UploadGrant`           | target and content type        |
+| GET    | `/exams/generate/:subject_id`    | Optional; mode-dependent                | `200 GeneratedQuestion[]`   | generation query               |
+| POST   | `/exams/verify`                  | Optional; actor from token when present | `200 ExamResult`            | submitted exam                 |
+| POST   | `/exams/state`                   | Student; current user                   | `200 SavedState`            | exam identity and state        |
+| GET    | `/exams/state`                   | Student; current user                   | `200 SavedState/null`       | subject and mode query         |
+| DELETE | `/exams/state`                   | Student; current user                   | `204`                       | subject and mode query         |
+| GET    | `/exams/pending`                 | Student; current user                   | `200 PendingState[]`        | none                           |
+| GET    | `/exams`                         | Student; current user                   | `200 Page<ExamHistoryItem>` | page query                     |
+| GET    | `/exams/:id`                     | Student owner or Admin                  | `200 ExamDetail`            | exam id                        |
+| GET    | `/user`                          | Student; current user                   | `200 UserSession`           | none                           |
+| POST   | `/user/account-resolution`       | Student; current user                   | `200 Message`               | `{ action }`                   |
+| GET    | `/user/scores`                   | Student; current user                   | `200 UserScore[]`           | none                           |
+| GET    | `/user/answers`                  | Student; current user                   | `200 UserAnswer[]`          | none                           |
+| GET    | `/search`                        | Admin                                   | `200 Page<UserSummary>`     | query and page                 |
+| GET    | `/users`                         | Admin                                   | `200 Page<UserSummary>`     | page query                     |
+| GET    | `/admin`                         | Admin; current user                     | `200 CurrentUserSummary`    | none                           |
+| GET    | `/admin/exams`                   | Admin                                   | `200 AdminExamStats`        | none                           |
+| GET    | `/events`                        | Admin                                   | `200 Page<Event>`           | pagination query               |
+| POST   | `/events/new`                    | Admin                                   | `201 Event`                 | event body                     |
+| PATCH  | `/events/:id`                    | Admin                                   | `200 Event`                 | partial event body             |
+| DELETE | `/events/:id`                    | Admin                                   | `204`                       | event id                       |
+| GET    | `/question-reports`              | Admin                                   | `200 QuestionReport[]`      | filter/sort query              |
+| POST   | `/question-reports/review`       | Admin; reviewer from token              | `200 QuestionReport[]`      | report ids                     |
+| GET    | `/question-reports/:id`          | Admin                                   | `200 QuestionReport`        | report id                      |
+
+## Endpoint details
 
 ### Health
 
 #### `GET /`
 
-- Auth: `Public`
-- Purpose: lightweight liveness check
-- Response:
+- Request: no path/query/body fields.
+- Response: `200 { "status": "ok" }`.
+- Endpoint-specific errors: none.
 
-```json
-{
-  "status": "ok"
-}
-```
-
-### Subjects
+### Subjects and scoreboard
 
 #### `GET /subjects`
 
-- Auth: `Public`
-- Query parameters:
-  - `with_questions=true`: only return subjects that currently have at least one question
-- Response shape:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Subject name",
-    "slug": "subject-slug",
-    "year": 2025
-  }
-]
-```
+- Query: `with_questions?: string`; only exact value `true` filters out subjects without questions.
+- Response: `200 Subject[]`.
 
 #### `GET /subjects/:id`
 
-- Auth: `Public`
-- Path parameters:
-  - `id`: numeric subject id
-- Response shape: same as `GET /subjects`
+- Path: `id` is a subject id.
+- Response: `200 Subject`.
+- Errors: `404 { message: "Invalid subject" }`.
 
 #### `GET /subjects/:id/stats`
 
-- Auth: `Authenticated`
-- Path parameters:
-  - `id`: numeric subject id
-- Purpose: returns the authenticated user's subject progress summary from [`app/services/stats_service.ts`](../app/services/stats_service.ts)
-- Response fields:
-  - `n_of_answers`
-  - `total_of_questions`
-  - `n_of_wrong_answers`
-  - `n_of_correct`
-  - `min_grade`
-  - `n_of_answered`
-  - `average_grade`
-  - `n_of_exams_taken`
-  - `n_of_exams_passed`
-  - `user_scores`
-  - `exam_weight`
-  - `percentage_of_exams_passed`
-  - `percentage_of_correct_answers`
-  - `percentage_of_questions_seen`
-  - `mode_scores`
-  - `suggested_mode`
-  - `times`
-  - `mean_time`
-  - `place_in_scoreboard`
+- Path: `id` is a positive integer.
+- Ownership: statistics always use authenticated local user id.
+- Response:
+
+```ts
+type SubjectStats = {
+  n_of_answers: number
+  total_of_questions: number
+  n_of_wrong_answers: number
+  n_of_correct: number
+  min_grade: number
+  n_of_answered: number
+  average_grade: number
+  n_of_exams_taken: number
+  n_of_exams_passed: number
+  user_scores: {
+    id: number
+    score: number
+    userId: number | null
+    subjectId: number
+    mode: string
+    time: number | null
+    createdAt: string
+    updatedAt: string
+  }[]
+  exam_weight: number
+  percentage_of_exams_passed: number
+  percentage_of_correct_answers: number
+  percentage_of_questions_seen: number
+  mode_scores: Record<string, number>
+  suggested_mode: string
+  times: { time: number | null }[]
+  mean_time: number | null
+  place_in_scoreboard: number | null
+}
+```
+
+- Errors: `422` invalid id; `404` missing subject.
 
 #### `GET /subjects/:id/scoreboard/:mode`
 
-- Auth: `Public`
-- Path parameters:
-  - `id`: numeric subject id
-  - `mode`: `all`, `default`, `hard`, `wrong`, `custom`, `realistic`, `new`, or `random`
-- Notes:
-  - only users with `scores.show_scoreboard = true` are included
-  - users must have at least 3 exams for the subject
-  - maximum 30 rows
-- Response shape:
+- Path: positive subject `id`; `mode` is `all`, `default`, `hard`, `wrong`, `custom`,
+  `realistic`, `new`, or `random`.
+- Inclusion: `scores.show_scoreboard = true`, at least 3 matching exams, maximum 30 users.
+- Response:
 
-```json
-{
-  "subject_id": 1,
-  "name": "Subject name",
-  "scores": [
-    {
-      "user_id": 42,
-      "user_name": "Jane Doe",
-      "avatar": "md5hash",
-      "score": 87.33,
-      "exams": 6
-    }
-  ],
-  "limit": 30,
-  "min_answers": 3,
-  "total": 120
+```ts
+type Scoreboard = {
+  subject_id: number
+  name: string
+  scores: { user_id: number; user_name: string; avatar: string; score: number; exams: number }[]
+  limit: 30
+  min_answers: 3
+  total: number // all answers for subject, not returned-user count
 }
 ```
+
+- Errors: `422` invalid subject id/mode; `404` missing subject.
 
 #### `POST /subjects/:id/scoreboard`
 
-- Auth: `Authenticated`
-- Body:
-
-```json
-{
-  "visibility": true
-}
-```
-
-- Purpose: toggles the authenticated user's inclusion in the subject scoreboard
-- Response:
-
-```json
-{
-  "message": "Scoreboard visibility updated."
-}
-```
+- Body: `{ visibility: boolean }`.
+- Ownership: creates/updates only current user's score row for subject.
+- Response: `200 { message: "Scoreboard visibility updated." }`.
+- Errors: `404` missing subject; `422` invalid id/body; `429` mutation limit.
 
 ### Comments
 
 #### `GET /comments`
 
-- Auth: `Authenticated`
-- Query parameters:
-  - `sort`: `created_at` or `id`
-  - `order`: `asc` or `desc`
-  - `page`: positive integer, default `1`
-  - `per_page`: positive integer, default `20`, max `100`
-- Response shape:
-
-```json
-{
-  "meta": {
-    "total": 1,
-    "per_page": 20,
-    "current_page": 1,
-    "last_page": 1
-  },
-  "data": [
-    {
-      "id": 10,
-      "comment": "Great explanation",
-      "user": "Jane Doe",
-      "question_id": 7,
-      "created_at": "2026-03-26T12:00:00.000+00:00",
-      "is_admin": false
-    }
-  ]
-}
-```
+- Query: `sort?: 'created_at' | 'id'`; invalid/omitted sort means no explicit ordering.
+- Query: `order?: 'asc' | 'desc'`, default/fallback `asc`.
+- Query: `page?`, default/fallback `1`; `per_page?`, default/fallback `20`, clamped to `1..100`.
+- Response: `200 { meta: CommentPageMeta, data: Comment[] }`.
 
 #### `POST /comments`
 
-- Auth: `Authenticated`
-- Body:
-
-```json
-{
-  "comment": "Question text feedback",
-  "question_id": 7
-}
-```
-
-- Validation:
-  - `comment`: string, 1..2000 chars
-  - `question_id`: number
+- Body: `{ comment: string /* 1..2000 */, question_id: number }`.
+- Ownership: `user_id` is current user's local id.
+- Response: `201 Comment`.
+- Errors: `404 { message: "Question not found" }`; `422` invalid body; `429` mutation limit.
 
 #### `GET /comments/:id`
 
-- Auth: `Authenticated`
-- Response shape: same item shape as `POST /comments`
-
-### Events
-
-#### `GET /events`
-
-- Auth: `Admin`
-- Query parameters:
-  - `page`: positive integer, default `1`
-  - `limit`: positive integer, default `15`, max `100`
-- Purpose: lists admin-managed events for the dashboard
-- Response shape:
-
-```json
-{
-  "meta": {
-    "total": 1,
-    "perPage": 15,
-    "currentPage": 1,
-    "lastPage": 1,
-    "firstPage": 1,
-    "firstPageUrl": "/?page=1",
-    "lastPageUrl": "/?page=1",
-    "nextPageUrl": null,
-    "previousPageUrl": null
-  },
-  "data": [
-    {
-      "id": 1,
-      "name": "Semana de Testes",
-      "description": "Atividades especiais para a semana académica.",
-      "start_date": "2026-04-01",
-      "end_date": "2026-04-05",
-      "created_at": "2026-03-26T12:00:00.000+00:00",
-      "updated_at": "2026-03-26T12:00:00.000+00:00"
-    }
-  ]
-}
-```
-
-#### `POST /events/new`
-
-- Auth: `Admin`
-- Body:
-
-```json
-{
-  "name": "Semana de Testes",
-  "description": "Atividades especiais para a semana académica.",
-  "start_date": "2026-04-01",
-  "end_date": "2026-04-05"
-}
-```
-
-- Validation:
-  - `name`: string, trimmed, minimum 2 characters
-  - `description`: optional string
-  - `start_date`: date in `YYYY-MM-DD`
-  - `end_date`: date in `YYYY-MM-DD`, must be the same as or after `start_date`
-- Response: `201 Created` with the created event object
-
-#### `PATCH /events/:id`
-
-- Auth: `Admin`
-- Path parameters:
-  - `id`: numeric event id
-- Body: any subset of the create payload
-- Validation:
-  - all fields are optional
-  - the resulting date range must satisfy `end_date >= start_date`
-- Response: `200 OK` with the updated event object
-- Errors:
-  - `400` when the resulting date range is invalid
-  - `404` when the event does not exist
-
-#### `DELETE /events/:id`
-
-- Auth: `Admin`
-- Path parameters:
-  - `id`: numeric event id
-- Purpose: permanently removes an event
-- Response: `204 No Content`
-- Errors:
-  - `404` when the event does not exist
+- Path: comment id.
+- Response: `200 Comment`.
+- Errors: `404` missing comment.
 
 ### Questions
 
 #### `GET /questions/:id`
 
-- Auth: `Public`
-- Response shape:
-
-```json
-{
-  "id": 7,
-  "question": "Question statement",
-  "exam": "exam-code",
-  "image": "https://...",
-  "question_type": "Multiple choice",
-  "options": [
-    {
-      "id": 70,
-      "name": "Option text",
-      "order": "A"
-    }
-  ]
-}
-```
+- Path: question id.
+- Response: `200 Question`.
+- Errors: `404` missing question.
 
 #### `PUT /questions/:id`
 
-- Auth: `Admin`
 - Body:
 
-```json
+```ts
 {
-  "question": "Updated statement",
-  "correct_option": "B",
-  "options": [
-    {
-      "id": 70,
-      "name": "Updated option A"
-    },
-    {
-      "id": 71,
-      "name": "Updated option B"
-    }
-  ]
+  question: string
+  correct_option: string
+  options: {
+    id: number
+    name: string
+  }
+  ;[] // at least 2
 }
 ```
 
-- Validation:
-  - `question`: non-empty string
-  - `correct_option`: non-empty string, must match one existing option `order`
-  - `options`: at least 2 entries
-- Response: `204 No Content`
+- Authorization: AuthNEI `admin` is checked by middleware and controller.
+- Semantics: option ids must belong to question; only names change; `correct_option` must match an
+  existing option order. Entire update is transactional.
+- Response: `204 No Content`.
+- Errors: `404` missing question; `422` invalid body, option ownership, or correct option.
 
-### Question Reports
+### Question reports
 
 #### `POST /question-reports`
 
-- Auth: `Authenticated`
-- Body:
-
-```json
-{
-  "question_id": 7,
-  "reason": "Option B is duplicated"
-}
-```
-
-- Notes:
-  - `reason` is optional
-  - one user can report a given question only once due to the database unique constraint
+- Body: `{ question_id: number, reason?: string /* trimmed, non-empty */ }`.
+- Ownership: reporter is current user's local id.
+- Response: `201 QuestionReport`.
+- Errors: `404 { message: "Question not found" }`; `422` invalid body. A duplicate
+  `(question_id, user_id)` has no dedicated conflict status. Subject to mutation rate limit.
 
 #### `GET /question-reports`
 
-- Auth: `Admin`
-- Query parameters:
-  - `solved`: `true` or `false`
-  - `sort`: `id`, `question_id`, `created_at`, `reason`, `user_id`, `reviewed_at`, `solved`, `reviewed_by`
-  - `order`: `asc` or `desc`
+- Query: `solved?: 'true' | 'false'`.
+- Query: `sort?: 'id' | 'question_id' | 'created_at' | 'reason' | 'user_id' |
+'reviewed_at' | 'solved' | 'reviewed_by'`.
+- Query: `order?: 'asc' | 'desc'`, used only with `sort`, default `asc`.
+- Response: `200 QuestionReport[]`; not paginated.
+- Errors: `422` invalid filter/sort query.
 
 #### `GET /question-reports/:id`
 
-- Auth: `Admin`
+- Path: report id.
+- Response: `200 QuestionReport`.
+- Errors: `404` missing report.
 
 #### `POST /question-reports/review`
 
-- Auth: `Admin`
-- Body:
+- Body: `{ question_ids: number[] }`; despite legacy name, values are question-report ids.
+- Ownership: `reviewed_by` is current admin's local id.
+- Semantics: only unreviewed reports change. Response contains reports changed by this request;
+  already-reviewed ids may therefore be absent.
+- Response: `200 QuestionReport[]`.
+- Errors: `422` empty/invalid array or any missing report id; `429` mutation limit.
 
-```json
-{
-  "question_ids": [1, 2, 3]
-}
-```
+### Notes and uploads
 
-- Purpose: marks the provided report ids as solved and stamps `reviewed_at` and `reviewed_by`
-
-Question report item shape for list/show/create/review responses:
-
-```json
-{
-  "id": 1,
-  "reason": "Incorrect answer key",
-  "question": {
-    "id": 7,
-    "title": "Question statement",
-    "image": "https://...",
-    "exam": "exam-code",
-    "correct_option": "C",
-    "options": [
-      {
-        "id": 70,
-        "name": "Option text",
-        "order": "A"
-      }
-    ]
-  },
-  "created_at": "há 2 dias",
-  "updated_at": "há 1 dia",
-  "user": "Jane Doe",
-  "email": "jane@example.com",
-  "reviewed_at": "2026-03-26T12:00:00.000+00:00",
-  "solved": true,
-  "reviewed_by": {
-    "name": "Admin User",
-    "email": "admin@example.com"
-  }
-}
-```
-
-### Notes and Uploads
-
-Notes depend on Supabase Storage when `upload_id` is used.
-
-Recommended creation flow:
-
-1. `POST /upload` to request a signed upload URL
-2. Upload the file directly to Supabase Storage with the returned signed URL
-3. `POST /subjects/:id/notes` to promote the uploaded object and create the note row
+Creation flow: call `POST /upload`, upload PDF directly to returned Supabase URL, then call
+`POST /subjects/:id/notes` with returned `id` as `upload_id`.
 
 #### `POST /upload`
 
-- Auth: `Authenticated`
-- Body:
+- Body: `{ target: 'notes', contentType: 'application/pdf' }`.
+- Response:
 
-```json
-{
-  "target": "notes",
-  "contentType": "application/pdf"
+```ts
+type UploadGrant = {
+  id: string
+  contentType: 'application/pdf'
+  target: 'notes'
+  maxSize: 67108864
+  expires: string // ISO 8601, five minutes after issue
+  url: string
+  headers: { 'x-upsert': 'false' }
+  uploadMode: 'supabase-signed-put'
 }
 ```
 
-- Current supported upload target:
-  - `notes`
-- Current supported content type:
-  - `application/pdf`
-- Response shape:
-
-```json
-{
-  "id": "uuid",
-  "contentType": "application/pdf",
-  "target": "notes",
-  "maxSize": 67108864,
-  "expires": "2026-03-26T12:00:00.000Z",
-  "url": "https://...signed-put-url...",
-  "headers": {
-    "x-upsert": "false"
-  },
-  "uploadMode": "supabase-signed-put"
-}
-```
+- Errors: `400` unsupported target/type; `422` invalid fields; `503` storage not configured; `500`
+  Supabase failure with `{ message, status }`; `429` upload limit.
 
 #### `GET /subjects/:id/notes`
 
-- Auth: `Optional auth`
-- Query parameters:
-  - `page`: positive integer, default `1`
-  - `limit`: positive integer, default `15`, max `100`
-- If authenticated, `is_liked` is computed for the current user
-
-#### `POST /subjects/:id/notes`
-
-- Auth: `Admin`
-- Body:
-
-```json
-{
-  "upload_id": "uuid-from-upload-endpoint",
-  "title": "Study note title",
-  "description": "Optional description",
-  "n_pages": 32
-}
-```
+- Path: numeric subject id.
+- Query: `page?`, default/fallback `1`; `limit?`, default/fallback `15`, maximum `100`.
+- Optional identity: `is_liked` is current-user-specific with token, otherwise `false`.
+- Response: `200 Page<Note>`.
+- Errors: `400` invalid id; `404` missing subject; `401` invalid supplied token.
 
 #### `GET /notes/:id`
 
-- Auth: `Optional auth`
-- Notes:
-  - increments the `views` counter
-  - returns note metadata, not the signed file URL
+- Side effect: increments `views` before returning note.
+- Optional identity: `is_liked` is current-user-specific with token.
+- Response: `200 Note`.
+- Errors: `404` missing note; `401` invalid supplied token.
 
-#### `POST /notes/:id/view`
+#### `POST /subjects/:id/notes`
 
-- Auth: `Authenticated`
-- Notes:
-  - increments the `views` counter
-  - returns `{ "url": "..." }`
-  - if `notes.url` is already set, that direct URL is returned
-  - otherwise, a signed Supabase download URL is returned
+- Body: `{ upload_id: string, title: string, description?: string, n_pages?: number }`.
+- Ownership: author is current admin's local id.
+- Storage boundary: object must exist, be at most 64 MiB, report PDF type, and have PDF signature.
+- Response: `201 Note`.
+- Errors: `400` invalid subject/upload/object; `404` missing subject; `422` invalid body; `503`
+  storage not configured; `500` upstream failure; `429` mutation limit.
 
 #### `PATCH /notes/:id`
 
-- Auth: `Admin`
-- Body fields are all optional:
-  - `upload_id`
-  - `subject_id`
-  - `title`
-  - `description`
-  - `n_pages`
+- Body: any subset of `{ upload_id, subject_id, title, description, n_pages }`; strings are
+  non-empty and numeric fields are numbers.
+- Response: `200 Note`.
+- Errors: `400` invalid upload/object; `404` missing note; `422` invalid body; `503` storage not
+  configured; `500` upstream/storage/database failure; `429` mutation limit.
 
 #### `DELETE /notes/:id`
 
-- Auth: `Admin`
-- Response: `204 No Content`
+- Side effects: deletes uploaded/distributed objects, then note. Missing storage configuration does
+  not block row deletion.
+- Response: `204 No Content`.
+- Errors: `404` missing note; `400` storage error; `500` upstream failure; `429` mutation limit.
 
 #### `POST /notes/:id/like`
 
-- Auth: `Authenticated`
-- Purpose: toggles the current user's like for the note
+- Ownership: toggles current user's like; duplicate insert races are tolerated.
+- Response: `200 Note` with current `likes` and `is_liked`.
+- Errors: `404` missing note; `429` mutation limit.
 
-Shared note response shape for list/show/create/update/like:
+#### `POST /notes/:id/view`
 
-```json
-{
-  "id": 11,
-  "title": "Study note title",
-  "url": null,
-  "views": 4,
-  "user": {
-    "id": 2,
-    "name": "Jane Doe",
-    "email": "jane@example.com",
-    "avatar": "md5hash",
-    "is_admin": false
-  },
-  "description": "Optional description",
-  "n_pages": 32,
-  "subject": {
-    "id": 1,
-    "name": "Subject name",
-    "slug": "subject-slug"
-  },
-  "likes": 3,
-  "is_liked": true,
-  "created_at": "2026-03-26T12:00:00.000+00:00",
-  "upload_id": "uuid"
-}
-```
+- Side effect: increments `views`.
+- Response: `200 { url: string }`; direct `notes.url` when present, otherwise five-minute signed
+  Supabase URL.
+- Errors: `404` missing note/no file; `400` missing storage object; `503` storage not configured;
+  `500` upstream failure; `429` mutation limit.
 
 ### Exams
 
+`default` and `realistic` generation work anonymously. `new`, `wrong`, `hard`, and `custom`
+generation require a valid user. Verification may be anonymous for every mode; authenticated
+verification owns answer, updates scoreboard, and completes matching saved state.
+
 #### `GET /exams/generate/:subject_id`
 
-- Auth: `Optional auth`
-- Query parameters:
-  - `mode`: `default`, `realistic`, `new`, `wrong`, `hard`, or `custom`
-  - `n_of_questions`: required for `custom`, min `5`, max `50`
-  - `filter`: optional string; `new` has explicit service behavior in custom mode
-- Important behavior:
-  - `new`, `wrong`, `hard`, and `custom` currently require an authenticated user
-  - `realistic` uses subject-specific exam rules
-- Response shape:
-
-```json
-[
-  {
-    "id": 7,
-    "question": "Question statement",
-    "exam": "exam-code",
-    "image": "https://...",
-    "question_type": "Multiple choice",
-    "options": [
-      {
-        "name": "Option text",
-        "order": "A"
-      }
-    ]
-  }
-]
-```
+- Query: `mode?: ExamMode`, default `default`; `n_of_questions?: integer` in `5..50`, required for
+  `custom`; `filter?: string`, with only `filter=new` changing current custom behavior.
+- Response: `200 GeneratedQuestion[]`.
+- Errors: `400` invalid id/custom count/generation; `401` user-dependent mode without user or invalid
+  token; `404` missing subject; `422` invalid query; `429` exam limit.
 
 #### `POST /exams/verify`
 
-- Auth: `Optional auth`
 - Body:
 
-```json
+```ts
 {
-  "subject_id": 1,
-  "mode": "default",
-  "time": 480,
-  "penalizing_factor": 0.25,
-  "n_of_questions": 10,
-  "answers": [
-    {
-      "question_id": 7,
-      "selected_option": "A"
-    }
-  ]
+  subject_id: number
+  mode?: ExamMode
+  time?: number // positive integer
+  n_of_questions?: number // 5..50, required for custom
+  penalizing_factor?: number // 0..1
+  answers: { question_id: number; selected_option?: string }[]
 }
 ```
 
-- Validation and behavior:
-  - `answers.length` must exactly match the expected question count for the selected mode
-  - `question_id` values must be unique
-  - `selected_option` is optional; omitted or empty means unanswered
-  - `selected_option` must match an existing option `order` for the question
-  - when authenticated, the resulting score is accumulated into the `scores` table
-- Response shape:
+- Validation: answer count matches mode; question ids are unique, exist, and belong to subject;
+  selected option is one alphanumeric character and must exist for question.
+- Transaction: answer/detail, score, scoreboard, and saved-state completion commit together.
+- Response: `200 { id, score, wrong_answers, passed, subject }` with numeric fields as numbers.
+- Errors: `400` domain mismatch; `401` invalid supplied token; `404` missing subject; `422` invalid
+  body; `429` exam limit.
 
-```json
+#### `POST /exams/state`
+
+- Body: `{ subject_id: number, mode: ExamMode, state: SavedExamState }`.
+- Identity: inner subject/mode match outer fields; question ids are unique and belong to subject;
+  answers reference unique ids in `questionIds`.
+- Ownership/upsert: current user + subject + mode. Completed state cannot change.
+- Response: `200 { id: number, state: SavedExamState }`.
+- Errors: `400` invalid state/cross-subject questions; `404` missing subject; `409` completed state;
+  `422` invalid outer body; `429` mutation limit.
+
+#### `GET /exams/state`
+
+- Query: required positive integer `subject_id`; `mode?: ExamMode`, default `default`.
+- Ownership: current user's incomplete state only.
+- Response: `200 { state: null }` when absent/invalid stored state, otherwise
+  `200 { id: number, state: SavedExamState & { savedAt: number } }`; `savedAt` is epoch milliseconds.
+- Errors: `422` invalid query.
+
+#### `DELETE /exams/state`
+
+- Query: required positive integer `subject_id`; `mode?: ExamMode`, default `default`.
+- Ownership: current user's matching state only; absent state is success.
+- Response: `204 No Content`.
+- Errors: `422` invalid query; `429` mutation limit.
+
+#### `GET /exams/pending`
+
+- Ownership: current user's incomplete, structurally valid states, newest first. Invalid stored states
+  are omitted.
+- Response:
+
+```ts
 {
-  "id": 120,
-  "score": 83.33,
-  "wrong_answers": 2,
-  "passed": true,
-  "subject": "Subject name"
+  data: {
+    id: number
+    subject: string
+    subject_id: number
+    mode: ExamMode
+    state: SavedExamState & { savedAt: number }
+    created_at: string
+    updated_at: string
+  }
+  ;[]
 }
 ```
 
 #### `GET /exams`
 
-- Auth: `Authenticated`
-- Query parameters:
-  - `page`: positive integer
-- Response shape:
-
-```json
-{
-  "meta": {
-    "total": 1,
-    "per_page": 10,
-    "current_page": 1,
-    "last_page": 1
-  },
-  "data": [
-    {
-      "id": 120,
-      "score": 83,
-      "subject": "Subject name",
-      "mode": "default",
-      "time": 480,
-      "created_at": "2026-03-26T12:00:00.000+00:00"
-    }
-  ]
-}
-```
+- Query: `page?: positive integer`, default `1`; fixed page size `10`.
+- Ownership: current user's attempts, newest first.
+- Response: `200 Page<{ id, score, subject, mode, time, created_at }>`.
+- Errors: `422` invalid page.
 
 #### `GET /exams/:id`
 
-- Auth: `Authenticated`
-- Authorization:
-  - admins can inspect any exam
-  - non-admins can inspect only their own exam
-- Response shape:
+- Ownership: current user reads own attempt; AuthNEI admin reads any. Anonymous attempts are
+  admin-only.
+- Response:
 
-```json
-{
-  "id": 120,
-  "score": 83,
-  "taken_at": "26/03/2026",
-  "subject": "Subject name",
-  "questions": [
-    {
-      "question_id": 7,
-      "question": "Question statement",
-      "selected_option_id": 70,
-      "options": [
-        {
-          "id": 70,
-          "name": "Option text",
-          "order": "A"
-        }
-      ],
-      "is_wrong": false,
-      "correct_option": "A",
-      "comments": [
-        {
-          "id": 5,
-          "comment": "Helpful note",
-          "user": "Jane Doe",
-          "question_id": 7,
-          "created_at": "2026-03-26T12:00:00.000+00:00",
-          "is_admin": false,
-          "user_avatar": "md5hash"
-        }
-      ]
+```ts
+type ExamDetail = {
+  id: number
+  score: number
+  taken_at: string // dd/MM/yyyy
+  subject: string
+  questions: {
+    question: {
+      id: number
+      question: string
+      correct_option: string
+      question_type: string
+      image: string
     }
-  ]
+    selected_option_id: number | null
+    options: QuestionOption[]
+    is_wrong: boolean
+    correct_option: string
+    comments: (Comment & { user_avatar: string })[]
+  }[]
 }
 ```
+
+- Errors: `400` invalid id; `403` not owner/admin; `404` missing attempt.
 
 #### `GET /admin/exams`
 
-- Auth: `Admin`
-- Response fields:
-  - `exams_per_day`
-  - `exams_per_subject`
-  - `exams_per_mode`
+- Response:
 
-### User and Admin Views
-
-#### `GET /user`
-
-- Auth: `Authenticated`
-- Returns the current user:
-
-```json
-{
-  "id": 2,
-  "name": "Jane Doe",
-  "email": "jane@example.com",
-  "avatar": "md5hash",
-  "is_admin": false
+```ts
+type AdminExamStats = {
+  exams_per_day: { date: string; count: number }[]
+  exams_per_subject: { name: string; count: number }[]
+  exams_per_mode: { mode: string; count: number }[]
 }
 ```
 
+### User, account resolution, and admin directory
+
+Authentication resolves local account by AuthNEI subject, then verified email. A legacy email match
+without same subject creates pending resolution. Until resolved, only session and resolution routes
+are allowed.
+
+#### `GET /user`
+
+- Ownership: current user only.
+- Response:
+
+```ts
+type UserSession = CurrentUserSummary & {
+  requires_account_resolution: boolean
+  account_summary: {
+    email: string
+    pending_auth_subject: string
+    scores: number
+    answers: number
+  } | null
+}
+```
+
+#### `POST /user/account-resolution`
+
+- Body: `{ action: 'keep' | 'discard' }`.
+- `keep`: preserve data, assign pending AuthNEI subject, remove marker.
+- `discard`: delete local answers, scores, reports, and user; relational cascades also apply. Later
+  authentication recreates an empty local account.
+- Transaction/ownership: current user's marker is locked and resolved.
+- Response: `200 { message: 'Account linked successfully' | 'Account data discarded successfully' }`.
+- Errors: `400` invalid action/no pending marker; `429` account-resolution limit.
+
 #### `GET /user/scores`
 
-- Auth: `Authenticated`
-- Response item shape:
+- Ownership: current user only.
+- Response:
 
-```json
+```ts
 {
-  "score": 320,
-  "subject_id": 1,
-  "subject": "Subject name",
-  "user": "Jane Doe",
-  "show_scoreboard": true
+  score: number
+  subject_id: number
+  subject: string
+  user: string
+  show_scoreboard: boolean
 }
+;[]
 ```
 
 #### `GET /user/answers`
 
-- Auth: `Authenticated`
-- Response item shape:
+- Ownership: current user only.
+- Response:
 
-```json
+```ts
 {
-  "id": 120,
-  "score": 83,
-  "subject": "Subject name",
-  "user_name": "Jane Doe",
-  "mode": "default",
-  "time": 480,
-  "created_at": "2026-03-26T12:00:00.000+00:00"
+  id: number
+  score: number
+  subject: string
+  user_name: string
+  mode: string
+  time: number | null
+  created_at: string
 }
+;[]
 ```
 
 #### `GET /search`
 
-- Auth: `Admin`
-- Query parameters:
-  - `query`: required search string
-  - `page`: positive integer, default `1`
+- Query: required trimmed non-empty `query`, case-insensitive substring over local name/email;
+  `page?`, default/fallback `1`; fixed page size `15`.
+- Response: `200 Page<UserSummary>`. Cached directory entries do not expose roles.
+- Errors: `422` missing/empty query.
 
 #### `GET /users`
 
-- Auth: `Admin`
-- Query parameters:
-  - `page`: positive integer, default `1`
-
-Both `/search` and `/users` return:
-
-```json
-{
-  "meta": {
-    "total": 1,
-    "per_page": 15,
-    "current_page": 1,
-    "last_page": 1
-  },
-  "data": [
-    {
-      "id": 2,
-      "name": "Jane Doe",
-      "email": "jane@example.com",
-      "avatar": "md5hash",
-      "is_admin": false
-    }
-  ]
-}
-```
+- Query: `page?`, default/fallback `1`; fixed page size `15`.
+- Response: `200 Page<UserSummary>`. Cached directory entries do not expose roles.
 
 #### `GET /admin`
 
-- Auth: `Admin`
-- Returns the same user shape as `GET /user`
+- Response: `200 CurrentUserSummary` for current admin. `is_admin` is computed from current AuthNEI
+  roles.
+
+### Events
+
+#### `GET /events`
+
+- Query: `page?`, default/fallback `1`; `limit?`, default/fallback `15`, maximum `100`.
+- Ordering: `start_date` descending.
+- Response: `200 Page<Event>`.
+
+#### `POST /events/new`
+
+- Body: `{ name: string, description?: string, start_date: 'YYYY-MM-DD', end_date: 'YYYY-MM-DD' }`;
+  name is trimmed/minimum 2; end is same as or after start; blank description becomes `null`.
+- Response: `201 Event`.
+- Errors: `422` invalid body/date range; `429` mutation limit.
+
+#### `PATCH /events/:id`
+
+- Body: any subset of create fields; resulting date range must remain valid. Blank description
+  becomes `null`.
+- Response: `200 Event`.
+- Errors: `400` invalid resulting range; `404` missing event; `422` invalid body; `429` mutation limit.
+
+#### `DELETE /events/:id`
+
+- Response: `204 No Content`.
+- Errors: `404` missing event; `429` mutation limit.
