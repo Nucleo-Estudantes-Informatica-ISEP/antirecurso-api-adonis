@@ -1,4 +1,4 @@
-import { randomUUID, webcrypto } from 'node:crypto'
+import { webcrypto } from 'node:crypto'
 import { DateTime } from 'luxon'
 import env from '#start/env'
 import User from '#models/user'
@@ -38,6 +38,7 @@ type JwtPayload = {
   iat?: number
   iss?: string
   name?: string
+  picture?: string
   preferred_username?: string
   sub?: string
   nbf?: number
@@ -320,9 +321,6 @@ export default class ZitadelAuthService {
       email: claims.email,
       name: claims.name,
       emailVerifiedAt: DateTime.now(),
-      password: `oidc-managed:${randomUUID()}`,
-      isAdmin: false,
-      rememberToken: null,
     })
   }
 
