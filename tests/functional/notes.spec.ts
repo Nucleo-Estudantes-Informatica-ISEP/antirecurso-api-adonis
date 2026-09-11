@@ -5,7 +5,7 @@ import ZitadelAuthService from '#services/auth/zitadel_auth_service'
 import Subject from '#models/subject'
 import Note from '#models/note'
 import User from '#models/user'
-import { createOidcFixture, installFetchMock, userPayload } from '#tests/helpers/token_factory'
+import { createOidcFixture, installFetchMock, userPayload, OIDC_TEST_SENTINEL } from '#tests/helpers/token_factory'
 
 test.group('Notes', (group) => {
   const suffix = randomUUID().slice(0, 8)
@@ -35,7 +35,7 @@ test.group('Notes', (group) => {
       email: USER_EMAIL,
       name: 'Notes Test User',
       emailVerifiedAt: DateTime.now(),
-      password: 'oidc-managed:notes-test',
+      password: OIDC_TEST_SENTINEL,
       isAdmin: false,
       rememberToken: null,
     })

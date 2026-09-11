@@ -3,7 +3,7 @@ import { DateTime } from 'luxon'
 import ZitadelAuthService from '#services/auth/zitadel_auth_service'
 import AccountLinkPending from '#models/account_link_pending'
 import User from '#models/user'
-import { createOidcFixture, installFetchMock, userPayload, adminPayload } from '#tests/helpers/token_factory'
+import { createOidcFixture, installFetchMock, userPayload, adminPayload, OIDC_TEST_SENTINEL } from '#tests/helpers/token_factory'
 
 test.group('USER vs ADMIN authorization', (group) => {
   let userToken: string
@@ -77,7 +77,7 @@ test.group('Pending-account restrictions', (group) => {
       email: PENDING_EMAIL,
       name: 'Pending User',
       emailVerifiedAt: DateTime.now(),
-      password: 'oidc-managed:pending-test',
+      password: OIDC_TEST_SENTINEL,
       isAdmin: false,
       rememberToken: null,
     })
