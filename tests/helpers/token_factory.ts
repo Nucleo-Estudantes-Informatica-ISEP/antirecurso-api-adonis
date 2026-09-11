@@ -97,6 +97,12 @@ export function userPayload(
 }
 
 /**
+ * Sentinel stored in the password column for test users whose auth is
+ * delegated entirely to OIDC — the value is never used for authentication.
+ */
+export const OIDC_TEST_SENTINEL = 'oidc-managed:functional-test'
+
+/**
  * Payload for an admin user (carries the admin role in the configured claim).
  */
 export function adminPayload(sub: string, email: string): Record<string, unknown> {
