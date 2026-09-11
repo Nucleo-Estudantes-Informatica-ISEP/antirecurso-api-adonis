@@ -414,6 +414,11 @@ export default class ZitadelAuthService {
       hash,
     }
   }
+
+  static clearCachesForTests() {
+    ZitadelAuthService.discoveryCache = undefined
+    ZitadelAuthService.jwksCache = undefined
+  }
 }
 
 export { ForbiddenError, UnauthorizedError }
