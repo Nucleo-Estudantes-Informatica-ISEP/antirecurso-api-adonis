@@ -10,7 +10,7 @@ test.group('AuthNEI user identity', () => {
       sub: 'authnei-subject',
       name: 'Current name',
       email: 'current@example.com',
-      picture: 'https://authnei.example/avatar.png',
+      picture: '  https://authnei.example/avatar.png  ',
       authNeiRoles: ['admin'],
     } as AuthClaims
 
@@ -18,7 +18,8 @@ test.group('AuthNEI user identity', () => {
       id: 7,
       name: 'Current name',
       email: 'current@example.com',
-      avatar: 'https://authnei.example/avatar.png',
+      avatar: '09d6038834b2af1a27a1e2d2d8cd37fb',
+      picture: 'https://authnei.example/avatar.png',
       is_admin: true,
     })
   })

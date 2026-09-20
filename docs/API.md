@@ -32,7 +32,8 @@ Route protection levels used in this API:
 - Event `start_date` and `end_date` values are serialized as `YYYY-MM-DD`
 - `GET /exams/:id` returns `taken_at` as `dd/MM/yyyy`
 - Question report `created_at` and `updated_at` are relative strings in `pt-PT`
-- User avatars are MD5 hashes of the normalized email address
+- User `avatar` values are MD5 hashes of the normalized email address
+- Current-user responses may also include the AuthNEI image URL as `picture`
 
 ## Error Conventions
 
@@ -740,6 +741,7 @@ Shared note response shape for list/show/create/update/like:
   "name": "Jane Doe",
   "email": "jane@example.com",
   "avatar": "md5hash",
+  "picture": "https://authnei.example/avatar.png",
   "is_admin": false
 }
 ```
