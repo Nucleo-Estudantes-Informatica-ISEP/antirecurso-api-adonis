@@ -116,7 +116,7 @@ type CurrentUserSummary = {
   id: number
   name: string // current AuthNEI claim/UserInfo
   email: string // current AuthNEI claim/UserInfo
-  avatar: string // AuthNEI picture, falling back to normalized-email MD5
+  avatar: string // MD5 of trim(lowercase(email))
   is_admin: boolean
 }
 
@@ -240,7 +240,7 @@ type SavedExamState = {
 | POST   | `/exams/state`                   | Student; current user                   | `200 SavedState`            | exam identity and state        |
 | GET    | `/exams/state`                   | Student; current user                   | `200 SavedState/null`       | subject and mode query         |
 | DELETE | `/exams/state`                   | Student; current user                   | `204`                       | subject and mode query         |
-| GET    | `/exams/pending`                 | Student; current user                   | `200 PendingState[]`        | none                           |
+| GET    | `/exams/pending`                 | Student; current user                   | `200 { data: PendingState[] }` | none                         |
 | GET    | `/exams`                         | Student; current user                   | `200 Page<ExamHistoryItem>` | page query                     |
 | GET    | `/exams/:id`                     | Student owner or Admin                  | `200 ExamDetail`            | exam id                        |
 | GET    | `/user`                          | Student; current user                   | `200 UserSession`           | none                           |
@@ -583,18 +583,17 @@ verification owns answer, updates scoreboard, and completes matching saved state
 - Response:
 
 ```ts
-{
-  data: {
-    id: number
-    subject: string
-    subject_id: number
-    mode: ExamMode
-    state: SavedExamState & { savedAt: number }
-    created_at: string
-    updated_at: string
-  }
-  ;[]
+type PendingState = {
+  id: number
+  subject: string
+  subject_id: number
+  mode: ExamMode
+  state: SavedExamState & { savedAt: number }
+  created_at: string
+  updated_at: string
 }
+
+type PendingStatesResponse = { data: PendingState[] }
 ```
 
 #### `GET /exams`
