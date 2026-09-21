@@ -8,7 +8,7 @@ This document reflects the Lucid migrations in [`database/migrations/`](../datab
 - ORM: Lucid ORM
 - Migration entry point: `node ace migration:run`
 - Core domains:
-  - users and auth recovery
+  - local user ownership and AuthNEI account resolution
   - subjects, question types, questions, and options
   - exams, answers, and score aggregation
   - collaborative content through comments, notes, likes, and question reports
@@ -23,7 +23,6 @@ erDiagram
     users ||--o{ comments : "writes"
     users ||--o{ question_reports : "opens"
     users ||--o{ question_reports : "reviews"
-    users ||--o{ password_reset_codes : "owns"
     users ||--o{ notes : "publishes"
     users ||--o{ likes : "creates"
 
@@ -50,17 +49,16 @@ erDiagram
 
 ### `users`
 
-Primary user table used by auth middleware and all user-owned resources.
+Primary local ownership table used by auth middleware and all user-owned resources. AuthNEI is the
+source of truth for identity and roles. `name`, `email`, and `email_verified_at` are synchronized
+caches retained for lookup, search, and account resolution; they never grant authorization.
 
 | Column              | Type         | Null | Constraints / Notes                                                     |
 | ------------------- | ------------ | ---- | ----------------------------------------------------------------------- |
 | `id`                | serial       | no   | primary key                                                             |
-| `name`              | varchar      | no   | display name                                                            |
-| `email`             | varchar(254) | no   | unique                                                                  |
-| `email_verified_at` | timestamp    | yes  | optional verification timestamp                                         |
-| `password`          | varchar      | no   | currently required by schema even though API auth is Bearer-token based |
-| `is_admin`          | boolean      | no   | default `false`                                                         |
-| `remember_token`    | varchar      | yes  | nullable                                                                |
+| `name`              | varchar      | no   | synchronized AuthNEI display-name cache                                 |
+| `email`             | varchar(254) | no   | unique synchronized AuthNEI lookup cache                                |
+| `email_verified_at` | timestamp    | yes  | synchronized AuthNEI verification cache                                 |
 | `auth_subject`      | varchar(255) | yes  | unique nullable identity-provider subject                               |
 | `created_at`        | timestamp    | no   |                                                                         |
 | `updated_at`        | timestamp    | no   |                                                                         |
@@ -74,7 +72,6 @@ Relations:
 - one-to-many with `likes`
 - one-to-many with `question_reports` as reporter
 - one-to-many with `question_reports` as reviewer via `reviewed_by`
-- one-to-many with `password_reset_codes`
 
 ### `subjects`
 
@@ -242,19 +239,6 @@ Additional constraints:
 
 - unique composite key on `question_id, user_id`
 
-### `password_reset_codes`
-
-Password recovery codes linked to users.
-
-| Column       | Type      | Null | Constraints / Notes                   |
-| ------------ | --------- | ---- | ------------------------------------- |
-| `id`         | serial    | no   | primary key                           |
-| `code`       | varchar   | no   | reset code value                      |
-| `validated`  | boolean   | no   | default `false`                       |
-| `user_id`    | integer   | no   | FK -> `users.id`, `ON DELETE CASCADE` |
-| `created_at` | timestamp | no   |                                       |
-| `updated_at` | timestamp | no   |                                       |
-
 ### `notes`
 
 Study materials attached to a subject.
@@ -316,7 +300,7 @@ The current schema uses these deletion rules:
 - `ON DELETE CASCADE`
   - deleting a subject removes its question types, questions, answers, scores, and notes
   - deleting a question removes its options, comments, reports, and answer detail rows
-  - deleting a user removes comments, notes, likes, scores, reports opened by the user, and password reset codes
+- deleting a user removes comments, notes, likes, scores, and reports opened by the user
 - `ON DELETE SET NULL`
   - `answers.user_id` is preserved if the user row is deleted
   - `answer_questions.option_id` is preserved as null if the option is deleted

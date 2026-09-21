@@ -117,6 +117,7 @@ type CurrentUserSummary = {
   name: string // current AuthNEI claim/UserInfo
   email: string // current AuthNEI claim/UserInfo
   avatar: string // MD5 of trim(lowercase(email))
+  picture?: string // AuthNEI image URL, omitted when the claim is absent
   is_admin: boolean
 }
 
