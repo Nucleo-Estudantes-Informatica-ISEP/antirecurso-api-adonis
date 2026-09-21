@@ -341,8 +341,9 @@ accepted.
 Project roles are normalized to `student`, `nei_member`, `admin`, and `employee` from the standard
 ZITADEL project-role claim (including project-ID claim variants). Authenticated application routes
 require `student`; admin middleware and controller defense-in-depth checks require `admin` from the
-validated token. The legacy database `is_admin` column remains temporarily for compatibility and
-display of historical authors, but it no longer authorizes requests.
+validated token. AuthNEI also owns current name, email, verification state, picture, and roles. Local
+name, email, and verification columns are synchronized lookup/search caches, never authorization
+inputs.
 
 Set `AUTH_ROLE_CLAIM` only when the shared NEI Platform project emits a custom claim name. The
 default is `urn:zitadel:iam:org:project:roles`.

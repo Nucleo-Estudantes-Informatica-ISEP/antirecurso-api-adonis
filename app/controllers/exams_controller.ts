@@ -1,4 +1,3 @@
-import { createHash } from 'node:crypto'
 import type { HttpContext } from '@adonisjs/core/http'
 import db from '@adonisjs/lucid/services/db'
 import Answer from '#models/answer'
@@ -25,6 +24,7 @@ import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
 import { hasAuthNeiRole } from '#services/auth/auth_nei_roles'
 import { canViewExamAttempt } from '#services/exams/exam_access_policy'
 import { InvalidExamStateError, normalizeSavedExamState } from '#services/exams/exam_state_policy'
+import { getUserAvatar } from '#services/auth/user_identity'
 
 export default class ExamsController {
   private examGenerationService = new ExamGenerationService()
@@ -223,8 +223,7 @@ export default class ExamsController {
           user: comment.user.name,
           question_id: comment.questionId,
           created_at: comment.createdAt.toISO(),
-          is_admin: comment.user.isAdmin,
-          user_avatar: this.md5(comment.user.email.trim().toLowerCase()),
+          user_avatar: getUserAvatar(comment.user.email),
         })),
       }
     })
@@ -435,8 +434,5 @@ export default class ExamsController {
     }
 
     return null
-  }
-  private md5(value: string): string {
-    return createHash('md5').update(value).digest('hex')
   }
 }
