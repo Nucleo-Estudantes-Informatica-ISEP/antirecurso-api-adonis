@@ -439,9 +439,9 @@ type Scoreboard = {
 
 ### Notes and uploads
 
-Admin creates upload grant with POST /upload. Browser PUTs raw PDF bytes to the returned same-origin /api/protected/uploads/:id URL with Content-Type application/pdf. The web proxy forwards bytes with the AuthNEI token; S3 credentials stay server-side. Grant expires after five minutes. Admin then creates note with POST /subjects/:id/notes using upload_id. API verifies size, content type, and PDF signature before copying uploaded/notes/:id to distribution/notes/:id.
+Authenticated student or admin creates upload grant with POST /upload. Browser PUTs raw PDF bytes to the returned same-origin /api/protected/uploads/:id URL with Content-Type application/pdf. The web proxy forwards bytes with the AuthNEI token; S3 credentials stay server-side. Grant expires after five minutes. Admin then creates note with POST /subjects/:id/notes using upload_id. API verifies size, content type, and PDF signature before copying uploaded/notes/:id to distribution/notes/:id.
 
-Upload grant contains id, target, maxSize (67108864), expires, url, headers (content-type), and uploadMode raw-put. PUT rejects expired or forged grants, non-admin requests, non-PDF content, oversized uploads, duplicate IDs, and mismatched lengths. Private note downloads return authenticated, five-minute signed same-origin URLs.
+Upload grant contains id, target, maxSize (67108864), expires, url, headers (content-type), and uploadMode raw-put. PUT rejects expired or forged grants, unauthenticated requests, non-PDF content, oversized uploads, duplicate IDs, and mismatched lengths. Private note downloads return authenticated, five-minute signed same-origin URLs.
 
 #### `GET /subjects/:id/notes`
 

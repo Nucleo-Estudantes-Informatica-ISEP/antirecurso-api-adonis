@@ -100,10 +100,10 @@ router
 router.get('/notes/:id/file', (ctx) => notesController.file(ctx)).use(middleware.auth())
 router
   .post('/upload', (ctx) => uploadsController.upload(ctx))
-  .use([middleware.auth(), middleware.admin(), uploadThrottle])
+  .use([middleware.auth(), uploadThrottle])
 router
   .put('/uploads/:id', (ctx) => uploadsController.put(ctx))
-  .use([middleware.auth(), middleware.admin(), uploadThrottle])
+  .use([middleware.auth(), uploadThrottle])
 
 // Exams
 router
