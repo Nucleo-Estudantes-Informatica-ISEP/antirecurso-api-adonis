@@ -28,11 +28,11 @@ Use an isolated test database for migrations and API/integration tests. Never ru
 
 ## CI/CD
 
-`.github/workflows/ci.yml` requires frozen install, lint, typecheck, Japa tests, migrations against isolated PostgreSQL, production build/audit, and non-root Docker build for every PR to `dev` or `main`.
+`.github/workflows/ci.yml` requires frozen install, lint, typecheck, Japa tests, migrations against isolated PostgreSQL, production build/audit, and non-root Docker build for every PR to `dev` or `main`. The separate security workflow runs for pull requests.
 
 Deployment is a reviewed `main` image rollout. `RUN_MIGRATIONS=true` makes the entrypoint apply migrations before serving; verify the migration result before web traffic. Health is `GET /`. For cross-repository contract changes, deploy and smoke this API before the Antirecurso web PR.
 
-Production must configure exact `CORS_ALLOWED_ORIGINS`, issuer/audiences, the shared database limiter, and Supabase Storage credentials/policies. Actor/owner identity comes from the validated token, never request input. Stored note promotion validates object size, type, and PDF signature.
+Production must configure exact `CORS_ALLOWED_ORIGINS`, issuer/audiences, the shared database limiter, and bucket-scoped S3 credentials and private MinIO bucket. Actor/owner identity comes from the validated token, never request input. Stored note promotion validates object size, type, and PDF signature.
 
 Dependabot routine groups are patch/minor only. Adonis 7, Node Current, TypeScript 7, ESLint 10, or other majors require a dedicated migration PR and compatibility matrix.
 

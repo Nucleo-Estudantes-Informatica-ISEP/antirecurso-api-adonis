@@ -146,8 +146,8 @@ The events feature is covered by these admin-only routes:
 
 - Authenticated routes use [`app/middleware/auth_middleware.ts`](./app/middleware/auth_middleware.ts), which validates Bearer tokens against the configured ZITADEL issuer.
 - Optional-auth routes use [`app/middleware/optional_auth_middleware.ts`](./app/middleware/optional_auth_middleware.ts) so the same endpoint can return user-aware fields like `is_liked`.
-- Authenticated routes require the validated AuthNEI `student` role. Admin-only routes additionally pass through [`app/middleware/admin_middleware.ts`](./app/middleware/admin_middleware.ts) and require the validated AuthNEI `admin` role.
-- Token verification is implemented in [`app/services/auth/zitadel_auth_service.ts`](./app/services/auth/zitadel_auth_service.ts), including issuer, audience, signature, and expiry checks.
+- Authenticated routes require a valid access token for the AntiRecurso project audience. They do not require a separate `student` role. Admin-only routes additionally pass through [`app/middleware/admin_middleware.ts`](./app/middleware/admin_middleware.ts) and require the validated shared-project AuthNEI `admin` role.
+- Token verification is implemented in [`app/services/auth/zitadel_auth_service.ts`](./app/services/auth/zitadel_auth_service.ts), including normalized issuer, configured audience, RSA signature/JWKS rotation, lifetime, subject, and verified-email checks. If identity fields are loaded from UserInfo, its subject must match the signed access-token subject.
 
 ### Database Schema
 
@@ -206,16 +206,20 @@ Check the running container DB identity, current_schema(), bucket name, health e
 ## AuthNEI shared-project authorization
 
 The API treats ZITADEL/AuthNEI as the source of truth for authorization. Bearer tokens must have a
-valid signature, exact configured issuer, unexpired lifetime, and at least one audience from the
+valid signature, normalized configured issuer, unexpired lifetime, and at least one audience from the
 required `AUTH_ALLOWED_AUDIENCES` list. Only RSA `RS256`, `RS384`, and `RS512` signatures are
 accepted.
 
+The web client must request `urn:zitadel:iam:org:project:id:<AUTH_PROJECT_ID>:aud` (alongside
+`openid email profile offline_access`). The API authorizes the resulting signed `aud` claim rather
+than trusting a client-supplied scope string.
+
 Project roles are normalized to `student`, `nei_member`, `admin`, and `employee` from the standard
 ZITADEL project-role claim (including project-ID claim variants). Authenticated application routes
-require `student`; admin middleware and controller defense-in-depth checks require `admin` from the
-validated token. AuthNEI also owns current name, email, verification state, picture, and roles. Local
-name, email, and verification columns are synchronized lookup/search caches, never authorization
-inputs.
+accept any valid identity with the AntiRecurso audience; they do not require a `student` role. Admin
+middleware and controller checks require `admin` from the validated token. AuthNEI owns the current
+name, email, verification state, picture, and roles. Local name, email, and verification columns are
+synchronized lookup/search caches, never authorization inputs.
 
 Set `AUTH_ROLE_CLAIM` only when the shared NEI Platform project emits a custom claim name. The
 default is `urn:zitadel:iam:org:project:roles`.

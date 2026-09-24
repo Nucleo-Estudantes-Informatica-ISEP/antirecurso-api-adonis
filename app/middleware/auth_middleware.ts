@@ -7,7 +7,10 @@ import env from '#start/env'
 import { canAccessWithPendingAccount } from '#services/auth/pending_account_access'
 
 export default class AuthMiddleware {
-  private authService = new ZitadelAuthService()
+  constructor(
+    private authService = new ZitadelAuthService(),
+    private pendingAccountAccess = canAccessWithPendingAccount
+  ) {}
 
   async handle(ctx: HttpContext, next: () => Promise<void>) {
     try {
@@ -20,7 +23,7 @@ export default class AuthMiddleware {
 
       const rawPath = ctx.request.url()
       const path = rawPath.includes('?') ? rawPath.split('?')[0] : rawPath
-      const isAllowed = await canAccessWithPendingAccount({
+      const isAllowed = await this.pendingAccountAccess({
         userId: session.user.id,
         path,
         method: ctx.request.method(),

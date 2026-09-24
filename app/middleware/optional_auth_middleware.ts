@@ -25,8 +25,8 @@ export default class OptionalAuthMiddleware {
       await next()
     } catch (error) {
       if (error instanceof ForbiddenError) {
-        // Route is public. A valid AuthNEI identity without the app's student role
-        // continues anonymously; malformed/invalid credentials still receive 401 below.
+        // Route is public. Permission failures continue anonymously;
+        // malformed/invalid credentials still receive 401 below.
         await next()
         return
       }
