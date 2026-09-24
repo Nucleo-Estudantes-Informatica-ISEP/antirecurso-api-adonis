@@ -2,7 +2,7 @@
 
 Status: implementation and dev/prod data copies staged on 24 September 2026. No Antirecurso application has switched yet. Review and deployment checks below remain required.
 
-Review [API PR #106](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso-api-adonis/pull/106) and [web PR #186](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso/pull/186) into `dev`. Required reviewer approvals and CI are pending. Production promotion PRs can be opened only after reviewed dev merges.
+Review [API PR #106](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso-api-adonis/pull/106) and [web PR #186](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso/pull/186) into `dev`. Required reviewer approvals and CI must pass before merge. Production promotion PRs can be opened only after reviewed dev merges.
 
 ## Private configuration
 
