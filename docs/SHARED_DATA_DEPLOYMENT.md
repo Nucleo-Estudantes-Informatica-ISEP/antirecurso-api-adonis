@@ -29,7 +29,7 @@ Keep the local copy outside the repository; do not paste secrets into PRs or cha
 | RUN_MIGRATIONS | Runtime | `true` for first rollout, then `false`. |
 | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, SUPABASE_STORAGE_BUCKET | Runtime | Remove after switching. |
 
-Preserve all other API values from the private environment file. Web has no new variable. Preserve its existing runtime values. `NEXT_PUBLIC_BASE_URL` and `NEXT_PUBLIC_PROTECTED_API_BASE_URL` are build-time values and must keep their current same-origin routes; `API_BASE_URL` and AuthNEI secrets remain runtime. S3 credentials never enter a web build or browser.
+Preserve all other API values from the private environment file. Web has no new variable. Preserve its existing runtime values. `NEXT_PUBLIC_BASE_URL` is a build-time value and must keep its current route; the protected BFF route is fixed at `/api/protected`. `API_BASE_URL` and AuthNEI secrets remain runtime. S3 credentials never enter a web build or browser.
 
 ## Development
 
