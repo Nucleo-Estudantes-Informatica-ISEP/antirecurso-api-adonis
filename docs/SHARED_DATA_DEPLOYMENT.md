@@ -4,6 +4,8 @@ Status: **development and production completed on 24 September 2026**. Both API 
 
 Reviewed implementation PRs: [API dev #106](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso-api-adonis/pull/106), [web dev #186](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso/pull/186), [API conflict fix #109](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso-api-adonis/pull/109), [API dev to main #107](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso-api-adonis/pull/107), [web dev to main #187](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso/pull/187). All merged. No implementation PR remains to merge.
 
+This final guide is in [documentation PR #112](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso-api-adonis/pull/112) into `dev`; normal review and subsequent reviewed `dev` to `main` promotion remain for the documentation only.
+
 ## Private environment files
 
 Complete, separate files are on the VPS at `/data/nei-shared/antirecurso-migration/`: `api-dev.env`, `web-dev.env`, `api-prod.env`, `web-prod.env`. They are root-readable only (mode 0600). Retrieve each privately from your machine, outside any Git checkout:
