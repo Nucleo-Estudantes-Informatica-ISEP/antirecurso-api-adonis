@@ -1,12 +1,12 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import db from '@adonisjs/lucid/services/db'
-import { createHash } from 'node:crypto'
 import Subject from '#models/subject'
 import Answer from '#models/answer'
 import Score from '#models/score'
 import StatsService, { EXAM_MODES } from '#services/stats_service'
 import { scoreboardVisibilityValidator } from '#validators/subject'
 import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
+import { getUserAvatar } from '#services/auth/user_identity'
 
 const SCOREBOARD_LIMIT = 30
 const MIN_ANSWERS = 3
@@ -166,7 +166,7 @@ export default class SubjectsController {
       }) => ({
         user_id: score.user_id,
         user_name: score.user_name,
-        avatar: createHash('md5').update(score.user_email.toLowerCase().trim()).digest('hex'),
+        avatar: getUserAvatar(score.user_email),
         score: Number(Number(score.s).toFixed(2)),
         exams: Number(score.c),
       })
