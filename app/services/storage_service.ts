@@ -1,324 +1,180 @@
 import env from '#start/env'
-import { validateUploadedPdf } from '#services/uploads/upload_policy'
-
-type JsonValue = Record<string, any> | string | null
+import { validateUploadedPdf, NOTE_UPLOAD_POLICY } from '#services/uploads/upload_policy'
+import {
+  S3Client,
+  PutObjectCommand,
+  HeadObjectCommand,
+  GetObjectCommand,
+  CopyObjectCommand,
+  DeleteObjectCommand,
+} from '@aws-sdk/client-s3'
+import type { Readable } from 'node:stream'
 
 export class StorageNotConfiguredError extends Error {
   constructor() {
     super(
-      'Storage service not configured. Please set SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, and SUPABASE_STORAGE_BUCKET.'
+      'Storage service not configured. Set S3_ENDPOINT, S3_ACCESS_KEY, S3_SECRET_KEY, and S3_BUCKET.'
     )
-    this.name = 'StorageNotConfiguredError'
   }
 }
 
 export class StorageObjectNotFoundError extends Error {
   constructor(path: string) {
     super(`Storage object not found: ${path}`)
-    this.name = 'StorageObjectNotFoundError'
   }
 }
 
 export class StorageRequestError extends Error {
   constructor(
     message: string,
-    public status: number,
-    public payload?: JsonValue
+    public status: number
   ) {
     super(message)
-    this.name = 'StorageRequestError'
   }
-}
-
-function normalizePath(path: string) {
-  return path.replace(/^\/+|\/+$/g, '').replace(/\/+/g, '/')
-}
-
-function isRecord(value: unknown): value is Record<string, any> {
-  return typeof value === 'object' && value !== null
-}
-
-function buildErrorMessage(payload: JsonValue, fallback: string) {
-  if (typeof payload === 'string' && payload.trim()) {
-    return payload
-  }
-
-  if (isRecord(payload)) {
-    if (typeof payload.message === 'string' && payload.message.trim()) {
-      return payload.message
-    }
-    if (typeof payload.error === 'string' && payload.error.trim()) {
-      return payload.error
-    }
-    if (typeof payload.msg === 'string' && payload.msg.trim()) {
-      return payload.msg
-    }
-  }
-
-  return fallback
-}
-
-export type SignedUpload = {
-  signedUrl: string
-  token: string
 }
 
 export default class StorageService {
-  private readonly supabaseUrl = env.get('SUPABASE_URL')?.replace(/\/+$/g, '')
-  private readonly serviceRoleKey = env.get('SUPABASE_SERVICE_ROLE_KEY')
-  private readonly bucket = env.get('SUPABASE_STORAGE_BUCKET')
+  private readonly bucket = env.get('S3_BUCKET')
+  private readonly client = this.isConfigured()
+    ? new S3Client({
+        endpoint: env.get('S3_ENDPOINT'),
+        region: 'us-east-1',
+        forcePathStyle: true,
+        credentials: {
+          accessKeyId: env.get('S3_ACCESS_KEY')!,
+          secretAccessKey: env.get('S3_SECRET_KEY')!,
+        },
+      })
+    : null
 
   isConfigured() {
-    return Boolean(this.supabaseUrl && this.serviceRoleKey && this.bucket)
+    return Boolean(
+      env.get('S3_ENDPOINT') && env.get('S3_ACCESS_KEY') && env.get('S3_SECRET_KEY') && this.bucket
+    )
   }
 
   buildUploadedPath(target: string, id: string) {
-    return normalizePath(`uploaded/${target}/${id}`)
+    return `uploaded/${target}/${id}`
   }
-
   buildDistributionPath(target: string, id: string) {
-    return normalizePath(`distribution/${target}/${id}`)
+    return `distribution/${target}/${id}`
   }
 
-  async createSignedUploadUrl(path: string): Promise<SignedUpload> {
+  async uploadNote(
+    id: string,
+    stream: Readable,
+    contentType: string | null,
+    contentLength: number | null
+  ) {
     this.assertConfigured()
-
-    const payload = await this.requestJson('POST', this.objectUploadSignUrl(path), {
-      body: {},
-      headers: { 'x-upsert': 'false' },
-    })
-
-    if (!isRecord(payload) || typeof payload.url !== 'string') {
-      throw new StorageRequestError(
-        'Supabase storage did not return a signed upload URL.',
-        500,
-        payload
-      )
+    if (
+      !Number.isSafeInteger(contentLength) ||
+      contentLength! < 5 ||
+      contentLength! > NOTE_UPLOAD_POLICY.maxSize
+    ) {
+      throw new StorageRequestError('Uploaded PDF size is invalid', 400)
     }
-
-    const signedUrl = this.buildAbsoluteStorageUrl(payload.url)
-    const token = new URL(signedUrl).searchParams.get('token')
-
-    if (!token) {
-      throw new StorageRequestError(
-        'Supabase storage did not return an upload token.',
-        500,
-        payload
-      )
+    const chunks: Buffer[] = []
+    let size = 0
+    for await (const chunk of stream) {
+      const bytes = Buffer.from(chunk)
+      size += bytes.length
+      if (size > NOTE_UPLOAD_POLICY.maxSize)
+        throw new StorageRequestError('Uploaded PDF is too large', 413)
+      chunks.push(bytes)
     }
-
-    return { signedUrl, token }
+    if (size !== contentLength)
+      throw new StorageRequestError('Uploaded PDF length does not match', 400)
+    const body = Buffer.concat(chunks)
+    validateUploadedPdf({ contentType, contentLength: size, prefix: body.subarray(0, 5) })
+    const key = this.buildUploadedPath('notes', id)
+    if (await this.exists(key)) throw new StorageRequestError('Upload already exists', 409)
+    await this.client!.send(
+      new PutObjectCommand({
+        Bucket: this.bucket,
+        Key: key,
+        Body: body,
+        ContentType: 'application/pdf',
+        IfNoneMatch: '*',
+      })
+    )
   }
 
   async promoteUploadedNote(uploadId: string) {
-    const uploadedPath = this.buildUploadedPath('notes', uploadId)
-    const distributionPath = this.buildDistributionPath('notes', uploadId)
-
-    await this.validateUploadedNote(uploadedPath)
-
-    await this.requestJson('POST', `${this.storageApiBase()}/object/move`, {
-      body: {
-        bucketId: this.bucket,
-        sourceKey: uploadedPath,
-        destinationKey: distributionPath,
-      },
-    })
-  }
-
-  private async validateUploadedNote(path: string) {
     this.assertConfigured()
-
-    const metadataResponse = await fetch(this.objectUrl(path), {
-      method: 'HEAD',
-      headers: this.authHeaders(),
-    })
-    if (metadataResponse.status === 400 || metadataResponse.status === 404) {
-      throw new StorageObjectNotFoundError(path)
-    }
-    if (!metadataResponse.ok) {
-      throw new StorageRequestError(
-        `Supabase storage metadata request failed with status ${metadataResponse.status}.`,
-        metadataResponse.status
-      )
-    }
-
-    const prefixResponse = await fetch(this.objectUrl(path), {
-      headers: this.authHeaders({ Range: 'bytes=0-4' }),
-    })
-    if (!prefixResponse.ok || prefixResponse.status !== 206) {
-      throw new StorageRequestError(
-        `Supabase storage content validation failed with status ${prefixResponse.status}.`,
-        prefixResponse.status
-      )
-    }
-
-    const contentLengthHeader = metadataResponse.headers.get('content-length')
-    const parsedContentLength = contentLengthHeader ? Number(contentLengthHeader) : null
+    const source = this.buildUploadedPath('notes', uploadId)
+    const target = this.buildDistributionPath('notes', uploadId)
+    const head = await this.head(source)
+    const prefix = await this.client!.send(
+      new GetObjectCommand({ Bucket: this.bucket, Key: source, Range: 'bytes=0-4' })
+    )
     validateUploadedPdf({
-      contentType: metadataResponse.headers.get('content-type'),
-      contentLength:
-        parsedContentLength !== null && Number.isFinite(parsedContentLength)
-          ? parsedContentLength
-          : null,
-      prefix: new Uint8Array(await prefixResponse.arrayBuffer()),
+      contentType: head.ContentType ?? null,
+      contentLength: head.ContentLength ?? null,
+      prefix: new Uint8Array(await prefix.Body!.transformToByteArray()),
     })
+    await this.client!.send(
+      new CopyObjectCommand({
+        Bucket: this.bucket,
+        Key: target,
+        CopySource: `${this.bucket}/${source}`,
+      })
+    )
+    await this.client!.send(new DeleteObjectCommand({ Bucket: this.bucket, Key: source }))
   }
 
-  async createSignedDownloadUrl(path: string, expiresInSeconds = 300) {
+  async downloadNote(path: string) {
     this.assertConfigured()
-
-    const payload = await this.requestJson('POST', this.objectSignUrl(path), {
-      body: { expiresIn: expiresInSeconds },
-    })
-
-    if (!isRecord(payload) || typeof payload.signedURL !== 'string') {
-      throw new StorageRequestError(
-        'Supabase storage did not return a signed download URL.',
-        500,
-        payload
-      )
+    try {
+      return await this.client!.send(new GetObjectCommand({ Bucket: this.bucket, Key: path }))
+    } catch (error) {
+      this.rethrowMissing(error, path)
+      throw error
     }
-
-    return this.buildAbsoluteStorageUrl(payload.signedURL)
   }
 
   async deleteNoteAssets(uploadId: string) {
     this.assertConfigured()
-
-    const paths = [
+    for (const Key of [
       this.buildUploadedPath('notes', uploadId),
       this.buildDistributionPath('notes', uploadId),
-    ]
-
-    const resolvedPaths = await Promise.all(
-      paths.map(async (path) => ((await this.exists(path)) ? path : null))
-    )
-    const existingPaths = resolvedPaths.filter((path): path is string => path !== null)
-
-    if (!existingPaths.length) {
-      return
+    ]) {
+      await this.client!.send(new DeleteObjectCommand({ Bucket: this.bucket, Key }))
     }
-
-    await this.requestJson('DELETE', `${this.storageApiBase()}/object/${this.bucket}`, {
-      body: {
-        prefixes: existingPaths,
-      },
-    })
   }
 
   async exists(path: string) {
     this.assertConfigured()
-
-    const response = await fetch(this.objectUrl(path), {
-      method: 'HEAD',
-      headers: this.authHeaders(),
-    })
-
-    if (response.ok) {
+    try {
+      await this.head(path)
       return true
+    } catch (error) {
+      if (error instanceof StorageObjectNotFoundError) return false
+      throw error
     }
+  }
 
-    if (response.status === 400 || response.status === 404) {
-      return false
+  private async head(path: string) {
+    try {
+      return await this.client!.send(new HeadObjectCommand({ Bucket: this.bucket, Key: path }))
+    } catch (error) {
+      this.rethrowMissing(error, path)
+      throw error
     }
+  }
 
-    const payload = await this.parsePayload(response)
-    throw new StorageRequestError(
-      buildErrorMessage(
-        payload,
-        `Supabase storage HEAD request failed with status ${response.status}.`
-      ),
-      response.status,
-      payload
-    )
+  private rethrowMissing(error: unknown, path: string) {
+    if (
+      error &&
+      typeof error === 'object' &&
+      '$metadata' in error &&
+      (error.$metadata as { httpStatusCode?: number }).httpStatusCode === 404
+    ) {
+      throw new StorageObjectNotFoundError(path)
+    }
   }
 
   private assertConfigured() {
-    if (!this.isConfigured()) {
-      throw new StorageNotConfiguredError()
-    }
-  }
-
-  private storageApiBase() {
-    this.assertConfigured()
-    return `${this.supabaseUrl}/storage/v1`
-  }
-
-  private objectUrl(path: string) {
-    return `${this.storageApiBase()}/object/${this.bucketPath(path)}`
-  }
-
-  private objectUploadSignUrl(path: string) {
-    return `${this.storageApiBase()}/object/upload/sign/${this.bucketPath(path)}`
-  }
-
-  private objectSignUrl(path: string) {
-    return `${this.storageApiBase()}/object/sign/${this.bucketPath(path)}`
-  }
-
-  private bucketPath(path: string) {
-    this.assertConfigured()
-    return `${this.bucket}/${normalizePath(path)}`
-  }
-
-  private authHeaders(extraHeaders: Record<string, string> = {}) {
-    this.assertConfigured()
-
-    return {
-      apikey: this.serviceRoleKey!,
-      Authorization: `Bearer ${this.serviceRoleKey!}`,
-      ...extraHeaders,
-    }
-  }
-
-  private async requestJson(
-    method: 'POST' | 'PUT' | 'DELETE',
-    url: string,
-    options: { body?: Record<string, any>; headers?: Record<string, string> } = {}
-  ) {
-    const response = await fetch(url, {
-      method,
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.authHeaders(options.headers),
-      },
-      body: options.body === undefined ? undefined : JSON.stringify(options.body),
-    })
-
-    const payload = await this.parsePayload(response)
-    if (!response.ok) {
-      throw new StorageRequestError(
-        buildErrorMessage(
-          payload,
-          `Supabase storage request failed with status ${response.status}.`
-        ),
-        response.status,
-        payload
-      )
-    }
-
-    return payload
-  }
-
-  private async parsePayload(response: Response): Promise<JsonValue> {
-    const text = await response.text()
-
-    if (!text) {
-      return null
-    }
-
-    try {
-      return JSON.parse(text) as Record<string, any>
-    } catch {
-      return text
-    }
-  }
-
-  private buildAbsoluteStorageUrl(value: string) {
-    if (/^https?:\/\//i.test(value)) {
-      return value
-    }
-
-    return `${this.storageApiBase()}${value}`
+    if (!this.client || !this.bucket) throw new StorageNotConfiguredError()
   }
 }

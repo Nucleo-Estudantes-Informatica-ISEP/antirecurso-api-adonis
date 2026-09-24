@@ -439,29 +439,9 @@ type Scoreboard = {
 
 ### Notes and uploads
 
-Creation flow: call `POST /upload`, upload PDF directly to returned Supabase URL, then call
-`POST /subjects/:id/notes` with returned `id` as `upload_id`.
+Authenticated student or admin creates upload grant with POST /upload. Browser PUTs raw PDF bytes to the returned same-origin /api/protected/uploads/:id URL with Content-Type application/pdf. The web proxy forwards bytes with the AuthNEI token; S3 credentials stay server-side. Grant expires after five minutes. Admin then creates note with POST /subjects/:id/notes using upload_id. API verifies size, content type, and PDF signature before copying uploaded/notes/:id to distribution/notes/:id.
 
-#### `POST /upload`
-
-- Body: `{ target: 'notes', contentType: 'application/pdf' }`.
-- Response:
-
-```ts
-type UploadGrant = {
-  id: string
-  contentType: 'application/pdf'
-  target: 'notes'
-  maxSize: 67108864
-  expires: string // ISO 8601, five minutes after issue
-  url: string
-  headers: { 'x-upsert': 'false' }
-  uploadMode: 'supabase-signed-put'
-}
-```
-
-- Errors: `400` unsupported target/type; `422` invalid fields; `503` storage not configured; `500`
-  Supabase failure with `{ message, status }`; `429` upload limit.
+Upload grant contains id, target, maxSize (67108864), expires, url, headers (content-type), and uploadMode raw-put. PUT rejects expired or forged grants, unauthenticated requests, non-PDF content, oversized uploads, duplicate IDs, and mismatched lengths. Private note downloads return authenticated, five-minute signed same-origin URLs.
 
 #### `GET /subjects/:id/notes`
 
@@ -512,7 +492,7 @@ type UploadGrant = {
 
 - Side effect: increments `views`.
 - Response: `200 { url: string }`; direct `notes.url` when present, otherwise five-minute signed
-  Supabase URL.
+  same-origin signed URL.
 - Errors: `404` missing note/no file; `400` missing storage object; `503` storage not configured;
   `500` upstream failure; `429` mutation limit.
 

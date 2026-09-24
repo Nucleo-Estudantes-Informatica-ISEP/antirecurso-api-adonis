@@ -8,6 +8,7 @@ const dbConfig = defineConfig({
   connections: {
     postgres: {
       client: 'pg',
+      searchPath: [env.get('DB_SCHEMA') ?? 'public'],
       connection: {
         connectionString: env.get('DB_URL'),
         ...(dbSslEnabled

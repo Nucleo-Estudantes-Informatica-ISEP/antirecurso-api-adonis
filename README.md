@@ -1,6 +1,6 @@
 # Antirecurso API
 
-A robust backend API built with AdonisJS 7 for the Antirecurso platform. It provides RESTful endpoints to manage users, subjects, questions, exams, notes, comments, scores, and admin-managed events, persisting all data to a Supabase-hosted PostgreSQL database.
+A robust backend API built with AdonisJS 7 for the Antirecurso platform. It provides RESTful endpoints to manage users, subjects, questions, exams, notes, comments, scores, and admin-managed events, persisting all data to a NEI shared PostgreSQL database.
 
 ## Key Features
 
@@ -18,7 +18,7 @@ A robust backend API built with AdonisJS 7 for the Antirecurso platform. It prov
 
 - **Language**: TypeScript 6
 - **Framework**: AdonisJS 7
-- **Database**: PostgreSQL 15+ (hosted on Supabase)
+- **Database**: PostgreSQL 16 (NEI shared service)
 - **ORM**: Lucid ORM
 - **Validation**: VineJS
 - **Authentication**: Custom Bearer-token validation for ZITADEL OIDC access tokens
@@ -31,7 +31,7 @@ A robust backend API built with AdonisJS 7 for the Antirecurso platform. It prov
 
 - Node.js 24 LTS
 - npm with the committed `package-lock.json`
-- A **Supabase** account to host the PostgreSQL database instance.
+- Access to PostgreSQL and a private S3 bucket.
 - ZITADEL issuer and audience details if you need to exercise authenticated routes locally.
 
 ---
@@ -53,30 +53,13 @@ npm ci
 
 ### 3. Environment Setup
 
-Copy the example environment file to create your local `.env`:
+Copy .env.example to .env. Set restricted runtime DB credentials, DB schema, private S3 credentials, and AuthNEI issuer/audience. Use a separate migration identity only when applying migrations. Never use PostgreSQL admin or MinIO root credentials in the API.
 
-```bash
-cp .env.example .env
-```
-
-To connect to your **Supabase PostgreSQL** instance, ensure you configure the direct connection string (port `5432`, not `6543`) in your `.env` file:
-
-| Variable                     | Description                                              | Example                                                      |
-| ---------------------------- | -------------------------------------------------------- | ------------------------------------------------------------ |
-| `PORT`                       | Application Port                                         | `3333`                                                       |
-| `NODE_ENV`                   | Application environment                                  | `development`                                                |
-| `DB_URL`                     | Supabase direct Postgres connection string               | `postgresql://postgres:...@db.xxx.supabase.co:5432/postgres` |
-| `DB_SSL`                     | Enable SSL for Postgres                                  | `true`                                                       |
-| `DB_SSL_REJECT_UNAUTHORIZED` | Require full certificate validation                      | `false`                                                      |
-| `AUTH_ISSUER_URL`            | ZITADEL issuer URL used to validate JWTs                 | `https://zitadel.example.com`                                |
-| `AUTH_ALLOWED_AUDIENCES`     | Comma-separated accepted token audiences                 | `api,web`                                                    |
-| `SUPABASE_URL`               | Supabase project URL for Storage API                     | `https://xxx.supabase.co`                                    |
-| `SUPABASE_SERVICE_ROLE_KEY`  | Service role key used server-side for Storage operations | `eyJ...`                                                     |
-| `SUPABASE_STORAGE_BUCKET`    | Private bucket that stores note PDFs                     | `notes`                                                      |
+For Coolify values and deployment order, see [shared data deployment](./docs/SHARED_DATA_DEPLOYMENT.md).
 
 ### 4. Database Setup
 
-Once your `.env` file is populated with the Supabase credentials, execute all the existing migrations to materialize the schema:
+Once your `.env` file is populated with the database credentials, execute all the existing migrations to materialize the schema:
 
 ```bash
 node ace migration:run
@@ -130,7 +113,7 @@ The events feature is covered by these admin-only routes:
 │   ├── middleware/       # HTTP middleware (e.g., auth, admin checks)
 │   └── validators/       # VineJS validation schemas
 ├── config/
-│   ├── database.ts       # Lucid ORM and Supabase connection configuration
+│   ├── database.ts       # Lucid ORM and PostgreSQL connection configuration
 │   ├── auth.ts           # Authentication configuration
 │   └── ...
 ├── database/
@@ -148,16 +131,16 @@ The events feature is covered by these admin-only routes:
 1. A request hits the AdonisJS router (`start/routes.ts`).
 2. Global and route-specific middleware (`app/middleware/`) execute (e.g., authentication).
 3. The specific Controller (`app/controllers/`) processes the request payload, typically validating it using VineJS.
-4. Controller invokes Lucid Models (`app/models/`) to interact with the Supabase PostgreSQL database.
+4. Controller invokes Lucid Models (`app/models/`) to interact with the shared PostgreSQL database.
 5. The response is serialized to JSON and sent back to the client.
 
 ### Key Components
 
-**Database Connection (Supabase)**
+**Database and storage**
 
-- The application uses `config/database.ts` to manage the connection.
-- **SSL configuration is environment-driven**. Supabase requires SSL connections. In `config/database.ts`, SSL is enabled when `DB_SSL=true`, and certificate verification is controlled by `DB_SSL_REJECT_UNAUTHORIZED`.
-- **Connection Mode**: Supabase provides both a _Direct Connection_ (port 5432) and a _Connection Pooler_ (port 6543, using PgBouncer in transaction mode). Because Lucid/Knex uses prepared statements by default (which transaction-mode PgBouncer does not support), **the direct connection (port 5432) is required and recommended**.
+- Lucid uses restricted PostgreSQL credentials and the configured schema search path.
+- StorageService uses bucket-scoped S3 credentials. API proxies PDF transfers; MinIO remains private.
+- Browser upload and download links expire after five minutes and require AuthNEI login.
 
 **Authentication (ZITADEL Bearer Tokens)**
 
@@ -174,28 +157,7 @@ The full table-by-table schema, constraints, deletion rules, and ER diagram live
 
 ## Environment Variables
 
-### Required Variables
-
-| Variable                     | Description                                                    | How to Get                              |
-| ---------------------------- | -------------------------------------------------------------- | --------------------------------------- |
-| `NODE_ENV`                   | Environment (`development`, `production`)                      | Set locally or on host                  |
-| `LOG_LEVEL`                  | Runtime log verbosity                                          | `info`                                  |
-| `APP_KEY`                    | AdonisJS secure key for cookies and sessions                   | Run `node ace generate:key`             |
-| `HOST`                       | Interface the server binds to                                  | `0.0.0.0` in containers                 |
-| `DB_URL`                     | Supabase direct connection string                              | Supabase Dashboard -> Connect           |
-| `DB_SSL`                     | Whether Postgres SSL should be enabled                         | `true` for Supabase                     |
-| `DB_SSL_REJECT_UNAUTHORIZED` | Whether to reject untrusted cert chains                        | Often `false` on hosted platforms       |
-| `AUTH_ISSUER_URL`            | ZITADEL issuer used for JWT validation                         | ZITADEL -> OpenID configuration         |
-| `AUTH_ALLOWED_AUDIENCES`     | Required comma-separated accepted audiences                    | ZITADEL API/client configuration        |
-| `AUTH_ROLE_CLAIM`            | Optional shared-project role claim override                     | ZITADEL project configuration           |
-| `AUTH_DEBUG`                 | Enables verbose auth logging                                   | `true` only while debugging auth issues |
-| `CORS_ALLOWED_ORIGINS`       | Exact comma-separated production browser origins                | `https://antirecurso.nei-isep.org`       |
-| `SUPABASE_URL`               | Supabase project URL used by Storage REST API                  | Supabase Dashboard -> Project Settings  |
-| `SUPABASE_SERVICE_ROLE_KEY`  | Server-side key for signing uploads/downloads and moving files | Supabase Dashboard -> API               |
-| `SUPABASE_STORAGE_BUCKET`    | Bucket containing the uploaded and distribution note files     | Supabase Storage                        |
-| `LIMITER_STORE`              | Shared limiter backend; use `database` in production             | `database`                              |
-
----
+See [.env.example](./.env.example) and [shared data deployment](./docs/SHARED_DATA_DEPLOYMENT.md). DB_URL is the runtime identity; DB_MIGRATION_URL is a separate schema owner used only for migrations. S3 credentials are server-side only. Preserve existing AuthNEI settings.
 
 ## Available Scripts
 
@@ -235,101 +197,11 @@ For regressions and security fixes, prefer TDD: add the focused failing Japa tes
 
 ## Deployment
 
-AdonisJS applications compile down to standard Node.js applications.
-
-### 1. Build the Application
-
-```bash
-npm run build
-```
-
-This outputs the compiled code and required assets to the `build/` directory.
-
-### 2. Install Production Dependencies
-
-```bash
-cd build
-npm ci --omit=dev
-```
-
-### 3. Configure Production Environment
-
-Provide your production environment variables through your deployment platform or runtime environment.
-Ensure you set:
-
-- `NODE_ENV=production`
-- `HOST=0.0.0.0`
-- `LOG_LEVEL=info`
-- `APP_KEY=<your-secure-key>`
-- `SESSION_DRIVER=cookie`
-- `DB_URL=<Supabase direct connection string on port 5432>`
-- `DB_SSL=true`
-- `DB_SSL_REJECT_UNAUTHORIZED=false` unless strict certificate validation is known to work in your runtime
-
-### Dockerfile-Based Deployment
-
-This repository includes a production-ready `Dockerfile`, so a simple container-based deployment is:
-
-1. Build and deploy the image from this repository's `Dockerfile`.
-2. Expose the container on port `3333`.
-3. Set the health check path to `/`.
-4. Provide these environment variables:
-
-```env
-NODE_ENV=production
-HOST=0.0.0.0
-PORT=3333
-LOG_LEVEL=info
-APP_KEY=generate-a-long-random-string
-SESSION_DRIVER=cookie
-DB_URL=postgresql://postgres:<password>@<host>:5432/postgres
-DB_SSL=true
-DB_SSL_REJECT_UNAUTHORIZED=false
-RUN_MIGRATIONS=true
-```
-
-Notes:
-
-- Use the **direct Supabase connection** on port `5432`, not the pooler on `6543`.
-- `RUN_MIGRATIONS=true` is optional but useful on first deploy. The container entrypoint runs `node ace.js migration:run --force` before starting the server.
-- Authentication is active and fail-closed: ZITADEL issuer, audience, signature, expiry, and AuthNEI roles are validated. Do not deploy without exact `AUTH_ALLOWED_AUDIENCES` and `CORS_ALLOWED_ORIGINS`.
-- Use `LIMITER_STORE=database` so every replica shares rate-limit state.
-- Deploy and verify this API and its migrations before a dependent Antirecurso web release.
-
-### 4. Start the Application
-
-```bash
-npm run start
-# or
-node bin/server.js
-```
-
----
+Follow [shared data deployment](./docs/SHARED_DATA_DEPLOYMENT.md). Review API and web PRs into dev, deploy and verify development, then promote reviewed dev into main. The API uses /compose.yml and the shared-data Docker network.
 
 ## Troubleshooting
 
-### Database Connection Failure on Startup
-
-**Error:** AdonisJS logs a database connection failure during startup.
-
-**Solution:**
-
-1. Check your `.env` variables and ensure they match your Supabase instance.
-2. Verify you are using the **Direct Connection Port (5432)** instead of the Connection Pooler port (6543).
-
-### Prepared Statement Errors
-
-**Error:** `prepared statement "..." already exists` or `named portals cannot be used in transaction mode`
-
-**Solution:**
-You are connecting to the Supabase PgBouncer pooler (port 6543) in transaction mode. Update `DB_URL` to use port `5432` to bypass the pooler and connect directly to PostgreSQL, as Lucid relies heavily on prepared statements.
-
-### Missing SSL Connection Error
-
-**Error:** `no pg_hba.conf entry for host ... SSL off`
-
-**Solution:**
-Supabase enforces SSL. Set `DB_SSL=true`. If your platform fails certificate validation against Supabase's chain, set `DB_SSL_REJECT_UNAUTHORIZED=false`.
+Check the running container DB identity, current_schema(), bucket name, health endpoint, and migration status. Keep source Supabase until data and file verification passes. DB_SSL=false applies only to the private Docker network.
 
 ## AuthNEI shared-project authorization
 

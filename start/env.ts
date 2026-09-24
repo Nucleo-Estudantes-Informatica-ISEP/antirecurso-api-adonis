@@ -36,6 +36,8 @@ export default await Env.create(new URL('../', import.meta.url), {
   DB_PASSWORD: Env.schema.string.optional(),
   DB_DATABASE: Env.schema.string.optional(),
   DB_URL: Env.schema.string(),
+  DB_SCHEMA: Env.schema.string.optional(),
+  DB_MIGRATION_URL: Env.schema.string.optional(),
   DB_SSL: Env.schema.boolean.optional(),
   DB_SSL_REJECT_UNAUTHORIZED: Env.schema.boolean.optional(),
 
@@ -52,12 +54,13 @@ export default await Env.create(new URL('../', import.meta.url), {
 
   /*
   |----------------------------------------------------------
-  | Variables for configuring Supabase Storage
+  | Variables for configuring private S3 storage
   |----------------------------------------------------------
   */
-  SUPABASE_URL: Env.schema.string.optional(),
-  SUPABASE_SERVICE_ROLE_KEY: Env.schema.string.optional(),
-  SUPABASE_STORAGE_BUCKET: Env.schema.string.optional(),
+  S3_ENDPOINT: Env.schema.string.optional(),
+  S3_ACCESS_KEY: Env.schema.string.optional(),
+  S3_SECRET_KEY: Env.schema.string.optional(),
+  S3_BUCKET: Env.schema.string.optional(),
 
   /*
   |----------------------------------------------------------
