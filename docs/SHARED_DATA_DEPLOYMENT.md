@@ -1,8 +1,6 @@
 # Antirecurso shared-data deployment
 
-Status: implementation and dev/prod data copies staged on 24 September 2026. No Antirecurso application has switched yet. Review and deployment checks below remain required.
-
-Review [API PR #106](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso-api-adonis/pull/106) and [web PR #186](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso/pull/186) into `dev`. Required reviewer approvals and CI must pass before merge. Production promotion PRs can be opened only after reviewed dev merges.
+Status on 24 September 2026: development runs on shared PostgreSQL and MinIO. [API #106](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso-api-adonis/pull/106) and [web #186](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso/pull/186) merged into `dev`. Draft reviewed `dev` → `main` promotions [API #107](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso-api-adonis/pull/107) and [web #187](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso/pull/187) await approval and merge. Production still uses its old Supabase service. No backup setup or write freeze was used, per user request.
 
 ## Private configuration
 
@@ -31,14 +29,12 @@ Keep the local copy outside the repository; do not paste secrets into PRs or cha
 
 Preserve all other API values from the private environment file. Web has no new variable. Preserve its existing runtime values. `NEXT_PUBLIC_BASE_URL` is a build-time value and must keep its current route; the protected BFF route is fixed at `/api/protected`. `API_BASE_URL` and AuthNEI secrets remain runtime. S3 credentials never enter a web build or browser.
 
-## Development
+## Development — completed
 
-1. Review and merge the API and web implementation PRs into `dev`. Both repositories require CI and code-owner review. Keep automatic deployment disabled until both applications have their new configuration.
-2. In Coolify API application `n720pqanpld76hs83cfiph9q`, retain Compose location `/compose.yml`. Apply `api-dev.env`; remove the three SUPABASE variables. Compose attaches only this API to external network `gbheij1ljds8nrhfgdf9teeo`. Keep the web application `k6voaig2rin9tjbcmxve7lnf` on its existing Compose location and values in `web-dev.env`.
-3. Compare current source and staged target table fingerprints, sequences, migration history, and logical file inventory. Refresh target from source if anything changed; no write freeze is needed. Dev source had 19 tables, 19 migration records, one user, and zero Storage objects at staging.
-4. Deploy reviewed API `dev`. With `RUN_MIGRATIONS=true`, the entrypoint runs migrations as `antirecurso_dev_migrator`, then serves using `antirecurso_dev_runtime`. Confirm running container joins shared network, connects to `antirecurso_dev`, reports `current_schema()=antirecurso`, and has bucket `antirecurso-dev-notes`. Confirm migration status includes the pending dev migration. Then set `RUN_MIGRATIONS=false` and remove `DB_MIGRATION_URL` from Coolify and the running application at the next rollout.
-5. Deploy reviewed web `dev`. Verify AuthNEI login, admin PDF upload, invalid PDF rejection, promotion, signed download, delete, study/exam/review flows, and anonymous object denial. Remove all test notes/files. Repeat DB/file comparison; re-enable auto deployments for both dev apps after successful checks.
-6. Only then remove Supabase service `ku1xccoddzlol2fverxgfnpv` and its exact DB/config/cache volumes and storage bind mount. Verify web/API and file access again. Deleting source volumes ends direct rollback to old services.
+- Coolify API `n720pqanpld76hs83cfiph9q` and web `k6voaig2rin9tjbcmxve7lnf` run merged `dev` revisions `a14a56d` and `d9eb8b4`. API retained Compose location `/compose.yml`, joined external network `gbheij1ljds8nrhfgdf9teeo`, and received `api-dev.env`; web received `web-dev.env`. Both applications have auto deployments enabled again.
+- Pre-switch source and target matched across 19 tables, with one user and zero logical Storage objects. Source migration `id,name,batch` rows matched; new app migration ran in target, raising its migration count from 19 to 20. Running API reports `antirecurso_dev.antirecurso` as `antirecurso_dev_runtime`, bucket `antirecurso-dev-notes`, `RUN_MIGRATIONS=false`, no `DB_MIGRATION_URL`, and no Supabase variables. Runtime role cannot create schema objects.
+- User confirmed live authenticated dev flow works. Web and API HTTP routes returned 200; anonymous protected route returned 401, anonymous private S3 object returned 403, and dev S3 identity could not list production bucket. Test note/object records were absent in final counts. After retirement, scoped S3 put/get/delete and application health passed again.
+- Deleted old dev service `ku1xccoddzlol2fverxgfnpv`, its 14 Supabase containers (including Auth, Realtime, PostgREST, Studio, Analytics/Logflare, Vector and Storage), network `ku1xccoddzlol2fverxgfnpv`, service directory `/data/coolify/services/ku1xccoddzlol2fverxgfnpv`, and exact named volumes `ku1xccoddzlol2fverxgfnpv_deno-cache`, `ku1xccoddzlol2fverxgfnpv_supabase-db-config`, `ku1xccoddzlol2fverxgfnpv_supabase-db-data`. Deleting source volumes ended direct rollback to dev Supabase.
 
 ## Production
 
