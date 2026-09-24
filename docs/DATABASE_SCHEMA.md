@@ -251,7 +251,7 @@ Study materials attached to a subject.
 | `description` | varchar   | yes  | short description                                    |
 | `views`       | integer   | no   | default `0`                                          |
 | `n_pages`     | integer   | yes  | optional page count                                  |
-| `upload_id`   | varchar   | yes  | storage object identifier used with Supabase Storage |
+| `upload_id`   | varchar   | yes  | private S3 object identifier |
 | `user_id`     | integer   | no   | FK -> `users.id`, `ON DELETE CASCADE`                |
 | `subject_id`  | integer   | no   | FK -> `subjects.id`, `ON DELETE CASCADE`             |
 | `created_at`  | timestamp | no   |                                                      |

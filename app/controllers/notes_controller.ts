@@ -11,6 +11,9 @@ import StorageService, {
 import { hasAuthNeiRole } from '#services/auth/auth_nei_roles'
 import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
 import { InvalidUploadedObjectError } from '#services/uploads/upload_policy'
+import { signNoteAccess, verifyNoteAccess } from '#services/uploads/signed_note_access'
+import env from '#start/env'
+import type { Readable } from 'node:stream'
 import { serializeUserIdentity } from '#services/auth/user_identity'
 
 const storageService = new StorageService()
@@ -257,11 +260,39 @@ export default class NotesController {
     }
 
     try {
-      const url = await storageService.createSignedDownloadUrl(
+      const path = storageService.buildDistributionPath('notes', note.uploadId)
+      if (!(await storageService.exists(path))) throw new StorageObjectNotFoundError(path)
+      const expires = Date.now() + 300_000
+      const signature = signNoteAccess(env.get('APP_KEY'), note.id, note.uploadId, expires)
+      return response.ok({
+        url: `/api/protected/notes/${note.id}/file?expires=${expires}&signature=${signature}`,
+      })
+    } catch (error) {
+      return this.handleStorageError(error, response, 'File not found')
+    }
+  }
+
+  async file({ params, request, response }: HttpContext) {
+    const note = await Note.findOrFail(params.id)
+    if (
+      !note.uploadId ||
+      !verifyNoteAccess(
+        env.get('APP_KEY'),
+        note.id,
+        note.uploadId,
+        Number(request.input('expires')),
+        String(request.input('signature', ''))
+      )
+    ) {
+      return response.forbidden({ message: 'File access expired' })
+    }
+    try {
+      const file = await storageService.downloadNote(
         storageService.buildDistributionPath('notes', note.uploadId)
       )
-
-      return response.ok({ url })
+      response.header('Content-Type', file.ContentType ?? 'application/pdf')
+      response.header('Cache-Control', 'private, no-store')
+      return response.stream(file.Body as Readable)
     } catch (error) {
       return this.handleStorageError(error, response, 'File not found')
     }

@@ -97,9 +97,13 @@ router
 router
   .post('/notes/:id/view', (ctx) => notesController.view(ctx))
   .use([middleware.auth(), mutationThrottle])
+router.get('/notes/:id/file', (ctx) => notesController.file(ctx)).use(middleware.auth())
 router
   .post('/upload', (ctx) => uploadsController.upload(ctx))
-  .use([middleware.auth(), uploadThrottle])
+  .use([middleware.auth(), middleware.admin(), uploadThrottle])
+router
+  .put('/uploads/:id', (ctx) => uploadsController.put(ctx))
+  .use([middleware.auth(), middleware.admin(), uploadThrottle])
 
 // Exams
 router
