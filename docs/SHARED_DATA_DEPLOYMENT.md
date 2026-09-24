@@ -2,6 +2,8 @@
 
 Status: implementation and dev/prod data copies staged on 24 September 2026. No Antirecurso application has switched yet. Review and deployment checks below remain required.
 
+Review [API PR #106](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso-api-adonis/pull/106) and [web PR #186](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso/pull/186) into `dev`. Required reviewer approvals and CI are pending. Production promotion PRs can be opened only after reviewed dev merges.
+
 ## Private configuration
 
 Root-only files on the VPS: `/data/nei-shared/antirecurso-migration/api-dev.env`, `web-dev.env`, `api-prod.env`, and `web-prod.env` (mode 0600). Retrieve each privately, replacing `api-dev.env` as needed:
