@@ -29,10 +29,19 @@ A robust backend API built with AdonisJS 7 for the Antirecurso platform. It prov
 
 ## Prerequisites
 
-- Node.js 24 LTS
+- Node.js 25
 - npm with the committed `package-lock.json`
 - Access to PostgreSQL and a private S3 bucket.
 - ZITADEL issuer and audience details if you need to exercise authenticated routes locally.
+
+### Node 25 compatibility
+
+| Component | Node 24 (previous) | Node 25 (current) |
+| --- | --- | --- |
+| Build and runtime image | `node:24-alpine` | `node:25-alpine` |
+| CI runtime | 24 | 25 |
+| Node type definitions | `@types/node` 24 | `@types/node` 25 |
+| Verification | Existing CI baseline | Lint, typecheck, tests, migrations, build, audit, Docker build |
 
 ---
 
