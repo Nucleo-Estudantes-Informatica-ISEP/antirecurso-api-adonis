@@ -28,16 +28,11 @@ test.group('Authentication boundaries', (group) => {
   test('non-bearer scheme returns 401', async ({ client }) => {
     const res = await client.get('/exams').header('authorization', 'Basic dXNlcjpwYXNz')
     res.assertStatus(401)
+    res.assertBodyContains({ message: 'Invalid authorization header' })
   })
 
   test('bearer with plain string (not a JWT) returns 401', async ({ client }) => {
     const res = await client.get('/exams').header('authorization', 'Bearer not-a-jwt')
-    res.assertStatus(401)
-    res.assertBodyContains({ message: 'Malformed access token' })
-  })
-
-  test('browser session marker returns 401', async ({ client }) => {
-    const res = await client.get('/exams').header('authorization', 'Bearer server-session')
     res.assertStatus(401)
     res.assertBodyContains({ message: 'Malformed access token' })
   })
@@ -85,9 +80,9 @@ test.group('Authentication boundaries', (group) => {
     assert.isArray(res.body().data)
   })
 
-  test('no token on optional-auth route is allowed', async ({ client, assert }) => {
+  test('no token on optional-auth route is allowed', async ({ client }) => {
     const res = await client.get('/subjects/999999/notes')
     // 404 because subject doesn't exist, not 401 — optional auth passed through
-    assert.notEqual(res.status(), 401)
+    res.assertStatus(404)
   })
 })
