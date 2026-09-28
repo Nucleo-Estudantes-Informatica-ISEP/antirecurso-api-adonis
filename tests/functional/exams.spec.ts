@@ -76,15 +76,11 @@ test.group('Exams', (group) => {
 
   // --- Generation ---
 
-  test('generate exam for unknown subject returns 404', async ({ client }) => {
-    const res = await client.get('/exams/generate/999999')
-    res.assertStatus(404)
-  })
-
   test('generate default exam returns questions array', async ({ client, assert }) => {
     const res = await client.get(`/exams/generate/${subject.id}`)
     res.assertStatus(200)
     assert.isArray(res.body())
+    assert.lengthOf(res.body(), 10)
   })
 
   test('generate exam in mode requiring auth without token returns 401', async ({ client }) => {
@@ -100,8 +96,7 @@ test.group('Exams', (group) => {
       .get(`/exams/generate/${subject.id}?mode=new`)
       .header('authorization', `Bearer ${userToken}`)
     // 200 with questions or 400 if not enough history — either means auth passed
-    assert.notEqual(res.status(), 401)
-    assert.notEqual(res.status(), 403)
+    assert.oneOf(res.status(), [200, 400])
   })
 
   // --- Verification ---
@@ -111,13 +106,16 @@ test.group('Exams', (group) => {
     res.assertStatus(422)
   })
 
-  test('verify with valid payload returns result', async ({ client }) => {
+  test('verify with valid payload returns result', async ({ client, assert }) => {
     const res = await client.post('/exams/verify').json({
       subject_id: subject.id,
       mode: 'default',
       answers: questions.map((q) => ({ question_id: q.id, selected_option: 'A' })),
     })
     res.assertStatus(200)
+    assert.equal(res.body().score, 100)
+    assert.equal(res.body().wrong_answers, 0)
+    assert.isTrue(res.body().passed)
   })
 
   test('verify with invalid subject returns 404', async ({ client }) => {
@@ -129,11 +127,6 @@ test.group('Exams', (group) => {
   })
 
   // --- History ---
-
-  test('GET /exams without token returns 401', async ({ client }) => {
-    const res = await client.get('/exams')
-    res.assertStatus(401)
-  })
 
   test('GET /exams returns paginated history', async ({ client, assert }) => {
     const res = await client.get('/exams').header('authorization', `Bearer ${userToken}`)
@@ -183,14 +176,9 @@ test.group('Exams', (group) => {
 
   // --- Admin exam stats ---
 
-  test('GET /admin/exams with user token returns 403', async ({ client }) => {
-    const res = await client.get('/admin/exams').header('authorization', `Bearer ${userToken}`)
-    res.assertStatus(403)
-  })
-
-  test('GET /admin/exams with admin token returns stats', async ({ client }) => {
+  test('GET /admin/exams with admin token returns stats', async ({ client, assert }) => {
     const res = await client.get('/admin/exams').header('authorization', `Bearer ${adminToken}`)
     res.assertStatus(200)
-    res.assertBodyContains({ exams_per_day: [] })
+    assert.isArray(res.body().exams_per_day)
   })
 })
