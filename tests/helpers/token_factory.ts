@@ -54,7 +54,7 @@ export function installFetchMock(jwk: Record<string, unknown>): () => void {
   const original = globalThis.fetch
 
   globalThis.fetch = async (request, init) => {
-    const url = String(request)
+    const url = request instanceof Request ? request.url : String(request)
     if (url === `${issuer}/.well-known/openid-configuration`) {
       return Response.json({ issuer, jwks_uri: `${issuer}/oauth/v2/keys` })
     }
@@ -95,12 +95,6 @@ export function userPayload(
     ...overrides,
   }
 }
-
-/**
- * Sentinel stored in the password column for test users whose auth is
- * delegated entirely to OIDC — the value is never used for authentication.
- */
-export const OIDC_TEST_SENTINEL = 'oidc-managed:functional-test'
 
 /**
  * Payload for an admin user (carries the admin role in the configured claim).
