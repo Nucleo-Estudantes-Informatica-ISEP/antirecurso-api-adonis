@@ -116,10 +116,11 @@ test.group('Notes', (group) => {
     res.assertStatus(401)
   })
 
-  test('POST /notes/:id/like with token toggles like', async ({ client }) => {
+  test('POST /notes/:id/like with token toggles like', async ({ client, assert }) => {
     const res = await client
       .post(`/notes/${note.id}/like`)
       .header('authorization', `Bearer ${userToken}`)
     res.assertStatus(200)
+    assert.isTrue(res.body().is_liked)
   })
 })
