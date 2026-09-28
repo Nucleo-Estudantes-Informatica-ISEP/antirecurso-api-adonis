@@ -5,7 +5,12 @@ import Subject from '#models/subject'
 import QuestionType from '#models/question_type'
 import Question from '#models/question'
 import Option from '#models/option'
-import { createOidcFixture, installFetchMock, userPayload, adminPayload } from '#tests/helpers/token_factory'
+import {
+  createOidcFixture,
+  installFetchMock,
+  userPayload,
+  adminPayload,
+} from '#tests/helpers/token_factory'
 
 test.group('Exams', (group) => {
   const suffix = randomUUID().slice(0, 8)
@@ -58,7 +63,12 @@ test.group('Exams', (group) => {
   group.teardown(async () => {
     restoreFetch()
     ZitadelAuthService.clearCachesForTests()
-    await Option.query().whereIn('questionId', questions.map((q) => q.id)).delete()
+    await Option.query()
+      .whereIn(
+        'questionId',
+        questions.map((q) => q.id)
+      )
+      .delete()
     await Question.query().where('subjectId', subject.id).delete()
     await QuestionType.query().where('subjectId', subject.id).delete()
     await subject.delete()
@@ -82,7 +92,10 @@ test.group('Exams', (group) => {
     res.assertStatus(401)
   })
 
-  test('generate exam with valid token and auth-required mode is accepted', async ({ client, assert }) => {
+  test('generate exam with valid token and auth-required mode is accepted', async ({
+    client,
+    assert,
+  }) => {
     const res = await client
       .get(`/exams/generate/${subject.id}?mode=new`)
       .header('authorization', `Bearer ${userToken}`)

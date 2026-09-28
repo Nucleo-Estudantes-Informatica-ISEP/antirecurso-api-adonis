@@ -48,13 +48,17 @@ test.group('Authentication boundaries', (group) => {
     // Expiry check happens before signature check, so a well-formed but expired
     // JWT with a dummy signature is sufficient to trigger the expiry rejection.
     const expiredToken = [
-      Buffer.from(JSON.stringify({ alg: 'RS256', kid: 'functional-test-key', typ: 'JWT' })).toString('base64url'),
-      Buffer.from(JSON.stringify({
-        iss: issuer,
-        sub: 'expired-sub',
-        aud: [audience],
-        exp: Math.floor(Date.now() / 1000) - 60,
-      })).toString('base64url'),
+      Buffer.from(
+        JSON.stringify({ alg: 'RS256', kid: 'functional-test-key', typ: 'JWT' })
+      ).toString('base64url'),
+      Buffer.from(
+        JSON.stringify({
+          iss: issuer,
+          sub: 'expired-sub',
+          aud: [audience],
+          exp: Math.floor(Date.now() / 1000) - 60,
+        })
+      ).toString('base64url'),
       'dummy-signature',
     ].join('.')
 

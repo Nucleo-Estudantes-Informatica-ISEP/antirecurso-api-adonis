@@ -28,9 +28,9 @@ export async function createOidcFixture(kid = 'functional-test-key'): Promise<Oi
   const jwk = { ...rawJwk, kid, alg: 'RS256', use: 'sig' }
 
   const sign = async (payload: Record<string, unknown>): Promise<string> => {
-    const header = Buffer.from(
-      JSON.stringify({ alg: 'RS256', kid, typ: 'JWT' })
-    ).toString('base64url')
+    const header = Buffer.from(JSON.stringify({ alg: 'RS256', kid, typ: 'JWT' })).toString(
+      'base64url'
+    )
     const encodedPayload = Buffer.from(JSON.stringify(payload)).toString('base64url')
     const input = `${header}.${encodedPayload}`
     const sig = await webcrypto.subtle.sign(

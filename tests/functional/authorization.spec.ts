@@ -3,7 +3,12 @@ import { DateTime } from 'luxon'
 import ZitadelAuthService from '#services/auth/zitadel_auth_service'
 import AccountLinkPending from '#models/account_link_pending'
 import User from '#models/user'
-import { createOidcFixture, installFetchMock, userPayload, adminPayload } from '#tests/helpers/token_factory'
+import {
+  createOidcFixture,
+  installFetchMock,
+  userPayload,
+  adminPayload,
+} from '#tests/helpers/token_factory'
 
 test.group('USER vs ADMIN authorization', (group) => {
   let userToken: string
@@ -104,7 +109,10 @@ test.group('Pending-account restrictions', (group) => {
     res.assertStatus(200)
   })
 
-  test('pending account can reach POST /user/account-resolution (validation fails, not auth)', async ({ client, assert }) => {
+  test('pending account can reach POST /user/account-resolution (validation fails, not auth)', async ({
+    client,
+    assert,
+  }) => {
     const res = await client
       .post('/user/account-resolution')
       .header('authorization', `Bearer ${pendingToken}`)
