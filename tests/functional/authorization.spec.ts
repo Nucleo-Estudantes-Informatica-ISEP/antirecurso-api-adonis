@@ -1,4 +1,5 @@
 import { test } from '@japa/runner'
+import { randomUUID } from 'node:crypto'
 import { DateTime } from 'luxon'
 import ZitadelAuthService from '#services/auth/zitadel_auth_service'
 import AccountLinkPending from '#models/account_link_pending'
@@ -11,6 +12,7 @@ import {
 } from '#tests/helpers/token_factory'
 
 test.group('USER vs ADMIN authorization', (group) => {
+  const suffix = randomUUID().slice(0, 8)
   let userToken: string
   let adminToken: string
   let restoreFetch: () => void
@@ -19,8 +21,12 @@ test.group('USER vs ADMIN authorization', (group) => {
     ZitadelAuthService.clearCachesForTests()
     const fixture = await createOidcFixture()
     restoreFetch = installFetchMock(fixture.jwk)
-    userToken = await fixture.sign(userPayload('authz-user-sub', 'authz-user@example.test'))
-    adminToken = await fixture.sign(adminPayload('authz-admin-sub', 'authz-admin@example.test'))
+    userToken = await fixture.sign(
+      userPayload(`authz-user-${suffix}`, `authz-user-${suffix}@example.test`)
+    )
+    adminToken = await fixture.sign(
+      adminPayload(`authz-admin-${suffix}`, `authz-admin-${suffix}@example.test`)
+    )
   })
 
   group.teardown(() => {
@@ -66,9 +72,10 @@ test.group('Pending-account restrictions', (group) => {
   let restoreFetch: () => void
   let pendingUser: User
 
-  const PENDING_SUB = 'pending-account-sub'
-  const PENDING_EMAIL = 'pending-account@example.test'
-  const CONFLICTING_SUB = 'conflicting-sub'
+  const suffix = randomUUID().slice(0, 8)
+  const PENDING_SUB = `pending-account-sub-${suffix}`
+  const PENDING_EMAIL = `pending-account-${suffix}@example.test`
+  const CONFLICTING_SUB = `conflicting-sub-${suffix}`
 
   group.setup(async () => {
     ZitadelAuthService.clearCachesForTests()
@@ -111,14 +118,11 @@ test.group('Pending-account restrictions', (group) => {
 
   test('pending account can reach POST /user/account-resolution (validation fails, not auth)', async ({
     client,
-    assert,
   }) => {
     const res = await client
       .post('/user/account-resolution')
       .header('authorization', `Bearer ${pendingToken}`)
       .json({})
-    // Any 4xx other than 401/403 proves auth passed and the route is accessible.
-    assert.notEqual(res.status(), 401)
-    assert.notEqual(res.status(), 403)
+    res.assertStatus(400)
   })
 })
