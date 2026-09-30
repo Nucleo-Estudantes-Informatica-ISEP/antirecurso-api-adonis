@@ -150,6 +150,8 @@ type Event = {
   updated_at: string // ISO 8601
 }
 
+type QuestionSource = 'REAL_EXAM' | 'AI_GENERATED' | 'MANUAL'
+
 type QuestionOption = { id: number; name: string; order: string }
 
 type Question = {
@@ -157,6 +159,7 @@ type Question = {
   question: string
   exam: string
   image: string
+  source: QuestionSource
   question_type: string
   options: QuestionOption[]
 }
@@ -400,6 +403,7 @@ type Scoreboard = {
 {
   question: string
   correct_option: string
+  source?: QuestionSource // omitted or null keeps the stored value
   options: {
     id: number
     name: string
@@ -409,8 +413,9 @@ type Scoreboard = {
 ```
 
 - Authorization: AuthNEI `admin` is checked by middleware and controller.
-- Semantics: option ids must belong to question; only names change; `correct_option` must match an
-  existing option order. Entire update is transactional.
+- Semantics: `source`, when sent, must be `REAL_EXAM`, `AI_GENERATED`, or `MANUAL`; option ids
+  must belong to question; only names change; `correct_option` must match an existing option
+  order. Entire update is transactional.
 - Response: `204 No Content`.
 - Errors: `404` missing question; `422` invalid body, option ownership, or correct option.
 
