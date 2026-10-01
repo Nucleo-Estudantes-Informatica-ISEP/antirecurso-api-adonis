@@ -28,6 +28,11 @@ test.group('Question source', () => {
     assert.isUndefined(data.source)
   })
 
+  test('update validator accepts a null source', async ({ assert }) => {
+    const data = await updateQuestionValidator.validate({ ...baseBody, source: null })
+    assert.isNull(data.source)
+  })
+
   test('update validator rejects values outside the controlled set', async ({ assert }) => {
     for (const source of ['real_exam', 'UNKNOWN', '', 1]) {
       await assert.rejects(() => updateQuestionValidator.validate({ ...baseBody, source }))

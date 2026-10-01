@@ -104,6 +104,22 @@ test.group('Questions source', (group) => {
     assert.equal(row.source, 'MANUAL')
   })
 
+  test('PUT /questions/:id with a null source keeps the stored value', async ({
+    client,
+    assert,
+  }) => {
+    await db.from('questions').where('id', question.id).update({ source: 'MANUAL' })
+
+    const res = await client
+      .put(`/questions/${question.id}`)
+      .header('Authorization', `Bearer ${adminToken}`)
+      .json({ ...updateBody(), source: null })
+    res.assertStatus(204)
+
+    const row = await db.from('questions').where('id', question.id).first()
+    assert.equal(row.source, 'MANUAL')
+  })
+
   test('PUT /questions/:id rejects a source outside the controlled set', async ({
     client,
     assert,

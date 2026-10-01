@@ -38,7 +38,7 @@ export default class QuestionsController {
         question.useTransaction(trx)
         question.question = data.question
         question.correctOption = data.correct_option
-        if (data.source !== undefined) {
+        if (data.source !== undefined && data.source !== null) {
           question.source = data.source
         }
         await question.save()
