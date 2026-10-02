@@ -403,7 +403,7 @@ type Scoreboard = {
 {
   question: string
   correct_option: string
-  source?: QuestionSource // omitted or null keeps the stored value
+  source?: QuestionSource | null // omitted or null keeps the stored value
   options: {
     id: number
     name: string
@@ -413,7 +413,8 @@ type Scoreboard = {
 ```
 
 - Authorization: AuthNEI `admin` is checked by middleware and controller.
-- Semantics: `source`, when sent, must be `REAL_EXAM`, `AI_GENERATED`, or `MANUAL`; option ids
+- Semantics: a non-null `source` must be `REAL_EXAM`, `AI_GENERATED`, or `MANUAL`; omitted or
+  `null` keeps the stored value; option ids
   must belong to question; only names change; `correct_option` must match an existing option
   order. Entire update is transactional.
 - Response: `204 No Content`.
