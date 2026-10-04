@@ -7458,7 +7458,8 @@
         "Deve ser evitada a todo o custo, por causa dos utilizadores daltónicos",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O design de uma interface do tipo WIMP:",
@@ -7468,7 +7469,9 @@
         "Deve ser centrado no sistema e não no utilizador, pois o comportamento deste último é imprevisível",
         "Não deve basear-se em analogias com o mundo real, pois pode suscitar confusão na mente do utilizador"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [80, 85],
+      "in_plan": true
     },
     {
       "question": "Considere uma situação em que o utilizador de um sistema de manipulação direta pretende efetuar uma tarefa que, tendo em conta o contexto de utilização em vigor naquele momento, é ilegal. Qual o comportamento mais adequado da interface face a esta situação?",
@@ -7478,7 +7481,9 @@
         "O objeto de interação que desencadeia essa tarefa deverá permanecer ativado e, caso o utilizador o acione, nada acontecerá",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [14],
+      "in_plan": true
     },
     {
       "question": "No seguinte menu de edição de uma aplicação informática de processamento de texto: Redo Ctrl+Y; Undo Ctrl+Z; Cut Ctrl+X; Copy Ctrl+C; Paste Ctrl+V; Clear Del; Find Shift+Del; Replace Ctrl+H:",
@@ -7488,7 +7493,8 @@
         "Deveria existir uma linha a separar as opções Find e Replace das restantes opções",
         "A sequência de teclas aceleradoras associada à opção Find não constitui uma boa escolha"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "No domínio estrutural de desenvolvimento de interfaces com o utilizador:",
@@ -7498,7 +7504,8 @@
         "Estão envolvidos aspetos tais como os fatores humanos e as especificações de usabilidade",
         "A definição de algoritmos e estruturas de dados é irrelevante face a outros aspetos"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Uma função de mapeamento de texturas:",
@@ -7508,7 +7515,9 @@
         "Devolve um apontador para uma lista dos objetos aos quais foram aplicados essas texturas",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [92],
+      "in_plan": true
     },
     {
       "question": "No modelo de Phong:",
@@ -7518,7 +7527,8 @@
         "A componente de iluminação difusa não depende da posição do observador",
         "A componente de iluminação especular depende da posição do observador, do objeto e da fonte de luz"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "No modelo de iluminação do OpenGL:",
@@ -7528,7 +7538,8 @@
         "As fontes de luz posicionais encontram-se localizadas a uma distância infinita da cena",
         "As fontes de luz direcionais são atenuadas"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Na codificação de sólidos com base em ponteiros para uma lista de vértices:",
@@ -7538,7 +7549,8 @@
         "A redundância de informação é maior do que na codificação explícita",
         "Todas as anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Numa projeção em perspetiva:",
@@ -7548,7 +7560,9 @@
         "O volume de visualização tem a forma de um tronco de cone",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [26],
+      "in_plan": true
     },
     {
       "question": "A realização de uma translação de um ponto P para um ponto P’ distinto do anterior com base numa simples multiplicação de matrizes P' = T x P:",
@@ -7558,7 +7572,9 @@
         "É possível desde que a matriz T seja a matriz identidade",
         "Todas as anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [36],
+      "in_plan": true
     },
     {
       "question": "Os processadores/aceleradores gráficos:",
@@ -7568,12 +7584,15 @@
         "Aliviam o processador central de diversas tarefas tais como transformações, recorte, projeção e mapeamento de texturas",
         "Possuem normalmente memória dedicada"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [64],
+      "in_plan": true
     },
     {
       "question": "Uma transformação de inclinação (shearing) constitui um exemplo de uma transformação:",
       "answers": ["Linear.", "Rígida.", "Projetiva.", "Todas as anteriores."],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Um sistema gráfico com um frame buffer RGB de 24 bits tem capacidade para reproduzir imagens com:",
@@ -7583,7 +7602,9 @@
         "2^32 cores.",
         "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [28],
+      "in_plan": true
     },
     {
       "question": "Considere uma situação em que o utilizador de um sistema de manipulação direta pretende efetuar uma tarefa que, tendo em conta o contexto de utilização em vigor naquele momento, é ilegal. Qual o comportamento mais adequado da interface face a esta situação?",
@@ -7593,7 +7614,9 @@
         "O objeto de interação que desencadeia a tarefa deverá permanecer ativado e, caso o utilizador o acione, nada acontecerá.",
         "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [2],
+      "in_plan": true
     },
     {
       "question": "A componente especular do modelo de iluminação de Phong:",
@@ -7603,7 +7626,9 @@
         "Não pode ser usada em fontes de luz omnidirecionais",
         "Todas as anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [32],
+      "in_plan": true
     },
     {
       "question": "O modelo de iluminação do OpenGL:",
@@ -7613,7 +7638,8 @@
         "É um modelo local de iluminação",
         "Contempla apenas os caminhos para a luz do tipo fonte luminosa/superfície/observador"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Uma forma de determinar o vetor normal a um triângulo genérico consiste em:",
@@ -7623,7 +7649,8 @@
         "Calcular o produto externo dos vetores definidos pelos vértices do triângulo e dividir o valor assim obtido pela área do triângulo",
         "Dividir o triângulo genérico em dois ou mais triângulos isósceles"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Na codificação explícita de sólidos:",
@@ -7633,7 +7660,8 @@
         "Há uma lista de arestas e as faces referenciam as suas arestas através de ponteiros",
         "As adjacências são determinadas em tempo constante"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Na composição de transformações lineares:",
@@ -7643,7 +7671,8 @@
         "As translações precedem sempre as rotações",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A representação de vetores em coordenadas homogéneas:",
@@ -7653,7 +7682,8 @@
         "Distingue-se da dos pontos pelo facto de w ser diferente de zero",
         "Não é de todo possível, pois as coordenadas homogéneas só se aplicam aos pontos"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "As representações gráficas matriciais:",
@@ -7663,7 +7693,9 @@
         "São representações obsoletas, tendo sido substituídas pelas suas congéneres vetoriais",
         "Todas as anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [90],
+      "in_plan": true
     },
     {
       "question": "As mensagens de erro:",
@@ -7673,7 +7705,8 @@
         "Devem conter antropomorfismos",
         "Todas as anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O mecanismo de mapeamento de texturas do OpenGL suporta:",
@@ -7683,7 +7716,8 @@
         "Repetição de padrões de texturas",
         "A modulação da cor da superfície do objeto com a dos téxeis"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A contribuição dada pela componente de iluminação difusa do modelo de Phong:",
@@ -7693,7 +7727,8 @@
         "Depende da posição do observador",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "As octrees:",
@@ -7703,7 +7738,8 @@
         "Dividem o espaço em poliedros convexos, não necessariamente cúbicos",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Numa projeção perspetiva:",
@@ -7713,12 +7749,15 @@
         "O volume de visualização tem a forma de um paralelepípedo e as dimensões aparentes dos objetos diminuem com o aumento da distância à câmara",
         "O volume de visualização tem a forma de um tronco de pirâmide e as dimensões aparentes dos objetos não dependem da distância à câmara"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [9],
+      "in_plan": true
     },
     {
       "question": "Suponha que pretende transformar a geometria de um objeto de modo a simular uma reflexão numa superfície plana (num espelho, por exemplo; ou na superfície de um lago). Deverá usar uma transformação de:",
       "answers": ["Escalamento", "Translação", "Rotação", "Nenhuma das anteriores"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Um sistema gráfico com um frame buffer RGB de 24 bits tem capacidade para reproduzir imagens com:",
@@ -7728,7 +7767,9 @@
         "24 níveis de vermelho",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [13],
+      "in_plan": true
     },
     {
       "question": "Considere uma situação em que o utilizador, ao preencher o campo numérico de um formulário (o código de um item em stock, por exemplo), excede a gama permitida para o valor desse campo. Qual das seguintes mensagens de erro lhe parece mais adequada à situação?",
@@ -7738,7 +7779,8 @@
         "“O código do item é inválido. Consulte o manual de instruções”.",
         "“O código do item encontra-se fora da gama permitida”."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O método Z-Buffer de determinação de visibilidade:",
@@ -7748,7 +7790,8 @@
         "Não é suscetível de ser implementado em hardware.",
         "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "De que forma ou formas permite o mecanismo de mapeamento de texturas do OpenGL aplicar uma textura à superfície de um objeto?",
@@ -7758,7 +7801,8 @@
         "Modulando a cor da superfície com a dos téxeis",
         "Substituindo a cor da superfície pela dos téxeis"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A contribuição dada pela componente de iluminação especular do modelo de Phong:",
@@ -7768,7 +7812,9 @@
         "É característica dos materiais baços ou foscos.",
         "Depende do ângulo de incidência da fonte de luz, mas não depende da posição do observador."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [15],
+      "in_plan": true
     },
     {
       "question": "A parametrização da superfície que delimita um sólido:",
@@ -7778,7 +7824,8 @@
         "É válida mesmo quando a superfície se auto-interseta.",
         "Todas as anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Numa projeção paralela:",
@@ -7788,7 +7835,8 @@
         "O volume de visualização tem a forma de um tronco de pirâmide.",
         "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "No pipeline OpenGL de transformações:",
@@ -7798,7 +7846,8 @@
         "A matriz de modelação e visualização converte as coordenadas do objeto em coordenadas de recorte",
         "Todas as anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A realização de uma translação de um ponto P para um ponto P’ distinto do anterior sem usar coordenadas homogéneas:",
@@ -7808,7 +7857,9 @@
         "É possível mediante uma simples multiplicação de matrizes",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [10],
+      "in_plan": true
     },
     {
       "question": "Num sistema gráfico dotado de um frame buffer RGB de 1024 x 1024 píxeis, 8 bits/píxel:",
@@ -7818,7 +7869,8 @@
         "Cada píxel é descrito por 1024 bits para a componente vermelha, 1024 bits para a verde e 1024 bits para a azul",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Para iluminar uma cena com uma fonte de luz direcional, deverá:",
@@ -7828,7 +7880,8 @@
         "Especificar para a posição da fonte um conjunto de coordenadas homogéneas tal que w = 1",
         "Especificar para o ângulo de cutoff um valor compreendido entre 0° e 90°"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O cálculo das contribuições dadas pelas componentes difusa e especular do modelo de iluminação do OpenGL:",
@@ -7838,7 +7891,8 @@
         "Depende da posição do observador",
         "Todas as anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A codificação Winged-Edge de sólidos:",
@@ -7848,7 +7902,8 @@
         "Armazena informação numa estrutura associada às arestas",
         "Permite determinar em tempo constante os 9 tipos de adjacência de vértices, arestas e faces"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em OpenGL, para se obter uma projeção em perspetiva associada a um volume de visualização simétrico, deverá recorrer-se às instruções:",
@@ -7858,7 +7913,8 @@
         "glOrtho() ou gluPerspective()",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Do produto escalar de dois vetores unitários resulta:",
@@ -7868,7 +7924,8 @@
         "Um vetor perpendicular aos vetores originais",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "As rotações e as escalas:",
@@ -7878,7 +7935,8 @@
         "São exemplos de transformações rígidas",
         "São exemplos de transformações projetivas"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A tarefa de supressão dos elementos de cena que se encontram fora da janela de visualização:",
@@ -7888,7 +7946,8 @@
         "Designa-se por rasterização (scan conversion) e é sempre efetuada pelo CPU",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O algoritmo do pintor de determinação de visibilidade:",
@@ -7898,7 +7957,8 @@
         "Só é aplicável a cenas compostas por objetos poliédricos fechados",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "As coordenadas homogéneas [1, 0, 1, 0]T designam:",
@@ -7908,7 +7968,8 @@
         "Um vetor de componentes x = 0, y = 1, z = 0",
         "Um ponto de coordenadas x = 0, y = 1, z = 0"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em que circunstâncias é que a ordem de composição de uma translação com outra translação é irrelevante?",
@@ -7918,17 +7979,19 @@
         "Só quando os vetores que caracterizam as translações forem paralelos",
         "Só quando os vetores que caracterizam as translações forem perpendiculares"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "A visualização, no ecrã de um vulgar computador, de um gráfico descrito no formato SVG(Scalable Vector Graphics):",
+      "question": "A visualização, no ecrã de um vulgar computador, de um gráfico descrito no formato SVG (Scalable Vector Graphics):",
       "answers": [
         "Requer a prévia realização de uma operação de rasterização",
         "Não é de todo possível, pois as representações vetoriais não são compatíveis com os dispositivos matriciais",
         "Requer técnicas sofisticadas de reconhecimento de padrões",
-        "Só é possível em sistemas cuja arquitetura contempla um processador gráfico(GPU)"
+        "Só é possível em sistemas cuja arquitetura contempla um processador gráfico (GPU)"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A correção perspetiva permite:",
@@ -7938,12 +8001,14 @@
         "Corrigir o efeito de diminuição da dimensão aparente de um objeto quando a distância do mesmo à câmara aumenta",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Um projetor constitui um exemplo de uma fonte de luz:",
       "answers": ["Posicional", "Direcional", "Omnidirecional", "Nenhuma das anteriores"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em OpenGL, a alteração da propriedade GL_SHININESS de um material afeta a forma como é refletida:",
@@ -7953,7 +8018,8 @@
         "A componente difusa de iluminação",
         "Todas as anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Nas representações de objetos por células:",
@@ -7963,7 +8029,8 @@
         "As octrees dividem o espaço em cubos cujos lados são potências de 2",
         "As BSP-trees dividem o espaço em poliedros convexos"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A qual das seguintes sequências de transformações corresponde uma matriz de transformação composta igual à matriz identidade?",
@@ -7973,12 +8040,14 @@
         "glRotated(30.0, 0.0, 1.0, 0.0); glRotated(-30.0, 0.0, 1.0, 0.0);",
         "glScaled(8.0, 4.0, 2.0); glScaled(0.125, 0.25, 0.5);"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "As vulgares impressoras de jato de tinta constituem exemplos de dispositivos:",
       "answers": ["Matriciais", "Vetoriais", "Tensoriais", "Nenhuma das anteriores"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A técnica de filtragem de texturas designada por mipmapping:",
@@ -7988,7 +8057,8 @@
         "Não pode ser usada em conjugação com as projeções perspetivas",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "No modelo de iluminação do OpenGL, o vetor halfway é usado para calcular de uma forma simplificada:",
@@ -7998,7 +8068,8 @@
         "A componente ambiente de iluminação",
         "Todas as anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Na representação por fronteira de um objecto (B-rep):",
@@ -8008,7 +8079,8 @@
         "As operações booleanas são avaliadas com facilidade",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "No mapeamento de texturas em OpenGL, o processo de filtragem designado por GL_LINEAR_MIPMAP_LINEAR:",
@@ -8018,7 +8090,8 @@
         "Calcula uma média pesada da matriz de 2 x 2 texels que mais se aproxima do centro do pixel no mipmap que melhor se adequa ao contexto de minificação existente",
         "Escolhe o texel que mais se aproxima do centro do pixel em cada um dos dois mipmaps que melhor se adequam ao contexto de minificação existente; em seguida, efetua uma interpolação linear destes dois valores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A modelação por malha de arame (wireframe):",
@@ -8028,7 +8101,8 @@
         "Contém informação sobre o fecho e a conectividade dos objetos modelados",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Complete a seguinte frase: No pipeline de transformações do OpenGL as coordenadas correspondentes aos vértices dos objetos são multiplicadas pela ______________, dando origem às coordenadas de olho. Segue-se a multiplicação pela ______________, da qual resultam as correspondentes coordenadas de recorte. Em seguida, realiza-se a operação de ______________, obtendo-se assim as coordenadas normalizadas de dispositivo. Por último, efetua-se a ______________ e a consequente determinação das coordenadas de janela.",
@@ -8038,7 +8112,9 @@
         "matriz de projeção, transformação viewport, matriz de modelação e visualização, divisão perspetiva",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [76],
+      "in_plan": true
     },
     {
       "question": "Considere dois pontos genéricos P e Q (não coincidentes) e o ponto R = P + a * (Q - P):",
@@ -8048,7 +8124,8 @@
         "Se a = 0 então o ponto R coincide com o ponto Q",
         "Se a = 1 então o ponto R coincide com o ponto P"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "As coordenadas homogéneas [1, 2, 3, 4]T designam:",
@@ -8058,7 +8135,8 @@
         "Um vetor de componentes x = 1, y = 2, z = 3",
         "Um vetor de componentes x = 0.25, y = 0.5, z = 0.75"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Uma transformação linear afim:",
@@ -8068,17 +8146,20 @@
         "Preserva necessariamente as dimensões e os ângulos dos objetos",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "As arquiteturas dotadas de processador gráfico(GPU):",
+      "question": "As arquiteturas dotadas de processador gráfico (GPU):",
       "answers": [
         "Todas as anteriores",
         "Recorrem a técnicas de paralelismo para aumentar o desempenho",
         "Chamam a si a realização de algumas tarefas tais como as transformações e projeções",
         "Normalmente usam memória separada da do sistema"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [11],
+      "in_plan": true
     },
     {
       "question": "No mapeamento de texturas em OpenGL, o processo de filtragem designado por GL_NEAREST_MIPMAP_LINEAR:",
@@ -8088,7 +8169,8 @@
         "Calcula uma média pesada da matriz de 2 x 2 texels que mais se aproxima do centro do pixel no mipmap que melhor se adequa ao contexto de minificação existente",
         "Calcula uma média pesada da matriz de 2 x 2 texels que mais se aproxima do centro do pixel em cada um dos dois mipmaps que melhor se adequam ao contexto de minificação existente; em seguida efetua uma interpolação linear destes dois valores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "No modelo de Phong, a contribuição dada:",
@@ -8098,7 +8180,8 @@
         "Pela componente difusa não depende do ângulo de incidência da luz",
         "Todas as anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Na codificação de sólidos com base em ponteiros para uma lista de arestas:",
@@ -8108,7 +8191,8 @@
         "As faces referenciam os seus vértices através de ponteiros",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Na representação de sólidos com base em operações de conjuntos (CSG – Constructive Solid Geometry):",
@@ -8118,7 +8202,8 @@
         "O modelo é representado com base na divisão do espaço em cubos cujos lados são potências de base 2",
         "Há ambiguidade, pois a uma mesma representação podem corresponder vários modelos"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Complete as seguintes frases: Na metáfora da câmara virtual adotada pelo OpenGL: As transformações de _______ servem para posicionar/orientar/deformar os objetos da cena. As transformações de _______ servem para posicionar/orientar a câmara. A transformação de _______ corresponde a ajustar a lente/objetiva da câmara. A transformação de _______ corresponde a revelar as fotografias tiradas pela câmara.",
@@ -8128,7 +8213,8 @@
         "visualização, modelação, viewport, projeção",
         "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "As transformações projetivas servem, no modelo da câmara virtual do OpenGL, para:",
@@ -8138,7 +8224,8 @@
         "Mover e/ou orientar a câmara",
         "Ampliar/reduzir a fotografia tirada pela câmara"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Se a um determinado objeto 3D aplicarmos uma transformação de escalamento com coeficientes (-1, 1, 1) obteremos:",
@@ -8148,7 +8235,8 @@
         "Um objeto rodado em torno do eixo dos X",
         "Um erro, pois nas transformações de escalamento não são permitidos coeficientes negativos"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Na representação de um vetor 2D em coordenadas homogéneas são usadas:",
@@ -8158,7 +8246,8 @@
         "Quatro componentes: x, y, z e w, em que w = 1",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "No mapeamento de texturas em OpenGL, o processo de filtragem designado por GL_NEAREST_MIPMAP_NEAREST:",
@@ -8168,7 +8257,8 @@
         "Escolhe o texel que mais se aproxima do centro do pixel em cada um dos dois mipmaps que melhor se adequam ao contexto de minificação existente; em seguida, efetua uma interpolação linear destes dois valores",
         "Calcula uma média pesada da matriz de 2 x 2 texels que mais se aproxima do centro do pixel em cada um dos dois mipmaps que melhor se adequam ao contexto de minificação existente; em seguida efetua uma interpolação linear destes dois valores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A contribuição dada pela componente de iluminação ambiente do modelo de Phong:",
@@ -8178,7 +8268,8 @@
         "Depende do co-seno do ângulo de incidência da luz",
         "Depende da posição do observador"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Na representação de sólidos por fronteira (B-Rep – Boundary Representation):",
@@ -8188,7 +8279,8 @@
         "O modelo é representado por uma árvore em que os nós internos designam operações de conjuntos ou transformações lineares afim e as folhas denotam objetos primitivos",
         "O modelo é representado com base na divisão do espaço em cubos cujos lados são potências de base 2"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Complete a seguinte frase: No pipeline de transformações do OpenGL as coordenadas correspondentes aos vértices dos objetos são multiplicadas pela matriz de modelação e visualização, dando origem às __________. Segue-se a multiplicação pela matriz de projeção, da qual resultam as correspondentes __________. Em seguida, realiza-se a operação de divisão perspetiva, obtendo-se assim as __________. Por último, efetua-se a transformação viewport e a consequente determinação das __________.",
@@ -8198,7 +8290,9 @@
         "Coordenadas de olho, coordenadas de recorte, coordenadas de janela, coordenadas normalizadas de dispositivo",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [60],
+      "in_plan": true
     },
     {
       "question": "As coordenadas homogéneas [6, 12, 8, 0]T designam:",
@@ -8208,7 +8302,8 @@
         "Um sólido com 6 faces, 12 arestas e 8 vértices",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "As translações e as rotações:",
@@ -8218,17 +8313,19 @@
         "São exemplos de transformações rígidas",
         "Podem ser representadas na forma matricial"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "A visualização, no ecrã de um vulgar computador, de um gráfico descrito no formato BMP(Bitmap):",
+      "question": "A visualização, no ecrã de um vulgar computador, de um gráfico descrito no formato BMP (Bitmap):",
       "answers": [
         "Dispensa o recurso a técnicas sofisticadas de reconhecimento de padrões",
         "Não é de todo possível, dada a incompatibilidade do dispositivo e da representação",
         "Requer a prévia realização de uma operação de rasterização",
         "Só é possível em sistemas cuja arquitetura contempla um processador gráfico (GPU)"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O design de interfaces do tipo WIMP (Windows, Icons, Menus and Pointers):",
@@ -8238,7 +8335,9 @@
         "Deve ser centrado no sistema e não no utilizador, pois o comportamento deste último é imprevisível",
         "Não deve basear-se em analogias com o mundo real, pois pode suscitar confusão na mente do utilizador"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [1, 85],
+      "in_plan": true
     },
     {
       "question": "Se a um determinado objeto aplicarmos uma translação genérica seguida de uma rotação genérica obteremos:",
@@ -8248,7 +8347,8 @@
         "Um objeto centrado na origem",
         "O mesmo efeito que obteríamos se aplicássemos as mesmas transformações pela ordem inversa"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Se a um ponto com coordenadas (x1, y1, z1) subtrairmos um ponto com coordenadas (x0, y0, z0) obteremos:",
@@ -8258,7 +8358,8 @@
         "Um escalar com o valor (x1 - x0) * (y1 - y0) * (z1 - z0)",
         "Uma matriz quadrada 3 x 3"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "As representações vetoriais de gráficos:",
@@ -8268,7 +8369,8 @@
         "Implicam uma perda significativa de precisão na realização de operações como a rotação e a escala",
         "Podem ser convertidas em representações matriciais com base em técnicas de reconhecimento de padrões"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O desencadeamento de ações potencialmente destrutivas:",
@@ -8278,7 +8380,8 @@
         "Não deve ser permitido sejam quais forem as circunstâncias, pois a sua incorreta utilização pode acarretar custos muito elevados para o utilizador",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O design de uma interface WIMP:",
@@ -8288,7 +8391,9 @@
         "Não deve basear-se em analogias com o mundo real, pois pode suscitar confusão na mente do utilizador",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [1, 80],
+      "in_plan": true
     },
     {
       "question": "No modelo de Phong, a componente de iluminação ambiente:",
@@ -8298,7 +8403,8 @@
         "Depende das posições do observador, do objeto e da fonte de luz",
         "Simula a fluorescência dos materiais constituintes dos objetos"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Na metáfora da câmara virtual adotada pelo OpenGL, as transformações de visualização correspondem a:",
@@ -8308,7 +8414,8 @@
         "Ajustar a lente/objetiva da câmara",
         "Posicionar/orientar/deformar os objetos da cena"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em que circunstâncias é que a composição de uma translação com uma rotação não depende da ordem de aplicação destas transformações?",
@@ -8318,7 +8425,8 @@
         "Quando o vetor que caracteriza a translação for perpendicular ao eixo da rotação",
         "Sempre que usarmos coordenadas homogéneas"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Se a um ponto com coordenadas (x, y, z) adicionarmos um vetor com componentes (vx, vy, vz) obteremos:",
@@ -8328,7 +8436,8 @@
         "Um ponto com coordenadas (x * vx, y * vy, z * vz)",
         "Um vetor com componentes (x + vx, y + vy, z + vz)"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "As representações matriciais de gráficos:",
@@ -8338,7 +8447,9 @@
         "Permitem que operações como a rotação e a escala sejam efetuadas quase sem perda de precisão",
         "Podem ser convertidas em representações vetoriais com base em técnicas de rasterização (scan conversion)"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [21],
+      "in_plan": true
     },
     {
       "question": "Num sistema interativo, a divisão de tarefas grandes e/ou complexas em subtarefas mais pequenas e simples:",
@@ -8348,7 +8459,8 @@
         "Não deve ser feita de forma hierárquica, pois aumenta significativamente o esforço de memorização imposto ao utilizador",
         "Só se aplica às interfaces de linha de comandos"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Uma função de mapeamento de textura:",
@@ -8358,7 +8470,9 @@
         "Não pode basear-se na descrição paramétrica da superfície do objeto ao qual a textura está a ser aplicada",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [5],
+      "in_plan": true
     },
     {
       "question": "Em OpenGL, um ângulo de cutoff de 180º configura:",
@@ -8368,7 +8482,8 @@
         "Uma fonte de luz direcional paralela à linha de visão da câmara",
         "Um projetor de luz"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "No modelo de Phong, a componente emissiva de iluminação:",
@@ -8378,7 +8493,8 @@
         "Depende das posições do observador, do objeto e da fonte de luz",
         "É atenuada pela distância entre a fonte de luz e o objeto iluminado"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Considere o objeto A’B’C’ que resulta da projeção de um triângulo genérico definido pelos vértices A, B e C. Se o cálculo da orientação daquele objeto resultar num valor positivo, podemos concluir que:",
@@ -8388,7 +8504,8 @@
         "O triângulo está orientado com a face de trás voltada para o observador",
         "Algo está errado, pois a orientação de três pontos complanares não pode assumir valores positivos"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     }
   ],
   "arqcp": [
