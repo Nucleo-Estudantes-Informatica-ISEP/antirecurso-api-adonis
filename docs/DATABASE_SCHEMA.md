@@ -117,6 +117,7 @@ Question bank entries shown in generated exams.
 | `image`            | varchar    | no   | image URL or asset reference; required by schema      |
 | `correct_option`   | varchar(1) | no   | application expects a single option order such as `A` |
 | `exam`             | varchar    | no   | source exam identifier                                |
+| `source`           | varchar(20) | no  | provenance; default `REAL_EXAM`; check `questions_source_allowed` (`REAL_EXAM`, `AI_GENERATED`, `MANUAL`) |
 | `subject_id`       | integer    | no   | FK -> `subjects.id`, `ON DELETE CASCADE`              |
 | `question_type_id` | integer    | no   | FK -> `question_types.id`, `ON DELETE CASCADE`        |
 | `created_at`       | timestamp  | no   |                                                       |
