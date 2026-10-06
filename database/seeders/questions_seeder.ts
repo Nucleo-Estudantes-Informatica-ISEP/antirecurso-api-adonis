@@ -14,6 +14,8 @@ type LegacyQuestion = {
   question: string
   answers: string[]
   correct_index: number
+  repeated?: number[]
+  in_plan?: boolean
 }
 
 type LegacyQuestionDataset = Record<string, LegacyQuestion[]>

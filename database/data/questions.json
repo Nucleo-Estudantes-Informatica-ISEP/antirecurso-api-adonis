@@ -6756,7 +6756,8 @@
         "Diminuir o grau de concorrência das aplicações, mas aumentar o overhead do protocolo de sincronização.",
         "Um maior número de dependências entre os semáforos, por vezes subtis, que podem originar deadlocks."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "No escalonamento de processos baseado em prioridades, a inversão de prioridades refere-se a:",
@@ -6766,7 +6767,8 @@
         "Um aumento da prioridade de um processo de modo a que este liberte mais rapidamente um recurso requerido por um processo de maior prioridade.",
         "A atribuição de prioridades aos processos pela ordem inversa dos seus tempos de execução."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Os mecanismos de sincronização de processos disponibilizados pelo sistema operativo são:",
@@ -6776,7 +6778,8 @@
         "Usados apenas para garantir exclusão mútua no acesso aos recursos partilhados.",
         "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Para que ocorra um interbloqueio (deadlock) entre processos é necessário que se manifestem simultaneamente as condições:",
@@ -6786,7 +6789,8 @@
         "Exclusão mútua, ausência de posse e espera, preempção dos recursos, espera circular.",
         "Exclusão mútua, posse e espera, preempção dos recursos, ausência de espera circular."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em programação concorrente, uma secção crítica é uma:",
@@ -6796,17 +6800,19 @@
         "Parte do programa em que um bug causa garantidamente o término do processo.",
         "Parte do programa que é executada em kernel space."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A principal vantagem do uso de pipes em relação ao uso de memória partilhada como mecanismo de comunicação entre processos é:",
       "answers": [
         "A sincronização implícita na troca de dados.",
         "A sua melhor performance.",
-        "A sua maior ﬂexibilidade no acesso a apenas parte dos dados enviados.",
+        "A sua maior flexibilidade no acesso a apenas parte dos dados enviados.",
         "Permitir a leitura simultânea do mesmo bloco de dados por vários processos consumidores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O uso de buffers entre processos comunicantes:",
@@ -6816,7 +6822,8 @@
         "Reduz o número de operações de escrita em memória.",
         "Permite que os processos acedam à memória sem qualquer mecanismo de sincronização."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A técnica de memória virtual agrega recursos de hardware e software com três funções básicas: realocação, protecção e paginação. A função de paginação:",
@@ -6826,27 +6833,30 @@
         "Usa registos do CPU para impedir que um processo utilize um endereço que não lhe pertence.",
         "Assegura que cada processo tem o seu próprio espaço de endereçamento contínuo que começa no endereço 0."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "No diagrama de transições de estado de um processo discutido nas aulas, a transição de ",
+      "question": "No diagrama de transições de estado de um processo discutido nas aulas, a transição de",
       "answers": [
         "Um processo foi preemptado por outro processo.",
         "Um processo deixou de estar bloqueado num semáforo.",
         "A espera do processo pela operação de I/O ou evento terminou.",
         "Um novo processo acabou de ser criado."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "Com a execução concorrente de processos numa sistema com um único CPU podemos ter:",
+      "question": "Com a execução concorrente de processos num sistema com um único CPU podemos ter:",
       "answers": [
         "Um processo em execução enquanto outro está bloqueado numa operação de I/O usando um mecanismo de espera passiva.",
         "Um processo em execução enquanto outro está bloqueado numa operação de I/O usando um mecanismo de espera activa.",
         "Mais do que um processo em execução simultânea, quer existam ou não processos bloqueados em operações de I/O.",
         "Apenas um processo bloqueado em operações de I/O, quer existam ou não processos em execução."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Se um processo filho modificar o valor de uma variável global num programa em C, qual das seguintes afirmações descreve o seu efeito?",
@@ -6856,17 +6866,19 @@
         "O pai vê a alteração ao valor da variável apenas se esta tiver sido alocada na heap antes do processo filho ter sido criado.",
         "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "﻿Quando um processo cria outro invocando a system call fork() qual das seguintes características não é herdada pelo processo filho:",
+      "question": "Quando um processo cria outro invocando a system call fork() qual das seguintes características não é herdada pelo processo filho:",
       "answers": [
         "Identificador do processo (PID).",
         "Espaço de endereçamento.",
-        "Indentificador do utilizador (UID).",
+        "Identificador do utilizador (UID).",
         "Descritores de ficheiros abertos."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A gestão do acesso e reserva de memória pelos processos em execução:",
@@ -6876,7 +6888,8 @@
         "É substituída pelo conceito de memória virtual em Linux e Windows.",
         "Obriga os processos a indicarem endereços físicos quando pretendem aceder à memória."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A técnica de memória virtual agrega recursos de hardware e software com três funções básicas: realocação, protecção e paginação. A função de protecção:",
@@ -6886,22 +6899,25 @@
         "Permite que um processo use mais memória do que a RAM fisicamente existente.",
         "Assegura que cada processo tem o seu próprio espaço de endereçamento contínuo que começa no endereço 0."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Durante a execução de um processo qual das seguintes situações pode ocorrer?",
       "answers": [
-        "O tempo que o escalonador tinha atribuído ao processo (time quantum) termina, o processo liberta o CPU e passa para o estado ",
+        "O tempo que o escalonador tinha atribuído ao processo (time quantum) termina, o processo liberta o CPU e passa para o estado",
         "O processo bloqueia usando um mecanismo de espera activa pelo acesso a um recurso, liberta o CPU e é colocado numa fila de espera associada ao recurso.",
-        "O tempo que o escalonador tinha atribuído ao processo (time quantum) termina, o processo liberta o CPU e mantém-se no estado ",
+        "O tempo que o escalonador tinha atribuído ao processo (time quantum) termina, o processo liberta o CPU e mantém-se no estado",
         "O processo cria um novo processo, ficando de seguida à espera que o seu filho termine invocando a função Wait, não libertando o CPU e mantendo-se em execução."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "As mudanças de estado de um processo são determinadas quer pelo seu ﬂuxo de execução, quer elo escalonador do sistema operativo. Qual das seguintes transições entre estados é possível?",
+      "question": "As mudanças de estado de um processo são determinadas quer pelo seu fluxo de execução, quer pelo escalonador do sistema operativo. Qual das seguintes transições entre estados é possível?",
       "answers": ["", "", "", ""],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Um sistema operativo é normalmente grande e complexo, sendo por isso construído através de um conjunto de componentes. A estruturação com base numa abordagem monolítica pura:",
@@ -6911,7 +6927,8 @@
         "Exige um mecanismo de troca de mensagens entre user space e kernel space.",
         "Permite carregar módulos dinamicamente, evitando a recompilação do núcleo quando se adicionam novas funcionalidades."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Nos sistemas operativos Windows e Linux as chamadas ao sistema (system calls):",
@@ -6921,42 +6938,48 @@
         "Não são usadas porque os processos em user-space podem aceder directamente aos serviços disponibilizados pelo sistema operativo.",
         "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "Assuma o mesmo conjunto de processos, respetivos perfis de execução e tempos de chegada, mas um algoritmo de escalonamento preemptivo de prioridades fixas, em que os processos têm prioridades (P1=1 (mais alta); P2=3; P3=2) e usam espera passiva para aceder aos recursos. Indique a sequência de escalonamento para estes processos (note-se que o símbolo ",
+      "question": "Assuma o mesmo conjunto de processos, respetivos perfis de execução e tempos de chegada, mas um algoritmo de escalonamento preemptivo de prioridades fixas, em que os processos têm prioridades (P1=1 (mais alta); P2=3; P3=2) e usam espera passiva para aceder aos recursos. Indique a sequência de escalonamento para estes processos (note-se que o símbolo",
       "answers": ["3311131233322-2", "3111-1222-233-333", "32111212323-333", "33322211133321"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Não assumindo qualquer conhecimento do comportamento dos processos em execução, com qual dos seguintes algoritmos de escalonamento é possível garantir a ausência de resource starvation no acesso ao CPU?",
       "answers": [
         "Round Robin.",
         "Escalonamento por prioridades fixas.",
-        "Shortestjob First.",
+        "Shortest Job First.",
         "Nenhum dos anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O escalonamento preemptivo é uma estratégia que suspende temporariamente a execução de um processo:",
       "answers": [
-        "Sem requisitar a sua cooperaçao, antes do seu time quantum expirar ou o processo terminar.",
+        "Sem requisitar a sua cooperação, antes do seu time quantum expirar ou o processo terminar.",
         "Para garantir que outro processo vítima de resource starvation execute.",
         "Sempre que este requisita uma operação de I/O.",
         "Para evitar deadlocks."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Admita que um processo inicializa uma variável global X a zero e, de seguida, cria três threads. Cada uma delas lê o valor actual de X, incrementa-o e actualiza o seu valor sem qualquer mecanismo de sincronização. Qual o valor final de X após as três threads terminarem?",
       "answers": ["X=1 ou X=2 ou X=3.", "X=3", "X=1 ou X=3.", "X=0 ou X=1 ou X=2 ou X=3."],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Considere um processo com diversas threads. Qual dos seguintes recursos é partilhado por todas as threads desse processo:",
       "answers": ["Heap.", "Stack.", "Variáveis locais.", "Conjunto de registos do CPU."],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Relativamente às chamadas ao sistema operativo:",
@@ -6964,9 +6987,11 @@
         "Funcionam através de interrupções de hardware.",
         "Funcionam em User Mode.",
         "Todas as chamadas necessitam do armazenamento de dados em disco.",
-        "Servem para invocar Serviços do Sistema Operativo."
+        "Servem para invocar serviços do Sistema Operativo."
       ],
-      "correct_index": 0
+      "correct_index": 3,
+      "repeated": [49, 50],
+      "in_plan": true
     },
     {
       "question": "Existem CPUs que têm pelo menos 2 níveis de protecção na execução de instruções do CPU (normalmente designados por kernel e user mode):",
@@ -6974,9 +6999,10 @@
         "Nestes sistemas as chamadas ao sistema operativo apenas podem ser feitas através de interrupções de hardware que permitam comutar para kernel mode.",
         "Em sistemas baseados nestes CPUs é possível a um sistema operativo suportar com segurança vários utilizadores.",
         "Em sistemas baseados nestes CPUs não é possível a um sistema operativo suportar com segurança vários utilizadores.",
-        "A execução em user mode permite que qualquer programa tenha acesso direto a todos os periféricos instalados no computador,"
+        "A execução em user mode permite que qualquer programa tenha acesso direto a todos os periféricos instalados no computador."
       ],
-      "correct_index": 0
+      "correct_index": 1,
+      "in_plan": true
     },
     {
       "question": "Nos sistemas operativos Windows e Linux toda a configuração e tratamento de interrupções passa pelo sistema operativo, dado que:",
@@ -6986,7 +7012,9 @@
         "Assim cada aplicação pode aceder diretamente ao dispositivo.",
         "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [51],
+      "in_plan": true
     },
     {
       "question": "Aplicar ao algoritmo de escalonamento round robin:",
@@ -6994,9 +7022,10 @@
         "Um time quantum muito pequeno aumenta consideravelmente o overhead.",
         "Um time quantum muito pequeno converte-o na prática no algoritmo First come First served.",
         "Um time quantum muito pequeno aumenta consideravelmente a performance do sistema.",
-        "Um time quantum muito pequeno converte-o na prática no algoritmo Shortestjob First."
+        "Um time quantum muito pequeno converte-o na prática no algoritmo Shortest Job First."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A estratégia de escalonamento que permite que qualquer processo em execução monopolize o CPU até ao fim do seu código ou até o libertar voluntariamente é denominada por:",
@@ -7006,32 +7035,37 @@
         "Escalonamento por prioridades fixas.",
         "Escalonamento por prioridades dinâmicas."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Considere um processo com diversas threads. Qual das seguintes secções do espaço de endereçamento de um processo é privada para cada uma das threads desse processo:",
       "answers": ["Stack.", "Heap.", "Variáveis globais.", "Código do programa."],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Decidir o número de semáforos necessários para uma correcta sincronização de um conjunto de processos pode ser um exercício difícil. A abordagem de granularidade abrangente tem como consequência:",
       "answers": [
-        "Diminuir o grau de concorrência das aplicaçoes e o overhead do protocolo de sincronização.",
+        "Diminuir o grau de concorrência das aplicações e o overhead do protocolo de sincronização.",
         "Aumentar o grau de concorrência das aplicações e o overhead do protocolo de sincronização.",
         "Diminuir o grau de concorrência das aplicações, mas aumentar o overhead do protocolo de sincronização.",
         "Um maior número de dependências entre os semáforos, por vezes subtis, que podem originar deadlocks."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "Em sistemas concorrentes, resource starvation e uma situãção em que:",
+      "question": "Em sistemas concorrentes, resource starvation é uma situação em que:",
       "answers": [
         "Em consequência da política de escalonamento do CPU, um recurso passa alternadamente dum processo P1 para um outro processo P2, deixando um terceiro processo P3 indefinidamente bloqueado sem acesso ao recurso.",
         "Dois processos (P1 e P2) se bloqueiam mutuamente devido a P1 ter bloqueado o semáforo S1, P2 ter bloqueado o semáforo S2, P1 necessitar de aceder a uma zona crítica protegida por S2(sem libertar S1) e P2 necessitar de aceder a uma zona crítica protegida por S1 (sem libertar S2).",
         "Dois processos (P1 e P2) se bloqueiam mutuamente devido a P1 ter bloqueado o semáforo S1, P2 ter bloqueado o semáforo S2, P1 necessitar de aceder a uma zona crítica protegida por S2(depois de libertar S1) e P2 necessitar de aceder a uma zona crítica protegida por S1 (depois de libertar S2).",
-        "Nenhuma dãs anteriores."
+        "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [61],
+      "in_plan": true
     },
     {
       "question": "Os mecanismos de sincronização de processos são implementados:",
@@ -7041,7 +7075,8 @@
         "Apenas em hardware.",
         "Apenas para garantir exclusão mútua."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Uma solução eficiente para o problema da secção crítica deve garantir:",
@@ -7051,7 +7086,8 @@
         "Acesso exclusivo, preempção, progressão.",
         "Ausência de preempção, starvation, inversão de prioridades."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A utilidade do uso de sinais como método de comunicação entre processos é limitada porque:",
@@ -7061,7 +7097,8 @@
         "Funcionam de forma assíncrona.",
         "Um processo tem sempre a opção de ignorar a recepção de todos os sinais."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A comunicação entre processos permite:",
@@ -7071,47 +7108,53 @@
         "Apenas a troca de dados e não a sincronização das suas acções, com ou sem partilha de espaço de endereçamento.",
         "Apenas a sincronização das acções mas não a troca de dados, com ou sem partilha de espaço de endereçamento."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A segmentação de memória tem como objetivo:",
       "answers": [
         "Permitir que um utilizador veja a memória como sendo constituída como segmentos de tamanho diferente e independentes entre si.",
         "Permitir a divisão da memória em segmentos do mesmo tamanho.",
-        "Permitir que um utilizador veja a memória Como sendo Constituída por segmentos de tamanho diferente e independentes entre si.",
-        "Permitir a utilização de endereços físicos contíguos,"
+        "Permitir que um utilizador veja a memória como sendo constituída por segmentos de tamanho diferente e independentes entre si.",
+        "Permitir a utilização de endereços físicos contíguos."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [69],
+      "in_plan": false
     },
     {
       "question": "As seguintes características resultam da utilização do endereçamento lógico:",
       "answers": [
         "O endereçamento lógico assume que um programa é colocado em memória a partir da posição 0.",
-        "O endereçamento lógico assume que um programa é colocado em memória a partir da posição O e que é colocado no endereço físico 0.",
+        "O endereçamento lógico assume que um programa é colocado em memória a partir da posição 0 e que é colocado no endereço físico 0.",
         "A utilização de endereçamento lógico não permite a utilização de paginação de memória.",
         "A utilização de endereçamento lógico não permite que o Código seja relocatável na memória física."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Num sistema não preemptivo um processo é executado no estado de running:",
       "answers": [
         "Até que seja feita uma transição entre o estado de running e waiting.",
-        "Até qie seja retirado de execução pelo programador.",
+        "Até que seja retirado de execução pelo programador.",
         "Até que seja feita uma transição entre o estado de running e ready.",
         "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Num sistema preemptivo um processo é executado no estado de running:",
       "answers": [
-        "Até que seja feita uma transação desse processo, entre o estado de running e de ready, por decisão do escalonador ou até que termine.",
-        "Initerruptamente até que termine.",
+        "Até que seja feita uma transição desse processo, entre o estado de running e de ready, por decisão do escalonador ou até que termine.",
+        "Ininterruptamente até que termine.",
         "Até que termine, nessa altura passa para o estado de waiting.",
         "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A proteção de memória consiste:",
@@ -7119,9 +7162,11 @@
         "Na existência de uma tabela que indica a que segmentos e páginas um processo em execução pode aceder.",
         "Na marcação de cada segmento de memória, indicando os utilizadores que lhe podem aceder.",
         "Na existência de dois registos: o base register que guarda o endereço mais baixo na memória física a que um processo pode aceder e o limite register que guarda o tamanho da zona de memória.",
-        "Na existência de mecanismos em todas as linguagens de programação que impedem o acesso aáreas de memória que não pertençam ao processo em execução."
+        "Na existência de mecanismos em todas as linguagens de programação que impedem o acesso a áreas de memória que não pertençam ao processo em execução."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [48],
+      "in_plan": false
     },
     {
       "question": "A operação em dual mode é fundamental nos sistemas operativos modernos dado que:",
@@ -7129,9 +7174,10 @@
         "Permite que um programa do utilizador execute, com segurança, rotinas do kernel do sistema operativo através da execução de interrupções de software.",
         "Impede que um programa do utilizador execute em user mode.",
         "Permite que um programa do utilizador execute, com segurança, rotinas do kernel do sistema operativo através da execução de interrupções de hardware.",
-        "Permite que um programa do utilizador tenha cesso a atodas as funcionalidades do processador."
+        "Permite que um programa do utilizador tenha acesso a todas as funcionalidades do processador."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A linkagem dinâmica de bibliotecas (p.e. DLLs) não permite:",
@@ -7139,19 +7185,21 @@
         "Que durante a compilação sejam definidas as posições na memória física em que se irá localizar o programa executável.",
         "Diminuir o tamanho dos programas.",
         "Partilhar bibliotecas entre programas diferentes.",
-        "Utilizar a versão mais adequada das bibliotecas,"
+        "Utilizar a versão mais adequada das bibliotecas."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A utilização dos mecanismos de DMA têm as seguintes vantagens e/ou desvantagens em relação aos mecanismos de interrupção:",
       "answers": [
         "Os mecanismos DMA permitem que os dispositivos de I/O executem as transferências de dados diretamente para a memória e em paralelo com a execução do CPU, além disso os buffers de memória dos dispositivos podem ser mais pequenos relativamente ao mesmo tipo de dispositivo, caso este funcionasse apenas por interrupção.",
-        "Os mecanismos de DMA obrigam a que os dispositivos acedam diretamente à memória o que tornaa operação mais lenta.",
+        "Os mecanismos de DMA obrigam a que os dispositivos acedam diretamente à memória o que torna a operação mais lenta.",
         "Os mecanismos de DMA permitem que os dispositivos de I/O executem as transferências de dados diretamente para a memória e em paralelo com a execução no CPU de qualquer tipo de código.",
-        "Os mecanismos de DMA permitem que os dispositivos de I/O executem as transferências de dados diretamente para a memória e em paralelo com a execução no CPU de código exclusivamente do sistema operativo,"
+        "Os mecanismos de DMA permitem que os dispositivos de I/O executem as transferências de dados diretamente para a memória e em paralelo com a execução no CPU de código exclusivamente do sistema operativo."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     },
     {
       "question": "Existem CPUs que não oferecem qualquer nível de proteção na execução de instruções (normalmente designados por kernel e user mode):",
@@ -7161,7 +7209,8 @@
         "Nestes sistemas não é possivel suportar programação multiprocesso.",
         "Nestes sistemas as chamadas ao sistema operativo apenas podem ser feitas através de interrupções de software que permitam comutar para kernel mode."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "As chamadas ao sistema permitem a um programa do utilizador invocar serviços do sistema operativo:",
@@ -7171,17 +7220,19 @@
         "Para tal o programa deverá ativar uma interrupção de software e passar os parâmetros da referida chamada da rede.",
         "Para tal o programa deverá ativar uma interrupção de software e passar os parâmetros da referida chamada de registos da CPU."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "Num computador o barramento é partilhado entre o CPU e os dispositivos de entrada e saída (I/O) :",
+      "question": "Num computador o barramento é partilhado entre o CPU e os dispositivos de entrada e saída (I/O):",
       "answers": [
         "A ligação entre o CPU e os dispositivos de entrada e saída é feita pelo barramento de dados e por uma ou mais linhas de interrupção.",
         "A ligação entre o CPU e os dispositivos de entrada e saída é feita exclusivamente pelas linhas de interrupção.",
         "A ligação entre o CPU e os dispositivos de entrada e saída é feita exclusivamente pelo barramento de dados.",
         "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Assuma que compila um programa utilizando o comando gcc prog.c no sistema operativo Linux, a atribuição inicial de instruções e dados às respetivas posições físicas de memória é feita geralmente:",
@@ -7189,9 +7240,10 @@
         "Pela Memory Management Unit do CPU.",
         "Durante a compilação do programa pelo linker.",
         "Pelo módulo de gestão de memória do kernel do sistema operativo.",
-        "Pelo módulo de gestão de processos do kernel do sistema operativo,"
+        "Pelo módulo de gestão de processos do kernel do sistema operativo."
       ],
-      "correct_index": 0
+      "correct_index": 2,
+      "in_plan": true
     },
     {
       "question": "Deadlock é uma situação em que:",
@@ -7201,17 +7253,20 @@
         "Em consequência da política de escalonamento da UCP, um recurso passa alternadamente dum processo P1 para um outro processo P2, deixando um terceiro processo P3 indefinidamente bloqueado sem acesso ao recurso.",
         "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "Relativamente a proteção de memória consiste:",
+      "question": "Relativamente à proteção de memória consiste:",
       "answers": [
         "Na existência de dois registos: o base register que guarda o endereço mais baixo na memória física a que um processo pode aceder e o “limite register” que guarda o tamanho da zona de memória e que permitem verificar se todos os acessos à memória ocorrem dentro dessa zona.",
         "Na marcação de cada segmento de memória, indicando os utilizadores que lhe podem aceder.",
         "Na existência de dois registos: o base register que guarda o endereço mais baixo na memória física a que um processo pode aceder e o limite register que guarda o tamanho da zona de memória.",
-        "Na existência de mecanismos em todas as linguagens de programação que impedem o acesso aáreas de memória que não pertençam ao processo em execução."
+        "Na existência de mecanismos em todas as linguagens de programação que impedem o acesso a áreas de memória que não pertençam ao processo em execução."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [39],
+      "in_plan": false
     },
     {
       "question": "Em relação às chamadas ao sistema operativo:",
@@ -7219,9 +7274,11 @@
         "Servem para invocar serviços do sistema operativo.",
         "Funcionam em User Mode.",
         "Todas as chamadas necessitam do armazenamento de dados em disco.",
-        "Funcionam apenas atravez de interrupções de hardware."
+        "Funcionam apenas através de interrupções de hardware."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [23, 50],
+      "in_plan": true
     },
     {
       "question": "Relativamente às chamadas ao sistema operativo:",
@@ -7231,17 +7288,21 @@
         "Todas as chamadas necessitam do armazenamento de dados em disco.",
         "Não servem para invocar serviços do sistema operativo."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [23, 49],
+      "in_plan": true
     },
     {
       "question": "Nos sistemas operativos Windows e Linux toda a configuração e tratamento de interrupções passa pelo sistema operativo, dado que:",
       "answers": [
         "Tal permite que todos os pedidos de acesso aos periféricos sejam controlados pelo sistema operativo.",
-        "Tal permite que a rotina de interrupção execute mais depressa,",
+        "Tal permite que a rotina de interrupção execute mais depressa.",
         "Assim cada aplicação pode aceder diretamente ao dispositivo.",
-        "Nenhuma das anteriores,"
+        "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [25],
+      "in_plan": true
     },
     {
       "question": "A sinalização de uma variável de condição:",
@@ -7251,7 +7312,8 @@
         "Só deve ser feita depois do fecho de qualquer um dos semáforos do programa.",
         "Só deve ser feita pela mesma thread que está a espera dessa sinalização."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "As seguintes afirmações comparam as vantagens e desvantagens da utilização de threads:",
@@ -7259,9 +7321,10 @@
         "Todas as threads de um mesmo grupo (que derivam do mesmo processo) partilham as mesmas áreas de memória.",
         "Todas as threads de um sistema operativo partilham as mesmas áreas de memória.",
         "Todos os processos de um sistema operativo partilham as mesmas áreas de memória.",
-        "As threads es os processos não partilham memória entre si."
+        "As threads e os processos não partilham memória entre si."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A criação de um novo processo em Linux:",
@@ -7269,9 +7332,10 @@
         "É uma operação pesada do ponto de vista computacional.",
         "É uma operação leve do ponto de vista computacional.",
         "Envolve obrigatoriamente operações em vírgula flutuante.",
-        "Só é possível com permissões de "
+        "Só é possível com permissões de"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Um dos objetivos de separar um programa em duas threads diferentes poderá ser:",
@@ -7279,19 +7343,23 @@
         "Utilizar de forma mais eficiente os recursos de um computador.",
         "Dar menos trabalho ao compilador.",
         "Isolar as duas threads uma da outra por razões de segurança.",
-        "Diminuir a quantidade de memória ocupada,"
+        "Diminuir a quantidade de memória ocupada."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [72],
+      "in_plan": true
     },
     {
       "question": "Um dos objetivos da paginação de memória tem como objetivo:",
       "answers": [
         "Permitir a utilização de espaços de memória não contíguos.",
-        "Permitir os acesso aos periféricos.",
-        "Permitir a utilização de endereços fisicos contíguos.",
+        "Permitir o acesso aos periféricos.",
+        "Permitir a utilização de endereços físicos contíguos.",
         "Aumentar a performance do sistema."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [57],
+      "in_plan": true
     },
     {
       "question": "A paginação de memória tem como objetivo:",
@@ -7299,9 +7367,11 @@
         "Permitir que um programa utilize a memória como sendo constituída por pedaços do mesmo tamanho e eliminar totalmente a fragmentação externa da memória.",
         "Permitir a divisão da memória em pedaços de tamanho diferente.",
         "Obrigar os programas a serem mais pequenos.",
-        "Permitir que um programa utilize a memória Como sendo constituída por pedaços do mesmo tamanho e eliminar totalmente a fragmentação interna da memória."
+        "Permitir que um programa utilize a memória como sendo constituída por pedaços do mesmo tamanho e eliminar totalmente a fragmentação interna da memória."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [56],
+      "in_plan": true
     },
     {
       "question": "Relativamente aos semáforos em Linux System V pode-se afirmar o seguinte:",
@@ -7311,37 +7381,42 @@
         "O incremento de um semáforo pode levar o processo a bloquear o que implica a sua passagem para o estado de waiting.",
         "O incremento de um semáforo pode levar o processo a bloquear o que implica a sua passagem para o estado de ready."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Num sistema com escalonamento preemptivo, com prioridades fixas, com vários processos a concorrer pelo CPU, um processo é executado no estado de running sem qualquer comutação para outros processos:",
       "answers": [
         "Até que termine, desde que seja o processo com maior prioridade.",
-        "Interruptamente até que termine, independentemente de fazer operações de I/O ou não.",
-        "Até que seja feita uma transição desse processo para outro com menor prioridade, por decisão doescalonador.",
-        "Interruptamente até que termine, ou até efectuar operações de I/O."
+        "Ininterruptamente até que termine, independentemente de fazer operações de I/O ou não.",
+        "Até que seja feita uma transição desse processo para outro com menor prioridade, por decisão do escalonador.",
+        "Ininterruptamente até que termine, ou até efectuar operações de I/O."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Assuma que um conjunto de programas de vários utilizadores está a ser executado num sistema operativo com suporte para multiprocessamento e multiutilizador:",
       "answers": [
         "Tais funcionalidades apenas podem ser executadas em segurança se o CPU suportar a execução de processos em dual mode.",
-        "Tais funcionalidades podem ser executadas em segurança em qualquer tipo de CPU,",
-        "A execução em segurança é garantida apenas pela existência de mecanismo de acesso protegido àmemória.",
-        "Nenhuma das anteriores,"
+        "Tais funcionalidades podem ser executadas em segurança em qualquer tipo de CPU.",
+        "A execução em segurança é garantida apenas pela existência de mecanismo de acesso protegido à memória.",
+        "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Starvation é uma situação em que:",
       "answers": [
         "Em consequência da política de escalonamento da UCP, um recurso passa alternadamente dum processo P1 para um outro processo P2, deixando um terceiro processo P3 indefinidamente bloqueado sem acesso ao recurso.",
-        "Vários processos acedem e manipulam dados partilhados ",
-        "Processos a Correr em processadores diferentes, manipuiam simultaneamente a dados na sua Cache.",
+        "Vários processos acedem e manipulam dados partilhados",
+        "Processos a correr em processadores diferentes, manipulam simultaneamente a dados na sua Cache.",
         "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [30],
+      "in_plan": true
     },
     {
       "question": "A utilização pelo sistema operativo da execução em kernel mode e user mode permite:",
@@ -7351,7 +7426,8 @@
         "Que qualquer programa possa aceder diretamente e alterar a configuração de um dispositivo de hardware.",
         "Que, em Linux, apenas programas com privilégios de administrador possam interagir com o kernel do sistema operativo de uma forma segura."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Assuma que um programa em C aloca memória partilhada ( apontada pela variável m) com sizeof(int)*2 bytes de comprimento, numa arquitetura Intel x86. No entanto o código seguinte não gera um erro (m[20]=20), indique as razões porque não é detetado qualquer erro:",
@@ -7359,19 +7435,22 @@
         "A arquitetura x86 utiliza paginação de memória permitindo normalmente reservar memória em múltiplos de 4k, consequentemente m[20] pode pertencer à zona de memória partilhada reservada ao processo.",
         "As funções de alocação de memória reservam sempre 20% mais memória que a que é pedida e a linguagem C não faz qualquer controlo no acesso à memória.",
         "Nem a linguagem C nem o sistema operativo fazem qualquer controlo de acesso para além dos limites reservados ao processo ou configuração do sistema computacional para o fazer.",
-        "Nenhuma das anteriores,"
+        "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A criação de um novo processo em Linux, através da função fork, envolve:",
       "answers": [
         "A criação do Process Control Block do processo e alocação de memória para os dados, seguida da cópia dos dados do processo que fez o pedido.",
-        "A alocação de memória para os dados, código de um programa e a criação do Process ControlBlock do processo.",
+        "A alocação de memória para os dados, código de um programa e a criação do Process Control Block do processo.",
         "A reserva dos periféricos a utilizar pelo programa.",
         "A alocação de memória para o código de um programa e a criação do Process Control Block do processo."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [68],
+      "in_plan": true
     },
     {
       "question": "O conjunto de módulos seguintes são parte integrante de um kernel genérico de um sistema operativo para sistemas desktop, multiprocesso e multiutilizador:",
@@ -7379,19 +7458,21 @@
         "O módulo de gestão de processos trata da comutação entre processos e entre threads do sistema operativo.",
         "O módulo de gestão de I/O permite gerir o acesso à memória principal.",
         "O módulo de gestão de processos é responsável pela alocação de memória aos processos.",
-        "O módulo de gestão de processos trata da Comutação entre processos mas não entre threads."
+        "O módulo de gestão de processos trata da comutação entre processos mas não entre threads."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Num sistema de ficheiros a alocação de espaço para um ficheiro poderá ser feita de várias formas:",
       "answers": [
         "Alocação indexada, cada bloco de um ficheiro contém um apontador para o próximo bloco.",
-        "Alocação continua: em que cada ficheiro ocupa um único bloco de disco.",
-        "Alocação continua: em que cada ficheiro ocupa um conjunto de blocos de disco contíguos.",
+        "Alocação contínua: em que cada ficheiro ocupa um único bloco de disco.",
+        "Alocação contínua: em que cada ficheiro ocupa um conjunto de blocos de disco contíguos.",
         "Alocação ligada: em que cada ficheiro ocupa um conjunto de blocos de disco contíguos."
       ],
-      "correct_index": 0
+      "correct_index": 2,
+      "in_plan": false
     },
     {
       "question": "O acesso a um sistema de ficheiros organiza-se por camadas. A camada designada por “Logical File System”, é responsável por:",
@@ -7401,7 +7482,8 @@
         "Gerir os buffers de leitura e escrita.",
         "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     },
     {
       "question": "A criação de um novo processo num sistema operativo envolve:",
@@ -7411,17 +7493,21 @@
         "A criação do Process Control Block do processo.",
         "A alocação de memória para o código de um programa e a criação do Process Control Block do processo."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [64],
+      "in_plan": true
     },
     {
       "question": "A segmentação de memória permite:",
       "answers": [
         "Dividir a memória em pedaços de tamanho diferente e com diferentes propriedades.",
-        "Dividir a memória em pedações de tamanho diferente, mas com as mesmas propriedades.",
-        "Dividir a memória em pedações de tamanho igual, mas com as mesmas propriedades.",
-        "Dividir a memória em pedações de tamanho igual e com diferentes propriedades."
+        "Dividir a memória em pedaços de tamanho diferente, mas com as mesmas propriedades.",
+        "Dividir a memória em pedaços de tamanho igual, mas com as mesmas propriedades.",
+        "Dividir a memória em pedaços de tamanho igual e com diferentes propriedades."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [35],
+      "in_plan": false
     },
     {
       "question": "Considere um CPU multicore e um programa multi-thread. Considere que o número de threads do programa 1 (NT) é superior ao número de cores (Ncores) (i.e. NT>Ncores) e que nenhuma das threads pode interferir com as outras. Considere também o programa 2 igual ao programa 1, apenas variando o número de threads.",
@@ -7431,22 +7517,26 @@
         "O programa 1 terá maior performance do que no caso de executarmos o programa 2 com NT=Ncores, se as threads não tiverem qualquer operação de I/O.",
         "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Num sistema multiprocessador o mecanismo de Crossbar Switching necessita X Switchs num sistema com n processadores. Indique o valor de x.",
       "answers": ["n*n.", "n/2", "n/2*log2(n)", "Nenhuma das anteriores."],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     },
     {
       "question": "Um dos objetivos de separar um programa em threads diferentes poderá ser:",
       "answers": [
-        "Utilizar de forma mais eficiente os recursos do Computador.",
+        "Utilizar de forma mais eficiente os recursos do computador.",
         "Dar menos trabalho ao gerar o ficheiro executável.",
         "Diminuir o tempo de compilação.",
         "Diminuir a quantidade de memória ocupada."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [55],
+      "in_plan": true
     }
   ],
   "sgrai": [
