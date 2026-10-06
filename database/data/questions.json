@@ -8393,604 +8393,954 @@
   ],
   "arqcp": [
     {
-      "question": "É sempre possível diminuir o tamanho de um estrutura alinhada alterando a ordem dos seus campos",
+      "question": "É sempre possível diminuir o tamanho de uma estrutura alinhada alterando a ordem dos seus campos",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [69, 111],
+      "in_plan": true
     },
     {
       "question": "Uma estrutura, alinhada de acordo com as regras estudadas, com um vector de 2 char, 1 int e 1 short (por esta ordem) ocupa 12 bytes",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [112],
+      "in_plan": true
     },
     {
-      "question": "Admita a matriz global short int m[5][3]. No Àssêmbly, acedemos ao valor de m[3][0] avançando 18 bytes a partir de m",
+      "question": "Admita a matriz global short int m[5][3]. No Assembly, acedemos ao valor de m[3][0] avançando 18 bytes a partir de m",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [18, 88],
+      "in_plan": true
     },
     {
-      "question": "Os registo %eax é local a cada uma das funções, o que dispensa qualquer cuidado no seu uso entre invocações de funções",
+      "question": "O registo %eax é local a cada uma das funções, o que dispensa qualquer cuidado no seu uso entre invocações de funções",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "O registo a0 é local a cada uma das funções, o que dispensa qualquer cuidado no seu uso entre invocações de funções",
+        "answers": ["FALSO", "VERDADEIRO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "Admita que o valor de %esp é 0x100C. A execução da instrução ret coloca o valor de %esp em 0x1010",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [36],
+      "in_plan": false,
+      "translation": {
+        "question": "Admita que o valor de sp é 0x100C. A execução da instrução ret coloca o valor de sp em 0x1010",
+        "answers": ["VERDADEIRO", "FALSO"],
+        "correct_index": 1
+      }
     },
     {
       "question": "Em IA32 é usada a stack para armazenar o valor de retorno de uma função, à semelhança do que acontece com o seu endereço de retorno",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [37, 54, 108],
+      "in_plan": false,
+      "translation": {
+        "question": "Em RV32 é usada a stack para armazenar o valor de retorno de uma função, à semelhança do que acontece com o seu endereço de retorno",
+        "answers": ["FALSO", "VERDADEIRO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "Admita 0xF000 e 0x0100 em %edx e %ecx, respetivamente. leal (%edx,%ecx,4),%esi armazena em %esi o valor 0xF400",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "Admita 0xF000 e 0x0100 em t0 e t1, respetivamente. A sequência “slli t2,t1,2” seguida de “add t2,t0,t2” armazena em t2 o valor 0xF400",
+        "answers": ["VERDADEIRO", "FALSO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "Os parâmetros de uma função não podem ser acedidos usando o registo %esp em vez do %ebp como base do endereçamento",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "Os parâmetros de uma função passados na stack não podem ser acedidos usando o registo sp em vez do registo fp como base do endereçamento",
+        "answers": ["FALSO", "VERDADEIRO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "Admita que %edi e int *ptr armazenam o endereço do inteiro x. Então, movl $1,(%edi) é o equivalente a *ptr = 1 em C",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "Admita que a0 e int *ptr armazenam o endereço do inteiro x. Então, “li t0,1” seguido de “sw t0,0(a0)” é o equivalente a *ptr = 1 em C",
+        "answers": ["VERDADEIRO", "FALSO"],
+        "correct_index": 0
+      }
     },
     {
-      "question": "No Àssêmbly, o resultado das instruções de salto condicional depende do valor dos bits do registo EFLAGS",
+      "question": "No Assembly, o resultado das instruções de salto condicional depende do valor dos bits do registo EFLAGS",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "No Assembly RV32, o resultado das instruções de salto condicional (por exemplo, beq e bne) depende do valor dos bits de um registo de flags",
+        "answers": ["VERDADEIRO", "FALSO"],
+        "correct_index": 1
+      }
     },
     {
-      "question": "No Àssêmbly, a instrução movb (%esi), (%edi) permite copiar um byte para uma nova posição de memória numa única instrução",
+      "question": "No Assembly, a instrução movb (%esi), (%edi) permite copiar um byte para uma nova posição de memória numa única instrução",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [58],
+      "in_plan": false,
+      "translation": {
+        "question": "No Assembly RV32, é possível copiar um byte de uma posição de memória para outra numa única instrução",
+        "answers": ["FALSO", "VERDADEIRO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "Admita que ptr é uma variável do tipo char*. Então, a expressão (int*)ptr + 7 avança 28 bytes na memória",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [27],
+      "in_plan": true
     },
     {
       "question": "Em C, é garantido que o resultado de uma divisão inteira por 2k, obtida através de u >> k, é correctamente arredondado se u<0",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em C, a adição de duas variáveis u e v do tipo int tem como resultado (u+v) mod 32",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em C, se tivermos uma variável x do tipo short com o valor 0x1234, o valor –0x1234 pode ser obtido através de ~x + 1",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Admita um int x com valor 0x01234567 e um valor dado por &x de 0x100. Logo, o valor presente no byte 0x100 é 0x67",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [47, 64, 96],
+      "in_plan": true
     },
     {
       "question": "Em C, o cast implícito em determinadas situações de variáveis com sinal para valores sem sinal pode levar a bugs no programa",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em C, o cast de uma variável do tipo int para uma do tipo float altera o padrão de bits da variável",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "Admita a matriz global short m[10][3]. No Àssêmbly, acedemos ao valor de m[3][1] avançando 20 bytes a partir de m",
+      "question": "Admita a matriz global short m[10][3]. No Assembly, acedemos ao valor de m[3][1] avançando 20 bytes a partir de m",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [2, 88],
+      "in_plan": true
     },
     {
       "question": "De acordo com a convenção usada em Linux/IA32, a responsabilidade de salvaguarda e restauro de %esi é da função invocada",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [114],
+      "in_plan": false,
+      "translation": {
+        "question": "De acordo com a convenção usada em Linux/RV32, a responsabilidade de salvaguarda e restauro de s1 é da função invocada",
+        "answers": ["VERDADEIRO", "FALSO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "Admita que o valor de %esp é 0x1000. A execução da instrução jmp coloca o valor de %esp em 0xFFC",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "Admita que o valor de sp é 0x1000. A execução da instrução j coloca o valor de sp em 0xFFC",
+        "answers": ["FALSO", "VERDADEIRO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "Em IA32, a stack é usada para suportar a invocação de funções e o retorno para a função invocadora com call e ret, respetivamente",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     },
     {
-      "question": "Em IA32, a instrução test compara o valor dos seus operandos através de um subtração",
+      "question": "Em IA32, a instrução test compara o valor dos seus operandos através de uma subtração",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     },
     {
       "question": "A adição de dois bytes com sinal com valores 0xAC e 0x8A deixa as flags do registo EFLAGS com os valores ZF=0, SF=1, CF=1, OF=1",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [55],
+      "in_plan": false
     },
     {
-      "question": "No Àssêmbly, a instrução “pushl %eax” é equivalente a “movl %eax, (%esp)” seguido de “addl $-4, %esp”",
+      "question": "No Assembly, a instrução “pushl %eax” é equivalente a “movl %eax, (%esp)” seguido de “addl $-4, %esp”",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "No Assembly RV32, o push do valor de a0 para a stack é equivalente a “sw a0,0(sp)” seguido de “addi sp,sp,-4”",
+        "answers": ["FALSO", "VERDADEIRO"],
+        "correct_index": 0
+      }
     },
     {
-      "question": "No Àssêmbly, a instrução “imull %edx” duplica o valor do registo usado como argumento",
+      "question": "No Assembly, a instrução “imull %edx” duplica o valor do registo usado como argumento",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     },
     {
       "question": "Admita que declara a variável int x na função main em C. O compilador pode atribuir x a um registo ou a um endereço na heap",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Admita que ptr é uma variável do tipo char*. Então, em C, a expressão (short*)ptr + 7 avança 14 bytes na memória",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [11],
+      "in_plan": true
     },
     {
       "question": "Em C, as expressões “x * 35” e “(x<<+ (x<<– x” são sempre equivalentes para qualquer valor de unsigned int x",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em C, a multiplicação de duas variáveis u e v do tipo int pode resultar num valor menor do que os armazenados em u ou v",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O vetor “int *vec = (int*)malloc(16);” pode armazenar 16 inteiros tal como se tivesse sido definido como “int vec[16];”",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em IA32, uma arquitetura little-endian, considerando o vetor short x[10], o elemento x[1] está num endereço menor que x[0]",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "Em RV32, uma arquitetura little-endian, considerando o vetor short x[10], o elemento x[1] está num endereço menor que x[0]",
+        "answers": ["FALSO", "VERDADEIRO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "As operações aritméticas de soma e subtracção de inteiros têm uma implementação diferente em hardware para valores com e sem sinal",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Admita a variável unsigned char x em C. O valor armazenado em x depois de executar “x = -1; x = x >> 1;” é 127",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [66],
+      "in_plan": true
     },
     {
       "question": "A possibilidade de existirem diversas referências para a mesma posição de memória dificulta a optimização efectuada pelo compilador",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [67],
+      "in_plan": true
     },
     {
-      "question": "É possível redimensionar, com a função realloc, o tamanho um vetor de inteiros vec declarado estaticamente com int vec[10]",
+      "question": "É possível redimensionar, com a função realloc, o tamanho de um vetor de inteiros vec declarado estaticamente com int vec[10]",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [76],
+      "in_plan": true
     },
     {
       "question": "Admita que o valor de %esp é 0x1004. A execução da instrução ret coloca o valor de %esp em 0x1000",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [4],
+      "in_plan": false,
+      "translation": {
+        "question": "Admita que o valor de sp é 0x1004. A execução da instrução ret coloca o valor de sp em 0x1000",
+        "answers": ["FALSO", "VERDADEIRO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "Em IA32, a stack é usada para suportar a passagem do valor de retorno de uma função invocada à função invocadora",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [5, 54, 108],
+      "in_plan": false,
+      "translation": {
+        "question": "Em RV32, a stack é usada para suportar a passagem do valor de retorno de uma função invocada à função invocadora",
+        "answers": ["FALSO", "VERDADEIRO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "Se %ecx for 4 e %esi o endereço inicial de um vetor de short, movw 6(%esi,%ecx,2),%ax coloca em %ax o oitavo elemento",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "Se t1 for 4 e a1 o endereço inicial de um vetor de short, a sequência “slli t2,t1,1”, “add t2,a1,t2” e “lh a0,6(t2)” coloca em a0 o oitavo elemento",
+        "answers": ["VERDADEIRO", "FALSO"],
+        "correct_index": 0
+      }
     },
     {
-      "question": "No Àssêmbly, a instrução leal (%eax,%eax,4),%eax pode ser usada para multiplicar por 5 o valor em %eax",
+      "question": "No Assembly, a instrução leal (%eax,%eax,4),%eax pode ser usada para multiplicar por 5 o valor em %eax",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "No Assembly RV32, a sequência “slli t0,a0,2” seguida de “add a0,a0,t0” pode ser usada para multiplicar por 5 o valor em a0",
+        "answers": ["VERDADEIRO", "FALSO"],
+        "correct_index": 0
+      }
     },
     {
-      "question": "No Àssêmbly, a instrução popl %eax é equivalente a executar movl (%esp),%eax seguido de addl $4, %esp",
+      "question": "No Assembly, a instrução popl %eax é equivalente a executar movl (%esp),%eax seguido de addl $4, %esp",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [57],
+      "in_plan": false,
+      "translation": {
+        "question": "No Assembly RV32, o pop do valor no topo da stack para a0 é equivalente a executar “lw a0,0(sp)” seguido de “addi sp,sp,4”",
+        "answers": ["VERDADEIRO", "FALSO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "Em C, é possível retornar como valor de saída de uma função o endereço de um vetor short *vec = (short*)malloc(20)",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [59],
+      "in_plan": true
     },
     {
       "question": "Admita que declara a variável int x como variável global em C. Logo, os 4 bytes são reservados na stack",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Admita que int *ptr armazena endereço inicial de um vetor de int. Logo, (short*)ptr + 8 aponta para o quinto elemento",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [60],
+      "in_plan": true
     },
     {
       "question": "Em C, as divisões de inteiros usando deslocamentos podem exigir a alteração do dividendo para que o arredondamento seja correto",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em C, o operador lógico || (OR) termina a avaliação da expressão se encontrar uma condição que seja avaliada como verdade",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em C, ao truncarmos uma variável do tipo int que armazena um valor positivo para um short podemos ficar com um valor negativo",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Admita a variável short a = 0x0123 e um valor dado por &a de 0x200 em C. Então, o valor presente no byte 0x201 é 0x01",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [15, 64, 96],
+      "in_plan": true
     },
     {
       "question": "Admita a variável unsigned int a = 0xFFFFFFFF em C. Então, a variável unsigned int b = a + 1 tem o valor zero",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em C, o maior valor que podemos armazenar numa variável do tipo int é 232",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A invocação de funções introduz overhead e limita as possibilidades de otimização dos programas pelo compilador",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [84],
+      "in_plan": true
     },
     {
       "question": "A fragmentação da heap pode impedir a alocação de um novo bloco mesmo que exista esse número de bytes livres",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O tamanho de uma union sujeita a alinhamento pode ser menor se indicarmos os seus campos por ordem crescente do seu tamanho",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [110],
+      "in_plan": true
     },
     {
       "question": "Uma estrutura, alinhada de acordo com as regras estudadas, com 2 int, um vetor de 7 char e 1 short (por esta ordem) ocupa 20 bytes",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em IA32, a stack é usada para suportar o retorno do valor de saída de uma função, tal como acontece com o controlo de fluxo",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [5, 37, 108],
+      "in_plan": false,
+      "translation": {
+        "question": "Em RV32, a stack é usada para suportar o retorno do valor de saída de uma função, tal como acontece com o controlo de fluxo",
+        "answers": ["FALSO", "VERDADEIRO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "A adição de dois bytes com sinal com valores $127 e $10 deixa as flags do registo EFLAGS com os valores ZF=0, SF=1, CF=0, OF=1",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [23],
+      "in_plan": false
     },
     {
-      "question": "No Àssêmbly, as operações de multiplicação e divisão de inteiros têm instruções diferentes para valores com e sem sinal",
+      "question": "No Assembly, as operações de multiplicação e divisão de inteiros têm instruções diferentes para valores com e sem sinal",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "No Àssêmbly, a instrução “popl %eax” é equivalente a “movl (%esp),%eax” seguido de “addl $4,%esp”",
+      "question": "No Assembly, a instrução “popl %eax” é equivalente a “movl (%esp),%eax” seguido de “addl $4,%esp”",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [40],
+      "in_plan": false,
+      "translation": {
+        "question": "No Assembly RV32, o pop do valor no topo da stack para a0 é equivalente a executar “lw a0,0(sp)” seguido de “addi sp,sp,4”",
+        "answers": ["VERDADEIRO", "FALSO"],
+        "correct_index": 0
+      }
     },
     {
-      "question": "No Àssêmbly, o equivalente a “*ptr1 = *ptr2”, apontadores do tipo int* em C, pode ser obtido com “movl (%eax),(%ebx)”",
+      "question": "No Assembly, o equivalente a “*ptr1 = *ptr2”, apontadores do tipo int* em C, pode ser obtido com “movl (%eax),(%ebx)”",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [10],
+      "in_plan": false,
+      "translation": {
+        "question": "No Assembly RV32, o equivalente a “*ptr1 = *ptr2”, apontadores do tipo int* em C, pode ser obtido com uma única instrução",
+        "answers": ["FALSO", "VERDADEIRO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "Em C, é correto retornar como valor de saída de uma função o endereço de um bloco de memória reservado na heap dentro da função",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 1,
+      "repeated": [41],
+      "in_plan": true
     },
     {
       "question": "Em C, admita um vetor “int vec[10];” e um apontador “short *ptr = (short*)vec”. Então, ptr + 4 avança para vec[2]",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [43],
+      "in_plan": true
     },
     {
       "question": "Em C, a divisão correta de um inteiro negativo x por 2k através de um deslocamento deve ser obtida com “(x+(1<<k)-1)>>k”",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em C, quando a soma aritmética de duas variáveis u e v do tipo int é superior a 231 o valor obtido é equivalente a u + v - 231",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em C, a função malloc permite-nos reservar blocos de memória na stack em tempo de execução que podem ser depois redimensionados",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em C, admita a variável “unsigned int x=0x12345678;” cujo endereço é 0x100. Logo, o valor presente no byte 0x102 é 0x34",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [15, 47, 96],
+      "in_plan": true
     },
     {
       "question": "Em C, a operação u << k tem sempre como resultado u * 2k, para valores inteiros de u com ou sem sinal e 0 < k <= 31",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [94],
+      "in_plan": true
     },
     {
       "question": "Em C, admita a variável “char x = -1;”. Logo, o valor armazenado em “char y = (unsigned)x >> 1;” é 127",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [33],
+      "in_plan": true
     },
     {
       "question": "A possibilidade de existirem diversas referências para a mesma posição de memória em C dificulta a otimização efetuada pelo compilador",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [34],
+      "in_plan": true
     },
     {
       "question": "A fragmentação interna dos blocos reservados na heap é originada pelas regras de alinhamento e overhead da gestão dos blocos",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [103],
+      "in_plan": true
     },
     {
       "question": "O tamanho de uma estrutura é garantidamente menor se indicarmos os seus campos por ordem decrescente do seu tamanho",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [0, 111],
+      "in_plan": true
     },
     {
-      "question": "Uma estrutura, alinhada de acordo com as regras estudadas, com 1 char, 1 double e um 1 char* (por esta ordem) ocupa 16 bytes",
+      "question": "Uma estrutura, alinhada de acordo com as regras estudadas, com 1 char, 1 double e 1 char* (por esta ordem) ocupa 16 bytes",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "Em RV32, uma estrutura, alinhada de acordo com as regras estudadas, com 1 char, 1 double e 1 char* (por esta ordem) ocupa 16 bytes",
+        "answers": ["VERDADEIRO", "FALSO"],
+        "correct_index": 1
+      }
     },
     {
-      "question": "Admita a matriz global int m[4][5]. No Àssêmbly, acedemos ao endereço de m[i] calculando m + i*20",
+      "question": "Admita a matriz global int m[4][5]. No Assembly, acedemos ao endereço de m[i] calculando m + i*20",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [113],
+      "in_plan": true
     },
     {
       "question": "Em IA32, reservamos espaço para as variáveis locais de uma função subtraindo o número de bytes necessários ao valor atual de %ebp",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "Em RV32, reservamos espaço para as variáveis locais de uma função somando o número de bytes necessários ao valor atual de sp",
+        "answers": ["FALSO", "VERDADEIRO"],
+        "correct_index": 0
+      }
     },
     {
-      "question": "No Àssêmbly, reservar 8 bytes para variáveis locais de uma função pode ser conseguido com “addl $8,%esp”",
+      "question": "No Assembly, reservar 8 bytes para variáveis locais de uma função pode ser conseguido com “addl $8,%esp”",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "No Assembly RV32, reservar 8 bytes para variáveis locais de uma função pode ser conseguido com “addi sp,sp,8”",
+        "answers": ["FALSO", "VERDADEIRO"],
+        "correct_index": 0
+      }
     },
     {
-      "question": "No Àssêmbly, depois do prólogo de uma função, o valor antigo de %ebp pode ser encontrado em (%esp)",
+      "question": "No Assembly, depois do prólogo de uma função, o valor antigo de %ebp pode ser encontrado em (%esp)",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     },
     {
-      "question": "No Àssêmbly, qualquer que seja o valor armazenado em %eax, o resultado de “sall $4,%eax” e “shll $4,%eax” é o mesmo",
+      "question": "No Assembly, qualquer que seja o valor armazenado em %eax, o resultado de “sall $4,%eax” e “shll $4,%eax” é o mesmo",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     },
     {
       "question": "Em C, admita o vetor “short vec[5];”. A função realloc permite alterar o tamanho de vec para armazenar mais elementos",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [35],
+      "in_plan": true
     },
     {
       "question": "Em C, “x >> 2” aplica um deslocamento lógico para a direita se x for do tipo unsigned int e um aritmético se x for do tipo int",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em C, admita as variáveis “int x=0xABCD;” e “char *ptr=&x”. Logo, “printf(“%hhX”,*(ptr+1));” imprime o valor 0xCD",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em C, as operações aritméticas com qualquer tipo de dados para valores inteiros seguem as regras da aritmética modular",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em C, um cast para char de uma variável do tipo unsigned short com um valor positivo pode resultar num valor negativo",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em C, admita a variável “unsigned char x;”. O maior valor positivo que podemos armazenar em x é 27 - 1",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em C, o tipo de dados do apontador determina o espaço em memória necessário para o armazenar",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em C, o valor de um apontador é o endereço do primeiro byte do bloco de memória para o qual aponta",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A invocação de funções introduz overhead e limita as possibilidades de otimização dos programas por parte do compilador",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [50],
+      "in_plan": true
     },
     {
       "question": "O tamanho de um bloco reservado na heap pode ser maior do que o número de bytes passados por parâmetro na função malloc",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O tamanho de uma estrutura sujeita a alinhamento tem de ser múltiplo da menor restrição de alinhamento dos seus campos",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Uma estrutura, alinhada de acordo com as regras estudadas, com 2 char, um vetor de 5 int e 1 short (por esta ordem) ocupa 24 bytes",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "Admita a matriz global int m[10][3]. No Àssêmbly, acedemos ao valor de m[3][1] avançando 40 bytes a partir de m",
+      "question": "Admita a matriz global int m[10][3]. No Assembly, acedemos ao valor de m[3][1] avançando 40 bytes a partir de m",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [2, 18],
+      "in_plan": true
     },
     {
       "question": "De acordo com a convenção usada em Linux/IA32, a responsabilidade da salvaguarda e restauro de %edx é da função invocadora",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [105],
+      "in_plan": false,
+      "translation": {
+        "question": "De acordo com a convenção usada em Linux/RV32, a responsabilidade da salvaguarda e restauro de t0 é da função invocadora",
+        "answers": ["VERDADEIRO", "FALSO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "Em IA32, admita que o valor de %esp é 0x1004. A execução da instrução “call func” coloca o valor de %esp em 0x1000",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "Em RV32, admita que o valor de sp é 0x1004. A execução da instrução “call func” coloca o valor de sp em 0x1000",
+        "answers": ["VERDADEIRO", "FALSO"],
+        "correct_index": 1
+      }
     },
     {
       "question": "Admita que o endereço de uma variável x está armazenado em %edi. É possível alterar o valor de x executando movl $15,%edi",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "Admita que o endereço de uma variável x está armazenado em a0. É possível alterar o valor de x executando “li a0,15”",
+        "answers": ["FALSO", "VERDADEIRO"],
+        "correct_index": 0
+      }
     },
     {
-      "question": "No Àssêmbly, a instrução cmp não altera os seus parâmetros nem os bits do registo EFLAGS",
+      "question": "No Assembly, a instrução cmp não altera os seus parâmetros nem os bits do registo EFLAGS",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     },
     {
-      "question": "No Àssêmbly, a instrução movl %eax, (%esp) pode ser usada para escrever o valor de %eax no topo da stack",
+      "question": "No Assembly, a instrução movl %eax, (%esp) pode ser usada para escrever o valor de %eax no topo da stack",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "No Assembly RV32, a instrução “sw a0,0(sp)” pode ser usada para escrever o valor de a0 no topo da stack",
+        "answers": ["VERDADEIRO", "FALSO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "Em C, a operação u<<k resulta em u*2k, independentemente da variável u ter ou não sinal",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [65],
+      "in_plan": true
     },
     {
       "question": "Em C, a adição de duas variáveis do tipo int com valores positivos nunca pode resultar num valor negativo",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Admita um inteiro x com valor 0x01234567 e um valor dado por &x de 0x100. Logo, o valor presente no byte 0x101 é 0x45",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [15, 47, 64],
+      "in_plan": true
     },
     {
       "question": "Em C, se tivermos um char com representação binária de 10011010, o cast para um short resulta no valor 1111111110011010",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em C, numa expressão com variáveis do tipo int com e sem sinal, todas as variáveis são convertidas para valores sem sinal",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em C, o cast de uma variável do tipo int para uma do tipo unsigned int altera o padrão de bits da variável",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "A técnica de otimização de programas que move código para fora de um ciclo é denominada “loop unrolling”",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O endereço inicial de uma estrutura sujeita a alinhamento depende dos tipos de dados dos seus campos",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O tamanho de uma estrutura sujeita a alinhamento é sempre o mesmo em IA32 e x86-64, independentemente dos seus campos",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "O tamanho de uma estrutura sujeita a alinhamento é sempre o mesmo em RV32 e RV64, independentemente dos seus campos",
+        "answers": ["FALSO", "VERDADEIRO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "As restrições de alinhamento em memória contribuem para a possível fragmentação interna de um bloco reservado na heap",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [68],
+      "in_plan": true
     },
     {
       "question": "Admita uma matriz de inteiros alocada na heap dentro de uma função. O seu espaço é automaticamente libertado no fim da função",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "De acordo com a convenção usada em Linux/IA32, uma função pode usar %edx sem a necessidade de o salvaguardar e restaurar",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [89],
+      "in_plan": false,
+      "translation": {
+        "question": "De acordo com a convenção usada em Linux/RV32, uma função pode usar t0 sem a necessidade de o salvaguardar e restaurar",
+        "answers": ["VERDADEIRO", "FALSO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "Em IA32, o resultado da instrução “jmp func” depende do valor dos bits do registo EFLAGS",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "Em RV32, o resultado da instrução “j func” depende do valor dos registos de uso geral",
+        "answers": ["FALSO", "VERDADEIRO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "Em IA32, a execução da instrução ret não altera o valor de qualquer registo",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     },
     {
       "question": "Em IA32, a stack é usada para suportar o retorno do valor de saída de uma função, tal como acontece com o controlo de fluxo",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [5, 37, 54],
+      "in_plan": false,
+      "translation": {
+        "question": "Em RV32, a stack é usada para suportar o retorno do valor de saída de uma função, tal como acontece com o controlo de fluxo",
+        "answers": ["FALSO", "VERDADEIRO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "O compilador não tem qualquer dificuldade em mover a invocação de funções para outro local do programa com vista à sua optimização",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O espaço ocupado por uma union é sempre o mesmo, independentemente da ordem dos seus campos",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [52],
+      "in_plan": true
     },
     {
-      "question": "O espaço ocupado por uma estutura alinhada é sempre o mesmo, independemente da ordem dos seus campos",
+      "question": "O espaço ocupado por uma estrutura alinhada é sempre o mesmo, independentemente da ordem dos seus campos",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [0, 69],
+      "in_plan": true
     },
     {
       "question": "Uma estrutura, alinhada de acordo com as regras estudadas, com um vector de 2 char, 1 int e 1 short (por esta ordem) ocupa 8 bytes",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [1],
+      "in_plan": true
     },
     {
-      "question": "Admita a declaração da matriz int m[4][5]. No Àssêmbly, o endereço do elemento m[i][j] é dado pela expressão m+20*i+4*j",
+      "question": "Admita a declaração da matriz int m[4][5]. No Assembly, o endereço do elemento m[i][j] é dado pela expressão m+20*i+4*j",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [71],
+      "in_plan": true
     },
     {
       "question": "A convenção de salvaguarda de registos indica que o registo %esi deve ser gerido pela função invocada",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [19],
+      "in_plan": false,
+      "translation": {
+        "question": "A convenção de salvaguarda de registos indica que o registo s1 deve ser gerido pela função invocada",
+        "answers": ["VERDADEIRO", "FALSO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "Depois de um call de uma função com 3 parâmetros inteiros podemos executar subl $12, %esp para retirar os parâmetros da stack",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "Depois de um call de uma função com 3 parâmetros inteiros em RV32 podemos executar “addi sp,sp,-12” para retirar os parâmetros da stack",
+        "answers": ["FALSO", "VERDADEIRO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "Não é possível passar o endereço de uma variável local para outra função chamada pela primeira usando a stack",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "Não é possível passar o endereço de uma variável local para outra função chamada pela primeira usando um registo de argumento",
+        "answers": ["FALSO", "VERDADEIRO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "A execução da instrução call não implica a alteração do valor do registo %esp",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "A execução da instrução call não implica a alteração do valor do registo sp",
+        "answers": ["FALSO", "VERDADEIRO"],
+        "correct_index": 1
+      }
     },
     {
-      "question": "Admita que o endereço de um vetor do tipo int está armazenado em %esi e que o valor de %ecx é 2. A instrução leal(%esi,%ecx,4),%esi armazena em %esi o endereço do terceiro elemento do vetor",
+      "question": "Admita que o endereço de um vetor do tipo int está armazenado em %esi e que o valor de %ecx é 2. A instrução leal (%esi,%ecx,4),%esi armazena em %esi o endereço do terceiro elemento do vetor",
       "answers": ["VERDADEIRO", "FALSO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false,
+      "translation": {
+        "question": "Admita que o endereço de um vetor do tipo int está armazenado em a0 e que o valor de t1 é 2. A sequência “slli t2,t1,2” e “add a0,a0,t2” armazena em a0 o endereço do terceiro elemento do vetor",
+        "answers": ["VERDADEIRO", "FALSO"],
+        "correct_index": 0
+      }
     },
     {
       "question": "A instrução movl 4(%ebp),%eax armazena em %eax o valor antigo de %ebp numa função que inicia com o prólogo estudado",
       "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     }
   ],
   "prcmp": [
