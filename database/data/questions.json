@@ -8995,44 +8995,51 @@
   ],
   "prcmp": [
     {
-      "question": "O escalonamento preemptivo, por prioridades fixas, não e eficaz no escalonamento de processos em sistemas desktop, dado que:",
+      "question": "O escalonamento preemptivo, por prioridades fixas, não é eficaz no escalonamento de processos em sistemas desktop, dado que:",
       "answers": [
-        "Aumenta o tempo de resposta de processos interativos quando estão a concorrer Com processos CPUBound de prioridade inferior.",
+        "Aumenta o tempo de resposta de processos interativos quando estão a concorrer com processos CPUBound de prioridade inferior.",
         "Este tipo de escalonamento apenas é adequado para processos que não efetuem operações de IO.",
         "Este tipo de escalonamento é mais adaptado a sistemas monoprocesso.",
         "Favorece os processos CPUBound em detrimento dos processos IO Bound de igual prioridade."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [15, 18, 37],
+      "in_plan": true
     },
     {
       "question": "Um sistema composto por várias unidades de processamento interligadas por uma rede de comunicações permite:",
       "answers": [
         "Que um programa seja executado transparentemente num sistema multiprocessador simétrico.",
-        "Que um programa Seja executado transparentemente num sistema multiprocessador assimétrico.",
+        "Que um programa seja executado transparentemente num sistema multiprocessador assimétrico.",
         "Que um programa seja executado em várias máquinas.",
         "Que um programa seja compilado para que possa ser executado em várias máquinas diferentes."
       ],
-      "correct_index": 0
+      "correct_index": 2,
+      "repeated": [29],
+      "in_plan": false
     },
     {
       "question": "Se tivesse que escalonar um sistema multi-utilizadores e multi-tarefa qual das políticas de escalonamento lhe parece que seria a mais adequada:",
       "answers": [
         "Round-Robin.",
-        "FirstIn FirstOut.",
+        "First-In First-Out.",
         "Escalonamento por prioridades.",
-        "Escalonamento multinivel com realimentação por filas."
+        "Escalonamento multinível com realimentação por filas."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [16, 21, 31],
+      "in_plan": true
     },
     {
       "question": "Relativamente aos escalonadores de longo e curto prazo pode-se dizer que:",
       "answers": [
-        "Garantem a multi-programaçao.",
+        "Garantem a multi-programação.",
         "Executam-se com a mesma frequência.",
         "São apenas responsáveis pela seleção dos processos no estado de ready.",
         "São ambos responsáveis pela seleção dos processos no estado de new e de ready."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Num sistema operativo multitarefa, um programa:",
@@ -9042,7 +9049,8 @@
         "É sempre constituído por vários processos.",
         "Nunca pode ser constituído por vários processos."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Os sistemas multi-processador:",
@@ -9052,7 +9060,9 @@
         "Simétricos não partilham o barramento, o relógio e a memória.",
         "Assimétricos apenas podem ter um processo no estado running em cada instante."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [12],
+      "in_plan": false
     },
     {
       "question": "Swapping é um mecanismo que:",
@@ -9062,7 +9072,8 @@
         "Apenas pode ser utilizado em conjunto com o critério de escalonamento First-Come First Served para retirar processos da memória principal para a memória secundária.",
         "Permite retirar um processo da memória principal que se encontre no estado de Waiting à espera da conclusão de uma operação de IO."
       ],
-      "correct_index": 0
+      "correct_index": 3,
+      "in_plan": true
     },
     {
       "question": "O Process Control Block (PCB) possui informação sobre:",
@@ -9072,17 +9083,21 @@
         "Identificação do processador, estado do processador e informação de controlo do processo.",
         "Informação do estado do processo."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [14],
+      "in_plan": true
     },
     {
-      "question": "Na elaboração de um programa é normal que a ordem de uso de ferramentas auxiliares envolvidas seja a Seguinte:",
+      "question": "Na elaboração de um programa é normal que a ordem de uso de ferramentas auxiliares envolvidas seja a seguinte:",
       "answers": [
-        "Editor, compilador linker.",
+        "Editor, compilador e linker.",
         "Editor, linker e compilador.",
-        "Linker, editor compilador.",
+        "Linker, editor e compilador.",
         "Compilador, linker e editor."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [52],
+      "in_plan": true
     },
     {
       "question": "O sistema de interrupções:",
@@ -9092,7 +9107,9 @@
         "Não obriga ao armazenamento do endereço da instrução interrompida.",
         "Não é transparente para o processo que é interrompido."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [30],
+      "in_plan": true
     },
     {
       "question": "A comutação de processos:",
@@ -9102,77 +9119,55 @@
         "Obriga à paragem de qualquer operação de IO do processo que é retirado de execução.",
         "É feita sem qualquer intervenção do sistema operativo."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "﻿Durante a execução de um processo o que pode acontecer?",
+      "question": "Durante a execução de um processo o que pode acontecer?",
       "answers": [
-        "﻿O tempo que o escalonador tinha atribuído ao processo (time slice) terminar e consequentemente ser colocado na fila dos ready.",
+        "O tempo que o escalonador tinha atribuído ao processo (time slice) terminar e consequentemente ser colocado na fila dos ready.",
         "O processo emitir um pedido IO, e consequentemente ser colocado numa fila de um IO device, passando para o estado de ready.",
         "O processo pode criar um novo processo, ficando à espera que ele termine e consequentemente ser colocado na fila dos ready.",
         "O processo pode ser removido da UCP em consequência duma interrupção passando sempre para o estado de waiting."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [17],
+      "in_plan": true
     },
     {
-      "question": "Os sistemas multi-processador, Com n processadores:",
+      "question": "Os sistemas multi-processador, com n processadores:",
       "answers": [
         "Simétricos podem correr em paralelo até n processos.",
         "Assimétricos não partilham o barramento, o relógio e a memória.",
         "Simétricos não partilham o barramento, o relógio e a memória.",
         "Simétricos podem correr em paralelo, no máximo, n-1 processos."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [5],
+      "in_plan": false
     },
     {
       "question": "Num sistema operativo de tempo real:",
       "answers": [
         "A execução de um processo depende não apenas da obtenção de um resultado correto, mas também da sua disponibilização antes de um determinado tempo (deadline).",
-        "Se um processo concluir a sua computação com sucesso, mas antes do deadline do processo, pode levar o Sistema a falhar.",
+        "Se um processo concluir a sua computação com sucesso, mas antes do deadline do processo, pode levar o sistema a falhar.",
         "A perda de um deadline leva sempre o sistema a falhar.",
         "Apenas pode ser executado um processo quando o anterior tiver terminado."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O Process Control Block (PCB) de um determinado processo possui informação sobre:",
       "answers": [
         "Identificação do processo, zonas de memória utilizadas pelo processo e informação de controlo do processo.",
         "Identificação do processador e identificação do processo.",
-        "Identificação do processador, estado do processador e informação de Controlo do processo.",
+        "Identificação do processador, estado do processador e informação de controlo do processo.",
         "Informação do estado do processo."
       ],
-      "correct_index": 0
-    },
-    {
-      "question": "O escalonamento preemptivo por prioridades fixas não e eficaz no escalonamento de processos em sistemas desktop, dado que:",
-      "answers": [
-        "Aumenta o tempo de resposta de processos interativos quando estão a concorrer Com processos CPUBound de prioridade inferior.",
-        "Este tipo de escalonamento apenas é adequado para processos que não efetuem operações de IO.",
-        "Este tipo de escalonamento é mais adaptado a sistemas monoprocesso.",
-        "Favorece os processos CPUBound em detrimento dos processos IO Bound de igual prioridade."
-      ],
-      "correct_index": 0
-    },
-    {
-      "question": "Se tivesse que escalonar um sistema multiutilizador e multitarefa qual das políticas de escalonamento lhe parece que seria a mais adequada, assumindo que desconhece os perfis de execução dos processos:",
-      "answers": [
-        "Round-Robin.",
-        "Fist in First out.",
-        "Escalonamento por prioridades.",
-        "Escalonamento multinível com realimentação por filas."
-      ],
-      "correct_index": 0
-    },
-    {
-      "question": "Durante a execução de um processo o que pode acontecer?",
-      "answers": [
-        "O tempo que o escalonador tinha atribuído ao processo (time slice) terminar e consequentemente ser Colocado no estado de ready.",
-        "O processo emitir um pedido IO, e consequentemente ser colocado numa fila de um IO device, passando para o estado de ready.",
-        "O processo pode criar um novo processo, ficando à espera que ele termine e consequentemente ser Colocado na fila dos ready.",
-        "O tempo que o escalonador tinha atribuído ao processo (time slice) terminar e consequentemente ser Colocado no estado de waiting."
-      ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [7],
+      "in_plan": true
     },
     {
       "question": "O escalonamento preemptivo por prioridades fixas não é eficaz no escalonamento de processos em sistemas desktop, dado que:",
@@ -9182,17 +9177,56 @@
         "Este tipo de escalonamento é mais adaptado a sistemas monoprocesso.",
         "Favorece os processos CPUBound em detrimento dos processos IO Bound de igual prioridade."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [0, 18, 37],
+      "in_plan": true
     },
     {
-      "question": "Um dos objetivos do Sistema Operativo ser organizado em camadas :",
+      "question": "Se tivesse que escalonar um sistema multiutilizador e multitarefa qual das políticas de escalonamento lhe parece que seria a mais adequada, assumindo que desconhece os perfis de execução dos processos:",
+      "answers": [
+        "Round-Robin.",
+        "First in First out.",
+        "Escalonamento por prioridades.",
+        "Escalonamento multinível com realimentação por filas."
+      ],
+      "correct_index": 0,
+      "repeated": [2, 21, 31],
+      "in_plan": true
+    },
+    {
+      "question": "Durante a execução de um processo o que pode acontecer?",
+      "answers": [
+        "O tempo que o escalonador tinha atribuído ao processo (time slice) terminar e consequentemente ser colocado no estado de ready.",
+        "O processo emitir um pedido IO, e consequentemente ser colocado numa fila de um IO device, passando para o estado de ready.",
+        "O processo pode criar um novo processo, ficando à espera que ele termine e consequentemente ser colocado na fila dos ready.",
+        "O tempo que o escalonador tinha atribuído ao processo (time slice) terminar e consequentemente ser colocado no estado de waiting."
+      ],
+      "correct_index": 0,
+      "repeated": [11],
+      "in_plan": true
+    },
+    {
+      "question": "O escalonamento preemptivo por prioridades fixas não é eficaz no escalonamento de processos em sistemas desktop, dado que:",
+      "answers": [
+        "Aumenta o tempo de resposta de processos interativos quando estão a concorrer com processos CPUBound de prioridade inferior.",
+        "Este tipo de escalonamento apenas é adequado para processos que não efetuem operações de IO.",
+        "Este tipo de escalonamento é mais adaptado a sistemas monoprocesso.",
+        "Favorece os processos CPUBound em detrimento dos processos IO Bound de igual prioridade."
+      ],
+      "correct_index": 0,
+      "repeated": [0, 15, 37],
+      "in_plan": true
+    },
+    {
+      "question": "Um dos objetivos do Sistema Operativo ser organizado em camadas:",
       "answers": [
         "Não permitir o acesso direto ao hardware, por parte das aplicações, obrigando-as a utilizar os serviços adequados fornecidos pelo Sistema Operativo.",
         "Permitir o acesso direto ao hardware por parte das aplicações.",
-        "Obrigar a que cada camada tenha as Suas próprias funções para aceder diretamente ao hardware.",
+        "Obrigar a que cada camada tenha as suas próprias funções para aceder diretamente ao hardware.",
         "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     },
     {
       "question": "Um dos objetivos da utilização de Máquinas Virtuais:",
@@ -9202,17 +9236,20 @@
         "Suportar diferentes tipos de processadores na mesma máquina.",
         "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     },
     {
-      "question": "Se tivesse que escalonar um sistema multiutilizador e multitarefa qual das politicas de escalonamento lhe parece que seria a mais adequada, assumindo que desconhece os perfis de execução dos processos:",
+      "question": "Se tivesse que escalonar um sistema multiutilizador e multitarefa qual das políticas de escalonamento lhe parece que seria a mais adequada, assumindo que desconhece os perfis de execução dos processos:",
       "answers": [
         "Round-Robin.",
         "First in, first out.",
         "Escalonamento por prioridades.",
         "Escalonamento multinível com realimentação por filas."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [2, 16, 31],
+      "in_plan": true
     },
     {
       "question": "O módulo de Gestão de Processos de um Sistema Operativo fornece serviços para:",
@@ -9222,17 +9259,19 @@
         "A sincronização de processos.",
         "A comunicação de processos."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Ordene temporalmente (do mais antigo para o mais recente) o aparecimento dos seguintes tipos de Sistemas Operativos:",
       "answers": [
         "Serial Processing, Batch, Multiprogramming e Time Sharing.",
-        "Batch; Serial Processing, Time Sharing Multiprogramming.",
+        "Batch, Serial Processing, Time Sharing e Multiprogramming.",
         "Batch, Serial Processing, Multiprogramming e Time Sharing.",
         "Batch, Multiprogramming, Serial Processing e Time Sharing."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Qual dos seguintes escalonadores permite controlar o número máximo de processos no estado de ready:",
@@ -9242,7 +9281,8 @@
         "Apenas o escalonador de médio prazo.",
         "Todas as anteriores são verdadeiras."
       ],
-      "correct_index": 0
+      "correct_index": 1,
+      "in_plan": true
     },
     {
       "question": "Relativamente aos sistemas interativos podemos afirmar que:",
@@ -9252,12 +9292,14 @@
         "O requisito essencial é permitir a interação entre os vários processos existentes na fila de ready.",
         "Nenhuma das anteriores é verdadeira."
       ],
-      "correct_index": 0
+      "correct_index": 1,
+      "in_plan": true
     },
     {
-      "question": "Qual o estado de um processo apos uma operação de IN/OUT?",
+      "question": "Qual o estado de um processo após uma operação de IN/OUT?",
       "answers": ["Ready.", "Running.", "Waiting.", "New."],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Num sistema computacional com uma palavra de 64 bits:",
@@ -9267,7 +9309,8 @@
         "Os registos de uso genérico são de 16 bits.",
         "Sempre que se armazena um byte em memória são desperdiçados 7 bytes de memória."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Relativamente aos equipamentos que recorriam ao processamento em série:",
@@ -9277,67 +9320,78 @@
         "Possibilitavam que vários programas corressem concorrentemente.",
         "A primeira versão já possuía o utilitário Monitor."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [57],
+      "in_plan": true
     },
     {
-      "question": "Um sistema composto por Várias unidades de processamento interligadas por uma rede de comunicação permite:",
+      "question": "Um sistema composto por várias unidades de processamento interligadas por uma rede de comunicação permite:",
       "answers": [
         "Que um programa seja executado transparentemente num sistema multiprocessador simétrico.",
         "Que um programa seja executado transparentemente num sistema multiprocessador assimétrico.",
         "Que várias partes do mesmo programa, possam ser executadas em diferentes máquinas.",
         "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 2,
+      "repeated": [1],
+      "in_plan": false
     },
     {
       "question": "O sistema de interrupções:",
       "answers": [
-        "Ao receber uma interrupção de hardware, o processador coloca em execução uma rotina de serviço, para essa interrupção especifica.",
+        "Ao receber uma interrupção de hardware, o processador coloca em execução uma rotina de serviço, para essa interrupção específica.",
         "Não permite assinalar o acontecimento de um evento.",
         "Não obriga ao armazenamento do endereço da instrução interrompida.",
         "Não é implementado pelo Sistema Operativo."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [9],
+      "in_plan": true
     },
     {
-      "question": "Se tivesse que escalonar um sistema multiutilizador e multitarefa qual das politicas de escalonamento lhe parece que seria a mais adequada, assumindo que desconhece os perfis de execução dos processos:",
+      "question": "Se tivesse que escalonar um sistema multiutilizador e multitarefa qual das políticas de escalonamento lhe parece que seria a mais adequada, assumindo que desconhece os perfis de execução dos processos:",
       "answers": [
         "Round-Robin (RR).",
-        "First-Came, FirstServed (FCFS).",
+        "First-Come, First-Served (FCFS).",
         "Escalonamento por Prioridades.",
-        "ShortestJob-First (SJF)."
+        "Shortest-Job-First (SJF)."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [2, 16, 21],
+      "in_plan": true
     },
     {
-      "question": "Num Sistema Operativo Com escalonamento não preempetivo uma das seguintes transições de estado não pode acontecer:",
+      "question": "Num Sistema Operativo com escalonamento não preemptivo uma das seguintes transições de estado não pode acontecer:",
       "answers": [
         "Transição do estado running para o estado ready.",
         "Transição do estado ready para o estado running.",
         "Transição do estado running para o estado waiting.",
         "Transição do estado waiting para o estado ready."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Num sistema em que o escalonamento utiliza um algoritmo preemptivo, podemos dizer que:",
       "answers": [
-        "Um escalonador deste tipo permite retirar um processo de execução (no estado de running) e substitui-lo por outro processo do utilizador existente na fila de ready de acordo com a regra de escalonamento vigente.",
-        "Um sistema deste tipo não permite a execução de rotinas de interrupção enquanto um processo não Sair do estado de running.",
+        "Um escalonador deste tipo permite retirar um processo de execução (no estado de running) e substituí-lo por outro processo do utilizador existente na fila de ready de acordo com a regra de escalonamento vigente.",
+        "Um sistema deste tipo não permite a execução de rotinas de interrupção enquanto um processo não sair do estado de running.",
         "Não permite a execução de outros processos quando um processo executa operações de IO.",
-        "Um escalonador deste tipo permite retirar um processo de execução (no estado de running) e substitui-lo por processos que se encontrem na fila de waiting."
+        "Um escalonador deste tipo permite retirar um processo de execução (no estado de running) e substituí-lo por processos que se encontrem na fila de waiting."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Num sistema em que o escalonamento utiliza um algoritmo não preemptivo, podemos dizer que:",
       "answers": [
         "Permite a execução de outros processos quando um processo executa operações de IO.",
-        "Um escalonador deste tipo permite retirar um processo de execução (no estado de running) e substitui-lo por outro processo do utilizador existente na fila de ready por decisão do escalonador,",
-        "Um Sistema deste tipo não permite a execução de rotinas de interrupção enquanto um processo não Sair do estado de running.",
+        "Um escalonador deste tipo permite retirar um processo de execução (no estado de running) e substituí-lo por outro processo do utilizador existente na fila de ready por decisão do escalonador.",
+        "Um sistema deste tipo não permite a execução de rotinas de interrupção enquanto um processo não sair do estado de running.",
         "Não permite a execução de outros processos quando um processo executa operações de IO."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em termos de estados dos processos (PCBs), as filas de escalonamento do SO:",
@@ -9347,7 +9401,8 @@
         "Permitem conhecer o estado de todos os processos em execução.",
         "Permitem conhecer o estado de todos os processos anteriormente terminados."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Na comutação entre processos faz-se, entre outras operações:",
@@ -9357,17 +9412,20 @@
         "A salvaguarda do processo que vai perder acesso à UCP, apesar da informação do PCB estar danificada.",
         "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O escalonamento preemptivo por prioridades fixas não é eficaz no escalonamento de processos em sistemas desktop, dado que:",
       "answers": [
         "Favorece os processos computacionalmente pesados em detrimento dos processos limitados por I/O de igual prioridade.",
         "Este tipo de escalonamento apenas é adequado para processos que não efetuem operações de I/O.",
-        "Favorece os processoslimitados por I/O em prejuízo dos processos limitados pela UCP.",
+        "Favorece os processos limitados por I/O em prejuízo dos processos limitados pela UCP.",
         "Este tipo de escalonamento é mais adaptado a sistemas monoprocesso."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [0, 15, 18],
+      "in_plan": true
     },
     {
       "question": "Num sistema operativo moderno:",
@@ -9377,7 +9435,8 @@
         "Pode haver várias filas onde estão processos à espera de operações I/O terminadas.",
         "Todas as anteriores são verdadeiras."
       ],
-      "correct_index": 0
+      "correct_index": 2,
+      "in_plan": true
     },
     {
       "question": "Um processo a correr na CPU necessita de uma operação de I/O, tendo este sido escalonado de forma não preemptiva e por prioridades:",
@@ -9387,7 +9446,8 @@
         "O processo é removido da UCP e passa para o estado de New.",
         "Todas as anteriores são verdadeiras."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em termos de transições de estados de um processo:",
@@ -9397,7 +9457,8 @@
         "A sequência Running => Ready => Waiting é válida.",
         "Nenhuma das anteriores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Quais das seguintes são razões para se interromper um processo em execução:",
@@ -9407,7 +9468,8 @@
         "Ter ocorrido uma falta de memória.",
         "Ter executado uma instrução inválida."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Um sistema operativo moderno permite a criação de processos:",
@@ -9417,7 +9479,8 @@
         "Através de ações de outros processos.",
         "Que podem comunicar com outros processos."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Um sistema operativo multitarefa visa gerir a execução de processos de modo a:",
@@ -9427,7 +9490,8 @@
         "Maximizar a utilização do processador.",
         "Maximizar a utilização dos dispositivos de I/O."
       ],
-      "correct_index": 0
+      "correct_index": 2,
+      "in_plan": true
     },
     {
       "question": "Um processo é um fluxo de atividade:",
@@ -9437,17 +9501,19 @@
         "Aleatória que executa ações determinadas por um programa.",
         "Manual que executa ações determinadas por um programa."
       ],
-      "correct_index": 0
+      "correct_index": 1,
+      "in_plan": true
     },
     {
       "question": "Um processo é:",
       "answers": [
-        "Um Programa em execução.",
+        "Um programa em execução.",
         "Um programa com vários fluxos de execução.",
-        "Um programa apenas Com um fitixo de execução.",
+        "Um programa apenas com um fluxo de execução.",
         "Todas as anteriores são verdadeiras."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Ordene do mais recente para o mais antigo os seguintes SO:",
@@ -9457,17 +9523,19 @@
         "Batch, Serial Processing, Time sharing e multiprogramming",
         "Multiprogramming, Time sharing, batch e serial processing"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "Relativamente ao SO do tipo batch (Processamento em lotes) pode se afirmar que:",
+      "question": "Relativamente ao SO do tipo batch (Processamento em lotes) pode-se afirmar que:",
       "answers": [
         "O tempo de execução de um programa é predominantemente determinado pelo tempo necessário para realizar as operações de I/O",
         "É um objetivo dar a cada processo uma fatia equitativa de tempo de processador",
         "É um objetivo permitir a interação entre um programa a correr e o utilizador",
         "Todas as anteriores são verdadeiras"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Quando ocorre uma mudança de contexto",
@@ -9477,42 +9545,48 @@
         "o SO salvaguarda somente o estado do processador",
         "o SO recupera o processo de armazenamento em massa para a memória principal"
       ],
-      "correct_index": 0
+      "correct_index": 1,
+      "in_plan": true
     },
     {
-      "question": "Relativamente a memória principal de um computador:",
+      "question": "Relativamente à memória principal de um computador:",
       "answers": [
-        "so a de escrita é que é destrutiva",
-        "so a de leitura é que é destrutiva",
+        "só a de escrita é que é destrutiva",
+        "só a de leitura é que é destrutiva",
         "as operações de leitura e de escrita são destrutivas",
         "ambas não são destrutivas"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O linker é um utilitário que:",
       "answers": [
-        "resolve todas as referências a símbolos, substituindo as pelos seus endereços",
-        "transforma as instruções em assembly para linguagem maquina",
+        "resolve todas as referências a símbolos, substituindo-as pelos seus endereços",
+        "transforma as instruções em assembly para linguagem máquina",
         "liga as instruções aos dados do programa, em tempo de execução",
         "carrega ficheiro executável para a memória"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em termos de critérios de desempenho computacional orientado para o utilizador, o mais adequado a sistemas interativos é:",
       "answers": ["Tempo de resposta.", "Turnaround time.", "Deadline.", "Predictabilidade."],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "Na elaboração de um  programa é normal que a ordem de utilização das ferramentas auxiliares envolvidas seja a seguinte:",
+      "question": "Na elaboração de um programa é normal que a ordem de utilização das ferramentas auxiliares envolvidas seja a seguinte:",
       "answers": [
         "Editor, compilador e linker.",
         "Editor, linker e compilador.",
         "Linker, editor e compilador.",
         "Linker, compilador e editor."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [8],
+      "in_plan": true
     },
     {
       "question": "Num sistema operativo atual:",
@@ -9522,7 +9596,8 @@
         "Só processos alternam a execução de instruções e operações de I/O.",
         "Todas as anteriores são verdadeiras."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Um supercomputador atual é essencialmente composto por:",
@@ -9532,7 +9607,8 @@
         "Algumas UCPs e imensa memória RAM.",
         "Imensas UCPs e dispositivos de I/O."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O escalonador de médio-prazo:",
@@ -9542,7 +9618,8 @@
         "Pode retomar mais tarde a execução de processos.",
         "Recorre a Swapping para lidar com falta de memória."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Em termos de escalonador de longo prazo:",
@@ -9552,7 +9629,8 @@
         "Tende a ser lento.",
         "É executado com alta frequência."
       ],
-      "correct_index": 0
+      "correct_index": 2,
+      "in_plan": true
     },
     {
       "question": "Relativamente aos equipamentos que recorriam ao processamento em série:",
@@ -9562,22 +9640,26 @@
         "Possibilitavam que vários programas corressem concorrentemente.",
         "A primeira versão já possuía o utilitário Monitor."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "repeated": [28],
+      "in_plan": true
     },
     {
       "question": "Waiting -> Ready e Running -> ready são preemptivos",
       "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "Dos seguintes, indique quais são os processos não preempetivos",
+      "question": "Dos seguintes, indique quais são os processos não preemptivos",
       "answers": [
         "Running -> Waiting / Terminates",
         "Running -> Ready",
         "Waiting -> ready",
         "Nenhuma das anteriores"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     }
   ]
 }
