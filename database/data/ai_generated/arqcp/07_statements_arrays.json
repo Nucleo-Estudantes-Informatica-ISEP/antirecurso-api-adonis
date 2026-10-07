@@ -1,0 +1,2239 @@
+[
+  {
+    "question": "O que é o bit masking?",
+    "answers": [
+      "Uma técnica usada para testar ou modificar o estado dos bits de um dado",
+      "Uma técnica usada para esconder o valor de uma variável de outros programas",
+      "Uma técnica usada para comprimir os bits de um dado em menos bytes",
+      "Uma técnica usada para converter um número binário em decimal"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.5"
+  },
+  {
+    "question": "Para que se usam, principalmente, as instruções lógicas bit a bit com uma máscara?",
+    "answers": [
+      "Para somar e subtrair valores sem usar a ALU",
+      "Para pôr a 1, pôr a 0, inverter ou isolar bits selecionados do operando de destino",
+      "Para trocar a ordem dos bytes de um registo",
+      "Para copiar o valor de um registo para a memória"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.6"
+  },
+  {
+    "question": "O que é a máscara (mask) numa operação de bit masking?",
+    "answers": [
+      "O registo onde fica guardado o resultado da operação",
+      "Um valor guardado em memória, que o processador consulta antes de executar",
+      "Um padrão de bits de origem, construído para que os bits selecionados sejam modificados da forma pretendida",
+      "Um conjunto de bits que o assembler acrescenta a cada instrução"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.6"
+  },
+  {
+    "question": "Para que serve a instrução and com uma máscara?",
+    "answers": [
+      "Para pôr a 1 bits específicos do destino, preservando os restantes",
+      "Para inverter bits específicos do destino, preservando os restantes",
+      "Para trocar os bits do destino com os da máscara",
+      "Para pôr a 0 bits específicos do destino, preservando os restantes"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.7"
+  },
+  {
+    "question": "Num and com máscara, o que acontece ao bit do destino que corresponde a um bit 1 da máscara?",
+    "answers": [
+      "É preservado",
+      "É posto a 0",
+      "É posto a 1",
+      "É invertido"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.7"
+  },
+  {
+    "question": "Para que serve a instrução or com uma máscara?",
+    "answers": [
+      "Para pôr a 0 bits específicos do destino, preservando os restantes",
+      "Para pôr a 1 bits específicos do destino, preservando os restantes",
+      "Para inverter bits específicos do destino, preservando os restantes",
+      "Para isolar os bits do destino que estão a 0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.7"
+  },
+  {
+    "question": "Num or com máscara, o que acontece ao bit do destino que corresponde a um bit 0 da máscara?",
+    "answers": [
+      "É posto a 1",
+      "É posto a 0",
+      "É preservado",
+      "É invertido"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.7"
+  },
+  {
+    "question": "Para que serve a instrução xor com uma máscara?",
+    "answers": [
+      "Para pôr a 0 bits específicos do destino, preservando os restantes",
+      "Para pôr a 1 bits específicos do destino, preservando os restantes",
+      "Para somar a máscara ao destino",
+      "Para inverter bits específicos do destino, preservando os restantes"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.7"
+  },
+  {
+    "question": "Num xor com máscara, o que acontece ao bit do destino que corresponde a um bit 1 da máscara?",
+    "answers": [
+      "É invertido",
+      "É preservado",
+      "É posto a 0",
+      "É posto a 1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.7"
+  },
+  {
+    "question": "Admita a0 = 0xAB. Que valor fica em a0 depois de andi a0, a0, 0xF0?",
+    "answers": [
+      "0x000000FB",
+      "0x000000A0",
+      "0x0000000B",
+      "0x0000005B"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.7"
+  },
+  {
+    "question": "Admita a0 = 0xA0. Que valor fica em a0 depois de ori a0, a0, 0x0F?",
+    "answers": [
+      "0x00000000",
+      "0x0000005F",
+      "0x000000AF",
+      "0x000000A0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.7"
+  },
+  {
+    "question": "Admita a0 = 0xAB. Que valor fica em a0 depois de xori a0, a0, 0xFF?",
+    "answers": [
+      "0x000000FF",
+      "0x000000AB",
+      "0x000001AA",
+      "0x00000054"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.7"
+  },
+  {
+    "question": "Admita a0 = 0x5C. Que máscara usada com andi isola os 4 bits menos significativos de a0?",
+    "answers": [
+      "0x0F",
+      "0xF0",
+      "0xFF",
+      "0x00"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.7"
+  },
+  {
+    "question": "Admita a0 = 0b11001010. Que valor fica em a0 depois de andi a0, a0, 0b00001111?",
+    "answers": [
+      "11001111",
+      "00001010",
+      "11000101",
+      "11000000"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.7"
+  },
+  {
+    "question": "Que máscara se usa com xori para inverter apenas o bit menos significativo de um registo?",
+    "answers": [
+      "0xFF",
+      "0x0",
+      "0x1",
+      "0x80000000"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.7"
+  },
+  {
+    "question": "Que máscara se usa com ori para pôr a 1 o bit 3 (o quarto bit menos significativo) de um registo, preservando os restantes?",
+    "answers": [
+      "0x3",
+      "0x4",
+      "0x1",
+      "0x8"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.7"
+  },
+  {
+    "question": "Que máscara se usa com andi para pôr a 0 o bit 0 de um registo, preservando os restantes bits dos 12 bits inferiores?",
+    "answers": [
+      "0xFFE",
+      "0x001",
+      "0x7FF",
+      "0xFFF"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.7"
+  },
+  {
+    "question": "Que instrução permite limpar um registo, pondo-o a zero, com a ajuda do registo zero?",
+    "answers": [
+      "or a0, a0, zero",
+      "and a0, a0, zero",
+      "xor a0, a0, a0, zero",
+      "add a0, a0, a0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.9"
+  },
+  {
+    "question": "Três instruções xor consecutivas, xor a0, a0, a1 / xor a1, a1, a0 / xor a0, a0, a1, trocam os valores de a0 e a1 sem usar um registo auxiliar",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.9"
+  },
+  {
+    "question": "Admita a0 = 5 e a1 = 9. Depois de xor a0, a0, a1 / xor a1, a1, a0 / xor a0, a0, a1, que valores ficam em a0 e a1, respetivamente?",
+    "answers": [
+      "5 e 9",
+      "12 e 9",
+      "9 e 5",
+      "12 e 12"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.9"
+  },
+  {
+    "question": "Admita a0 = 5 e a1 = 9. Depois da primeira instrução, xor a0, a0, a1, que valor fica em a0?",
+    "answers": [
+      "5",
+      "9",
+      "1",
+      "12"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.9"
+  },
+  {
+    "question": "Que instruções verificam se um valor a0 é uma potência de 2 (is_power2)?",
+    "answers": [
+      "addi t0, a0, -1 / and a0, a0, t0 / seqz a0, a0",
+      "addi t0, a0, 1 / and a0, a0, t0 / seqz a0, a0",
+      "addi t0, a0, -1 / or a0, a0, t0 / seqz a0, a0",
+      "addi t0, a0, -1 / and a0, a0, t0 / snez a0, a0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.9"
+  },
+  {
+    "question": "Qual é o resultado da função is_power2 com a0 = 8?",
+    "answers": [
+      "0",
+      "1",
+      "8",
+      "-1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.9"
+  },
+  {
+    "question": "Qual é o resultado da função is_power2 com a0 = 6?",
+    "answers": [
+      "1",
+      "6",
+      "0",
+      "5"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.9"
+  },
+  {
+    "question": "Qual é o resultado da função is_power2 com a0 = 1?",
+    "answers": [
+      "0",
+      "-1",
+      "2",
+      "1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.9"
+  },
+  {
+    "question": "Qual é o resultado da função is_power2 com a0 = 0?",
+    "answers": [
+      "1",
+      "0",
+      "-1",
+      "2"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.9"
+  },
+  {
+    "question": "Considere is_power2, com addi t0, a0, -1 / and a0, a0, t0 / seqz a0, a0 / ret. Porque é que a função está errada para o valor 0?",
+    "answers": [
+      "Porque 0 não pode ser guardado num registo de 32 bits",
+      "Porque 0 & (0 − 1) é 0, pelo que a função devolve 1 e considera o 0 uma potência de 2",
+      "Porque o seqz devolve sempre 0 quando o registo é 0",
+      "Porque a instrução addi não aceita o imediato -1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.9"
+  },
+  {
+    "question": "Que instruções implementam are_equal(a, b), que devolve 1 se a e b forem iguais?",
+    "answers": [
+      "and a0, a0, a1 / seqz a0, a0",
+      "or a0, a0, a1 / snez a0, a0",
+      "xor a0, a0, a1 / seqz a0, a0",
+      "sub a0, a0, a1 / snez a0, a0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.9"
+  },
+  {
+    "question": "Qual é o resultado de are_equal com a0 = 7 e a1 = 7?",
+    "answers": [
+      "0",
+      "7",
+      "-1",
+      "1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.9"
+  },
+  {
+    "question": "Qual é o resultado de are_equal com a0 = 7 e a1 = 8?",
+    "answers": [
+      "0",
+      "1",
+      "15",
+      "7"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.9"
+  },
+  {
+    "question": "Que instruções implementam is_even(a), que devolve 1 se a for par?",
+    "answers": [
+      "addi t0, zero, 1 / and a0, a0, t0 / snez a0, a0",
+      "addi t0, zero, 1 / and a0, a0, t0 / seqz a0, a0",
+      "addi t0, zero, 1 / or a0, a0, t0 / seqz a0, a0",
+      "addi t0, zero, 2 / and a0, a0, t0 / seqz a0, a0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.9"
+  },
+  {
+    "question": "Qual é o resultado de is_even com a0 = 10?",
+    "answers": [
+      "0",
+      "10",
+      "1",
+      "5"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.9"
+  },
+  {
+    "question": "Qual é o resultado de is_even com a0 = 7?",
+    "answers": [
+      "1",
+      "7",
+      "3",
+      "0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.9"
+  },
+  {
+    "question": "Qual é o resultado de is_even com a0 = 0?",
+    "answers": [
+      "1",
+      "0",
+      "-1",
+      "2"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.9"
+  },
+  {
+    "question": "Porque é que is_even testa apenas o bit menos significativo do valor?",
+    "answers": [
+      "Porque o bit menos significativo guarda o sinal do número",
+      "Porque um inteiro é par se e só se o seu bit menos significativo for 0",
+      "Porque os números pares têm sempre o bit mais significativo a 1",
+      "Porque o and só consegue testar um bit de cada vez"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.9"
+  },
+  {
+    "question": "Que operação equivale a deslocar para a esquerda n posições um inteiro?",
+    "answers": [
+      "Dividir por 2^n",
+      "Multiplicar por n",
+      "Multiplicar por 2^n",
+      "Somar n ao valor"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.10"
+  },
+  {
+    "question": "Que operação equivale a deslocar para a direita n posições um inteiro?",
+    "answers": [
+      "Multiplicar por 2^n",
+      "Dividir por n",
+      "Subtrair n ao valor",
+      "Dividir por 2^n"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.10"
+  },
+  {
+    "question": "Que instrução multiplica a0 por 2 (mult2)?",
+    "answers": [
+      "slli a0, a0, 1",
+      "slli a0, a0, 2",
+      "srli a0, a0, 1",
+      "addi a0, a0, 2"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.12"
+  },
+  {
+    "question": "Que instrução divide a0, tratado como valor sem sinal, por 2 através de um deslocamento?",
+    "answers": [
+      "slli a0, a0, 1",
+      "srli a0, a0, 1",
+      "srli a0, a0, 2",
+      "srai a0, a0, 2"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.12"
+  },
+  {
+    "question": "Admita a0 = 21. Que valor fica em a0 depois de slli a0, a0, 1?",
+    "answers": [
+      "10",
+      "23",
+      "42",
+      "22"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.12"
+  },
+  {
+    "question": "Admita a0 = 21. Que valor fica em a0 depois de srli a0, a0, 1?",
+    "answers": [
+      "11",
+      "42",
+      "20",
+      "10"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.12"
+  },
+  {
+    "question": "Admita a0 = 5. Que valor fica em a0 depois de slli a0, a0, 3?",
+    "answers": [
+      "40",
+      "15",
+      "8",
+      "20"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.12"
+  },
+  {
+    "question": "Admita a0 = 100. Que valor fica em a0 depois de srli a0, a0, 2?",
+    "answers": [
+      "50",
+      "25",
+      "200",
+      "33"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.12"
+  },
+  {
+    "question": "Na função mult3, com add t0, a0, zero / slli a0, a0, 1 / add a0, a0, t0 / ret, que operações calculam 3 × a?",
+    "answers": [
+      "Desloca a0 três posições para a esquerda",
+      "Soma a0 a si próprio três vezes, com um ciclo",
+      "Copia a para t0, desloca a0 uma posição para a esquerda (2a) e soma t0 (a)",
+      "Desloca a0 uma posição para a direita e soma t0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.12"
+  },
+  {
+    "question": "Admita a0 = 7. Que valor devolve a função mult3?",
+    "answers": [
+      "14",
+      "28",
+      "10",
+      "21"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.12"
+  },
+  {
+    "question": "Admita a0 = 10. Que valor devolve a função mult3?",
+    "answers": [
+      "30",
+      "20",
+      "33",
+      "13"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.12"
+  },
+  {
+    "question": "O conjunto base de instruções RISC-V não inclui instruções de rotação",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.13"
+  },
+  {
+    "question": "Que instruções se combinam para fazer a rotação de x para a esquerda em n posições, num ISA sem instrução de rotação?",
+    "answers": [
+      "As instruções sll, add, sra e and",
+      "As instruções sll, sub, srl e or",
+      "As instruções srl, sub, sll e xor",
+      "As instruções sll, mul, srl e or"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.13"
+  },
+  {
+    "question": "Na função rot_left, que valor tem t1 depois de sub t1, zero, a1, em função de n (a1 = n)?",
+    "answers": [
+      "O próprio n, copiado de a1",
+      "32 − n, calculado explicitamente pela instrução sub",
+      "−n, usado como quantidade de deslocamento módulo 32",
+      "O dobro de n"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.13"
+  },
+  {
+    "question": "Porque é que rot_left usa sub t1, zero, a1 e srl t2, a0, t1 para obter os bits que saem pela esquerda?",
+    "answers": [
+      "Porque o srl só aceita quantidades de deslocamento negativas",
+      "Porque o sub troca o sentido do deslocamento",
+      "Porque o registo zero guarda o valor 32",
+      "Porque a quantidade de deslocamento é sem sinal e módulo 32, pelo que −n equivale a 32 − n"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.13"
+  },
+  {
+    "question": "Admita a0 = 0x12345678 e a1 = 8. Que valor devolve rot_left, a rotação à esquerda de a0 em a1 posições?",
+    "answers": [
+      "0x34567812",
+      "0x78123456",
+      "0x34567800",
+      "0x12345678"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.13"
+  },
+  {
+    "question": "Admita a0 = 0x12345678 e a1 = 8. Que valor devolve rot_right, a rotação à direita de a0 em a1 posições?",
+    "answers": [
+      "0x34567812",
+      "0x78123456",
+      "0x00123456",
+      "0x12345678"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.13"
+  },
+  {
+    "question": "Admita a0 = 0x80000001 e a1 = 1. Que valor devolve rot_left, a rotação à esquerda de a0 em a1 posições?",
+    "answers": [
+      "0x00000002",
+      "0xC0000000",
+      "0x00000003",
+      "0x80000001"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.13"
+  },
+  {
+    "question": "Admita a0 = 0x80000001 e a1 = 1. Que valor devolve rot_right, a rotação à direita de a0 em a1 posições?",
+    "answers": [
+      "0x40000000",
+      "0x00000003",
+      "0x80000001",
+      "0xC0000000"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.13"
+  },
+  {
+    "question": "Admita a0 = 0xF000000F e a1 = 4. Que valor devolve rot_left, a rotação à esquerda de a0 em a1 posições?",
+    "answers": [
+      "0x000000FF",
+      "0x000000F0",
+      "0xFF000000",
+      "0xF000000F"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.13"
+  },
+  {
+    "question": "Quando é que um if-then executa o seu bloco de código?",
+    "answers": [
+      "Sempre, qualquer que seja a condição",
+      "Apenas quando a condição é satisfeita",
+      "Apenas quando a condição não é satisfeita",
+      "Uma vez por cada iteração do programa"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.15"
+  },
+  {
+    "question": "No código bne s0, s1, skip / add s2, s3, s4 / skip:, que implementa if (x == y) { f = g + h; } com x = s0 e y = s1, quando salta o bne para skip?",
+    "answers": [
+      "Quando x == y, ficando o bloco if (f = g + h) por executar",
+      "Quando x != y, mas só depois de executar o bloco if (f = g + h)",
+      "Quando x != y, ficando o bloco if (f = g + h) por executar",
+      "Quando x < y, ficando o bloco if (f = g + h) por executar"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.15"
+  },
+  {
+    "question": "Porque é que, na tradução de um if, se usa o salto condicional com a condição inversa (bne para um if x == y)?",
+    "answers": [
+      "Porque o bne é a única instrução de salto do RISC-V",
+      "Porque o beq não consegue saltar para a frente",
+      "Porque o bloco if executa-se quando o salto é efetuado",
+      "Porque se salta o bloco if quando a condição é falsa, e o bloco executa-se quando o salto não é efetuado"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.15"
+  },
+  {
+    "question": "Admita x = 3, y = 3, f = 0, g = 4 e h = 5 no código if (x == y) { f = g + h; }. Que valor tem f no fim?",
+    "answers": [
+      "9",
+      "0",
+      "1",
+      "-1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.15"
+  },
+  {
+    "question": "Admita x = 3, y = 4, f = 0, g = 4 e h = 5 no código if (x == y) { f = g + h; }. Que valor tem f no fim?",
+    "answers": [
+      "9",
+      "0",
+      "4",
+      "5"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.15"
+  },
+  {
+    "question": "O que faz um if-then-else?",
+    "answers": [
+      "Executa sempre os dois blocos, um a seguir ao outro",
+      "Executa um bloco várias vezes até a condição falhar",
+      "Executa um de dois blocos de código, consoante a condição",
+      "Executa o bloco else antes do bloco if"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.16"
+  },
+  {
+    "question": "Na tradução do if-then-else, para que serve a instrução j skip no fim do bloco if?",
+    "answers": [
+      "Para voltar ao início do bloco if",
+      "Para terminar o programa",
+      "Para repetir o bloco else",
+      "Para saltar por cima do bloco else depois de executar o bloco if"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.16"
+  },
+  {
+    "question": "Admita x = 5, y = 5, g = 2, h = 3 e f = 0 em if (x == y) f = g + h; else x = y - h;. Que valores têm f e x no fim, respetivamente?",
+    "answers": [
+      "5 e 5",
+      "0 e 5",
+      "5 e 0",
+      "3 e 5"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.16"
+  },
+  {
+    "question": "Admita x = 5, y = 8, g = 2, h = 3 e f = 0 em if (x == y) f = g + h; else x = y - h;. Que valores têm f e x no fim, respetivamente?",
+    "answers": [
+      "5 e 5",
+      "0 e 5",
+      "0 e 8",
+      "5 e 8"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.16"
+  },
+  {
+    "question": "O que faz um switch-case?",
+    "answers": [
+      "Executa todos os blocos case, um a seguir ao outro",
+      "Executa apenas o bloco default",
+      "Executa um de vários blocos de código, consoante as condições, ou o bloco default se nenhuma for satisfeita",
+      "Repete o primeiro bloco case até a condição falhar"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.17"
+  },
+  {
+    "question": "Na tradução de um switch-case para assembly, em que cada case termina com j skip, para que serve essa instrução?",
+    "answers": [
+      "Para passar ao case seguinte",
+      "Para repetir o case atual",
+      "Para saltar para o bloco default",
+      "Para sair do switch depois de executar o bloco (o break)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.17"
+  },
+  {
+    "question": "Num switch (button) com case 1: amt = 20, case 2: amt = 50, case 3: amt = 100 e default: amt = 0 (todos com break), qual é o valor de amt quando button = 1?",
+    "answers": [
+      "20",
+      "50",
+      "100",
+      "0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.17"
+  },
+  {
+    "question": "Num switch (button) com case 1: amt = 20, case 2: amt = 50, case 3: amt = 100 e default: amt = 0 (todos com break), qual é o valor de amt quando button = 2?",
+    "answers": [
+      "20",
+      "50",
+      "100",
+      "0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.17"
+  },
+  {
+    "question": "Num switch (button) com case 1: amt = 20, case 2: amt = 50, case 3: amt = 100 e default: amt = 0 (todos com break), qual é o valor de amt quando button = 3?",
+    "answers": [
+      "20",
+      "50",
+      "100",
+      "0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.17"
+  },
+  {
+    "question": "Num switch (button) com case 1: amt = 20, case 2: amt = 50, case 3: amt = 100 e default: amt = 0 (todos com break), qual é o valor de amt quando button = 7?",
+    "answers": [
+      "20",
+      "100",
+      "7",
+      "0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.17"
+  },
+  {
+    "question": "Na tradução de if ((x >= 10) && (y < 20)), porque se usa blt a1, t1, skip para a primeira condição?",
+    "answers": [
+      "Porque se salta o bloco quando a condição x >= 10 falha, isto é, quando x < 10",
+      "Porque o blt é a única instrução de comparação do RISC-V",
+      "Porque o bloco executa-se quando o salto é efetuado",
+      "Porque x >= 10 não se pode testar com um bge"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.18"
+  },
+  {
+    "question": "Em if ((x >= 10) && (y < 20)) { x = y; }, com x = 12 e y = 15, que valor tem x no fim?",
+    "answers": [
+      "12",
+      "15",
+      "10",
+      "20"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.18"
+  },
+  {
+    "question": "Em if ((x >= 10) && (y < 20)) { x = y; }, com x = 8 e y = 15, que valor tem x no fim?",
+    "answers": [
+      "15",
+      "10",
+      "8",
+      "0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.18"
+  },
+  {
+    "question": "Em if ((x >= 10) && (y < 20)) { x = y; }, com x = 12 e y = 25, que valor tem x no fim?",
+    "answers": [
+      "25",
+      "10",
+      "0",
+      "12"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.18"
+  },
+  {
+    "question": "Em if ((x >= 10) || (y < 20)) { x = y; }, com x = 8 e y = 25, que valor tem x no fim?",
+    "answers": [
+      "8",
+      "25",
+      "10",
+      "0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.18"
+  },
+  {
+    "question": "Em if ((x >= 10) || (y < 20)) { x = y; }, com x = 8 e y = 15, que valor tem x no fim?",
+    "answers": [
+      "8",
+      "15",
+      "10",
+      "0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.18"
+  },
+  {
+    "question": "Em if ((x >= 10) || (y < 20)) { x = y; }, com x = 12 e y = 25, que valor tem x no fim?",
+    "answers": [
+      "12",
+      "10",
+      "25",
+      "0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.18"
+  },
+  {
+    "question": "O que são ifs aninhados (nested)?",
+    "answers": [
+      "Instruções if com mais de duas condições na mesma linha",
+      "Instruções if que se repetem até a condição falhar",
+      "Instruções if que não têm bloco then",
+      "Instruções if em que o bloco then ou o bloco else contêm outras instruções if"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.19"
+  },
+  {
+    "question": "Em if (x == 10) { x = 5; if (y == 20) { x = 0; } }, com x = 10 e y = 20, que valor tem x no fim?",
+    "answers": [
+      "0",
+      "5",
+      "10",
+      "20"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.19"
+  },
+  {
+    "question": "Em if (x == 10) { x = 5; if (y == 20) { x = 0; } }, com x = 10 e y = 7, que valor tem x no fim?",
+    "answers": [
+      "0",
+      "5",
+      "10",
+      "7"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.19"
+  },
+  {
+    "question": "Em if (x == 10) { x = 5; if (y == 20) { x = 0; } }, com x = 3 e y = 20, que valor tem x no fim?",
+    "answers": [
+      "0",
+      "5",
+      "3",
+      "20"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.19"
+  },
+  {
+    "question": "Quando é avaliada a condição de um ciclo while?",
+    "answers": [
+      "Depois de cada execução do corpo do ciclo",
+      "Apenas uma vez, antes do ciclo",
+      "Apenas no fim do ciclo",
+      "Antes de cada execução do corpo do ciclo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.21"
+  },
+  {
+    "question": "O que acontece num ciclo while quando a condição é falsa?",
+    "answers": [
+      "O ciclo termina e a execução continua depois do corpo do ciclo",
+      "O corpo do ciclo executa mais uma vez",
+      "O programa termina",
+      "A condição é avaliada de novo, até ser verdadeira"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.21"
+  },
+  {
+    "question": "No ciclo while (i < 20) em assembly, com li a1, 0 / while: li t1, 20 / bge a1, t1, skip / addi a2, a2, 3 / addi a1, a1, 1 / j while / skip:, quando salta a instrução bge a1, t1, skip?",
+    "answers": [
+      "Quando i < 20, saindo do ciclo",
+      "Quando i >= 20, saindo do ciclo",
+      "Quando i >= 20, voltando ao início do ciclo",
+      "Quando i == 0, saindo do ciclo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.21"
+  },
+  {
+    "question": "No ciclo while (i < 20) em assembly, com j while no fim do corpo do ciclo, para que serve essa instrução?",
+    "answers": [
+      "Para sair do ciclo",
+      "Para saltar por cima do corpo do ciclo",
+      "Para voltar ao início do ciclo e avaliar de novo a condição",
+      "Para terminar o programa"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.21"
+  },
+  {
+    "question": "Quando é avaliada a condição de um ciclo do-while?",
+    "answers": [
+      "Antes de cada execução do corpo do ciclo",
+      "Apenas uma vez, antes do ciclo",
+      "Apenas no primeiro ciclo",
+      "Depois de cada execução do corpo do ciclo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.22"
+  },
+  {
+    "question": "Quantas vezes executa, no mínimo, o corpo de um ciclo do-while?",
+    "answers": [
+      "Uma vez",
+      "Zero vezes",
+      "Duas vezes",
+      "Depende do valor inicial da variável"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.22"
+  },
+  {
+    "question": "No ciclo do-while (i < 10) em assembly, com dowhile: addi a2, a2, 2 / addi a1, a1, 1 / li t1, 10 / blt a1, t1, dowhile, quando salta a instrução blt a1, t1, dowhile?",
+    "answers": [
+      "Quando i >= 10, repetindo o corpo do ciclo",
+      "Quando i < 10, repetindo o corpo do ciclo",
+      "Quando i < 10, saindo do ciclo",
+      "Quando i == 10, repetindo o corpo do ciclo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.22"
+  },
+  {
+    "question": "Quais são as quatro partes de um ciclo for?",
+    "answers": [
+      "A condição, o corpo do ciclo, o contador e o resultado",
+      "A inicialização, a atualização, o salto e o retorno",
+      "O código de inicialização, a condição do ciclo, o código de atualização e o corpo do ciclo",
+      "O corpo do ciclo, a pilha, a condição e o contador"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.23"
+  },
+  {
+    "question": "Quantas vezes é executado o código de inicialização (i = 0) de um ciclo for?",
+    "answers": [
+      "Uma vez por cada iteração",
+      "Nenhuma, é só um comentário",
+      "Duas vezes: antes e depois do corpo",
+      "Exatamente uma vez, antes da execução do corpo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.23"
+  },
+  {
+    "question": "Quando é executado o código de atualização (i = i + 1) de um ciclo for?",
+    "answers": [
+      "Depois de cada execução do corpo do ciclo, antes de a condição ser avaliada de novo",
+      "Antes de cada execução do corpo do ciclo",
+      "Apenas depois da última iteração",
+      "Apenas antes da primeira iteração"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.23"
+  },
+  {
+    "question": "No ciclo while (i < 20) { y = y + 3; i = i + 1; }, com i = 0 e y = 0 à entrada, que valor tem y no fim?",
+    "answers": [
+      "40",
+      "60",
+      "23",
+      "20"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.21"
+  },
+  {
+    "question": "No ciclo while (i < 20) { y = y + 3; i = i + 1; }, com i = 20 à entrada, quantas vezes se executa o corpo?",
+    "answers": [
+      "1",
+      "20",
+      "0",
+      "19"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.21"
+  },
+  {
+    "question": "No ciclo do { y = y + 2; i = i + 1; } while (i < 10), com i = 0 e y = 0 à entrada, que valor tem y no fim?",
+    "answers": [
+      "30",
+      "12",
+      "10",
+      "20"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.22"
+  },
+  {
+    "question": "No ciclo do { y = y + 2; i = i + 1; } while (i < 10), com i = 10 à entrada, quantas vezes se executa o corpo?",
+    "answers": [
+      "1",
+      "0",
+      "10",
+      "11"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.22"
+  },
+  {
+    "question": "No ciclo for (i = 0; i < 10; i = i + 1) { y = y + 2; }, com y = 0 à entrada, que valor tem y no fim?",
+    "answers": [
+      "30",
+      "20",
+      "18",
+      "10"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.24"
+  },
+  {
+    "question": "No ciclo for (i = 0; i < 10; i = i + 1), quantas vezes se executa o corpo do ciclo?",
+    "answers": [
+      "9",
+      "11",
+      "10",
+      "0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.24"
+  },
+  {
+    "question": "Num ciclo for em que i começa com o valor 10 e a condição é i < 10, quantas vezes se executa o corpo?",
+    "answers": [
+      "1",
+      "10",
+      "9",
+      "0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.24"
+  },
+  {
+    "question": "O que é código invariante de ciclo (loop-invariant code)?",
+    "answers": [
+      "Código que produz sempre os mesmos valores e que não precisa de ser reexecutado em cada repetição do corpo",
+      "Código que só se executa na última iteração do ciclo",
+      "Código que altera o valor do contador do ciclo",
+      "Código que o compilador remove por não ser usado"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.25"
+  },
+  {
+    "question": "Que otimização move para fora do ciclo o código invariante, como a instrução li t1, 10 numa condição de ciclo i < 10?",
+    "answers": [
+      "Loop unrolling, habitualmente aplicada pelos programadores",
+      "Loop-invariant code motion (LICM), habitualmente aplicada pelos compiladores",
+      "Inlining de funções, habitualmente aplicada pelos linkers",
+      "Dead code elimination, habitualmente aplicada pelo sistema operativo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.25"
+  },
+  {
+    "question": "Na otimização LICM, a instrução li t1, 10 passa a ser executada uma só vez, antes do ciclo, em vez de em cada iteração",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.25"
+  },
+  {
+    "question": "Onde são guardadas as variáveis globais e as variáveis locais estáticas de um programa?",
+    "answers": [
+      "Na stack",
+      "No heap",
+      "Nas secções data ou bss",
+      "No register file"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.28"
+  },
+  {
+    "question": "Onde são guardadas as variáveis alocadas dinamicamente?",
+    "answers": [
+      "Nas secções data ou bss",
+      "Na stack",
+      "Na secção .rodata",
+      "No heap"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.28"
+  },
+  {
+    "question": "Onde são guardados alguns parâmetros de funções e variáveis locais?",
+    "answers": [
+      "Na stack",
+      "No heap",
+      "Nas secções data ou bss",
+      "Na secção .text"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.28"
+  },
+  {
+    "question": "Num programa de utilizador, todos os endereços que o programa usa são endereços virtuais",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.27"
+  },
+  {
+    "question": "O que é um array?",
+    "answers": [
+      "Uma coleção de objetos de tipos diferentes",
+      "Uma disposição sistemática de objetos semelhantes",
+      "Um conjunto de registos do processador",
+      "Uma instrução que repete um bloco de código"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.30"
+  },
+  {
+    "question": "Como guarda um array o seu conteúdo na memória?",
+    "answers": [
+      "Em endereços de memória espalhados e independentes",
+      "Apenas em registos do processador",
+      "Em endereços de memória contíguos e adjacentes",
+      "Numa lista ligada, com um apontador por elemento"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.30"
+  },
+  {
+    "question": "Como se identifica cada elemento de um array?",
+    "answers": [
+      "Apenas pelo seu valor",
+      "Apenas pelo nome do array",
+      "Pelo número do registo onde está guardado",
+      "Por um número chamado índice, ou pelo seu endereço"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.30"
+  },
+  {
+    "question": "O que é o comprimento (length) de um array?",
+    "answers": [
+      "O número de elementos do array",
+      "O número de bytes do array",
+      "O número de bytes de cada elemento",
+      "O endereço do último elemento"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.30"
+  },
+  {
+    "question": "Em quantos bytes aumenta o endereço de cada elemento consecutivo de um array?",
+    "answers": [
+      "Em 1 byte, qualquer que seja o tipo dos elementos",
+      "Em n bytes, sendo n o número de bytes de cada elemento",
+      "Em 4 bytes, qualquer que seja o tipo dos elementos",
+      "Em n × índice bytes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.30"
+  },
+  {
+    "question": "O que é o endereço base (base address) de um array?",
+    "answers": [
+      "O endereço do último elemento",
+      "O endereço do elemento do meio",
+      "O endereço do elemento de índice 0",
+      "O número de elementos do array"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.30"
+  },
+  {
+    "question": "Dado int arr[10], o que dá *arr?",
+    "answers": [
+      "O endereço do elemento de índice 0",
+      "O valor do último elemento",
+      "O comprimento do array",
+      "O valor do elemento de índice 0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.31"
+  },
+  {
+    "question": "O nome de um array é uma constante, por isso expressões como arr++ ou arr-- são ilegais",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.31"
+  },
+  {
+    "question": "Depois de int *ptr = arr, as operações ptr++ e ptr-- são permitidas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.31"
+  },
+  {
+    "question": "Numa declaração T A[L], quantos bytes ocupa a região contígua do array?",
+    "answers": [
+      "L × sizeof(T)",
+      "L + sizeof(T)",
+      "sizeof(T)",
+      "L"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.32"
+  },
+  {
+    "question": "Quantos bytes ocupa a região do array declarado como int arr[6], em RV32?",
+    "answers": [
+      "6",
+      "24",
+      "12",
+      "4"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.32"
+  },
+  {
+    "question": "Quantos bytes ocupa a região do array declarado como short s[10]?",
+    "answers": [
+      "10",
+      "40",
+      "20",
+      "2"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.32"
+  },
+  {
+    "question": "Quantos bytes ocupa a região do array declarado como double d[3], em RV32?",
+    "answers": [
+      "3",
+      "12",
+      "16",
+      "24"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.32"
+  },
+  {
+    "question": "Quantos bytes ocupa a região do array declarado como char c[7]?",
+    "answers": [
+      "7",
+      "14",
+      "28",
+      "1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.32"
+  },
+  {
+    "question": "Qual é a fórmula do endereço do elemento A[i], &A[i], num array com elementos do tipo T?",
+    "answers": [
+      "A + i",
+      "A + i × sizeof(T)",
+      "A × i × sizeof(T)",
+      "A + sizeof(T)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.33"
+  },
+  {
+    "question": "Um array int A[8] tem o endereço base 0x2000 (um int ocupa 4 bytes). Qual é o endereço de A[5]?",
+    "answers": [
+      "0x2005",
+      "0x2028",
+      "0x2014",
+      "0x2018"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.33"
+  },
+  {
+    "question": "Um array short S[10] tem o endereço base 0x3000 (um short ocupa 2 bytes). Qual é o endereço de S[7]?",
+    "answers": [
+      "0x3007",
+      "0x301C",
+      "0x3010",
+      "0x300E"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.33"
+  },
+  {
+    "question": "Um array char C[12] tem o endereço base 0x4000. Qual é o endereço de C[9]?",
+    "answers": [
+      "0x4009",
+      "0x4024",
+      "0x4012",
+      "0x400A"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.33"
+  },
+  {
+    "question": "Na função get_element(int *vec, int i), com addi t0, zero, 4 / mul t0, a1, t0 / add a0, a0, t0 / lw a0, 0(a0) / ret, o que calcula a instrução mul t0, a1, t0 (com a1 = i)?",
+    "answers": [
+      "O endereço do elemento, vec + i",
+      "O deslocamento em bytes do elemento, i × 4",
+      "O valor do elemento vec[i]",
+      "O endereço base do array"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.34"
+  },
+  {
+    "question": "Na função get_element(int *vec, int i), com addi t0, zero, 4 / mul t0, a1, t0 / add a0, a0, t0 / lw a0, 0(a0) / ret, que instrução lê o valor do elemento da memória?",
+    "answers": [
+      "add a0, a0, t0",
+      "addi t0, zero, 4",
+      "lw a0, 0(a0)",
+      "mul t0, a1, t0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.34"
+  },
+  {
+    "question": "Na função get_element(int *vec, int i), com addi t0, zero, 4 / mul t0, a1, t0 / add a0, a0, t0 / lw a0, 0(a0) / ret, que instrução soma o deslocamento ao endereço base do vetor?",
+    "answers": [
+      "lw a0, 0(a0)",
+      "mul t0, a1, t0",
+      "addi t0, zero, 4",
+      "add a0, a0, t0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.34"
+  },
+  {
+    "question": "Duas funções com os corpos return vec[i]; e return *(vec + i); são equivalentes ou diferentes?",
+    "answers": [
+      "Equivalentes, porque vec[i] é o mesmo que *(vec + i)",
+      "Diferentes, porque a segunda devolve um endereço",
+      "Equivalentes só se i for 0",
+      "Diferentes, porque a primeira só funciona com arrays de char"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.34"
+  },
+  {
+    "question": "Na função array_incr(int *vec, int n), com vec em a0, n em a1 e slli t0, a1, 2 / add t0, a0, t0 / 1: bge a0, t0, 1f / lw t1, 0(a0) / addi t1, t1, 1 / sw t1, 0(a0) / addi a0, a0, 4 / j 1b / 1: ret, para que serve slli t0, a1, 2?",
+    "answers": [
+      "Para calcular n + 2",
+      "Para calcular n × 4, o número de bytes do vetor, a somar ao endereço base",
+      "Para dividir n por 4",
+      "Para calcular o endereço do último elemento"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.36"
+  },
+  {
+    "question": "Na função array_incr(int *vec, int n), com vec em a0, n em a1 e slli t0, a1, 2 / add t0, a0, t0 / 1: bge a0, t0, 1f / lw t1, 0(a0) / addi t1, t1, 1 / sw t1, 0(a0) / addi a0, a0, 4 / j 1b / 1: ret, o que contém t0 depois de add t0, a0, t0?",
+    "answers": [
+      "O endereço do primeiro elemento do vetor",
+      "O valor do último elemento do vetor",
+      "O endereço logo a seguir ao último elemento do vetor (vec + n)",
+      "O número de elementos do vetor"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.36"
+  },
+  {
+    "question": "Na função array_incr(int *vec, int n), com vec em a0, n em a1 e slli t0, a1, 2 / add t0, a0, t0 / 1: bge a0, t0, 1f / lw t1, 0(a0) / addi t1, t1, 1 / sw t1, 0(a0) / addi a0, a0, 4 / j 1b / 1: ret, para que serve a instrução addi a0, a0, 4 dentro do ciclo?",
+    "answers": [
+      "Para somar 4 ao valor de cada elemento",
+      "Para terminar o ciclo",
+      "Para guardar o elemento no vetor",
+      "Para avançar o apontador para o elemento seguinte (4 bytes)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.36"
+  },
+  {
+    "question": "Na função array_incr(int *vec, int n), com vec em a0, n em a1 e slli t0, a1, 2 / add t0, a0, t0 / 1: bge a0, t0, 1f / lw t1, 0(a0) / addi t1, t1, 1 / sw t1, 0(a0) / addi a0, a0, 4 / j 1b / 1: ret, que instruções fazem (*p)++ sobre o elemento apontado por a0?",
+    "answers": [
+      "lw t1, 0(a0) / addi t1, t1, 1 / sw t1, 0(a0)",
+      "addi a0, a0, 1",
+      "lw t1, 0(a0) / addi a0, a0, 1",
+      "sw t1, 0(a0) / lw t1, 0(a0) / addi t1, t1, 1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.36"
+  },
+  {
+    "question": "Na função array_incr(int *vec, int n), com vec em a0, n em a1 e slli t0, a1, 2 / add t0, a0, t0 / 1: bge a0, t0, 1f / lw t1, 0(a0) / addi t1, t1, 1 / sw t1, 0(a0) / addi a0, a0, 4 / j 1b / 1: ret, quando termina o ciclo?",
+    "answers": [
+      "Quando o valor do elemento é zero",
+      "Quando o apontador a0 chega ao endereço logo a seguir ao último elemento",
+      "Quando n chega a zero",
+      "Nunca, o ciclo é infinito"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.36"
+  },
+  {
+    "question": "Como se declara uma matriz 2D com R linhas e C colunas, de elementos do tipo T?",
+    "answers": [
+      "T M[C][R] com R colunas",
+      "T M[R + C]",
+      "T M[R][C]",
+      "T M[R, C]"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.37"
+  },
+  {
+    "question": "Quantos bytes ocupa a região contígua de uma matriz T M[R][C]?",
+    "answers": [
+      "R + C + sizeof(T)",
+      "R × sizeof(T)",
+      "C × sizeof(T)",
+      "R × C × sizeof(T)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.38"
+  },
+  {
+    "question": "Quantos bytes ocupa a matriz int m[3][6], em RV32?",
+    "answers": [
+      "72",
+      "18",
+      "24",
+      "36"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.38"
+  },
+  {
+    "question": "Quantos bytes ocupa a matriz short m[4][5]?",
+    "answers": [
+      "20",
+      "40",
+      "9",
+      "80"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.38"
+  },
+  {
+    "question": "Numa matriz int m[3][6], m[1][3] = m[1 × 6 + 3] = m[9]. Porque é que a matriz se pode ver como um vetor?",
+    "answers": [
+      "Porque o compilador a converte num vetor em tempo de execução",
+      "Porque cada linha é um apontador para um vetor",
+      "Porque está alocada como uma região contígua, linha a linha",
+      "Porque as matrizes não existem em C"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.38"
+  },
+  {
+    "question": "Dada int m[3][6] = {{12,3,15,7,11,13}, {2,3,6,25,10,14}, {1,24,28,31,4,8}}, qual é o valor de m[1][3]?",
+    "answers": [
+      "24",
+      "7",
+      "10",
+      "25"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.38"
+  },
+  {
+    "question": "Dada int m[3][6] = {{12,3,15,7,11,13}, {2,3,6,25,10,14}, {1,24,28,31,4,8}}, qual é o valor de m[2][4]?",
+    "answers": [
+      "4",
+      "28",
+      "31",
+      "8"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.38"
+  },
+  {
+    "question": "Dada int m[3][6] = {{12,3,15,7,11,13}, {2,3,6,25,10,14}, {1,24,28,31,4,8}}, qual é o valor de m[0][5]?",
+    "answers": [
+      "2",
+      "13",
+      "11",
+      "8"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.38"
+  },
+  {
+    "question": "Dada int m[3][6] = {{12,3,15,7,11,13}, {2,3,6,25,10,14}, {1,24,28,31,4,8}}, qual é o valor de m[1][0]?",
+    "answers": [
+      "3",
+      "12",
+      "2",
+      "1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.38"
+  },
+  {
+    "question": "Dada a mesma matriz int m[3][6], qual é o valor de m[9], se a matriz fosse vista como vetor?",
+    "answers": [
+      "6",
+      "10",
+      "7",
+      "25"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.38"
+  },
+  {
+    "question": "Qual é a fórmula do endereço do elemento M[i][j] de uma matriz T M[R][C]?",
+    "answers": [
+      "M + (i × C + j) × sizeof(T)",
+      "M + (i + j) × sizeof(T)",
+      "M + (i × R + j) × sizeof(T)",
+      "M + i × C + j"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.38"
+  },
+  {
+    "question": "A matriz int m[3][6] começa no endereço 0x1000. Qual é o endereço de m[1][3]?",
+    "answers": [
+      "0x104C",
+      "0x1024",
+      "0x1010",
+      "0x1009"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.38"
+  },
+  {
+    "question": "A matriz int m[3][6] começa no endereço 0x1000. Qual é o endereço de m[2][4]?",
+    "answers": [
+      "0x1038",
+      "0x1018",
+      "0x1040",
+      "0x1010"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.38"
+  },
+  {
+    "question": "A matriz short M[4][5] começa no endereço 0x2000. Qual é o endereço de M[3][2]?",
+    "answers": [
+      "0x201C",
+      "0x200A",
+      "0x2011",
+      "0x2022"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.38"
+  },
+  {
+    "question": "Na função get_m_element(int m[][6], int i, int j), com m em a0, i em a1, j em a2 e addi t0, zero, 6 / mul t0, a1, t0 / add t0, a2, t0 / slli t0, t0, 2 / add a0, a0, t0 / lw a0, 0(a0) / ret, o que calcula a sequência mul t0, a1, t0 / add t0, a2, t0 (com t0 = 6 = C)?",
+    "answers": [
+      "i × C + j, o índice do elemento visto como vetor",
+      "i + j × C, o número de colunas",
+      "O endereço do elemento, sem usar o endereço base",
+      "O valor do elemento m[i][j]"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.39"
+  },
+  {
+    "question": "Na função get_m_element(int m[][6], int i, int j), com m em a0, i em a1, j em a2 e addi t0, zero, 6 / mul t0, a1, t0 / add t0, a2, t0 / slli t0, t0, 2 / add a0, a0, t0 / lw a0, 0(a0) / ret, para que serve slli t0, t0, 2?",
+    "answers": [
+      "Para dividir o índice por 4",
+      "Para multiplicar o índice por 4 (sizeof(int)), obtendo o deslocamento em bytes",
+      "Para somar 2 ao índice",
+      "Para obter o endereço base da matriz"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.39"
+  },
+  {
+    "question": "Na função get_m_element(int m[][6], int i, int j), com m em a0, i em a1, j em a2 e addi t0, zero, 6 / mul t0, a1, t0 / add t0, a2, t0 / slli t0, t0, 2 / add a0, a0, t0 / lw a0, 0(a0) / ret, que instrução lê o valor do elemento?",
+    "answers": [
+      "add a0, a0, t0",
+      "slli t0, t0, 2",
+      "lw a0, 0(a0)",
+      "addi t0, zero, 6"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.39"
+  },
+  {
+    "question": "Porque é que uma função get_m_element(int m[][6], int i, int j) precisa de conhecer o número de colunas (6)?",
+    "answers": [
+      "Porque o número de linhas não pode ser indicado",
+      "Porque o compilador não aceita matrizes sem 6 colunas",
+      "Porque o lw só funciona com 6 elementos",
+      "Porque o endereço do elemento é calculado com i × C + j, e C é necessário para saber onde começa cada linha"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.39"
+  },
+  {
+    "question": "Para incrementar todos os elementos de uma matriz r × c, como se pode percorrê-la com um único ciclo?",
+    "answers": [
+      "Como um vetor de r × c elementos, com um único apontador que avança de elemento em elemento",
+      "Com dois ciclos aninhados, um para linhas e outro para colunas",
+      "Com um apontador por linha, guardado num vetor",
+      "Com recursão sobre cada linha"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.40"
+  },
+  {
+    "question": "Em int *p[3] = {vec2, vec1, vec3}, o que é cada elemento do vetor p?",
+    "answers": [
+      "Um valor int",
+      "Um apontador para um vetor de int",
+      "Um vetor de três int",
+      "Um endereço de uma função"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.42"
+  },
+  {
+    "question": "Quantos elementos tem o vetor p, declarado como int *p[3] = {vec2, vec1, vec3}?",
+    "answers": [
+      "6",
+      "18",
+      "3",
+      "1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.42"
+  },
+  {
+    "question": "Com int *p[3] = {vec2, vec1, vec3}, vec1 = {12,3,15,7,11,13}, vec2 = {2,3,6,25,10,14} e vec3 = {1,24,28,31,4,8}, qual é o valor de p[0][3]?",
+    "answers": [
+      "7",
+      "31",
+      "2",
+      "25"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.42"
+  },
+  {
+    "question": "Com int *p[3] = {vec2, vec1, vec3}, vec1 = {12,3,15,7,11,13}, vec2 = {2,3,6,25,10,14} e vec3 = {1,24,28,31,4,8}, qual é o valor de p[1][2]?",
+    "answers": [
+      "15",
+      "6",
+      "28",
+      "3"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.42"
+  },
+  {
+    "question": "Com int *p[3] = {vec2, vec1, vec3}, vec1 = {12,3,15,7,11,13}, vec2 = {2,3,6,25,10,14} e vec3 = {1,24,28,31,4,8}, qual é o valor de p[2][5]?",
+    "answers": [
+      "13",
+      "8",
+      "14",
+      "28"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.42"
+  },
+  {
+    "question": "Na função get_p_element(int **p, int i, int j), com p em a0, i em a1, j em a2 e slli a1, a1, 2 / add a0, a0, a1 / lw a0, 0(a0) / slli a2, a2, 2 / add a0, a0, a2 / lw a0, 0(a0) / ret, que acessos à memória faz o código?",
+    "answers": [
+      "Um único load, tal como numa matriz 2D",
+      "Nenhum load, só cálculos de endereços",
+      "Dois loads: o primeiro lê o apontador p[i] e o segundo lê o elemento p[i][j]",
+      "Três loads, um por cada nível"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.43"
+  },
+  {
+    "question": "Na função get_p_element(int **p, int i, int j), com p em a0, i em a1, j em a2 e slli a1, a1, 2 / add a0, a0, a1 / lw a0, 0(a0) / slli a2, a2, 2 / add a0, a0, a2 / lw a0, 0(a0) / ret, que valor guarda a0 depois do primeiro lw a0, 0(a0)?",
+    "answers": [
+      "O valor do elemento p[i][j]",
+      "O endereço do vetor p",
+      "O índice i",
+      "O apontador p[i], que aponta para o vetor da linha i"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.43"
+  },
+  {
+    "question": "Na função get_p_element(int **p, int i, int j), com p em a0, i em a1, j em a2 e slli a1, a1, 2 / add a0, a0, a1 / lw a0, 0(a0) / slli a2, a2, 2 / add a0, a0, a2 / lw a0, 0(a0) / ret, porque se usam slli a1, a1, 2 e slli a2, a2, 2?",
+    "answers": [
+      "Para multiplicar os índices i e j por 4 (sizeof de um apontador e de um int, em RV32)",
+      "Para dividir os índices por 4",
+      "Para somar 2 a cada índice",
+      "Para trocar os índices entre si"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.43"
+  },
+  {
+    "question": "Porque se deve associar um nome (#define) a uma constante usada como dimensão de um array?",
+    "answers": [
+      "Porque o #define faz o array crescer em tempo de execução",
+      "Porque é melhor usar esse nome de forma consistente do que usar o valor numérico, e o valor é conhecido em tempo de compilação",
+      "Porque o compilador não aceita valores numéricos nas dimensões",
+      "Porque o #define reserva memória para o array"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.44"
+  },
+  {
+    "question": "Com #define N 16, em int m[N][N], que valor pode o compilador calcular de antemão para o endereço de m[i][j]?",
+    "answers": [
+      "i × 16 + j",
+      "j × 4",
+      "i × (C × sizeof(T)) = i × 64, onde C = 16 e sizeof(T) = 4",
+      "i × 4"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.44"
+  },
+  {
+    "question": "Numa função otimizada fix_elem para int m[16][16], com m em a0, i em a1 e j em a2, que instrução calcula 64 × i?",
+    "answers": [
+      "slli a1, a1, 2",
+      "slli a1, a1, 4",
+      "slli a2, a2, 6",
+      "slli a1, a1, 6"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.44"
+  },
+  {
+    "question": "Numa função otimizada fix_elem para int m[16][16], com m em a0, i em a1 e j em a2, que instrução calcula 4 × j?",
+    "answers": [
+      "slli a2, a2, 2",
+      "slli a2, a2, 6",
+      "slli a1, a1, 2",
+      "srli a2, a2, 2"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.44"
+  },
+  {
+    "question": "Porque se usa slli a1, a1, 6 para multiplicar i por 64?",
+    "answers": [
+      "Porque 64 = 6 × 10",
+      "Porque 64 = 2^6, e um deslocamento de 6 bits multiplica por 64",
+      "Porque o slli só aceita o imediato 6",
+      "Porque 6 é o número de colunas"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.44"
+  },
+  {
+    "question": "Com m na base 0x1000 e N = 16 (int, 4 bytes), qual é o endereço de m[2][3] segundo m + 64 × i + 4 × j?",
+    "answers": [
+      "0x1023",
+      "0x10C8",
+      "0x108C",
+      "0x1005"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.44"
+  },
+  {
+    "question": "Com m na base 0x2000 e N = 16 (int, 4 bytes), qual é o endereço de m[5][1] segundo m + 64 × i + 4 × j?",
+    "answers": [
+      "0x2051",
+      "0x2054",
+      "0x2006",
+      "0x2144"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.44"
+  },
+  {
+    "question": "Na versão otimizada de fix_prod_elem, com N = 16, int de 4 bytes e int *Arow = &A[i][0]; int *Bcol = &B[0][k]; int *Bend = &B[N][k]; do { result += *Arow * *Bcol; Arow++; Bcol += N; } while (Bcol != Bend); que elementos de A percorre o ciclo?",
+    "answers": [
+      "Apenas os elementos da linha i de A",
+      "Apenas os elementos da coluna k de A",
+      "Todos os elementos de A",
+      "Apenas o elemento A[i][k]"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.46"
+  },
+  {
+    "question": "Na versão otimizada de fix_prod_elem, com N = 16, int de 4 bytes e int *Arow = &A[i][0]; int *Bcol = &B[0][k]; int *Bend = &B[N][k]; do { result += *Arow * *Bcol; Arow++; Bcol += N; } while (Bcol != Bend); que elementos de B percorre o ciclo?",
+    "answers": [
+      "Os elementos da linha k de B",
+      "Os elementos da coluna k de B: B[0][k], B[1][k] e assim sucessivamente até B[15][k]",
+      "Todos os elementos de B",
+      "Apenas o elemento B[k][k]"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.46"
+  },
+  {
+    "question": "Na versão otimizada de fix_prod_elem, com N = 16, int de 4 bytes e int *Arow = &A[i][0]; int *Bcol = &B[0][k]; int *Bend = &B[N][k]; do { result += *Arow * *Bcol; Arow++; Bcol += N; } while (Bcol != Bend); a que distância, em bytes, estão os elementos sucessivos da coluna k de B?",
+    "answers": [
+      "4 bytes",
+      "16 bytes",
+      "64 bytes",
+      "256 bytes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.46"
+  },
+  {
+    "question": "Na versão otimizada de fix_prod_elem, com N = 16, int de 4 bytes e int *Arow = &A[i][0]; int *Bcol = &B[0][k]; int *Bend = &B[N][k]; do { result += *Arow * *Bcol; Arow++; Bcol += N; } while (Bcol != Bend); para que serve a instrução Bcol += N no ciclo?",
+    "answers": [
+      "Para avançar o apontador para o elemento seguinte da linha, 4 bytes à frente",
+      "Para somar N ao valor de cada elemento",
+      "Para voltar ao início da coluna",
+      "Para avançar o apontador para o elemento seguinte da coluna k, 64 bytes à frente"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.46"
+  },
+  {
+    "question": "Na versão otimizada de fix_prod_elem, com N = 16, int de 4 bytes e int *Arow = &A[i][0]; int *Bcol = &B[0][k]; int *Bend = &B[N][k]; do { result += *Arow * *Bcol; Arow++; Bcol += N; } while (Bcol != Bend); para que serve o apontador Bend = &B[N][k]?",
+    "answers": [
+      "Para marcar o ponto onde Bcol deve parar",
+      "Para guardar o resultado da soma",
+      "Para guardar o endereço de A[i][0]",
+      "Para marcar o início da coluna k"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.46"
+  },
+  {
+    "question": "Na versão otimizada de fix_prod_elem, com N = 16, int de 4 bytes e int *Arow = &A[i][0]; int *Bcol = &B[0][k]; int *Bend = &B[N][k]; do { result += *Arow * *Bcol; Arow++; Bcol += N; } while (Bcol != Bend); quantas iterações executa o ciclo do-while?",
+    "answers": [
+      "15",
+      "16",
+      "17",
+      "256"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.46"
+  },
+  {
+    "question": "Na versão otimizada de fix_prod_elem, com N = 16, int de 4 bytes e int *Arow = &A[i][0]; int *Bcol = &B[0][k]; int *Bend = &B[N][k]; do { result += *Arow * *Bcol; Arow++; Bcol += N; } while (Bcol != Bend); para que serve o apontador Arow = &A[i][0]?",
+    "answers": [
+      "Para aceder aos elementos da coluna i de A",
+      "Para guardar o valor do resultado",
+      "Para aceder aos elementos da linha i de A como Arow[j]",
+      "Para marcar o fim da linha i"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.46"
+  }
+]

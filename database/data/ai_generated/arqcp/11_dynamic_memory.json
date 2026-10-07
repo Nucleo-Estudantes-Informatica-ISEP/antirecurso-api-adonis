@@ -1,0 +1,2483 @@
+[
+  {
+    "question": "O que tem cada byte do espaço de memória de um programa?",
+    "answers": [
+      "Um endereço associado",
+      "Um nome de variável associado",
+      "Um tipo de dados associado",
+      "Um número de linha associado"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.5"
+  },
+  {
+    "question": "Onde reside tudo o que o programa precisa para executar?",
+    "answers": [
+      "Apenas nos registos do processador",
+      "No espaço de memória do programa",
+      "Apenas no disco rígido do sistema",
+      "Apenas na memória cache de dados"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.5"
+  },
+  {
+    "question": "Como se distribuem as diferentes entidades pelo espaço de memória do programa?",
+    "answers": [
+      "Residem todas na mesma zona da memória principal",
+      "Residem todas juntas na pilha do programa",
+      "Residem em zonas diferentes do espaço de memória",
+      "Residem todas juntas no heap do programa"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.5"
+  },
+  {
+    "question": "O que faz a alocação estática de memória?",
+    "answers": [
+      "Aloca memória apenas em tempo de execução",
+      "Aloca memória apenas nos registos do CPU",
+      "Aloca memória só quando o programa termina",
+      "Aloca memória em tempo de compilação"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.6"
+  },
+  {
+    "question": "Quais são as vantagens e desvantagens da alocação estática?",
+    "answers": [
+      "Dá estabilidade, mas restringe a flexibilidade",
+      "Dá flexibilidade, mas aumenta o custo de execução",
+      "Dá flexibilidade e estabilidade em simultâneo",
+      "Dá estabilidade, mas obriga a libertar a memória"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.6"
+  },
+  {
+    "question": "Quais são as vantagens e desvantagens da alocação dinâmica?",
+    "answers": [
+      "Dá estabilidade, mas restringe a flexibilidade",
+      "Dá flexibilidade, mas acrescenta custo (overhead)",
+      "Dá flexibilidade, mas só funciona na pilha",
+      "Dá simplicidade e previsibilidade sem desvantagens"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.6"
+  },
+  {
+    "question": "A alocação estática responde bem a requisitos de programa que vão mudando",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.8"
+  },
+  {
+    "question": "Considere int global_var = 10; fora de qualquer função. Como é alocada global_var?",
+    "answers": [
+      "Dinamicamente, com o espaço decidido em tempo de execução",
+      "Na pilha, quando main é chamada",
+      "Estaticamente, com o espaço decidido em tempo de compilação",
+      "No heap, através de malloc"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.8"
+  },
+  {
+    "question": "O que faz a alocação dinâmica de memória?",
+    "answers": [
+      "Atribui memória durante a compilação do programa",
+      "Atribui memória só antes de o programa começar",
+      "Atribui memória só nos registos do processador",
+      "Atribui memória durante a execução do programa"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.9"
+  },
+  {
+    "question": "Qual é a dificuldade da alocação dinâmica?",
+    "answers": [
+      "A libertação da memória, para evitar fugas",
+      "A impossibilidade de alterar o tamanho dos blocos",
+      "A necessidade de conhecer os tamanhos em compilação",
+      "A incapacidade de guardar vetores e estruturas"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.9"
+  },
+  {
+    "question": "Quais são os dois componentes importantes na alocação de armazenamento?",
+    "answers": [
+      "O heap e os registos",
+      "O heap e a pilha (stack)",
+      "A pilha e o disco rígido",
+      "A cache e o ficheiro executável"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.9"
+  },
+  {
+    "question": "Para que se usa principalmente a pilha (stack)?",
+    "answers": [
+      "Para guardar variáveis globais e constantes do programa",
+      "Para guardar blocos de tamanho variável pedidos com malloc",
+      "Para guardar variáveis locais e fazer chamadas de funções",
+      "Para guardar o código das funções e das bibliotecas"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.10"
+  },
+  {
+    "question": "Quando é alocada a variável local_var de void function() { int local_var = 42; }?",
+    "answers": [
+      "Quando o programa é compilado, no heap",
+      "Quando o programa começa, na zona estática",
+      "Quando a função termina, nos registos",
+      "Quando a função é chamada, na pilha"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.10"
+  },
+  {
+    "question": "O que acontece ao espaço de local_var quando a função termina?",
+    "answers": [
+      "É recuperado automaticamente",
+      "Fica reservado até o programa terminar",
+      "Tem de ser libertado com free",
+      "É copiado para o heap"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.10"
+  },
+  {
+    "question": "O acesso a variáveis na pilha é rápido, porque a pilha é bem estruturada",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.11"
+  },
+  {
+    "question": "Na pilha, é preciso procurar um bloco livre antes de alocar uma variável",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.11"
+  },
+  {
+    "question": "A gestão manual de memória não é necessária na pilha",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.11"
+  },
+  {
+    "question": "O tamanho da pilha é infinito",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.11"
+  },
+  {
+    "question": "O que acontece se o tamanho da pilha for excedido?",
+    "answers": [
+      "Ocorre uma fuga de memória",
+      "Ocorre um stack overflow",
+      "O heap cresce automaticamente",
+      "O sistema operativo duplica a pilha"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.11"
+  },
+  {
+    "question": "Que situações podem provocar um stack overflow?",
+    "answers": [
+      "Funções pequenas sem variáveis locais nem argumentos",
+      "Chamadas repetidas a free sobre o mesmo apontador",
+      "Funções recursivas ou chamadas muito aninhadas",
+      "Alocações estáticas de variáveis globais grandes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.11"
+  },
+  {
+    "question": "Quando saem da memória as variáveis alocadas na pilha?",
+    "answers": [
+      "Quando o programa chama a função free",
+      "Quando o programa termina a execução",
+      "Quando a cache fica cheia",
+      "Quando a função que as declarou termina"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.11"
+  },
+  {
+    "question": "Para que serve o heap?",
+    "answers": [
+      "Para variáveis com tempos de vida imprevisíveis",
+      "Para variáveis com tempo de vida igual ao da função",
+      "Para variáveis locais de tamanho fixo",
+      "Para instruções do programa em execução"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.12"
+  },
+  {
+    "question": "No heap, a memória é libertada automaticamente quando a função termina",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.12"
+  },
+  {
+    "question": "Que problemas pode causar a má gestão do heap?",
+    "answers": [
+      "Stack overflow e erros de compilação",
+      "Fugas de memória e fragmentação",
+      "Perda de registos e interrupções",
+      "Mais cache hits e menos misses"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.12"
+  },
+  {
+    "question": "Considere int *array = (int*)malloc(5 * sizeof(int)); free(array);. O que faz a chamada a malloc?",
+    "answers": [
+      "Reserva na pilha memória para um vetor de 5 inteiros",
+      "Liberta a memória de um vetor de 5 inteiros",
+      "Reserva no heap memória para um vetor de 5 inteiros",
+      "Inicializa a zero um vetor de 5 inteiros"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.12"
+  },
+  {
+    "question": "Considere int *array = (int*)malloc(5 * sizeof(int)); free(array);. Para que serve a chamada a free?",
+    "answers": [
+      "Para reservar mais memória para o vetor alocado",
+      "Para copiar o vetor do heap para a pilha",
+      "Para pôr todos os elementos do vetor a zero",
+      "Para libertar a memória que já não é precisa"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.12"
+  },
+  {
+    "question": "Memória alocada em tempo de execução ocupa que zona do espaço de endereçamento?",
+    "answers": [
+      "O heap",
+      "A pilha",
+      "A zona de código",
+      "Os registos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.13"
+  },
+  {
+    "question": "A alocação dinâmica faz-se sem usar apontadores",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.13"
+  },
+  {
+    "question": "Em RV32, quantos bytes reserva malloc(sizeof(int) * 20)?",
+    "answers": [
+      "160",
+      "80",
+      "40",
+      "84"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.13"
+  },
+  {
+    "question": "Em RV32, quantos bytes reserva malloc(sizeof(char) * 10)?",
+    "answers": [
+      "20",
+      "5",
+      "10",
+      "14"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.13"
+  },
+  {
+    "question": "Em RV32, quantos bytes reserva malloc(sizeof(int) * 5)?",
+    "answers": [
+      "40",
+      "10",
+      "24",
+      "20"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.13"
+  },
+  {
+    "question": "Em RV32, quantos bytes reserva malloc(sizeof(short) * 8)?",
+    "answers": [
+      "16",
+      "32",
+      "8",
+      "20"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.13"
+  },
+  {
+    "question": "Em RV32, quantos bytes reserva malloc(sizeof(double) * 4)?",
+    "answers": [
+      "64",
+      "32",
+      "16",
+      "36"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.13"
+  },
+  {
+    "question": "Em RV32, quantos bytes reserva malloc(sizeof(int) * 100)?",
+    "answers": [
+      "800",
+      "200",
+      "400",
+      "404"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.13"
+  },
+  {
+    "question": "Que ficheiro de cabeçalho é preciso incluir para usar malloc e free?",
+    "answers": [
+      "stdio.h",
+      "string.h",
+      "math.h",
+      "stdlib.h"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.15"
+  },
+  {
+    "question": "Qual é o protótipo de malloc?",
+    "answers": [
+      "void* malloc(size_t size)",
+      "void* malloc(size_t nitems, size_t size)",
+      "void malloc(void *ptr)",
+      "size_t malloc(void *ptr, size_t size)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.15"
+  },
+  {
+    "question": "Qual é o protótipo de calloc?",
+    "answers": [
+      "void *calloc(size_t size)",
+      "void *calloc(size_t nitems, size_t size)",
+      "void calloc(void *ptr)",
+      "void *calloc(void *ptr, size_t size)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.15"
+  },
+  {
+    "question": "Qual é o protótipo de realloc?",
+    "answers": [
+      "void *realloc(size_t size)",
+      "void realloc(void *ptr)",
+      "void *realloc(void *ptr, size_t size)",
+      "void *realloc(size_t nitems, size_t size)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.15"
+  },
+  {
+    "question": "Qual é o protótipo de free?",
+    "answers": [
+      "void *free(size_t size)",
+      "void free(size_t nitems, size_t size)",
+      "int free(void *ptr, size_t size)",
+      "void free(void *ptr)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.15"
+  },
+  {
+    "question": "O que é um apontador void *?",
+    "answers": [
+      "Um apontador sem tipo de dados associado",
+      "Um apontador que aponta sempre para zero",
+      "Um apontador que só aponta para inteiros",
+      "Um apontador que não pode ser usado"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.15"
+  },
+  {
+    "question": "Um apontador void * pode guardar o endereço de qualquer tipo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.15"
+  },
+  {
+    "question": "O que é size_t?",
+    "answers": [
+      "Um tipo inteiro com sinal",
+      "Um tipo inteiro sem sinal",
+      "Um tipo de vírgula flutuante",
+      "Um tipo estrutura"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.15"
+  },
+  {
+    "question": "O que faz a função realloc?",
+    "answers": [
+      "Reserva um bloco novo e inicializa-o a zero",
+      "Liberta por completo um bloco alocado antes",
+      "Tenta redimensionar um bloco alocado antes",
+      "Copia um bloco alocado antes para a pilha"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.15"
+  },
+  {
+    "question": "O que faz a função free?",
+    "answers": [
+      "Reserva memória nova sem a inicializar a zero",
+      "Redimensiona um bloco de memória já alocado",
+      "Põe a zero todos os bytes de um bloco alocado",
+      "Liberta memória alocada por malloc ou calloc"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.15"
+  },
+  {
+    "question": "Quantos argumentos recebe malloc?",
+    "answers": [
+      "Um só, o número de bytes a alocar",
+      "Dois, o número de elementos e o tamanho de cada um",
+      "Dois, um apontador e o novo tamanho do bloco",
+      "Nenhum, aloca sempre um bloco de tamanho fixo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.16"
+  },
+  {
+    "question": "Que valor contém a memória alocada por malloc?",
+    "answers": [
+      "Zeros, pois é sempre inicializada",
+      "Valores indeterminados (lixo)",
+      "Uns, pois é sempre inicializada",
+      "O valor que estava no último free"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.16"
+  },
+  {
+    "question": "O que devolve malloc se o pedido de memória não puder ser satisfeito?",
+    "answers": [
+      "Zero bytes de memória",
+      "Um apontador para a pilha",
+      "NULL",
+      "O valor -1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.16"
+  },
+  {
+    "question": "O que devolve malloc se o pedido for satisfeito?",
+    "answers": [
+      "Um apontador para o último byte da memória alocada",
+      "O número de bytes alocados",
+      "O valor zero",
+      "Um apontador para o primeiro byte da memória alocada"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.16"
+  },
+  {
+    "question": "A memória alocada por malloc não é inicializada",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.16"
+  },
+  {
+    "question": "Quantos argumentos recebe calloc?",
+    "answers": [
+      "Dois, o número de elementos e o tamanho",
+      "Um só, o número total de bytes a reservar",
+      "Dois, um apontador e o novo tamanho do bloco",
+      "Nenhum, aloca sempre um bloco de tamanho fixo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.17"
+  },
+  {
+    "question": "O que faz calloc, para além de alocar a memória?",
+    "answers": [
+      "Inicializa todos os bytes a um",
+      "Inicializa a zero todos os bits",
+      "Inicializa o primeiro byte apenas",
+      "Não inicializa nada"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.17"
+  },
+  {
+    "question": "O que devolve calloc se o pedido não puder ser satisfeito?",
+    "answers": [
+      "Zero bytes de memória",
+      "Um apontador para a pilha",
+      "NULL",
+      "O valor -1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.17"
+  },
+  {
+    "question": "A memória alocada por calloc contém valores indeterminados",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.17"
+  },
+  {
+    "question": "Em RV32, quantos bytes reserva calloc(10, 4)?",
+    "answers": [
+      "44",
+      "80",
+      "20",
+      "40"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.17"
+  },
+  {
+    "question": "Em RV32, quantos bytes reserva calloc(4, 8)?",
+    "answers": [
+      "32",
+      "36",
+      "64",
+      "16"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.17"
+  },
+  {
+    "question": "Em RV32, quantos bytes reserva calloc(100, 1)?",
+    "answers": [
+      "104",
+      "100",
+      "200",
+      "50"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.17"
+  },
+  {
+    "question": "Em RV32, quantos bytes reserva calloc(25, 4)?",
+    "answers": [
+      "104",
+      "200",
+      "100",
+      "50"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.17"
+  },
+  {
+    "question": "Em RV32, quantos bytes reserva calloc(3, 2)?",
+    "answers": [
+      "10",
+      "12",
+      "3",
+      "6"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.17"
+  },
+  {
+    "question": "Para que serve realloc?",
+    "answers": [
+      "Para alterar o tamanho de um bloco de memória previamente alocado",
+      "Para alocar um bloco de memória sempre inicializado a zero",
+      "Para libertar um bloco de memória alocado antes",
+      "Para copiar um bloco de memória para a pilha"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.18"
+  },
+  {
+    "question": "Que dois argumentos recebe realloc?",
+    "answers": [
+      "O número de elementos e o tamanho de cada um",
+      "O apontador para o bloco e o novo tamanho",
+      "O tamanho antigo e o novo tamanho",
+      "O apontador para o bloco e o seu tipo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.18"
+  },
+  {
+    "question": "O que pode acontecer se o novo tamanho for maior do que o original?",
+    "answers": [
+      "O bloco passa a ficar sempre na pilha do CPU",
+      "O bloco é inicializado a zero em todos os bytes",
+      "O bloco pode ser movido para outra localização",
+      "O bloco é libertado automaticamente pelo sistema"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.18"
+  },
+  {
+    "question": "O que acontece se o novo tamanho for menor do que o original?",
+    "answers": [
+      "O bloco é movido sempre para outra localização",
+      "O bloco é libertado por completo",
+      "O bloco é inicializado a zero",
+      "O bloco é truncado para o novo tamanho"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.18"
+  },
+  {
+    "question": "Quando se aumenta um bloco com realloc, o endereço do bloco pode mudar",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.18"
+  },
+  {
+    "question": "Em RV32, um vetor de 10 int é alargado com realloc(p, (10 + 5) * sizeof(int)). Qual é o novo tamanho do bloco, em bytes?",
+    "answers": [
+      "60",
+      "64",
+      "40",
+      "120"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.27"
+  },
+  {
+    "question": "Em RV32, um vetor de 8 int é alargado com realloc(p, (8 + 8) * sizeof(int)). Qual é o novo tamanho do bloco, em bytes?",
+    "answers": [
+      "68",
+      "64",
+      "32",
+      "128"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.27"
+  },
+  {
+    "question": "Em RV32, um vetor de 20 int é alargado com realloc(p, (20 + 10) * sizeof(int)). Qual é o novo tamanho do bloco, em bytes?",
+    "answers": [
+      "124",
+      "80",
+      "120",
+      "240"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.27"
+  },
+  {
+    "question": "Considere p = (int*) realloc(p, (n+m)*sizeof(int));. Que índices de p ficam livres para inicializar de novo?",
+    "answers": [
+      "Os índices de 0 a n - 1 do bloco",
+      "Os índices de 0 a n + m do bloco",
+      "Os índices de m a n + m do bloco",
+      "Os índices de n a n + m - 1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.27"
+  },
+  {
+    "question": "Depois de p = (int*) realloc(p, (n+m)*sizeof(int)); com êxito, quantos int tem o bloco?",
+    "answers": [
+      "n + m",
+      "n",
+      "m",
+      "n * m"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.27"
+  },
+  {
+    "question": "Para que serve free?",
+    "answers": [
+      "Para alocar memória nova e inicializá-la a zero",
+      "Para libertar memória já alocada dinamicamente",
+      "Para alterar o tamanho de um bloco alocado",
+      "Para apagar o valor de uma variável local"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.19"
+  },
+  {
+    "question": "O que consegue o programador ao libertar um bloco com free?",
+    "answers": [
+      "Impede que o programa aloque memória",
+      "Aumenta o tamanho da pilha",
+      "Torna possíveis mais alocações",
+      "Elimina todas as variáveis locais"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.19"
+  },
+  {
+    "question": "O que é preciso fazer para evitar fugas de memória?",
+    "answers": [
+      "Usar malloc várias vezes seguidas no programa",
+      "Declarar todas as variáveis como globais",
+      "Usar apenas variáveis locais de pequeno tamanho",
+      "Usar free sobre a memória alocada dinamicamente"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.19"
+  },
+  {
+    "question": "A memória alocada com malloc é libertada automaticamente no fim da função",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.19"
+  },
+  {
+    "question": "Considere int *p; p = (int *) malloc(sizeof(int)); if (p != NULL) { *p = 6; } Quantos bytes são pedidos ao heap, em RV32?",
+    "answers": [
+      "4",
+      "1",
+      "6",
+      "8"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.20"
+  },
+  {
+    "question": "Considere int *p; p = (int *) malloc(sizeof(int)); if (p != NULL) { *p = 6; } Para que serve o teste p != NULL?",
+    "answers": [
+      "Para garantir que p aponta para a pilha",
+      "Para garantir que a alocação teve êxito",
+      "Para libertar p se for diferente de zero",
+      "Para inicializar p com o valor 6"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.20"
+  },
+  {
+    "question": "Considere int *p; p = (int *) malloc(sizeof(int)); if (p != NULL) { *p = 6; } Que valor tem *p, se malloc teve êxito?",
+    "answers": [
+      "0",
+      "NULL",
+      "6",
+      "Um valor indeterminado"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.20"
+  },
+  {
+    "question": "Considere int *p; p = (int *) malloc(sizeof(int)); if (p != NULL) { *p = 6; } Onde está guardado o valor 6?",
+    "answers": [
+      "Na variável p, que passa a valer 6",
+      "Na pilha, no endereço onde está guardado p",
+      "Na zona de código das instruções do programa",
+      "Na memória do heap para onde p aponta"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.20"
+  },
+  {
+    "question": "Porque se usa sizeof ao pedir memória com malloc?",
+    "answers": [
+      "Para calcular o número de bytes a pedir",
+      "Para libertar a memória depois de usada",
+      "Para inicializar a memória a zero",
+      "Para evitar usar o operador de cast"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.20"
+  },
+  {
+    "question": "Quando um programa já não precisa de memória alocada com malloc, o que deve fazer?",
+    "answers": [
+      "Esperar que o heap a liberte sozinho",
+      "Libertá-la explicitamente com free",
+      "Chamar malloc com tamanho zero",
+      "Atribuir NULL ao apontador, sem chamar free"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.21"
+  },
+  {
+    "question": "Porque é boa ideia atribuir NULL ao apontador depois de free(p)?",
+    "answers": [
+      "Para a memória libertada ser reinicializada a zero",
+      "Para o heap crescer na chamada seguinte",
+      "Para o apontador não ficar a referir memória já libertada",
+      "Para evitar que o programa volte a alocar o mesmo bloco"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.21"
+  },
+  {
+    "question": "Depois de free(p), o apontador p passa automaticamente a valer NULL",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.21"
+  },
+  {
+    "question": "O que é um dangling pointer (apontador pendente)?",
+    "answers": [
+      "Um apontador que aponta sempre para a pilha",
+      "Um apontador cujo valor é sempre NULL",
+      "Um apontador do tipo void *",
+      "Um apontador que não aponta para um objeto válido"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.22"
+  },
+  {
+    "question": "O que é o CWE-416?",
+    "answers": [
+      "Use After Free, o uso de memória já libertada",
+      "Buffer Overflow, a escrita para lá do buffer",
+      "Memory Leak, a perda de blocos alocados",
+      "Stack Overflow, o esgotamento da pilha"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.22"
+  },
+  {
+    "question": "Que risco existe se o apontador libertado não for posto a NULL?",
+    "answers": [
+      "A memória nunca mais pode ser realocada por mais ninguém",
+      "A memória pode ser reutilizada e o apontador antigo ainda a referir",
+      "O programa para de imediato com uma mensagem de erro fatal",
+      "A memória é libertada duas vezes de forma automática pelo sistema"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.22"
+  },
+  {
+    "question": "Considere int *p = (int *) malloc(sizeof(int)); *p = 6; int *q = p; free(p); p = NULL; Que apontador fica pendente (dangling) no fim?",
+    "answers": [
+      "O apontador p, porque ficou com o valor NULL depois de free",
+      "Nenhum apontador, porque p foi posto a NULL depois de free",
+      "O apontador q, porque aponta para memória já libertada",
+      "Ambos os apontadores, p e q, porque free liberta a memória"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.22"
+  },
+  {
+    "question": "Considerando int *q = p; free(p); p = NULL;, o apontador q continua a referir o endereço do bloco libertado",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.22"
+  },
+  {
+    "question": "Pôr p = NULL depois de free(p) corrige também outros apontadores que guardavam o mesmo endereço",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.22"
+  },
+  {
+    "question": "Em int *d_array = malloc(sizeof(int) * 20), o que representa o valor do apontador d_array?",
+    "answers": [
+      "O número de elementos do vetor",
+      "O valor do primeiro elemento do vetor",
+      "O endereço da pilha do programa",
+      "O endereço base do vetor no heap"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.24"
+  },
+  {
+    "question": "Como se acede aos elementos de um vetor alocado dinamicamente?",
+    "answers": [
+      "Com a mesma sintaxe do vetor estático, d_array[i]",
+      "Com uma sintaxe especial, como d_array->i",
+      "Com uma função especial, como get(d_array, i)",
+      "Com a sintaxe de estrutura, como d_array.i"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.24"
+  },
+  {
+    "question": "Quando o programa termina de usar um vetor dinâmico, o que deve fazer?",
+    "answers": [
+      "Chamar malloc de novo para o poder apagar",
+      "Chamar free para libertar o espaço no heap",
+      "Pôr todos os elementos do vetor a zero e sair",
+      "Declarar o apontador como static no início"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.24"
+  },
+  {
+    "question": "Porque se testa d_array == NULL depois de malloc?",
+    "answers": [
+      "Porque malloc devolve sempre NULL",
+      "Porque d_array é um vetor estático",
+      "Porque a alocação pode falhar",
+      "Porque free exige que o apontador seja NULL"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.24"
+  },
+  {
+    "question": "O código int s_array[20] aloca o vetor no heap",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.24"
+  },
+  {
+    "question": "O que é passado a uma função quando se lhe passa um vetor alocado dinamicamente?",
+    "answers": [
+      "Uma cópia de todos os elementos do vetor",
+      "O tamanho total do vetor, medido em bytes",
+      "O endereço da própria variável apontador",
+      "O valor do apontador, o endereço base no heap"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.25"
+  },
+  {
+    "question": "Qual o valor que o parâmetro recebe, quando se passa um vetor estático ou dinâmico a uma função?",
+    "answers": [
+      "O mesmo valor: o endereço base do vetor",
+      "Um valor diferente em cada um dos dois casos",
+      "Sempre uma cópia completa de todo o vetor",
+      "Sempre o número total de elementos do vetor"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.25"
+  },
+  {
+    "question": "Considere void init_array(int *arr, int size) { int i; for (i = 0; i < size; i++) { arr[i] = i; } }. O que faz a função?",
+    "answers": [
+      "Aloca arr no heap",
+      "Preenche arr[i] com o valor i",
+      "Liberta arr",
+      "Preenche arr[i] com o valor size"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.25"
+  },
+  {
+    "question": "Considere int arr_alloc(int **p, int n) { int res = 1; *p = (int *) malloc(sizeof(int) * n); if (*p == NULL) { res = 0; } return res; } Porque é que o parâmetro é int **p?",
+    "answers": [
+      "Para a função poder alocar uma matriz",
+      "Para a função devolver dois apontadores",
+      "Para a função poder alterar o apontador da função chamadora",
+      "Para a função guardar o tamanho do vetor"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.26"
+  },
+  {
+    "question": "Considere int arr_alloc(int **p, int n) { int res = 1; *p = (int *) malloc(sizeof(int) * n); if (*p == NULL) { res = 0; } return res; } O que devolve a função?",
+    "answers": [
+      "O endereço do vetor alocado no heap",
+      "O número de elementos alocados com êxito",
+      "Sempre o valor 1, qualquer que seja o caso",
+      "1 se a alocação teve êxito e 0 se falhou"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.26"
+  },
+  {
+    "question": "Considere int arr_alloc(int **p, int n) { int res = 1; *p = (int *) malloc(sizeof(int) * n); if (*p == NULL) { res = 0; } return res; } e a chamada int r = arr_alloc(&arr1, 10);. O que contém arr1 se a alocação teve êxito?",
+    "answers": [
+      "O endereço do vetor alocado no heap",
+      "O número 10, que é o tamanho pedido",
+      "O valor NULL que tinha antes da chamada",
+      "O valor de r, o resultado devolvido"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.26"
+  },
+  {
+    "question": "Considere int* arr_alloc(int n) { int *p = (int *) malloc(sizeof(int) * n); return p; } e arr1 = arr_alloc(10);. Quem deve libertar o vetor?",
+    "answers": [
+      "A função arr_alloc, antes de regressar ao main",
+      "A função que recebeu o apontador, com free(arr1)",
+      "O sistema operativo, quando a função main termina",
+      "Ninguém, porque o vetor está alocado na pilha"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.26"
+  },
+  {
+    "question": "Qual é a diferença entre as duas versões de arr_alloc, a que recebe int **p e a que devolve int*?",
+    "answers": [
+      "Uma aloca no heap e a outra aloca na pilha do programa",
+      "Uma inicializa a zero o vetor e a outra não inicializa",
+      "Uma altera o apontador por referência, a outra devolve o endereço",
+      "Uma liberta o vetor alocado e a outra aloca um novo vetor"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.26"
+  },
+  {
+    "question": "Considere int ** mat_alloc(int y, int k) { int **a = calloc(y, sizeof(int*)); for (i = 0; i < y; i++) a[i] = calloc(k, sizeof(int)); return a; } O que representa a?",
+    "answers": [
+      "Um vetor de y por k inteiros em posições contíguas",
+      "Um vetor de k apontadores para linhas de y inteiros",
+      "Um único apontador para um só inteiro isolado",
+      "Um vetor de y apontadores para linhas de k inteiros"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.29"
+  },
+  {
+    "question": "Em RV32, qual é o número total de chamadas a calloc em int ** mat_alloc(int y, int k) { int **a = calloc(y, sizeof(int*)); for (i = 0; i < y; i++) a[i] = calloc(k, sizeof(int)); return a; } com y = 5 e k = 10?",
+    "answers": [
+      "6",
+      "5",
+      "50",
+      "7"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.30"
+  },
+  {
+    "question": "Em RV32, quantos bytes ocupa o vetor de apontadores alocado em int ** mat_alloc(int y, int k) { int **a = calloc(y, sizeof(int*)); for (i = 0; i < y; i++) a[i] = calloc(k, sizeof(int)); return a; } com y = 5 e k = 10?",
+    "answers": [
+      "200",
+      "20",
+      "5",
+      "24"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.30"
+  },
+  {
+    "question": "Em RV32, quantos bytes de inteiros são alocados em int ** mat_alloc(int y, int k) { int **a = calloc(y, sizeof(int*)); for (i = 0; i < y; i++) a[i] = calloc(k, sizeof(int)); return a; } com y = 5 e k = 10, sem contar com o vetor de apontadores?",
+    "answers": [
+      "50",
+      "400",
+      "200",
+      "240"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.30"
+  },
+  {
+    "question": "Em RV32, quantos bytes são alocados no total em int ** mat_alloc(int y, int k) { int **a = calloc(y, sizeof(int*)); for (i = 0; i < y; i++) a[i] = calloc(k, sizeof(int)); return a; } com y = 5 e k = 10, incluindo o vetor de apontadores?",
+    "answers": [
+      "200",
+      "70",
+      "205",
+      "220"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.30"
+  },
+  {
+    "question": "Em RV32, qual é o número total de chamadas a calloc em int ** mat_alloc(int y, int k) { int **a = calloc(y, sizeof(int*)); for (i = 0; i < y; i++) a[i] = calloc(k, sizeof(int)); return a; } com y = 3 e k = 4?",
+    "answers": [
+      "4",
+      "3",
+      "12",
+      "5"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.30"
+  },
+  {
+    "question": "Em RV32, quantos bytes ocupa o vetor de apontadores alocado em int ** mat_alloc(int y, int k) { int **a = calloc(y, sizeof(int*)); for (i = 0; i < y; i++) a[i] = calloc(k, sizeof(int)); return a; } com y = 3 e k = 4?",
+    "answers": [
+      "48",
+      "12",
+      "3",
+      "16"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.30"
+  },
+  {
+    "question": "Em RV32, quantos bytes de inteiros são alocados em int ** mat_alloc(int y, int k) { int **a = calloc(y, sizeof(int*)); for (i = 0; i < y; i++) a[i] = calloc(k, sizeof(int)); return a; } com y = 3 e k = 4, sem contar com o vetor de apontadores?",
+    "answers": [
+      "12",
+      "96",
+      "48",
+      "64"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.30"
+  },
+  {
+    "question": "Em RV32, quantos bytes são alocados no total em int ** mat_alloc(int y, int k) { int **a = calloc(y, sizeof(int*)); for (i = 0; i < y; i++) a[i] = calloc(k, sizeof(int)); return a; } com y = 3 e k = 4, incluindo o vetor de apontadores?",
+    "answers": [
+      "48",
+      "24",
+      "51",
+      "60"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.30"
+  },
+  {
+    "question": "Em RV32, qual é o número total de chamadas a calloc em int ** mat_alloc(int y, int k) { int **a = calloc(y, sizeof(int*)); for (i = 0; i < y; i++) a[i] = calloc(k, sizeof(int)); return a; } com y = 10 e k = 10?",
+    "answers": [
+      "11",
+      "10",
+      "100",
+      "12"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.30"
+  },
+  {
+    "question": "Em RV32, quantos bytes ocupa o vetor de apontadores alocado em int ** mat_alloc(int y, int k) { int **a = calloc(y, sizeof(int*)); for (i = 0; i < y; i++) a[i] = calloc(k, sizeof(int)); return a; } com y = 10 e k = 10?",
+    "answers": [
+      "400",
+      "40",
+      "10",
+      "44"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.30"
+  },
+  {
+    "question": "Em RV32, quantos bytes de inteiros são alocados em int ** mat_alloc(int y, int k) { int **a = calloc(y, sizeof(int*)); for (i = 0; i < y; i++) a[i] = calloc(k, sizeof(int)); return a; } com y = 10 e k = 10, sem contar com o vetor de apontadores?",
+    "answers": [
+      "100",
+      "800",
+      "400",
+      "440"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.30"
+  },
+  {
+    "question": "Em RV32, quantos bytes são alocados no total em int ** mat_alloc(int y, int k) { int **a = calloc(y, sizeof(int*)); for (i = 0; i < y; i++) a[i] = calloc(k, sizeof(int)); return a; } com y = 10 e k = 10, incluindo o vetor de apontadores?",
+    "answers": [
+      "400",
+      "140",
+      "410",
+      "440"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.30"
+  },
+  {
+    "question": "Em RV32, qual é o número total de chamadas a calloc em int ** mat_alloc(int y, int k) { int **a = calloc(y, sizeof(int*)); for (i = 0; i < y; i++) a[i] = calloc(k, sizeof(int)); return a; } com y = 4 e k = 6?",
+    "answers": [
+      "5",
+      "4",
+      "24",
+      "6"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.30"
+  },
+  {
+    "question": "Em RV32, quantos bytes ocupa o vetor de apontadores alocado em int ** mat_alloc(int y, int k) { int **a = calloc(y, sizeof(int*)); for (i = 0; i < y; i++) a[i] = calloc(k, sizeof(int)); return a; } com y = 4 e k = 6?",
+    "answers": [
+      "96",
+      "16",
+      "4",
+      "20"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.30"
+  },
+  {
+    "question": "Em RV32, quantos bytes de inteiros são alocados em int ** mat_alloc(int y, int k) { int **a = calloc(y, sizeof(int*)); for (i = 0; i < y; i++) a[i] = calloc(k, sizeof(int)); return a; } com y = 4 e k = 6, sem contar com o vetor de apontadores?",
+    "answers": [
+      "24",
+      "192",
+      "96",
+      "120"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.30"
+  },
+  {
+    "question": "Em RV32, quantos bytes são alocados no total em int ** mat_alloc(int y, int k) { int **a = calloc(y, sizeof(int*)); for (i = 0; i < y; i++) a[i] = calloc(k, sizeof(int)); return a; } com y = 4 e k = 6, incluindo o vetor de apontadores?",
+    "answers": [
+      "96",
+      "40",
+      "100",
+      "112"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.30"
+  },
+  {
+    "question": "Numa matriz alocada com um vetor de apontadores para linhas, quantas chamadas a free são precisas para a libertar, com y linhas?",
+    "answers": [
+      "y + 1, uma por linha e uma para o vetor de apontadores",
+      "Apenas y, uma por cada linha, esquecendo o vetor de apontadores",
+      "1, só para o vetor de apontadores, que liberta tudo",
+      "2, uma para todas as linhas e outra para o vetor"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.29"
+  },
+  {
+    "question": "Numa matriz alocada com um vetor de apontadores, qual é a ordem correta de libertação?",
+    "answers": [
+      "Primeiro o vetor de apontadores e só depois cada linha",
+      "Primeiro cada linha e só depois o vetor de apontadores",
+      "Apenas o vetor de apontadores, que liberta tudo",
+      "Apenas cada linha, que liberta o vetor"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.29"
+  },
+  {
+    "question": "O que acontece se se libertar o vetor de apontadores de uma matriz antes de libertar cada linha?",
+    "answers": [
+      "As linhas são libertadas automaticamente pelo sistema",
+      "A matriz passa a ficar guardada na pilha do programa",
+      "Perdem-se os endereços das linhas, com fuga de memória",
+      "Ocorre um stack overflow logo na chamada a free"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.29"
+  },
+  {
+    "question": "Porque é que a função mat_alloc1 recebe int *** a?",
+    "answers": [
+      "Para alocar um cubo de inteiros com três níveis",
+      "Para devolver o número de linhas e de colunas",
+      "Para libertar a matriz alocada no fim da função",
+      "Para poder alterar o int ** da função chamadora"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.29"
+  },
+  {
+    "question": "Considere a[i] = calloc(k, sizeof(int)) numa matriz. Que valores têm os elementos da linha i logo após a alocação?",
+    "answers": [
+      "Zero, porque calloc inicializa a memória",
+      "Indeterminados, porque calloc não inicializa",
+      "Um, porque calloc inicializa a um",
+      "O valor de i"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.30"
+  },
+  {
+    "question": "Porque se verifica se a[i] == NULL depois de cada calloc de linha?",
+    "answers": [
+      "Porque calloc devolve sempre NULL",
+      "Porque a alocação de cada linha pode falhar",
+      "Porque a[i] é um vetor estático",
+      "Porque cada linha tem de ser libertada"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.30"
+  },
+  {
+    "question": "O que significa dizer que a memória do heap é anónima?",
+    "answers": [
+      "Os endereços do heap são sempre secretos e protegidos",
+      "Os endereços do heap não podem ser lidos pelo programa",
+      "Os endereços do heap não têm nomes de variáveis",
+      "Os endereços do heap não têm um tamanho definido"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.32"
+  },
+  {
+    "question": "Onde são alocadas as variáveis com nome declaradas no programa?",
+    "answers": [
+      "No heap, qualquer que seja a variável",
+      "Nos registos, qualquer que seja a variável",
+      "No disco, qualquer que seja a variável",
+      "Na pilha ou na parte estática da memória"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.32"
+  },
+  {
+    "question": "Que diferença existe entre o heap e a pilha quanto às regras de alocação e libertação?",
+    "answers": [
+      "No heap, os blocos podem ser alocados e libertados em qualquer altura",
+      "No heap, os blocos são libertados sempre pela ordem inversa da alocação",
+      "Na pilha, os blocos podem ser libertados em qualquer ordem",
+      "No heap e na pilha, a ordem é sempre igual"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.32"
+  },
+  {
+    "question": "A alocação e a libertação de blocos no heap não seguem regras fixas, ao contrário da pilha",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.32"
+  },
+  {
+    "question": "Para que os programadores usam alocadores dinâmicos de memória?",
+    "answers": [
+      "Para obter memória em compilação, para dados de tamanho fixo e conhecido",
+      "Para obter memória em execução, para dados de tamanho só então conhecido",
+      "Para libertar registos do processador durante a execução do programa",
+      "Para guardar o código das funções do programa no executável"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.33"
+  },
+  {
+    "question": "O que é um alocador explícito?",
+    "answers": [
+      "Aquele em que o programador só aloca, como o garbage collector",
+      "Aquele em que o sistema aloca e liberta tudo sozinho",
+      "Aquele em que o programador aloca e liberta, como malloc e free",
+      "Aquele em que a memória alocada nunca chega a ser libertada"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.33"
+  },
+  {
+    "question": "O que é um alocador implícito?",
+    "answers": [
+      "Aquele em que o programador aloca e liberta com malloc e free",
+      "Aquele em que a memória é alocada em tempo de compilação",
+      "Aquele em que a memória só é alocada na pilha do programa",
+      "Aquele em que o programador só aloca e o espaço é libertado sozinho"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.33"
+  },
+  {
+    "question": "Qual destas linguagens usa um alocador implícito, com garbage collection?",
+    "answers": [
+      "Java",
+      "C",
+      "Assembly RISC-V",
+      "Fortran"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.33"
+  },
+  {
+    "question": "Em Java, o programador tem de chamar free para libertar objetos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.33"
+  },
+  {
+    "question": "Como organiza o alocador o heap?",
+    "answers": [
+      "Como um único grande bloco de tamanho fixo e contíguo",
+      "Como blocos de tamanho variável, alocados ou livres",
+      "Como uma pilha de blocos todos de igual tamanho",
+      "Como um vetor ordenado de variáveis com o seu nome"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.34"
+  },
+  {
+    "question": "Quem atribui páginas de memória ao programa?",
+    "answers": [
+      "O compilador de C, durante a compilação do código",
+      "O próprio programa, escrevendo diretamente na pilha",
+      "O hardware de memória virtual e o sistema operativo",
+      "O linker, ao criar o ficheiro executável do programa"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.34"
+  },
+  {
+    "question": "Porque gere o alocador blocos dentro de páginas?",
+    "answers": [
+      "Porque os objetos da aplicação são maiores do que as páginas",
+      "Porque cada página só consegue guardar um único objeto",
+      "Porque o sistema operativo não permite outra forma de gestão",
+      "Porque os objetos são em geral mais pequenos do que as páginas"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.34"
+  },
+  {
+    "question": "No modelo simplificado, de que tamanho são as palavras de memória?",
+    "answers": [
+      "Palavras de 4 bytes (32 bits)",
+      "Palavras de 8 bytes (64 bits)",
+      "Palavras de 2 bytes (16 bits)",
+      "Palavras de 1 byte (8 bits)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.35"
+  },
+  {
+    "question": "Neste modelo simplificado, com palavras de 4 bytes, que tamanhos de alocação são permitidos?",
+    "answers": [
+      "Múltiplos de 8 bytes",
+      "Múltiplos de 4 bytes",
+      "Qualquer número de bytes",
+      "Apenas potências de 2"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.35"
+  },
+  {
+    "question": "O que pode uma aplicação pedir ao alocador?",
+    "answers": [
+      "Apenas pedidos de malloc, nunca pedidos de free",
+      "Apenas pedidos por ordem crescente de tamanho",
+      "Qualquer sequência de pedidos de malloc e free",
+      "Apenas um único pedido de cada vez, no máximo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.37"
+  },
+  {
+    "question": "Uma aplicação pode libertar com free memória que nunca foi alocada",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.37"
+  },
+  {
+    "question": "O alocador controla o número e o tamanho dos blocos que a aplicação pede",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.37"
+  },
+  {
+    "question": "O alocador pode mover blocos já alocados para reduzir a fragmentação",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.37"
+  },
+  {
+    "question": "Porque é que o alocador não pode fazer desfragmentação?",
+    "answers": [
+      "Porque só pode alterar a memória alocada",
+      "Porque não conhece o tamanho dos blocos livres",
+      "Porque a desfragmentação é feita só pelo disco",
+      "Porque não pode mover os blocos já alocados"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.37"
+  },
+  {
+    "question": "Que memória pode o alocador manipular e modificar?",
+    "answers": [
+      "Apenas a memória livre",
+      "Apenas a memória alocada",
+      "Toda a memória do sistema",
+      "Apenas a pilha do programa"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.37"
+  },
+  {
+    "question": "O alocador tem de alinhar os blocos para satisfazerem todos os requisitos de alinhamento",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.37"
+  },
+  {
+    "question": "O que é a carga útil (payload) de um bloco?",
+    "answers": [
+      "Os bytes usados pelo cabeçalho e rodapé do bloco",
+      "Os p bytes pedidos pela aplicação com malloc(p)",
+      "Os bytes livres que existem entre dois blocos",
+      "Os bytes alocados no total pelo alocador de memória"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.38"
+  },
+  {
+    "question": "O que é a carga útil agregada Pk após o pedido Rk?",
+    "answers": [
+      "A soma das cargas úteis de todos os blocos já pedidos",
+      "O tamanho atual do heap",
+      "A soma das cargas úteis dos blocos atualmente alocados",
+      "O maior bloco livre disponível"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.38"
+  },
+  {
+    "question": "O que é o tamanho atual do heap Hk?",
+    "answers": [
+      "A soma das cargas úteis de todos os blocos alocados",
+      "O tamanho do maior bloco alocado até ao momento",
+      "O número total de pedidos de malloc e de free já feitos",
+      "O tamanho do heap atribuído pelo sistema até ao pedido k"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.38"
+  },
+  {
+    "question": "Assume-se que o tamanho do heap Hk nunca diminui, ou seja, é monótono não decrescente",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.38"
+  },
+  {
+    "question": "Que chamada usa o alocador para aumentar o tamanho do heap?",
+    "answers": [
+      "sbrk",
+      "malloc",
+      "free",
+      "realloc"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.38"
+  },
+  {
+    "question": "O que é o débito (throughput) de um alocador?",
+    "answers": [
+      "A fração do heap que está ocupada por blocos",
+      "O número de pedidos concluídos por unidade de tempo",
+      "O número de blocos livres que existem no heap",
+      "O tamanho médio dos blocos que foram alocados"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.39"
+  },
+  {
+    "question": "Se foram concluídas 5000 chamadas a malloc e 5000 a free em 10 segundos, qual é o débito em operações por segundo?",
+    "answers": [
+      "500",
+      "2000",
+      "1000",
+      "100000"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.39"
+  },
+  {
+    "question": "Se foram concluídas 2000 chamadas a malloc e 3000 a free em 5 segundos, qual é o débito em operações por segundo?",
+    "answers": [
+      "400",
+      "2000",
+      "25000",
+      "1000"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.39"
+  },
+  {
+    "question": "Se foram concluídas 10000 chamadas a malloc e 10000 a free em 4 segundos, qual é o débito em operações por segundo?",
+    "answers": [
+      "5000",
+      "2500",
+      "10000",
+      "80000"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.39"
+  },
+  {
+    "question": "Se foram concluídas 600 chamadas a malloc e 400 a free em 2 segundos, qual é o débito em operações por segundo?",
+    "answers": [
+      "300",
+      "500",
+      "1000",
+      "2000"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.39"
+  },
+  {
+    "question": "Como se define a utilização do heap Uk depois de k pedidos?",
+    "answers": [
+      "O tamanho do heap Hk a dividir pelo máximo das cargas úteis",
+      "A soma das cargas úteis a dividir pelo número de pedidos",
+      "O máximo das cargas úteis Pi, com i ≤ k, a dividir por Hk",
+      "O número de pedidos a dividir por Hk"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.39"
+  },
+  {
+    "question": "Se a carga útil agregada máxima é 6000 bytes e o heap tem 8000 bytes, qual é a utilização do heap?",
+    "answers": [
+      "0,25",
+      "0,5",
+      "1",
+      "0,75"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.39"
+  },
+  {
+    "question": "Se a carga útil agregada máxima é 2000 bytes e o heap tem 4000 bytes, qual é a utilização do heap?",
+    "answers": [
+      "0,5",
+      "0,25",
+      "0,75",
+      "1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.39"
+  },
+  {
+    "question": "Se a carga útil agregada máxima é 900 bytes e o heap tem 1200 bytes, qual é a utilização do heap?",
+    "answers": [
+      "0,25",
+      "0,75",
+      "0,5",
+      "1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.39"
+  },
+  {
+    "question": "Se a carga útil agregada máxima é 300 bytes e o heap tem 1200 bytes, qual é a utilização do heap?",
+    "answers": [
+      "0,5",
+      "0,75",
+      "0,25",
+      "1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.39"
+  },
+  {
+    "question": "Se a carga útil agregada máxima é 1500 bytes e o heap tem 1500 bytes, qual é a utilização do heap?",
+    "answers": [
+      "0,25",
+      "0,5",
+      "0,75",
+      "1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.39"
+  },
+  {
+    "question": "Qual é o objetivo principal de um alocador?",
+    "answers": [
+      "Maximizar o débito e a utilização da memória",
+      "Minimizar o débito e a utilização da memória",
+      "Maximizar o débito e minimizar o tamanho dos pedidos",
+      "Minimizar apenas o número de blocos livres"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.40"
+  },
+  {
+    "question": "Os objetivos de maximizar o débito e a utilização da memória são frequentemente conflituantes",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.40"
+  },
+  {
+    "question": "O que causa a fraca utilização da memória num alocador?",
+    "answers": [
+      "O alinhamento dos endereços",
+      "A fragmentação",
+      "O tamanho da página",
+      "O número de núcleos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.41"
+  },
+  {
+    "question": "Quais são os dois tipos de fragmentação?",
+    "answers": [
+      "Estática e dinâmica",
+      "Temporal e espacial",
+      "Interna e externa",
+      "Virtual e física"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.41"
+  },
+  {
+    "question": "O que é a memória fragmentada?",
+    "answers": [
+      "Memória que guarda dados duplicados pelo sistema",
+      "Memória que o sistema operativo reservou para si",
+      "Memória que só pode ser lida pelo processador",
+      "Memória sem uso útil, que não satisfaz pedidos"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.41"
+  },
+  {
+    "question": "Quando ocorre fragmentação interna num bloco?",
+    "answers": [
+      "Quando a carga útil é menor do que o bloco",
+      "Quando o bloco é maior do que o heap",
+      "Quando existem blocos livres entre dois blocos alocados",
+      "Quando o bloco não foi libertado"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.42"
+  },
+  {
+    "question": "Como se calcula a fragmentação interna de um bloco?",
+    "answers": [
+      "Tamanho do heap menos tamanho do bloco",
+      "Tamanho do bloco menos tamanho da carga útil",
+      "Tamanho do bloco mais tamanho da carga útil",
+      "Tamanho da carga útil a dividir pelo bloco"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.42"
+  },
+  {
+    "question": "Que causa de fragmentação interna está ligada ao alinhamento?",
+    "answers": [
+      "Buracos entre blocos alocados",
+      "Blocos livres demasiado pequenos",
+      "Enchimento (padding) por razões de alinhamento",
+      "Libertação de blocos por ordem aleatória"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.42"
+  },
+  {
+    "question": "Que causa de fragmentação interna está ligada à gestão do heap?",
+    "answers": [
+      "A existência de muitos blocos livres pequenos e separados",
+      "A libertação repetida de um mesmo bloco de memória",
+      "A falta de chamadas a free sobre blocos pequenos",
+      "O custo de manter estruturas do heap dentro do bloco"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.42"
+  },
+  {
+    "question": "Um bloco tem 16 bytes e uma carga útil de 10 bytes. Qual é a sua fragmentação interna?",
+    "answers": [
+      "6",
+      "26",
+      "10",
+      "8"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.42"
+  },
+  {
+    "question": "Um bloco tem 32 bytes e uma carga útil de 24 bytes. Qual é a sua fragmentação interna?",
+    "answers": [
+      "56",
+      "8",
+      "24",
+      "10"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.42"
+  },
+  {
+    "question": "Um bloco tem 24 bytes e uma carga útil de 20 bytes. Qual é a sua fragmentação interna?",
+    "answers": [
+      "44",
+      "20",
+      "4",
+      "6"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.42"
+  },
+  {
+    "question": "Um bloco tem 48 bytes e uma carga útil de 33 bytes. Qual é a sua fragmentação interna?",
+    "answers": [
+      "81",
+      "33",
+      "17",
+      "15"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.42"
+  },
+  {
+    "question": "Um bloco tem 64 bytes e uma carga útil de 60 bytes. Qual é a sua fragmentação interna?",
+    "answers": [
+      "4",
+      "124",
+      "60",
+      "6"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.42"
+  },
+  {
+    "question": "Quando ocorre fragmentação externa?",
+    "answers": [
+      "Quando a carga útil de um bloco é menor do que o bloco",
+      "Quando alocar e libertar deixa buracos entre blocos",
+      "Quando o enchimento de um bloco é maior do que o bloco",
+      "Quando o heap é maior do que toda a memória do sistema"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.43"
+  },
+  {
+    "question": "Que situação pode a fragmentação externa causar?",
+    "answers": [
+      "Haver memória a menos para guardar o cabeçalho do bloco",
+      "Haver blocos alocados sem qualquer carga útil dentro",
+      "Haver memória livre no total, mas sem bloco grande o bastante",
+      "Haver memória alocada sem qualquer endereço associado"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.43"
+  },
+  {
+    "question": "A fragmentação externa depende também do padrão dos pedidos futuros",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.43"
+  },
+  {
+    "question": "Existem três blocos livres separados de 8 bytes cada e chega um pedido de malloc(16). Que acontece, se o alocador não puder mover blocos?",
+    "answers": [
+      "O pedido é satisfeito juntando os três blocos",
+      "O pedido é satisfeito usando 16 dos 24 bytes",
+      "O alocador move os blocos alocados para os juntar",
+      "O pedido falha, apesar de haver 24 bytes livres"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.43"
+  },
+  {
+    "question": "Que problema de implementação se resolve guardando o comprimento do bloco?",
+    "answers": [
+      "Saber quanta memória libertar a partir do apontador",
+      "Saber quantos blocos livres existem no heap atual",
+      "Saber que bloco escolher para satisfazer o pedido",
+      "Saber como reinserir um bloco libertado no heap"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.44"
+  },
+  {
+    "question": "Qual é o método padrão para saber quanta memória libertar a partir de um apontador?",
+    "answers": [
+      "Guardar o comprimento no final do próprio bloco",
+      "Guardar o comprimento na palavra antes dos dados",
+      "Guardar o comprimento numa tabela separada do heap",
+      "Calcular o comprimento a partir do tipo do apontador"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.45"
+  },
+  {
+    "question": "Como se chama a palavra que precede os dados de um bloco e guarda o seu comprimento?",
+    "answers": [
+      "Rodapé (footer)",
+      "Etiqueta (tag)",
+      "Cabeçalho (header)",
+      "Índice (index)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.45"
+  },
+  {
+    "question": "O cabeçalho requer uma palavra extra por cada bloco alocado",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.45"
+  },
+  {
+    "question": "Com uma palavra de 4 bytes de cabeçalho por bloco, quantos bytes ocupa um bloco com 8 bytes de carga útil?",
+    "answers": [
+      "8",
+      "16",
+      "20",
+      "12"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.45"
+  },
+  {
+    "question": "Com uma palavra de 4 bytes de cabeçalho por bloco, quantos bytes ocupa um bloco com 24 bytes de carga útil?",
+    "answers": [
+      "28",
+      "24",
+      "32",
+      "36"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.45"
+  },
+  {
+    "question": "Com uma palavra de 4 bytes de cabeçalho por bloco, quantos bytes ocupa um bloco com 40 bytes de carga útil?",
+    "answers": [
+      "40",
+      "44",
+      "48",
+      "52"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.45"
+  },
+  {
+    "question": "Com um cabeçalho de 4 bytes por bloco alocado, quantos bytes de cabeçalho existem em 10 blocos alocados?",
+    "answers": [
+      "10",
+      "80",
+      "40",
+      "14"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.45"
+  },
+  {
+    "question": "Com um cabeçalho de 4 bytes por bloco alocado, quantos bytes de cabeçalho existem em 25 blocos alocados?",
+    "answers": [
+      "25",
+      "200",
+      "29",
+      "100"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.45"
+  },
+  {
+    "question": "Com um cabeçalho de 4 bytes por bloco alocado, quantos bytes de cabeçalho existem em 100 blocos alocados?",
+    "answers": [
+      "400",
+      "100",
+      "800",
+      "104"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.45"
+  },
+  {
+    "question": "O que é uma lista livre implícita?",
+    "answers": [
+      "Uma lista que liga só os blocos livres com apontadores",
+      "Uma lista que liga todos os blocos pelos comprimentos",
+      "Uma lista que separa os blocos livres por classes de tamanho",
+      "Uma lista ordenada de blocos numa árvore binária"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.46"
+  },
+  {
+    "question": "O que é preciso saber de cada bloco numa lista livre implícita?",
+    "answers": [
+      "Apenas o tamanho do bloco",
+      "Apenas o endereço do bloco seguinte",
+      "O tamanho e o estado de alocação",
+      "Apenas o nome do bloco"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.46"
+  },
+  {
+    "question": "Numa lista livre implícita, é preciso verificar cada bloco para saber se está alocado ou livre",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.46"
+  },
+  {
+    "question": "O que é uma lista livre explícita?",
+    "answers": [
+      "Uma lista que liga todos os blocos, usando comprimentos",
+      "Uma lista que separa os blocos por classes de tamanho",
+      "Uma lista de blocos ordenada numa árvore",
+      "Uma lista que liga apenas os blocos livres, usando apontadores"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.47"
+  },
+  {
+    "question": "O que é uma lista livre segregada (segregated free list)?",
+    "answers": [
+      "Várias listas livres, uma para cada classe de tamanho",
+      "Uma lista única de blocos livres ordenada por endereço",
+      "Uma lista com todos os blocos alocados do heap atual",
+      "Uma lista de blocos livres ordenada numa árvore binária"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.48"
+  },
+  {
+    "question": "Como se podem ordenar os blocos livres por tamanho?",
+    "answers": [
+      "Com uma tabela de dispersão, usando o endereço do bloco como chave",
+      "Com uma árvore binária equilibrada, usando o comprimento como chave",
+      "Com uma fila simples, organizada pela ordem de libertação",
+      "Com uma pilha simples, organizada pela ordem de alocação"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.48"
+  },
+  {
+    "question": "Que questão de implementação se coloca quando vários blocos livres cabem no pedido?",
+    "answers": [
+      "Como compilar em separado o código da função malloc",
+      "Como mover para outro lado os blocos já alocados",
+      "Como escolher o bloco, se vários couberem no pedido",
+      "Como aumentar a frequência de relógio do processador"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.44"
+  },
+  {
+    "question": "Que questão de implementação se coloca quando o bloco livre é maior do que o pedido?",
+    "answers": [
+      "Como desligar a memória que não está a ser usada agora",
+      "Como transformar a pilha do programa em heap dinâmico",
+      "Como converter o heap inteiro em registos do processador",
+      "Que fazer ao espaço extra do bloco maior do que o pedido"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.44"
+  }
+]

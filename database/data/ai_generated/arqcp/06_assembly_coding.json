@@ -1,0 +1,1335 @@
+[
+  {
+    "question": "O que é o opcode (ou mnemónico) de uma instrução assembly?",
+    "answers": [
+      "Um nome abreviado da operação a realizar, como ADD para a soma",
+      "O endereço de memória em que a instrução fica guardada",
+      "O número do registo onde fica o resultado da operação",
+      "A lista de argumentos sobre os quais a operação atua"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.7"
+  },
+  {
+    "question": "Que tipo de argumentos têm tipicamente as instruções assembly?",
+    "answers": [
+      "Apenas nomes de ficheiros e de funções em C",
+      "Endereços de memória, constantes ou registos do CPU",
+      "Apenas instruções de outras linguagens de alto nível",
+      "Apenas valores em vírgula flutuante de 64 bits"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.7"
+  },
+  {
+    "question": "Em assembly, o programador tem de conhecer a posição exata de memória de cada instrução, porque não é possível usar endereços simbólicos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.7"
+  },
+  {
+    "question": "Qual é a vantagem de usar endereços simbólicos (labels) em assembly?",
+    "answers": [
+      "O programa executa mais depressa, porque as labels são guardadas em registos do processador",
+      "O assembler deixa de ter de traduzir as instruções em código máquina para a arquitetura",
+      "O programador não precisa de conhecer a posição exata, e o código fica mais legível e fácil de manter",
+      "O programa passa a poder ser executado em qualquer arquitetura, sem alterações ao código"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.7"
+  },
+  {
+    "question": "O que são as linhas de um programa assembly que começam por um ponto (.)?",
+    "answers": [
+      "Instruções que o processador executa diretamente",
+      "Comentários que o assembler descarta",
+      "Labels que são guardadas na tabela de símbolos",
+      "Diretivas, que orientam o assembler e o linker"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.7"
+  },
+  {
+    "question": "Quais são as quatro secções em que se pode dividir um programa assembly?",
+    "answers": [
+      ".text, .rodata, .data e .bss",
+      ".text, .stack, .heap e .bss",
+      ".code, .rodata, .data e .bss",
+      ".text, .rodata, .data e .stack"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.8"
+  },
+  {
+    "question": "O que se guarda na secção .text?",
+    "answers": [
+      "As constantes, que o programa lê mas não modifica",
+      "O código, isto é, as instruções e a lógica do programa",
+      "As variáveis globais inicializadas",
+      "As variáveis não inicializadas"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.8"
+  },
+  {
+    "question": "O que se guarda na secção .rodata?",
+    "answers": [
+      "O código do programa, com as instruções e toda a lógica de execução do programa",
+      "As variáveis globais inicializadas, cujo valor é definido antes de o programa arrancar",
+      "As constantes, valores que o programa lê mas não modifica durante a execução",
+      "As variáveis que ainda não têm qualquer valor inicial definido pelo programador"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.8"
+  },
+  {
+    "question": "O que se guarda na secção .data?",
+    "answers": [
+      "As constantes, valores que o programa lê mas nunca modifica durante a sua execução",
+      "O código do programa, com as instruções e toda a lógica de execução do programa",
+      "As variáveis declaradas sem qualquer valor inicial definido pelo programador",
+      "As variáveis globais inicializadas, com valor definido antes do arranque do programa"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.8"
+  },
+  {
+    "question": "O que se guarda na secção .bss (block starting symbol)?",
+    "answers": [
+      "As variáveis declaradas sem valor inicial (não inicializadas)",
+      "As variáveis globais com um valor inicial definido antes do arranque",
+      "As constantes que o programa só lê e nunca chega a modificar",
+      "O código do programa, com as instruções e a lógica de execução"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.8"
+  },
+  {
+    "question": "Quais são os quatro elementos principais de um programa assembly, escrito como ficheiro de texto?",
+    "answers": [
+      "Comentários, funções, variáveis e diretivas",
+      "Comentários, labels, instruções assembly e diretivas",
+      "Labels, registos, instruções assembly e macros",
+      "Comentários, labels, instruções assembly e bibliotecas"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.10"
+  },
+  {
+    "question": "Como se define normalmente uma label num programa assembly?",
+    "answers": [
+      "Por um nome iniciado pelo prefixo ponto (.)",
+      "Por um nome iniciado pelo carácter #",
+      "Por um nome terminado pelo sufixo dois pontos (:)",
+      "Por um nome entre aspas simples"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.10"
+  },
+  {
+    "question": "Como são, em geral, codificadas as diretivas do assembler?",
+    "answers": [
+      "Por um nome terminado por dois pontos (:), seguido dos respetivos argumentos",
+      "Por uma instrução de 32 bits, tal como as restantes instruções do programa",
+      "Por um comentário especial, iniciado pelo carácter # e ignorado pelo assembler",
+      "Por uma cadeia com o nome da diretiva, com prefixo ponto (.), seguida dos argumentos"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.10"
+  },
+  {
+    "question": "As diretivas são convertidas pelo assembler em instruções máquina, tal como as instruções assembly",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.10"
+  },
+  {
+    "question": "Depois de descartados os comentários e os espaços em excesso, que tipos de elementos contém ainda um programa assembly?",
+    "answers": [
+      "Labels, instruções assembly e diretivas",
+      "Apenas instruções assembly",
+      "Apenas labels e diretivas",
+      "Comentários, labels e instruções assembly"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.11"
+  },
+  {
+    "question": "Qual destas linhas NÃO é permitida pela sintaxe de um programa assembly?",
+    "answers": [
+      "Uma linha totalmente vazia, sem label, instrução ou diretiva",
+      "Uma linha com uma instrução e uma diretiva em simultâneo",
+      "Uma linha que contém apenas uma única label",
+      "Uma linha com uma label seguida de uma instrução"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.12"
+  },
+  {
+    "question": "Uma linha de um programa assembly pode conter uma label seguida de uma diretiva",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.12"
+  },
+  {
+    "question": "Qual é o carácter de comentário de linha no assembler GNU para RV32I?",
+    "answers": [
+      "//",
+      ";",
+      "#",
+      "--"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.13"
+  },
+  {
+    "question": "Num comentário de linha, tudo o que está entre a primeira ocorrência de # e o fim da linha faz parte do comentário",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.13"
+  },
+  {
+    "question": "Como se delimita um comentário de várias linhas nos assemblers GNU?",
+    "answers": [
+      "Pelo par # e #",
+      "Pelo par // e //",
+      "Pelo par <!-- e -->",
+      "Pelo par /* e */"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.13"
+  },
+  {
+    "question": "Que dois tipos de labels aceitam normalmente os assemblers GNU?",
+    "answers": [
+      "Labels simbólicas e labels numéricas",
+      "Labels globais e labels estáticas",
+      "Labels locais e labels remotas",
+      "Labels de código e labels de dados"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.14"
+  },
+  {
+    "question": "Onde são guardadas as labels simbólicas?",
+    "answers": [
+      "Apenas dentro da secção .text, junto das instruções",
+      "Na tabela de símbolos, como símbolos do programa",
+      "Num registo do processador, escolhido pelo assembler",
+      "Na secção .bss, como variáveis não inicializadas"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.15"
+  },
+  {
+    "question": "Para que se usam, em geral, as labels simbólicas?",
+    "answers": [
+      "Para guardar o resultado de cálculos intermédios",
+      "Para comentar o código",
+      "Para identificar variáveis globais e rotinas",
+      "Para indicar o fim de uma secção"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.15"
+  },
+  {
+    "question": "Como se define uma label numérica?",
+    "answers": [
+      "Por um número de vários dígitos seguido de ponto",
+      "Por uma letra seguida de um dígito e de dois pontos",
+      "Por um único dígito decimal seguido de #",
+      "Por um único dígito decimal seguido de dois pontos (:)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.16"
+  },
+  {
+    "question": "As labels numéricas ficam registadas na tabela de símbolos dos ficheiros executáveis",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.16"
+  },
+  {
+    "question": "Uma label numérica pode ser redefinida várias vezes no mesmo programa assembly",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.16"
+  },
+  {
+    "question": "O que indica o sufixo b numa referência a uma label numérica, como 1b?",
+    "answers": [
+      "Que a label numérica referida está posicionada antes da referência",
+      "Que a label numérica referida está posicionada depois da referência",
+      "Que a label numérica referida é binária",
+      "Que a referência é a uma label global"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.16"
+  },
+  {
+    "question": "O que indica o sufixo f numa referência a uma label numérica, como 1f?",
+    "answers": [
+      "Que a label numérica referida está posicionada antes da referência",
+      "Que a label numérica referida está posicionada depois da referência",
+      "Que a label numérica referida é de vírgula flutuante",
+      "Que a referência é a uma label local"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.16"
+  },
+  {
+    "question": "Na função pow: mv a2, a0 / li a0, 1 / 1: beqz a1, 1f / mul a0, a0, a2 / addi a1, a1, -1 / j 1b / 1: ret, para onde salta a instrução beqz a1, 1f?",
+    "answers": [
+      "Para a label numérica 1: que está antes do beqz, no início do ciclo",
+      "Para a label simbólica pow",
+      "Para a label numérica 1: que está depois do beqz, junto ao ret",
+      "Para a primeira instrução do programa"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.17"
+  },
+  {
+    "question": "Na função pow: mv a2, a0 / li a0, 1 / 1: beqz a1, 1f / mul a0, a0, a2 / addi a1, a1, -1 / j 1b / 1: ret, para onde salta a instrução j 1b?",
+    "answers": [
+      "Para a label numérica 1: que está depois do j, junto ao ret",
+      "Para a label simbólica pow",
+      "Para o fim do programa",
+      "Para a label numérica 1: que está antes do j, no início do ciclo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.17"
+  },
+  {
+    "question": "Quantas labels simbólicas e quantas labels numéricas tem o código pow: mv a2, a0 / li a0, 1 / 1: beqz a1, 1f / mul a0, a0, a2 / addi a1, a1, -1 / j 1b / 1: ret?",
+    "answers": [
+      "Uma simbólica (pow) e duas numéricas (ambas chamadas 1:)",
+      "Duas simbólicas (pow e 1) e uma numérica (também chamada 1:)",
+      "Uma simbólica (pow) e apenas uma numérica (chamada 1:)",
+      "Nenhuma simbólica e três numéricas (pow, 1: e 1:)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.17"
+  },
+  {
+    "question": "Admita a0 = 2 e a1 = 3 à entrada da função pow: mv a2, a0 / li a0, 1 / 1: beqz a1, 1f / mul a0, a0, a2 / addi a1, a1, -1 / j 1b / 1: ret (que calcula a^b). Qual é o valor de a0 no fim?",
+    "answers": [
+      "6",
+      "8",
+      "5",
+      "9"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.17"
+  },
+  {
+    "question": "Admita a0 = 3 e a1 = 4 à entrada da função pow: mv a2, a0 / li a0, 1 / 1: beqz a1, 1f / mul a0, a0, a2 / addi a1, a1, -1 / j 1b / 1: ret (que calcula a^b). Qual é o valor de a0 no fim?",
+    "answers": [
+      "12",
+      "64",
+      "81",
+      "7"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.17"
+  },
+  {
+    "question": "Admita a0 = 5 e a1 = 0 à entrada da função pow: mv a2, a0 / li a0, 1 / 1: beqz a1, 1f / mul a0, a0, a2 / addi a1, a1, -1 / j 1b / 1: ret (que calcula a^b). Qual é o valor de a0 no fim?",
+    "answers": [
+      "0",
+      "5",
+      "-1",
+      "1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.17"
+  },
+  {
+    "question": "Admita que age: .word 42 está definida e que se executa la t1, age e lw a0, (t1). Que valor fica em a0?",
+    "answers": [
+      "42",
+      "O endereço da label age",
+      "0",
+      "O endereço da instrução lw"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.15"
+  },
+  {
+    "question": "Quantos bytes ocupa, escrita como texto, a instrução assembly add x10, x11, x12, à razão de um byte por carácter?",
+    "answers": [
+      "4",
+      "17",
+      "12",
+      "16"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.18"
+  },
+  {
+    "question": "O que é o location counter do assembler?",
+    "answers": [
+      "Um registo do processador que guarda o endereço da instrução que está em execução",
+      "Um contador do número de linhas do ficheiro assembly que já foram processadas",
+      "Um contador interno do assembler que guarda o endereço da próxima posição disponível",
+      "Um contador do número de instruções que o programa já executou em tempo de execução"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.20"
+  },
+  {
+    "question": "Existe um único location counter, partilhado por todas as secções do programa",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.20"
+  },
+  {
+    "question": "O que é o location counter ativo?",
+    "answers": [
+      "O location counter da secção .text, sempre",
+      "O location counter com o valor mais alto",
+      "O location counter da última label processada",
+      "O location counter da secção que está ativa"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.20"
+  },
+  {
+    "question": "Que faz o assembler GNU quando começa a processar um ficheiro assembly?",
+    "answers": [
+      "Limpa as secções e a tabela de símbolos, põe os location counters a zero e ativa a secção .text",
+      "Carrega o programa para a memória e põe o PC no endereço do ponto de entrada",
+      "Lê o ficheiro assembly de trás para a frente, a começar pela última linha do ficheiro",
+      "Seleciona a secção .data como ativa e inicializa todos os registos do processador"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.21"
+  },
+  {
+    "question": "O que faz o assembler ao processar uma label?",
+    "answers": [
+      "Converte-a numa instrução máquina de 32 bits, que junta à secção ativa",
+      "Regista-a como símbolo na tabela de símbolos, com o endereço atual do programa",
+      "Ignora-a e descarta-a, tal como faz com os comentários do programador",
+      "Guarda-a diretamente no ficheiro objeto, sem a registar em mais nenhum sítio"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.21"
+  },
+  {
+    "question": "O que faz o assembler ao processar uma instrução assembly?",
+    "answers": [
+      "Executa-a de imediato e guarda o resultado da execução num registo",
+      "Guarda-a como texto, sem a traduzir para código máquina, na secção ativa",
+      "Traduz-a para instrução máquina, junta-a à secção ativa e avança o location counter",
+      "Regista-a como um símbolo na tabela de símbolos, junto com as labels"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.22"
+  },
+  {
+    "question": "No fim de processar todos os elementos do ficheiro assembly, o que guarda o assembler no ficheiro objeto?",
+    "answers": [
+      "Apenas o código da secção .text, sem a tabela de símbolos nem as outras secções",
+      "Apenas a tabela de símbolos, sem o conteúdo de qualquer secção do programa",
+      "O ficheiro assembly original, sem qualquer alteração ao seu conteúdo em texto",
+      "O conteúdo das secções, a tabela de símbolos e outras informações relevantes"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.22"
+  },
+  {
+    "question": "No programa .section .text / sum42: / addi a0, a0, 42 / ret, a que endereço fica associada a label sum42?",
+    "answers": [
+      "0",
+      "4",
+      "8",
+      "Ao endereço de ret"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.21"
+  },
+  {
+    "question": "No programa .section .text / sum42: / addi a0, a0, 42 / ret, em que endereço (relativo ao início da secção) fica a instrução ret?",
+    "answers": [
+      "0",
+      "4",
+      "8",
+      "2"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.22"
+  },
+  {
+    "question": "No programa .section .text / sum42: / addi a0, a0, 42 / ret, que valor tem o location counter da secção .text no fim?",
+    "answers": [
+      "4",
+      "2",
+      "8",
+      "0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.22"
+  },
+  {
+    "question": "O que são as diretivas do assembler?",
+    "answers": [
+      "Instruções que o processador executa diretamente",
+      "Comentários que o assembler descarta",
+      "Labels guardadas na tabela de símbolos",
+      "Comandos usados para controlar o assembler"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.25"
+  },
+  {
+    "question": "O que faz a diretiva .section .data?",
+    "answers": [
+      "Torna a secção .data a secção ativa",
+      "Guarda o valor 0 na secção .data",
+      "Apaga o conteúdo da secção .data",
+      "Define o nome do ficheiro objeto"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.25"
+  },
+  {
+    "question": "Por omissão, o assembler GNU junta a informação à secção .text",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.26"
+  },
+  {
+    "question": "O que acontece à informação processada pelo assembler depois de uma diretiva .section secname?",
+    "answers": [
+      "É guardada na secção .text, qualquer que seja o nome indicado",
+      "É adicionada à secção secname, que passa a ser a secção ativa",
+      "É descartada, até aparecer outra diretiva .section",
+      "É adicionada a todas as secções do programa"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.26"
+  },
+  {
+    "question": "Quantos bits emite cada valor indicado numa diretiva .byte?",
+    "answers": [
+      "16 bits",
+      "32 bits",
+      "8 bits",
+      "64 bits"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.28"
+  },
+  {
+    "question": "Quantos bits emite cada valor indicado numa diretiva .half?",
+    "answers": [
+      "8 bits",
+      "32 bits",
+      "64 bits",
+      "16 bits"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.28"
+  },
+  {
+    "question": "Quantos bits emite cada valor indicado numa diretiva .word?",
+    "answers": [
+      "32 bits",
+      "8 bits",
+      "16 bits",
+      "64 bits"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.28"
+  },
+  {
+    "question": "Quantos bits emite cada valor indicado numa diretiva .dword?",
+    "answers": [
+      "8 bits",
+      "64 bits",
+      "16 bits",
+      "32 bits"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.28"
+  },
+  {
+    "question": "Quantos bytes ocupam os valores emitidos pela diretiva .half 1, 2, 3?",
+    "answers": [
+      "3",
+      "12",
+      "6",
+      "4"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.28"
+  },
+  {
+    "question": "Qual é a diferença entre as diretivas .string e .ascii?",
+    "answers": [
+      "A .string não acrescenta o carácter nulo, e a .ascii acrescenta",
+      "A .string emite 8 bits por carácter, e a .ascii emite 16 bits",
+      "A .string só aceita letras, e a .ascii só aceita algarismos",
+      "A .string acrescenta o carácter nulo (NULL) no fim, e a .ascii não"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.28"
+  },
+  {
+    "question": "A diretiva .asciz é um alias da diretiva .string",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.28"
+  },
+  {
+    "question": "Quantos bytes ocupa em memória a diretiva .string \"Assembly rocks!\"?",
+    "answers": [
+      "16",
+      "15",
+      "17",
+      "8"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.28"
+  },
+  {
+    "question": "Quantos bytes ocupa em memória a diretiva .ascii \"Assembly rocks!\"?",
+    "answers": [
+      "16",
+      "15",
+      "30",
+      "1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.28"
+  },
+  {
+    "question": "Que valores ficam guardados em x depois de x: .byte 10, 12, 'A', 5+5?",
+    "answers": [
+      "10, 12, 65 e 55",
+      "10, 12, 41 e 10",
+      "10, 12, 65 e 10",
+      "10, 12, 65 e 5"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.28"
+  },
+  {
+    "question": "No programa x: .byte 10, 12, 'A', 5+5 / y: .word x, o que fica guardado em y?",
+    "answers": [
+      "O valor 10, o primeiro byte de x",
+      "O valor 65, o terceiro byte de x",
+      "O endereço da label y",
+      "O endereço da label x"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.28"
+  },
+  {
+    "question": "Admita que x está no endereço 0x1000 em x: .byte 10, 12, 'A', 5+5 / y: .word x / z: .word y+4 / i: .word 0 / j: .word 1. Qual é o valor guardado em z?",
+    "answers": [
+      "0x1008",
+      "0x1000",
+      "0x100C",
+      "0x1004"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.28"
+  },
+  {
+    "question": "Admita que x está no endereço 0x1000 em x: .byte 10, 12, 'A', 5+5 / y: .word x / z: .word y+4 / i: .word 0 / j: .word 1. Em que endereço está j?",
+    "answers": [
+      "0x100C",
+      "0x1010",
+      "0x1014",
+      "0x100F"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.28"
+  },
+  {
+    "question": "Para que serve a secção .bss?",
+    "answers": [
+      "Para guardar o código das rotinas e das funções do programa assembly",
+      "Para guardar constantes já inicializadas, que o programa apenas lê e nunca altera",
+      "Para variáveis que têm de ser alocadas em memória, sem inicialização pelo loader",
+      "Para guardar variáveis globais que já foram inicializadas com um valor definido"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.30"
+  },
+  {
+    "question": "O que faz a diretiva .skip N?",
+    "answers": [
+      "Salta as próximas N instruções do programa durante a execução do código",
+      "Ignora as próximas N linhas do ficheiro assembly durante a montagem do código",
+      "Inicializa a zero N bytes de variáveis globais da secção .data do programa",
+      "Avança o location counter em N unidades, para alocar espaço para variáveis"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.30"
+  },
+  {
+    "question": "Em .bss / x: .skip 4 / V: .skip 80 / y: .skip 4, em que endereço começa a variável V, relativo ao início da secção .bss?",
+    "answers": [
+      "4",
+      "0",
+      "80",
+      "84"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.30"
+  },
+  {
+    "question": "Em .bss / x: .skip 4 / V: .skip 80 / y: .skip 4, qual é o endereço de y, relativo ao início da secção?",
+    "answers": [
+      "4",
+      "84",
+      "80",
+      "88"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.30"
+  },
+  {
+    "question": "Em .bss / x: .skip 4 / V: .skip 80 / y: .skip 4, qual é o valor do location counter da secção .bss no fim?",
+    "answers": [
+      "84",
+      "80",
+      "88",
+      "4"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.30"
+  },
+  {
+    "question": "O que permitem as declarações de símbolos common e local common?",
+    "answers": [
+      "Definir um símbolo que só existe dentro de uma única instrução do programa",
+      "Definir um símbolo cujo valor fica sempre guardado no registo zero",
+      "Definir um símbolo cujo valor só é calculado em tempo de execução",
+      "Definir um símbolo com o mesmo nome em ficheiros objeto diferentes"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.31"
+  },
+  {
+    "question": "Quem junta duas ou mais declarações common do mesmo símbolo?",
+    "answers": [
+      "O linker",
+      "O assembler",
+      "O compilador de C",
+      "O sistema operativo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.31"
+  },
+  {
+    "question": "Quem junta duas ou mais declarações local common do mesmo símbolo?",
+    "answers": [
+      "O linker",
+      "O assembler",
+      "O compilador de C",
+      "O sistema operativo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.31"
+  },
+  {
+    "question": "Se um símbolo for declarado como common e como local common, prevalece a declaração local common e a declaração common é ignorada",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.31"
+  },
+  {
+    "question": "O que faz a diretiva .lcomm symbol, length?",
+    "answers": [
+      "Reserva length bytes para um common identificado por symbol",
+      "Copia length bytes de um símbolo para outro",
+      "Reserva length bytes para um local common identificado por symbol",
+      "Define o tamanho máximo da secção .text"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.31"
+  },
+  {
+    "question": "O que faz a diretiva .set name, expression?",
+    "answers": [
+      "Avalia a expressão e guarda o valor resultante no registo com o nome indicado",
+      "Guarda o nome e o valor da expressão na secção .data, como uma variável",
+      "Define uma nova label no endereço atual do location counter do programa",
+      "Avalia a expressão e guarda o nome e o valor resultante na tabela de símbolos"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.32"
+  },
+  {
+    "question": "A diretiva .equ faz o mesmo que a diretiva .set",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.32"
+  },
+  {
+    "question": "Admita .set max_value, 42 e o código li t1, max_value / ble a0, t1, ok / mv a0, t1 / ok: ret. Se a0 = 50 à entrada, que valor tem a0 no fim?",
+    "answers": [
+      "42",
+      "50",
+      "0",
+      "8"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.32"
+  },
+  {
+    "question": "Admita .set max_value, 42 e o código li t1, max_value / ble a0, t1, ok / mv a0, t1 / ok: ret. Se a0 = 30 à entrada, que valor tem a0 no fim?",
+    "answers": [
+      "42",
+      "30",
+      "0",
+      "72"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.32"
+  },
+  {
+    "question": "Admita .set max_value, 42 e o código li t1, max_value / ble a0, t1, ok / mv a0, t1 / ok: ret. Se a0 = 42 à entrada, que valor tem a0 no fim?",
+    "answers": [
+      "0",
+      "84",
+      "42",
+      "1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.32"
+  },
+  {
+    "question": "Como são classificados, por omissão, os símbolos criados para labels e pelas diretivas .set e .equ?",
+    "answers": [
+      "Como símbolos globais",
+      "Como símbolos de leitura apenas",
+      "Como símbolos comuns (common)",
+      "Como símbolos locais"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.33"
+  },
+  {
+    "question": "O que faz a diretiva .global (ou .globl)?",
+    "answers": [
+      "Transforma símbolos locais em símbolos globais",
+      "Define uma nova secção global no ficheiro objeto",
+      "Reserva espaço para uma variável global na secção .bss",
+      "Apaga um símbolo da tabela de símbolos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.33"
+  },
+  {
+    "question": "O que faz a diretiva .align N?",
+    "answers": [
+      "Alinha o texto do programa à direita no ficheiro assembly, para o tornar legível",
+      "Avança o location counter para o múltiplo de 2^N seguinte, se ainda não for múltiplo",
+      "Avança sempre o location counter em N bytes, qualquer que seja o seu valor",
+      "Reserva N bytes de espaço livre na secção que está ativa neste momento"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.34"
+  },
+  {
+    "question": "O assembler GNU verifica automaticamente se as instruções RV32I estão em endereços múltiplos de quatro",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.34"
+  },
+  {
+    "question": "O compilador costuma inserir uma diretiva .align 2 antes das labels das rotinas, para as instruções começarem em endereços múltiplos de quatro",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.34"
+  },
+  {
+    "question": "Com o location counter em 0x1003, qual é o valor do location counter depois de .align 2?",
+    "answers": [
+      "0x1003",
+      "0x1005",
+      "0x1004",
+      "0x1008"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.34"
+  },
+  {
+    "question": "Com o location counter em 0x1004, qual é o valor do location counter depois de .align 2?",
+    "answers": [
+      "0x1008",
+      "0x1005",
+      "0x1000",
+      "0x1004"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.34"
+  },
+  {
+    "question": "Com o location counter em 0x1001, qual é o valor do location counter depois de .align 3?",
+    "answers": [
+      "0x1008",
+      "0x1004",
+      "0x1001",
+      "0x1010"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.34"
+  },
+  {
+    "question": "Com o location counter em 0x1002, qual é o valor do location counter depois de .align 1?",
+    "answers": [
+      "0x1004",
+      "0x1002",
+      "0x1003",
+      "0x1000"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.34"
+  },
+  {
+    "question": "Com o location counter em 0x1011, qual é o valor do location counter depois de .align 4?",
+    "answers": [
+      "0x1014",
+      "0x1018",
+      "0x1020",
+      "0x1012"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.34"
+  },
+  {
+    "question": "O RV32I não permite, em nenhuma circunstância, ler ou escrever dados em endereços não alinhados",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.35"
+  },
+  {
+    "question": "Em que endereços se recomenda guardar valores de 16, 32 e 64 bits, por razões de desempenho?",
+    "answers": [
+      "Em múltiplos de 16, de 32 e de 64, respetivamente",
+      "Em múltiplos de 1, de 2 e de 4, respetivamente",
+      "Em múltiplos de 4, de 8 e de 16, respetivamente",
+      "Em múltiplos de 2, de 4 e de 8, respetivamente"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.35"
+  },
+  {
+    "question": "Que diretiva de alinhamento se usa antes de uma variável de 64 bits, declarada com .dword?",
+    "answers": [
+      ".align 3",
+      ".align 1",
+      ".align 2",
+      ".align 4"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.35"
+  },
+  {
+    "question": "Que diretiva de alinhamento se usa antes de uma variável de 16 bits, declarada com .half?",
+    "answers": [
+      ".align 2",
+      ".align 1",
+      ".align 3",
+      ".align 0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.35"
+  },
+  {
+    "question": "Cada programa em linguagem assembly é montado separadamente",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.37"
+  },
+  {
+    "question": "Além do código em linguagem máquina, o que contém o ficheiro objeto produzido pelo assembler?",
+    "answers": [
+      "Apenas o ficheiro assembly original, em texto, sem ser traduzido",
+      "Apenas o código das bibliotecas usadas pelo programa, sem mais nada",
+      "Outras informações, como a lista dos símbolos definidos no ficheiro",
+      "O ponto de entrada final do programa, já completo e pronto a executar"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.37"
+  },
+  {
+    "question": "Porque é que o ficheiro objeto produzido pelo assembler pode estar incompleto?",
+    "answers": [
+      "Porque o assembler só traduz metade das instruções do programa",
+      "Porque o ficheiro objeto não contém código em linguagem máquina",
+      "Porque os ficheiros objeto são sempre apagados depois da montagem",
+      "Porque pode precisar de ser relocado ou ligado a outros ficheiros objeto"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.37"
+  },
+  {
+    "question": "O que é um linker?",
+    "answers": [
+      "Uma ferramenta que liga um ou mais ficheiros objeto e produz um ficheiro executável",
+      "Uma ferramenta que traduz o código-fonte escrito em C para código assembly",
+      "Uma ferramenta que carrega o ficheiro executável para a memória principal",
+      "Uma ferramenta que remove os comentários e os espaços de um ficheiro assembly"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.37"
+  },
+  {
+    "question": "Que elementos necessários à execução contém um ficheiro executável?",
+    "answers": [
+      "Apenas o código assembly original, escrito pelo programador",
+      "Por exemplo, as bibliotecas e o ponto de entrada",
+      "Apenas a tabela de símbolos do ficheiro objeto de origem",
+      "Apenas os comentários que o programador escreveu no código"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.37"
+  },
+  {
+    "question": "O que faz o linker às secções com o mesmo nome, quando liga vários ficheiros objeto?",
+    "answers": [
+      "Mantém cada uma dessas secções separada no executável, com o seu nome original",
+      "Descarta todas essas secções, exceto a primeira que encontra nos ficheiros",
+      "Agrupa a informação dessas secções e coloca-a numa única secção do executável",
+      "Troca os nomes dessas secções entre si, sem alterar o seu conteúdo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.38"
+  },
+  {
+    "question": "Ao ligar vários ficheiros objeto, o que acontece ao conteúdo das secções .text de todos eles?",
+    "answers": [
+      "É guardado em secções .text separadas, uma por cada ficheiro objeto ligado",
+      "É descartado, porque o código só existe no primeiro dos ficheiros objeto",
+      "É colocado na secção .data do executável, junto das variáveis globais",
+      "É agrupado e colocado sequencialmente numa única secção .text do executável"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.38"
+  },
+  {
+    "question": "O assembler é o responsável por definir o campo do ponto de entrada no ficheiro executável",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.39"
+  },
+  {
+    "question": "O que significa a sigla ELF, o formato usado nos sistemas Linux?",
+    "answers": [
+      "Executable and Linking Format",
+      "Executable and Loading File",
+      "Embedded Linking Format",
+      "Extended Linux File"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.40"
+  },
+  {
+    "question": "O que contém o cabeçalho (ELF header) de um ficheiro ELF?",
+    "answers": [
+      "O código das instruções e os dados do programa guardados em secções",
+      "Metadados sobre o ficheiro, como o seu tipo, a arquitetura e o ponto de entrada",
+      "A descrição das secções usadas para ligação e para a depuração do programa",
+      "O texto original do ficheiro assembly, antes de ser montado"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.40"
+  },
+  {
+    "question": "O que descreve a tabela de cabeçalhos das secções (section header table) de um ficheiro ELF?",
+    "answers": [
+      "O tipo do ficheiro, a arquitetura do processador e o ponto de entrada",
+      "O código das instruções e os dados do programa, já relocados",
+      "As secções usadas para ligação e depuração, como símbolos e relocação",
+      "Os comentários que o programador escreveu no ficheiro assembly"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.40"
+  },
+  {
+    "question": "O que contêm as secções de um ficheiro ELF?",
+    "answers": [
+      "Apenas os metadados sobre o ficheiro, como o tipo e a arquitetura",
+      "Apenas a descrição das outras secções, usada na ligação do programa",
+      "Apenas o endereço do ponto de entrada do programa executável",
+      "Os dados propriamente ditos: código, dados, símbolos e informação de depuração"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.40"
+  },
+  {
+    "question": "Para que serve o comando readelf?",
+    "answers": [
+      "Para mostrar informação sobre ficheiros objeto no formato ELF",
+      "Para executar um ficheiro executável no formato ELF",
+      "Para converter um ficheiro ELF de volta em código assembly",
+      "Para apagar os símbolos de depuração de um ficheiro ELF"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.40"
+  }
+]

@@ -1,0 +1,2476 @@
+[
+  {
+    "question": "O que é o CPU, ou processador?",
+    "answers": [
+      "O motor que interpreta as instruções guardadas na memória principal",
+      "O dispositivo que guarda as instruções do programa no disco",
+      "O componente que liga a memória principal aos periféricos",
+      "O programa que traduz o código C para código assembly"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.5"
+  },
+  {
+    "question": "O que é o ciclo de instrução?",
+    "answers": [
+      "O tempo que o CPU precisa para executar o programa todo",
+      "O tempo que o CPU precisa para executar uma única instrução",
+      "O tempo que a memória precisa para ler uma única palavra",
+      "O tempo que o disco precisa para ler um único setor"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.6"
+  },
+  {
+    "question": "Que conhecimento é necessário para otimizar bem um programa?",
+    "answers": [
+      "O conhecimento detalhado do sistema de ficheiros",
+      "O conhecimento da interface gráfica do sistema",
+      "O conhecimento das microarquiteturas dos processadores",
+      "O conhecimento das regras de escrita do código"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.8"
+  },
+  {
+    "question": "O que significa ILP (Instruction-Level Parallelism)?",
+    "answers": [
+      "Várias instruções são escritas em simultâneo no disco",
+      "Várias instruções são compiladas em simultâneo em vários ficheiros",
+      "Várias instruções são lidas do teclado em simultâneo",
+      "Várias instruções são avaliadas em simultâneo dentro do processador"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.8"
+  },
+  {
+    "question": "Que visão do programa mantém o ILP, para o programador?",
+    "answers": [
+      "A visão de uma execução sequencial simples, instrução a instrução",
+      "A visão de uma execução sempre feita fora de ordem",
+      "A visão de que cada instrução tem o seu próprio núcleo",
+      "A visão de que as instruções são executadas todas ao mesmo tempo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.8"
+  },
+  {
+    "question": "Com que técnicas se consegue o ILP?",
+    "answers": [
+      "Pipelining, recursão e alocação dinâmica de memória",
+      "Pipelining, execução superescalar e execução fora de ordem",
+      "Execução fora de ordem, compilação e ligação de ficheiros",
+      "Execução superescalar, alinhamento e preenchimento da pilha"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.8"
+  },
+  {
+    "question": "O ILP obriga o programador a escrever o código de forma paralela",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.8"
+  },
+  {
+    "question": "Quanto pode demorar o ciclo de instrução, mesmo para somar dois valores em registos?",
+    "answers": [
+      "Exatamente 1 ciclo de CPU",
+      "Entre 2 e 3 ciclos de CPU",
+      "Entre 15 e 20 ciclos de CPU",
+      "Mais de 500 ciclos de CPU"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.9"
+  },
+  {
+    "question": "Para que serve o pipelining?",
+    "answers": [
+      "Para reduzir a latência real de cada instrução individual do programa",
+      "Para executar cada instrução em dois processadores em simultâneo",
+      "Para guardar as instruções do programa na cache de dados do CPU",
+      "Para esconder a latência, iniciando a instrução seguinte sem esperar"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.9"
+  },
+  {
+    "question": "O pipelining reduz a latência real de cada instrução individual",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.9"
+  },
+  {
+    "question": "No pipelining, uma instrução começa a ser processada sem esperar que a anterior termine por completo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.9"
+  },
+  {
+    "question": "O que é um hazard num pipeline?",
+    "answers": [
+      "A instrução seguinte não pode executar no ciclo seguinte",
+      "Uma instrução que o processador não consegue reconhecer",
+      "Um erro de sintaxe encontrado pelo compilador do programa",
+      "Um endereço de memória fora do espaço do programa em execução"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.10"
+  },
+  {
+    "question": "O que é um hazard estrutural (structural hazard)?",
+    "answers": [
+      "Uma instrução precisa de um operando ainda por calcular",
+      "Duas ou mais instruções precisam da mesma parte do CPU",
+      "O CPU não sabe que instruções deve executar a seguir",
+      "Uma instrução tem um operando com o formato errado"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.10"
+  },
+  {
+    "question": "O que é um hazard de dados (data hazard)?",
+    "answers": [
+      "Duas instruções precisam da mesma unidade de execução",
+      "O CPU não sabe que instruções deve executar a seguir",
+      "Uma instrução tem de esperar por um operando calculado antes",
+      "Uma instrução escreve num endereço de memória inválido"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.10"
+  },
+  {
+    "question": "O que é um hazard de controlo (control hazard)?",
+    "answers": [
+      "Duas instruções precisam da mesma unidade de execução",
+      "Uma instrução tem de esperar por um operando calculado",
+      "Uma instrução tem um operando com o tipo errado no pipeline",
+      "O CPU não sabe que instruções vai executar a seguir"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.10"
+  },
+  {
+    "question": "Como se resolvem os hazards de dados?",
+    "answers": [
+      "Reestruturando os cálculos para encurtar o caminho crítico",
+      "Esvaziando todo o pipeline e recomeçando",
+      "Adicionando mais unidades de execução ao processador",
+      "Removendo todos os saltos do programa"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.10"
+  },
+  {
+    "question": "Que custo tem um hazard de controlo?",
+    "answers": [
+      "Esperar um ciclo até a unidade de execução estar livre",
+      "Esvaziar todo o pipeline e recomeçar, gastando 15 a 20 ciclos",
+      "Esperar pelo cálculo de um operando, no caminho crítico",
+      "Repetir apenas a última instrução executada, num ciclo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.10"
+  },
+  {
+    "question": "Como se resolvem os hazards de controlo?",
+    "answers": [
+      "Reestruturando os cálculos para encurtar o caminho crítico",
+      "Duplicando as unidades de execução do processador",
+      "Removendo os saltos ou tornando-os previsíveis",
+      "Aumentando a frequência do relógio do processador"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.10"
+  },
+  {
+    "question": "Quanto espera, em geral, uma instrução num hazard estrutural?",
+    "answers": [
+      "Entre 15 e 20 ciclos, para esvaziar todo o pipeline",
+      "Nenhum ciclo, porque o CPU resolve tudo em paralelo",
+      "Um ciclo extra por cada instrução do programa inteiro",
+      "Normalmente mais um ciclo, até a unidade estar livre"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.10"
+  },
+  {
+    "question": "Um programa tem 10 saltos mal previstos, cada um a custar 20 ciclos de pipeline esvaziado. Quantos ciclos se perdem?",
+    "answers": [
+      "200",
+      "220",
+      "100",
+      "30"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.10"
+  },
+  {
+    "question": "Um programa tem 5 saltos mal previstos, cada um a custar 20 ciclos de pipeline esvaziado. Quantos ciclos se perdem?",
+    "answers": [
+      "120",
+      "100",
+      "50",
+      "25"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.10"
+  },
+  {
+    "question": "Um programa tem 8 saltos mal previstos, cada um a custar 15 ciclos de pipeline esvaziado. Quantos ciclos se perdem?",
+    "answers": [
+      "135",
+      "60",
+      "120",
+      "23"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.10"
+  },
+  {
+    "question": "Um programa tem 50 saltos mal previstos, cada um a custar 20 ciclos de pipeline esvaziado. Quantos ciclos se perdem?",
+    "answers": [
+      "1020",
+      "500",
+      "70",
+      "1000"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.10"
+  },
+  {
+    "question": "O que é um pipeline stall?",
+    "answers": [
+      "Parar os passos anteriores até a causa do congestionamento desaparecer",
+      "Parar o programa por completo e voltar a arrancá-lo do início",
+      "Esvaziar por completo a cache até a memória ficar vazia",
+      "Acelerar todos os passos do pipeline durante o congestionamento"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.11"
+  },
+  {
+    "question": "O que são as bolhas (bubbles) no pipeline?",
+    "answers": [
+      "Momentos em que todas as unidades executam mais depressa",
+      "Momentos de unidades paradas, sem trabalho útil",
+      "Instruções extra inseridas pelo compilador para otimizar",
+      "Zonas de memória reservadas para o pipeline do CPU"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.11"
+  },
+  {
+    "question": "O que é a execução superescalar?",
+    "answers": [
+      "A capacidade de executar uma instrução em menos de um ciclo",
+      "A capacidade de executar instruções de vários programas",
+      "Emitir e executar várias instruções por ciclo de relógio",
+      "A capacidade de executar instruções de 64 bits num sistema de 32"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.12"
+  },
+  {
+    "question": "O que permite a execução superescalar?",
+    "answers": [
+      "Ter vários processadores ligados a uma memória cache",
+      "Ter várias memórias principais ligadas ao processador",
+      "Ter várias cópias do programa na memória do sistema",
+      "Ter várias unidades de execução dentro do processador"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.12"
+  },
+  {
+    "question": "Que tipos de instruções podem as unidades de execução tratar em simultâneo?",
+    "answers": [
+      "Operações aritméticas, acessos à memória e saltos",
+      "Apenas operações aritméticas e lógicas",
+      "Apenas acessos à memória e instruções de salto",
+      "Apenas instruções do sistema operativo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.12"
+  },
+  {
+    "question": "O que é a execução fora de ordem (out-of-order execution)?",
+    "answers": [
+      "Executar as instruções pela ordem inversa à do programa",
+      "Executar conforme a disponibilidade de dados e unidades",
+      "Executar as instruções por ordem alfabética dos opcodes",
+      "Executar as instruções só depois de todas serem lidas"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.13"
+  },
+  {
+    "question": "Que dificuldades evita a execução fora de ordem?",
+    "answers": [
+      "Erros de sintaxe e de tipos do código-fonte do programa",
+      "Falhas de alimentação elétrica durante a execução do CPU",
+      "Atrasos de dependências de dados e conflitos de recursos",
+      "Fugas de memória e erros de ligação do programa em execução"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.13"
+  },
+  {
+    "question": "A execução fora de ordem identifica e executa instruções que não dependem dos resultados de instruções anteriores",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.13"
+  },
+  {
+    "question": "Qual é o objetivo principal ao escrever um programa?",
+    "answers": [
+      "Fazê-lo executar o mais depressa que for possível",
+      "Fazê-lo ocupar o mínimo possível de memória principal",
+      "Fazê-lo usar o menor número possível de funções C",
+      "Fazê-lo funcionar corretamente em todas as condições"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.15"
+  },
+  {
+    "question": "Um programa que executa depressa mas dá resultados incorretos não tem utilidade",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.15"
+  },
+  {
+    "question": "O programador deve escrever código o mais obscuro possível para ganhar velocidade",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.15"
+  },
+  {
+    "question": "Segundo a citação de John Ousterhout, quando é maior o ganho de velocidade de um programa?",
+    "answers": [
+      "Quando o programa passa a funcionar pela primeira vez",
+      "Quando o programa é compilado com a opção -O3",
+      "Quando o programa passa a usar mais registos",
+      "Quando o programa passa a usar instruções vetoriais"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.15"
+  },
+  {
+    "question": "Que atividades exige a escrita de um programa eficiente?",
+    "answers": [
+      "Escolher o editor de texto e o sistema operativo mais rápidos",
+      "Escolher bons algoritmos e escrever código que o compilador otimize",
+      "Escrever o máximo de comentários possível no código-fonte",
+      "Escolher apenas variáveis globais para todos os dados"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.16"
+  },
+  {
+    "question": "Que caraterísticas do C dificultam a otimização pelo compilador?",
+    "answers": [
+      "O uso de ciclos for e de funções",
+      "O uso de comentários e de macros",
+      "A aritmética de apontadores e os casts",
+      "O uso de variáveis locais e de constantes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.16"
+  },
+  {
+    "question": "O programador pode, muitas vezes, escrever o programa de modo a facilitar a geração de código eficiente pelo compilador",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.16"
+  },
+  {
+    "question": "Em geral, é preciso encontrar um equilíbrio entre a facilidade de implementar e manter um programa e a sua velocidade",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.16"
+  },
+  {
+    "question": "O que fazem os compiladores otimizadores modernos?",
+    "answers": [
+      "Traduzem o código para uma linguagem de nível mais alto",
+      "Corrigem automaticamente os erros lógicos do programador",
+      "Reescrevem os algoritmos para os tornar mais eficientes",
+      "Simplificam expressões e evitam repetir cálculos"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.17"
+  },
+  {
+    "question": "O que faz a opção -O1 do gcc?",
+    "answers": [
+      "Ativa as otimizações mais comuns",
+      "Desativa todas as otimizações",
+      "Ativa a otimização máxima, aumentando o executável",
+      "Reduz ao mínimo o tamanho do executável"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.17"
+  },
+  {
+    "question": "O que faz a opção -O2 do gcc?",
+    "answers": [
+      "Dá o máximo de otimizações, aumentando o tamanho do executável",
+      "Dá o máximo de otimizações sem aumentar o tamanho do executável",
+      "Ativa só as otimizações mais comuns do compilador",
+      "Reduz ao mínimo o tamanho do executável final"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.17"
+  },
+  {
+    "question": "O que faz a opção -O3 do gcc?",
+    "answers": [
+      "Reduz o tamanho do executável e também a sua velocidade",
+      "Ativa só as otimizações mais comuns do compilador",
+      "Aumenta a velocidade do executável e também o seu tamanho",
+      "Desativa todas as otimizações do compilador"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.17"
+  },
+  {
+    "question": "O que faz a opção -Os do gcc?",
+    "answers": [
+      "Seleciona otimizações que aumentam o tamanho do executável",
+      "Ativa só as otimizações mais comuns do compilador",
+      "Seleciona otimizações que aumentam só a velocidade",
+      "Seleciona otimizações que reduzem o tamanho do executável"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.17"
+  },
+  {
+    "question": "Qual destas opções do gcc dá as otimizações mais comuns?",
+    "answers": [
+      "-O1",
+      "-O2",
+      "-O3",
+      "-Os"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.17"
+  },
+  {
+    "question": "Qual destas opções do gcc dá o máximo de otimizações sem aumentar o tamanho do executável?",
+    "answers": [
+      "-O1",
+      "-O2",
+      "-O3",
+      "-Os"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.17"
+  },
+  {
+    "question": "Qual destas opções do gcc dá mais velocidade, com executável maior?",
+    "answers": [
+      "-O1",
+      "-O2",
+      "-O3",
+      "-Os"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.17"
+  },
+  {
+    "question": "Qual destas opções do gcc dá um executável mais pequeno?",
+    "answers": [
+      "-O1",
+      "-O2",
+      "-O3",
+      "-Os"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.17"
+  },
+  {
+    "question": "Considere typedef struct { long int len; data_t *data; } vec_rec; O que guarda o membro len?",
+    "answers": [
+      "O número de elementos do vetor",
+      "O endereço do primeiro elemento do vetor",
+      "O tamanho de cada elemento do vetor",
+      "O número de bytes do vetor completo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.19"
+  },
+  {
+    "question": "Considere typedef struct { long int len; data_t *data; } vec_rec; O que guarda o membro data?",
+    "answers": [
+      "O número de elementos do vetor de dados da estrutura",
+      "O apontador para o início do vetor de dados",
+      "O primeiro elemento do vetor de dados da estrutura",
+      "O apontador para o fim do vetor de dados da estrutura"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.19"
+  },
+  {
+    "question": "Considere long int vec_length(vec_ptr v) { return v->len; }. O que devolve a função?",
+    "answers": [
+      "O endereço do vetor v",
+      "O tamanho do vetor em bytes",
+      "O número de elementos do vetor",
+      "O primeiro elemento do vetor"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.19"
+  },
+  {
+    "question": "Considere int get_vec_element(vec_ptr v, long int index, data_t *dest) { if (index < 0 || index >= v->len) return 0; *dest = v->data[index]; return 1; }. O que devolve a função se index estiver fora dos limites?",
+    "answers": [
+      "1",
+      "-1",
+      "O valor v->data[index]",
+      "0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.20"
+  },
+  {
+    "question": "Considere int get_vec_element(vec_ptr v, long int index, data_t *dest) { if (index < 0 || index >= v->len) return 0; *dest = v->data[index]; return 1; }. O que devolve a função quando o acesso tem êxito?",
+    "answers": [
+      "1",
+      "0",
+      "-1",
+      "O valor v->data[index]"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.20"
+  },
+  {
+    "question": "Considere int get_vec_element(vec_ptr v, long int index, data_t *dest) { if (index < 0 || index >= v->len) return 0; *dest = v->data[index]; return 1; }. Onde é guardado o elemento lido?",
+    "answers": [
+      "No valor devolvido pela função",
+      "Na posição apontada por dest",
+      "No membro len do vetor v",
+      "Na posição index do próprio vetor"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.20"
+  },
+  {
+    "question": "Considere int get_vec_element(vec_ptr v, long int index, data_t *dest) { if (index < 0 || index >= v->len) return 0; *dest = v->data[index]; return 1; }. Que verificação faz a função antes de ler?",
+    "answers": [
+      "Verifica se v é diferente de NULL antes de ler",
+      "Verifica se o vetor está ordenado por ordem crescente",
+      "Verifica se index está dentro dos limites",
+      "Verifica se dest é um apontador válido para escrita"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.20"
+  },
+  {
+    "question": "Considere new_vec, que aloca primeiro a estrutura vec_rec e depois o vetor com calloc(len, sizeof(data_t)). O que acontece se a alocação do vetor falhar?",
+    "answers": [
+      "A estrutura fica alocada e a função devolve a estrutura",
+      "A função termina o programa de imediato",
+      "A função tenta alocar o vetor outra vez",
+      "A estrutura é libertada e a função devolve NULL"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.20"
+  },
+  {
+    "question": "Em new_vec, o que acontece ao membro data se len for 0 ou negativo?",
+    "answers": [
+      "Fica a NULL",
+      "Fica com um vetor de um elemento",
+      "Fica com lixo, sem inicialização",
+      "Fica com o endereço da estrutura"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.20"
+  },
+  {
+    "question": "Porque usa new_vec calloc e não malloc para o vetor de dados?",
+    "answers": [
+      "Porque calloc é mais rápido do que malloc",
+      "Porque calloc inicializa os elementos a zero",
+      "Porque malloc não aceita dois argumentos",
+      "Porque calloc não pode falhar"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.20"
+  },
+  {
+    "question": "O que controla a sequência de atividades de um processador?",
+    "answers": [
+      "Um contador que conta as instruções do programa",
+      "Um registo que guarda o endereço da próxima instrução",
+      "Um relógio com um sinal regular de certa frequência",
+      "Um temporizador que mede o tempo de acesso ao disco"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.21"
+  },
+  {
+    "question": "Um processador funciona a 4 GHz. Quanto dura um ciclo de relógio, em nanossegundos?",
+    "answers": [
+      "0,5",
+      "0,2",
+      "1",
+      "0,25"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.21"
+  },
+  {
+    "question": "Um processador funciona a 4 GHz. Quanto dura um ciclo de relógio, em picossegundos?",
+    "answers": [
+      "250",
+      "500",
+      "125",
+      "1000"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.21"
+  },
+  {
+    "question": "Um processador funciona a 2 GHz. Quanto dura um ciclo de relógio, em nanossegundos?",
+    "answers": [
+      "0,25",
+      "0,5",
+      "0,2",
+      "1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.21"
+  },
+  {
+    "question": "Um processador funciona a 2 GHz. Quanto dura um ciclo de relógio, em picossegundos?",
+    "answers": [
+      "1000",
+      "250",
+      "500",
+      "2000"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.21"
+  },
+  {
+    "question": "Um processador funciona a 5 GHz. Quanto dura um ciclo de relógio, em nanossegundos?",
+    "answers": [
+      "0,25",
+      "0,5",
+      "1",
+      "0,2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.21"
+  },
+  {
+    "question": "Um processador funciona a 5 GHz. Quanto dura um ciclo de relógio, em picossegundos?",
+    "answers": [
+      "200",
+      "400",
+      "100",
+      "800"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.21"
+  },
+  {
+    "question": "Um processador funciona a 1 GHz. Quanto dura um ciclo de relógio, em nanossegundos?",
+    "answers": [
+      "0,25",
+      "1",
+      "0,5",
+      "0,2"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.21"
+  },
+  {
+    "question": "Um processador funciona a 3,2 GHz. Quanto dura um ciclo de relógio, em nanossegundos?",
+    "answers": [
+      "0,25",
+      "0,5",
+      "0,3125",
+      "0,2"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.21"
+  },
+  {
+    "question": "Quantos ciclos de relógio por nanossegundo tem um processador de 4 GHz?",
+    "answers": [
+      "2",
+      "0,25",
+      "8",
+      "4"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.21"
+  },
+  {
+    "question": "Porque se mede o desempenho dos programas em ciclos de relógio e não em nanossegundos?",
+    "answers": [
+      "Porque é mais instrutivo para o programador melhorar o código",
+      "Porque os nanossegundos não se podem medir num processador",
+      "Porque os ciclos são iguais em todos os processadores",
+      "Porque o compilador só aceita medidas em ciclos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.21"
+  },
+  {
+    "question": "O que é o CPE (Cycles Per Element)?",
+    "answers": [
+      "O número de elementos que um programa processa por segundo",
+      "Uma medida do desempenho, em ciclos de relógio por elemento",
+      "O número de ciclos de relógio que o processador executa por segundo",
+      "O número total de elementos guardados na memória cache"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.21"
+  },
+  {
+    "question": "Para que serve o CPE?",
+    "answers": [
+      "Para medir a capacidade da memória cache do processador",
+      "Para contar o número de funções chamadas no programa",
+      "Para perceber o desempenho de ciclos de programas",
+      "Para medir a frequência de relógio do processador"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.21"
+  },
+  {
+    "question": "Um ciclo faz 2 CPE, com 1000 elementos, num processador de 2 GHz. Quantos ciclos de relógio consome?",
+    "answers": [
+      "4000",
+      "1000",
+      "1002",
+      "2000"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.21"
+  },
+  {
+    "question": "Um ciclo faz 2 CPE, com 1000 elementos, num processador de 2 GHz. Quanto tempo demora, em microssegundos?",
+    "answers": [
+      "1",
+      "2",
+      "0,5",
+      "2000"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.21"
+  },
+  {
+    "question": "Um ciclo faz 1,5 CPE, com 2000 elementos, num processador de 3 GHz. Quantos ciclos de relógio consome?",
+    "answers": [
+      "6000",
+      "3000",
+      "1500",
+      "2001,5"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.21"
+  },
+  {
+    "question": "Um ciclo faz 1,5 CPE, com 2000 elementos, num processador de 3 GHz. Quanto tempo demora, em microssegundos?",
+    "answers": [
+      "2",
+      "0,5",
+      "1",
+      "3000"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.21"
+  },
+  {
+    "question": "Um ciclo faz 4 CPE, com 500 elementos, num processador de 1 GHz. Quantos ciclos de relógio consome?",
+    "answers": [
+      "4000",
+      "1000",
+      "504",
+      "2000"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.21"
+  },
+  {
+    "question": "Um ciclo faz 4 CPE, com 500 elementos, num processador de 1 GHz. Quanto tempo demora, em microssegundos?",
+    "answers": [
+      "2",
+      "4",
+      "1",
+      "2000"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.21"
+  },
+  {
+    "question": "Um ciclo faz 3 CPE, com 1000 elementos, num processador de 3 GHz. Quantos ciclos de relógio consome?",
+    "answers": [
+      "6000",
+      "3000",
+      "1500",
+      "1003"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.21"
+  },
+  {
+    "question": "Um ciclo faz 3 CPE, com 1000 elementos, num processador de 3 GHz. Quanto tempo demora, em microssegundos?",
+    "answers": [
+      "2",
+      "0,5",
+      "1",
+      "3000"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.21"
+  },
+  {
+    "question": "Considere void combine1(vec_ptr v, data_t *dest) { long int i; *dest = IDENT; for (i = 0; i < vec_length(v); i++) { data_t val; get_vec_element(v, i, &val); *dest = *dest OP val; } } Que técnica usa combine1?",
+    "answers": [
+      "Desenrolamento do ciclo, com dois elementos de cada vez por iteração",
+      "Vários acumuladores, para aumentar o paralelismo do ciclo",
+      "Acumulação num registo, para evitar muitos acessos à memória",
+      "Máxima abstração de dados, com chamadas de função em cada iteração"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.22"
+  },
+  {
+    "question": "Considere void combine1(vec_ptr v, data_t *dest) { long int i; *dest = IDENT; for (i = 0; i < vec_length(v); i++) { data_t val; get_vec_element(v, i, &val); *dest = *dest OP val; } } Que função é chamada na condição do ciclo for?",
+    "answers": [
+      "vec_length",
+      "get_vec_element",
+      "new_vec",
+      "get_vec_start"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.23"
+  },
+  {
+    "question": "Em combine1, o comprimento do vetor não muda enquanto o ciclo decorre",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.23"
+  },
+  {
+    "question": "Que otimização transforma combine1 em combine2?",
+    "answers": [
+      "Desenrolar o ciclo, com dois elementos por iteração",
+      "Mover para fora do ciclo o cálculo de vec_length(v)",
+      "Acumular o resultado numa variável local acumuladora",
+      "Usar dois acumuladores independentes dentro do ciclo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.24"
+  },
+  {
+    "question": "O que é a loop-invariant code motion?",
+    "answers": [
+      "Mover para dentro do ciclo o código que está fora dele",
+      "Repetir o corpo do ciclo para reduzir as iterações",
+      "Mover para fora do ciclo o código que não depende do ciclo",
+      "Trocar a ordem dos ciclos aninhados do programa"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.24"
+  },
+  {
+    "question": "Qual é a vantagem da loop-invariant code motion?",
+    "answers": [
+      "Reduz o tamanho do código e do executável do programa",
+      "Aumenta o número de iterações do ciclo mais interno",
+      "Elimina a necessidade de uma condição de teste no ciclo",
+      "Evita repetir um cálculo que dá sempre o mesmo resultado"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.24"
+  },
+  {
+    "question": "Considere void combine2(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); *dest = IDENT; for (i = 0; i < length; i++) { data_t val; get_vec_element(v, i, &val); *dest = *dest OP val; } } Quantas vezes é chamada vec_length, para um vetor de n elementos?",
+    "answers": [
+      "1",
+      "n",
+      "n + 1",
+      "0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.24"
+  },
+  {
+    "question": "Em combine1, para um vetor de n elementos, quantas vezes é chamada vec_length?",
+    "answers": [
+      "São n, uma por cada iteração do ciclo",
+      "São n + 1, uma por cada teste da condição do ciclo",
+      "É 1, antes do início do ciclo",
+      "São n - 1, uma por cada iteração menos a última"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.23"
+  },
+  {
+    "question": "Porque é custosa uma chamada de função?",
+    "answers": [
+      "Porque o código da função é sempre maior do que o do chamador",
+      "Porque a função não pode ser guardada na memória cache",
+      "Pelos custos de chamada, retorno, argumentos e stack frame",
+      "Porque o compilador não consegue traduzir a função"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.25"
+  },
+  {
+    "question": "Considere void combine3(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); data_t *data = get_vec_start(v); *dest = IDENT; for (i = 0; i < length; i++) { *dest = *dest OP data[i]; } } Que otimização aplica combine3 em relação a combine2?",
+    "answers": [
+      "Evita a chamada a vec_length antes de iniciar o ciclo",
+      "Desenrola o ciclo, com dois elementos por iteração",
+      "Guarda o resultado numa variável local acumuladora",
+      "Lê diretamente data[i], sem get_vec_element no ciclo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.25"
+  },
+  {
+    "question": "Considere void combine3(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); data_t *data = get_vec_start(v); *dest = IDENT; for (i = 0; i < length; i++) { *dest = *dest OP data[i]; } } Que função devolve o apontador para o início do vetor de dados?",
+    "answers": [
+      "get_vec_start",
+      "vec_length",
+      "get_vec_element",
+      "new_vec"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.25"
+  },
+  {
+    "question": "Em combine3, o ciclo interno continua a chamar get_vec_element",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.25"
+  },
+  {
+    "question": "Considere void combine4(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); data_t *data = get_vec_start(v); data_t acc = IDENT; for (i = 0; i < length; i++) { acc = acc OP data[i]; } *dest = acc; } Que otimização aplica combine4 em relação a combine3?",
+    "answers": [
+      "Evita a chamada a get_vec_start no início da função",
+      "Acumula o resultado numa variável local, sem usar *dest",
+      "Desenrola o ciclo, com dois elementos por iteração",
+      "Usa dois acumuladores independentes dentro do ciclo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.26"
+  },
+  {
+    "question": "Considere void combine4(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); data_t *data = get_vec_start(v); data_t acc = IDENT; for (i = 0; i < length; i++) { acc = acc OP data[i]; } *dest = acc; } Onde fica, normalmente, a variável acc durante o ciclo?",
+    "answers": [
+      "Na pilha, em cada iteração",
+      "No heap, alocada por malloc",
+      "Num registo do processador",
+      "No espaço de dados estáticos"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.26"
+  },
+  {
+    "question": "Considere void combine4(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); data_t *data = get_vec_start(v); data_t acc = IDENT; for (i = 0; i < length; i++) { acc = acc OP data[i]; } *dest = acc; } Quando é escrito o resultado final em *dest?",
+    "answers": [
+      "Em cada iteração do ciclo",
+      "Antes de o ciclo começar",
+      "Duas vezes por cada iteração do ciclo",
+      "Uma só vez, no fim do ciclo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.26"
+  },
+  {
+    "question": "Porque é vantajoso usar uma variável temporária num registo?",
+    "answers": [
+      "Elimina muitas operações de leitura e escrita na memória",
+      "Aumenta o número de acessos à memória cache de dados",
+      "Permite ao compilador desenrolar sozinho todos os ciclos",
+      "Permite ao programa usar muito mais memória dinâmica"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.26"
+  },
+  {
+    "question": "O que é o desenrolar de ciclos (loop unrolling)?",
+    "answers": [
+      "Uma transformação que aumenta o número de iterações do ciclo",
+      "Uma transformação que reduz as iterações, fazendo mais por iteração",
+      "Uma transformação que move o corpo do ciclo para outra função",
+      "Uma transformação que troca a ordem dos ciclos aninhados"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.27"
+  },
+  {
+    "question": "Considere void combine5(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); long int limit = length - 1; data_t *data = get_vec_start(v); data_t acc = IDENT; for (i = 0; i < limit; i += 2) { acc = (acc OP data[i]) OP data[i+1]; } for (; i < length; i++) { acc = acc OP data[i]; } *dest = acc; } Quantos elementos processa cada iteração do primeiro ciclo?",
+    "answers": [
+      "1",
+      "3",
+      "2",
+      "4"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.27"
+  },
+  {
+    "question": "Considere void combine5(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); long int limit = length - 1; data_t *data = get_vec_start(v); data_t acc = IDENT; for (i = 0; i < limit; i += 2) { acc = (acc OP data[i]) OP data[i+1]; } for (; i < length; i++) { acc = acc OP data[i]; } *dest = acc; } Para que serve o segundo ciclo?",
+    "answers": [
+      "Para repetir o primeiro ciclo mais uma vez",
+      "Para inicializar o acumulador a zero",
+      "Para libertar a memória do vetor",
+      "Para tratar os elementos que sobram no fim"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.27"
+  },
+  {
+    "question": "Considere void combine5(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); long int limit = length - 1; data_t *data = get_vec_start(v); data_t acc = IDENT; for (i = 0; i < limit; i += 2) { acc = (acc OP data[i]) OP data[i+1]; } for (; i < length; i++) { acc = acc OP data[i]; } *dest = acc; } Porque é que o limite do primeiro ciclo é length - 1?",
+    "answers": [
+      "Para garantir que data[i+1] existe em cada iteração",
+      "Para que o ciclo nunca processe o primeiro elemento",
+      "Para que o ciclo processe sempre um elemento a menos",
+      "Para que o acumulador comece com o valor -1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.27"
+  },
+  {
+    "question": "Em combine5, para um vetor de 7 elementos, quantas iterações executa o primeiro ciclo?",
+    "answers": [
+      "4",
+      "3",
+      "2",
+      "7"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.27"
+  },
+  {
+    "question": "Em combine5, para um vetor de 7 elementos, quantas iterações executa o segundo ciclo?",
+    "answers": [
+      "2",
+      "3",
+      "1",
+      "7"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.27"
+  },
+  {
+    "question": "Em combine5, para um vetor de 8 elementos, quantas iterações executa o primeiro ciclo?",
+    "answers": [
+      "5",
+      "3",
+      "8",
+      "4"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.27"
+  },
+  {
+    "question": "Em combine5, para um vetor de 8 elementos, quantas iterações executa o segundo ciclo?",
+    "answers": [
+      "0",
+      "1",
+      "2",
+      "8"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.27"
+  },
+  {
+    "question": "Em combine5, para um vetor de 10 elementos, quantas iterações executa o primeiro ciclo?",
+    "answers": [
+      "6",
+      "5",
+      "4",
+      "10"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.27"
+  },
+  {
+    "question": "Em combine5, para um vetor de 10 elementos, quantas iterações executa o segundo ciclo?",
+    "answers": [
+      "1",
+      "2",
+      "0",
+      "10"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.27"
+  },
+  {
+    "question": "Em combine5, para um vetor de 11 elementos, quantas iterações executa o primeiro ciclo?",
+    "answers": [
+      "6",
+      "4",
+      "11",
+      "5"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.27"
+  },
+  {
+    "question": "Em combine5, para um vetor de 11 elementos, quantas iterações executa o segundo ciclo?",
+    "answers": [
+      "1",
+      "2",
+      "3",
+      "11"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.27"
+  },
+  {
+    "question": "Em combine5, para um vetor de 1 elementos, quantas iterações executa o primeiro ciclo?",
+    "answers": [
+      "1",
+      "0",
+      "3",
+      "9"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.27"
+  },
+  {
+    "question": "Em combine5, para um vetor de 1 elementos, quantas iterações executa o segundo ciclo?",
+    "answers": [
+      "2",
+      "3",
+      "1",
+      "7"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.27"
+  },
+  {
+    "question": "Em combine5, para um vetor de 0 elementos, quantas iterações executa o primeiro ciclo?",
+    "answers": [
+      "1",
+      "3",
+      "9",
+      "0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.27"
+  },
+  {
+    "question": "Em combine5, para um vetor de 0 elementos, quantas iterações executa o segundo ciclo?",
+    "answers": [
+      "0",
+      "1",
+      "2",
+      "7"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.27"
+  },
+  {
+    "question": "Considere void combine6(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); long int limit = length - 1; data_t *data = get_vec_start(v); data_t acc0 = IDENT; data_t acc1 = IDENT; for (i = 0; i < limit; i += 2) { acc0 = acc0 OP data[i]; acc1 = acc1 OP data[i+1]; } for (; i < length; i++) { acc0 = acc0 OP data[i]; } *dest = acc0 OP acc1; } Que técnica usa combine6?",
+    "answers": [
+      "Desenrolar sem alterar o número de acumuladores",
+      "Vários acumuladores, para aumentar o paralelismo",
+      "Mover o cálculo invariante para fora do ciclo",
+      "Evitar a chamada a get_vec_element no ciclo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.28"
+  },
+  {
+    "question": "Considere void combine6(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); long int limit = length - 1; data_t *data = get_vec_start(v); data_t acc0 = IDENT; data_t acc1 = IDENT; for (i = 0; i < limit; i += 2) { acc0 = acc0 OP data[i]; acc1 = acc1 OP data[i+1]; } for (; i < length; i++) { acc0 = acc0 OP data[i]; } *dest = acc0 OP acc1; } Que elementos acumula acc0 no primeiro ciclo?",
+    "answers": [
+      "Os de índice ímpar",
+      "Os de índice maior do que a metade",
+      "Os de índice par",
+      "Todos os elementos do vetor"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.28"
+  },
+  {
+    "question": "Considere void combine6(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); long int limit = length - 1; data_t *data = get_vec_start(v); data_t acc0 = IDENT; data_t acc1 = IDENT; for (i = 0; i < limit; i += 2) { acc0 = acc0 OP data[i]; acc1 = acc1 OP data[i+1]; } for (; i < length; i++) { acc0 = acc0 OP data[i]; } *dest = acc0 OP acc1; } Que elementos acumula acc1 no primeiro ciclo?",
+    "answers": [
+      "Os de índice par",
+      "Os de índice menor do que a metade",
+      "Todos os elementos do vetor",
+      "Os de índice ímpar"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.28"
+  },
+  {
+    "question": "Considere void combine6(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); long int limit = length - 1; data_t *data = get_vec_start(v); data_t acc0 = IDENT; data_t acc1 = IDENT; for (i = 0; i < limit; i += 2) { acc0 = acc0 OP data[i]; acc1 = acc1 OP data[i+1]; } for (; i < length; i++) { acc0 = acc0 OP data[i]; } *dest = acc0 OP acc1; } Como se obtém o resultado final?",
+    "answers": [
+      "Combinando os dois acumuladores com a operação OP",
+      "Somando sempre acc0 e acc1, qualquer que seja OP",
+      "Devolvendo apenas o valor final do acumulador acc0",
+      "Devolvendo apenas o valor final do acumulador acc1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.28"
+  },
+  {
+    "question": "Em que condição se podem usar vários acumuladores?",
+    "answers": [
+      "Quando a operação é a subtração de inteiros",
+      "Quando a operação é associativa e comutativa",
+      "Quando o vetor tem um número de elementos par",
+      "Quando os elementos do vetor são todos positivos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.28"
+  },
+  {
+    "question": "Porque é que vários acumuladores aumentam o paralelismo?",
+    "answers": [
+      "Porque cada acumulador usa um processador diferente",
+      "Porque os acumuladores ficam sempre guardados na cache",
+      "Porque os cálculos de cada acumulador são independentes",
+      "Porque o compilador deixa de precisar de registos"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.28"
+  },
+  {
+    "question": "Em combine6 com OP igual a +, que acumuladores somam um vetor {1, 2, 3, 4, 5}?",
+    "answers": [
+      "Ficam acc0 = 6 e acc1 = 9, com resultado 15",
+      "Ficam acc0 = 15 e acc1 = 0, com resultado 15",
+      "Ficam acc0 = 9 e acc1 = 6, com resultado 54",
+      "Ficam acc0 = 9 e acc1 = 6, com resultado 15"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.28"
+  },
+  {
+    "question": "Em combine6 com OP igual a * e IDENT igual a 1, qual é o valor final para o vetor {1, 2, 3, 4}?",
+    "answers": [
+      "24",
+      "10",
+      "12",
+      "8"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.28"
+  },
+  {
+    "question": "Em combine6 com OP igual a + e IDENT igual a 0, qual é o valor final para o vetor {2, 4, 6, 8}?",
+    "answers": [
+      "10",
+      "20",
+      "14",
+      "24"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.28"
+  },
+  {
+    "question": "O que é muitas vezes mais importante do que os fatores constantes?",
+    "answers": [
+      "A escolha do compilador mais recente existente no mercado",
+      "A escolha do menor número de variáveis locais possível",
+      "A escolha do melhor algoritmo, medida pela notação Big-O",
+      "A escolha do maior número de ciclos aninhados possível"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.30"
+  },
+  {
+    "question": "Para que se usa a notação Big-O?",
+    "answers": [
+      "Para medir a frequência de relógio de um processador moderno",
+      "Para contar os erros de compilação de um programa em C",
+      "Para medir a capacidade da memória de um sistema inteiro",
+      "Para classificar algoritmos pelo crescimento do tempo ou espaço"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.30"
+  },
+  {
+    "question": "Em que níveis se deve otimizar?",
+    "answers": [
+      "Algoritmo, representação de dados, procedimentos e ciclos",
+      "Apenas ao nível do hardware do sistema inteiro, sem software",
+      "Apenas ao nível dos comentários e da documentação do código",
+      "Apenas ao nível do compilador que foi utilizado no programa"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.30"
+  },
+  {
+    "question": "Para otimizar bem, é preciso perceber como os programas são compilados e executados",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.30"
+  },
+  {
+    "question": "Otimizar o desempenho deve ser feito sem preocupação com a modularidade e a generalidade do código",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.30"
+  },
+  {
+    "question": "Qual é o primeiro passo para otimizar um programa?",
+    "answers": [
+      "Desenrolar todos os ciclos do programa",
+      "Eliminar o trabalho desnecessário",
+      "Reescrever o programa em assembly",
+      "Usar o maior número possível de registos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.31"
+  },
+  {
+    "question": "Que trabalho desnecessário se deve eliminar?",
+    "answers": [
+      "Comentários, nomes de variáveis e todas as linhas em branco",
+      "Todos os ficheiros de cabeçalho, bibliotecas e macros",
+      "Chamadas, testes condicionais e acessos à memória desnecessários",
+      "Todas as variáveis locais, constantes e literais do código"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.31"
+  },
+  {
+    "question": "Estas otimizações gerais dependem de propriedades específicas da máquina alvo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.31"
+  },
+  {
+    "question": "A otimização nunca requer experimentação",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.31"
+  },
+  {
+    "question": "Quanto ao alinhamento, qual é uma boa prática para uma utilização eficiente da memória?",
+    "answers": [
+      "Alterar o alinhamento de memória de cada variável",
+      "Passar sempre estruturas por valor às funções",
+      "Aceder à memória por ordem decrescente de endereços",
+      "Manter o alinhamento de memória por omissão da arquitetura"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.32"
+  },
+  {
+    "question": "Quanto à passagem de estruturas a funções, qual é uma boa prática para usar bem a memória?",
+    "answers": [
+      "Passar estruturas por referência e não por valor",
+      "Passar estruturas por valor e não por referência",
+      "Passar estruturas por cópia para cada função",
+      "Guardar as estruturas apenas em variáveis globais"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.32"
+  },
+  {
+    "question": "Quanto à ordem de acesso, qual é uma boa prática para uma utilização eficiente da memória?",
+    "answers": [
+      "Aceder à memória por ordem decrescente de endereços",
+      "Aceder à memória por ordem crescente de endereços",
+      "Aceder à memória por ordem aleatória de endereços",
+      "Aceder à memória por ordem alfabética dos nomes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.32"
+  },
+  {
+    "question": "Que se deve fazer com as variáveis locais, se forem poucas?",
+    "answers": [
+      "Guardá-las na pilha e não em registos",
+      "Guardá-las no heap, com malloc",
+      "Guardá-las em registos e não na pilha",
+      "Guardá-las em variáveis globais"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.32"
+  },
+  {
+    "question": "Aceder à memória por ordem crescente de endereços aproveita melhor a cache",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.32"
+  },
+  {
+    "question": "O que é a constant folding?",
+    "answers": [
+      "O cálculo de constantes em tempo de execução",
+      "A substituição de constantes por variáveis globais",
+      "A leitura de constantes a partir de um ficheiro",
+      "O cálculo de constantes em tempo de compilação"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.33"
+  },
+  {
+    "question": "Considere int i = 2 + 3;. O que faz a constant folding?",
+    "answers": [
+      "Calcula 2 + 3 em compilação, de modo a que i comece com 5",
+      "Calcula 2 + 3 em execução, de modo a que i comece com 5",
+      "Guarda 2 e 3 em registos e soma-os a cada uso de i",
+      "Deixa i sem inicialização até ao primeiro uso"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.33"
+  },
+  {
+    "question": "Em int x = 4 * 8 + 1;, que valor calcula o compilador por constant folding?",
+    "answers": [
+      "34",
+      "33",
+      "32",
+      "66"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.33"
+  },
+  {
+    "question": "Em int x = 10 - 3 * 2;, que valor calcula o compilador por constant folding?",
+    "answers": [
+      "5",
+      "3",
+      "4",
+      "8"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.33"
+  },
+  {
+    "question": "Em int x = 2 * 2 * 2;, que valor calcula o compilador por constant folding?",
+    "answers": [
+      "9",
+      "7",
+      "16",
+      "8"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.33"
+  },
+  {
+    "question": "Em int x = 100 / 4 + 5;, que valor calcula o compilador por constant folding?",
+    "answers": [
+      "30",
+      "31",
+      "29",
+      "60"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.33"
+  },
+  {
+    "question": "O que é a code motion?",
+    "answers": [
+      "Aumentar a frequência com que um cálculo é feito no ciclo",
+      "Fazer menos vezes um cálculo que dá sempre o mesmo resultado",
+      "Mover o código de uma função para outra função diferente",
+      "Mover o código do programa todo para a memória cache"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.34"
+  },
+  {
+    "question": "Qual é o exemplo mais comum de code motion?",
+    "answers": [
+      "Mover código para dentro de um ciclo",
+      "Mover código para o início do ficheiro",
+      "Mover código para fora de um ciclo",
+      "Mover código para uma biblioteca"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.34"
+  },
+  {
+    "question": "Em for (i = 0; i < n; i++) a[i] = x * y;, que expressão se pode mover para fora do ciclo?",
+    "answers": [
+      "a[i]",
+      "i < n",
+      "i++",
+      "x * y"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.34"
+  },
+  {
+    "question": "Em for (i = 0; i < n; i++) a[i] = i * y;, a expressão i * y pode ser movida para fora do ciclo?",
+    "answers": [
+      "Não, porque depende de i, que muda em cada iteração",
+      "Sim, porque y não muda durante a execução do ciclo",
+      "Sim, porque o ciclo faz sempre as mesmas n iterações",
+      "Não, porque y é uma simples variável local da função"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.34"
+  },
+  {
+    "question": "O que é a redução de força (reduction in strength)?",
+    "answers": [
+      "Substituir operações simples por outras mais caras e lentas",
+      "Substituir operações caras por outras mais simples e equivalentes",
+      "Reduzir o número de bits usado em cada variável do programa",
+      "Reduzir a frequência de relógio do processador do sistema"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.35"
+  },
+  {
+    "question": "Que operação substitui uma multiplicação por 8?",
+    "answers": [
+      "Um deslocamento para a direita de 3 posições",
+      "Um deslocamento para a esquerda de 8 posições",
+      "Um deslocamento para a esquerda de 3 posições",
+      "Uma soma do operando com o valor 8"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.35"
+  },
+  {
+    "question": "Que operação substitui uma divisão sem sinal por 4?",
+    "answers": [
+      "Um deslocamento para a esquerda de 2 posições",
+      "Um deslocamento para a direita de 4 posições",
+      "Uma subtração do operando por 4",
+      "Um deslocamento para a direita de 2 posições"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.35"
+  },
+  {
+    "question": "Sabendo que x << 3 equivale a multiplicar por 2^3, que valor dá x << 3 para x = 7?",
+    "answers": [
+      "56",
+      "21",
+      "112",
+      "63"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.35"
+  },
+  {
+    "question": "Sabendo que x << 4 equivale a multiplicar por 2^4, que valor dá x << 4 para x = 5?",
+    "answers": [
+      "20",
+      "80",
+      "160",
+      "85"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.35"
+  },
+  {
+    "question": "Sabendo que x << 2 equivale a multiplicar por 2^2, que valor dá x << 2 para x = 9?",
+    "answers": [
+      "18",
+      "72",
+      "36",
+      "45"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.35"
+  },
+  {
+    "question": "Como se pode calcular x * 10 só com deslocamentos e uma soma?",
+    "answers": [
+      "(x << 4) - (x << 1)",
+      "(x << 10) + x",
+      "(x << 2) + (x << 1)",
+      "(x << 3) + (x << 1)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.35"
+  },
+  {
+    "question": "Quando é vantajosa a redução de força, com deslocamentos e somas?",
+    "answers": [
+      "Depende da máquina e do custo da multiplicação e da divisão",
+      "Sempre, em qualquer máquina e com qualquer compilador usado",
+      "Nunca, porque os deslocamentos são sempre muito mais lentos",
+      "Só quando o programa não usa ciclos nem chamadas de funções"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.35"
+  },
+  {
+    "question": "Porque pode a indexação de vetores em C sofrer redução de força?",
+    "answers": [
+      "Porque é basicamente uma subtração e uma divisão",
+      "Porque é uma multiplicação seguida de uma soma",
+      "Porque envolve sempre uma chamada de função",
+      "Porque só funciona quando os índices são negativos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.35"
+  },
+  {
+    "question": "O que é partilhar subexpressões comuns?",
+    "answers": [
+      "Calcular a mesma expressão várias vezes",
+      "Eliminar todas as expressões do programa",
+      "Reutilizar partes de expressões já calculadas",
+      "Trocar expressões por chamadas de funções"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.36"
+  },
+  {
+    "question": "Em a = b * c + d; e = b * c - d;, que subexpressão é comum?",
+    "answers": [
+      "b * d",
+      "c + d",
+      "a - e",
+      "b * c"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.36"
+  },
+  {
+    "question": "Em a = b * c + d; e = b * c - d;, quantas multiplicações restam depois de partilhar a subexpressão comum?",
+    "answers": [
+      "1",
+      "2",
+      "0",
+      "3"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.36"
+  },
+  {
+    "question": "Porque se removem as chamadas de função desnecessárias?",
+    "answers": [
+      "Porque as funções não podem ser otimizadas nunca",
+      "Porque as chamadas têm custos adicionais (overhead)",
+      "Porque as funções ocupam muita memória estática",
+      "Porque as funções não podem ter variáveis locais"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.37"
+  },
+  {
+    "question": "Que tarefas fazem os compiladores otimizadores?",
+    "answers": [
+      "Escolha do melhor algoritmo e da melhor estrutura de dados",
+      "Redução da complexidade computacional dos algoritmos",
+      "Alocação de registos e seleção e ordenação de código",
+      "Correção dos erros lógicos introduzidos pelo programador"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.39"
+  },
+  {
+    "question": "Os compiladores, em geral, melhoram a complexidade computacional dos algoritmos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.39"
+  },
+  {
+    "question": "Quais são os dois principais bloqueadores de otimização (optimization blockers)?",
+    "answers": [
+      "Os ciclos aninhados e as variáveis globais dos programas C",
+      "Os comentários do código e os nomes de todas as variáveis",
+      "As macros do pré-processador e as constantes do programa",
+      "O aliasing de memória e os efeitos secundários de procedimentos"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.39"
+  },
+  {
+    "question": "Qual é a restrição fundamental dos compiladores?",
+    "answers": [
+      "Não podem alterar o comportamento do programa em nenhum caso",
+      "Não podem alterar o nome das variáveis locais do programa",
+      "Não podem reduzir o tamanho do ficheiro executável final",
+      "Não podem usar mais do que oito registos do processador"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.40"
+  },
+  {
+    "question": "O que faz o compilador na dúvida sobre uma otimização?",
+    "answers": [
+      "Aplica a otimização na mesma, por precaução",
+      "Tem de ser conservador e não a aplicar",
+      "Pede ao programador que escolha o que fazer",
+      "Aplica a otimização só em ciclos pequenos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.40"
+  },
+  {
+    "question": "A maior parte da análise do compilador é feita apenas dentro de cada função",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.40"
+  },
+  {
+    "question": "A análise do programa inteiro é, na maioria dos casos, barata e por isso muito usada",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.40"
+  },
+  {
+    "question": "A maior parte da análise do compilador usa apenas informação estática",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.40"
+  },
+  {
+    "question": "Quem tem de fazer mais esforço para que o código final seja eficiente?",
+    "answers": [
+      "O sistema operativo, ajustando o código durante a execução",
+      "O processador, reescrevendo todas as instruções que recebe",
+      "O programador, escrevendo código que o compilador transforme bem",
+      "O utilizador, escolhendo as opções do programa em execução"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.41"
+  },
+  {
+    "question": "Os compiladores têm de aplicar apenas otimizações seguras",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.41"
+  },
+  {
+    "question": "Porque são problemáticas as chamadas de função para o compilador?",
+    "answers": [
+      "Podem ocupar menos espaço do que o código que as chama",
+      "Podem ser chamadas mais do que uma vez em cada função",
+      "Podem devolver sempre um valor do tipo inteiro em a0",
+      "Podem ter efeitos secundários ou não ser determinísticas"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.42"
+  },
+  {
+    "question": "Considere void lower1(char *s) { int i; for (i = 0; i < strlen(s); i++) if (s[i] >= 'A' && s[i] <= 'Z') s[i] -= ('A' - 'a'); } Porque não move o compilador strlen(s) para fora do ciclo?",
+    "answers": [
+      "Porque não pode assumir que strlen não altera s",
+      "Porque strlen é uma função do sistema operativo",
+      "Porque s é uma variável global do programa",
+      "Porque o ciclo for não admite variáveis locais"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.42"
+  },
+  {
+    "question": "Considere void lower1(char *s) { int i; for (i = 0; i < strlen(s); i++) if (s[i] >= 'A' && s[i] <= 'Z') s[i] -= ('A' - 'a'); } Como trata o compilador a função strlen()?",
+    "answers": [
+      "Como uma instrução simples do processador",
+      "Como uma caixa negra (black box)",
+      "Como uma macro do pré-processador",
+      "Como uma variável global do programa"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.42"
+  },
+  {
+    "question": "Considere void lower1(char *s) { int i; for (i = 0; i < strlen(s); i++) if (s[i] >= 'A' && s[i] <= 'Z') s[i] -= ('A' - 'a'); } Que alteração do programador permite otimizar o ciclo?",
+    "answers": [
+      "Chamar strlen(s) duas vezes em cada iteração",
+      "Declarar a variável i como global",
+      "Calcular strlen(s) uma só vez, antes do ciclo",
+      "Trocar o ciclo for por um ciclo while"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.42"
+  },
+  {
+    "question": "Considere void lower1(char *s) { int i; for (i = 0; i < strlen(s); i++) if (s[i] >= 'A' && s[i] <= 'Z') s[i] -= ('A' - 'a'); } Para uma string de n caracteres, quantas vezes se avalia a condição do ciclo?",
+    "answers": [
+      "n vezes",
+      "n - 1 vezes",
+      "1 vez",
+      "n + 1 vezes"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.42"
+  },
+  {
+    "question": "O compilador pode assumir que a função strlen devolve sempre o mesmo valor",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.42"
+  },
+  {
+    "question": "Considere void func1(int *xp, int *yp) { *xp += *yp; *xp += *yp; } e void func2(int *xp, int *yp) { *xp += 2 * *yp; } Contando cada leitura e cada escrita, quantas referências à memória faz func1?",
+    "answers": [
+      "6",
+      "3",
+      "4",
+      "2"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.43"
+  },
+  {
+    "question": "Considere void func1(int *xp, int *yp) { *xp += *yp; *xp += *yp; } e void func2(int *xp, int *yp) { *xp += 2 * *yp; } Contando cada leitura e cada escrita, quantas referências à memória faz func2?",
+    "answers": [
+      "6",
+      "3",
+      "4",
+      "2"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.43"
+  },
+  {
+    "question": "Considere void func1(int *xp, int *yp) { *xp += *yp; *xp += *yp; } e void func2(int *xp, int *yp) { *xp += 2 * *yp; } Qual das duas funções é mais eficiente à primeira vista?",
+    "answers": [
+      "A função func1, porque faz mais operações de soma",
+      "Ambas, porque têm o mesmo número de referências",
+      "A função func2, porque faz menos referências à memória",
+      "A função func1, porque lê *yp duas vezes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.43"
+  },
+  {
+    "question": "Com void func1(int *xp, int *yp) { *xp += *yp; *xp += *yp; } e xp e yp a apontar para variáveis diferentes, com *xp = 5 e *yp = 3, que valor fica em *xp depois de func1?",
+    "answers": [
+      "8",
+      "20",
+      "14",
+      "11"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.44"
+  },
+  {
+    "question": "Com void func1(int *xp, int *yp) { *xp += *yp; *xp += *yp; } e xp e yp a apontar para variáveis diferentes, com *xp = 10 e *yp = 4, que valor fica em *xp depois de func1?",
+    "answers": [
+      "18",
+      "14",
+      "40",
+      "22"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.44"
+  },
+  {
+    "question": "Com void func1(int *xp, int *yp) { *xp += *yp; *xp += *yp; } e xp e yp a apontar para variáveis diferentes, com *xp = 7 e *yp = 0, que valor fica em *xp depois de func1?",
+    "answers": [
+      "28",
+      "7",
+      "1",
+      "2"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.44"
+  },
+  {
+    "question": "Com void func1(int *xp, int *yp) { *xp += *yp; *xp += *yp; } e xp igual a yp, com *xp = 5, que valor fica em *xp depois de func1?",
+    "answers": [
+      "15",
+      "10",
+      "20",
+      "25"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.44"
+  },
+  {
+    "question": "Com void func2(int *xp, int *yp) { *xp += 2 * *yp; } e xp igual a yp, com *xp = 5, que valor fica em *xp depois de func2?",
+    "answers": [
+      "20",
+      "10",
+      "25",
+      "15"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.44"
+  },
+  {
+    "question": "Com void func1(int *xp, int *yp) { *xp += *yp; *xp += *yp; } e xp igual a yp, com *xp = 7, que valor fica em *xp depois de func1?",
+    "answers": [
+      "28",
+      "21",
+      "14",
+      "35"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.44"
+  },
+  {
+    "question": "Com void func2(int *xp, int *yp) { *xp += 2 * *yp; } e xp igual a yp, com *xp = 7, que valor fica em *xp depois de func2?",
+    "answers": [
+      "28",
+      "21",
+      "14",
+      "35"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.44"
+  },
+  {
+    "question": "Com void func1(int *xp, int *yp) { *xp += *yp; *xp += *yp; } e xp igual a yp, com *xp = 10, que valor fica em *xp depois de func1?",
+    "answers": [
+      "30",
+      "20",
+      "40",
+      "50"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.44"
+  },
+  {
+    "question": "Com void func2(int *xp, int *yp) { *xp += 2 * *yp; } e xp igual a yp, com *xp = 10, que valor fica em *xp depois de func2?",
+    "answers": [
+      "40",
+      "20",
+      "50",
+      "30"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.44"
+  },
+  {
+    "question": "Com void func1(int *xp, int *yp) { *xp += *yp; *xp += *yp; } e xp igual a yp, com *xp = 3, que valor fica em *xp depois de func1?",
+    "answers": [
+      "12",
+      "9",
+      "6",
+      "15"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.44"
+  },
+  {
+    "question": "Com void func2(int *xp, int *yp) { *xp += 2 * *yp; } e xp igual a yp, com *xp = 3, que valor fica em *xp depois de func2?",
+    "answers": [
+      "12",
+      "9",
+      "6",
+      "15"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.44"
+  },
+  {
+    "question": "Se xp e yp forem iguais, por quanto fica multiplicado *xp depois de func1?",
+    "answers": [
+      "2",
+      "3",
+      "4",
+      "6"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.44"
+  },
+  {
+    "question": "Se xp e yp forem iguais, por quanto fica multiplicado *xp depois de func2?",
+    "answers": [
+      "2",
+      "4",
+      "6",
+      "3"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.44"
+  },
+  {
+    "question": "O que é o aliasing de memória (memory aliasing)?",
+    "answers": [
+      "Dois apontadores poderem designar a mesma posição de memória",
+      "Dois programas poderem partilhar o mesmo ficheiro",
+      "Duas variáveis terem o mesmo nome em funções diferentes",
+      "Dois processadores acederem à mesma cache"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.44"
+  },
+  {
+    "question": "Porque não pode o compilador substituir func1 por func2?",
+    "answers": [
+      "Porque func2 é sempre bastante mais lenta do que func1",
+      "Porque deve assumir que os apontadores podem ser alias",
+      "Porque func1 não aceita apontadores como argumentos",
+      "Porque func2 não consegue escrever no valor de *xp"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.44"
+  },
+  {
+    "question": "O compilador tem de assumir que apontadores diferentes podem ser alias",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.44"
+  },
+  {
+    "question": "Com xp e yp iguais, func1 e func2 produzem sempre o mesmo resultado",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.44"
+  },
+  {
+    "question": "Com xp e yp a apontar para variáveis diferentes, func1 e func2 produzem o mesmo resultado",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.44"
+  }
+]

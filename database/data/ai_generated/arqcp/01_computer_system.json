@@ -153,7 +153,7 @@
   {
     "question": "O que contém o registo PC (program counter)?",
     "answers": [
-      "O endereço de memória da próxima instrução a executar",
+      "O endereço de memória de uma instrução do programa em execução",
       "A quantidade de instruções que ainda faltam executar",
       "O resultado da última instrução executada",
       "O endereço da última posição de memória livre"
@@ -731,7 +731,7 @@
     "ref": "T1 p.34"
   },
   {
-    "question": "No exemplo hello, por onde passam os bytes da string a imprimir até chegarem ao ecrã?",
+    "question": "No programa hello, que imprime uma string, por onde passam os bytes da string até chegarem ao ecrã?",
     "answers": [
       "Do disco diretamente para o ecrã, sem passar pela memória principal",
       "Da memória diretamente para o ecrã, sem passar pelo CPU nem pelos registos",

@@ -1,0 +1,2187 @@
+[
+  {
+    "question": "A linguagem assembly é uma linguagem de baixo nível, que corresponde de perto às instruções máquina de um tipo específico de CPU",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.5"
+  },
+  {
+    "question": "Que papel tem a linguagem assembly entre as linguagens de alto nível e o código máquina?",
+    "answers": [
+      "É uma camada intermédia, com uma representação mais legível do código máquina",
+      "É uma camada que traduz o código máquina para linguagem natural, para ser lida por humanos",
+      "É uma camada que substitui o sistema operativo na execução do código de baixo nível",
+      "É uma camada que torna o código máquina independente da arquitetura do processador"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.5"
+  },
+  {
+    "question": "Um programa escrito em assembly para uma arquitetura pode ser executado em qualquer outra, porque a linguagem assembly é portável",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.5"
+  },
+  {
+    "question": "Na instrução add x10, x11, x12, qual é o mnemónico e quais são os operandos de origem?",
+    "answers": [
+      "O mnemónico é x10 e os operandos de origem são add e x11",
+      "O mnemónico é add e os operandos de origem são x11 e x12",
+      "O mnemónico é add e os operandos de origem são x10 e x11",
+      "O mnemónico é x12 e os operandos de origem são x10 e x11"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.7"
+  },
+  {
+    "question": "Na instrução add x10, x11, x12, qual é o operando de destino?",
+    "answers": [
+      "x11",
+      "x12",
+      "x10",
+      "add"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.7"
+  },
+  {
+    "question": "Em que valor é codificada a instrução add x10, x11, x12, numa instrução de quatro bytes?",
+    "answers": [
+      "0x40C58533",
+      "0x00B60533",
+      "0x00C505B3",
+      "0x00C58533"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.7"
+  },
+  {
+    "question": "O que faz o assembler a cada instrução assembly, que está escrita como texto?",
+    "answers": [
+      "Converte-a na instrução máquina correspondente, codificada em binário",
+      "Executa-a diretamente no processador, sem a converter em binário",
+      "Guarda-a na memória exatamente como está, em texto, sem a alterar",
+      "Traduz-a para uma instrução equivalente da linguagem C"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.7"
+  },
+  {
+    "question": "Que tipos de operandos pode ter uma instrução assembly?",
+    "answers": [
+      "Apenas um nome de registo",
+      "Um nome de registo, um valor imediato ou um nome de símbolo",
+      "Apenas um valor imediato ou um endereço de memória em decimal",
+      "Um nome de registo, um valor imediato ou uma instrução"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.8"
+  },
+  {
+    "question": "O que é um valor imediato (immediate value)?",
+    "answers": [
+      "Um valor guardado num registo do processador antes de a instrução ser executada",
+      "O endereço de uma posição de memória, que é calculado em tempo de execução",
+      "Uma constante numérica codificada diretamente na instrução, como bits",
+      "Um valor lido do disco quando a instrução é executada pelo processador"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.8"
+  },
+  {
+    "question": "O que identifica um nome de símbolo num operando?",
+    "answers": [
+      "Um registo do processador, escolhido pelo programador da aplicação",
+      "Uma instrução que o assembler vai expandir em várias instruções",
+      "Um valor imediato de 12 bits, codificado na própria instrução",
+      "Um símbolo da tabela de símbolos, que é substituído pelo respetivo valor"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.8"
+  },
+  {
+    "question": "Em algumas instruções, os imediatos são números de 12 bits em complemento para 2, estendidos com sinal para 32 bits",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.10"
+  },
+  {
+    "question": "Um imediato de 12 bits com o valor 0xFFF, estendido com sinal para 32 bits, fica com que valor?",
+    "answers": [
+      "0xFFFFFFFF",
+      "0x00000FFF",
+      "0x000007FF",
+      "0xFFFFF000"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.10"
+  },
+  {
+    "question": "Um imediato de 12 bits com o valor 0x800, estendido com sinal para 32 bits, fica com que valor?",
+    "answers": [
+      "0x00000800",
+      "0xFFFFF800",
+      "0xFFFFF000",
+      "0x7FFFF800"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.10"
+  },
+  {
+    "question": "Em assembly, como se escreve um imediato em binário?",
+    "answers": [
+      "Com o prefixo 0x",
+      "Com o prefixo 0",
+      "Com o prefixo 0b",
+      "Com o sufixo b"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.11"
+  },
+  {
+    "question": "Em assembly, como são interpretadas as sequências de algarismos que começam pelo algarismo 0?",
+    "answers": [
+      "Como números em decimal",
+      "Como números em hexadecimal",
+      "Como números em binário",
+      "Como números em octal"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.11"
+  },
+  {
+    "question": "Em assembly, como são interpretadas as sequências de algarismos que começam por um algarismo de 1 a 9?",
+    "answers": [
+      "Como números em decimal",
+      "Como números em octal",
+      "Como números em hexadecimal",
+      "Como números em binário"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.11"
+  },
+  {
+    "question": "Em assembly, como é convertido um carácter entre aspas simples, como 'A'?",
+    "answers": [
+      "Num endereço de memória, escolhido pelo assembler",
+      "Num valor numérico, através da tabela ASCII",
+      "Num nome de símbolo, guardado na tabela de símbolos",
+      "Num valor binário, escolhido de forma aleatória"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.11"
+  },
+  {
+    "question": "Qual é o valor decimal do imediato 0b1010?",
+    "answers": [
+      "5",
+      "520",
+      "10",
+      "4112"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.11"
+  },
+  {
+    "question": "Qual é o valor decimal do imediato 017, escrito em assembly?",
+    "answers": [
+      "17",
+      "23",
+      "16",
+      "15"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.11"
+  },
+  {
+    "question": "Qual é o valor numérico do imediato 'A'?",
+    "answers": [
+      "65",
+      "97",
+      "66",
+      "48"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.11"
+  },
+  {
+    "question": "Qual é o valor numérico do imediato '0' (o carácter zero, entre aspas)?",
+    "answers": [
+      "0",
+      "48",
+      "65",
+      "32"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.11"
+  },
+  {
+    "question": "Para carregar uma constante de 32 bits num registo basta uma única instrução addi, com um imediato de 32 bits",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.12"
+  },
+  {
+    "question": "Quantos bits de imediato codificam, respetivamente, as instruções lui e addi?",
+    "answers": [
+      "12 bits e 20 bits",
+      "16 bits e 16 bits",
+      "20 bits e 12 bits",
+      "32 bits e 12 bits"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.12"
+  },
+  {
+    "question": "Para carregar 0x87654321 num registo, que valor se coloca no imediato do lui e do addi, respetivamente?",
+    "answers": [
+      "0x87655 e 0x321",
+      "0x87654 e 0x312",
+      "0x87653 e 0x321",
+      "0x87654 e 0x321"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.12"
+  },
+  {
+    "question": "Para carregar 0x12345FFF num registo, que valor se coloca no imediato do lui e do addi, respetivamente?",
+    "answers": [
+      "0x12346 e -1",
+      "0x12345 e -1",
+      "0x12346 e 4095",
+      "0x12345 e 4095"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.13"
+  },
+  {
+    "question": "Para carregar 0xABCDE800 num registo, que valor se coloca no imediato do lui e do addi, respetivamente?",
+    "answers": [
+      "0xABCDE e -2048",
+      "0xABCDF e -2048",
+      "0xABCDE e 2048",
+      "0xABCDF e 2048"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.13"
+  },
+  {
+    "question": "Porque é que, para carregar 0xFEEDA987, o lui recebe 0xFEEDB e não 0xFEEDA?",
+    "answers": [
+      "Porque o lui soma sempre 1 ao imediato que recebe, antes de o escrever no registo",
+      "Porque o addi só aceita imediatos com valor negativo e por isso o lui compensa sempre",
+      "Porque o addi estende o imediato com sinal e, sendo negativo, subtrai 1 aos 20 bits superiores",
+      "Porque 0xFEEDA não cabe em 20 bits e tem de ser aumentado para poder ser codificado"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.13"
+  },
+  {
+    "question": "Depois de lui s2, 0xFEEDB e addi s2, s2, -1657, que valor fica em s2?",
+    "answers": [
+      "0xFEEDB000",
+      "0xFEED9987",
+      "0xFEEDB679",
+      "0xFEEDA987"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.13"
+  },
+  {
+    "question": "O que é a tabela de símbolos?",
+    "answers": [
+      "Uma estrutura de dados que associa cada símbolo do programa ao seu valor",
+      "Uma lista dos registos do processador e dos seus nomes ABI",
+      "Uma tabela com as instruções que o processador consegue executar",
+      "Uma tabela que guarda os valores das variáveis em tempo de execução"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.14"
+  },
+  {
+    "question": "Qual destes é um nome de símbolo válido em assembly?",
+    "answers": [
+      "1var",
+      "_a12b",
+      "z@12345",
+      "x-y"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.14"
+  },
+  {
+    "question": "Qual destes nomes pode ser usado para uma label em assembly?",
+    "answers": [
+      "-var",
+      "a+b",
+      "z12345",
+      "1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.14"
+  },
+  {
+    "question": "Qual destes NÃO é um nome de símbolo válido em assembly?",
+    "answers": [
+      "_x",
+      "var1",
+      "_1",
+      "1var"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.14"
+  },
+  {
+    "question": "Num nome de símbolo, o primeiro carácter não pode ser um algarismo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.14"
+  },
+  {
+    "question": "Os nomes de símbolo podem conter caracteres alfanuméricos, o carácter _ e também o carácter -",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.14"
+  },
+  {
+    "question": "No RISC-V, a memória é endereçável à word, e cada word tem um endereço único de 32 bits",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.15"
+  },
+  {
+    "question": "Numa word de 32 bits, o endereço de cada word é um múltiplo de que valor?",
+    "answers": [
+      "4",
+      "2",
+      "8",
+      "32"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.16"
+  },
+  {
+    "question": "Em programação, é essencial distinguir entre o endereço de uma posição de memória e o seu conteúdo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.16"
+  },
+  {
+    "question": "O que são as labels em assembly?",
+    "answers": [
+      "Nomes de registos do processador, escolhidos pelo programador do programa",
+      "Marcadores que representam posições do programa (endereços de memória)",
+      "Constantes numéricas que ficam codificadas diretamente nas instruções",
+      "Instruções que o assembler expande em várias instruções máquina"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.17"
+  },
+  {
+    "question": "As labels são convertidas automaticamente em símbolos pelo assembler",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.17"
+  },
+  {
+    "question": "O que é uma pseudoinstrução RISC-V?",
+    "answers": [
+      "Uma instrução que o processador executa diretamente, mas que não existe em assembly",
+      "Uma instrução que só existe na extensão M do ISA, usada para multiplicar e dividir",
+      "Uma instrução assembly que o assembler traduz para uma ou mais instruções máquina reais",
+      "Uma instrução que o processador simula por software durante a execução do programa"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.18"
+  },
+  {
+    "question": "As pseudoinstruções fazem parte do conjunto base de instruções RISC-V, ao lado das instruções reais",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.18"
+  },
+  {
+    "question": "Em que instrução o assembler converte a pseudoinstrução nop?",
+    "answers": [
+      "add x0, x0, x0",
+      "addi x1, x0, 0",
+      "sub x0, x0, x0",
+      "addi x0, x0, 0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.18"
+  },
+  {
+    "question": "Em que instrução o assembler converte a pseudoinstrução mv a5, a7?",
+    "answers": [
+      "addi a5, a7, 0",
+      "addi a7, a5, 0",
+      "add a5, a7, a7",
+      "sub a5, a7, zero"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.18"
+  },
+  {
+    "question": "Qual é a forma geral das instruções lógicas, de deslocamento e aritméticas com dois operandos de origem?",
+    "answers": [
+      "MNM rs1, rs2, rd (o destino vem no fim)",
+      "MNM rd, rs1, rs2 (ou MNM rd, rs1, imm)",
+      "MNM rd, imm(rs1) (o segundo operando é um endereço)",
+      "MNM rs1, rd (apenas um operando de origem)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.20"
+  },
+  {
+    "question": "O que é o shamt nas instruções de deslocamento?",
+    "answers": [
+      "Um registo que guarda o resultado do deslocamento",
+      "Um imediato de 12 bits com sinal, que indica o sentido do deslocamento",
+      "Um imediato de 5 bits, sem sinal, que indica o número de posições a deslocar",
+      "O número de bits do registo que se desloca"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.20"
+  },
+  {
+    "question": "Qual é o efeito de xor rd, rs1, rs2?",
+    "answers": [
+      "R[rd] = R[rs1] | R[rs2]",
+      "R[rd] = R[rs1] & R[rs2]",
+      "R[rd] = ~R[rs1]",
+      "R[rd] = R[rs1] ^ R[rs2]"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.21"
+  },
+  {
+    "question": "Qual é o efeito da pseudoinstrução neg rd, rs1?",
+    "answers": [
+      "R[rd] = ~R[rs1] + 1, o complemento para 2 de R[rs1]",
+      "R[rd] = ~R[rs1], o complemento para 1 de R[rs1]",
+      "R[rd] = R[rs1] + 1",
+      "R[rd] = 0 − 1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.21"
+  },
+  {
+    "question": "Admita a1 = 5. Que valor fica em a0 depois de neg a0, a1?",
+    "answers": [
+      "0xFFFFFFFA",
+      "0xFFFFFFFB",
+      "0x00000005",
+      "0xFFFFFFFC"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.21"
+  },
+  {
+    "question": "Admita a1 = 0x0000FF0F. Que valor fica em a0 depois de andi a0, a1, 0xFF?",
+    "answers": [
+      "0x0000FF0F",
+      "0x0000FFFF",
+      "0x0000000F",
+      "0x0000FFF0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.22"
+  },
+  {
+    "question": "Admita a1 = 0x00000F00. Que valor fica em a0 depois de ori a0, a1, 0x0F?",
+    "answers": [
+      "0x00000000",
+      "0x00000FF0",
+      "0x00000F00",
+      "0x00000F0F"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.22"
+  },
+  {
+    "question": "Admita a1 = 0x000000F0. Que valor fica em a0 depois de xori a0, a1, 0xFF?",
+    "answers": [
+      "0x0000000F",
+      "0x000000FF",
+      "0x000000F0",
+      "0x000001EF"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.22"
+  },
+  {
+    "question": "Em que instrução é traduzida a pseudoinstrução not rd, rs1?",
+    "answers": [
+      "xori rd, rs1, 0",
+      "xori rd, rs1, -1",
+      "andi rd, rs1, -1",
+      "ori rd, rs1, -1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.22"
+  },
+  {
+    "question": "Porque é que xori rd, rs1, -1 calcula o complemento para 1 de rs1?",
+    "answers": [
+      "Porque −1 é estendido com zeros para 0x00000001, e o xor com esse valor soma 1 ao registo",
+      "Porque o xor com −1 troca a ordem dos bits do registo, do primeiro para o último",
+      "Porque −1 é estendido com sinal para 0xFFFFFFFF, e o xor com bits a 1 inverte cada bit",
+      "Porque o imediato −1 é convertido em zero pelo assembler antes de ser codificado"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.22"
+  },
+  {
+    "question": "Admita a1 = 0x0000FFFF. Que valor fica em a0 depois de xori a0, a1, -1?",
+    "answers": [
+      "0x0000FFFE",
+      "0xFFFF0001",
+      "0x00000000",
+      "0xFFFF0000"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.22"
+  },
+  {
+    "question": "Nos deslocamentos para a esquerda, os bits menos significativos que ficam vazios são preenchidos com o bit de sinal",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.23"
+  },
+  {
+    "question": "Qual é a diferença entre srl e sra?",
+    "answers": [
+      "O srl preenche os bits mais significativos com zeros, e o sra replica o bit de sinal",
+      "O srl desloca os bits para a esquerda e o sra desloca-os para a direita, ambos com zeros",
+      "O srl replica o bit de sinal nos bits mais significativos, e o sra preenche-os com zeros",
+      "O srl usa um imediato como deslocamento, e o sra usa o conteúdo de um registo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.23"
+  },
+  {
+    "question": "Admita a1 = 0x0000F00F. Que valor fica em a0 depois de slli a0, a1, 4?",
+    "answers": [
+      "0x00000F00",
+      "0x000F00F0",
+      "0x00F00F00",
+      "0x0003C03C"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.23"
+  },
+  {
+    "question": "Admita a1 = 0xF0000000. Que valor fica em a0 depois de srli a0, a1, 4?",
+    "answers": [
+      "0xFF000000",
+      "0x00000000",
+      "0x0F000000",
+      "0x00F00000"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.23"
+  },
+  {
+    "question": "Admita a1 = 0xF0000000. Que valor fica em a0 depois de srai a0, a1, 4?",
+    "answers": [
+      "0x0F000000",
+      "0x00000000",
+      "0xFFF00000",
+      "0xFF000000"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.23"
+  },
+  {
+    "question": "Admita a1 = 0xFFFFFFF0 (−16) e a2 = 2. Que valor fica em a0 depois de sra a0, a1, a2?",
+    "answers": [
+      "0xFFFFFFFC",
+      "0x3FFFFFFC",
+      "0xFFFFFFC0",
+      "0xFFFFFFFF"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.23"
+  },
+  {
+    "question": "Admita a1 = 0xFFFFFFF0 e a2 = 2. Que valor fica em a0 depois de srl a0, a1, a2?",
+    "answers": [
+      "0xFFFFFFFC",
+      "0x3FFFFFFC",
+      "0xFFFFFFC0",
+      "0x0FFFFFFF"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.23"
+  },
+  {
+    "question": "Admita a1 = 3. Que valor fica em a0 depois de slli a0, a1, 5?",
+    "answers": [
+      "15",
+      "8",
+      "96",
+      "24"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.23"
+  },
+  {
+    "question": "O RV32 tem uma instrução de soma de bytes, que opera apenas sobre 8 bits",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.25"
+  },
+  {
+    "question": "Porque é que a multiplicação é diferente das outras operações aritméticas?",
+    "answers": [
+      "Porque só funciona com números sem sinal e não aceita operandos negativos",
+      "Porque o resultado ocupa sempre apenas N/2 bits, perdendo os bits restantes",
+      "Porque precisa de uma instrução de salto antes de calcular o produto",
+      "Porque multiplicar dois números de N bits produz um produto de 2N bits"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.25"
+  },
+  {
+    "question": "Em que extensão do ISA estão as instruções de multiplicação e de divisão?",
+    "answers": [
+      "Na extensão M",
+      "Na extensão A",
+      "Na extensão F",
+      "No conjunto base de inteiros RV32I"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.25"
+  },
+  {
+    "question": "Como se designa um RV32I com a extensão M?",
+    "answers": [
+      "RV32MI",
+      "RV32IM",
+      "RV32M",
+      "RV64IM"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.25"
+  },
+  {
+    "question": "Qual é o efeito da instrução addi rd, rs1, imm12?",
+    "answers": [
+      "R[rd] = R[rs1] + ZeroExt(imm12)",
+      "R[rd] = R[rs1] + imm12 << 12",
+      "R[rd] = R[rs1] + SignExt(imm12)",
+      "R[rd] = PC + SignExt(imm12)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.26"
+  },
+  {
+    "question": "Qual é o efeito da instrução auipc rd, imm20?",
+    "answers": [
+      "R[rd] = SignExt(imm20 << 12)",
+      "R[rd] = PC + imm20",
+      "R[rd] = R[rs1] + (imm20 << 12)",
+      "R[rd] = PC + SignExt(imm20 << 12)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.26"
+  },
+  {
+    "question": "Admita que a instrução auipc a0, 1 está no endereço 0x1000. Que valor fica em a0?",
+    "answers": [
+      "0x00002000",
+      "0x00001001",
+      "0x00001000",
+      "0x00002004"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.26"
+  },
+  {
+    "question": "Admita que a instrução auipc a0, 0x10 está no endereço 0x2000. Que valor fica em a0?",
+    "answers": [
+      "0x00002010",
+      "0x00012000",
+      "0x00010000",
+      "0x00012004"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.26"
+  },
+  {
+    "question": "Nas instruções aritméticas do RISC-V não existe qualquer mecanismo implícito de deteção de overflow, e o resultado é simplesmente os 32 bits inferiores",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.26"
+  },
+  {
+    "question": "Admita a1 = 0x7FFFFFFF. Que valor fica em a0 depois de addi a0, a1, 1?",
+    "answers": [
+      "0x7FFFFFFF",
+      "0xFFFFFFFF",
+      "0x80000000",
+      "0x00000000"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.26"
+  },
+  {
+    "question": "Admita a1 = 0xFFFFFFFF. Que valor fica em a0 depois de addi a0, a1, 1?",
+    "answers": [
+      "0xFFFFFFFF",
+      "0x00000001",
+      "0x80000000",
+      "0x00000000"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.26"
+  },
+  {
+    "question": "Admita a1 = 0 e a2 = 1. Que valor fica em a0 depois de sub a0, a1, a2?",
+    "answers": [
+      "0xFFFFFFFF",
+      "0x00000001",
+      "0x00000000",
+      "0x80000000"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.26"
+  },
+  {
+    "question": "O que faz a instrução mul rd, rs1, rs2?",
+    "answers": [
+      "Multiplica R[rs1] por R[rs2], com sinal, e guarda em rd os 32 bits superiores do produto",
+      "Multiplica R[rs1] por R[rs2], com sinal, e guarda em rd os 32 bits inferiores do produto",
+      "Multiplica R[rs1] por R[rs2], sem sinal, e guarda em rd os 32 bits superiores do produto",
+      "Multiplica R[rs1] por R[rs2] e guarda o produto completo de 64 bits em rd"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.27"
+  },
+  {
+    "question": "O que faz a instrução mulh rd, rs1, rs2?",
+    "answers": [
+      "Multiplica os dois operandos, com sinal, e guarda em rd os 32 bits inferiores do produto",
+      "Multiplica os dois operandos, sem sinal, e guarda em rd os 32 bits superiores do produto",
+      "Multiplica os dois operandos, com sinal, e guarda em rd os 32 bits superiores do produto",
+      "Multiplica o primeiro operando, com sinal, pelo segundo, sem sinal, e guarda os 32 bits superiores"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.27"
+  },
+  {
+    "question": "O que faz a instrução mulhu rd, rs1, rs2?",
+    "answers": [
+      "Multiplica os dois operandos, com sinal, e guarda em rd os 32 bits superiores do produto",
+      "Multiplica os dois operandos, sem sinal, e guarda em rd os 32 bits inferiores do produto",
+      "Divide os dois operandos, sem sinal, e guarda o resto",
+      "Multiplica os dois operandos, sem sinal, e guarda em rd os 32 bits superiores do produto"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.28"
+  },
+  {
+    "question": "O que faz a instrução mulhsu rd, rs1, rs2?",
+    "answers": [
+      "Multiplica o primeiro operando, com sinal, pelo segundo, sem sinal, e guarda em rd os 32 bits superiores",
+      "Multiplica o primeiro operando, sem sinal, pelo segundo, com sinal, e guarda em rd os 32 bits superiores",
+      "Multiplica os dois operandos, com sinal, e guarda em rd os 32 bits superiores",
+      "Multiplica os dois operandos, sem sinal, e guarda em rd os 32 bits inferiores"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.28"
+  },
+  {
+    "question": "O que fazem as instruções div e rem?",
+    "answers": [
+      "Dividem os operandos, sem sinal: o div guarda o quociente e o rem guarda o resto",
+      "Dividem os operandos, com sinal: o div guarda o quociente e o rem guarda o resto",
+      "Dividem os operandos, com sinal: o div guarda o resto e o rem guarda o quociente",
+      "Dividem os operandos, com sinal, e guardam ambos o quociente"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.27"
+  },
+  {
+    "question": "O que fazem as instruções divu e remu?",
+    "answers": [
+      "Dividem os operandos, com sinal: o divu guarda o quociente e o remu guarda o resto",
+      "Dividem os operandos, sem sinal: o divu guarda o resto e o remu guarda o quociente",
+      "Dividem os operandos, sem sinal: o divu guarda o quociente e o remu guarda o resto",
+      "Multiplicam os operandos, sem sinal, e guardam os 32 bits superiores"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.28"
+  },
+  {
+    "question": "Admita a1 = 0x00010000 e a2 = 0x00010000. Que valor fica em a0 depois de mul a0, a1, a2?",
+    "answers": [
+      "0x00000001",
+      "0x00010000",
+      "0xFFFFFFFF",
+      "0x00000000"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.27"
+  },
+  {
+    "question": "Admita a1 = 0x00010000 e a2 = 0x00010000. Que valor fica em a0 depois de mulh a0, a1, a2?",
+    "answers": [
+      "0x00000001",
+      "0x00000000",
+      "0x00010000",
+      "0xFFFFFFFF"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.27"
+  },
+  {
+    "question": "Admita a1 = 20 e a2 = 3. Que valor fica em a0 depois de div a0, a1, a2?",
+    "answers": [
+      "2",
+      "6",
+      "7",
+      "60"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.27"
+  },
+  {
+    "question": "Admita a1 = 20 e a2 = 3. Que valor fica em a0 depois de rem a0, a1, a2?",
+    "answers": [
+      "6",
+      "1",
+      "2",
+      "17"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.27"
+  },
+  {
+    "question": "Admita a1 = −20 (0xFFFFFFEC) e a2 = 4. Que valor fica em a0 depois de div a0, a1, a2?",
+    "answers": [
+      "5",
+      "-4",
+      "-80",
+      "-5"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.27"
+  },
+  {
+    "question": "Admita a1 = 0xFFFFFFFF e a2 = 2. Que valor fica em a0 depois de divu a0, a1, a2?",
+    "answers": [
+      "0x7FFFFFFF",
+      "0x00000000",
+      "0xFFFFFFFF",
+      "0x00000001"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.28"
+  },
+  {
+    "question": "Admita a1 = 0xFFFFFFFF e a2 = 10. Que valor fica em a0 depois de remu a0, a1, a2?",
+    "answers": [
+      "0",
+      "5",
+      "9",
+      "4"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.28"
+  },
+  {
+    "question": "Admita a1 = 0xFFFFFFFF e a2 = 0xFFFFFFFF. Que valor fica em a0 depois de mulhu a0, a1, a2?",
+    "answers": [
+      "0x00000001",
+      "0xFFFFFFFF",
+      "0xFFFFFFFE",
+      "0x00000000"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.28"
+  },
+  {
+    "question": "Que tamanhos de dados suportam as instruções de load e store do RV32?",
+    "answers": [
+      "Apenas 32 bits",
+      "16 e 32 bits",
+      "8, 16, 32 e 64 bits",
+      "8, 16 e 32 bits"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.30"
+  },
+  {
+    "question": "Que tamanho de dados representa a letra h nas instruções de load e store?",
+    "answers": [
+      "Meia word, com 16 bits (2 bytes)",
+      "Uma word, com 32 bits (4 bytes)",
+      "Um byte, com 8 bits",
+      "Uma word dupla, com 64 bits"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.30"
+  },
+  {
+    "question": "Que tamanho de dados representa a letra w nas instruções de load e store?",
+    "answers": [
+      "Meia word, com 16 bits (2 bytes)",
+      "Uma word, com 32 bits (4 bytes)",
+      "Um byte, com 8 bits",
+      "Uma word dupla, com 64 bits"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.30"
+  },
+  {
+    "question": "Que tamanho de dados representa a letra b nas instruções de load e store?",
+    "answers": [
+      "Meia word, com 16 bits (2 bytes)",
+      "Uma word, com 32 bits (4 bytes)",
+      "Um byte, com 8 bits",
+      "Um bit"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.30"
+  },
+  {
+    "question": "Qual é a sintaxe assembly das instruções de load do RV32I?",
+    "answers": [
+      "MNM rs1, rd, imm",
+      "MNM rd, rs1, rs2",
+      "MNM imm(rs1), rd",
+      "MNM rd, imm(rs1)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.31"
+  },
+  {
+    "question": "Como é calculado o endereço de memória numa instrução de load MNM rd, imm(rs1)?",
+    "answers": [
+      "Somando o valor do imediato ao conteúdo do registo rs1",
+      "Somando o conteúdo de rd ao conteúdo de rs1",
+      "Multiplicando o imediato pelo conteúdo de rs1",
+      "Usando o imediato como endereço, sem usar o registo rs1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.31"
+  },
+  {
+    "question": "Na instrução lw t0, 8(a0), qual é o registo de destino, isto é, o que recebe o valor lido da memória?",
+    "answers": [
+      "a0",
+      "t0",
+      "8",
+      "rs1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.31"
+  },
+  {
+    "question": "Admita a0 = 0x1000. De que endereço lê a instrução lw t0, 8(a0)?",
+    "answers": [
+      "0x00001000",
+      "0x00001002",
+      "0x00001008",
+      "0x00001080"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.31"
+  },
+  {
+    "question": "Admita a0 = 0x1000. De que endereço lê a instrução lw t0, -4(a0)?",
+    "answers": [
+      "0x00001004",
+      "0x00001000",
+      "0xFFFFFFFC",
+      "0x00000FFC"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.31"
+  },
+  {
+    "question": "Qual é a diferença entre lb e lbu?",
+    "answers": [
+      "O lb estende o sinal do byte lido, e o lbu estende-o com zeros",
+      "O lb lê um byte e o lbu lê dois bytes",
+      "O lb estende o byte com zeros, e o lbu estende o sinal",
+      "O lb lê da memória e o lbu lê de um registo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.32"
+  },
+  {
+    "question": "Admita que o byte guardado em memória é 0x80. Que valor fica em a0 depois de lb a0, 0(a1)?",
+    "answers": [
+      "0x00000080",
+      "0xFFFFFF80",
+      "0x0000007F",
+      "0xFFFFFF00"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.32"
+  },
+  {
+    "question": "Admita que os dois bytes guardados em memória formam o valor 0x8001. Que valor fica em a0 depois de lhu a0, 0(a1)?",
+    "answers": [
+      "0xFFFF8001",
+      "0x00007FFF",
+      "0x00008001",
+      "0x80010000"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.32"
+  },
+  {
+    "question": "Admita que os bytes guardados a partir de um endereço são 0x78, 0x56, 0x34 e 0x12 (por esta ordem, do endereço mais baixo para o mais alto). Que valor fica em a0 depois de lw a0, 0(a1)?",
+    "answers": [
+      "0x78563412",
+      "0x00000012",
+      "0x00000078",
+      "0x12345678"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.32"
+  },
+  {
+    "question": "O que faz a instrução lui rd, imm20?",
+    "answers": [
+      "Põe o imediato nos 20 bits superiores do registo e põe a zero os 12 bits inferiores",
+      "Põe o imediato nos 12 bits inferiores do registo e põe a zero os 20 bits superiores",
+      "Soma o imediato ao valor atual do registo",
+      "Guarda o imediato na memória, no endereço indicado pelo registo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.34"
+  },
+  {
+    "question": "Que valor fica em a0 depois de lui a0, 0x12345?",
+    "answers": [
+      "0x00012345",
+      "0x12345000",
+      "0x01234500",
+      "0x45000123"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.34"
+  },
+  {
+    "question": "Que valor fica em a0 depois de lui a0, 0xFFFFF?",
+    "answers": [
+      "0x000FFFFF",
+      "0xFFFFFFFF",
+      "0xFFFFF000",
+      "0x00FFFFF0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.34"
+  },
+  {
+    "question": "O que fazem as instruções sw, sh e sb?",
+    "answers": [
+      "Guardam na memória os 8, 16 e 32 bits inferiores de um registo, respetivamente",
+      "Guardam na memória os 32, 16 e 8 bits superiores de um registo, respetivamente",
+      "Guardam no registo o valor lido da memória, com 32, 16 e 8 bits",
+      "Guardam na memória os 32, 16 e 8 bits inferiores de um registo, respetivamente"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.35"
+  },
+  {
+    "question": "Admita a2 = 0x12345678. Que valor é guardado em memória pela instrução sh a2, 0(a1)?",
+    "answers": [
+      "0x5678",
+      "0x1234",
+      "0x78",
+      "0x12345678"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.35"
+  },
+  {
+    "question": "Admita a2 = 0x12345678. Que valor é guardado em memória pela instrução sb a2, 0(a1)?",
+    "answers": [
+      "0x12",
+      "0x78",
+      "0x5678",
+      "0x56"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.35"
+  },
+  {
+    "question": "Admita a2 = 0x12345678. Que valor é guardado em memória pela instrução sw a2, 0(a1)?",
+    "answers": [
+      "0x5678",
+      "0x78",
+      "0x12345678",
+      "0x1234"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.35"
+  },
+  {
+    "question": "Na instrução sw a2, 4(a1), qual é o registo cujo conteúdo é guardado em memória?",
+    "answers": [
+      "a1",
+      "4",
+      "rd",
+      "a2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.35"
+  },
+  {
+    "question": "O que faz a pseudoinstrução mv rd, rs?",
+    "answers": [
+      "Copia o valor do registo rs para o registo rd",
+      "Move o valor do registo rd para o registo rs, apagando rd",
+      "Carrega para rd o valor guardado na memória no endereço rs",
+      "Guarda na memória o valor do registo rs"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.36"
+  },
+  {
+    "question": "O que faz a pseudoinstrução li rd, imm32?",
+    "answers": [
+      "Carrega um imediato de 12 bits para o registo rd",
+      "Carrega um imediato de 32 bits para o registo rd",
+      "Carrega para rd o conteúdo da memória no endereço imm32",
+      "Copia o registo imm32 para o registo rd"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.36"
+  },
+  {
+    "question": "O que faz a pseudoinstrução la rd, symbol?",
+    "answers": [
+      "Carrega para rd o valor guardado na memória, no endereço do símbolo",
+      "Guarda o valor de rd na memória, no endereço do símbolo",
+      "Carrega para o registo rd o endereço de 32 bits indicado pelo símbolo",
+      "Carrega para rd um imediato de 12 bits"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.36"
+  },
+  {
+    "question": "As instruções de store global não precisam de nenhum registo temporário, porque o endereço vem de um imediato de 32 bits",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.36"
+  },
+  {
+    "question": "Como é, por omissão, a execução normal de um programa?",
+    "answers": [
+      "As instruções são executadas por ordem alfabética do mnemónico",
+      "As instruções são executadas pela ordem inversa à da memória",
+      "As instruções são executadas por ordem aleatória, escolhida pelo processador",
+      "As instruções são executadas pela ordem em que estão organizadas na memória"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.38"
+  },
+  {
+    "question": "O que são as instruções de controlo de fluxo?",
+    "answers": [
+      "Instruções capazes de alterar o fluxo normal de execução",
+      "Instruções que só realizam operações aritméticas",
+      "Instruções que copiam dados entre registos",
+      "Instruções que impedem o processador de executar o programa"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.38"
+  },
+  {
+    "question": "As instruções de controlo de fluxo podem ser classificadas como condicionais ou incondicionais",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.38"
+  },
+  {
+    "question": "O que é uma instrução de controlo de fluxo direta?",
+    "answers": [
+      "Uma instrução que obtém o endereço de destino através de um registo",
+      "Uma instrução que tem o endereço de destino codificado na própria instrução",
+      "Uma instrução que nunca altera o fluxo de execução",
+      "Uma instrução que só funciona com imediatos de 32 bits"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.39"
+  },
+  {
+    "question": "O que é uma instrução de controlo de fluxo indireta?",
+    "answers": [
+      "Uma instrução que tem o endereço de destino codificado na própria instrução",
+      "Uma instrução que só se executa depois de outra",
+      "Uma instrução cujo endereço de destino é indicado indiretamente, através de um registo",
+      "Uma instrução que guarda o destino na memória de dados"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.39"
+  },
+  {
+    "question": "Qual destas instruções é uma instrução de controlo de fluxo indireta?",
+    "answers": [
+      "beq a0, a1, L",
+      "j L",
+      "bne a0, a1, L",
+      "jr rs1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.39"
+  },
+  {
+    "question": "O endereço de destino de uma instrução de controlo de fluxo indireta fica fixo na instrução e não pode ser alterado",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.39"
+  },
+  {
+    "question": "O que são as instruções de controlo de fluxo incondicionais?",
+    "answers": [
+      "Instruções que mudam sempre o fluxo de execução para um dado destino",
+      "Instruções que mudam o fluxo só quando uma condição é verdadeira",
+      "Instruções que nunca mudam o fluxo de execução",
+      "Instruções que só funcionam dentro de ciclos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.40"
+  },
+  {
+    "question": "O que faz a instrução j L?",
+    "answers": [
+      "Salta para a label L só se o registo a0 for zero",
+      "Salta sempre para a label L",
+      "Salta para a label L e guarda o endereço de retorno em ra",
+      "Salta para o endereço guardado em ra"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.40"
+  },
+  {
+    "question": "O que faz a instrução jal symbol?",
+    "answers": [
+      "Salta para o símbolo e guarda em ra o endereço da própria instrução (PC)",
+      "Salta para o endereço guardado em ra",
+      "Salta para o símbolo e guarda em ra o endereço da instrução seguinte (PC + 4)",
+      "Salta para o símbolo sem guardar qualquer endereço de retorno"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.40"
+  },
+  {
+    "question": "Em que registo guarda a instrução jal rd, symbol o endereço de retorno (PC + 4)?",
+    "answers": [
+      "No registo ra, sempre",
+      "No registo zero",
+      "No registo pc",
+      "No registo rd"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.40"
+  },
+  {
+    "question": "O que faz a instrução jr rs1?",
+    "answers": [
+      "Salta para o endereço que está guardado no registo rs1",
+      "Salta para a label rs1",
+      "Salta para o endereço de retorno guardado em ra",
+      "Guarda o endereço de retorno em rs1 e salta"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.40"
+  },
+  {
+    "question": "O que faz a instrução ret?",
+    "answers": [
+      "Salta para a label seguinte",
+      "Salta para o endereço guardado em ra (PC = R[ra])",
+      "Guarda PC + 4 no registo ra e salta para um símbolo",
+      "Termina a execução do programa"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.40"
+  },
+  {
+    "question": "O que faz a pseudoinstrução call symbol?",
+    "answers": [
+      "Salta para o endereço guardado em ra, como a instrução ret",
+      "Salta para o símbolo, sem guardar em nenhum registo o endereço de retorno",
+      "Salta para o símbolo e guarda em ra o endereço da instrução seguinte",
+      "Compara dois registos e salta para o símbolo se forem iguais entre si"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.40"
+  },
+  {
+    "question": "Admita que a instrução jal func está no endereço 0x1000. Que valor fica em ra?",
+    "answers": [
+      "0x00001000",
+      "0x00001008",
+      "0x00001002",
+      "0x00001004"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.40"
+  },
+  {
+    "question": "Que instruções usa o RISC-V, respetivamente, para chamar uma função e para voltar dela?",
+    "answers": [
+      "A instrução jal para chamar e a jr (ret) para voltar",
+      "A instrução jr para chamar e a jal para voltar",
+      "A instrução beq para chamar e a bne para voltar",
+      "A instrução jal para chamar e a jal para voltar"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.41"
+  },
+  {
+    "question": "O que são as instruções de controlo de fluxo condicionais?",
+    "answers": [
+      "Instruções que mudam sempre o fluxo de execução, qualquer que seja a condição",
+      "Instruções que mudam o fluxo de execução apenas quando uma condição é satisfeita",
+      "Instruções que só comparam dois registos e nunca chegam a saltar para lado nenhum",
+      "Instruções que guardam em ra o endereço de retorno e saltam para uma função"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.42"
+  },
+  {
+    "question": "O que faz a instrução beq a0, a1, L?",
+    "answers": [
+      "Compara a0 e a1 e salta para L se forem diferentes",
+      "Salta sempre para L e guarda o resultado da comparação",
+      "Compara a0 e a1 e salta para L se forem iguais",
+      "Compara a0 com zero e salta para L se for igual"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.42"
+  },
+  {
+    "question": "As instruções de salto condicional são usadas, tipicamente, para implementar instruções if, switch e ciclos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.42"
+  },
+  {
+    "question": "No programa beq a0, a1, L / add a0, a0, a1 / L: sub a2, a2, a3, que instrução é executada a seguir ao beq, se a0 e a1 forem iguais?",
+    "answers": [
+      "A instrução add, e só depois a sub",
+      "Nenhuma das duas, porque o programa termina",
+      "A instrução add, porque o salto não é efetuado",
+      "A instrução sub, porque o add é saltado"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.42"
+  },
+  {
+    "question": "No programa beq a0, a1, L / add a0, a0, a1 / L: sub a2, a2, a3, que instruções são executadas a seguir ao beq, se a0 e a1 forem diferentes?",
+    "answers": [
+      "Primeiro a instrução add e depois a sub",
+      "Apenas a instrução sub, porque o add é saltado",
+      "Apenas a instrução add, porque o sub é saltado",
+      "Nenhuma das duas, porque o programa termina"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.42"
+  },
+  {
+    "question": "O que faz a instrução bne rs1, rs2, symbol?",
+    "answers": [
+      "Salta para o símbolo se R[rs1] == R[rs2]",
+      "Salta para o símbolo se R[rs1] != R[rs2]",
+      "Salta para o símbolo se R[rs1] < R[rs2]",
+      "Salta para o símbolo se R[rs1] >= R[rs2]"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.43"
+  },
+  {
+    "question": "O que faz a instrução bge rs1, rs2, symbol?",
+    "answers": [
+      "Salta para o símbolo se R[rs1] > R[rs2], sem sinal",
+      "Salta para o símbolo se R[rs1] < R[rs2], com sinal",
+      "Salta para o símbolo se R[rs1] >= R[rs2], com sinal",
+      "Salta para o símbolo se R[rs1] == R[rs2]"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.43"
+  },
+  {
+    "question": "O que faz a instrução bltu rs1, rs2, symbol?",
+    "answers": [
+      "Salta para o símbolo se R[rs1] < R[rs2], tratando os valores como números com sinal",
+      "Salta para o símbolo se R[rs1] > R[rs2], sem sinal",
+      "Salta para o símbolo se R[rs1] == R[rs2]",
+      "Salta para o símbolo se R[rs1] < R[rs2], tratando os valores como números sem sinal"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.43"
+  },
+  {
+    "question": "O que faz a pseudoinstrução beqz rs, symbol?",
+    "answers": [
+      "Salta para o símbolo se R[rs] == 0",
+      "Salta para o símbolo se R[rs] != 0",
+      "Salta para o símbolo se R[rs] >= 0",
+      "Salta para o símbolo se R[rs] < 0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.43"
+  },
+  {
+    "question": "O que faz a pseudoinstrução bnez rs, symbol?",
+    "answers": [
+      "Salta para o símbolo se R[rs] == 0",
+      "Salta para o símbolo se R[rs] != 0",
+      "Salta para o símbolo se R[rs] > 0",
+      "Salta para o símbolo se R[rs] <= 0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.43"
+  },
+  {
+    "question": "Admita a0 = 0xFFFFFFFF e a1 = 1. A instrução blt a0, a1, L salta para L?",
+    "answers": [
+      "Não, porque 0xFFFFFFFF é maior do que 1",
+      "Sim, porque os dois registos têm valores diferentes",
+      "Sim, porque −1 < 1 quando os valores são tratados com sinal",
+      "Não, porque o blt só compara registos com o mesmo valor"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.43"
+  },
+  {
+    "question": "Admita a0 = 0xFFFFFFFF e a1 = 1. A instrução bltu a0, a1, L salta para L?",
+    "answers": [
+      "Sim, porque −1 é menor do que 1 quando os valores são tratados como números com sinal",
+      "Sim, porque os dois registos têm valores diferentes e por isso o salto é efetuado",
+      "Não, porque o bltu só compara dois registos quando ambos têm exatamente o mesmo valor",
+      "Não, porque 0xFFFFFFFF (4294967295) não é menor do que 1 quando tratado sem sinal"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.43"
+  },
+  {
+    "question": "Admita a0 = 5 e a1 = 5. A instrução bge a0, a1, L salta para L?",
+    "answers": [
+      "Sim, porque 5 >= 5",
+      "Não, porque 5 não é maior do que 5",
+      "Não, porque o bge só salta quando a0 é negativo",
+      "Sim, porque o bge salta sempre"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.43"
+  },
+  {
+    "question": "No ciclo li a0, 10 / LOOP: (corpo do ciclo) / addi a0, a0, -1 / bne a0, zero, LOOP, quantas vezes se executa o corpo do ciclo?",
+    "answers": [
+      "9",
+      "10",
+      "11",
+      "Nenhuma, porque a0 começa em 10"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.44"
+  },
+  {
+    "question": "No ciclo li a0, 10 / LOOP: (corpo do ciclo) / addi a0, a0, -1 / bne a0, zero, LOOP, que valor tem a0 quando o ciclo termina?",
+    "answers": [
+      "10",
+      "-1",
+      "0",
+      "1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.44"
+  },
+  {
+    "question": "No ciclo li a0, 5 / LOOP: (corpo do ciclo) / addi a0, a0, -1 / bne a0, zero, LOOP, quantas vezes se executa o corpo do ciclo?",
+    "answers": [
+      "4",
+      "6",
+      "10",
+      "5"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.44"
+  },
+  {
+    "question": "No ciclo em que a0 é o contador e o bne a0, zero, LOOP está no fim, quando é que o fluxo de execução volta para a label LOOP?",
+    "answers": [
+      "Quando o contador a0 ainda não chegou a zero",
+      "Quando o contador a0 é igual a zero",
+      "Sempre, qualquer que seja o valor do contador",
+      "Nunca, porque o bne não permite saltar para trás"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.44"
+  },
+  {
+    "question": "O que faz uma instrução de conjunto condicional (conditional set), como a slt?",
+    "answers": [
+      "Compara dois valores e salta para uma label se a condição for verdadeira",
+      "Compara dois valores e põe no destino 1 ou 0, consoante a condição",
+      "Compara dois valores e guarda no registo de destino a diferença entre eles",
+      "Compara dois valores e termina o programa se forem diferentes entre si"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.46"
+  },
+  {
+    "question": "Admita a1 = −1 (0xFFFFFFFF) e a2 = 1. Que valor fica em a0 depois de slt a0, a1, a2?",
+    "answers": [
+      "0",
+      "-1",
+      "1",
+      "2"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.46"
+  },
+  {
+    "question": "Admita a1 = −1 (0xFFFFFFFF) e a2 = 1. Que valor fica em a0 depois de sltu a0, a1, a2?",
+    "answers": [
+      "1",
+      "-1",
+      "2",
+      "0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.46"
+  },
+  {
+    "question": "Admita a1 = 3 e a2 = 7. Que valor fica em a0 depois de slt a0, a1, a2?",
+    "answers": [
+      "1",
+      "0",
+      "3",
+      "4"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.46"
+  },
+  {
+    "question": "Que valor fica em a0 depois de slti a0, a1, 10, se a1 = 5?",
+    "answers": [
+      "0",
+      "1",
+      "5",
+      "10"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.46"
+  },
+  {
+    "question": "O que faz a pseudoinstrução seqz rd, rs1?",
+    "answers": [
+      "Põe rd a 1 se R[rs1] != 0, e a 0 no caso contrário",
+      "Põe rd a 0 se R[rs1] == 0, e a 1 no caso contrário",
+      "Põe rd a 1 se R[rs1] == 0, e a 0 no caso contrário",
+      "Salta se R[rs1] == 0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.46"
+  },
+  {
+    "question": "O que faz a pseudoinstrução snez rd, rs1?",
+    "answers": [
+      "Põe rd a 1 se R[rs1] == 0, e a 0 no caso contrário",
+      "Põe rd a 1 se R[rs1] < 0, e a 0 no caso contrário",
+      "Salta se R[rs1] != 0",
+      "Põe rd a 1 se R[rs1] != 0, e a 0 no caso contrário"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.46"
+  },
+  {
+    "question": "O que faz a pseudoinstrução sltz rd, rs1?",
+    "answers": [
+      "Põe rd a 1 se R[rs1] < 0, e a 0 no caso contrário",
+      "Põe rd a 1 se R[rs1] > 0, e a 0 no caso contrário",
+      "Põe rd a 1 se R[rs1] == 0, e a 0 no caso contrário",
+      "Põe rd a 1 se R[rs1] <= 0, e a 0 no caso contrário"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.46"
+  },
+  {
+    "question": "O que faz a pseudoinstrução sgtz rd, rs1?",
+    "answers": [
+      "Põe rd a 1 se R[rs1] < 0, e a 0 no caso contrário",
+      "Põe rd a 1 se R[rs1] > 0, e a 0 no caso contrário",
+      "Põe rd a 1 se R[rs1] >= 0, e a 0 no caso contrário",
+      "Põe rd a 1 se R[rs1] == 0, e a 0 no caso contrário"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.46"
+  },
+  {
+    "question": "Para detetar um overflow no RISC-V podem usar-se instruções de salto condicional e instruções de conjunto condicional normais",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.48"
+  },
+  {
+    "question": "Depois de add a0, a1, a2 (com valores sem sinal), que instrução permite saltar para handle_overflow se houve overflow?",
+    "answers": [
+      "bgeu a0, a1, handle_overflow",
+      "beq a0, a1, handle_overflow",
+      "bltu a0, a1, handle_overflow",
+      "bne a0, zero, handle_overflow"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.48"
+  },
+  {
+    "question": "Depois de add a0, a1, a2 (com valores sem sinal), que instrução põe t1 a 1 se houve overflow e a 0 se não houve?",
+    "answers": [
+      "slt t1, a1, a0",
+      "sltu t1, a1, a0",
+      "seqz t1, a0",
+      "sltu t1, a0, a1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.48"
+  },
+  {
+    "question": "Porque é que a0 < a1 (sem sinal) depois de a0 = a1 + a2 indica que houve overflow?",
+    "answers": [
+      "Porque, sem overflow, a soma nunca seria menor do que um dos operandos",
+      "Porque o resultado da soma é sempre menor do que a1 quando há overflow de sinal",
+      "Porque o add põe a0 a zero quando há overflow",
+      "Porque a comparação sem sinal falha sempre quando há overflow"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.48"
+  },
+  {
+    "question": "Admita a1 = 0xFFFFFFF0 e a2 = 0x20. Depois de add a0, a1, a2, que valor fica em a0?",
+    "answers": [
+      "0x10000010",
+      "0x00000010",
+      "0xFFFFFFFF",
+      "0x00000020"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.48"
+  },
+  {
+    "question": "Admita a1 = 0xFFFFFFF0 e a2 = 0x20. Depois de add a0, a1, a2 e sltu t1, a0, a1, que valor fica em t1?",
+    "answers": [
+      "0",
+      "0x10",
+      "1",
+      "0xFFFFFFFF"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.48"
+  },
+  {
+    "question": "Admita a1 = 5 e a2 = 7. Depois de add a0, a1, a2 e sltu t1, a0, a1, que valor fica em t1?",
+    "answers": [
+      "1",
+      "12",
+      "5",
+      "0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.48"
+  },
+  {
+    "question": "A instrução add só pode ser usada para somar números sem sinal",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.50"
+  },
+  {
+    "question": "Para somar valores com mais de 32 bits, o que tem de fazer o programador?",
+    "answers": [
+      "Somar as partes de 32 bits e ter em conta os carry-outs e carry-ins entre elas",
+      "Usar a instrução add com um imediato de 64 bits, que o RV32 suporta diretamente",
+      "Usar a extensão M, que tem uma instrução de soma de 64 bits para o efeito",
+      "Somar apenas as partes menos significativas e ignorar os bits mais significativos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.50"
+  },
+  {
+    "question": "Na soma de dois valores de 64 bits, a1:a0 + a3:a2, feita com add a4, a0, a2 / sltu t1, a4, a2 / add a5, a1, a3 / add a5, t1, a5, em que registos fica o resultado?",
+    "answers": [
+      "No par de registos a1:a0",
+      "No par de registos a5:a4",
+      "No par de registos a3:a2",
+      "No registo t1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.51"
+  },
+  {
+    "question": "Na soma de valores de 64 bits feita com add a4, a0, a2 / sltu t1, a4, a2 / add a5, a1, a3 / add a5, t1, a5, qual é o primeiro passo?",
+    "answers": [
+      "Somar as words mais significativas",
+      "Somar o carry-out ao resultado",
+      "Somar as words menos significativas",
+      "Comparar as duas words mais significativas"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.51"
+  },
+  {
+    "question": "Na soma de valores de 64 bits feita com add a4, a0, a2 / sltu t1, a4, a2 / add a5, a1, a3 / add a5, t1, a5, o que faz a instrução sltu t1, a4, a2?",
+    "answers": [
+      "Põe t1 a 1 se o resultado da soma for negativo, e a 0 se for positivo ou zero",
+      "Soma as words mais significativas dos dois valores de 64 bits e guarda o resultado",
+      "Põe t1 a 1 se o registo a4 for igual ao registo a2, e a 0 se forem diferentes",
+      "Põe t1 a 1 se houve carry-out na soma das words menos significativas, e a 0 se não"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.51"
+  },
+  {
+    "question": "Na soma de valores de 64 bits feita com add a4, a0, a2 / sltu t1, a4, a2 / add a5, a1, a3 / add a5, t1, a5, para que serve a última instrução, add a5, t1, a5?",
+    "answers": [
+      "Para somar o carry-out à word mais significativa",
+      "Para somar as words menos significativas",
+      "Para somar as duas words mais significativas",
+      "Para detetar o carry-out"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.51"
+  },
+  {
+    "question": "Admita a1:a0 = 0x00000000_FFFFFFFF e a3:a2 = 0x00000000_00000001. Depois de executar add a4, a0, a2 / sltu t1, a4, a2 / add a5, a1, a3 / add a5, t1, a5, que valores ficam em a5 e em a4, respetivamente?",
+    "answers": [
+      "0x00000000 e 0xFFFFFFFF",
+      "0x00000001 e 0x00000000",
+      "0x00000001 e 0x00000001",
+      "0x00000000 e 0x00000001"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.51"
+  },
+  {
+    "question": "Admita a1:a0 = 0x00000001_00000005 e a3:a2 = 0x00000002_00000003. Depois de executar add a4, a0, a2 / sltu t1, a4, a2 / add a5, a1, a3 / add a5, t1, a5, que valores ficam em a5 e em a4, respetivamente?",
+    "answers": [
+      "0x00000004 e 0x00000008",
+      "0x00000003 e 0x00000009",
+      "0x00000003 e 0x00000008",
+      "0x00000008 e 0x00000003"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.51"
+  },
+  {
+    "question": "Admita a1:a0 = 0x00000000_80000000 e a3:a2 = 0x00000000_80000000. Depois de executar add a4, a0, a2 / sltu t1, a4, a2 / add a5, a1, a3 / add a5, t1, a5, que valores ficam em a5 e em a4, respetivamente?",
+    "answers": [
+      "0x00000000 e 0x80000000",
+      "0x00000001 e 0x80000000",
+      "0x00000000 e 0x00000001",
+      "0x00000001 e 0x00000000"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.51"
+  }
+]
