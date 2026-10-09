@@ -1,0 +1,2870 @@
+[
+  {
+    "question": "O que permite uma estrutura (struct) em C?",
+    "answers": [
+      "Combinar várias variáveis para criar um novo tipo de dados",
+      "Repetir a mesma variável várias vezes em posições consecutivas",
+      "Guardar numa só variável apenas valores do mesmo tipo",
+      "Criar uma função que recebe vários parâmetros do mesmo tipo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.5"
+  },
+  {
+    "question": "Noutras linguagens, o conceito equivalente a uma struct designa-se por record",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.5"
+  },
+  {
+    "question": "Em programação orientada a objetos, uma struct pode ser vista como uma classe com herança e polimorfismo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.5"
+  },
+  {
+    "question": "Que palavra-chave se usa para declarar uma estrutura em C?",
+    "answers": [
+      "record",
+      "struct",
+      "class",
+      "union"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.5"
+  },
+  {
+    "question": "Como se conclui a definição de uma struct em C?",
+    "answers": [
+      "Com a palavra-chave end depois da chaveta final",
+      "Sem qualquer sinal depois da chaveta final",
+      "Com um ponto e vírgula depois da chaveta final",
+      "Com dois pontos depois da chaveta final"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.5"
+  },
+  {
+    "question": "Para que serve o nome (tag) numa declaração struct rec { int a; };?",
+    "answers": [
+      "Para reservar memória para a estrutura",
+      "Para inicializar os membros com zero",
+      "Para declarar o apontador da estrutura",
+      "Para identificar a estrutura"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.5"
+  },
+  {
+    "question": "A definição dos membros de uma struct fica entre parênteses retos []",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.5"
+  },
+  {
+    "question": "Dada struct rec { int a[4]; long long i; struct rec *next; }, a declaração struct rec vec[50]; cria um vetor de 50 estruturas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.6"
+  },
+  {
+    "question": "Dada struct rec { int a[4]; long long i; struct rec *next; }, a declaração struct rec *pr1; reserva memória para uma estrutura completa",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.6"
+  },
+  {
+    "question": "Dada struct rec { int a[4]; long long i; struct rec *next; }, o que declara struct rec *pr1, *pr2, *pr3;?",
+    "answers": [
+      "Três apontadores para estruturas do tipo struct rec",
+      "Três estruturas do tipo struct rec",
+      "Um vetor com três estruturas do tipo struct rec",
+      "Três vetores de apontadores para struct rec"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.6"
+  },
+  {
+    "question": "Dada struct rec r1 e struct rec *pr1 = &r1;, que expressão acede ao membro i de r1 através do apontador?",
+    "answers": [
+      "pr1.i",
+      "pr1->i",
+      "&pr1->i",
+      "*pr1.i"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.7"
+  },
+  {
+    "question": "Dada struct rec r1 e struct rec *pr1 = &r1;, que expressão é equivalente a pr1->i?",
+    "answers": [
+      "*pr1.i",
+      "&(*pr1).i",
+      "(*pr1).i",
+      "pr1.i"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.7"
+  },
+  {
+    "question": "Dada struct rec r1, que expressão acede ao membro i da variável r1?",
+    "answers": [
+      "r1->i",
+      "*r1.i",
+      "&r1.i",
+      "r1.i"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.7"
+  },
+  {
+    "question": "Dada struct rec vec[50], que expressão acede ao membro i do primeiro elemento do vetor?",
+    "answers": [
+      "vec[0].i",
+      "vec.i[0]",
+      "vec[0]->i",
+      "vec->i[0]"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.7"
+  },
+  {
+    "question": "O operador -> usa-se para aceder a membros de uma estrutura através de um apontador",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.7"
+  },
+  {
+    "question": "Uma variável struct local declarada sem inicialização é sempre inicializada a zero",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.8"
+  },
+  {
+    "question": "O que é uma inicialização com designadores, como .a = {1,2,3,4}, .i = 500, .next = NULL?",
+    "answers": [
+      "Uma forma de inicializar os membros pelo nome, permitida só no C89",
+      "Uma forma de inicializar os membros pelo nome, permitida a partir do C99",
+      "Uma forma de inicializar todos os membros com o mesmo valor",
+      "Uma forma de copiar os valores de outra estrutura"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.8"
+  },
+  {
+    "question": "A inicialização de uma struct com a lista {{1,2,3,4}, 500, NULL} segue a ordem de declaração dos membros",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.8"
+  },
+  {
+    "question": "O que acontece se se comparar duas structs do mesmo tipo com o operador ==?",
+    "answers": [
+      "A comparação devolve verdadeiro se os membros forem iguais",
+      "A comparação é feita byte a byte e devolve 1 ou 0",
+      "Obtém-se um erro de compilação",
+      "A comparação devolve o número de membros iguais"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.9"
+  },
+  {
+    "question": "Como se comparam duas structs em C?",
+    "answers": [
+      "Com o operador ==",
+      "Com o operador &&",
+      "Com o operador sizeof",
+      "Membro a membro"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.9"
+  },
+  {
+    "question": "Porque é que, sem typedef, se tem de escrever struct antes do nome da estrutura?",
+    "answers": [
+      "Porque as structs têm o seu próprio espaço de nomes",
+      "Porque o compilador não conhece o tamanho da estrutura",
+      "Porque as structs só podem ser usadas em funções",
+      "Porque o nome da estrutura é uma palavra reservada"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.10"
+  },
+  {
+    "question": "O que faz typedef struct vector2D vector2D;?",
+    "answers": [
+      "Declara uma nova variável chamada vector2D",
+      "Define struct vector2D como o novo tipo vector2D",
+      "Cria uma cópia completa da estrutura vector2D",
+      "Inicializa a zero todos os membros de vector2D"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.10"
+  },
+  {
+    "question": "É possível combinar o typedef e a declaração da struct numa única declaração",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.10"
+  },
+  {
+    "question": "Depois de typedef struct vector2D vector2D;, a variável pode ser declarada como vector2D vector;",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.10"
+  },
+  {
+    "question": "Como é alocada uma estrutura na memória?",
+    "answers": [
+      "Cada membro numa região separada da memória",
+      "Apenas em registos do processador",
+      "Numa região de memória contígua",
+      "Sempre na stack, e nunca em memória estática"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.11"
+  },
+  {
+    "question": "Os membros de uma estrutura têm de ser todos do mesmo tipo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.11"
+  },
+  {
+    "question": "Em que ordem ficam os membros de uma estrutura na memória?",
+    "answers": [
+      "Por ordem crescente de tamanho",
+      "Por ordem alfabética dos nomes",
+      "Na ordem escolhida pelo compilador para poupar memória",
+      "Na ordem em que foram declarados"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.11"
+  },
+  {
+    "question": "Em código máquina não existe o conceito de estrutura, e os membros acedem-se com offsets relativos ao endereço da estrutura",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.12"
+  },
+  {
+    "question": "O endereço de uma estrutura é o endereço do seu último byte",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.12"
+  },
+  {
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32. Qual é o offset do membro a?",
+    "answers": [
+      "0",
+      "4",
+      "8",
+      "16"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.12"
+  },
+  {
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32. Qual é o offset do membro i?",
+    "answers": [
+      "12",
+      "16",
+      "20",
+      "8"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.12"
+  },
+  {
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32. Qual é o offset do membro next?",
+    "answers": [
+      "20",
+      "28",
+      "24",
+      "16"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.12"
+  },
+  {
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32. Qual é o valor de sizeof(struct rec)?",
+    "answers": [
+      "28",
+      "24",
+      "36",
+      "32"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.12"
+  },
+  {
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32. Porque é que o membro i fica no offset 16?",
+    "answers": [
+      "Porque a ocupa 16 bytes e 16 já é múltiplo de 8",
+      "Porque o membro a ocupa 20 bytes, incluindo o padding final",
+      "Porque o compilador coloca sempre os long long a seguir aos int",
+      "Porque o offset de i é sempre o dobro do offset de a"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.12"
+  },
+  {
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32. Qual é o requisito de alinhamento K da estrutura?",
+    "answers": [
+      "4",
+      "8",
+      "16",
+      "32"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.12"
+  },
+  {
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32, com r em a0. Que instrução lê o membro next para t0?",
+    "answers": [
+      "lw t0, 16(a0)",
+      "lw t0, 20(a0)",
+      "lw t0, 24(a0)",
+      "lw t0, 28(a0)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.12"
+  },
+  {
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32, com r em a0. Que instrução escreve o valor de t0 no membro a[2]?",
+    "answers": [
+      "sw t0, 2(a0)",
+      "sw t0, 4(a0)",
+      "sw t0, 16(a0)",
+      "sw t0, 8(a0)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.12"
+  },
+  {
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32, com r em a0. Que instrução escreve os 32 bits menos significativos de i, que estão em t0?",
+    "answers": [
+      "sw t0, 16(a0)",
+      "sw t0, 20(a0)",
+      "sw t0, 8(a0)",
+      "sw t0, 24(a0)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.12"
+  },
+  {
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32, com r em a0. Que instrução escreve os 32 bits mais significativos de i, que estão em t0?",
+    "answers": [
+      "sw t0, 16(a0)",
+      "sw t0, 20(a0)",
+      "sw t0, 24(a0)",
+      "sw t0, 12(a0)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.12"
+  },
+  {
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32 e get_ap: slli a1, a1, 2 / add a0, a0, a1 / ret, com r em a0 e idx em a1. O que devolve a função?",
+    "answers": [
+      "O valor de r->a[idx]",
+      "O endereço de r->i",
+      "O endereço de r->a[idx]",
+      "O valor de idx multiplicado por 4"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.13"
+  },
+  {
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32 e get_ap: slli a1, a1, 2 / add a0, a0, a1 / ret. Porque é que não se soma nenhum offset fixo ao endereço de r?",
+    "answers": [
+      "Porque o membro a está no fim da estrutura",
+      "Porque a função só trabalha com idx igual a zero",
+      "Porque o offset é somado pela instrução ret",
+      "Porque o membro a está no offset 0 da estrutura"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.13"
+  },
+  {
+    "question": "Considere get_ap: slli a1, a1, 2 / add a0, a0, a1 / ret. Para que serve slli a1, a1, 2?",
+    "answers": [
+      "Para multiplicar idx por 4, o tamanho de um int",
+      "Para dividir idx por 4, o tamanho de um int",
+      "Para multiplicar idx por 2, o tamanho de um short",
+      "Para somar 2 ao valor de idx"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.13"
+  },
+  {
+    "question": "Em struct rec { int a[4]; long long i; struct rec *next; }, qual é o offset de a[1] relativamente ao início da estrutura?",
+    "answers": [
+      "8",
+      "20",
+      "4",
+      "12"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.13"
+  },
+  {
+    "question": "Em struct rec { int a[4]; long long i; struct rec *next; }, qual é o offset de a[3] relativamente ao início da estrutura?",
+    "answers": [
+      "16",
+      "28",
+      "20",
+      "12"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.13"
+  },
+  {
+    "question": "Em struct rec { int a[4]; long long i; struct rec *next; }, qual é o offset de a[2] relativamente ao início da estrutura?",
+    "answers": [
+      "8",
+      "12",
+      "24",
+      "16"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.13"
+  },
+  {
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32 e length: mv t0, a0 / and a0, a0, zero / j check / loop: addi a0, a0, 1 / lw t0, 24(t0) / check: bnez t0, loop / ret. O que devolve a função?",
+    "answers": [
+      "O endereço do último elemento da lista",
+      "O número de elementos da lista ligada",
+      "O valor do último elemento da lista",
+      "O tamanho em bytes de cada elemento"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.14"
+  },
+  {
+    "question": "Considere length: mv t0, a0 / and a0, a0, zero / j check / loop: addi a0, a0, 1 / lw t0, 24(t0) / check: bnez t0, loop / ret. Para que serve and a0, a0, zero?",
+    "answers": [
+      "Para testar se a0 é zero",
+      "Para guardar a0 em t0",
+      "Para pôr a0 a zero",
+      "Para terminar o ciclo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.14"
+  },
+  {
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32 e length: mv t0, a0 / and a0, a0, zero / j check / loop: addi a0, a0, 1 / lw t0, 24(t0) / check: bnez t0, loop / ret. O que faz lw t0, 24(t0)?",
+    "answers": [
+      "Lê o membro i do elemento atual",
+      "Lê o primeiro elemento do vetor a",
+      "Incrementa o apontador em 24 bytes",
+      "Lê o membro next do elemento atual"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.14"
+  },
+  {
+    "question": "Considere length: mv t0, a0 / and a0, a0, zero / j check / loop: addi a0, a0, 1 / lw t0, 24(t0) / check: bnez t0, loop / ret. Quando termina o ciclo?",
+    "answers": [
+      "Quando t0 é zero (NULL)",
+      "Quando a0 chega a zero",
+      "Quando t0 é igual a 24",
+      "Quando a lista tem 24 elementos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.14"
+  },
+  {
+    "question": "Considere length: mv t0, a0 / and a0, a0, zero / j check / loop: addi a0, a0, 1 / lw t0, 24(t0) / check: bnez t0, loop / ret. Qual é o valor devolvido para uma lista vazia (a0 igual a NULL)?",
+    "answers": [
+      "1",
+      "0",
+      "-1",
+      "24"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.14"
+  },
+  {
+    "question": "O que significa alinhamento de memória?",
+    "answers": [
+      "Colocar os dados por ordem crescente de endereço",
+      "Colocar todos os dados da mesma estrutura em registos",
+      "Colocar os dados num endereço que é múltiplo do seu tamanho",
+      "Colocar os dados num endereço que é sempre par"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.16"
+  },
+  {
+    "question": "Um inteiro de 4 bytes está naturalmente alinhado se estiver num endereço divisível por 4",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.16"
+  },
+  {
+    "question": "Um double de 8 bytes está alinhado se o seu endereço for divisível por 4",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.16"
+  },
+  {
+    "question": "Porque é que os dados alinhados podem ser mais eficientes?",
+    "answers": [
+      "Porque ocupam menos espaço na memória",
+      "Porque deixam de precisar de endereços",
+      "Porque são guardados nos registos do processador",
+      "Porque o CPU lê e escreve com menos acessos à memória"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.16"
+  },
+  {
+    "question": "O alinhamento dos dados nunca afeta o desempenho do sistema",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.16"
+  },
+  {
+    "question": "Muitos sistemas impõem que o endereço de um tipo primitivo seja múltiplo de um valor K",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.17"
+  },
+  {
+    "question": "Em RV32, qual é o alinhamento (K) exigido a uma variável do tipo short?",
+    "answers": [
+      "2 bytes",
+      "1 byte",
+      "4 bytes",
+      "8 bytes"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "Em RV32, quantos bits menos significativos do endereço têm de ser zero para uma variável do tipo short?",
+    "answers": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "Em RV32, qual é o alinhamento (K) exigido a uma variável do tipo int?",
+    "answers": [
+      "1 byte",
+      "2 bytes",
+      "4 bytes",
+      "8 bytes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "Em RV32, quantos bits menos significativos do endereço têm de ser zero para uma variável do tipo int?",
+    "answers": [
+      "0",
+      "1",
+      "3",
+      "2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "Em RV32, qual é o alinhamento (K) exigido a uma variável do tipo long long?",
+    "answers": [
+      "8 bytes",
+      "1 byte",
+      "2 bytes",
+      "4 bytes"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "Em RV32, quantos bits menos significativos do endereço têm de ser zero para uma variável do tipo long long?",
+    "answers": [
+      "0",
+      "3",
+      "1",
+      "2"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "Em RV32, qual é o alinhamento (K) exigido a uma variável do tipo double?",
+    "answers": [
+      "8 bytes",
+      "1 byte",
+      "2 bytes",
+      "4 bytes"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "Em RV32, quantos bits menos significativos do endereço têm de ser zero para uma variável do tipo double?",
+    "answers": [
+      "0",
+      "3",
+      "1",
+      "2"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "Em RV32, que restrições de endereço tem uma variável do tipo char?",
+    "answers": [
+      "O endereço tem de ser par",
+      "O endereço tem de ser múltiplo de 4",
+      "Nenhuma, pode ficar em qualquer endereço",
+      "O endereço tem de ser múltiplo de 8"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "Em RV32, qual é o tamanho e o alinhamento de um apontador?",
+    "answers": [
+      "8 bytes, alinhado a 8",
+      "4 bytes, alinhado a 8",
+      "2 bytes, alinhado a 2",
+      "4 bytes, alinhado a 4"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "Em RV32, qual é o tamanho e o alinhamento de um long?",
+    "answers": [
+      "4 bytes, alinhado a 4",
+      "8 bytes, alinhado a 8",
+      "4 bytes, alinhado a 8",
+      "2 bytes, alinhado a 2"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "Qual destes endereços é válido para uma variável do tipo int em RV32?",
+    "answers": [
+      "0x00001001",
+      "0x00001004",
+      "0x00001002",
+      "0x00001006"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "Qual destes endereços é válido para uma variável do tipo short em RV32?",
+    "answers": [
+      "0x00002001",
+      "0x00002003",
+      "0x00002002",
+      "0x00002005"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "Qual destes endereços é válido para uma variável do tipo double em RV32?",
+    "answers": [
+      "0x00003004",
+      "0x00003002",
+      "0x00003001",
+      "0x00003008"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "Um int está no endereço 0x00001006. O que se pode concluir?",
+    "answers": [
+      "Está desalinhado, porque 0x1006 não é múltiplo de 4",
+      "Está alinhado, porque 0x1006 é par",
+      "Está alinhado, porque 0x1006 é múltiplo de 2",
+      "Está alinhado, porque 0x1006 é múltiplo de 3"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "Um short está no endereço 0x00001006. O que se pode concluir?",
+    "answers": [
+      "Está desalinhado, porque 0x1006 não é múltiplo de 4",
+      "Está alinhado, porque 0x1006 é múltiplo de 2",
+      "Está desalinhado, porque 0x1006 não é múltiplo de 8",
+      "Está alinhado, porque 0x1006 é múltiplo de 8"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "Um double está no endereço 0x00002004. O que se pode concluir?",
+    "answers": [
+      "Está alinhado, porque 0x2004 é múltiplo de 4",
+      "Está alinhado, porque 0x2004 é múltiplo de 2",
+      "Está desalinhado, porque 0x2004 não é múltiplo de 8",
+      "Está desalinhado, porque 0x2004 não é múltiplo de 2"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "O que faz .align N se o location counter já for múltiplo de 2^N?",
+    "answers": [
+      "Não tem qualquer efeito",
+      "Avança o location counter 2^N bytes",
+      "Põe o location counter a zero",
+      "Gera um erro de assemblagem"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "O que faz .align N se o location counter não for múltiplo de 2^N?",
+    "answers": [
+      "Recua-o para o múltiplo anterior de 2^N",
+      "Avança-o para o múltiplo seguinte de 2^N",
+      "Soma-lhe sempre 2^N",
+      "Põe-no a zero"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "A diretiva .align 1 alinha o location counter a quantos bytes?",
+    "answers": [
+      "1 byte",
+      "4 bytes",
+      "2 bytes",
+      "8 bytes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "A diretiva .align 2 alinha o location counter a quantos bytes?",
+    "answers": [
+      "1 byte",
+      "2 bytes",
+      "8 bytes",
+      "4 bytes"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "A diretiva .align 3 alinha o location counter a quantos bytes?",
+    "answers": [
+      "8 bytes",
+      "1 byte",
+      "2 bytes",
+      "4 bytes"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "A diretiva .align 4 alinha o location counter a quantos bytes?",
+    "answers": [
+      "1 byte",
+      "16 bytes",
+      "2 bytes",
+      "4 bytes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "Se o location counter vale 5 e se executa .align 2, que valor passa a ter?",
+    "answers": [
+      "5",
+      "12",
+      "8",
+      "4"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "Se o location counter vale 9 e se executa .align 3, que valor passa a ter?",
+    "answers": [
+      "9",
+      "24",
+      "8",
+      "16"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "Se o location counter vale 8 e se executa .align 3, que valor passa a ter?",
+    "answers": [
+      "8",
+      "16",
+      "24",
+      "9"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "Se o location counter vale 19 e se executa .align 2, que valor passa a ter?",
+    "answers": [
+      "19",
+      "20",
+      "24",
+      "16"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "Se o location counter vale 3 e se executa .align 1, que valor passa a ter?",
+    "answers": [
+      "3",
+      "6",
+      "4",
+      "2"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "Se o location counter vale 17 e se executa .align 4, que valor passa a ter?",
+    "answers": [
+      "17",
+      "48",
+      "16",
+      "32"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "Se o location counter vale 6 e se executa .align 2, que valor passa a ter?",
+    "answers": [
+      "8",
+      "6",
+      "12",
+      "4"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "Se o location counter vale 12 e se executa .align 3, que valor passa a ter?",
+    "answers": [
+      "12",
+      "16",
+      "24",
+      "8"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "Considere o início de cada secção alinhado a 8 bytes. No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, em que endereço, relativo ao início da secção .data, fica a variável i?",
+    "answers": [
+      "2",
+      "4",
+      "0",
+      "8"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "Considere o início de cada secção alinhado a 8 bytes. No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, em que endereço, relativo ao início da secção .data, fica a variável x?",
+    "answers": [
+      "2",
+      "3",
+      "8",
+      "4"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "Considere o início de cada secção alinhado a 8 bytes. No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, em que endereço, relativo ao início da secção .data, fica a variável y?",
+    "answers": [
+      "8",
+      "6",
+      "12",
+      "16"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "Considere o início de cada secção alinhado a 8 bytes. No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, porque é que x fica no endereço 4 e não no 2?",
+    "answers": [
+      "Porque a variável i ocupa 4 bytes na memória de dados",
+      "Porque o .align 2 avança o location counter de 2 para 4",
+      "Porque o .align 2 soma sempre 4 ao location counter",
+      "Porque a diretiva .word reserva antes 2 bytes de padding"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "Considere o início de cada secção alinhado a 8 bytes. No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, quantos bytes de padding existem entre i e x?",
+    "answers": [
+      "0",
+      "4",
+      "2",
+      "6"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "Considere o início de cada secção alinhado a 8 bytes. No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, quantos bytes de padding existem entre x e y?",
+    "answers": [
+      "2",
+      "4",
+      "8",
+      "0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "Considere o início de cada secção alinhado a 8 bytes. No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, em que endereço, relativo ao início da secção .bss, fica a variável z?",
+    "answers": [
+      "0",
+      "2",
+      "4",
+      "8"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "Considere o início de cada secção alinhado a 8 bytes. No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, quantos bytes ocupa a secção .data?",
+    "answers": [
+      "12",
+      "16",
+      "14",
+      "20"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "A diretiva .align deve ser usada antes de declarar uma variável que precisa de endereço alinhado",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "Um compilador de C coloca normalmente os membros de uma estrutura uns atrás dos outros, sem espaços, e o tamanho da estrutura é a soma dos tamanhos dos membros",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.22"
+  },
+  {
+    "question": "O primeiro membro de uma estrutura começa sempre depois de um byte de padding",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.22"
+  },
+  {
+    "question": "Pode existir padding antes de cada membro para cumprir as regras de alinhamento",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.22"
+  },
+  {
+    "question": "O compilador pode reordenar os membros de uma estrutura para poupar memória",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.22"
+  },
+  {
+    "question": "Para que serve o padding numa estrutura?",
+    "answers": [
+      "Para guardar o tamanho total da estrutura no fim",
+      "Para separar os membros de tipos diferentes entre si",
+      "Para cada membro respeitar o seu alinhamento",
+      "Para guardar o endereço do membro que se segue"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.22"
+  },
+  {
+    "question": "Qual é o requisito de alinhamento K de uma estrutura cujos membros são todos de tipos primitivos?",
+    "answers": [
+      "O tamanho do menor membro",
+      "A soma dos tamanhos dos membros",
+      "O número de membros",
+      "O tamanho do maior membro"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.24"
+  },
+  {
+    "question": "Que condição tem de cumprir o endereço inicial de uma estrutura com alinhamento K?",
+    "answers": [
+      "Ser múltiplo de K",
+      "Ser múltiplo de 16",
+      "Ser um valor par",
+      "Ser igual ao tamanho da estrutura"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.24"
+  },
+  {
+    "question": "Que condição tem de cumprir o tamanho total de uma estrutura com alinhamento K?",
+    "answers": [
+      "Ser igual à soma dos tamanhos dos membros",
+      "Ser múltiplo de K",
+      "Ser menor ou igual a K",
+      "Ser múltiplo de 16"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.24"
+  },
+  {
+    "question": "Nunca existe padding no fim de uma estrutura",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.24"
+  },
+  {
+    "question": "O tamanho de uma estrutura pode ser inferior à soma dos tamanhos dos seus membros",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.24"
+  },
+  {
+    "question": "Quais são os dois passos para dispor uma estrutura na memória?",
+    "answers": [
+      "Ordenar os membros por tamanho e depois calcular a soma",
+      "Reservar o maior membro e depois colocar os outros por cima",
+      "Alinhar cada membro e depois a estrutura inteira",
+      "Calcular o tamanho total e depois escolher o endereço"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.24"
+  },
+  {
+    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Qual é o requisito de alinhamento K?",
+    "answers": [
+      "1",
+      "4",
+      "16",
+      "8"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Qual é o offset do membro c?",
+    "answers": [
+      "0",
+      "1",
+      "4",
+      "8"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.25"
+  },
+  {
+    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Qual é o offset do membro i?",
+    "answers": [
+      "1",
+      "4",
+      "2",
+      "8"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.25"
+  },
+  {
+    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Qual é o offset do membro v?",
+    "answers": [
+      "9",
+      "12",
+      "16",
+      "8"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.25"
+  },
+  {
+    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Qual é o valor de sizeof(struct S1)?",
+    "answers": [
+      "13",
+      "16",
+      "20",
+      "24"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.25"
+  },
+  {
+    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Qual é o tamanho que se esperaria sem alinhamento, somando os membros?",
+    "answers": [
+      "17",
+      "13",
+      "16",
+      "24"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.25"
+  },
+  {
+    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Quantos bytes de padding existem no total?",
+    "answers": [
+      "0",
+      "7",
+      "3",
+      "11"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.25"
+  },
+  {
+    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Quantos bytes de padding existem entre c e i?",
+    "answers": [
+      "0",
+      "1",
+      "3",
+      "7"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.25"
+  },
+  {
+    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Quantos bytes de padding existem entre i e v?",
+    "answers": [
+      "0",
+      "3",
+      "8",
+      "4"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.25"
+  },
+  {
+    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Porque é que v está no offset 16 e não no 12?",
+    "answers": [
+      "Porque 12 não é múltiplo de 8 e v é um long long",
+      "Porque o vetor i ocupa 16 bytes",
+      "Porque v só pode ficar depois do padding final",
+      "Porque um long long exige alinhamento a 2 bytes"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.25"
+  },
+  {
+    "question": "Em RV32, qual é o valor de sizeof(struct { char a; int b; short c; })?",
+    "answers": [
+      "16",
+      "12",
+      "8",
+      "20"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, em struct { char a; int b; short c; }, qual é o offset do membro c?",
+    "answers": [
+      "9",
+      "10",
+      "8",
+      "12"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, qual é o valor de sizeof(struct { long long v; int i[2]; char c; })?",
+    "answers": [
+      "32",
+      "24",
+      "16",
+      "28"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, em struct { long long v; int i[2]; char c; }, qual é o offset do membro c?",
+    "answers": [
+      "17",
+      "18",
+      "16",
+      "20"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, qual é o valor de sizeof(struct { char a; char b; short c; int d; })?",
+    "answers": [
+      "12",
+      "4",
+      "16",
+      "8"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, em struct { char a; char b; short c; int d; }, qual é o offset do membro b?",
+    "answers": [
+      "1",
+      "2",
+      "3",
+      "5"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, em struct { char a; char b; short c; int d; }, qual é o offset do membro d?",
+    "answers": [
+      "5",
+      "4",
+      "6",
+      "8"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, qual é o valor de sizeof(struct { char a; double d; char b; })?",
+    "answers": [
+      "24",
+      "32",
+      "16",
+      "28"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, em struct { char a; double d; char b; }, qual é o offset do membro b?",
+    "answers": [
+      "17",
+      "16",
+      "18",
+      "20"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, qual é o valor de sizeof(struct { short s; char c; })?",
+    "answers": [
+      "6",
+      "2",
+      "4",
+      "8"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, em struct { short s; char c; }, qual é o offset do membro c?",
+    "answers": [
+      "3",
+      "4",
+      "6",
+      "2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, qual é o valor de sizeof(struct { char c1; short s; char c2; int i; })?",
+    "answers": [
+      "12",
+      "16",
+      "8",
+      "20"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, em struct { char c1; short s; char c2; int i; }, qual é o offset do membro s?",
+    "answers": [
+      "3",
+      "2",
+      "4",
+      "6"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, em struct { char c1; short s; char c2; int i; }, qual é o offset do membro i?",
+    "answers": [
+      "9",
+      "10",
+      "8",
+      "12"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, qual é o valor de sizeof(struct { float f; char c; double d; })?",
+    "answers": [
+      "24",
+      "8",
+      "20",
+      "16"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, em struct { float f; char c; double d; }, qual é o offset do membro d?",
+    "answers": [
+      "8",
+      "9",
+      "10",
+      "12"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, qual é o valor de sizeof(struct { char c[5]; int i; })?",
+    "answers": [
+      "16",
+      "12",
+      "8",
+      "20"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, em struct { char c[5]; int i; }, qual é o offset do membro i?",
+    "answers": [
+      "9",
+      "10",
+      "8",
+      "12"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, qual é o valor de sizeof(struct { int i; short s; char c; })?",
+    "answers": [
+      "12",
+      "4",
+      "16",
+      "8"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, em struct { int i; short s; char c; }, qual é o offset do membro c?",
+    "answers": [
+      "6",
+      "7",
+      "8",
+      "10"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, qual é o valor de sizeof(struct { long long a; char b; })?",
+    "answers": [
+      "24",
+      "16",
+      "8",
+      "20"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, em struct { long long a; char b; }, qual é o offset do membro b?",
+    "answers": [
+      "9",
+      "10",
+      "8",
+      "12"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, qual é o valor de sizeof(struct { char a; short b; int c; double d; })?",
+    "answers": [
+      "24",
+      "8",
+      "20",
+      "16"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, em struct { char a; short b; int c; double d; }, qual é o offset do membro b?",
+    "answers": [
+      "2",
+      "3",
+      "4",
+      "6"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, em struct { char a; short b; int c; double d; }, qual é o offset do membro d?",
+    "answers": [
+      "9",
+      "8",
+      "10",
+      "12"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, qual é o valor de sizeof(struct { char a; long long b; float c; char d[3]; int * e; int * f; })?",
+    "answers": [
+      "32",
+      "40",
+      "24",
+      "36"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, em struct { char a; long long b; float c; char d[3]; int * e; int * f; }, qual é o offset do membro b?",
+    "answers": [
+      "9",
+      "8",
+      "10",
+      "12"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, em struct { char a; long long b; float c; char d[3]; int * e; int * f; }, qual é o offset do membro f?",
+    "answers": [
+      "29",
+      "30",
+      "28",
+      "32"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.26"
+  },
+  {
+    "question": "Em RV32, quantos bytes de padding tem struct { char a; int b; short c; }?",
+    "answers": [
+      "6",
+      "7",
+      "8",
+      "5"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.24"
+  },
+  {
+    "question": "Em RV32, quantos bytes de padding tem struct { char c1; short s; char c2; int i; }?",
+    "answers": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.24"
+  },
+  {
+    "question": "Em RV32, quantos bytes de padding tem struct { float f; char c; double d; }?",
+    "answers": [
+      "4",
+      "3",
+      "5",
+      "6"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.24"
+  },
+  {
+    "question": "Em RV32, quantos bytes de padding tem struct { char a; double d; char b; }?",
+    "answers": [
+      "15",
+      "16",
+      "17",
+      "14"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.24"
+  },
+  {
+    "question": "Em RV32, qual é o alinhamento K de struct { char a; int b; short c; }?",
+    "answers": [
+      "4",
+      "1",
+      "2",
+      "8"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.24"
+  },
+  {
+    "question": "Em RV32, qual é o alinhamento K de struct { char c1; short s; char c2; int i; }?",
+    "answers": [
+      "1",
+      "4",
+      "2",
+      "8"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.24"
+  },
+  {
+    "question": "Em RV32, qual é o alinhamento K de struct { long long a; char b; }?",
+    "answers": [
+      "1",
+      "2",
+      "8",
+      "4"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.24"
+  },
+  {
+    "question": "Colocar primeiro os tipos maiores numa estrutura pode reduzir o padding",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.27"
+  },
+  {
+    "question": "Em RV32, struct { char a; int b; short c; } tem tamanho 12. Qual é o tamanho depois de reordenar os membros do maior para o menor?",
+    "answers": [
+      "8",
+      "12",
+      "16",
+      "4"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.29"
+  },
+  {
+    "question": "Em RV32, struct { char c1; short s; char c2; int i; } tem tamanho 12. Qual é o tamanho depois de reordenar os membros do maior para o menor?",
+    "answers": [
+      "12",
+      "16",
+      "8",
+      "4"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.29"
+  },
+  {
+    "question": "Em RV32, qual é o valor de sizeof(struct { long long b; float c; int * e; int * f; char d[3]; char a; }), com os membros do maior para o menor?",
+    "answers": [
+      "32",
+      "28",
+      "20",
+      "24"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.29"
+  },
+  {
+    "question": "Em RV32, qual é o offset do membro d em struct { char a; long long b; float c; char d[3]; int * e; int * f; }?",
+    "answers": [
+      "20",
+      "19",
+      "24",
+      "16"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.29"
+  },
+  {
+    "question": "Em RV32, qual é o offset do membro e em struct { char a; long long b; float c; char d[3]; int * e; int * f; }?",
+    "answers": [
+      "23",
+      "24",
+      "28",
+      "32"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.29"
+  },
+  {
+    "question": "Em RV32, quantos bytes se poupam ao reordenar struct { char a; long long b; float c; char d[3]; int * e; int * f; } do maior membro para o menor?",
+    "answers": [
+      "0",
+      "4",
+      "8",
+      "16"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.29"
+  },
+  {
+    "question": "Em RV32, qual é o requisito de alinhamento K de struct { char a; long long b; float c; char d[3]; int * e; int * f; }?",
+    "answers": [
+      "4",
+      "1",
+      "16",
+      "8"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.29"
+  },
+  {
+    "question": "Em RV32, struct S1 { long long v; int i[2]; char c; } tem os membros do maior para o menor. Qual é o seu sizeof?",
+    "answers": [
+      "24",
+      "16",
+      "17",
+      "20"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.27"
+  },
+  {
+    "question": "Em RV32, qual é a diferença entre sizeof de struct { char c; int i[2]; long long v; } e de struct { long long v; int i[2]; char c; }?",
+    "answers": [
+      "A primeira tem mais 8 bytes",
+      "Nenhuma, ambas têm 24 bytes",
+      "A segunda tem menos 8 bytes",
+      "A primeira tem menos 4 bytes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.28"
+  },
+  {
+    "question": "Em RV32, a soma dos tamanhos dos membros de struct { long long v; int i[2]; char c; } é 17 bytes. Porque é que sizeof devolve 24?",
+    "answers": [
+      "Porque o membro c ocupa 8 bytes na estrutura",
+      "Porque o membro v ocupa 16 bytes na estrutura",
+      "Porque o tamanho tem de ser múltiplo de K = 8",
+      "Porque o compilador soma sempre 7 bytes no fim"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.27"
+  },
+  {
+    "question": "Considere struct S1 { long long v; int i[2]; char c; } a[10] em RV32. Quantos bytes ocupa o vetor a?",
+    "answers": [
+      "240",
+      "170",
+      "200",
+      "160"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.30"
+  },
+  {
+    "question": "Considere struct S1 { long long v; int i[2]; char c; } a[10] em RV32. Qual é o offset de a[3] relativamente ao início do vetor?",
+    "answers": [
+      "51",
+      "72",
+      "48",
+      "96"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.30"
+  },
+  {
+    "question": "Considere struct S1 { long long v; int i[2]; char c; } a[10] em RV32. Qual é o offset de a[5].c relativamente ao início do vetor?",
+    "answers": [
+      "85",
+      "120",
+      "136",
+      "100"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.30"
+  },
+  {
+    "question": "Considere struct S1 { long long v; int i[2]; char c; } a[10] em RV32. Qual é o offset de a[2].i relativamente ao início do vetor?",
+    "answers": [
+      "40",
+      "48",
+      "32",
+      "56"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.30"
+  },
+  {
+    "question": "Considere struct S1 { long long v; int i[2]; char c; } a[10] em RV32. Qual é o offset de a[9].v relativamente ao início do vetor?",
+    "answers": [
+      "216",
+      "153",
+      "72",
+      "240"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.30"
+  },
+  {
+    "question": "Porque é que o tamanho de um elemento de um vetor de estruturas é múltiplo de K?",
+    "answers": [
+      "Para que o vetor ocupe menos memória no total",
+      "Para todos os elementos cumprirem o alinhamento",
+      "Para que o vetor tenha sempre um número par de elementos",
+      "Para que o primeiro elemento comece no endereço zero"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.30"
+  },
+  {
+    "question": "Um vetor de n estruturas ocupa n * sizeof(estrutura) bytes numa região contígua",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.30"
+  },
+  {
+    "question": "Em RV32, considere struct rec { int a[4]; long long i; struct rec *next; } vec[50]. Quantos bytes ocupa o vetor vec?",
+    "answers": [
+      "1400",
+      "1200",
+      "1600",
+      "800"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.6"
+  },
+  {
+    "question": "Em RV32, considere struct rec { int a[4]; long long i; struct rec *next; } vec[50]. Qual é o offset de vec[3].next relativamente ao início do vetor?",
+    "answers": [
+      "96",
+      "72",
+      "88",
+      "120"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.6"
+  },
+  {
+    "question": "Em RV32, considere struct rec { int a[4]; long long i; struct rec *next; } vec[50]. Qual é o offset de vec[5].i relativamente ao início do vetor?",
+    "answers": [
+      "176",
+      "160",
+      "100",
+      "120"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.6"
+  },
+  {
+    "question": "Em RV32, considere struct rec { int a[4]; long long i; struct rec *next; } vec[50]. Qual é o offset de vec[2].a[1] relativamente ao início do vetor?",
+    "answers": [
+      "52",
+      "68",
+      "72",
+      "36"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.6"
+  },
+  {
+    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. O que calcula a sequência slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0?",
+    "answers": [
+      "n * 12, somando n * 8 com n * 4",
+      "n * 32, somando n * 16 com n * 16",
+      "n * 24, somando n * 16 com n * 8",
+      "n * 8, somando n * 4 com n * 4"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.31"
+  },
+  {
+    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. O que contém a1 depois de add a1, a1, a0?",
+    "answers": [
+      "O endereço do primeiro elemento do vetor",
+      "O número de elementos do vetor",
+      "O endereço do último elemento do vetor",
+      "O endereço a seguir ao último elemento"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.31"
+  },
+  {
+    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. O que contém a0 em cada iteração do ciclo?",
+    "answers": [
+      "O endereço do elemento atual do vetor",
+      "O endereço do último elemento do vetor",
+      "O índice do elemento atual",
+      "O valor do membro c"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.31"
+  },
+  {
+    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. Para que serve addi a0, a0, STRUCT_SIZE no fim do ciclo?",
+    "answers": [
+      "Para recuar para o elemento anterior do vetor",
+      "Para avançar para o elemento seguinte do vetor",
+      "Para avançar para o membro seguinte do elemento",
+      "Para somar 24 ao valor do membro v"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.31"
+  },
+  {
+    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. Que membros de cada elemento são postos a zero?",
+    "answers": [
+      "Apenas o membro v",
+      "Apenas os membros i[0] e i[1]",
+      "Os membros v, i[0], i[1] e c",
+      "Os membros v e c, mas não o vetor i"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.31"
+  },
+  {
+    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. Porque é que o membro c é posto a zero com sb e não com sw?",
+    "answers": [
+      "Porque c ocupa 4 bytes",
+      "Porque a instrução sw não aceita offsets",
+      "Porque c está num endereço desalinhado",
+      "Porque c é um char, de 1 byte"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.31"
+  },
+  {
+    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. Quando termina o ciclo?",
+    "answers": [
+      "Quando a0 chega ao endereço final guardado em a1",
+      "Quando a1 chega a zero depois de n iterações",
+      "Quando o contador de iterações chega a 24",
+      "Quando o membro c de um elemento é diferente de zero"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.31"
+  },
+  {
+    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. Quantas iterações executa o ciclo se n = 10?",
+    "answers": [
+      "11",
+      "10",
+      "9",
+      "240"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.31"
+  },
+  {
+    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. Se o vetor começar no endereço 0x00010000 e n = 10, que valor tem a1 antes do ciclo?",
+    "answers": [
+      "0x000100A0",
+      "0x00010050",
+      "0x000100F0",
+      "0x00010108"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.31"
+  },
+  {
+    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. O que acontece se n = 0?",
+    "answers": [
+      "O ciclo executa uma iteração",
+      "O ciclo executa 24 iterações",
+      "O ciclo nunca chega a terminar",
+      "O ciclo não executa iterações"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.31"
+  },
+  {
+    "question": "Em RV32, é possível multiplicar por 24 combinando shifts e uma soma, como n * 16 + n * 8",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.31"
+  },
+  {
+    "question": "Para que servem as unions em C?",
+    "answers": [
+      "Para referenciar o mesmo objeto segundo vários tipos",
+      "Para guardar vários objetos em endereços diferentes",
+      "Para juntar vários ficheiros num só",
+      "Para repetir a mesma variável várias vezes"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.33"
+  },
+  {
+    "question": "Qual é a principal diferença entre uma union e uma struct?",
+    "answers": [
+      "Os membros da union ficam em blocos de memória separados",
+      "Os membros da union partilham o mesmo bloco de memória",
+      "A union só aceita membros do tipo int",
+      "A union não pode ser declarada com typedef"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.33"
+  },
+  {
+    "question": "Qual é o tamanho total de uma union?",
+    "answers": [
+      "A soma dos tamanhos dos seus membros",
+      "O tamanho do menor dos seus membros",
+      "O tamanho do maior dos seus membros",
+      "O número de membros multiplicado por 4"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.33"
+  },
+  {
+    "question": "A sintaxe da declaração de uma union é idêntica à de uma struct, mas a semântica é muito diferente",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.33"
+  },
+  {
+    "question": "As unions são úteis quando a memória é escassa, como em sistemas embebidos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.33"
+  },
+  {
+    "question": "Podem usar-se todos os membros de uma union ao mesmo tempo, com valores independentes",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.34"
+  },
+  {
+    "question": "Uma union é alocada de acordo com o seu maior elemento",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.34"
+  },
+  {
+    "question": "Em RV32, qual é o valor de sizeof(union Data { int i; float f; char str[20]; })?",
+    "answers": [
+      "4",
+      "24",
+      "28",
+      "20"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.35"
+  },
+  {
+    "question": "Considere union Data { int i; float f; char str[20]; } data. Depois de data.i = 10; data.f = 220.5;, o que acontece ao valor de data.i?",
+    "answers": [
+      "Perde o valor 10, porque partilha a memória com data.f",
+      "Mantém o valor 10, porque é um membro independente",
+      "Passa a valer 220",
+      "Passa a valer 0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.35"
+  },
+  {
+    "question": "Considere union Data { int i; float f; char str[20]; } data. Depois de strcpy(data.str, \"C Programming\"), porque é que data.i já não vale 10?",
+    "answers": [
+      "Porque a função strcpy converte int em char",
+      "Porque data.str escreveu nos bytes de data.i",
+      "Porque data.i foi inicializado a zero",
+      "Porque data.str ocupa outra zona de memória"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.36"
+  },
+  {
+    "question": "Considere union Data { int i; float f; char str[20]; } data. Depois de strcpy(data.str, \"C Programming\"), que valor tem data.i em decimal?",
+    "answers": [
+      "1131376243",
+      "67",
+      "1917853763",
+      "10"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.36"
+  },
+  {
+    "question": "Considere union Data { int i; float f; char str[20]; } data. Depois de strcpy(data.str, \"C Programming\"), que valor tem data.i em hexadecimal?",
+    "answers": [
+      "0x43205072",
+      "0x50432072",
+      "0x20437250",
+      "0x72502043"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.36"
+  },
+  {
+    "question": "Considere union Data { int i; float f; char str[20]; } data. Depois de strcpy(data.str, \"C Programming\"), porque é que data.i vale 0x72502043 e não 0x43205072?",
+    "answers": [
+      "Porque a ordem de bytes é little-endian",
+      "Porque a ordem de bytes é big-endian",
+      "Porque o int é guardado ao contrário pelo strcpy",
+      "Porque a letra C vale 0x72"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.36"
+  },
+  {
+    "question": "Em C, as unions verificam automaticamente se o membro acedido é o que foi escrito por último",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.37"
+  },
+  {
+    "question": "Compete ao programador registar que tipo foi colocado numa union",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.37"
+  },
+  {
+    "question": "As unions podem provocar erros difíceis de encontrar",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.37"
+  },
+  {
+    "question": "Em RV32 little-endian, considere union { int i; char c[4]; } u e u.i = 0x41424344. Que valor tem u.c[0]?",
+    "answers": [
+      "0x41",
+      "0x00",
+      "0x44",
+      "0xFF"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.35"
+  },
+  {
+    "question": "Em RV32 little-endian, considere union { int i; char c[4]; } u e u.i = 0x41424344. Que valor tem u.c[3]?",
+    "answers": [
+      "0x44",
+      "0x00",
+      "0xFF",
+      "0x41"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.35"
+  },
+  {
+    "question": "Em RV32 little-endian, considere union { int i; char c[4]; } u e u.i = 0x01020304. Que valor tem u.c[3]?",
+    "answers": [
+      "0x04",
+      "0x01",
+      "0x00",
+      "0xFF"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.35"
+  },
+  {
+    "question": "Em RV32 little-endian, considere union { int i; char c[4]; } u e u.i = 0x11223344. Que valor tem u.c[3]?",
+    "answers": [
+      "0x44",
+      "0x00",
+      "0xFF",
+      "0x11"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.35"
+  },
+  {
+    "question": "Em RV32 little-endian, considere union { int i; short s[2]; } u e u.i = 0x12345678. Que valor tem u.s[0]?",
+    "answers": [
+      "0x5678",
+      "0x1234",
+      "0x7856",
+      "0x3412"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.35"
+  },
+  {
+    "question": "Em RV32 little-endian, considere union { int i; short s[2]; } u e u.i = 0x12345678. Que valor tem u.s[1]?",
+    "answers": [
+      "0x5678",
+      "0x1234",
+      "0x3412",
+      "0x7856"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.35"
+  },
+  {
+    "question": "Considere union { int i; float f; } u e u.f = 1.0. Que valor tem u.i, em hexadecimal?",
+    "answers": [
+      "0x00000001",
+      "0xBF800000",
+      "0x3F800000",
+      "0x1FC00000"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.33"
+  },
+  {
+    "question": "Considere union { int i; float f; } u e u.f = 2.0. Que valor tem u.i, em hexadecimal?",
+    "answers": [
+      "0x00000002",
+      "0xC0000000",
+      "0x20000000",
+      "0x40000000"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.33"
+  },
+  {
+    "question": "Considere union { int i; float f; } u e u.f = -2.0. Que valor tem u.i, em hexadecimal?",
+    "answers": [
+      "0xC0000000",
+      "0x00000002",
+      "0x40000000",
+      "0x60000000"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.33"
+  },
+  {
+    "question": "Considere union { int i; float f; } u e u.f = 3.0. Que valor tem u.i, em hexadecimal?",
+    "answers": [
+      "0x00000003",
+      "0x40400000",
+      "0xC0400000",
+      "0x20200000"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.33"
+  },
+  {
+    "question": "Considere union { int i; float f; } u e u.f = 10.0. Que valor tem u.i, em hexadecimal?",
+    "answers": [
+      "0x0000000A",
+      "0xC1200000",
+      "0x41200000",
+      "0x20900000"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.33"
+  },
+  {
+    "question": "Em RV32, qual é o valor de sizeof(union { int i; float f; })?",
+    "answers": [
+      "8",
+      "2",
+      "12",
+      "4"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.33"
+  },
+  {
+    "question": "Em RV32, qual é o valor de sizeof(union { char c; short s; int i; })?",
+    "answers": [
+      "4",
+      "7",
+      "1",
+      "8"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.33"
+  },
+  {
+    "question": "Em RV32, qual é o valor de sizeof(union { int i[3]; char c; })?",
+    "answers": [
+      "13",
+      "12",
+      "16",
+      "4"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.33"
+  },
+  {
+    "question": "Em RV32, qual é o valor de sizeof(union { double d; char c[3]; })?",
+    "answers": [
+      "11",
+      "3",
+      "8",
+      "16"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.33"
+  },
+  {
+    "question": "Em RV32, qual é o valor de sizeof(union { char c[10]; short s; })?",
+    "answers": [
+      "12",
+      "2",
+      "20",
+      "10"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.33"
+  },
+  {
+    "question": "Em RV32, considere typedef union { int units; float kgs; } amount; typedef struct { char selling[15]; float unitprice; int unittype; amount howmuch; } product; Qual é o valor de sizeof(amount)?",
+    "answers": [
+      "4",
+      "8",
+      "15",
+      "2"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.38"
+  },
+  {
+    "question": "Em RV32, considere typedef union { int units; float kgs; } amount; typedef struct { char selling[15]; float unitprice; int unittype; amount howmuch; } product; Qual é o offset do membro unitprice?",
+    "answers": [
+      "15",
+      "16",
+      "12",
+      "20"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.38"
+  },
+  {
+    "question": "Em RV32, considere typedef union { int units; float kgs; } amount; typedef struct { char selling[15]; float unitprice; int unittype; amount howmuch; } product; Qual é o offset do membro unittype?",
+    "answers": [
+      "19",
+      "16",
+      "20",
+      "24"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.38"
+  },
+  {
+    "question": "Em RV32, considere typedef union { int units; float kgs; } amount; typedef struct { char selling[15]; float unitprice; int unittype; amount howmuch; } product; Qual é o offset do membro howmuch?",
+    "answers": [
+      "21",
+      "20",
+      "28",
+      "24"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.38"
+  },
+  {
+    "question": "Em RV32, considere typedef union { int units; float kgs; } amount; typedef struct { char selling[15]; float unitprice; int unittype; amount howmuch; } product; Qual é o valor de sizeof(product)?",
+    "answers": [
+      "28",
+      "43",
+      "32",
+      "24"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.38"
+  },
+  {
+    "question": "Em RV32, considere typedef union { int units; float kgs; } amount; typedef struct { char selling[15]; float unitprice; int unittype; amount howmuch; } product; Quantos bytes de prepadding existem entre selling e unitprice?",
+    "answers": [
+      "0",
+      "1",
+      "3",
+      "4"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.38"
+  },
+  {
+    "question": "Que vantagem tem combinar uma union dentro de uma struct, como em product?",
+    "answers": [
+      "Garantir que todos os membros da union são usados ao mesmo tempo",
+      "Obrigar o compilador a verificar o membro ativo da union",
+      "Produzir tipos com um núcleo comum e partes que variam consoante o caso",
+      "Reduzir o tamanho da struct para zero"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.38"
+  },
+  {
+    "question": "No tipo product, o que determina qual dos membros de howmuch está ativo?",
+    "answers": [
+      "O compilador, através do tamanho de cada membro da union",
+      "O processador, através do alinhamento da union na memória",
+      "O último membro com valor diferente de zero guardado",
+      "A disciplina do programador, por exemplo um campo unittype"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.38"
+  },
+  {
+    "question": "Mesmo combinando uma union com uma struct, é preciso disciplina para aceder apenas ao membro ativo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.38"
+  }
+]

@@ -1,0 +1,1401 @@
+[
+  {
+    "question": "O CPU é o componente central de um sistema computacional, que controla o fluxo de dados e de instruções para realizar uma série de tarefas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.5"
+  },
+  {
+    "question": "Como realiza o CPU as operações que controla no sistema?",
+    "answers": [
+      "Interpretando e executando as instruções fornecidas pelo software",
+      "Executando diretamente o código-fonte escrito em C",
+      "Copiando as instruções para o disco antes de as executar",
+      "Esperando que o sistema operativo as execute em seu nome"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.5"
+  },
+  {
+    "question": "As instruções fornecidas ao CPU fazem com que transístores sejam ligados e desligados para realizar as operações especificadas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.5"
+  },
+  {
+    "question": "O que é o conjunto de instruções (instruction set) de um CPU?",
+    "answers": [
+      "O conjunto de programas guardados na main memory",
+      "A coleção de todas as instruções que o CPU consegue executar",
+      "O número de instruções que o CPU executa por segundo",
+      "O conjunto de registos disponíveis no CPU"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.5"
+  },
+  {
+    "question": "Quais são os dois principais tipos de conceção de um ISA?",
+    "answers": [
+      "RISC e MISC",
+      "CISC e SISC",
+      "RISC e CISC",
+      "RISC-V e x86"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.5"
+  },
+  {
+    "question": "O que significa a sigla RISC?",
+    "answers": [
+      "Rapid Instruction Set Computer",
+      "Reduced Integrated System Computer",
+      "Register Instruction Set Computer",
+      "Reduced Instruction Set Computer"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.5"
+  },
+  {
+    "question": "O que significa a sigla CISC?",
+    "answers": [
+      "Complex Instruction Set Computer",
+      "Combined Instruction Set Computer",
+      "Complex Integrated System Computer",
+      "Compact Instruction Set Computer"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.5"
+  },
+  {
+    "question": "A arquitetura CISC foi introduzida na década de 1980 pela ARM",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.6"
+  },
+  {
+    "question": "Como procurou a arquitetura CISC aumentar a velocidade do CPU?",
+    "answers": [
+      "Executando todas as instruções num único ciclo de relógio, sem exceções",
+      "Combinando vários comandos simples numa única instrução complexa",
+      "Obrigando o programador a usar apenas instruções que acedem à memória",
+      "Dividindo cada operação complexa em várias instruções simples e independentes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.6"
+  },
+  {
+    "question": "Na arquitetura CISC, as instruções demoram sempre exatamente um ciclo de relógio a executar",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.6"
+  },
+  {
+    "question": "Quem introduziu a arquitetura RISC e com que objetivo?",
+    "answers": [
+      "A Intel, na década de 1970, para aumentar a velocidade reduzindo as instruções por programa",
+      "A ARM, na década de 1990, para reduzir o consumo de energia dos telemóveis",
+      "David Patterson e John Hennessy, na década de 1980, para ultrapassar as complexidades dos processadores CISC",
+      "A IBM, na década de 1960, para executar vários programas ao mesmo tempo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.7"
+  },
+  {
+    "question": "Na arquitetura RISC, cada instrução realiza várias operações e demora vários ciclos de relógio a executar",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.7"
+  },
+  {
+    "question": "Na arquitetura RISC são necessárias muitas instruções especializadas, porque cada instrução só se pode usar numa situação concreta",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.7"
+  },
+  {
+    "question": "O desenho da arquitetura RISC tem o foco no hardware, e o da arquitetura CISC tem o foco no software",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.8"
+  },
+  {
+    "question": "Que comprimento têm as instruções numa arquitetura RISC?",
+    "answers": [
+      "Variável",
+      "Sempre de 1 byte",
+      "Depende do número de operandos",
+      "Fixo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.8"
+  },
+  {
+    "question": "As arquiteturas CISC aproveitam mais o pipelining do que as arquiteturas RISC",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.8"
+  },
+  {
+    "question": "Como acedem à memória as instruções de uma arquitetura RISC?",
+    "answers": [
+      "Só através de instruções load e store",
+      "Diretamente, em qualquer instrução aritmética",
+      "Através de um bus próprio que liga ao disco",
+      "Não acedem à memória, apenas aos registos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.8"
+  },
+  {
+    "question": "Numa arquitetura CISC é obrigatório usar instruções load e store para aceder à memória",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.8"
+  },
+  {
+    "question": "Como se compara a velocidade de execução das arquiteturas RISC e CISC?",
+    "answers": [
+      "A CISC é mais rápida e previsível, e a RISC é mais lenta por instrução, mas mais versátil",
+      "A RISC é mais rápida e previsível, e a CISC é mais lenta por instrução, mas mais versátil",
+      "As duas têm a mesma velocidade de execução",
+      "A RISC é mais rápida, mas menos previsível do que a CISC"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.8"
+  },
+  {
+    "question": "O código de um programa é maior em CISC do que em RISC, porque as instruções CISC são mais simples",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.8"
+  },
+  {
+    "question": "Que utilizações típicas tem a arquitetura RISC?",
+    "answers": [
+      "Computadores de secretária, portáteis e CPUs de uso geral",
+      "Apenas servidores de grande dimensão",
+      "Devices móveis, sistemas embebidos e aplicações de baixo consumo",
+      "Apenas supercomputadores"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.8"
+  },
+  {
+    "question": "Quais são as três instruções em que a multiplicação é dividida, na abordagem RISC hipotética?",
+    "answers": [
+      "LOAD, MULT e STORE",
+      "FETCH, PROD e STORE",
+      "LOAD, PROD e PRINT",
+      "LOAD, PROD e STORE"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.9"
+  },
+  {
+    "question": "Na abordagem RISC hipotética, a instrução LOAD move dados da memória para um registo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.9"
+  },
+  {
+    "question": "Como realiza a abordagem CISC hipotética uma multiplicação?",
+    "answers": [
+      "Com uma única instrução complexa, MULT, que trabalha diretamente sobre a memória",
+      "Com três instruções simples, LOAD, PROD e STORE, que só trabalham sobre registos",
+      "Com uma instrução que só funciona sobre registos e nunca sobre a memória",
+      "Com duas instruções: uma para ler os operandos e outra para multiplicar"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.9"
+  },
+  {
+    "question": "Porque é que a arquitetura RISC depende muito dos compiladores?",
+    "answers": [
+      "Porque as instruções RISC são mais complexas do que as instruções CISC",
+      "Porque há várias formas de realizar a mesma tarefa, o que complica o compilador",
+      "Porque um processador RISC não consegue executar código sem passar pelo compilador",
+      "Porque o compilador tem de escolher sempre a única instrução que existe para cada tarefa"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.10"
+  },
+  {
+    "question": "Qual destes ISA é de código aberto (open source)?",
+    "answers": [
+      "x86-64",
+      "ARM A64",
+      "RISC-V",
+      "Itanium (IA64)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.11"
+  },
+  {
+    "question": "Os ISA ARM A32 e A64 são usados em quase todos os telemóveis",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.11"
+  },
+  {
+    "question": "O Itanium (IA64) é um ISA da ARM",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.11"
+  },
+  {
+    "question": "Que variantes do ISA RISC-V são dadas como exemplo?",
+    "answers": [
+      "RV8 e RV16",
+      "RV16 e RV24",
+      "RV48 e RV96",
+      "RV32 e RV64"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.11"
+  },
+  {
+    "question": "O ISA inclui a definição funcional das operações e a descrição precisa de como as invocar e aceder a elas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.11"
+  },
+  {
+    "question": "O que é uma microarquitetura?",
+    "answers": [
+      "A lógica digital que permite executar um conjunto de instruções",
+      "O conjunto de instruções que o CPU consegue executar",
+      "O programa que traduz o código-fonte em código máquina",
+      "A memória que guarda as instruções do programa"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.12"
+  },
+  {
+    "question": "Cada ISA só pode ser implementado por uma única microarquitetura",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.12"
+  },
+  {
+    "question": "O que forma a arquitetura de computador de um sistema como um todo?",
+    "answers": [
+      "O ISA combinado com o sistema operativo",
+      "A microarquitetura combinada com o ISA",
+      "A memória combinada com o CPU",
+      "O compilador combinado com o assembler"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.12"
+  },
+  {
+    "question": "Que três dimensões são determinadas pelo tamanho da word de uma arquitetura?",
+    "answers": [
+      "O tamanho do disco, da main memory e do ficheiro executável de cada programa",
+      "O número de instruções, de registos e de ciclos de relógio por segundo",
+      "O tamanho dos registos, dos data buses e dos endereços de memória",
+      "A velocidade do relógio, a capacidade da cache e o tamanho da stack"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.13"
+  },
+  {
+    "question": "Quais são os tamanhos de word mais comuns?",
+    "answers": [
+      "4, 12, 24 e 48 bits",
+      "10, 20, 40 e 80 bits",
+      "8, 12, 24 e 36 bits",
+      "8, 16, 32 e 64 bits"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.13"
+  },
+  {
+    "question": "Um data bus de n bits tem n fios, mas só consegue transferir um bit de cada vez",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.14"
+  },
+  {
+    "question": "Qual é o maior endereço que se consegue formar com um address bus de 10 bits, sendo 0 o menor endereço?",
+    "answers": [
+      "1023",
+      "1024",
+      "512",
+      "10"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.14"
+  },
+  {
+    "question": "Qual é o maior endereço que se consegue formar com um address bus de 32 bits?",
+    "answers": [
+      "0x80000000",
+      "0xFFFFFFFF",
+      "0x100000000",
+      "0x7FFFFFFF"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.14"
+  },
+  {
+    "question": "O que é um ciclo de relógio (clock cycle) do CPU?",
+    "answers": [
+      "O tempo necessário para executar um programa completo, do início ao fim",
+      "O número de instruções que o CPU executa durante cada segundo de funcionamento",
+      "A unidade básica de tempo no CPU, também chamada ciclo de máquina ou clock tick",
+      "O tempo que o CPU demora a ler uma posição da main memory"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.15"
+  },
+  {
+    "question": "Para que serve o sinal de relógio do CPU?",
+    "answers": [
+      "Para medir e controlar a temperatura de funcionamento do processador",
+      "Para guardar a hora e a data do sistema, mesmo com o computador desligado",
+      "Para escolher qual é a próxima instrução que o CPU vai executar a seguir",
+      "Para sincronizar as operações dos diferentes componentes do CPU"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.15"
+  },
+  {
+    "question": "O sinal de relógio oscila entre os estados alto (um lógico) e baixo (zero lógico), criando um ritmo regular",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.15"
+  },
+  {
+    "question": "O que significa o V em RISC-V?",
+    "answers": [
+      "Que é a quinta versão da arquitetura RISC",
+      "Que é uma versão virtual da arquitetura RISC",
+      "Que é uma versão vetorial da arquitetura RISC",
+      "Que é uma versão variável da arquitetura RISC"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.19"
+  },
+  {
+    "question": "O RISC-V é um ISA proprietário, cuja implementação exige o pagamento de licenças",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.19"
+  },
+  {
+    "question": "Qual é um dos objetivos do RISC-V enquanto ISA universal?",
+    "answers": [
+      "Servir apenas os processadores de computadores de secretária, portáteis e servidores",
+      "Servir todos os tamanhos de processadores, dos controllers embebidos aos de alto desempenho",
+      "Funcionar apenas com uma única linguagem de programação, escolhida pelo fabricante",
+      "Ser compatível, sem qualquer alteração, com todo o software escrito para o conjunto x86-64"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.19"
+  },
+  {
+    "question": "Um dos objetivos do RISC-V é funcionar apenas com uma stack de software específica, e não com uma grande variedade delas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.19"
+  },
+  {
+    "question": "O ISA base de inteiros do RISC-V pode ser estendido com extensões opcionais, mas as instruções base não podem ser redefinidas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.20"
+  },
+  {
+    "question": "O que distingue as extensões standard das extensões não standard do RISC-V?",
+    "answers": [
+      "As standard só existem para processadores de 64 bits, ao passo que as não standard só existem para os de 32 bits",
+      "As standard redefinem as instruções base do ISA e as não standard limitam-se a acrescentar instruções novas ao ISA",
+      "As standard são úteis em geral e não entram em conflito entre si; as não standard podem ser especializadas e entrar em conflito",
+      "As standard são pagas e mantidas pelo fabricante, e as não standard são gratuitas e mantidas pela comunidade"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.20"
+  },
+  {
+    "question": "Como se denota o suporte de ISA no RISC-V?",
+    "answers": [
+      "XLEN + RV + extensões suportadas",
+      "RV + extensões suportadas + XLEN",
+      "RISC + V + XLEN",
+      "RV + XLEN + extensões suportadas"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.21"
+  },
+  {
+    "question": "O que é o XLEN no RISC-V?",
+    "answers": [
+      "O tamanho, em bits, de um registo x (32 ou 64)",
+      "O número de extensões do ISA que o processador suporta",
+      "O número de registos de uso geral que o ISA define",
+      "O tamanho, em bits, de cada instrução do ISA"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.21"
+  },
+  {
+    "question": "O que significa RV32I?",
+    "answers": [
+      "RISC-V com 32 registos e suporte a instruções de vírgula flutuante (Float)",
+      "RISC-V de 32 bits com suporte ao conjunto de instruções de inteiros (Integer)",
+      "RISC-V de 32 bits com suporte a instruções de multiplicação e divisão (M)",
+      "RISC-V com instruções de 32 bits e registos de 64 bits, para inteiros"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.21"
+  },
+  {
+    "question": "Qual é a ordem exata em que se escrevem as extensões de um subconjunto do ISA RISC-V?",
+    "answers": [
+      "I, A, M, F, D, G, Q, L, C, B, J, T, P, V, N",
+      "M, I, A, F, D, G, Q, L, C, B, J, T, P, V, N",
+      "I, M, A, F, D, G, Q, L, C, B, J, T, P, V, N",
+      "I, M, A, D, F, G, Q, L, C, B, J, T, P, V, N"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.21"
+  },
+  {
+    "question": "O RV32I define 16 registos de uso geral, de 32 bits, de x0 a x15, e ainda o registo pc",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.23"
+  },
+  {
+    "question": "Qual é o registo de uso geral que tem um comportamento especial no RV32I?",
+    "answers": [
+      "O x1, que tem sempre o valor 1",
+      "O x31, que guarda sempre o último resultado",
+      "O x2, que tem o valor 0 fixo",
+      "O x0, que tem o valor 0 fixo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.23"
+  },
+  {
+    "question": "O registo x0 pode ser escrito e fica com o último valor que lá foi escrito",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.23"
+  },
+  {
+    "question": "O que é o nome ABI de um registo?",
+    "answers": [
+      "Um nome simbólico, mais fácil de usar do que o número, em código assembly",
+      "O endereço de memória em que o valor do registo fica guardado em execução",
+      "O número de bits que o registo consegue guardar, de cada vez, no processador",
+      "O tipo de instruções que estão autorizadas a escrever nesse registo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.23"
+  },
+  {
+    "question": "Qual é o nome ABI do registo x2?",
+    "answers": [
+      "ra",
+      "sp",
+      "gp",
+      "tp"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "riscv-card"
+  },
+  {
+    "question": "Qual é o nome ABI do registo x1?",
+    "answers": [
+      "sp",
+      "gp",
+      "ra",
+      "zero"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "riscv-card"
+  },
+  {
+    "question": "Qual é o nome ABI do registo x10?",
+    "answers": [
+      "t0",
+      "s0",
+      "a2",
+      "a0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "riscv-card"
+  },
+  {
+    "question": "Qual é o nome ABI do registo x5?",
+    "answers": [
+      "t0",
+      "a0",
+      "s1",
+      "t3"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "riscv-card"
+  },
+  {
+    "question": "Qual é o nome ABI do registo x18?",
+    "answers": [
+      "a2",
+      "s2",
+      "t2",
+      "s1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "riscv-card"
+  },
+  {
+    "question": "A que registo x corresponde o nome ABI s0 (também chamado fp)?",
+    "answers": [
+      "x2",
+      "x9",
+      "x8",
+      "x18"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "riscv-card"
+  },
+  {
+    "question": "A que intervalo de registos x correspondem os nomes ABI a2 a a7?",
+    "answers": [
+      "De x10 a x15",
+      "De x18 a x23",
+      "De x28 a x31",
+      "De x12 a x17"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "riscv-card"
+  },
+  {
+    "question": "O registo pc não pode ser escrito nem lido diretamente através de instruções load e store",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.24"
+  },
+  {
+    "question": "O registo pc só pode ser influenciado por instruções que o alteram como efeito secundário da sua execução",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.24"
+  },
+  {
+    "question": "O que significa o RISC-V usar uma arquitetura load/store?",
+    "answers": [
+      "Que todas as operações são realizadas sobre operandos que estão em registos do processador",
+      "Que todas as operações são feitas diretamente sobre os dados que estão em memória",
+      "Que o processador só consegue executar instruções de load e de store, e mais nenhuma",
+      "Que os dados são carregados do disco para a memória antes de cada operação"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.24"
+  },
+  {
+    "question": "As instruções RV32I têm comprimento variável, entre 16 e 64 bits",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.25"
+  },
+  {
+    "question": "Quais são os seis tipos de formato de instruções RV32I?",
+    "answers": [
+      "R, I, S, M, U e J",
+      "R, I, S, B, U e J",
+      "A, I, S, B, U e J",
+      "R, I, L, B, U e J"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.26"
+  },
+  {
+    "question": "O que caracteriza as instruções do tipo R?",
+    "answers": [
+      "Têm uma constante de 12 bits como um dos operandos de origem",
+      "Servem exclusivamente para guardar um registo na memória",
+      "Usam apenas registos como origem e como destino",
+      "Servem para controlar o fluxo do programa"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.26"
+  },
+  {
+    "question": "O que caracteriza as instruções do tipo I?",
+    "answers": [
+      "Usam apenas registos como origem e como destino das operações",
+      "Especificam os 20 bits superiores do valor imediato de um registo",
+      "Servem para realizar chamadas a sub-rotinas e jumps incondicionais",
+      "Um dos dois operandos de origem é uma constante de 12 bits (imediato)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.26"
+  },
+  {
+    "question": "Chamam-se imediatos porque o seu valor está imediatamente disponível na instrução, sem exigir acesso a um registo ou à memória",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.26"
+  },
+  {
+    "question": "Para que se usam as instruções do tipo S?",
+    "answers": [
+      "Guardar o conteúdo de um registo na memória de dados",
+      "Ler dados da memória de dados para um registo",
+      "Controlar o fluxo de execução do programa, com branches condicionais",
+      "Realizar operações aritméticas entre registos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.26"
+  },
+  {
+    "question": "Para que se usam as instruções do tipo B?",
+    "answers": [
+      "Guardar o conteúdo de um registo na memória de dados",
+      "Controlar o fluxo de execução do programa, com branches condicionais",
+      "Especificar os 20 bits superiores do valor imediato de um registo",
+      "Realizar operações aritméticas entre registos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.26"
+  },
+  {
+    "question": "Para que se usam as instruções do tipo U?",
+    "answers": [
+      "Guardar o conteúdo de um registo na memória de dados",
+      "Controlar o fluxo de execução do programa, com branches condicionais",
+      "Especificar os 20 bits superiores do valor imediato de um registo",
+      "Realizar operações aritméticas entre registos"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.26"
+  },
+  {
+    "question": "Para que se usam as instruções do tipo J?",
+    "answers": [
+      "Guardar o conteúdo de um registo na memória de dados",
+      "Especificar os 20 bits superiores do valor imediato de um registo",
+      "Realizar operações aritméticas entre registos",
+      "Fazer chamadas a sub-rotinas, saltando para o seu endereço"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.26"
+  },
+  {
+    "question": "Como as instruções têm 32 bits, é possível codificar imediatos de 32 bits dentro de cada instrução",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.27"
+  },
+  {
+    "question": "Quantos valores distintos se conseguem codificar numa constante imediata de 12 bits?",
+    "answers": [
+      "4096",
+      "4095",
+      "2048",
+      "144"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.26"
+  },
+  {
+    "question": "Qual é a gama de valores de um imediato de 12 bits interpretado em complemento para 2?",
+    "answers": [
+      "De 0 a 4095",
+      "De -2048 a 2047",
+      "De -2047 a 2047",
+      "De -4096 a 4095"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.26"
+  },
+  {
+    "question": "O que é um datapath?",
+    "answers": [
+      "O programa de baixo nível que traduz as instruções em sinais de controlo para a ALU",
+      "O conjunto de todas as instruções que o CPU consegue executar, definido pelo ISA",
+      "O conjunto de elementos de estado, de computação e de ligações que permite o fluxo de dados no CPU",
+      "O data bus que liga o CPU à main memory e aos devices de E/S"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.29"
+  },
+  {
+    "question": "Uma microarquitetura é uma implementação de um ISA, e o datapath é uma parte da microarquitetura",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.29"
+  },
+  {
+    "question": "Quando é atualizado o program counter (PC) no datapath?",
+    "answers": [
+      "A cada flanco descendente do relógio, com o endereço da instrução anterior",
+      "Apenas quando ocorre um interrupt do sistema operativo, com o endereço do tratador",
+      "Só quando o programa termina, com o endereço da primeira instrução",
+      "A cada flanco ascendente do relógio, com o endereço da instrução seguinte (PCNext)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.30"
+  },
+  {
+    "question": "O que recebe e o que devolve a memória de instruções?",
+    "answers": [
+      "Recebe o endereço da instrução (PC) e devolve a instrução guardada nesse endereço (Instr)",
+      "Recebe a instrução a executar e devolve o endereço de memória em que está guardada",
+      "Recebe os números de dois registos e devolve o resultado da operação entre eles",
+      "Recebe um valor da ALU e escreve-o na memória de dados no endereço indicado"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.31"
+  },
+  {
+    "question": "A memória guarda instruções e dados num único espaço contíguo, mas o CPU usa duas memórias separadas, uma para instruções e outra para dados",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.31"
+  },
+  {
+    "question": "O que é o register file?",
+    "answers": [
+      "A memória onde ficam guardadas as instruções do programa que está em execução",
+      "Uma coleção de registos, em que qualquer um se lê ou escreve indicando o seu número",
+      "Um ficheiro do disco onde se guardam os registos do processador entre execuções",
+      "Uma coleção de registos que só podem ser lidos, nunca escritos pelo programa"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.32"
+  },
+  {
+    "question": "Quantos índices de registo tem a entrada do register file, e para que servem?",
+    "answers": [
+      "Três: um para leitura (A1) e dois para escrita (A2 e A3)",
+      "Dois: um para leitura (A1) e um para escrita (A3), apenas",
+      "Três: dois para leitura (A1 e A2) e um para escrita (A3)",
+      "Quatro: dois para leitura (A1 e A2) e dois para escrita (A3 e A4)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.32"
+  },
+  {
+    "question": "Quantos bits são necessários para indicar um dos 32 registos do register file?",
+    "answers": [
+      "3 bits",
+      "4 bits",
+      "6 bits",
+      "5 bits"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.32"
+  },
+  {
+    "question": "Para que serve o sinal de controlo WE3 do register file?",
+    "answers": [
+      "Indica se a instrução atual escreve no registo de destino",
+      "Indica o número do registo de destino onde se vai escrever",
+      "Fornece os dados que a instrução vai escrever no registo",
+      "Indica o número do primeiro registo de origem a ler"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.32"
+  },
+  {
+    "question": "O que fornecem as saídas RD1 e RD2 do register file?",
+    "answers": [
+      "O número do registo de destino da instrução",
+      "Os dados lidos dos dois registos de origem",
+      "O resultado da operação realizada pela ALU",
+      "O valor atual do registo program counter"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.32"
+  },
+  {
+    "question": "Quais são as entradas e a saída principais da ALU do datapath?",
+    "answers": [
+      "Uma entrada de 32 bits e um endereço de 5 bits, para um resultado de 64 bits na saída",
+      "Duas entradas de 5 bits e uma operação de 32 bits, para um resultado de 3 bits na saída",
+      "Duas entradas de 32 bits (SrcA e SrcB), uma operação de 3 bits e um resultado de 32 bits",
+      "Três entradas de 32 bits sem operação, e um resultado de apenas 1 bit na saída"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.34"
+  },
+  {
+    "question": "Para que serve a saída Zero da ALU?",
+    "answers": [
+      "Indica que a ALU está desligada e não executa operações",
+      "Guarda o valor zero para ser escrito no register file",
+      "Indica que ocorreu um overflow na última operação",
+      "Indica que o resultado da operação é zero, sendo usada nas comparações"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.34"
+  },
+  {
+    "question": "Para que serve o sinal de controlo WE da memória de dados?",
+    "answers": [
+      "Indica se o acesso é de leitura (WE = 0) ou de escrita (WE = 1)",
+      "Indica o endereço do dado que se vai ler ou escrever na memória",
+      "Fornece à memória os dados que vão ser escritos no endereço",
+      "Indica que a memória de dados já não tem espaço livre"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.36"
+  },
+  {
+    "question": "Quais são as entradas da memória de dados?",
+    "answers": [
+      "Apenas o endereço (A), sem dados nem sinais de controlo",
+      "O endereço (A), os dados a escrever (WD) e o sinal de controlo (WE)",
+      "O endereço (A), a instrução a executar (Instr) e o sinal de relógio",
+      "Os dados lidos (RD), o sinal de controlo (WE) e o endereço (A)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.36"
+  },
+  {
+    "question": "Num acesso de leitura à memória de dados, a memória devolve em RD os dados guardados no endereço indicado",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.36"
+  },
+  {
+    "question": "A partir de que campos da instrução calcula a unidade de controlo os sinais de controlo?",
+    "answers": [
+      "Apenas do opcode",
+      "Do endereço do registo de destino e do valor do imediato",
+      "Do opcode, do funct3 e do funct7",
+      "Do program counter e do sinal de relógio"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.38"
+  },
+  {
+    "question": "Para o conjunto de instruções RV32I, a unidade de controlo usa apenas o bit 5 do funct7",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.38"
+  },
+  {
+    "question": "Em que dois componentes se decompõe hierarquicamente a unidade de controlo?",
+    "answers": [
+      "Main Decoder e Memory Decoder",
+      "Fetch Decoder e ALU Decoder",
+      "Register Decoder e Clock Decoder",
+      "Main Decoder e ALU Decoder"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.40"
+  },
+  {
+    "question": "Qual é a função do ALU Decoder?",
+    "answers": [
+      "Determinar a operação que a ALU realiza",
+      "Produzir a maioria dos sinais de controlo",
+      "Descodificar o endereço da memória de dados",
+      "Selecionar o registo de destino"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.40"
+  },
+  {
+    "question": "O Main Decoder produz a maioria dos sinais de controlo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.40"
+  },
+  {
+    "question": "Admita a instrução or x4, x5, x6 com x5 = 6 e x6 = 0xA. Qual é o valor escrito em x4?",
+    "answers": [
+      "0x2",
+      "0xE",
+      "0xC",
+      "0x10"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.42"
+  },
+  {
+    "question": "Admita a instrução and x4, x5, x6 com x5 = 0x3C e x6 = 0x0F. Qual é o valor escrito em x4?",
+    "answers": [
+      "0x3F",
+      "0x33",
+      "0x0C",
+      "0x4B"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.42"
+  },
+  {
+    "question": "Admita a instrução xor x4, x5, x6 com x5 = 0xAA e x6 = 0xFF. Qual é o valor escrito em x4?",
+    "answers": [
+      "0xFF",
+      "0xAA",
+      "0x1A9",
+      "0x55"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.42"
+  },
+  {
+    "question": "O pc vale 0x2000 e são executadas 5 instruções RV32I seguidas, sem saltos. Qual é o valor final do pc?",
+    "answers": [
+      "0x2005",
+      "0x2014",
+      "0x2028",
+      "0x2004"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.42"
+  },
+  {
+    "question": "Qual é a ideia básica do pipelining?",
+    "answers": [
+      "Executar uma instrução de cada vez, do princípio ao fim, sem sobreposição",
+      "Guardar as instruções mais usadas numa memória mais rápida junto do CPU",
+      "Dividir as instruções em pequenas fases independentes, cada uma com uma parte da instrução",
+      "Executar todas as instruções de um programa em paralelo, num único ciclo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.45"
+  },
+  {
+    "question": "O pipelining é uma técnica de implementação em que várias instruções se sobrepõem na execução",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.45"
+  },
+  {
+    "question": "O que é que o pipelining melhora no CPU?",
+    "answers": [
+      "O tamanho dos registos",
+      "A capacidade da main memory",
+      "O número de instruções do conjunto de instruções",
+      "O throughput (throughput) de execução"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.45"
+  },
+  {
+    "question": "Quantas fases tem o datapath single-cycle de RISC-V?",
+    "answers": [
+      "5 fases",
+      "3 fases",
+      "4 fases",
+      "6 fases"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.46"
+  },
+  {
+    "question": "Quais são as cinco fases do datapath single-cycle, pela ordem de execução?",
+    "answers": [
+      "IF, EX, ID, MEM e WB",
+      "IF, ID, EX, MEM e WB",
+      "ID, IF, EX, MEM e WB",
+      "IF, ID, MEM, EX e WB"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.46"
+  },
+  {
+    "question": "O que faz a fase IF (Instruction Fetch)?",
+    "answers": [
+      "Lê os operandos do register file e descodifica a instrução",
+      "Realiza um cálculo na ALU",
+      "Lê a instrução da memória de instruções e incrementa o program counter",
+      "Escreve o resultado no register file"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.46"
+  },
+  {
+    "question": "O que faz a fase ID (Instruction Decode)?",
+    "answers": [
+      "Lê a instrução da memória de instruções e atualiza o pc",
+      "Lê ou escreve na memória de dados, se for aplicável",
+      "Escreve o resultado no register file, se for aplicável",
+      "Lê os operandos do register file e descodifica a instrução"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.46"
+  },
+  {
+    "question": "O que faz a fase EX (Execution)?",
+    "answers": [
+      "Realiza um cálculo na ALU, ou um cálculo de endereço",
+      "Lê a instrução da memória de instruções (fetch)",
+      "Lê ou escreve na memória de dados, se aplicável",
+      "Descodifica a instrução e lê os operandos de origem"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.46"
+  },
+  {
+    "question": "O que faz a fase MEM (Data memory access)?",
+    "answers": [
+      "Lê a instrução da memória de instruções (fetch)",
+      "Lê ou escreve na memória de dados, se aplicável",
+      "Escreve o resultado no register file, se aplicável",
+      "Realiza um cálculo, ou um cálculo de endereço, na ALU"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.46"
+  },
+  {
+    "question": "O que faz a fase WB (Write back)?",
+    "answers": [
+      "Lê ou escreve na memória de dados, se aplicável",
+      "Realiza um cálculo, ou um cálculo de endereço, na ALU",
+      "Escreve o resultado no register file, se aplicável",
+      "Lê a instrução da memória de instruções (fetch)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.46"
+  },
+  {
+    "question": "No datapath single-cycle, o fluxo de instruções e dados faz-se, em geral, pela ordem das fases IF, ID, EX, MEM e WB",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.47"
+  },
+  {
+    "question": "No datapath single-cycle, a unidade de controlo gera os sinais de controlo que comandam os restantes elementos do datapath",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.48"
+  }
+]

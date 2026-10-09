@@ -1,0 +1,1588 @@
+[
+  {
+    "question": "Um sistema de numeração é uma forma de representar (escrever) números",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.5"
+  },
+  {
+    "question": "O que é a base (radix) de um sistema de numeração?",
+    "answers": [
+      "O número de dígitos distintos que o sistema utiliza",
+      "O maior número que o sistema consegue representar",
+      "O número de posições que tem um número escrito nesse sistema",
+      "O valor do dígito colocado na posição mais à esquerda"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.5"
+  },
+  {
+    "question": "Num sistema de numeração de base b, os dígitos pertencem ao intervalo [0, b]",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.5"
+  },
+  {
+    "question": "Os sistemas de numeração posicionais chamam-se assim porque o valor de cada dígito é independente da posição que ocupa no número",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.5"
+  },
+  {
+    "question": "Quais são os quatro sistemas de numeração usados no contexto dos computadores?",
+    "answers": [
+      "Binário, ternário, decimal e hexadecimal",
+      "Binário, octal, decimal e hexadecimal",
+      "Binário, octal, decimal e romano",
+      "Unário, binário, octal e hexadecimal"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.5"
+  },
+  {
+    "question": "No sistema hexadecimal, o dígito F representa o valor 16 em decimal",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.6"
+  },
+  {
+    "question": "No sistema hexadecimal, o dígito A representa o valor 11 em decimal",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.6"
+  },
+  {
+    "question": "Qual é a representação em octal do número 1101 (base 2)?",
+    "answers": [
+      "13",
+      "17",
+      "15",
+      "D"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.6"
+  },
+  {
+    "question": "Escrever um número em bases diferentes é apenas uma forma diferente de o escrever, o seu valor mantém-se",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.6"
+  },
+  {
+    "question": "Num número escrito em qualquer sistema posicional, qual é a posição do primeiro dígito à direita?",
+    "answers": [
+      "Posição um",
+      "Posição igual à base do sistema",
+      "Posição igual ao número de dígitos do número",
+      "Posição zero"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.7"
+  },
+  {
+    "question": "O peso do dígito de uma dada posição é a base do sistema multiplicada pelo número dessa posição",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.7"
+  },
+  {
+    "question": "O valor de um número obtém-se somando os seus dígitos, sem ter em conta a posição de cada um",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.7"
+  },
+  {
+    "question": "Qual é o valor decimal do número 1011010 (base 2)?",
+    "answers": [
+      "90",
+      "91",
+      "88",
+      "45"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.8"
+  },
+  {
+    "question": "Qual é o valor decimal do número 110101 (base 2)?",
+    "answers": [
+      "54",
+      "53",
+      "51",
+      "43"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.8"
+  },
+  {
+    "question": "Qual é o valor decimal do número 16512 (base 8)?",
+    "answers": [
+      "7499",
+      "7496",
+      "7498",
+      "9073"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.8"
+  },
+  {
+    "question": "Qual é o valor decimal do número 13D1A (base 16)?",
+    "answers": [
+      "81179",
+      "81176",
+      "662833",
+      "81178"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.8"
+  },
+  {
+    "question": "Qual é o valor decimal do número 7F3 (base 16)?",
+    "answers": [
+      "2035",
+      "2036",
+      "2033",
+      "1015"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.8"
+  },
+  {
+    "question": "O número 101101 (base 2) é igual ao número 45 (base 10)",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.8"
+  },
+  {
+    "question": "O número 77 (base 8) é igual ao número 64 (base 10)",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.8"
+  },
+  {
+    "question": "O número 100000 (base 2) é igual ao número 16 (base 10)",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.8"
+  },
+  {
+    "question": "Como se escreve o número decimal 27 em binário?",
+    "answers": [
+      "11100",
+      "11011",
+      "11010",
+      "33"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.9"
+  },
+  {
+    "question": "Como se escreve o número decimal 200 em binário?",
+    "answers": [
+      "11001001",
+      "11000111",
+      "11001000",
+      "00010011"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.9"
+  },
+  {
+    "question": "Como se escreve o número decimal 158 em octal?",
+    "answers": [
+      "237",
+      "235",
+      "632",
+      "236"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.9"
+  },
+  {
+    "question": "Como se escreve o número decimal 450 em hexadecimal?",
+    "answers": [
+      "1C2",
+      "1C3",
+      "1C1",
+      "2C1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.9"
+  },
+  {
+    "question": "Como se escreve o número decimal 255 em hexadecimal?",
+    "answers": [
+      "100",
+      "FF",
+      "FE",
+      "11111111"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.9"
+  },
+  {
+    "question": "Qual é o resultado de converter 723 (base 8) para binário?",
+    "answers": [
+      "111010100",
+      "111010010",
+      "111010011",
+      "110010111"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.10"
+  },
+  {
+    "question": "Qual é o resultado de converter 2B8 (base 16) para binário?",
+    "answers": [
+      "1010111001",
+      "1010110111",
+      "0001110101",
+      "1010111000"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.10"
+  },
+  {
+    "question": "Qual é o resultado de converter A5 (base 16) para binário?",
+    "answers": [
+      "10100101",
+      "10100110",
+      "10100100",
+      "10100111"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.10"
+  },
+  {
+    "question": "Qual é o resultado de converter 001110101011 (base 2) para octal?",
+    "answers": [
+      "1654",
+      "1653",
+      "1652",
+      "3561"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.11"
+  },
+  {
+    "question": "Qual é o resultado de converter 010111100111 (base 2) para hexadecimal?",
+    "answers": [
+      "5E8",
+      "5E6",
+      "5E7",
+      "7E5"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.11"
+  },
+  {
+    "question": "Qual é o resultado de converter 111100001010 (base 2) para hexadecimal?",
+    "answers": [
+      "F0B",
+      "F09",
+      "A0F",
+      "F0A"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.11"
+  },
+  {
+    "question": "O número 1010 (base 2) é igual ao número A (base 16)",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.10"
+  },
+  {
+    "question": "O número 1010 (base 2) é igual ao número 11 (base 8)",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.10"
+  },
+  {
+    "question": "O número 11111111 (base 2) é igual ao número 377 (base 8)",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.11"
+  },
+  {
+    "question": "O número 10000000 (base 2) é igual ao número FF (base 16)",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.11"
+  },
+  {
+    "question": "Cada número tem, numa dada base, uma única representação, sem contar com zeros à esquerda",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.12"
+  },
+  {
+    "question": "As operações aritméticas podem ser realizadas em qualquer base",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.12"
+  },
+  {
+    "question": "Quanto é 1011 + 110, com os dois números escritos em base 2?",
+    "answers": [
+      "10001",
+      "10101",
+      "1111",
+      "10011"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.12"
+  },
+  {
+    "question": "Quanto é 7 + 5, com os dois números escritos em base 8?",
+    "answers": [
+      "12",
+      "14",
+      "13",
+      "15"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.12"
+  },
+  {
+    "question": "Quanto é 9 + 8, com os dois números escritos em base 16?",
+    "answers": [
+      "17",
+      "10",
+      "11",
+      "12"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.12"
+  },
+  {
+    "question": "O byte é a menor unidade de dados que um computador consegue processar e armazenar",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.14"
+  },
+  {
+    "question": "Um bit encontra-se sempre num de dois estados físicos, semelhante a um interruptor ligado ou desligado",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.14"
+  },
+  {
+    "question": "Quantos valores distintos pode ter, em abstrato, um bit?",
+    "answers": [
+      "Um, apenas o 1",
+      "Três, o 0, o 1 e o valor desconhecido",
+      "Dez, os dígitos de 0 a 9",
+      "Dois, o 0 e o 1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.14"
+  },
+  {
+    "question": "Um único bit transmite muita informação, por isso não são necessários grupos de bits para representar informação complexa",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.15"
+  },
+  {
+    "question": "O que é um código binário?",
+    "answers": [
+      "Um formato de representação de vários tipos de dados, como números, texto, imagem e vídeo",
+      "Uma chave secreta que protege os dados guardados em memória contra acessos indevidos",
+      "Um conjunto de instruções de máquina que o CPU consegue executar diretamente, uma a uma",
+      "Um único dígito que só pode tomar os valores 0 ou 1, usado para contar"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.15"
+  },
+  {
+    "question": "Em ASCII de 7 bits, a sequência 1000001 representa a letra maiúscula A",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.15"
+  },
+  {
+    "question": "Em ASCII de 7 bits, a sequência 1000011 representa a letra maiúscula B",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.15"
+  },
+  {
+    "question": "Qual é o código ASCII de 7 bits da letra maiúscula R?",
+    "answers": [
+      "1010101",
+      "1010010",
+      "1010011",
+      "1010001"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.15"
+  },
+  {
+    "question": "A álgebra de Boole foi criada a partir do sistema decimal e trabalha com variáveis que tomam valores de 0 a 9",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.16"
+  },
+  {
+    "question": "As operações de shift e de rotação movem uma sequência de bits para a esquerda ou para a direita",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.17"
+  },
+  {
+    "question": "Os dados são símbolos que representam pessoas, acontecimentos, coisas, ideias e outros conceitos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.19"
+  },
+  {
+    "question": "O que é a digitalização?",
+    "answers": [
+      "O processo de executar, uma a uma, as instruções em linguagem máquina guardadas em memória",
+      "O processo de guardar os dados de um programa num disco rígido ou noutro suporte permanente",
+      "O processo de converter informação, como texto, imagens ou áudio, em dados digitais",
+      "O processo de converter números decimais em hexadecimais e vice-versa, em qualquer sistema"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.19"
+  },
+  {
+    "question": "O que designa a representação de dados?",
+    "answers": [
+      "A conversão dos dados digitais em dados analógicos para transmissão",
+      "O conjunto de símbolos que representam pessoas e acontecimentos",
+      "A transferência dos dados entre o CPU e a main memory",
+      "A forma como os dados são guardados, processados e transmitidos"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.19"
+  },
+  {
+    "question": "Os computadores representam todos os dados, incluindo texto, cores, imagens e endereços de memória, como códigos binários",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.19"
+  },
+  {
+    "question": "Os dados de caracteres são compostos por letras, símbolos e algarismos que são usados em cálculos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.20"
+  },
+  {
+    "question": "Para representar texto, vários caracteres diferentes podem partilhar o mesmo padrão binário",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.20"
+  },
+  {
+    "question": "O que é um conjunto de caracteres (character set)?",
+    "answers": [
+      "Uma coleção normalizada de caracteres e dos seus padrões de bits",
+      "O conjunto de todas as teclas que existem num teclado de computador",
+      "O conjunto de tipos de letra disponíveis para mostrar texto no ecrã de um computador",
+      "Um ficheiro de texto onde ficam guardados todos os caracteres usados num programa"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.20"
+  },
+  {
+    "question": "Para os computadores trocarem texto entre si, cada fabricante pode definir o seu próprio código de carácter, sem necessidade de um padrão acordado",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.20"
+  },
+  {
+    "question": "O padrão de bits usado para cada carácter chama-se código de carácter",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.20"
+  },
+  {
+    "question": "O ASCII usa códigos de 7 bits para representar cada carácter",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.21"
+  },
+  {
+    "question": "No que respeita a letras, o ASCII só codifica as letras do alfabeto inglês",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.21"
+  },
+  {
+    "question": "Quantos caracteres distintos permite codificar, no máximo, um código ASCII de 7 bits?",
+    "answers": [
+      "256",
+      "128",
+      "49",
+      "64"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.21"
+  },
+  {
+    "question": "O que é o Unicode?",
+    "answers": [
+      "Uma versão alargada do ASCII que usa códigos de 8 bits para guardar símbolos gráficos",
+      "Um formato de ficheiro usado para guardar imagens digitais com compressão de dados",
+      "Um padrão com os caracteres necessários para a maioria das línguas vivas",
+      "Um método de compressão que reduz o tamanho dos ficheiros de texto guardados em disco"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.21"
+  },
+  {
+    "question": "Quantos bytes usa o UTF-8 para representar um carácter do conjunto ASCII?",
+    "answers": [
+      "2 bytes",
+      "3 bytes",
+      "4 bytes",
+      "1 byte"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.21"
+  },
+  {
+    "question": "Quantos bytes usa o UTF-8 para os caracteres suplementares?",
+    "answers": [
+      "4 bytes",
+      "1 byte",
+      "2 bytes",
+      "3 bytes"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.21"
+  },
+  {
+    "question": "O UTF-8 usa 2 bytes para caracteres de vários blocos alfabéticos e 3 bytes para os restantes caracteres do Basic Multilingual Plane (BMP)",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.21"
+  },
+  {
+    "question": "O que é o Basic Multilingual Plane (BMP)?",
+    "answers": [
+      "As primeiras 256 posições de código do conjunto Unicode",
+      "As primeiras 65536 posições de código do conjunto de caracteres Unicode",
+      "O conjunto dos caracteres que são codificados com apenas 1 byte",
+      "O bloco do Unicode reservado aos caracteres suplementares"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.21"
+  },
+  {
+    "question": "Os códigos de carácter fora do BMP chamam-se caracteres suplementares",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.21"
+  },
+  {
+    "question": "Quantos bytes usa o UTF-16 para um carácter do BMP e para um carácter suplementar, respetivamente?",
+    "answers": [
+      "1 byte e 2 bytes",
+      "2 bytes e 2 bytes",
+      "2 bytes e 4 bytes",
+      "4 bytes e 4 bytes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.21"
+  },
+  {
+    "question": "O UTF-32 usa 4 bytes para todos os caracteres",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.21"
+  },
+  {
+    "question": "O modelo de cores mais usado é o CMYK, que descreve a intensidade de ciano, magenta, amarelo e preto",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.22"
+  },
+  {
+    "question": "Quantos bits usa o modelo RGB, no total, para representar uma cor?",
+    "answers": [
+      "8 bits",
+      "16 bits",
+      "32 bits",
+      "24 bits"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.22"
+  },
+  {
+    "question": "No modelo RGB, quantos bits são usados para representar a intensidade de cada cor primária?",
+    "answers": [
+      "8 bits",
+      "3 bits",
+      "4 bits",
+      "24 bits"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.22"
+  },
+  {
+    "question": "Quantas cores distintas permite representar o modelo RGB com três códigos de 8 bits?",
+    "answers": [
+      "16777215",
+      "16777216",
+      "50331648",
+      "4294967296"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.22"
+  },
+  {
+    "question": "Qualquer device com um ecrã gráfico a cores precisa de um modelo para descrever as cores",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.22"
+  },
+  {
+    "question": "Uma imagem bitmap é formada por uma sequência de curvas matemáticas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.23"
+  },
+  {
+    "question": "O que é um píxel (picture element)?",
+    "answers": [
+      "Uma linha completa de elementos da imagem, da esquerda para a direita",
+      "Um conjunto de 8 bits que codifica um único carácter de texto ASCII",
+      "O menor elemento de uma imagem, correspondente a uma única cor",
+      "Uma pequena imagem usada como ícone ou miniatura de outra imagem"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.23"
+  },
+  {
+    "question": "Quantos bytes ocupa uma imagem bitmap RGB de 24 bits por píxel, com 100 colunas e 50 linhas?",
+    "answers": [
+      "5000",
+      "120000",
+      "40000",
+      "15000"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.23"
+  },
+  {
+    "question": "Os números reais (vírgula flutuante) são representados com um padrão de bits de tamanho variável, que cresce com a precisão pretendida",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.24"
+  },
+  {
+    "question": "Quantos bits tem um número em precisão simples (single precision) no formato IEEE 754?",
+    "answers": [
+      "32 bits",
+      "16 bits",
+      "64 bits",
+      "128 bits"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.24"
+  },
+  {
+    "question": "Quantos bits tem um número em precisão dupla (double precision) no formato IEEE 754?",
+    "answers": [
+      "32 bits",
+      "64 bits",
+      "128 bits",
+      "80 bits"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.24"
+  },
+  {
+    "question": "No formato IEEE 754 em precisão simples, o valor +105,625 é representado por 01000010110100110100000000000000",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.24"
+  },
+  {
+    "question": "O mesmo programa pode ser escrito em C, em assembly ou em código máquina binário, sendo o código máquina o único que o processador executa diretamente",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.25"
+  },
+  {
+    "question": "Os inteiros sem sinal conseguem representar números negativos, desde que o bit mais significativo seja 1",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.27"
+  },
+  {
+    "question": "Qual é a gama de valores de um inteiro sem sinal representado com n bits?",
+    "answers": [
+      "De 0 a 2^n",
+      "De -2^(n-1) a 2^(n-1) - 1",
+      "De 0 a 2^n - 1",
+      "De 1 a 2^n"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.27"
+  },
+  {
+    "question": "Qual é o maior valor que se pode guardar num inteiro sem sinal de 8 bits?",
+    "answers": [
+      "256",
+      "127",
+      "128",
+      "255"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.27"
+  },
+  {
+    "question": "Qual é o maior valor que se pode guardar num inteiro sem sinal de 16 bits?",
+    "answers": [
+      "65535",
+      "65536",
+      "32767",
+      "32768"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.27"
+  },
+  {
+    "question": "Quantos valores distintos se conseguem representar com 10 bits sem sinal?",
+    "answers": [
+      "1023",
+      "1024",
+      "512",
+      "100"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.27"
+  },
+  {
+    "question": "Os endereços de memória são números com sinal",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.27"
+  },
+  {
+    "question": "Na representação em sinal e magnitude, o bit mais significativo (MSB) guarda o sinal e os restantes bits representam a magnitude",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.28"
+  },
+  {
+    "question": "Em sinal e magnitude, +34 e -34 diferem em todos os bits",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.28"
+  },
+  {
+    "question": "Em sinal e magnitude com 8 bits, como se representa o número -34?",
+    "answers": [
+      "00100010",
+      "11011101",
+      "10100010",
+      "11011110"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.28"
+  },
+  {
+    "question": "Em sinal e magnitude com 8 bits, qual é o valor do padrão 10001010?",
+    "answers": [
+      "10",
+      "-118",
+      "-5",
+      "-10"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.28"
+  },
+  {
+    "question": "Qual é a gama de valores da representação em sinal e magnitude com n bits?",
+    "answers": [
+      "De -(2^(n-1) - 1) a +(2^(n-1) - 1)",
+      "De -2^(n-1) a +(2^(n-1) - 1)",
+      "De -(2^n - 1) a +(2^n - 1)",
+      "De -(2^(n-1) + 1) a +(2^(n-1) + 1)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.28"
+  },
+  {
+    "question": "Em sinal e magnitude, o zero tem duas representações diferentes",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.28"
+  },
+  {
+    "question": "Qual é o maior valor representável em sinal e magnitude com 8 bits?",
+    "answers": [
+      "128",
+      "127",
+      "255",
+      "256"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.28"
+  },
+  {
+    "question": "Em sinal e magnitude com 8 bits, quais são as duas representações do zero?",
+    "answers": [
+      "00000000 e 11111111",
+      "00000000 e 00000001",
+      "00000000 e 10000000",
+      "10000000 e 11111111"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.28"
+  },
+  {
+    "question": "No complemento para 1, os valores positivos são diferentes dos da representação em sinal e magnitude",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.29"
+  },
+  {
+    "question": "No complemento para 1, os valores negativos obtêm-se invertendo todos os bits do valor positivo correspondente",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.29"
+  },
+  {
+    "question": "Em complemento para 1 com 8 bits, como se representa o número -5?",
+    "answers": [
+      "10000101",
+      "11111011",
+      "00000101",
+      "11111010"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.29"
+  },
+  {
+    "question": "Em complemento para 1 com 8 bits, qual é o valor do padrão 11110000?",
+    "answers": [
+      "-15",
+      "-16",
+      "-112",
+      "-240"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.29"
+  },
+  {
+    "question": "No complemento para 1, o zero tem duas representações diferentes",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.29"
+  },
+  {
+    "question": "Qual é a gama de valores do complemento para 1 com n bits?",
+    "answers": [
+      "De -2^(n-1) a +(2^(n-1) - 1)",
+      "De -(2^(n-1) - 1) a +(2^(n-1) - 1)",
+      "De -(2^n - 1) a +(2^n - 1)",
+      "De -(2^(n-1) - 1) a +2^(n-1)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.29"
+  },
+  {
+    "question": "No complemento para 2, os números positivos têm uma representação diferente da do complemento para 1",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.30"
+  },
+  {
+    "question": "Um número negativo em complemento para 2 obtém-se invertendo todos os bits do positivo e somando 1 ao bit menos significativo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.31"
+  },
+  {
+    "question": "Em complemento para 2 com 8 bits, como se representa o número -5?",
+    "answers": [
+      "11111010",
+      "10000101",
+      "11111011",
+      "00000101"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.31"
+  },
+  {
+    "question": "Em complemento para 2 com 8 bits, como se representa o número -34?",
+    "answers": [
+      "11011101",
+      "10100010",
+      "11011111",
+      "11011110"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.31"
+  },
+  {
+    "question": "Em complemento para 2 com 8 bits, qual é o valor do padrão 11110110?",
+    "answers": [
+      "-10",
+      "-9",
+      "-118",
+      "-11"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.31"
+  },
+  {
+    "question": "Em complemento para 2 com 8 bits, qual é o valor do padrão 10000000?",
+    "answers": [
+      "-0",
+      "-128",
+      "-127",
+      "128"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.31"
+  },
+  {
+    "question": "Em complemento para 2 com 8 bits, qual é o valor do padrão 01111111?",
+    "answers": [
+      "-127",
+      "128",
+      "127",
+      "-1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.31"
+  },
+  {
+    "question": "Qual é a gama de valores do complemento para 2 com n bits?",
+    "answers": [
+      "De -(2^(n-1) - 1) a +(2^(n-1) - 1)",
+      "De 0 a 2^n - 1",
+      "De -2^(n-1) a +2^(n-1)",
+      "De -2^(n-1) a +(2^(n-1) - 1)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.31"
+  },
+  {
+    "question": "Qual é o menor valor que se pode representar em complemento para 2 com 16 bits?",
+    "answers": [
+      "-32768",
+      "-32767",
+      "-65536",
+      "-65535"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.31"
+  },
+  {
+    "question": "Qual é o maior valor que se pode representar em complemento para 2 com 16 bits?",
+    "answers": [
+      "32768",
+      "32767",
+      "65535",
+      "65536"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.31"
+  },
+  {
+    "question": "Qual é a representação do número -3 em 4 bits, em complemento para 2?",
+    "answers": [
+      "1011",
+      "1100",
+      "1101",
+      "0011"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.31"
+  },
+  {
+    "question": "Qual é a representação do número -3 em 4 bits, em sinal e magnitude?",
+    "answers": [
+      "1101",
+      "1100",
+      "0011",
+      "1011"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.31"
+  },
+  {
+    "question": "Qual é a representação do número -3 em 4 bits, em complemento para 1?",
+    "answers": [
+      "1100",
+      "1101",
+      "1011",
+      "0011"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.31"
+  },
+  {
+    "question": "Em complemento para 2, o zero tem uma única representação",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.31"
+  },
+  {
+    "question": "Em complemento para 2 com n bits, existe um valor negativo cujo simétrico positivo não é representável",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.31"
+  },
+  {
+    "question": "Os códigos binários são ambíguos: para obter informação a partir deles é preciso conhecer o contexto",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.33"
+  },
+  {
+    "question": "O padrão de bits 01010101 corresponde ao carácter ASCII A",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.33"
+  },
+  {
+    "question": "O padrão de bits 01010101, interpretado como número em complemento para 2, corresponde ao valor 85",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.33"
+  },
+  {
+    "question": "A falha do míssil Patriot, em 25 de fevereiro de 1991, foi causada por um problema de precisão no software",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.35"
+  },
+  {
+    "question": "A falha do míssil Patriot, em Dharan, na Arábia Saudita, ocorreu durante a Guerra do Vietname",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.35"
+  },
+  {
+    "question": "O míssil Scud que o Patriot não intercetou atingiu um quartel do exército norte-americano sem causar vítimas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.35"
+  },
+  {
+    "question": "O computador do míssil Patriot usava aritmética de 24 bits",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.36"
+  },
+  {
+    "question": "No sistema Patriot, o tempo era registado em décimos de segundo e guardado como inteiro, sendo depois multiplicado por 1/10 para obter o tempo em segundos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.36"
+  },
+  {
+    "question": "No Patriot, o erro de arredondamento acumulou-se ao longo de poucos minutos de funcionamento, o que impediu a interceção do míssil Scud",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.36"
+  },
+  {
+    "question": "Qual foi a causa do erro acumulado no sistema Patriot?",
+    "answers": [
+      "O contador de tempo guardava os segundos como número em vírgula flutuante de precisão dupla, sem arredondamentos",
+      "A multiplicação repetida por 1/10, que não tem representação binária exata, causou erros de arredondamento",
+      "A conversão de um número de 64 bits para um inteiro de 16 bits com sinal excedeu o valor máximo",
+      "O sistema de radar media o tempo em horas inteiras em vez de décimos de segundo, perdendo precisão"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.36"
+  },
+  {
+    "question": "O foguetão Ariane 5 explodiu cerca de quatro minutos depois da descolagem de Kourou, na Guiana Francesa, a 4 de junho de 1996",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.37"
+  },
+  {
+    "question": "A explosão do Ariane 5 foi causada por um erro de software no sistema de referência inercial",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.37"
+  },
+  {
+    "question": "Qual foi a causa direta da explosão do Ariane 5?",
+    "answers": [
+      "O erro de arredondamento acumulado da multiplicação repetida por 1/10 ao longo de mais de 100 horas de funcionamento",
+      "A utilização de aritmética de 24 bits num computador projetado nos anos setenta, sem precisão suficiente",
+      "Uma conversão de vírgula flutuante de 64 bits para inteiro de 16 bits com sinal, num valor que este não consegue representar",
+      "Um erro no cálculo de uma conversão entre as bases binária e hexadecimal feita pelo sistema de navegação"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.37"
+  },
+  {
+    "question": "No Ariane 5, o número de vírgula flutuante convertido tinha um valor superior ao máximo representável num inteiro de 16 bits com sinal",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.37"
+  }
+]
