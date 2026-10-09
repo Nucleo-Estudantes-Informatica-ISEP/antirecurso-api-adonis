@@ -223,15 +223,18 @@ The web client must request `urn:zitadel:iam:org:project:id:<AUTH_PROJECT_ID>:au
 `openid email profile offline_access`). The API authorizes the resulting signed `aud` claim rather
 than trusting a client-supplied scope string.
 
-Project roles are normalized to `student`, `nei_member`, `admin`, and `employee` from the standard
-ZITADEL project-role claim (including project-ID claim variants). Authenticated application routes
-accept any valid identity with the AntiRecurso audience; they do not require a `student` role. Admin
-middleware and controller checks require `admin` from the validated token. AuthNEI owns the current
-name, email, verification state, picture, and roles. Local name, email, and verification columns are
-synchronized lookup/search caches, never authorization inputs.
+Only `admin` is retained in normalized application roles. Authenticated application routes accept
+valid identities with the AntiRecurso audience and verified email; they do not require a `student`
+role. Account-resolution and resource-ownership checks still apply. Admin middleware and controller
+checks additionally require `admin` from validated AuthNEI claims. Other role names do not grant
+separate application privileges. AuthNEI owns the current name, email, verification state, picture,
+and roles. Local name, email, and verification columns are synchronized lookup/search caches,
+never authorization inputs.
 
-Set `AUTH_ROLE_CLAIM` only when the shared NEI Platform project emits a custom claim name. The
-default is `urn:zitadel:iam:org:project:roles`.
+Roles are read only from the claim selected by `AUTH_ROLE_CLAIM`, which defaults to
+`urn:zitadel:iam:org:project:roles`. Set it to the shared NEI Platform project's claim name when
+using that project's admin assertions. When a project-specific claim is configured, other project
+claims and the generic claim cannot grant admin access.
 
 ## CI/CD gate
 
