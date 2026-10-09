@@ -12,11 +12,12 @@ changes must update this file in the same pull request.
 - Bearer tokens are validated for signature, issuer, audience, expiry, subject, and verified email.
 - `Public`: no token required.
 - `Optional`: a request with no token is accepted; a supplied invalid token returns `401`.
-- `Student`: valid token with the AuthNEI `student` application role.
+- `Authenticated`: valid token for the configured AntiRecurso audience; no `student` role required.
 - `Admin`: valid token with the AuthNEI `admin` application role.
 - AuthNEI owns current name, email, verification, picture, and roles. Local name/email values are
   synchronized caches for lookup, search, account resolution, and historical display.
-- Roles come only from validated AuthNEI claims. Persisted user rows never grant access.
+- Only `admin` is retained from validated AuthNEI claims under the configured `AUTH_ROLE_CLAIM`.
+  Other role names are ignored. Persisted user rows never grant access.
 
 Authenticated requests resolve the token subject to one local `users.id`. That local id owns scores,
 answers, comments, notes, likes, reports, and saved exam state. Clients must never send an actor or
@@ -38,8 +39,8 @@ return `422 Unprocessable Entity` with Adonis validation details. Common cross-e
 
 - `401 Unauthorized`: token missing where required, malformed, invalid, expired, wrong issuer or
   audience, or identity-provider email not verified.
-- `403 Forbidden`: required AuthNEI role missing, exam belongs to another user, or account resolution
-  is pending.
+- `403 Forbidden`: required AuthNEI `admin` role missing, exam belongs to another user, or account
+  resolution is pending.
 - `404 Not Found`: route exists but referenced row does not.
 - `422 Unprocessable Entity`: request fails its Vine or domain schema.
 - `429 Too Many Requests`: a route-specific limiter was exceeded.
@@ -233,35 +234,35 @@ type SavedExamState = {
 | GET    | `/`                              | Public                                  | `200`                       | none                           |
 | GET    | `/subjects`                      | Public                                  | `200 Subject[]`             | query `with_questions?`        |
 | GET    | `/subjects/:id`                  | Public                                  | `200 Subject`               | positive subject id            |
-| GET    | `/subjects/:id/stats`            | Student; current user                   | `200 SubjectStats`          | positive subject id            |
+| GET    | `/subjects/:id/stats`            | Authenticated; current user             | `200 SubjectStats`          | positive subject id            |
 | GET    | `/subjects/:id/scoreboard/:mode` | Public                                  | `200 Scoreboard`            | subject id and scoreboard mode |
-| POST   | `/subjects/:id/scoreboard`       | Student; current user                   | `200 Message`               | `{ visibility }`               |
-| GET    | `/comments`                      | Student                                 | `200 CommentPage`           | sort and pagination query      |
-| POST   | `/comments`                      | Student; actor from token               | `201 Comment`               | `{ comment, question_id }`     |
-| GET    | `/comments/:id`                  | Student                                 | `200 Comment`               | comment id                     |
+| POST   | `/subjects/:id/scoreboard`       | Authenticated; current user             | `200 Message`               | `{ visibility }`               |
+| GET    | `/comments`                      | Authenticated                           | `200 CommentPage`           | sort and pagination query      |
+| POST   | `/comments`                      | Authenticated; actor from token         | `201 Comment`               | `{ comment, question_id }`     |
+| GET    | `/comments/:id`                  | Authenticated                           | `200 Comment`               | comment id                     |
 | GET    | `/questions/:id`                 | Public                                  | `200 Question`              | question id                    |
 | PUT    | `/questions/:id`                 | Admin                                   | `204`                       | question and option updates    |
-| POST   | `/question-reports`              | Student; actor from token               | `201 QuestionReport`        | `{ question_id, reason? }`     |
+| POST   | `/question-reports`              | Authenticated; actor from token         | `201 QuestionReport`        | `{ question_id, reason? }`     |
 | GET    | `/subjects/:id/notes`            | Optional                                | `200 Page<Note>`            | pagination query               |
 | GET    | `/notes/:id`                     | Optional                                | `200 Note`                  | note id                        |
 | PATCH  | `/notes/:id`                     | Admin                                   | `200 Note`                  | partial note update            |
 | DELETE | `/notes/:id`                     | Admin                                   | `204`                       | note id                        |
-| POST   | `/notes/:id/like`                | Student; actor from token               | `200 Note`                  | note id                        |
+| POST   | `/notes/:id/like`                | Authenticated; actor from token         | `200 Note`                  | note id                        |
 | POST   | `/subjects/:id/notes`            | Admin; actor from token                 | `201 Note`                  | note metadata and upload id    |
-| POST   | `/notes/:id/view`                | Student                                 | `200 { url }`               | note id                        |
-| POST   | `/upload`                        | Student                                 | `200 UploadGrant`           | target and content type        |
+| POST   | `/notes/:id/view`                | Authenticated                           | `200 { url }`               | note id                        |
+| POST   | `/upload`                        | Authenticated                           | `200 UploadGrant`           | target and content type        |
 | GET    | `/exams/generate/:subject_id`    | Optional; mode-dependent                | `200 GeneratedQuestion[]`   | generation query               |
 | POST   | `/exams/verify`                  | Optional; actor from token when present | `200 ExamResult`            | submitted exam                 |
-| POST   | `/exams/state`                   | Student; current user                   | `200 SavedState`            | exam identity and state        |
-| GET    | `/exams/state`                   | Student; current user                   | `200 SavedState/null`       | subject and mode query         |
-| DELETE | `/exams/state`                   | Student; current user                   | `204`                       | subject and mode query         |
-| GET    | `/exams/pending`                 | Student; current user                   | `200 { data: PendingState[] }` | none                         |
-| GET    | `/exams`                         | Student; current user                   | `200 Page<ExamHistoryItem>` | page query                     |
-| GET    | `/exams/:id`                     | Student owner or Admin                  | `200 ExamDetail`            | exam id                        |
-| GET    | `/user`                          | Student; current user                   | `200 UserSession`           | none                           |
-| POST   | `/user/account-resolution`       | Student; current user                   | `200 Message`               | `{ action }`                   |
-| GET    | `/user/scores`                   | Student; current user                   | `200 UserScore[]`           | none                           |
-| GET    | `/user/answers`                  | Student; current user                   | `200 UserAnswer[]`          | none                           |
+| POST   | `/exams/state`                   | Authenticated; current user             | `200 SavedState`            | exam identity and state        |
+| GET    | `/exams/state`                   | Authenticated; current user             | `200 SavedState/null`       | subject and mode query         |
+| DELETE | `/exams/state`                   | Authenticated; current user             | `204`                       | subject and mode query         |
+| GET    | `/exams/pending`                 | Authenticated; current user             | `200 { data: PendingState[] }` | none                         |
+| GET    | `/exams`                         | Authenticated; current user             | `200 Page<ExamHistoryItem>` | page query                     |
+| GET    | `/exams/:id`                     | Authenticated owner or Admin            | `200 ExamDetail`            | exam id                        |
+| GET    | `/user`                          | Authenticated; current user             | `200 UserSession`           | none                           |
+| POST   | `/user/account-resolution`       | Authenticated; current user             | `200 Message`               | `{ action }`                   |
+| GET    | `/user/scores`                   | Authenticated; current user             | `200 UserScore[]`           | none                           |
+| GET    | `/user/answers`                  | Authenticated; current user             | `200 UserAnswer[]`          | none                           |
 | GET    | `/search`                        | Admin                                   | `200 Page<UserSummary>`     | query and page                 |
 | GET    | `/users`                         | Admin                                   | `200 Page<UserSummary>`     | page query                     |
 | GET    | `/admin`                         | Admin; current user                     | `200 CurrentUserSummary`    | none                           |
@@ -456,7 +457,7 @@ type Scoreboard = {
 
 ### Notes and uploads
 
-Authenticated student or admin creates upload grant with POST /upload. Browser PUTs raw PDF bytes to the returned same-origin /api/protected/uploads/:id URL with Content-Type application/pdf. The web proxy forwards bytes with the AuthNEI token; S3 credentials stay server-side. Grant expires after five minutes. Admin then creates note with POST /subjects/:id/notes using upload_id. API verifies size, content type, and PDF signature before copying uploaded/notes/:id to distribution/notes/:id.
+An authenticated user creates an upload grant with POST /upload. Browser PUTs raw PDF bytes to the returned same-origin /api/protected/uploads/:id URL with Content-Type application/pdf. The web proxy forwards bytes with the AuthNEI token; S3 credentials stay server-side. Grant expires after five minutes. Admin then creates note with POST /subjects/:id/notes using upload_id. API verifies size, content type, and PDF signature before copying uploaded/notes/:id to distribution/notes/:id.
 
 Upload grant contains id, target, maxSize (67108864), expires, url, headers (content-type), and uploadMode raw-put. PUT rejects expired or forged grants, unauthenticated requests, non-PDF content, oversized uploads, duplicate IDs, and mismatched lengths. Private note downloads return authenticated, five-minute signed same-origin URLs.
 
