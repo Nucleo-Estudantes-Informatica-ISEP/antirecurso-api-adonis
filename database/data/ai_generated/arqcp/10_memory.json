@@ -3,8 +3,8 @@
     "question": "Que modelo simples de memória temos usado até agora?",
     "answers": [
       "Um vetor linear de bytes, em que o CPU acede a qualquer posição no mesmo tempo",
-      "Uma hierarquia de dispositivos em que o tempo de acesso depende do nível",
-      "Uma pilha de palavras em que só se acede ao topo da pilha",
+      "Uma hierarquia de devices em que o tempo de acesso depende do nível",
+      "Uma stack de words em que só se acede ao topo da stack",
       "Um conjunto de registos que guardam todas as instruções do programa"
     ],
     "correct_index": 0,
@@ -24,7 +24,7 @@
     "ref": "T10 p.6"
   },
   {
-    "question": "O que é o processor-memory performance gap?",
+    "question": "O que é o fosso de desempenho entre o processador e a memória (processor-memory performance gap)?",
     "answers": [
       "A diferença de capacidade entre a cache e o disco rígido",
       "A diferença entre o ganho de desempenho do CPU e o da memória",
@@ -50,9 +50,9 @@
   {
     "question": "Qual é a solução para o fosso entre o processador e a memória?",
     "answers": [
-      "Substituir toda a memória principal por registos do processador",
-      "Aumentar muito a frequência de relógio da memória principal",
-      "Uma hierarquia de dispositivos com custos e tempos de acesso diferentes",
+      "Substituir toda a main memory por registos do processador",
+      "Aumentar muito a frequência de relógio da main memory",
+      "Uma hierarquia de devices com custos e tempos de acesso diferentes",
       "Usar apenas discos rígidos cada vez mais rápidos e maiores"
     ],
     "correct_index": 2,
@@ -61,12 +61,12 @@
     "ref": "T10 p.8"
   },
   {
-    "question": "Na hierarquia de memória, que papel tem o dispositivo mais rápido e mais pequeno do nível k?",
+    "question": "Na hierarquia de memória, que papel tem o device mais rápido e mais pequeno do nível k?",
     "answers": [
-      "Serve de cópia de segurança do dispositivo maior do nível k - 1",
-      "Substitui o dispositivo do nível k + 1 quando este avaria",
+      "Serve de cópia de segurança do device maior do nível k - 1",
+      "Substitui o device do nível k + 1 quando este avaria",
       "Guarda apenas as instruções do sistema operativo em execução",
-      "Serve de cache para o dispositivo maior do nível k + 1"
+      "Serve de cache para o device maior do nível k + 1"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -74,7 +74,7 @@
     "ref": "T10 p.8"
   },
   {
-    "question": "Na hierarquia de memória, o dispositivo do nível k + 1 é mais pequeno e mais rápido do que o do nível k",
+    "question": "Na hierarquia de memória, o device do nível k + 1 é mais pequeno e mais rápido do que o do nível k",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -132,7 +132,7 @@
     "correct_index": 0,
     "source": "AI_GENERATED",
     "in_plan": true,
-    "ref": "T10 p.10"
+    "ref": "T10 p.11"
   },
   {
     "question": "A memória DRAM mantém a informação depois de a alimentação ser desligada",
@@ -143,7 +143,7 @@
     "correct_index": 0,
     "source": "AI_GENERATED",
     "in_plan": true,
-    "ref": "T10 p.10"
+    "ref": "T10 p.11"
   },
   {
     "question": "Quantos transístores tem cada célula de uma SRAM?",
@@ -174,9 +174,9 @@
   {
     "question": "Que acontece periodicamente ao valor guardado numa DRAM?",
     "answers": [
-      "Tem de ser copiado para a SRAM de cada 10 a 100 ms",
-      "Tem de ser refrescado, cerca de cada 10 a 100 ms",
-      "Tem de ser apagado de cada 10 a 100 ms",
+      "Tem de ser copiado para a SRAM a cada 10 a 100 ms",
+      "Tem de ser refrescado, aproximadamente a cada 10 a 100 ms",
+      "Tem de ser apagado a cada 10 a 100 ms",
       "Mantém-se sem qualquer intervenção, enquanto houver energia"
     ],
     "correct_index": 1,
@@ -185,7 +185,7 @@
     "ref": "T10 p.11"
   },
   {
-    "question": "Quais são as vantagens da SRAM sobre a DRAM?",
+    "question": "Como se compara a SRAM com a DRAM?",
     "answers": [
       "É mais barata e mais lenta, mas é menos sensível a ruído elétrico",
       "É mais rápida e mais barata, mas é mais sensível a ruído",
@@ -193,17 +193,6 @@
       "É mais lenta e mais cara, mas guarda mais bits por chip"
     ],
     "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.11"
-  },
-  {
-    "question": "A SRAM é mais rápida e mais cara do que a DRAM",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 1,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T10 p.11"
@@ -220,7 +209,7 @@
     "ref": "T10 p.11"
   },
   {
-    "question": "Que tipo de memória se usa nas caches entre o ficheiro de registos e a memória principal?",
+    "question": "Que tipo de memória se usa nas caches entre o register file e a main memory?",
     "answers": [
       "DRAM",
       "Flash",
@@ -235,9 +224,9 @@
   {
     "question": "Como estão organizadas as células de um chip DRAM?",
     "answers": [
-      "Em d supercélulas de w células, numa matriz de r linhas e c colunas",
+      "Em d supercells de w células, numa matriz de r linhas e c colunas",
       "Em d bytes consecutivos, endereçados com um único endereço linear",
-      "Em w supercélulas, cada uma com d células, dispostas numa só coluna",
+      "Em w supercells, cada uma com d células, dispostas numa só coluna",
       "Em r registos de c bits, endereçados pelo sistema operativo"
     ],
     "correct_index": 0,
@@ -246,11 +235,11 @@
     "ref": "T10 p.12"
   },
   {
-    "question": "Como se identifica uma supercélula num chip DRAM?",
+    "question": "Como se identifica uma supercell num chip DRAM?",
     "answers": [
       "Por um número inteiro único entre 0 e d - 1",
       "Por um endereço (i, j), com a linha i e a coluna j",
-      "Por um nome simbólico atribuído pelo controlador",
+      "Por um nome simbólico atribuído pelo controller",
       "Por um par de registos do processador"
     ],
     "correct_index": 1,
@@ -262,9 +251,9 @@
     "question": "Como entra e sai a informação de um chip DRAM?",
     "answers": [
       "Através de registos internos, cada um com 8 bits",
-      "Através de cabos de rede ligados ao controlador",
+      "Através de cabos de rede ligados ao controller",
       "Através de pinos, cada um com um sinal de 1 bit",
-      "Através de interrupções enviadas ao processador"
+      "Através de interrupts enviados ao processador"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -275,9 +264,9 @@
     "question": "Que componente transfere w bits de cada vez de e para cada chip DRAM?",
     "answers": [
       "O sistema operativo",
-      "A unidade aritmética e lógica",
+      "A ALU",
       "O disco rígido",
-      "O controlador de memória"
+      "O controller de memória"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -285,7 +274,7 @@
     "ref": "T10 p.12"
   },
   {
-    "question": "Um chip DRAM tem 16 supercélulas de 8 bits. Quantos bits de informação armazena?",
+    "question": "Um chip DRAM tem 16 supercells de 8 bits. Quantos bits de informação armazena?",
     "answers": [
       "128",
       "256",
@@ -298,33 +287,7 @@
     "ref": "T10 p.12"
   },
   {
-    "question": "Um chip DRAM tem 64 supercélulas de 8 bits. Quantos bits de informação armazena?",
-    "answers": [
-      "1024",
-      "512",
-      "72",
-      "256"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.12"
-  },
-  {
-    "question": "Um chip DRAM tem 256 supercélulas de 8 bits. Quantos bits de informação armazena?",
-    "answers": [
-      "4096",
-      "264",
-      "2048",
-      "1024"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.12"
-  },
-  {
-    "question": "Um chip DRAM tem 32 supercélulas de 16 bits. Quantos bits de informação armazena?",
+    "question": "Um chip DRAM tem 32 supercells de 16 bits. Quantos bits de informação armazena?",
     "answers": [
       "1024",
       "48",
@@ -337,20 +300,7 @@
     "ref": "T10 p.12"
   },
   {
-    "question": "Um chip DRAM tem 128 supercélulas de 8 bits. Quantos bits de informação armazena?",
-    "answers": [
-      "1024",
-      "2048",
-      "136",
-      "512"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.12"
-  },
-  {
-    "question": "Um chip DRAM com 16 supercélulas está organizado numa matriz de 4 linhas por 4 colunas. Quantos pinos de endereço são necessários, se os pedidos RAS e CAS partilharem os mesmos pinos?",
+    "question": "Um chip DRAM com 16 supercells está organizado numa matriz de 4 linhas por 4 colunas. Quantos pinos de endereço são necessários, se os pedidos RAS e CAS partilharem os mesmos pinos?",
     "answers": [
       "3",
       "2",
@@ -363,7 +313,7 @@
     "ref": "T10 p.15"
   },
   {
-    "question": "Se um chip DRAM com 16 supercélulas fosse organizado como um vetor linear com endereços de 0 a 15, quantos pinos de endereço seriam necessários?",
+    "question": "Se um chip DRAM com 16 supercells fosse organizado como um vetor linear com endereços de 0 a 15, quantos pinos de endereço seriam necessários?",
     "answers": [
       "5",
       "3",
@@ -376,116 +326,12 @@
     "ref": "T10 p.15"
   },
   {
-    "question": "Um chip DRAM com 64 supercélulas está organizado numa matriz de 8 linhas por 8 colunas. Quantos pinos de endereço são necessários, se os pedidos RAS e CAS partilharem os mesmos pinos?",
+    "question": "Como é lido o conteúdo da supercell (i, j) de uma DRAM?",
     "answers": [
-      "4",
-      "5",
-      "6",
-      "3"
-    ],
-    "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.15"
-  },
-  {
-    "question": "Se um chip DRAM com 64 supercélulas fosse organizado como um vetor linear com endereços de 0 a 63, quantos pinos de endereço seriam necessários?",
-    "answers": [
-      "6",
-      "7",
-      "5",
-      "64"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.15"
-  },
-  {
-    "question": "Um chip DRAM com 256 supercélulas está organizado numa matriz de 16 linhas por 16 colunas. Quantos pinos de endereço são necessários, se os pedidos RAS e CAS partilharem os mesmos pinos?",
-    "answers": [
-      "5",
-      "4",
-      "6",
-      "8"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.15"
-  },
-  {
-    "question": "Se um chip DRAM com 256 supercélulas fosse organizado como um vetor linear com endereços de 0 a 255, quantos pinos de endereço seriam necessários?",
-    "answers": [
-      "9",
-      "7",
-      "8",
-      "256"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.15"
-  },
-  {
-    "question": "Um chip DRAM com 32 supercélulas está organizado numa matriz de 4 linhas por 8 colunas. Quantos pinos de endereço são necessários, se os pedidos RAS e CAS partilharem os mesmos pinos?",
-    "answers": [
-      "4",
-      "5",
-      "2",
-      "3"
-    ],
-    "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.15"
-  },
-  {
-    "question": "Se um chip DRAM com 32 supercélulas fosse organizado como um vetor linear com endereços de 0 a 31, quantos pinos de endereço seriam necessários?",
-    "answers": [
-      "5",
-      "6",
-      "4",
-      "32"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.15"
-  },
-  {
-    "question": "Um chip DRAM com 128 supercélulas está organizado numa matriz de 8 linhas por 16 colunas. Quantos pinos de endereço são necessários, se os pedidos RAS e CAS partilharem os mesmos pinos?",
-    "answers": [
-      "5",
-      "4",
-      "6",
-      "7"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.15"
-  },
-  {
-    "question": "Se um chip DRAM com 128 supercélulas fosse organizado como um vetor linear com endereços de 0 a 127, quantos pinos de endereço seriam necessários?",
-    "answers": [
-      "8",
-      "6",
-      "7",
-      "128"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.15"
-  },
-  {
-    "question": "Como é lido o conteúdo da supercélula (i, j) de uma DRAM?",
-    "answers": [
-      "O controlador envia o endereço de coluna j e depois o endereço de linha i",
-      "O controlador envia i e j em simultâneo, em pinos separados",
-      "O controlador envia o número da supercélula num único pedido",
-      "O controlador envia o endereço de linha i e depois o endereço de coluna j"
+      "O controller envia o endereço de coluna j e depois o endereço de linha i",
+      "O controller envia i e j em simultâneo, em pinos separados",
+      "O controller envia o número da supercell num único pedido",
+      "O controller envia o endereço de linha i e depois o endereço de coluna j"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -497,7 +343,7 @@
     "answers": [
       "O envio do endereço de linha i (Row Access Strobe)",
       "O envio do endereço de coluna j (Column Access Strobe)",
-      "O envio dos dados lidos para o controlador",
+      "O envio dos dados lidos para o controller",
       "O pedido de refrescamento da DRAM"
     ],
     "correct_index": 0,
@@ -510,8 +356,8 @@
     "answers": [
       "O envio do endereço de linha i (Row Access Strobe)",
       "O envio do endereço de coluna j (Column Access Strobe)",
-      "O envio dos dados lidos para o controlador",
-      "O pedido de escrita de uma supercélula"
+      "O envio dos dados lidos para o controller",
+      "O pedido de escrita de uma supercell"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -532,8 +378,8 @@
   {
     "question": "Qual é a vantagem de organizar uma DRAM como uma matriz bidimensional?",
     "answers": [
-      "Reduz o tempo de acesso a cada supercélula",
-      "Aumenta o número de supercélulas por pino",
+      "Reduz o tempo de acesso a cada supercell",
+      "Aumenta o número de supercells por pino",
       "Reduz o número de pinos de endereço do chip",
       "Elimina a necessidade de refrescar os dados"
     ],
@@ -546,7 +392,7 @@
     "question": "Qual é a desvantagem de organizar uma DRAM como uma matriz bidimensional?",
     "answers": [
       "Os endereços têm de ser enviados em simultâneo, o que aumenta o número de pinos",
-      "Só se podem ler supercélulas da mesma linha",
+      "Só se podem ler supercells da mesma linha",
       "A capacidade do chip diminui para metade",
       "Os endereços têm de ser enviados em dois passos, o que aumenta o tempo de acesso"
     ],
@@ -561,7 +407,7 @@
       "Para firmware, como a BIOS, e para discos de estado sólido",
       "Para guardar as variáveis locais das funções em execução",
       "Para guardar o conteúdo dos registos do processador",
-      "Para guardar a pilha do programa em execução"
+      "Para guardar a stack do programa em execução"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -584,8 +430,8 @@
     "answers": [
       "Uma só vez, pelo utilizador",
       "Durante a produção",
-      "Cerca de 1000 vezes, com luz ultravioleta",
-      "Cerca de 100 000 vezes, por via elétrica"
+      "Cerca de 1000 vezes",
+      "Cerca de 100000 vezes"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -596,7 +442,7 @@
     "question": "Quantas vezes pode ser programada uma PROM?",
     "answers": [
       "Cerca de 1000 vezes",
-      "Cerca de 100 000 vezes",
+      "Cerca de 100000 vezes",
       "Uma vez",
       "Um número ilimitado de vezes"
     ],
@@ -609,7 +455,7 @@
     "question": "Quantas vezes pode ser apagada e reprogramada uma EPROM?",
     "answers": [
       "Uma só vez",
-      "Cerca de 100 000 vezes",
+      "Cerca de 100000 vezes",
       "Um número ilimitado de vezes",
       "Cerca de 1000 vezes"
     ],
@@ -621,7 +467,7 @@
   {
     "question": "Quantas vezes pode ser reprogramada uma EEPROM?",
     "answers": [
-      "Cerca de 100 000 vezes",
+      "Cerca de 100000 vezes",
       "Uma só vez",
       "Cerca de 1000 vezes",
       "Um número ilimitado de vezes"
@@ -637,7 +483,7 @@
       "Na tecnologia SRAM",
       "Na tecnologia EEPROM",
       "Na tecnologia DRAM",
-      "Na tecnologia ROM"
+      "Na tecnologia de discos magnéticos"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -645,7 +491,7 @@
     "ref": "T10 p.17"
   },
   {
-    "question": "A memória flash desgasta-se ao fim de cerca de 100 000 escritas repetidas",
+    "question": "A memória flash desgasta-se ao fim de cerca de 100000 escritas repetidas",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -656,7 +502,7 @@
     "ref": "T10 p.17"
   },
   {
-    "question": "Uma PROM pode ser reprogramada cerca de 100 000 vezes",
+    "question": "Uma PROM pode ser reprogramada cerca de 100000 vezes",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -732,8 +578,8 @@
     "answers": [
       "Em bytes individuais",
       "Em páginas",
-      "Em pistas",
-      "Em setores de 512 bytes fixos"
+      "Em tracks",
+      "Em sectors de 512 bytes fixos"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -743,10 +589,10 @@
   {
     "question": "O que é preciso fazer antes de escrever uma página de um SSD?",
     "answers": [
-      "Formatar por completo o disco inteiro",
-      "Desligar a alimentação do SSD por segundos",
-      "Apagar o bloco a que a página pertence",
-      "Copiar a página para a memória cache do CPU"
+      "Formatar o disco",
+      "Desligar a alimentação do SSD durante alguns segundos",
+      "Apagar o block a que a página pertence",
+      "Copiar a página para a cache do CPU"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -754,20 +600,7 @@
     "ref": "T10 p.19"
   },
   {
-    "question": "Quanto demora, aproximadamente, apagar um bloco de um SSD?",
-    "answers": [
-      "Cerca de 1 ns",
-      "Cerca de 1 s",
-      "Cerca de 1 ps",
-      "Cerca de 1 ms"
-    ],
-    "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.19"
-  },
-  {
-    "question": "Apagar um bloco de um SSD é uma operação lenta, de cerca de 1 ms",
+    "question": "Apagar um block de um SSD é uma operação lenta, de cerca de 1 ms",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -778,10 +611,10 @@
     "ref": "T10 p.19"
   },
   {
-    "question": "O que é um dispositivo de entrada/saída (I/O)?",
+    "question": "O que é um device de entrada/saída (I/O)?",
     "answers": [
       "Um componente que recebe entrada do exterior, envia dados para o exterior, ou ambos",
-      "Um componente que guarda as instruções do programa em execução na memória principal",
+      "Um componente que guarda as instruções do programa em execução na main memory",
       "Um componente que executa em paralelo as instruções do processador",
       "Um componente que converte código C em código assembly para o processador"
     ],
@@ -791,7 +624,7 @@
     "ref": "T10 p.21"
   },
   {
-    "question": "Qual destes dispositivos é um dispositivo de entrada e saída ao mesmo tempo?",
+    "question": "Qual destes devices é um device de entrada e saída ao mesmo tempo?",
     "answers": [
       "Um teclado",
       "Um ecrã tátil",
@@ -806,10 +639,10 @@
   {
     "question": "O que é o memory-mapped I/O (MMIO)?",
     "answers": [
-      "Uma técnica em que a memória principal é toda copiada para o disco",
-      "Uma técnica em que os dispositivos de I/O têm instruções próprias no processador",
-      "Uma técnica em que certos endereços de memória referem dispositivos de I/O",
-      "Uma técnica em que a memória só pode ser acedida por dispositivos de I/O"
+      "Uma técnica em que a main memory é toda copiada para o disco",
+      "Uma técnica em que os I/O devices têm instruções próprias no processador",
+      "Uma técnica em que certos endereços de memória referem I/O devices",
+      "Uma técnica em que a memória só pode ser acedida por I/O devices"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -817,12 +650,12 @@
     "ref": "T10 p.21"
   },
   {
-    "question": "Como comunica o CPU com um dispositivo mapeado em memória?",
+    "question": "Como comunica o CPU com um device mapeado em memória?",
     "answers": [
-      "Executando instruções de I/O específicas do dispositivo",
-      "Enviando uma interrupção para o dispositivo",
-      "Copiando o dispositivo para a memória principal",
-      "Lendo ou escrevendo nos endereços atribuídos ao dispositivo"
+      "Executando instruções de I/O específicas do device",
+      "Enviando um interrupt para o device",
+      "Copiando o device para a main memory",
+      "Lendo ou escrevendo nos endereços atribuídos ao device"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -830,23 +663,12 @@
     "ref": "T10 p.21"
   },
   {
-    "question": "Num sistema com MMIO, nem todos os endereços do espaço de endereçamento correspondem a bytes de memória",
+    "question": "Como estão ligados ao CPU e à main memory os I/O devices, como discos, ratos e teclados?",
     "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.21"
-  },
-  {
-    "question": "Como estão ligados ao CPU e à memória principal os dispositivos de I/O, como discos, ratos e teclados?",
-    "answers": [
-      "Através de um barramento de I/O",
+      "Através de um I/O bus",
       "Através de registos do processador",
       "Diretamente à cache de nível 1",
-      "Através da pilha do programa"
+      "Através da stack do programa"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -854,7 +676,7 @@
     "ref": "T10 p.23"
   },
   {
-    "question": "O barramento de I/O é mais lento do que os barramentos do sistema e da memória",
+    "question": "O I/O bus é mais lento do que os system buses e da memória",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -868,7 +690,7 @@
     "question": "Quais são os principais componentes envolvidos no acesso do CPU à memória?",
     "answers": [
       "O chip do CPU, o disco rígido e a cache de nível 3",
-      "O chip do CPU, a ponte de I/O e os módulos DRAM",
+      "O chip do CPU, a I/O bridge e os módulos DRAM",
       "O sistema operativo, o compilador e o linker",
       "Os registos, a ALU e a unidade de controlo"
     ],
@@ -878,12 +700,12 @@
     "ref": "T10 p.25"
   },
   {
-    "question": "Que barramento liga o CPU à ponte de I/O?",
+    "question": "Que bus liga o CPU à I/O bridge?",
     "answers": [
-      "O barramento da memória",
-      "O barramento de I/O",
-      "O barramento do sistema",
-      "O barramento do disco"
+      "O bus da memória",
+      "O I/O bus",
+      "O system bus",
+      "O bus do disco"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -891,12 +713,12 @@
     "ref": "T10 p.25"
   },
   {
-    "question": "Que barramento liga a ponte de I/O à memória principal?",
+    "question": "Que bus liga a I/O bridge à main memory?",
     "answers": [
-      "O barramento do sistema",
-      "O barramento de I/O",
-      "O barramento do disco",
-      "O barramento da memória"
+      "O system bus",
+      "O I/O bus",
+      "O bus do disco",
+      "O bus da memória"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -904,11 +726,11 @@
     "ref": "T10 p.25"
   },
   {
-    "question": "O que é um barramento (bus)?",
+    "question": "O que é um bus?",
     "answers": [
       "Um conjunto de fios paralelos para endereços, dados e controlo",
       "Um registo que guarda o endereço da próxima instrução",
-      "Um programa do sistema que gere os dispositivos de I/O",
+      "Um programa do sistema que gere os I/O devices",
       "Um chip que guarda temporariamente os dados do disco"
     ],
     "correct_index": 0,
@@ -917,7 +739,7 @@
     "ref": "T10 p.25"
   },
   {
-    "question": "Os barramentos nunca são partilhados por vários dispositivos",
+    "question": "Os buses nunca são partilhados por vários devices",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -928,12 +750,12 @@
     "ref": "T10 p.25"
   },
   {
-    "question": "No código A: .word 0 / la a1, A / lw a0, 0(a1), que transação ocorre no barramento?",
+    "question": "No código A: .word 0 / la a1, A / lw a0, 0(a1), que transação ocorre no bus?",
     "answers": [
       "Uma transação de escrita em memória",
       "Uma transação de leitura de memória",
       "Uma transação de leitura de disco",
-      "Uma transação de interrupção"
+      "Uma transação de interrupt"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -943,10 +765,10 @@
   {
     "question": "No código A: .word 0 / la a1, A / lw a0, 0(a1), qual é o primeiro passo da transação de leitura?",
     "answers": [
-      "A memória coloca o dado no barramento da memória",
+      "A memória coloca o dado no bus da memória",
       "O CPU copia o dado para o registo a0",
-      "O CPU coloca o endereço A no barramento do sistema",
-      "A ponte de I/O envia uma interrupção ao CPU"
+      "O CPU coloca o endereço A no system bus",
+      "A I/O bridge envia um interrupt ao CPU"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -954,12 +776,12 @@
     "ref": "T10 p.26"
   },
   {
-    "question": "No código A: .word 0 / la a1, A / lw a0, 0(a1), o que faz a memória principal no segundo passo?",
+    "question": "No código A: .word 0 / la a1, A / lw a0, 0(a1), o que faz a main memory no segundo passo?",
     "answers": [
-      "Espera que o CPU lhe envie a palavra que vai guardar na DRAM",
-      "Copia a palavra diretamente para o registo a0 do processador",
-      "Envia uma interrupção ao CPU a avisar que já terminou a leitura",
-      "Lê o endereço, vai buscar a palavra à DRAM e escreve-a no barramento"
+      "Espera que o CPU lhe envie a word que vai guardar na DRAM",
+      "Copia a word diretamente para o registo a0 do processador",
+      "Envia um interrupt ao CPU a avisar que já terminou a leitura",
+      "Lê o endereço, vai buscar a word à DRAM e escreve-a no bus"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -969,10 +791,10 @@
   {
     "question": "No código A: .word 0 / la a1, A / lw a0, 0(a1), o que faz o CPU no terceiro passo?",
     "answers": [
-      "Lê o dado do barramento e copia-o para o registo a0",
-      "Coloca o endereço A no barramento do sistema e espera",
-      "Escreve o dado lido na DRAM, através da ponte de I/O",
-      "Espera por uma interrupção do controlador de disco"
+      "Lê o dado do bus e copia-o para o registo a0",
+      "Coloca o endereço A no system bus e espera",
+      "Escreve o dado lido na DRAM, através da I/O bridge",
+      "Espera por um interrupt do controller de disco"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -993,12 +815,12 @@
     "ref": "T10 p.26"
   },
   {
-    "question": "Que componente do CPU inicia a transação de leitura no barramento do sistema?",
+    "question": "Que componente do CPU inicia a transação de leitura no system bus?",
     "answers": [
-      "A unidade aritmética e lógica",
-      "O contador de programa",
-      "A interface de barramento",
-      "O controlador de DMA"
+      "A ALU",
+      "O program counter",
+      "A interface de bus",
+      "O controller de DMA"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1006,11 +828,11 @@
     "ref": "T10 p.26"
   },
   {
-    "question": "No código A: .word 0 / la a1, A / sw a0, 0(a1), que transação ocorre no barramento?",
+    "question": "No código A: .word 0 / la a1, A / sw a0, 0(a1), que transação ocorre no bus?",
     "answers": [
       "Uma transação de leitura de memória",
       "Uma transação de leitura de disco",
-      "Uma transação de interrupção",
+      "Uma transação de interrupt",
       "Uma transação de escrita em memória"
     ],
     "correct_index": 3,
@@ -1021,9 +843,9 @@
   {
     "question": "No código A: .word 0 / la a1, A / sw a0, 0(a1), o que acontece no primeiro passo da transação?",
     "answers": [
-      "O CPU coloca o endereço A no barramento e a memória espera pelo dado",
-      "O CPU coloca o dado no barramento e a memória espera pelo endereço",
-      "A memória coloca o dado no barramento do sistema",
+      "O CPU coloca o endereço A no bus e a memória espera pelo dado",
+      "O CPU coloca o dado no bus e a memória espera pelo endereço",
+      "A memória coloca o dado no system bus",
       "O disco copia o dado para a memória"
     ],
     "correct_index": 0,
@@ -1034,10 +856,10 @@
   {
     "question": "No código A: .word 0 / la a1, A / sw a0, 0(a1), o que faz o CPU no segundo passo?",
     "answers": [
-      "Lê a palavra do barramento do sistema para a0",
-      "Copia a palavra de a0 para o barramento do sistema",
-      "Coloca o endereço A no barramento do sistema",
-      "Escreve a palavra diretamente na DRAM, sem barramento"
+      "Lê a word do system bus para a0",
+      "Copia a word de a0 para o system bus",
+      "Coloca o endereço A no system bus",
+      "Escreve a word diretamente na DRAM, sem bus"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1045,12 +867,12 @@
     "ref": "T10 p.30"
   },
   {
-    "question": "No código A: .word 0 / la a1, A / sw a0, 0(a1), o que faz a memória principal no terceiro passo?",
+    "question": "No código A: .word 0 / la a1, A / sw a0, 0(a1), o que faz a main memory no terceiro passo?",
     "answers": [
-      "Coloca a palavra no barramento do sistema para o CPU",
-      "Copia a palavra do barramento para o registo a0",
-      "Lê a palavra do barramento e guarda os bits na DRAM",
-      "Envia uma interrupção ao CPU no fim da escrita"
+      "Coloca a word no system bus para o CPU",
+      "Copia a word do bus para o registo a0",
+      "Lê a word do bus e guarda os bits na DRAM",
+      "Envia um interrupt ao CPU no fim da escrita"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1069,12 +891,12 @@
     "ref": "T10 p.30"
   },
   {
-    "question": "Como emite o CPU comandos para dispositivos de I/O?",
+    "question": "Como emite o CPU comandos para I/O devices?",
     "answers": [
-      "Com instruções de salto para o endereço do dispositivo",
+      "Com instruções de salto para o endereço do device",
       "Com chamadas diretas às funções internas da DRAM",
-      "Com interrupções enviadas pelo CPU ao dispositivo de disco",
-      "Com MMIO, escrevendo em endereços reservados, as portas de I/O"
+      "Com interrupts enviados pelo CPU ao device de disco",
+      "Com MMIO, escrevendo nas I/O ports (endereços reservados)"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1082,12 +904,12 @@
     "ref": "T10 p.34"
   },
   {
-    "question": "O que é uma porta de I/O (I/O port)?",
+    "question": "O que é uma I/O port?",
     "answers": [
-      "Um endereço reservado para um dispositivo de I/O",
+      "Um endereço reservado para um I/O device",
       "Um pino do chip DRAM que recebe endereços",
       "Um registo de uso geral do processador RISC-V",
-      "Um fio do barramento do sistema que liga à memória"
+      "Um fio do system bus que liga à memória"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1098,7 +920,7 @@
     "question": "Para iniciar uma leitura de disco com memory-mapped I/O, quantas instruções de escrita usa o CPU?",
     "answers": [
       "Uma, apenas com o endereço de memória",
-      "Três, para portas de I/O",
+      "Três, para I/O ports",
       "Duas, com o comando e o bloco lógico",
       "Cinco, uma por cada passo da leitura"
     ],
@@ -1110,10 +932,10 @@
   {
     "question": "O que indica a primeira escrita numa leitura de disco?",
     "answers": [
-      "O número do bloco lógico que o disco deve ler do setor",
+      "O número do block lógico que o disco deve ler do sector",
       "O endereço de memória onde o disco deve guardar os dados",
       "Um comando para o disco iniciar a leitura, com parâmetros extra",
-      "O tamanho total do disco, medido em setores de 512 bytes"
+      "O tamanho total do disco, medido em sectors de 512 bytes"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1125,8 +947,8 @@
     "answers": [
       "O comando para iniciar a leitura",
       "O endereço de memória onde guardar os dados",
-      "O número de pistas do disco",
-      "O número do bloco lógico a ler"
+      "O número de tracks do disco",
+      "O número do block lógico a ler"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1136,10 +958,10 @@
   {
     "question": "O que indica a terceira escrita numa leitura de disco?",
     "answers": [
-      "O endereço de memória onde guardar o setor",
-      "O comando que inicia a leitura do setor pedido ao disco",
-      "O número do bloco lógico do setor que o disco vai ler",
-      "O número de interrupções que o disco vai gerar no fim"
+      "O endereço de memória onde guardar o sector",
+      "O comando que inicia a leitura do sector pedido ao disco",
+      "O número do block lógico do sector que o disco vai ler",
+      "O número de interrupts que o disco vai gerar no fim"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1147,12 +969,12 @@
     "ref": "T10 p.34"
   },
   {
-    "question": "O que faz o controlador de disco depois de receber os comandos do CPU?",
+    "question": "O que faz o controller de disco depois de receber os comandos do CPU?",
     "answers": [
-      "Copia o setor para os registos do CPU, um byte de cada vez",
-      "Lê o setor e faz uma transferência DMA para a memória principal",
-      "Espera que o CPU leia o setor, byte a byte",
-      "Apaga o setor e envia-o para a cache"
+      "Copia o sector para os registos do CPU, um byte de cada vez",
+      "Lê o sector e faz uma transferência DMA para a main memory",
+      "Espera que o CPU leia o sector, byte a byte",
+      "Apaga o sector e envia-o para a cache"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1173,12 +995,12 @@
     "ref": "T10 p.36"
   },
   {
-    "question": "Como avisa o controlador de disco o CPU de que a transferência DMA terminou?",
+    "question": "Como avisa o controller de disco o CPU de que a transferência DMA terminou?",
     "answers": [
       "Com um endereço de retorno",
       "Com uma escrita no registo a0",
       "Com um novo comando enviado ao CPU",
-      "Com uma interrupção"
+      "Com um interrupt"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1186,7 +1008,7 @@
     "ref": "T10 p.37"
   },
   {
-    "question": "Numa transferência DMA, os dados passam sempre pelo CPU antes de chegarem à memória principal",
+    "question": "Numa transferência DMA, os dados passam sempre pelo CPU antes de chegarem à main memory",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1208,7 +1030,7 @@
     "ref": "T10 p.37"
   },
   {
-    "question": "O que é a localidade temporal?",
+    "question": "O que é a temporal locality?",
     "answers": [
       "Os itens referenciados recentemente tendem a ser referenciados de novo em breve",
       "Os itens com endereços vizinhos tendem a ser referenciados próximos no tempo",
@@ -1221,12 +1043,12 @@
     "ref": "T10 p.39"
   },
   {
-    "question": "O que é a localidade espacial?",
+    "question": "O que é a spatial locality?",
     "answers": [
       "Os itens referenciados recentemente tendem a ser referenciados de novo em breve",
       "Os itens com endereços próximos tendem a ser referenciados em tempos próximos",
       "Os itens guardados no disco são mais rápidos de aceder",
-      "Os itens da pilha tendem a ficar em endereços altos"
+      "Os itens da stack tendem a ficar em endereços altos"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1234,7 +1056,7 @@
     "ref": "T10 p.39"
   },
   {
-    "question": "O que diz o princípio da localidade?",
+    "question": "O que diz o princípio da locality?",
     "answers": [
       "Os programas tendem a usar dados e instruções de endereços escolhidos aleatoriamente",
       "Os programas só usam dados que já estejam guardados na cache",
@@ -1247,7 +1069,7 @@
     "ref": "T10 p.40"
   },
   {
-    "question": "Em geral, os programas com boa localidade executam mais depressa do que os programas com má localidade",
+    "question": "Em geral, os programas com boa locality executam mais depressa do que os programas com má locality",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1258,21 +1080,10 @@
     "ref": "T10 p.40"
   },
   {
-    "question": "O princípio da localidade só é usado ao nível do hardware",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.40"
-  },
-  {
-    "question": "Em que níveis de um sistema informático é usado o princípio da localidade?",
+    "question": "Em que níveis de um sistema informático é usado o princípio da locality?",
     "answers": [
       "Apenas no hardware, ao nível das memórias do computador",
-      "Apenas no sistema operativo, ao nível da memória virtual",
+      "Apenas no sistema operativo, ao nível da virtual memory",
       "Apenas nos programas de aplicação, ao nível do código C",
       "No hardware, no sistema operativo e nos programas de aplicação"
     ],
@@ -1319,7 +1130,7 @@
     "ref": "T10 p.41"
   },
   {
-    "question": "Os padrões de referência stride-1 são uma fonte comum e importante de localidade espacial",
+    "question": "Os padrões de referência stride-1 são uma fonte comum e importante de spatial locality",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1330,12 +1141,12 @@
     "ref": "T10 p.41"
   },
   {
-    "question": "Que localidade existe, em geral, na execução normal de instruções?",
+    "question": "Que locality existe, em geral, na execução normal de instruções?",
     "answers": [
-      "Localidade temporal, porque cada instrução executa muitas vezes",
+      "Temporal locality, porque cada instrução executa muitas vezes",
       "Nenhuma, porque as instruções são sempre saltos",
-      "Localidade espacial, porque as instruções executam em sequência",
-      "Localidade espacial, porque as instruções ficam na pilha"
+      "Spatial locality, porque as instruções executam em sequência",
+      "Spatial locality, porque as instruções ficam na stack"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1343,12 +1154,12 @@
     "ref": "T10 p.42"
   },
   {
-    "question": "Que tipo de localidade têm os ciclos nas instruções?",
+    "question": "Que tipo de locality têm os ciclos nas instruções?",
     "answers": [
       "Apenas temporal",
-      "Apenas espacial",
+      "Apenas spatial",
       "Nenhuma",
-      "Temporal e espacial"
+      "Temporal e spatial"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1356,7 +1167,7 @@
     "ref": "T10 p.42"
   },
   {
-    "question": "Os saltos longos, incluindo chamadas de funções, têm má localidade",
+    "question": "Os saltos longos, incluindo chamadas de funções, têm má locality",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1367,18 +1178,7 @@
     "ref": "T10 p.42"
   },
   {
-    "question": "Para a localidade das instruções, é melhor um ciclo com muitas instruções do que um ciclo com poucas",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.42"
-  },
-  {
-    "question": "Como se consegue boa localidade temporal nos dados?",
+    "question": "Como se consegue boa temporal locality nos dados?",
     "answers": [
       "Mantendo os valores muito usados em níveis altos, como a cache",
       "Mantendo os valores muito usados apenas em disco rígido",
@@ -1404,11 +1204,11 @@
     "ref": "T10 p.43"
   },
   {
-    "question": "Com que se relaciona a boa localidade espacial nos dados de matrizes?",
+    "question": "Com que se relaciona a boa spatial locality nos dados de matrizes?",
     "answers": [
       "Com o número de linhas e de colunas da matriz ser sempre par",
       "Com a matriz ter menos de oito elementos em cada linha",
-      "Com o acesso pela mesma ordem do armazenamento, linhas ou colunas",
+      "Com percorrer a matriz pela ordem em que está armazenada em memória",
       "Com o uso exclusivo de variáveis globais no programa"
     ],
     "correct_index": 2,
@@ -1417,12 +1217,12 @@
     "ref": "T10 p.43"
   },
   {
-    "question": "Considere int sumvec(int v[N]) { int i, sum = 0; for (i = 0; i < N; i++) sum += v[i]; return sum; }. Que localidade tem a variável sum?",
+    "question": "Considere int sumvec(int v[N]) { int i, sum = 0; for (i = 0; i < N; i++) sum += v[i]; return sum; }. Que locality tem a variável sum?",
     "answers": [
-      "Boa localidade espacial, porque é um escalar",
-      "Boa localidade temporal e espacial, porque é um inteiro",
-      "Má localidade temporal, porque é uma variável local",
-      "Boa localidade temporal, pois é usada em cada iteração"
+      "Boa spatial locality, porque é um escalar",
+      "Boa temporal e spatial locality, porque é um inteiro",
+      "Má temporal locality, porque é uma variável local",
+      "Boa temporal locality, pois é usada em cada iteração"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1430,7 +1230,7 @@
     "ref": "T10 p.44"
   },
   {
-    "question": "Considere int sumvec(int v[N]) { int i, sum = 0; for (i = 0; i < N; i++) sum += v[i]; return sum; }. Porque é que a variável sum não tem localidade espacial?",
+    "question": "Considere int sumvec(int v[N]) { int i, sum = 0; for (i = 0; i < N; i++) sum += v[i]; return sum; }. Porque é que a variável sum não tem spatial locality?",
     "answers": [
       "Porque é um escalar",
       "Porque é um vetor",
@@ -1443,12 +1243,12 @@
     "ref": "T10 p.44"
   },
   {
-    "question": "Considere int sumvec(int v[N]) { int i, sum = 0; for (i = 0; i < N; i++) sum += v[i]; return sum; }. Que localidade tem o vetor v?",
+    "question": "Considere int sumvec(int v[N]) { int i, sum = 0; for (i = 0; i < N; i++) sum += v[i]; return sum; }. Que locality tem o vetor v?",
     "answers": [
-      "Boa localidade temporal, mas má localidade espacial",
-      "Boa localidade espacial, mas má localidade temporal",
-      "Boa localidade temporal e espacial",
-      "Má localidade temporal e espacial"
+      "Boa temporal locality, mas má spatial locality",
+      "Boa spatial locality, mas má temporal locality",
+      "Boa temporal e spatial locality",
+      "Má temporal e spatial locality"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1456,12 +1256,12 @@
     "ref": "T10 p.44"
   },
   {
-    "question": "Considere int sumvec(int v[N]) { int i, sum = 0; for (i = 0; i < N; i++) sum += v[i]; return sum; }. Porque é que o vetor v tem má localidade temporal?",
+    "question": "Considere int sumvec(int v[N]) { int i, sum = 0; for (i = 0; i < N; i++) sum += v[i]; return sum; }. Porque é que o vetor v tem má temporal locality?",
     "answers": [
       "Porque os elementos são lidos fora de ordem",
       "Porque o vetor é muito pequeno",
       "Porque cada elemento é acedido exatamente uma vez",
-      "Porque o vetor está na pilha"
+      "Porque o vetor está na stack"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1482,7 +1282,7 @@
     "ref": "T10 p.45"
   },
   {
-    "question": "A função sumvec tem boa localidade, porque tem boa localidade espacial ou temporal em relação a cada variável",
+    "question": "A função sumvec tem boa locality, porque tem boa spatial ou temporal locality em relação a cada variável",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1508,10 +1308,10 @@
   {
     "question": "Considere int sumarrayrows(int a[M][N]) { int i, j, sum = 0; for (i = 0; i < M; i++) for (j = 0; j < N; j++) sum += a[i][j]; return sum; }. Que padrão de referência tem a função?",
     "answers": [
-      "Stride-N, com muito má localidade espacial",
-      "Stride-1, com excelente localidade espacial",
-      "Stride-M, com excelente localidade temporal",
-      "Aleatório, sem qualquer localidade espacial"
+      "Stride-N, com muito má spatial locality",
+      "Stride-1, com excelente spatial locality",
+      "Stride-M, com excelente temporal locality",
+      "Aleatório, sem qualquer spatial locality"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1519,7 +1319,7 @@
     "ref": "T10 p.46"
   },
   {
-    "question": "Considere int sumarrayrows(int a[M][N]) { int i, j, sum = 0; for (i = 0; i < M; i++) for (j = 0; j < N; j++) sum += a[i][j]; return sum; }. Porque é que a função tem boa localidade espacial?",
+    "question": "Considere int sumarrayrows(int a[M][N]) { int i, j, sum = 0; for (i = 0; i < M; i++) for (j = 0; j < N; j++) sum += a[i][j]; return sum; }. Porque é que a função tem boa spatial locality?",
     "answers": [
       "Porque percorre a matriz pela ordem inversa à do armazenamento",
       "Porque usa uma variável sum local",
@@ -1534,10 +1334,10 @@
   {
     "question": "Considere int sumarraycols(int a[M][N]) { int i, j, sum = 0; for (j = 0; j < N; j++) for (i = 0; i < M; i++) sum += a[i][j]; return sum; }. Que padrão de referência tem a função?",
     "answers": [
-      "Stride-1, com excelente localidade espacial",
-      "Stride-M, com boa localidade temporal",
+      "Stride-1, com excelente spatial locality",
+      "Stride-M, com boa temporal locality",
       "Stride-0, sem referências à memória",
-      "Stride-N, com má localidade espacial"
+      "Stride-N, com má spatial locality"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1545,7 +1345,7 @@
     "ref": "T10 p.47"
   },
   {
-    "question": "Considere int sumarraycols(int a[M][N]) { int i, j, sum = 0; for (j = 0; j < N; j++) for (i = 0; i < M; i++) sum += a[i][j]; return sum; }. Porque é que a função tem má localidade espacial?",
+    "question": "Considere int sumarraycols(int a[M][N]) { int i, j, sum = 0; for (j = 0; j < N; j++) for (i = 0; i < M; i++) sum += a[i][j]; return sum; }. Porque é que a função tem má spatial locality?",
     "answers": [
       "Porque percorre por colunas e não pela ordem do armazenamento",
       "Porque percorre a matriz por linhas, da última para a primeira",
@@ -1571,19 +1371,6 @@
     "ref": "T10 p.47"
   },
   {
-    "question": "Numa matriz int a[M][8], com int de 4 bytes e percorrida por colunas, a que distância, em bytes, estão a[i][j] e a[i+1][j]?",
-    "answers": [
-      "4",
-      "36",
-      "32",
-      "64"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.47"
-  },
-  {
     "question": "Numa matriz int a[M][100], com int de 4 bytes e percorrida por colunas, a que distância, em bytes, estão a[i][j] e a[i+1][j]?",
     "answers": [
       "4",
@@ -1597,25 +1384,12 @@
     "ref": "T10 p.47"
   },
   {
-    "question": "Numa matriz int a[M][1000], com int de 4 bytes e percorrida por colunas, a que distância, em bytes, estão a[i][j] e a[i+1][j]?",
-    "answers": [
-      "4000",
-      "4",
-      "4004",
-      "8000"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.47"
-  },
-  {
-    "question": "Qual destas funções tem melhor localidade espacial: sumarrayrows ou sumarraycols?",
+    "question": "Considere sumarrayrows (ciclo exterior em i, interior em j, soma de a[i][j]) e sumarraycols (ciclo exterior em j, interior em i, soma de a[i][j]) sobre int a[M][N] em C. Qual tem melhor spatial locality?",
     "answers": [
       "A função sumarraycols, porque percorre a matriz por colunas",
       "A função sumarrayrows, porque percorre a matriz por linhas",
-      "Ambas têm a mesma localidade",
-      "Nenhuma tem localidade espacial"
+      "Ambas têm a mesma locality",
+      "Nenhuma tem spatial locality"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1623,7 +1397,7 @@
     "ref": "T10 p.47"
   },
   {
-    "question": "Que programas têm boa localidade temporal?",
+    "question": "Que programas têm boa temporal locality?",
     "answers": [
       "Os que referenciam cada variável apenas uma só vez",
       "Os que usam apenas variáveis globais e constantes",
@@ -1636,18 +1410,7 @@
     "ref": "T10 p.48"
   },
   {
-    "question": "Nos padrões stride-k, quanto menor o stride, melhor a localidade espacial",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.48"
-  },
-  {
-    "question": "Os programas que saltam pela memória com strides grandes têm boa localidade espacial",
+    "question": "Os programas que saltam pela memória com strides grandes têm boa spatial locality",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1658,7 +1421,7 @@
     "ref": "T10 p.48"
   },
   {
-    "question": "Que ciclos têm melhor localidade nas instruções?",
+    "question": "Que ciclos têm melhor locality nas instruções?",
     "answers": [
       "Os de corpo grande e com poucas iterações",
       "Os de corpo pequeno e com uma só iteração",
@@ -1671,126 +1434,9 @@
     "ref": "T10 p.48"
   },
   {
-    "question": "Numa cache com blocos de 64 bytes, inicialmente vazia, percorre-se um vetor de int (4 bytes) com stride-1. Qual é a taxa de misses, em regime estável, num vetor muito grande?",
+    "question": "Porque é que os projetistas inseriram uma cache SRAM entre o register file e a main memory?",
     "answers": [
-      "6,25%",
-      "12,5%",
-      "25%",
-      "50%"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.48"
-  },
-  {
-    "question": "Numa cache com blocos de 64 bytes, inicialmente vazia, percorre-se um vetor de int (4 bytes) com stride-2. Qual é a taxa de misses, em regime estável, num vetor muito grande?",
-    "answers": [
-      "6,25%",
-      "12,5%",
-      "25%",
-      "50%"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.48"
-  },
-  {
-    "question": "Numa cache com blocos de 64 bytes, inicialmente vazia, percorre-se um vetor de int (4 bytes) com stride-4. Qual é a taxa de misses, em regime estável, num vetor muito grande?",
-    "answers": [
-      "6,25%",
-      "12,5%",
-      "25%",
-      "50%"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.48"
-  },
-  {
-    "question": "Numa cache com blocos de 64 bytes, inicialmente vazia, percorre-se um vetor de int (4 bytes) com stride-8. Qual é a taxa de misses, em regime estável, num vetor muito grande?",
-    "answers": [
-      "6,25%",
-      "12,5%",
-      "25%",
-      "50%"
-    ],
-    "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.48"
-  },
-  {
-    "question": "Numa cache com blocos de 64 bytes, inicialmente vazia, percorre-se um vetor de int (4 bytes) com stride-16. Qual é a taxa de misses, em regime estável, num vetor muito grande?",
-    "answers": [
-      "100%",
-      "6,25%",
-      "12,5%",
-      "25%"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.48"
-  },
-  {
-    "question": "Numa cache com blocos de 64 bytes, inicialmente vazia, percorre-se um vetor de 1024 inteiros (4 bytes) com stride-1, começando num endereço alinhado a 64. Quantos misses ocorrem?",
-    "answers": [
-      "128",
-      "64",
-      "32",
-      "1024"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.48"
-  },
-  {
-    "question": "Numa cache com blocos de 64 bytes, inicialmente vazia, percorre-se um vetor de 2048 inteiros (4 bytes) com stride-1, começando num endereço alinhado a 64. Quantos misses ocorrem?",
-    "answers": [
-      "256",
-      "64",
-      "128",
-      "2048"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.48"
-  },
-  {
-    "question": "Numa cache com blocos de 64 bytes, inicialmente vazia, percorre-se um vetor de 1024 inteiros (4 bytes) com stride-2, começando num endereço alinhado a 64. Quantos misses ocorrem?",
-    "answers": [
-      "128",
-      "32",
-      "512",
-      "64"
-    ],
-    "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.48"
-  },
-  {
-    "question": "Numa cache com blocos de 64 bytes, inicialmente vazia, percorre-se um vetor de 4096 inteiros (4 bytes) com stride-4, começando num endereço alinhado a 64. Quantos misses ocorrem?",
-    "answers": [
-      "256",
-      "512",
-      "128",
-      "1024"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.48"
-  },
-  {
-    "question": "Porque é que os projetistas inseriram uma cache SRAM entre o ficheiro de registos e a memória principal?",
-    "answers": [
-      "Porque a memória principal deixou de ter capacidade suficiente",
+      "Porque a main memory deixou de ter capacidade suficiente",
       "Por causa do fosso entre a velocidade do CPU e a da memória",
       "Porque o CPU deixou de ter registos suficientes para tudo",
       "Porque os discos rígidos passaram a ser memórias voláteis"
@@ -1806,7 +1452,7 @@
       "O CPU encontra os dados na cache",
       "O CPU escreve os dados diretamente no disco",
       "O CPU procura os dados na cache e não os encontra",
-      "O CPU deixa de ter acesso à memória principal"
+      "O CPU deixa de ter acesso à main memory"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1816,7 +1462,7 @@
   {
     "question": "Qual é o objetivo da hierarquia de caches?",
     "answers": [
-      "Aumentar o número de misses para libertar memória principal",
+      "Aumentar o número de misses para libertar main memory",
       "Guardar todos os dados do disco nas caches do processador",
       "Eliminar a necessidade de ter registos dentro do processador",
       "Reduzir os cache misses, guardando nas caches os dados mais usados"
@@ -1840,10 +1486,10 @@
   {
     "question": "O que é um cache hit?",
     "answers": [
-      "O programa encontra o bloco b na cache do nível k",
-      "O programa não encontra o bloco b na cache do nível k",
-      "O programa escreve o bloco b no disco",
-      "O programa liberta o bloco b da cache"
+      "O programa encontra o block b na cache do nível k",
+      "O programa não encontra o block b na cache do nível k",
+      "O programa escreve o block b no disco",
+      "O programa liberta o block b da cache"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1853,10 +1499,10 @@
   {
     "question": "O que acontece num cache miss no nível k?",
     "answers": [
-      "A cache do nível k descarta o bloco pedido",
-      "A cache do nível k vai buscar o bloco ao nível k + 1",
+      "A cache do nível k descarta o block pedido",
+      "A cache do nível k vai buscar o block ao nível k + 1",
       "O programa termina com um erro",
-      "A cache do nível k vai buscar o bloco ao nível k - 1"
+      "A cache do nível k vai buscar o block ao nível k - 1"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1867,8 +1513,8 @@
     "question": "O que acontece se a cache do nível k estiver cheia durante um miss?",
     "answers": [
       "O programa fica bloqueado à espera que a cache esvazie",
-      "O novo bloco é guardado diretamente no disco rígido",
-      "Um dos blocos atuais tem de ser substituído (despejado)",
+      "O novo block é guardado diretamente no disco rígido",
+      "Um dos blocks atuais tem de ser substituído (despejado)",
       "A cache duplica automaticamente a sua capacidade total"
     ],
     "correct_index": 2,
@@ -1879,10 +1525,10 @@
   {
     "question": "O que define a política de colocação (placement policy)?",
     "answers": [
-      "Qual o bloco que deve ser despejado",
-      "Quantos blocos a cache pode ter",
+      "Qual o block que deve ser despejado",
+      "Quantos blocks a cache pode ter",
       "Quando se deve apagar o disco",
-      "Onde pode ficar o novo bloco na cache"
+      "Onde pode ficar o novo block na cache"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1892,8 +1538,8 @@
   {
     "question": "O que define a política de substituição (replacement policy)?",
     "answers": [
-      "Qual o bloco que deve ser despejado",
-      "Onde pode ficar o novo bloco na cache",
+      "Qual o block que deve ser despejado",
+      "Onde pode ficar o novo block na cache",
       "Quantos misses são permitidos",
       "Que dados ficam no disco"
     ],
@@ -1903,7 +1549,7 @@
     "ref": "T10 p.53"
   },
   {
-    "question": "No exemplo do Intel Core i7, qual é o tamanho do bloco em todas as caches?",
+    "question": "No exemplo do Intel Core i7, qual é o tamanho do block em todas as caches?",
     "answers": [
       "16 bytes",
       "64 bytes",
@@ -2016,11 +1662,11 @@
     "ref": "T10 p.55"
   },
   {
-    "question": "O que determina o tamanho do bloco (ou linha) de uma cache?",
+    "question": "O que determina o tamanho do block (ou line) de uma cache?",
     "answers": [
       "A menor unidade transferida entre a cache e a memória",
-      "O número de linhas da cache multiplicado por dois",
-      "O tamanho total da memória principal instalada",
+      "O número de lines da cache multiplicado por dois",
+      "O tamanho total da main memory instalada",
       "O tempo médio de acesso ao disco rígido do sistema"
     ],
     "correct_index": 0,
@@ -2029,7 +1675,7 @@
     "ref": "T10 p.57"
   },
   {
-    "question": "Que tamanhos de bloco usa uma cache típica?",
+    "question": "Que tamanhos de block usa uma cache típica?",
     "answers": [
       "Entre 1 e 4 bytes",
       "Entre 16 e 64 bytes",
@@ -2042,9 +1688,9 @@
     "ref": "T10 p.57"
   },
   {
-    "question": "O que são as linhas de cache (cache lines)?",
+    "question": "O que são as lines de cache (cache lines)?",
     "answers": [
-      "Pistas de um disco rígido, com setores",
+      "Tracks de um disco rígido, com sectors",
       "Instruções de um programa de assembly",
       "Locais de armazenamento dentro da cache",
       "Pinos de ligação do chip de DRAM ao CPU"
@@ -2055,12 +1701,12 @@
     "ref": "T10 p.57"
   },
   {
-    "question": "Para que serve o bit de validade (valid bit) de uma linha de cache?",
+    "question": "Para que serve o valid bit (valid bit) de uma line de cache?",
     "answers": [
-      "Indica se a linha foi escrita desde que foi carregada",
-      "Indica a posição numérica da linha dentro da cache",
-      "Indica o tamanho em bytes do bloco guardado na linha",
-      "Indica se a linha tem um bloco válido (1) ou livre (0)"
+      "Indica se a line foi escrita desde que foi carregada",
+      "Indica a posição numérica da line dentro da cache",
+      "Indica o tamanho em bytes do block guardado na line",
+      "Indica se a line tem um block válido (1) ou livre (0)"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -2070,10 +1716,10 @@
   {
     "question": "Qual é o papel da parte do meio do endereço, na localização de dados na cache?",
     "answers": [
-      "É o índice, que seleciona a linha da cache",
-      "É a etiqueta (tag), que identifica o bloco",
-      "É o bit de validade",
-      "É o deslocamento dentro do disco"
+      "É o index, que seleciona a line da cache",
+      "É a tag, que identifica o block",
+      "É o valid bit",
+      "É o offset dentro do disco"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -2083,10 +1729,10 @@
   {
     "question": "Qual é o papel dos bits de ordem alta do endereço, na localização de dados na cache?",
     "answers": [
-      "Formam o índice, que serve para selecionar a linha",
-      "Formam a etiqueta (tag), que identifica a linha",
-      "Formam o bit de validade e o número do bloco",
-      "Formam o endereço do bloco no disco rígido"
+      "Formam o index, que serve para selecionar a line",
+      "Formam a tag, que identifica o block guardado na line",
+      "Formam o valid bit e o número do block",
+      "Formam o endereço do block no disco rígido"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -2105,7 +1751,7 @@
     "ref": "T10 p.58"
   },
   {
-    "question": "Uma cache direct-mapped tem 256 linhas de 32 bytes e os endereços têm 32 bits. Quantos bits tem o deslocamento (offset) dentro do bloco?",
+    "question": "Uma cache direct-mapped tem 256 lines de 32 bytes e os endereços têm 32 bits. Quantos bits tem o offset dentro do block?",
     "answers": [
       "6",
       "4",
@@ -2118,7 +1764,7 @@
     "ref": "T10 p.58"
   },
   {
-    "question": "Uma cache direct-mapped tem 256 linhas de 32 bytes e os endereços têm 32 bits. Quantos bits tem o índice?",
+    "question": "Uma cache direct-mapped tem 256 lines de 32 bytes e os endereços têm 32 bits. Quantos bits tem o index?",
     "answers": [
       "9",
       "7",
@@ -2131,20 +1777,7 @@
     "ref": "T10 p.58"
   },
   {
-    "question": "Uma cache direct-mapped tem 256 linhas de 32 bytes e os endereços têm 32 bits. Quantos bits tem a etiqueta (tag)?",
-    "answers": [
-      "19",
-      "20",
-      "18",
-      "21"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.58"
-  },
-  {
-    "question": "Uma cache direct-mapped tem 256 linhas de 32 bytes e os endereços têm 32 bits. Qual é a capacidade de dados da cache?",
+    "question": "Uma cache direct-mapped tem 256 lines de 32 bytes e os endereços têm 32 bits. Qual é a capacidade de dados da cache?",
     "answers": [
       "16 KiB",
       "8 KiB",
@@ -2157,20 +1790,7 @@
     "ref": "T10 p.58"
   },
   {
-    "question": "Uma cache direct-mapped tem 512 linhas de 64 bytes e os endereços têm 32 bits. Quantos bits tem o deslocamento (offset) dentro do bloco?",
-    "answers": [
-      "7",
-      "5",
-      "6",
-      "64"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.58"
-  },
-  {
-    "question": "Uma cache direct-mapped tem 512 linhas de 64 bytes e os endereços têm 32 bits. Quantos bits tem o índice?",
+    "question": "Uma cache direct-mapped tem 512 lines de 64 bytes e os endereços têm 32 bits. Quantos bits tem o index?",
     "answers": [
       "10",
       "8",
@@ -2183,20 +1803,7 @@
     "ref": "T10 p.58"
   },
   {
-    "question": "Uma cache direct-mapped tem 512 linhas de 64 bytes e os endereços têm 32 bits. Quantos bits tem a etiqueta (tag)?",
-    "answers": [
-      "17",
-      "18",
-      "16",
-      "19"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.58"
-  },
-  {
-    "question": "Uma cache direct-mapped tem 512 linhas de 64 bytes e os endereços têm 32 bits. Qual é a capacidade de dados da cache?",
+    "question": "Uma cache direct-mapped tem 512 lines de 64 bytes e os endereços têm 32 bits. Qual é a capacidade de dados da cache?",
     "answers": [
       "64 KiB",
       "32 KiB",
@@ -2209,20 +1816,7 @@
     "ref": "T10 p.58"
   },
   {
-    "question": "Uma cache direct-mapped tem 128 linhas de 16 bytes e os endereços têm 32 bits. Quantos bits tem o deslocamento (offset) dentro do bloco?",
-    "answers": [
-      "5",
-      "3",
-      "4",
-      "16"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.58"
-  },
-  {
-    "question": "Uma cache direct-mapped tem 128 linhas de 16 bytes e os endereços têm 32 bits. Quantos bits tem o índice?",
+    "question": "Uma cache direct-mapped tem 128 lines de 16 bytes e os endereços têm 32 bits. Quantos bits tem o index?",
     "answers": [
       "8",
       "6",
@@ -2235,20 +1829,7 @@
     "ref": "T10 p.58"
   },
   {
-    "question": "Uma cache direct-mapped tem 128 linhas de 16 bytes e os endereços têm 32 bits. Quantos bits tem a etiqueta (tag)?",
-    "answers": [
-      "21",
-      "22",
-      "20",
-      "23"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.58"
-  },
-  {
-    "question": "Uma cache direct-mapped tem 128 linhas de 16 bytes e os endereços têm 32 bits. Qual é a capacidade de dados da cache?",
+    "question": "Uma cache direct-mapped tem 128 lines de 16 bytes e os endereços têm 32 bits. Qual é a capacidade de dados da cache?",
     "answers": [
       "4 KiB",
       "2 KiB",
@@ -2261,20 +1842,7 @@
     "ref": "T10 p.58"
   },
   {
-    "question": "Uma cache direct-mapped tem 64 linhas de 64 bytes e os endereços têm 32 bits. Quantos bits tem o deslocamento (offset) dentro do bloco?",
-    "answers": [
-      "7",
-      "5",
-      "6",
-      "64"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.58"
-  },
-  {
-    "question": "Uma cache direct-mapped tem 64 linhas de 64 bytes e os endereços têm 32 bits. Quantos bits tem o índice?",
+    "question": "Uma cache direct-mapped tem 64 lines de 64 bytes e os endereços têm 32 bits. Quantos bits tem o index?",
     "answers": [
       "7",
       "5",
@@ -2287,20 +1855,7 @@
     "ref": "T10 p.58"
   },
   {
-    "question": "Uma cache direct-mapped tem 64 linhas de 64 bytes e os endereços têm 32 bits. Quantos bits tem a etiqueta (tag)?",
-    "answers": [
-      "20",
-      "21",
-      "19",
-      "22"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.58"
-  },
-  {
-    "question": "Uma cache direct-mapped tem 64 linhas de 64 bytes e os endereços têm 32 bits. Qual é a capacidade de dados da cache?",
+    "question": "Uma cache direct-mapped tem 64 lines de 64 bytes e os endereços têm 32 bits. Qual é a capacidade de dados da cache?",
     "answers": [
       "8 KiB",
       "4 KiB",
@@ -2313,20 +1868,7 @@
     "ref": "T10 p.58"
   },
   {
-    "question": "Uma cache direct-mapped tem 1024 linhas de 32 bytes e os endereços têm 32 bits. Quantos bits tem o deslocamento (offset) dentro do bloco?",
-    "answers": [
-      "6",
-      "4",
-      "5",
-      "32"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.58"
-  },
-  {
-    "question": "Uma cache direct-mapped tem 1024 linhas de 32 bytes e os endereços têm 32 bits. Quantos bits tem o índice?",
+    "question": "Uma cache direct-mapped tem 1024 lines de 32 bytes e os endereços têm 32 bits. Quantos bits tem o index?",
     "answers": [
       "11",
       "9",
@@ -2339,46 +1881,7 @@
     "ref": "T10 p.58"
   },
   {
-    "question": "Uma cache direct-mapped tem 1024 linhas de 32 bytes e os endereços têm 32 bits. Quantos bits tem a etiqueta (tag)?",
-    "answers": [
-      "17",
-      "18",
-      "16",
-      "19"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.58"
-  },
-  {
-    "question": "Uma cache direct-mapped tem 1024 linhas de 32 bytes e os endereços têm 32 bits. Qual é a capacidade de dados da cache?",
-    "answers": [
-      "64 KiB",
-      "32 KiB",
-      "16 KiB",
-      "128 KiB"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.58"
-  },
-  {
-    "question": "Numa cache direct-mapped com 8 linhas de 16 bytes, em que linha é guardado o endereço 0x00001234?",
-    "answers": [
-      "4",
-      "5",
-      "3",
-      "2"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.58"
-  },
-  {
-    "question": "Numa cache direct-mapped com 4 linhas de 32 bytes, em que linha é guardado o endereço 0x000000FF?",
+    "question": "Numa cache direct-mapped com 4 lines de 32 bytes, em que line é guardado o endereço 0x000000FF?",
     "answers": [
       "0",
       "1",
@@ -2391,20 +1894,7 @@
     "ref": "T10 p.58"
   },
   {
-    "question": "Numa cache direct-mapped com 16 linhas de 64 bytes, em que linha é guardado o endereço 0x00002468?",
-    "answers": [
-      "1",
-      "2",
-      "3",
-      "0"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.58"
-  },
-  {
-    "question": "Numa cache direct-mapped com 16 linhas de 16 bytes, em que linha é guardado o endereço 0x00000400?",
+    "question": "Numa cache direct-mapped com 16 lines de 16 bytes, em que line é guardado o endereço 0x00000400?",
     "answers": [
       "1",
       "0",
@@ -2417,20 +1907,7 @@
     "ref": "T10 p.58"
   },
   {
-    "question": "Numa cache direct-mapped com 8 linhas de 4 bytes, em que linha é guardado o endereço 0x000007FC?",
-    "answers": [
-      "0",
-      "1",
-      "7",
-      "6"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.58"
-  },
-  {
-    "question": "Uma cache direct-mapped, inicialmente vazia, tem 4 linhas de 16 bytes. Quantos misses ocorrem na sequência de acessos 0x00000000, 0x00000004, 0x00000010, 0x00000040, 0x00000000?",
+    "question": "Uma cache direct-mapped, inicialmente vazia, tem 4 lines de 16 bytes. Quantos misses ocorrem na sequência de acessos 0x00000000, 0x00000004, 0x00000010, 0x00000040, 0x00000000?",
     "answers": [
       "5",
       "3",
@@ -2443,20 +1920,7 @@
     "ref": "T10 p.58"
   },
   {
-    "question": "Uma cache direct-mapped, inicialmente vazia, tem 4 linhas de 16 bytes. Quantos misses ocorrem na sequência de acessos 0x00000000, 0x00000008, 0x00000010, 0x00000018, 0x00000020, 0x00000028?",
-    "answers": [
-      "3",
-      "4",
-      "2",
-      "6"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.58"
-  },
-  {
-    "question": "Uma cache direct-mapped, inicialmente vazia, tem 4 linhas de 16 bytes. Quantos misses ocorrem na sequência de acessos 0x00000000, 0x00000040, 0x00000000, 0x00000040, 0x00000000, 0x00000040?",
+    "question": "Uma cache direct-mapped, inicialmente vazia, tem 4 lines de 16 bytes. Quantos misses ocorrem na sequência de acessos 0x00000000, 0x00000040, 0x00000000, 0x00000040, 0x00000000, 0x00000040?",
     "answers": [
       "7",
       "6",
@@ -2469,20 +1933,7 @@
     "ref": "T10 p.58"
   },
   {
-    "question": "Uma cache direct-mapped, inicialmente vazia, tem 4 linhas de 16 bytes. Quantos misses ocorrem na sequência de acessos 0x00000000, 0x00000010, 0x00000020, 0x00000030, 0x00000000, 0x00000010, 0x00000020, 0x00000030?",
-    "answers": [
-      "5",
-      "3",
-      "4",
-      "8"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.58"
-  },
-  {
-    "question": "Uma cache direct-mapped, inicialmente vazia, tem 2 linhas de 32 bytes. Quantos misses ocorrem na sequência de acessos 0x00000000, 0x00000020, 0x00000040, 0x00000060, 0x00000000?",
+    "question": "Uma cache direct-mapped, inicialmente vazia, tem 2 lines de 32 bytes. Quantos misses ocorrem na sequência de acessos 0x00000000, 0x00000020, 0x00000040, 0x00000060, 0x00000000?",
     "answers": [
       "6",
       "4",
@@ -2495,11 +1946,11 @@
     "ref": "T10 p.58"
   },
   {
-    "question": "Numa cache direct-mapped, dois endereços de blocos diferentes que tenham o mesmo índice, o que provocam?",
+    "question": "Numa cache direct-mapped, o que acontece quando dois blocks diferentes têm o mesmo index?",
     "answers": [
-      "Disputam a linha e o segundo substitui o primeiro",
-      "Ficam ambos na mesma linha da cache, lado a lado",
-      "Ficam em linhas diferentes, escolhidas ao acaso",
+      "Disputam a line e o segundo substitui o primeiro",
+      "Ficam ambos na mesma line da cache, lado a lado",
+      "Ficam em lines diferentes, escolhidas ao acaso",
       "Geram um erro de endereçamento na cache de dados"
     ],
     "correct_index": 0,
@@ -2508,7 +1959,7 @@
     "ref": "T10 p.58"
   },
   {
-    "question": "O que tendem a ter os programas com melhor localidade?",
+    "question": "O que tendem a ter os programas com melhor locality?",
     "answers": [
       "Taxas de miss mais altas, mas execução mais rápida",
       "Taxas de miss mais baixas e execução mais rápida",
@@ -2521,7 +1972,7 @@
     "ref": "T10 p.60"
   },
   {
-    "question": "Um bom programador deve procurar escrever código amigo da cache (cache friendly), com boa localidade",
+    "question": "Um bom programador deve procurar escrever código amigo da cache (cache friendly), com boa locality",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -2532,21 +1983,10 @@
     "ref": "T10 p.60"
   },
   {
-    "question": "Os programas com menor taxa de misses tendem a executar mais devagar",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T10 p.60"
-  },
-  {
     "question": "Em que partes do código se deve concentrar a otimização para melhor uso da cache?",
     "answers": [
       "Nas funções que só executam uma vez no programa",
-      "Nos comentários e nas linhas em branco do código",
+      "Nos comentários e nas lines em branco do código",
       "Nos ciclos mais internos das funções principais",
       "Nas declarações de todas as variáveis globais"
     ],

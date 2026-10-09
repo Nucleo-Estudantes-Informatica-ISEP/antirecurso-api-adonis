@@ -1,0 +1,6443 @@
+[
+  {
+    "question": "A diretiva .asciz acrescenta automaticamente um byte zero no fim do texto",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.10"
+  },
+  {
+    "question": "Um símbolo definido com .equ não ocupa memória no programa final",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.13"
+  },
+  {
+    "question": "Um símbolo declarado com .lcomm pode ser referenciado por código de outros módulos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.14"
+  },
+  {
+    "question": "Na maioria dos sistemas operativos, os dados da secção .bss são inicializados a zero",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.14"
+  },
+  {
+    "question": "No RV32 as instruções têm comprimento variável, consoante o número de operandos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.20"
+  },
+  {
+    "question": "No RV32 apenas as instruções de load e store acedem diretamente à memória",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.20"
+  },
+  {
+    "question": "O RV32E tem 32 registos de uso geral, tal como o RV32I",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.4"
+  },
+  {
+    "question": "Em RV64 a diretiva .word passa a reservar 8 bytes",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.10"
+  },
+  {
+    "question": "Um argumento do tipo long long passado a uma função RV32 ocupa um único registo de argumento",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.28"
+  },
+  {
+    "question": "Num retorno de 64 bits, os 32 bits menos significativos ficam em a0 e os mais significativos em a1",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.29"
+  },
+  {
+    "question": "Para evitar problemas de alinhamento, declaram-se primeiro as variáveis de maior tamanho e só depois as menores",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.9"
+  },
+  {
+    "question": "Os registos t0 a t6 podem ser usados livremente numa função sem os guardar na stack",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.19"
+  },
+  {
+    "question": "Uma função assembly que não use a stack não deve alterar os registos s0 a s11",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.19"
+  },
+  {
+    "question": "Quantos bytes ocupa em memória a declaração .asciz \"Porto\"?",
+    "answers": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.10"
+  },
+  {
+    "question": "Quantos bytes ocupa em memória a declaração .half 7, 9, 11, 13?",
+    "answers": [
+      "8",
+      "4",
+      "6",
+      "16"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.10"
+  },
+  {
+    "question": "Quantos bytes ocupa em memória a declaração .double 1.5, 2.5, 3.5?",
+    "answers": [
+      "12",
+      "16",
+      "32",
+      "24"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.10"
+  },
+  {
+    "question": "Sem contar padding, quantos bytes ocupa o excerto .word 7, 8 / .half 9 / .byte 1, 2 / .asciz \"OK\"?",
+    "answers": [
+      "12",
+      "14",
+      "15",
+      "17"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.10"
+  },
+  {
+    "question": "Qual é a diferença entre as diretivas .comm e .lcomm?",
+    "answers": [
+      ".comm reserva espaço na stack e .lcomm reserva espaço no heap",
+      ".comm é visível a outros módulos e .lcomm só ao módulo atual",
+      ".comm inicializa a área a zero e .lcomm deixa-a por inicializar",
+      ".comm reserva bytes e .lcomm reserva apenas words de 4 bytes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.14"
+  },
+  {
+    "question": "Em que secção deve ser colocada a declaração .comm tabela, 400?",
+    "answers": [
+      ".bss",
+      ".data",
+      ".text",
+      ".rodata"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.14"
+  },
+  {
+    "question": "Em que secção deve ser colocada a declaração limite: .word 12?",
+    "answers": [
+      ".bss",
+      ".text",
+      ".data",
+      ".comm"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.9"
+  },
+  {
+    "question": "Que efeito tem o carácter \":\" colocado a seguir a um identificador numa linha de assembly?",
+    "answers": [
+      "Inicia um comentário até ao fim da linha",
+      "Define o identificador como um label",
+      "Define o identificador como uma diretiva do assembler",
+      "Define o identificador como uma constante"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.7"
+  },
+  {
+    "question": "Qual é a finalidade da diretiva .global func numa secção .text?",
+    "answers": [
+      "Tornar o símbolo func visível para o linker",
+      "Reservar memória para uma variável global chamada func",
+      "Definir func como uma constante global",
+      "Guardar o endereço de func no registo gp"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.8"
+  },
+  {
+    "question": "Após .equ SIZE, 8 / li t0, SIZE / addi t0, t0, SIZE, qual é o valor de t0?",
+    "answers": [
+      "8",
+      "64",
+      "16",
+      "4"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.13"
+  },
+  {
+    "question": "Após .equ FATOR, 3 / li t1, 14 / li t2, FATOR / mul t3, t1, t2, qual é o valor de t3?",
+    "answers": [
+      "42",
+      "17",
+      "11",
+      "143"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.13"
+  },
+  {
+    "question": "Com cnt: .word 100 na secção .data, qual é o valor de cnt depois de la t0, cnt / lw t1, 0(t0) / addi t1, t1, -37 / sw t1, 0(t0)?",
+    "answers": [
+      "137",
+      "-37",
+      "100",
+      "63"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.5"
+  },
+  {
+    "question": "Com v: .word 10, 20, 30 na secção .data, qual é o valor de v[0] depois de la t0, v / lw t1, 4(t0) / lw t2, 8(t0) / add t3, t1, t2 / sw t3, 0(t0)?",
+    "answers": [
+      "30",
+      "50",
+      "60",
+      "40"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.5"
+  },
+  {
+    "question": "Qual é o valor final de t1 em addi x0, x0, 9 / add t0, x0, x0 / addi t1, t0, 4?",
+    "answers": [
+      "13",
+      "9",
+      "4",
+      "5"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.17"
+  },
+  {
+    "question": "Qual é o valor final de t1 em li t0, 5 / add x0, t0, t0 / mv t1, x0?",
+    "answers": [
+      "5",
+      "0",
+      "10",
+      "-5"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.16"
+  },
+  {
+    "question": "Qual é a instrução real a que corresponde a pseudoinstrução mv t0, t1?",
+    "answers": [
+      "addi t0, t1, 0",
+      "add t0, t1, t1",
+      "sub t0, x0, t1",
+      "addi t0, x0, t1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.24"
+  },
+  {
+    "question": "Qual é o efeito de mv a0, x0 imediatamente antes de ret?",
+    "answers": [
+      "A função devolve o valor -1",
+      "A função devolve o valor do registo ra",
+      "A função devolve o endereço de x0",
+      "A função devolve o valor 0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.25"
+  },
+  {
+    "question": "Quantos bytes de código ocupa o excerto li t0, 6000 / li t1, 9 / mv t2, t0 / ret?",
+    "answers": [
+      "16",
+      "12",
+      "20",
+      "32"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.23"
+  },
+  {
+    "question": "Quantas instruções reais gera o excerto li t0, 70000 / li t1, 25 / neg t2, t1?",
+    "answers": [
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.14"
+  },
+  {
+    "question": "Quantos formatos de instrução base tem o RV32 (R, I, S, B, U, J)?",
+    "answers": [
+      "4",
+      "5",
+      "8",
+      "6"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.20"
+  },
+  {
+    "question": "Qual dos endereços seguintes é válido para o acesso a uma word no RV32, sem acessos desalinhados?",
+    "answers": [
+      "0x1006",
+      "0x1002",
+      "0x1008",
+      "0x1001"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.20"
+  },
+  {
+    "question": "Em int w(char p, char q, long long r, short s), onde são passados r e s?",
+    "answers": [
+      "Passam r em a2 (alto) e a3 (baixo); s em a4",
+      "Passam r em a2 (baixo) e a3 (alto); s em a5",
+      "Passam r em a2 (baixo) e a3 (alto); s em a4",
+      "Passam r em a2; s em a3 e a4"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.28"
+  },
+  {
+    "question": "Em int h(long long a, long long b, long long c, long long d, int e), onde é passado o argumento e?",
+    "answers": [
+      "No registo a8",
+      "No registo a7",
+      "No registo ra",
+      "Na stack"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.28"
+  },
+  {
+    "question": "Em int k(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9), onde é passado a9?",
+    "answers": [
+      "No registo a8",
+      "Na stack",
+      "No registo t0",
+      "No registo a0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.28"
+  },
+  {
+    "question": "Uma função declarada como void f(short x) é chamada com x igual a -5. Qual é o valor de a0 à entrada?",
+    "answers": [
+      "0xFFFFFFFB",
+      "0x0000FFFB",
+      "0xFFFFFFFA",
+      "0x8000FFFB"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.28"
+  },
+  {
+    "question": "Uma função declarada como void f(unsigned short x) é chamada com x igual a 65531. Qual é o valor de a0 à entrada?",
+    "answers": [
+      "0xFFFFFFFB",
+      "0x0000FFFA",
+      "0xFFFF0000",
+      "0x0000FFFB"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.28"
+  },
+  {
+    "question": "Que registos contêm o valor 0x0000000300000009 devolvido por uma função com retorno long long?",
+    "answers": [
+      "Ficam a0 = 3 e a1 = 9",
+      "Ficam a0 = 9 e a1 = 3",
+      "Ficam a0 = 0x00000003 e a1 = 0",
+      "Ficam a0 = 9 e a2 = 3"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.29"
+  },
+  {
+    "question": "Que número de registo (xN) corresponde a s1?",
+    "answers": [
+      "x8",
+      "x18",
+      "x19",
+      "x9"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.18"
+  },
+  {
+    "question": "O RV32 não tem instrução subi: subtrai-se uma constante com addi e um imediato negativo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.10"
+  },
+  {
+    "question": "A instrução lui aceita um imediato de 12 bits",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.12"
+  },
+  {
+    "question": "Quando add produz uma soma superior a 2^32, o RV32 ativa uma flag de carry",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.17"
+  },
+  {
+    "question": "No RV32 uma divisão inteira por zero não gera exceção",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.25"
+  },
+  {
+    "question": "A instrução div com divisor zero devolve 0",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.25"
+  },
+  {
+    "question": "A instrução remu com divisor zero devolve o dividendo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.26"
+  },
+  {
+    "question": "A instrução mul devolve os 32 bits mais significativos do produto de 64 bits",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.21"
+  },
+  {
+    "question": "A instrução mulhu trata os dois operandos como inteiros sem sinal e devolve os 32 bits superiores do produto",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.23"
+  },
+  {
+    "question": "As instruções de multiplicação e divisão fazem parte do conjunto base RV32I",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.2"
+  },
+  {
+    "question": "A pseudoinstrução neg t0, t1 produz o mesmo código máquina que sub t0, x0, t1",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.7"
+  },
+  {
+    "question": "Os 32 bits baixos de mul são iguais para operandos com sinal e sem sinal",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.22"
+  },
+  {
+    "question": "Em sltu t1, a, b os dois registos são interpretados como números com sinal",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.17"
+  },
+  {
+    "question": "Com rem, o resto de INT_MIN dividido por -1 é INT_MIN",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.26"
+  },
+  {
+    "question": "O RV32 tem instruções específicas de incremento e decremento de registos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.11"
+  },
+  {
+    "question": "Qual é o valor de t1, interpretado com sinal, após li t0, 0x7FFFFFFF / addi t1, t0, 1?",
+    "answers": [
+      "-2147483648",
+      "2147483648",
+      "0",
+      "2147483647"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.10"
+  },
+  {
+    "question": "Quais são os valores de t2 e t3 após li t0, 7 / li t1, 19 / sub t2, t0, t1 / neg t3, t2?",
+    "answers": [
+      "Ficam t2 = 12 e t3 = -12",
+      "Ficam t2 = -12 e t3 = -12",
+      "Ficam t2 = 26 e t3 = -26",
+      "Ficam t2 = -12 e t3 = 12"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.7"
+  },
+  {
+    "question": "Qual é o valor de t2 em hexadecimal após li t0, 7 / li t1, 19 / sub t2, t0, t1?",
+    "answers": [
+      "0xFFFFFFF3",
+      "0xFFFFFFF4",
+      "0x0000000C",
+      "0x8000000C"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.6"
+  },
+  {
+    "question": "Qual é o valor de t1 em hexadecimal após li t0, 0x80000000 / neg t1, t0?",
+    "answers": [
+      "0x00000000",
+      "0x7FFFFFFF",
+      "0x80000000",
+      "0xFFFFFFFF"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.7"
+  },
+  {
+    "question": "Qual das instruções seguintes é aceite pelo assembler sem erro?",
+    "answers": [
+      "addi t0, t1, 2047",
+      "addi t0, t1, 2048",
+      "addi t0, t1, -2049",
+      "addi t0, t1, 4095"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.8"
+  },
+  {
+    "question": "Qual é o valor de 32 bits resultante da extensão de sinal do imediato de 12 bits 0xC35?",
+    "answers": [
+      "0x00000C35",
+      "0xFFFFFC35",
+      "0xFFFF0C35",
+      "0x0FFFFC35"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.9"
+  },
+  {
+    "question": "Qual é o valor decimal de um imediato de 12 bits com o padrão binário 1000 0000 0000?",
+    "answers": [
+      "-2047",
+      "-1",
+      "2048",
+      "-2048"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.8"
+  },
+  {
+    "question": "Qual é o valor de t0 após lui t0, 0xABCDE?",
+    "answers": [
+      "0xABCDE000",
+      "0x000ABCDE",
+      "0xEDCBA000",
+      "0xABCD0E00"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.12"
+  },
+  {
+    "question": "Qual das instruções seguintes é rejeitada pelo assembler por o imediato estar fora do intervalo?",
+    "answers": [
+      "lui t0, 0xFFFFF",
+      "lui t0, 0",
+      "lui t0, 1048575",
+      "lui t0, 0x100000"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.12"
+  },
+  {
+    "question": "Qual é o valor de t0 em decimal, com sinal, após lui t0, 0x80000 / addi t0, t0, -1?",
+    "answers": [
+      "-2147483647",
+      "-1",
+      "2147483647",
+      "2147483648"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.15"
+  },
+  {
+    "question": "Qual é o valor de t0 após lui t0, 0xFFFFF?",
+    "answers": [
+      "0x000FFFFF",
+      "0x00000FFF",
+      "0xFFFFF000",
+      "0xFFFFF0FF"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.12"
+  },
+  {
+    "question": "Em que se expande li t0, 0x12345678?",
+    "answers": [
+      "lui t0, 0x12345 / addi t0, t0, 0x6780",
+      "lui t0, 0x12345 / addi t0, t0, 0x678",
+      "lui t0, 0x1234 / addi t0, t0, 0x5678",
+      "addi t0, x0, 0x12345678"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.14"
+  },
+  {
+    "question": "Em que se expande li t0, 0x50000FFF?",
+    "answers": [
+      "lui t0, 0x50000 / addi t0, t0, 0xFFF",
+      "lui t0, 0x50000 / addi t0, t0, -1",
+      "lui t0, 0x50001 / addi t0, t0, 1",
+      "lui t0, 0x50001 / addi t0, t0, -1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.15"
+  },
+  {
+    "question": "Em que se expande li t0, 0xBEEF?",
+    "answers": [
+      "lui t0, 0xC / addi t0, t0, -273",
+      "lui t0, 0xB / addi t0, t0, 0xEEF",
+      "lui t0, 0xB / addi t0, t0, -273",
+      "lui t0, 0xC / addi t0, t0, 273"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.15"
+  },
+  {
+    "question": "Em que se expande li t0, 6000?",
+    "answers": [
+      "lui t0, 0x2 / addi t0, t0, -1904",
+      "lui t0, 0x1 / addi t0, t0, 1770",
+      "lui t0, 0x1 / addi t0, t0, 1904",
+      "addi t0, x0, 6000"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.15"
+  },
+  {
+    "question": "Em que se expande li t0, 0x30000?",
+    "answers": [
+      "lui t0, 0x3",
+      "lui t0, 0x30",
+      "addi t0, x0, 0x30000",
+      "lui t0, 0x300"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.15"
+  },
+  {
+    "question": "Quantas instruções reais gera li t0, 2048?",
+    "answers": [
+      "2",
+      "1",
+      "3",
+      "4"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.14"
+  },
+  {
+    "question": "Quantas instruções reais gera li t0, -2048?",
+    "answers": [
+      "2",
+      "1",
+      "3",
+      "0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.14"
+  },
+  {
+    "question": "Porque é que li t0, 0xFACE não se expande em lui t0, 0xF / addi t0, t0, 0xACE?",
+    "answers": [
+      "Porque 0xACE seria estendido com sinal e ficaria negativo",
+      "Porque o valor 0xF não cabe nos 20 bits de lui",
+      "Porque addi só aceita imediatos com valor zero",
+      "Porque lui não aceita imediatos que sejam positivos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.16"
+  },
+  {
+    "question": "Qual é o valor de a1:a0, em hexadecimal, depois de add t0, a0, a1 / sltu t1, t0, a0 / mv a0, t0 / mv a1, t1, com a0 = 4294967295 e a1 = 2 à entrada?",
+    "answers": [
+      "0x0000000000000001",
+      "0x0000000100000001",
+      "0x0000000200000000",
+      "0x0000000100000000"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.18"
+  },
+  {
+    "question": "Quais são os valores finais de a0 e a1 em add t0, a0, a1 / sltu t1, t0, a0 / mv a0, t0 / mv a1, t1, com a0 = 0x80000000 e a1 = 0x80000000 à entrada?",
+    "answers": [
+      "Ficam a0 = 0 e a1 = 0",
+      "Ficam a0 = 1 e a1 = 0",
+      "Ficam a0 = 0 e a1 = 1",
+      "Ficam a0 = 0x80000000 e a1 = 1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.18"
+  },
+  {
+    "question": "Depois de add t0, a0, a1, qual é a condição que indica carry de uma soma sem sinal?",
+    "answers": [
+      "t0 maior que a0, comparados sem sinal",
+      "t0 menor que a0, comparados sem sinal",
+      "t0 igual a zero",
+      "t0 negativo, comparado com sinal"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.17"
+  },
+  {
+    "question": "Qual é o valor de a1:a0 depois de add a0, a0, a2 / sltu t1, a0, a2 / add t0, a1, a3 / add a1, t0, t1, com a1:a0 = 0x00000001FFFFFFFF e a3:a2 = 0x0000000200000001 à entrada?",
+    "answers": [
+      "0x0000000300000000",
+      "0x0000000500000000",
+      "0x0000000400000000",
+      "0x0000000400000001"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.19"
+  },
+  {
+    "question": "Qual é o valor de a1:a0 depois de add a0, a0, a2 / sltu t1, a0, a2 / add t0, a1, a3 / add a1, t0, t1, com a1:a0 = 0xFFFFFFFFFFFFFFFF e a3:a2 = 0x0000000000000001 à entrada?",
+    "answers": [
+      "0x00000000FFFFFFFF",
+      "0xFFFFFFFF00000000",
+      "0x0000000100000000",
+      "0x0000000000000000"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.19"
+  },
+  {
+    "question": "Se em add64 se omitir o sltu e a soma do carry, que valor devolve para x = 4294967295 e y = 1?",
+    "answers": [
+      "0",
+      "1",
+      "4294967296",
+      "4294967295"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.19"
+  },
+  {
+    "question": "Para calcular x - y em 64 bits, com x_baixo em a0 e y_baixo em a2, que instrução produz o borrow e deve ser executada antes de alterar a0?",
+    "answers": [
+      "sltu t1, a2, a0",
+      "sltu t1, a0, a2",
+      "sub t1, a0, a2",
+      "add t1, a0, a2"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.17"
+  },
+  {
+    "question": "Qual é o valor de t0 após li a0, 3 / li a1, -1 / sltu t0, a0, a1?",
+    "answers": [
+      "0",
+      "-1",
+      "1",
+      "3"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.17"
+  },
+  {
+    "question": "Qual é o valor de t0 após li a0, 0xFFFFFFF0 / li a1, 5 / sltu t0, a0, a1?",
+    "answers": [
+      "0",
+      "1",
+      "5",
+      "-16"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.17"
+  },
+  {
+    "question": "O que calcula sltu t0, x0, a0?",
+    "answers": [
+      "1 se a0 for igual a zero, caso contrário 0",
+      "1 se a0 for negativo, caso contrário 0",
+      "O valor absoluto de a0",
+      "1 se a0 for diferente de zero, caso contrário 0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.17"
+  },
+  {
+    "question": "Quais são os valores de t1 e t2 após li t0, 0x10000 / mul t1, t0, t0 / mulhu t2, t0, t0?",
+    "answers": [
+      "Ficam t1 = 1 e t2 = 0",
+      "Ficam t1 = 0 e t2 = 1",
+      "Ficam t1 = 0x10000 e t2 = 0x10000",
+      "Ficam t1 = 0 e t2 = 0x10000"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.23"
+  },
+  {
+    "question": "Quais são os valores de t2 e t3 após li t0, 0x12345678 / li t1, 0x100 / mul t2, t0, t1 / mulhu t3, t0, t1?",
+    "answers": [
+      "Ficam t2 = 0x12345678 e t3 = 0x00000100",
+      "Ficam t2 = 0x00000012 e t3 = 0x34567800",
+      "Ficam t2 = 0x34567800 e t3 = 0x00000012",
+      "Ficam t2 = 0x34567800 e t3 = 0x00000000"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.23"
+  },
+  {
+    "question": "Qual é o valor de t3 em hexadecimal após li t0, -3 / li t1, 5 / mulh t3, t0, t1?",
+    "answers": [
+      "0xFFFFFFFF",
+      "0x00000000",
+      "0xFFFFFFF1",
+      "0x00000004"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.23"
+  },
+  {
+    "question": "Qual é o valor de t4 após li t0, -3 / li t1, 5 / mulhu t4, t0, t1?",
+    "answers": [
+      "0",
+      "5",
+      "-1",
+      "4"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.23"
+  },
+  {
+    "question": "Qual é o valor de t2 em hexadecimal após li t0, -3 / li t1, 5 / mul t2, t0, t1?",
+    "answers": [
+      "0xFFFFFFFF",
+      "0xFFFFFFF1",
+      "0x0000000F",
+      "0xFFFFFFF0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.22"
+  },
+  {
+    "question": "Qual é o valor de t2 em hexadecimal após li t0, -1 / mulhu t2, t0, t0?",
+    "answers": [
+      "0x00000000",
+      "0xFFFFFFFF",
+      "0xFFFFFFFE",
+      "0x00000001"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.23"
+  },
+  {
+    "question": "Em mulh t0, a1, a0 / mul a0, a1, a0 / mv a1, t0, com a0 = -100000 e a1 = 100000 à entrada, qual é o valor final de a1:a0 em hexadecimal?",
+    "answers": [
+      "0xFFFFFFFCABF41C00",
+      "0xFFFFFFFDABF41C00",
+      "0x00000000ABF41C00",
+      "0xABF41C00FFFFFFFD"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.24"
+  },
+  {
+    "question": "Com a0 = 0x10000 e a1 = 0x10000, qual é o valor final de a1 em mul a0, a0, a1 / mulh a1, a0, a1?",
+    "answers": [
+      "0",
+      "1",
+      "65536",
+      "4294967295"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.24"
+  },
+  {
+    "question": "Quais são os valores de t2 e t3 após li t0, -7 / li t1, 2 / div t2, t0, t1 / rem t3, t0, t1?",
+    "answers": [
+      "Ficam t2 = -4 e t3 = 1",
+      "Ficam t2 = -3 e t3 = -1",
+      "Ficam t2 = -3 e t3 = 1",
+      "Ficam t2 = -4 e t3 = -1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.25"
+  },
+  {
+    "question": "Quais são os valores de t2 e t3 após li t0, -17 / li t1, -5 / div t2, t0, t1 / rem t3, t0, t1?",
+    "answers": [
+      "Ficam t2 = 4 e t3 = 3",
+      "Ficam t2 = 3 e t3 = 2",
+      "Ficam t2 = 4 e t3 = -2",
+      "Ficam t2 = 3 e t3 = -2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.26"
+  },
+  {
+    "question": "Qual é o valor de t2 após li t0, -7 / li t1, 2 / divu t2, t0, t1?",
+    "answers": [
+      "2147483644",
+      "-3",
+      "2147483645",
+      "3"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.25"
+  },
+  {
+    "question": "Qual é o valor de t3 após li t0, -7 / li t1, 2 / remu t3, t0, t1?",
+    "answers": [
+      "-1",
+      "1",
+      "0",
+      "2"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.26"
+  },
+  {
+    "question": "Qual é o valor de t2 após li t0, 25 / li t1, 0 / div t2, t0, t1?",
+    "answers": [
+      "0",
+      "25",
+      "-1",
+      "4294967295"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.25"
+  },
+  {
+    "question": "Qual é o valor de t3 após li t0, 25 / li t1, 0 / divu t3, t0, t1?",
+    "answers": [
+      "-1",
+      "0",
+      "25",
+      "4294967295"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.25"
+  },
+  {
+    "question": "Quais são os valores de t4 e t5 após li t0, 25 / li t1, 0 / rem t4, t0, t1 / remu t5, t0, t1?",
+    "answers": [
+      "Ficam t4 = 25 e t5 = 25",
+      "Ficam t4 = 0 e t5 = 0",
+      "Ficam t4 = -1 e t5 = 25",
+      "Ficam t4 = 25 e t5 = 4294967295"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.26"
+  },
+  {
+    "question": "Quais são os valores de t2 e t3 após li t0, 0x80000000 / li t1, -1 / div t2, t0, t1 / rem t3, t0, t1?",
+    "answers": [
+      "Ficam t2 = 2147483647 e t3 = 0",
+      "Ficam t2 = -2147483648 e t3 = 0",
+      "Ficam t2 = 0 e t3 = -2147483648",
+      "Ficam t2 = -2147483648 e t3 = -1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.26"
+  },
+  {
+    "question": "Em div t0, a0, a1 / rem t1, a0, a1 / mul t0, t0, a1 / add a0, t0, t1, qual é o valor final de a0 se à entrada a0 = 100 e a1 = 0?",
+    "answers": [
+      "-1",
+      "0",
+      "100",
+      "1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.27"
+  },
+  {
+    "question": "Em div t0, a0, a1 / rem t1, a0, a1 / mul t0, t0, a1 / add a0, t0, t1, qual é o valor final de a0 se à entrada a0 = -17 e a1 = 5?",
+    "answers": [
+      "-17",
+      "-3",
+      "-2",
+      "17"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.26"
+  },
+  {
+    "question": "Qual é o valor de t3 após li t0, 3725 / li t1, 60 / rem t3, t0, t1?",
+    "answers": [
+      "62",
+      "5",
+      "25",
+      "0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.27"
+  },
+  {
+    "question": "Qual é o valor de t4 após li t0, 5987 / li t1, 10 / rem t2, t0, t1 / div t0, t0, t1 / rem t3, t0, t1 / add t4, t2, t3?",
+    "answers": [
+      "22",
+      "8",
+      "15",
+      "598"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.27"
+  },
+  {
+    "question": "Qual é o valor de t5 após li t0, 46 / li t1, 10 / div t3, t0, t1 / mul t4, t3, t1 / sub t5, t0, t4?",
+    "answers": [
+      "4",
+      "40",
+      "46",
+      "6"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.27"
+  },
+  {
+    "question": "Qual é o valor de t4 após li t0, 9 / li t1, 4 / mul t2, t0, t0 / mul t3, t1, t1 / sub t4, t2, t3?",
+    "answers": [
+      "65",
+      "5",
+      "97",
+      "25"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.22"
+  },
+  {
+    "question": "Num par div t2, a0, a1 / rem t3, a0, a1, porque é que t2 não pode ser o mesmo registo que a0 ou a1?",
+    "answers": [
+      "Porque div só aceita registos temporários como destino",
+      "Porque a segunda instrução precisaria dos operandos originais",
+      "Porque rem calcula o quociente antes de div",
+      "Porque o assembler rejeita registos repetidos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.27"
+  },
+  {
+    "question": "Qual das relações seguintes é sempre verdadeira para a divisão inteira do RV32 (divisor diferente de zero)?",
+    "answers": [
+      "Dividendo = divisor x quociente + resto",
+      "Dividendo = divisor + quociente x resto",
+      "Dividendo = quociente x resto + divisor",
+      "Dividendo = divisor x resto + quociente"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.26"
+  },
+  {
+    "question": "Quais são os valores de t0 e t1 após li t0, 100 / addi t1, t0, -1 / addi t0, t0, 12?",
+    "answers": [
+      "Ficam t0 = 112 e t1 = 101",
+      "Ficam t0 = 112 e t1 = 99",
+      "Ficam t0 = 100 e t1 = 99",
+      "Ficam t0 = 88 e t1 = 99"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.11"
+  },
+  {
+    "question": "Quais são os valores de t4 e t5 após li t0, 6 / li t1, 11 / sub t4, t0, t1 / mul t5, t4, t4?",
+    "answers": [
+      "Ficam t4 = 5 e t5 = 25",
+      "Ficam t4 = -5 e t5 = -25",
+      "Ficam t4 = -5 e t5 = 5",
+      "Ficam t4 = -5 e t5 = 25"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.22"
+  },
+  {
+    "question": "Que valor fica em a0 depois de executar li t0, -7 / li t1, 5 / slt a0, t0, t1 / sltu a1, t0, t1 / add a0, a0, a1?",
+    "answers": [
+      "0",
+      "2",
+      "1",
+      "-1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.25"
+  },
+  {
+    "question": "Que valor fica em a0 depois de executar li a1, 100 / sltiu a0, a1, -1?",
+    "answers": [
+      "1",
+      "0",
+      "-1",
+      "100"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.26"
+  },
+  {
+    "question": "Que valor fica em a0 depois de executar li a1, -3 / sltiu a0, a1, 5?",
+    "answers": [
+      "1",
+      "-3",
+      "5",
+      "0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.26"
+  },
+  {
+    "question": "Que valor fica em a0 depois de executar li t0, -9 / sltz a0, t0 / sgtz a1, t0 / snez a2, t0 / add a0, a0, a1 / add a0, a0, a2?",
+    "answers": [
+      "0",
+      "2",
+      "1",
+      "3"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.28"
+  },
+  {
+    "question": "Que valor fica em a0 depois de executar li t0, 12 / seqz t1, t0 / seqz t2, t1 / addi a0, t2, 40?",
+    "answers": [
+      "40",
+      "41",
+      "42",
+      "12"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.28"
+  },
+  {
+    "question": "Admita a0 = 3 e a1 = 8. Que valor fica em a0 depois de executar slt t0, a1, a0 / slt t1, a0, a1 / sub a0, t0, t1?",
+    "answers": [
+      "1",
+      "0",
+      "5",
+      "-1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.8"
+  },
+  {
+    "question": "Admita a0 = -4 e a1 = -9. Que valor fica em a0 depois de executar slt t0, a1, a0 / slt t1, a0, a1 / sub a0, t0, t1?",
+    "answers": [
+      "1",
+      "-1",
+      "0",
+      "-5"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.8"
+  },
+  {
+    "question": "Admita a0 = -8. Que valor fica em a0 depois de executar sgtz t0, a0 / sltz t1, a0 / sub a0, t0, t1?",
+    "answers": [
+      "1",
+      "0",
+      "-1",
+      "-8"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.28"
+  },
+  {
+    "question": "Admita a0 = 2. Que valor fica em a0 depois de executar addi t0, a0, -5 / sltiu a0, t0, 6?",
+    "answers": [
+      "1",
+      "2",
+      "-3",
+      "0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.29"
+  },
+  {
+    "question": "Admita a0 = 10. Que valor fica em a0 depois de executar addi t0, a0, -5 / sltiu a0, t0, 6?",
+    "answers": [
+      "0",
+      "1",
+      "5",
+      "6"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.29"
+  },
+  {
+    "question": "A sequência addi t0, a0, -5 / sltiu a0, t0, 6 deixa 1 em a0 se e só se a0 estiver entre 5 e 10, inclusive",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.29"
+  },
+  {
+    "question": "Que valor fica em a0 depois de executar li t0, -1 / li t1, 1 / bltu t0, t1, taken / li a0, 10 / j fim / taken: li a0, 20 / fim: addi a0, a0, 1?",
+    "answers": [
+      "21",
+      "10",
+      "11",
+      "20"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.9"
+  },
+  {
+    "question": "Que valor fica em a0 depois de executar li t0, -1 / li t1, 1 / blt t0, t1, taken / li a0, 10 / j fim / taken: li a0, 20 / fim: addi a0, a0, 1?",
+    "answers": [
+      "21",
+      "11",
+      "10",
+      "20"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.6"
+  },
+  {
+    "question": "Que valor fica em a0 depois de executar li t0, 0x80000000 / li t1, 0x7FFFFFFF / bgeu t0, t1, sim / li a0, 1 / j fim / sim: li a0, 2 / fim: addi a0, a0, 0?",
+    "answers": [
+      "1",
+      "0",
+      "3",
+      "2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.9"
+  },
+  {
+    "question": "Que valor fica em a0 depois de executar li a0, 0 / li t0, 4 / ciclo: add a0, a0, t0 / addi t0, t0, -1 / bgtz t0, ciclo?",
+    "answers": [
+      "6",
+      "10",
+      "4",
+      "15"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.16"
+  },
+  {
+    "question": "Que valor fica em a0 depois de executar li a0, 0 / li t0, 0 / ciclo: addi a0, a0, 5 / addi t0, t0, -1 / bgtz t0, ciclo?",
+    "answers": [
+      "0",
+      "5",
+      "10",
+      "-5"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.15"
+  },
+  {
+    "question": "Que valor fica em a0 depois de executar li a0, 0 / li t0, 0 / j teste / corpo: addi a0, a0, 5 / addi t0, t0, -1 / teste: bgtz t0, corpo?",
+    "answers": [
+      "5",
+      "-5",
+      "10",
+      "0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.18"
+  },
+  {
+    "question": "Que valor fica em a0 depois de executar li a0, 0 / li t0, 1 / li t1, 8 / ciclo: bge t0, t1, fim / add a0, a0, t0 / addi t0, t0, 3 / j ciclo / fim: ret?",
+    "answers": [
+      "12",
+      "22",
+      "5",
+      "28"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.19"
+  },
+  {
+    "question": "Em li t0, 4 / ciclo: addi t0, t0, -1 / bnez t0, ciclo / ret, quantas vezes é que o salto bnez é tomado?",
+    "answers": [
+      "4",
+      "5",
+      "3",
+      "1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.14"
+  },
+  {
+    "question": "Admita a0 = 0 à entrada. Que valor fica em a0 depois de executar li t1, 1 / ciclo: mul t1, t1, a0 / addi a0, a0, -1 / li t2, 1 / blt t2, a0, ciclo / mv a0, t1?",
+    "answers": [
+      "1",
+      "-1",
+      "2",
+      "0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.16"
+  },
+  {
+    "question": "Admita a0 = 0 à entrada. Que valor fica em a0 depois de executar li t1, 1 / j teste / ciclo: mul t1, t1, a0 / addi a0, a0, -1 / teste: li t2, 1 / blt t2, a0, ciclo / mv a0, t1?",
+    "answers": [
+      "0",
+      "1",
+      "-1",
+      "2"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.18"
+  },
+  {
+    "question": "Admita a0 = 13 à entrada. Que valor fica em a0 depois de executar li t1, 1 / ciclo: mul t1, t1, a0 / addi a0, a0, -1 / li t2, 1 / blt t2, a0, ciclo / mv a0, t1?",
+    "answers": [
+      "6227020800",
+      "479001600",
+      "1932053504",
+      "-1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.16"
+  },
+  {
+    "question": "Admita a0 = 6 à entrada. Que valor fica em a0 depois de executar li t1, 1 / ciclo: mul t1, t1, a0 / addi a0, a0, -1 / li t2, 1 / blt t2, a0, ciclo / mv a0, t1?",
+    "answers": [
+      "720",
+      "24",
+      "5040",
+      "6"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.16"
+  },
+  {
+    "question": "Qual é o valor de s depois de int s = 0; for (int i = 10; i > 0; i -= 3) s += i;?",
+    "answers": [
+      "10",
+      "18",
+      "28",
+      "22"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.21"
+  },
+  {
+    "question": "Quantas vezes é executado o corpo do ciclo for (i = 3; i <= 15; i += 4)?",
+    "answers": [
+      "3",
+      "4",
+      "5",
+      "12"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.21"
+  },
+  {
+    "question": "Admita a0 = -6, a1 = 1 e a2 = 4. Que valor fica em a0 depois de executar add t0, a0, a1 / sub t0, t0, a2 / li t1, -4 / bge a0, t1, l2 / bge a1, a2, l1 / mul t0, a0, a1 / j l3 / l1: mul t0, a1, a2 / j l3 / l2: li t1, 5 / ble a0, t1, l3 / mul t0, a0, a2 / l3: mv a0, t0?",
+    "answers": [
+      "-9",
+      "-6",
+      "4",
+      "-24"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.12"
+  },
+  {
+    "question": "Admita a0 = 9, a1 = 1 e a2 = 3. Que valor fica em a0 depois de executar add t0, a0, a1 / sub t0, t0, a2 / li t1, -4 / bge a0, t1, l2 / bge a1, a2, l1 / mul t0, a0, a1 / j l3 / l1: mul t0, a1, a2 / j l3 / l2: li t1, 5 / ble a0, t1, l3 / mul t0, a0, a2 / l3: mv a0, t0?",
+    "answers": [
+      "7",
+      "3",
+      "9",
+      "27"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.12"
+  },
+  {
+    "question": "Admita a0 = -6, a1 = 8 e a2 = 3. Que valor fica em a0 depois de executar add t0, a0, a1 / sub t0, t0, a2 / li t1, -4 / bge a0, t1, l2 / bge a1, a2, l1 / mul t0, a0, a1 / j l3 / l1: mul t0, a1, a2 / j l3 / l2: li t1, 5 / ble a0, t1, l3 / mul t0, a0, a2 / l3: mv a0, t0?",
+    "answers": [
+      "24",
+      "-1",
+      "-48",
+      "13"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.12"
+  },
+  {
+    "question": "Admita a0 = -17. Que valor fica em a0 depois de executar bgez a0, fim / neg a0, a0 / fim: mv a0, a0?",
+    "answers": [
+      "-17",
+      "0",
+      "17",
+      "1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.11"
+  },
+  {
+    "question": "Admita a0 = -2147483648. Que valor fica em a0 depois de executar bgez a0, fim / neg a0, a0 / fim: mv a0, a0?",
+    "answers": [
+      "2147483647",
+      "0",
+      "1",
+      "-2147483648"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.11"
+  },
+  {
+    "question": "O que calcula a0 em ble a0, a1, fim / mv a0, a1 / fim: ret, para valores com sinal?",
+    "answers": [
+      "O máximo entre a0 e a1",
+      "O mínimo entre a0 e a1",
+      "O valor absoluto de a0",
+      "A diferença a0 - a1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.6"
+  },
+  {
+    "question": "Admita um sistema little-endian. Que valor fica em a0 depois de executar li a1, 0x2000 / li t0, 0x8F7F6E5D / sw t0, 0(a1) / lbu a0, 1(a1)?",
+    "answers": [
+      "0x0000005D",
+      "0x0000007F",
+      "0x0000006E",
+      "0x0000008F"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.6"
+  },
+  {
+    "question": "Admita um sistema little-endian. Que valor fica em a0 depois de executar li a1, 0x2000 / li t0, 0x8F7F6E5D / sw t0, 0(a1) / lb a0, 3(a1)?",
+    "answers": [
+      "0xFFFFFF8F",
+      "0x0000008F",
+      "0x8F000000",
+      "0xFFFFFF5D"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.6"
+  },
+  {
+    "question": "Admita um sistema little-endian. Que valor fica em a0 depois de executar li a1, 0x2000 / li t0, 0x8F7F6E5D / sw t0, 0(a1) / lh a0, 2(a1)?",
+    "answers": [
+      "0x00008F7F",
+      "0xFFFF7F8F",
+      "0x00006E5D",
+      "0xFFFF8F7F"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.6"
+  },
+  {
+    "question": "Admita um sistema little-endian. Que valor fica em a0 depois de executar li a1, 0x2000 / li t0, 0x8F7F6E5D / sw t0, 0(a1) / lhu a0, 0(a1)?",
+    "answers": [
+      "0x00005D6E",
+      "0x00006E5D",
+      "0x00008F7F",
+      "0x00007F6E"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.6"
+  },
+  {
+    "question": "Admita um sistema little-endian. Que valor fica em a0 depois de executar li a1, 0x2000 / sw zero, 0(a1) / li t0, 0x12AB / sb t0, 2(a1) / lw a0, 0(a1)?",
+    "answers": [
+      "0x000012AB",
+      "0x00AB0000",
+      "0xAB000000",
+      "0x00001200"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.10"
+  },
+  {
+    "question": "Admita um sistema little-endian. Que valor fica em a0 depois de executar li a1, 0x2000 / li t0, 0x01020304 / sw t0, 0(a1) / li t1, 255 / sb t1, 1(a1) / lw a0, 0(a1)?",
+    "answers": [
+      "0x01FF0304",
+      "0x0102030F",
+      "0xFF020304",
+      "0x0102FF04"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.9"
+  },
+  {
+    "question": "Que valor fica em a0 depois de executar li a1, 0x2000 / li t0, 0x7FFF8001 / sw t0, 0(a1) / lh a2, 0(a1) / lhu a3, 0(a1) / sub a0, a3, a2?",
+    "answers": [
+      "65536",
+      "0",
+      "32769",
+      "-65536"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.6"
+  },
+  {
+    "question": "Que valor fica em a0 depois de executar li a1, 0x2000 / li t0, 300 / sb t0, 0(a1) / lbu a0, 0(a1)?",
+    "answers": [
+      "255",
+      "300",
+      "44",
+      "12"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.8"
+  },
+  {
+    "question": "Que valor fica em a0 depois de executar li a1, 0x2000 / li t0, 200 / sb t0, 0(a1) / lb a0, 0(a1)?",
+    "answers": [
+      "200",
+      "56",
+      "-200",
+      "-56"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.8"
+  },
+  {
+    "question": "Que valor fica em a0 depois de executar li a1, 0x2000 / li t0, 0xFACE / sh t0, 0(a1) / lh a0, 0(a1)?",
+    "answers": [
+      "0x0000FACE",
+      "0xFFFFFACE",
+      "0xFFFFCEFA",
+      "0x000000CE"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.10"
+  },
+  {
+    "question": "Admita que a1 contém o endereço do vetor int v[] = {7, 14, 21, 28, 35}. Que valor fica em a0 depois de lw a0, 8(a1)?",
+    "answers": [
+      "14",
+      "28",
+      "21",
+      "8"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.19"
+  },
+  {
+    "question": "Admita que a1 contém o endereço do vetor int v[] = {7, 14, 21, 28, 35}. Com a2 = 3, que valor fica em a0 depois de executar slli t1, a2, 2 / add t1, a1, t1 / lw a0, 0(t1)?",
+    "answers": [
+      "28",
+      "21",
+      "35",
+      "14"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.21"
+  },
+  {
+    "question": "Admita que a1 contém o endereço do vetor int v[] = {11, 22, 33}. Que valor fica em a0 depois de executar addi a2, a1, 8 / lw a0, -4(a2)?",
+    "answers": [
+      "11",
+      "33",
+      "12",
+      "22"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.5"
+  },
+  {
+    "question": "Admita que a1 contém o endereço do vetor short s[] = {1000, -2, 300, -4}. Que valor fica em a0 depois de lhu a0, 2(a1)?",
+    "answers": [
+      "-2",
+      "65534",
+      "2",
+      "65535"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.6"
+  },
+  {
+    "question": "Admita que a1 contém o endereço do vetor short s[] = {1000, -2, 300, -4}. Que valor fica em a0 depois de lh a0, 6(a1)?",
+    "answers": [
+      "-2",
+      "-4",
+      "300",
+      "65532"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.6"
+  },
+  {
+    "question": "Admita que a1 contém o endereço do vetor int v[] = {3, -1, 8, 2, 6}. Que valor fica em a0 depois de executar li a0, 0 / li t0, 0 / li t1, 5 / ciclo: bge t0, t1, fim / lw t2, 0(a1) / add a0, a0, t2 / addi a1, a1, 4 / addi t0, t0, 1 / j ciclo / fim: ret?",
+    "answers": [
+      "19",
+      "17",
+      "10",
+      "18"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.22"
+  },
+  {
+    "question": "Admita que a1 contém o endereço do vetor int v[] = {5, 9}. Que valor fica em a0 depois de executar lw t0, 0(a1) / lw t1, 4(a1) / sw t0, 4(a1) / sw t1, 0(a1) / lw a0, 0(a1)?",
+    "answers": [
+      "9",
+      "5",
+      "14",
+      "0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.9"
+  },
+  {
+    "question": "Admita que a1 contém o endereço do vetor int v[] = {5, 9}. Que valor fica em a0 depois de executar lw t0, 0(a1) / sw t0, 4(a1) / lw a0, 4(a1)?",
+    "answers": [
+      "14",
+      "4",
+      "5",
+      "0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.9"
+  },
+  {
+    "question": "Admita que a0 contém 0x00004000 e que a partir desse endereço está a string \"xyz\" com o terminador. Que valor fica em a0 depois de executar ciclo: lbu t0, 0(a0) / beqz t0, fim / addi a0, a0, 1 / j ciclo / fim: ret?",
+    "answers": [
+      "0x00004002",
+      "0x00004004",
+      "0x00000003",
+      "0x00004003"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.24"
+  },
+  {
+    "question": "Admita que a0 e a1 contêm 0x4000 e 0x5000 e que em 0x4000 está a string \"isep\" com o terminador. Depois de executar li t1, 0 / ciclo: lbu t0, 0(a0) / beqz t0, fim / sb t0, 0(a1) / addi a0, a0, 1 / addi a1, a1, 1 / addi t1, t1, 1 / j ciclo / fim: sb x0, 0(a1) / mv a0, t1, qual é o valor de a0?",
+    "answers": [
+      "5",
+      "4",
+      "3",
+      "0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.26"
+  },
+  {
+    "question": "Admita que a0 e a1 contêm 0x4000 e 0x5000 e que em 0x4000 está a string \"isep\" com o terminador. Depois de executar li t1, 0 / ciclo: lbu t0, 0(a0) / beqz t0, fim / sb t0, 0(a1) / addi a0, a0, 1 / addi a1, a1, 1 / addi t1, t1, 1 / j ciclo / fim: sb x0, 0(a1) / mv a0, t1, que valor tem o byte em 0x5004?",
+    "answers": [
+      "112",
+      "4",
+      "0",
+      "52"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.26"
+  },
+  {
+    "question": "A que instrução real corresponde a pseudoinstrução bgt a2, a3, destino?",
+    "answers": [
+      "blt a3, a2, destino",
+      "blt a2, a3, destino",
+      "bge a3, a2, destino",
+      "bge a2, a3, destino"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.6"
+  },
+  {
+    "question": "A que instrução corresponde a pseudoinstrução bnez t0, destino?",
+    "answers": [
+      "beq t0, x0, destino",
+      "blt t0, x0, destino",
+      "bgt t0, x0, destino",
+      "bne t0, x0, destino"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.10"
+  },
+  {
+    "question": "A que instrução corresponde a pseudoinstrução bgtz a0, destino?",
+    "answers": [
+      "blt a0, x0, destino",
+      "blt x0, a0, destino",
+      "bge x0, a0, destino",
+      "bge a0, x0, destino"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.10"
+  },
+  {
+    "question": "A que instrução corresponde a pseudoinstrução j fim?",
+    "answers": [
+      "jal ra, fim",
+      "jal x0, fim",
+      "jalr x0, fim",
+      "beq x0, x0, 0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.4"
+  },
+  {
+    "question": "A que instrução corresponde a pseudoinstrução seqz a0, a1?",
+    "answers": [
+      "sltiu a0, a1, 0",
+      "slti a0, a1, 0",
+      "sltiu a0, a1, -1",
+      "sltiu a0, a1, 1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.28"
+  },
+  {
+    "question": "Que condição é testada por slt a0, a2, a1?",
+    "answers": [
+      "Se a2 é menor do que a1, com sinal",
+      "Se a2 é maior do que a1, com sinal",
+      "Se a2 é menor do que a1, sem sinal",
+      "Se a2 é maior ou igual a a1, com sinal"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.24"
+  },
+  {
+    "question": "Como se calcula x > y (com sinal) em RV32, com x em a0 e y em a1, sem usar branches?",
+    "answers": [
+      "slt a0, a0, a1",
+      "sltu a0, a0, a1",
+      "slt a0, a1, a0",
+      "slt a0, x0, a0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.27"
+  },
+  {
+    "question": "Para quantos valores de a1 (de entre os 2^32 possíveis) a instrução sltiu a0, a1, 2 deixa 1 em a0?",
+    "answers": [
+      "Para 1 valor",
+      "Para 3 valores",
+      "Para 4 valores",
+      "Para 2 valores"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.26"
+  },
+  {
+    "question": "Qual é o intervalo do imediato de 12 bits com sinal usado por slti e por lw?",
+    "answers": [
+      "De -4096 a 4095",
+      "De -2048 a 2047",
+      "De 0 a 4095",
+      "De -2047 a 2048"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.24"
+  },
+  {
+    "question": "Qual das instruções seguintes não pode ser codificada em RV32?",
+    "answers": [
+      "lw a0, 2047(a1)",
+      "lw a0, -2048(a1)",
+      "lw a0, 2048(a1)",
+      "lw a0, 0(a1)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.5"
+  },
+  {
+    "question": "Qual é aproximadamente o alcance de um branch condicional (bXX) em relação ao PC?",
+    "answers": [
+      "Cerca de 4 KiB em cada sentido",
+      "Cerca de 2 KiB em cada sentido",
+      "Cerca de 1 MiB em cada sentido",
+      "Todo o espaço de 32 bits"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.5"
+  },
+  {
+    "question": "Para que serve o salto j inicial na tradução de um while que começa por j teste?",
+    "answers": [
+      "Para guardar o endereço de retorno da função",
+      "Para repor o contador do ciclo a zero",
+      "Para repetir o teste duas vezes por iteração",
+      "Testar antes da primeira execução do corpo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.18"
+  },
+  {
+    "question": "Num while (a0 < a1) em que o teste fica no topo do ciclo, que instrução faz a saída do ciclo?",
+    "answers": [
+      "blt a0, a1, fim",
+      "bge a0, a1, fim",
+      "beq a0, a1, fim",
+      "bgt a0, a1, fim"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.19"
+  },
+  {
+    "question": "Num for (i = 0; i < n; i++), onde fica o incremento i++ no while equivalente?",
+    "answers": [
+      "Antes do teste, no início do ciclo",
+      "No fim do corpo, antes do teste",
+      "Antes da inicialização de i",
+      "Depois da saída do ciclo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.21"
+  },
+  {
+    "question": "Qual é a diferença entre um ciclo do-while e um ciclo while?",
+    "answers": [
+      "O while executa o corpo pelo menos uma vez",
+      "O do-while testa a condição com branches sem sinal",
+      "O while só termina com um jump incondicional",
+      "O do-while executa o corpo pelo menos uma vez"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.17"
+  },
+  {
+    "question": "Que instrução usa o código do do-while para repetir o corpo enquanto x for maior do que 1, com 1 em t2 e x em a0?",
+    "answers": [
+      "blt t2, a0, ciclo",
+      "blt a0, t2, ciclo",
+      "bge t2, a0, ciclo",
+      "beq t2, a0, ciclo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.16"
+  },
+  {
+    "question": "Que branch de saída do ciclo corresponde a while (x > 1) quando o teste fica no topo, com 1 em t2 e x em a0?",
+    "answers": [
+      "bgt a0, t2, fim",
+      "blt a0, t2, fim",
+      "ble a0, t2, fim",
+      "bge a0, t2, fim"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.19"
+  },
+  {
+    "question": "Qual das instruções copia o registo t0 para a memória, no endereço a1 + 8?",
+    "answers": [
+      "sw 8(a1), t0",
+      "lw t0, 8(a1)",
+      "sw a1, 8(t0)",
+      "sw t0, 8(a1)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.9"
+  },
+  {
+    "question": "Qual é o efeito de lbu a0, 0(a1)?",
+    "answers": [
+      "Lê um byte e estende o sinal para os 24 bits superiores",
+      "Lê um byte e preenche com zeros os 24 bits superiores de a0",
+      "Lê um byte e deixa os 24 bits superiores de a0 como estavam",
+      "Lê 4 bytes e guarda o menos significativo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.6"
+  },
+  {
+    "question": "Depois de la t0, x, o que contém o registo t0?",
+    "answers": [
+      "O valor da variável x",
+      "O valor de x mais 4",
+      "O endereço da variável x",
+      "O endereço da instrução seguinte"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.12"
+  },
+  {
+    "question": "Que sequência deixa em a0 o valor da variável global x, do tipo int?",
+    "answers": [
+      "la t0, x / lw a0, 0(t0)",
+      "la a0, x / lw a0, 4(a0)",
+      "lw t0, x / la a0, 0(t0)",
+      "la t0, x / sw a0, 0(t0)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.13"
+  },
+  {
+    "question": "Qual é a sequência de duas instruções reais em que normalmente se expande la rd, label?",
+    "answers": [
+      "lui rd, %hi(label) / lw rd, %lo(label)(rd)",
+      "addi rd, x0, label / auipc rd, 0",
+      "auipc rd, label / lw rd, 0(rd)",
+      "auipc rd, %hi(label) / addi rd, rd, %lo(label)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.12"
+  },
+  {
+    "question": "Qual é o offset de v[12] em lw, para int v[], relativamente ao endereço de v[0]?",
+    "answers": [
+      "12",
+      "48",
+      "24",
+      "96"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.19"
+  },
+  {
+    "question": "Qual é o offset de s[9] em lh, para short s[], relativamente ao endereço de s[0]?",
+    "answers": [
+      "9",
+      "18",
+      "36",
+      "4"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.15"
+  },
+  {
+    "question": "Qual é o tamanho em bytes de char *tab[7] em RV32?",
+    "answers": [
+      "7",
+      "14",
+      "56",
+      "28"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.15"
+  },
+  {
+    "question": "Qual é o tamanho em bytes de short m[13] em RV32?",
+    "answers": [
+      "26",
+      "13",
+      "52",
+      "39"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.15"
+  },
+  {
+    "question": "Qual é o tamanho em bytes de long long q[5] em RV32?",
+    "answers": [
+      "20",
+      "10",
+      "40",
+      "80"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.15"
+  },
+  {
+    "question": "Quantos bytes reserva a diretiva .comm tab, 15*2?",
+    "answers": [
+      "15",
+      "60",
+      "17",
+      "30"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.16"
+  },
+  {
+    "question": "Quantos bytes ocupa em memória str: .asciz \"isep\"?",
+    "answers": [
+      "4",
+      "5",
+      "6",
+      "8"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.17"
+  },
+  {
+    "question": "Com o índice i em t0 e o endereço de um vetor int em a1, que sequência deixa em t1 o endereço de v[i]?",
+    "answers": [
+      "add t1, a1, t0",
+      "slli t1, t0, 1 / add t1, a1, t1",
+      "slli t1, t0, 2 / add t1, a1, t1",
+      "slli t1, a1, 2 / add t1, t0, t1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.21"
+  },
+  {
+    "question": "No final do str_copy, para que serve a instrução sb x0, 0(a1)?",
+    "answers": [
+      "Escrever o terminador nulo na string de destino",
+      "Apagar o primeiro carácter da string de origem",
+      "Repor o contador de caracteres a zero",
+      "Guardar o valor de retorno na memória"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.26"
+  },
+  {
+    "question": "Num ciclo que copia uma string, o que contém a1 quando o ciclo termina?",
+    "answers": [
+      "O endereço do primeiro carácter da cópia",
+      "O número de caracteres copiados",
+      "O endereço do terminador da origem",
+      "O endereço onde se escreve o terminador nulo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.26"
+  },
+  {
+    "question": "Qual é o erro clássico ao indexar um vetor de words em assembly, segundo o endereçamento ao byte?",
+    "answers": [
+      "Somar 4 em vez de 1 ao endereço",
+      "Somar 1 em vez de 4 ao endereço",
+      "Usar lw em vez de lh",
+      "Usar offsets sem sinal"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.4"
+  },
+  {
+    "question": "O que acontece aos bits superiores de t0 em lb t0, 0(a1) quando o byte lido é 0x80?",
+    "answers": [
+      "Ficam todos a 0",
+      "Ficam todos a 1",
+      "Ficam como estavam antes",
+      "Ficam a 1 apenas no bit 31"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.6"
+  },
+  {
+    "question": "Em RISC-V, o PC pode ser lido com mv t0, pc como qualquer registo de uso geral",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.3"
+  },
+  {
+    "question": "Quando um branch condicional é tomado, o PC passa a conter o endereço do alvo em vez de avançar 4 bytes",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.3"
+  },
+  {
+    "question": "A instrução bge a0, 7, destino é válida em RV32 e compara um registo com um imediato",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.5"
+  },
+  {
+    "question": "A pseudoinstrução bgt é expandida pelo assembler numa sequência de duas instruções",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.6"
+  },
+  {
+    "question": "A pseudoinstrução j é traduzida para uma instrução jal com x0 como registo de retorno",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.4"
+  },
+  {
+    "question": "Não existem versões sem sinal de beq e bne porque a igualdade não depende do sinal",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.9"
+  },
+  {
+    "question": "Em bltu t0, t1, destino, os valores de t0 e t1 são tratados como números sem sinal",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.9"
+  },
+  {
+    "question": "Admita t0 = -1 e t1 = 1. O salto em bltu t0, t1, destino é tomado",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.9"
+  },
+  {
+    "question": "Num while, o corpo do ciclo executa sempre pelo menos uma vez",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.15"
+  },
+  {
+    "question": "Num while, o teste da condição é avaliado antes da primeira execução do corpo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.17"
+  },
+  {
+    "question": "Em RISC-V existem instruções dedicadas a ciclos, como loop e repeat",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.14"
+  },
+  {
+    "question": "Um ciclo for de C pode ser traduzido primeiro para um while equivalente",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.20"
+  },
+  {
+    "question": "RISC-V tem registos de condição (flags), como zero, carry e overflow, atualizados pelas instruções aritméticas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.23"
+  },
+  {
+    "question": "A instrução sltiu compara o registo com um imediato de 12 bits, depois de o estender com sinal e de o tratar como valor sem sinal",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.26"
+  },
+  {
+    "question": "Com a1 = 0 em sltiu a0, a1, 1, o resultado em a0 é 1",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.28"
+  },
+  {
+    "question": "Com a1 = 0xFFFFFFFF, a instrução sltiu a0, a1, -1 deixa 1 em a0",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.26"
+  },
+  {
+    "question": "RISC-V é uma arquitetura load-store: apenas as instruções de load e de store acedem à memória",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.2"
+  },
+  {
+    "question": "Na memória endereçável ao byte, passar para a word seguinte significa somar 1 ao endereço",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.4"
+  },
+  {
+    "question": "Uma instrução de store estende o sinal do valor antes de o escrever em memória",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.8"
+  },
+  {
+    "question": "A instrução sb guarda em memória os 8 bits menos significativos do registo origem",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.9"
+  },
+  {
+    "question": "A instrução sh guarda em memória os 16 bits mais significativos do registo origem",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.9"
+  },
+  {
+    "question": "A instrução lhu preenche os 16 bits superiores do registo destino com o bit de sinal da half word",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.6"
+  },
+  {
+    "question": "A pseudoinstrução la carrega para o registo o conteúdo da variável indicada",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.12"
+  },
+  {
+    "question": "A string declarada com .asciz não inclui o terminador nulo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.17"
+  },
+  {
+    "question": "Num ciclo que testa o fim de uma string, tanto lb como lbu permitem detetar o terminador nulo com beqz",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.24"
+  },
+  {
+    "question": "Se o offset de um load for dinâmico, o endereço completo deve ser calculado num registo e usado com offset 0",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.21"
+  },
+  {
+    "question": "Em str_count, o valor devolvido inclui o terminador nulo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.24"
+  },
+  {
+    "question": "Considere a função power: li t0, 1 / mv t1, a1 / loop: beq t1, zero, done / mul t0, t0, a0 / addi t1, t1, -1 / j loop / done: mv a0, t0 / ret. Se a0 = 3 e a1 = 4 à entrada, qual é o valor de a0 no regresso?",
+    "answers": [
+      "12",
+      "64",
+      "81",
+      "243"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.27"
+  },
+  {
+    "question": "Considere a função power: li t0, 1 / mv t1, a1 / loop: beq t1, zero, done / mul t0, t0, a0 / addi t1, t1, -1 / j loop / done: mv a0, t0 / ret. Se a0 = -2 e a1 = 5 à entrada, qual é o valor de a0 no regresso?",
+    "answers": [
+      "-32",
+      "32",
+      "-10",
+      "25"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.27"
+  },
+  {
+    "question": "Considere a função power: li t0, 1 / mv t1, a1 / loop: beq t1, zero, done / mul t0, t0, a0 / addi t1, t1, -1 / j loop / done: mv a0, t0 / ret. Se a0 = 7 e a1 = 0 à entrada, qual é o valor de a0 no regresso?",
+    "answers": [
+      "0",
+      "7",
+      "-1",
+      "1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.27"
+  },
+  {
+    "question": "Considere a função power: li t0, 1 / mv t1, a1 / loop: beq t1, zero, done / mul t0, t0, a0 / addi t1, t1, -1 / j loop / done: mv a0, t0 / ret. Se a0 = 2 e a1 = 31 à entrada, qual é o valor de a0 no regresso, interpretado como int?",
+    "answers": [
+      "2147483647",
+      "-2147483648",
+      "2147483648",
+      "0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.27"
+  },
+  {
+    "question": "Considere a função power: li t0, 1 / mv t1, a1 / loop: beq t1, zero, done / mul t0, t0, a0 / addi t1, t1, -1 / j loop / done: mv a0, t0 / ret. Se a0 = 2 e a1 = 32 à entrada, qual é o valor de a0 no regresso?",
+    "answers": [
+      "1",
+      "0",
+      "-1",
+      "4294967296"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.27"
+  },
+  {
+    "question": "Considere a função power: li t0, 1 / mv t1, a1 / loop: beq t1, zero, done / mul t0, t0, a0 / addi t1, t1, -1 / j loop / done: mv a0, t0 / ret. Se a1 = 6 à entrada, quantas vezes é executada a instrução beq t1, zero, done?",
+    "answers": [
+      "6",
+      "5",
+      "8",
+      "7"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.27"
+  },
+  {
+    "question": "A função sum_powers(nums, size, exponent) devolve a soma de cada nums[i] elevado a exponent. Qual é o valor devolvido para nums = {1, 2, 3, 4}, size = 4 e exponent = 3?",
+    "answers": [
+      "100",
+      "10",
+      "30",
+      "64"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.25"
+  },
+  {
+    "question": "A função sum_powers(nums, size, exponent) devolve a soma de cada nums[i] elevado a exponent. Qual é o valor devolvido para nums = {5, -2, 3}, size = 3 e exponent = 2?",
+    "answers": [
+      "6",
+      "36",
+      "38",
+      "30"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.25"
+  },
+  {
+    "question": "A função sum_powers põe s0 a zero, soma power(nums[i], exponent) a s0 em cada iteração e devolve s0. Qual é o valor devolvido quando size é 0?",
+    "answers": [
+      "1",
+      "nums[0]",
+      "exponent",
+      "0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.28"
+  },
+  {
+    "question": "Em sum_powers, o apontador nums é copiado para s2 e não para t0. Porque é que isso é necessário?",
+    "answers": [
+      "Porque a instrução lw só aceita registos s como base do endereço",
+      "Porque power pode alterar t0, mas tem de preservar s2",
+      "Porque t0 não tem largura suficiente para conter um endereço",
+      "Porque os registos s são lidos mais depressa do que os temporários"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.28"
+  },
+  {
+    "question": "Considere o início de sum_powers: addi sp, sp, -32 / sw ra, 28(sp) / sw s0, 24(sp) / sw s1, 20(sp) / sw s2, 16(sp) / sw s3, 12(sp). Que registo fica guardado em 20(sp)?",
+    "answers": [
+      "s0",
+      "s2",
+      "s1",
+      "ra"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.28"
+  },
+  {
+    "question": "Considere o início de sum_powers: addi sp, sp, -32 / sw ra, 28(sp) / sw s0, 24(sp) / sw s1, 20(sp) / sw s2, 16(sp) / sw s3, 12(sp). Quantos bytes da frame de 32 bytes ficam sem uso?",
+    "answers": [
+      "12",
+      "4",
+      "8",
+      "16"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.28"
+  },
+  {
+    "question": "Considere int f1(int a, int b, int c){ return a + b + f2(c); } e int f2(int c){ return c + 1; }. Qual é o valor devolvido por f1(4, -6, 20)?",
+    "answers": [
+      "18",
+      "31",
+      "19",
+      "21"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.17"
+  },
+  {
+    "question": "Em f1, o valor de a é copiado para s1 antes de call f2 e é lido de s1 depois da chamada. Qual é a vantagem de s1 sobre a0 neste caso?",
+    "answers": [
+      "O registo s1 é preservado por f2, ao passo que a0 pode ser alterado",
+      "O registo s1 dispensa a f1 de guardar o seu endereço de retorno",
+      "O registo a0 só consegue conter valores positivos de 16 bits",
+      "O registo s1 evita que f2 precise de ter uma stack frame"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.7"
+  },
+  {
+    "question": "Considere: li t0, 5 / li s0, 9 / call g / add a0, t0, s0. A função g cumpre a convenção: guarda s0 na stack, faz li s0, 50 / li t0, 100, repõe s0 e executa ret. Qual é o valor de a0 no fim?",
+    "answers": [
+      "14",
+      "59",
+      "150",
+      "109"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.14"
+  },
+  {
+    "question": "Uma função f contém apenas call g / ret, e f foi chamada por main sem ter guardado ra na stack. O que acontece quando f executa ret?",
+    "answers": [
+      "Regressa corretamente à instrução seguinte no main",
+      "Salta para o próprio ret de f, em ciclo infinito",
+      "Salta para a primeira instrução da função g",
+      "Termina o programa com um erro de segmentação imediato"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.20"
+  },
+  {
+    "question": "Na função f, já com ra guardado, o código é li t0, 4 / call g / add a0, a0, t0 / ret, e g pode alterar t0. Como se corrige f?",
+    "answers": [
+      "Copiando t0 para ra antes do call a g",
+      "Guardando t0 na stack em torno do call",
+      "Usando a1 em vez de t0 para esse valor",
+      "Trocando call g por jal zero, g"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.20"
+  },
+  {
+    "question": "Uma função guarda ra e s0 a s6 na stack. Qual é o tamanho mínimo da frame, sendo múltiplo de 16?",
+    "answers": [
+      "28",
+      "36",
+      "48",
+      "32"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.13"
+  },
+  {
+    "question": "Uma função guarda ra e s0 a s7 na stack. Qual é o tamanho mínimo da frame, sendo múltiplo de 16?",
+    "answers": [
+      "48",
+      "36",
+      "40",
+      "32"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.13"
+  },
+  {
+    "question": "Uma função guarda ra, s0 e s1 na stack. Qual é o tamanho mínimo da frame, sendo múltiplo de 16?",
+    "answers": [
+      "12",
+      "8",
+      "16",
+      "32"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.13"
+  },
+  {
+    "question": "Uma função chama g com 11 argumentos int. Quantos bytes ocupam os argumentos passados na stack, antes de qualquer arredondamento?",
+    "answers": [
+      "8",
+      "16",
+      "24",
+      "12"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.6"
+  },
+  {
+    "question": "Uma função chama g com 13 argumentos int. Quantos bytes tem de reservar o chamador para os argumentos passados na stack, mantendo sp alinhado a 16?",
+    "answers": [
+      "20",
+      "32",
+      "24",
+      "16"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.5"
+  },
+  {
+    "question": "Uma função guarda ra, s0 e s1 (12 bytes) e chama g com 11 argumentos int, dos quais 3 vão para a stack (12 bytes). Qual é o tamanho mínimo da reserva única de stack, que tem de ser múltiplo de 16?",
+    "answers": [
+      "24",
+      "16",
+      "32",
+      "48"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.5"
+  },
+  {
+    "question": "Uma função não folha tem uma variável local int v[5] na stack e guarda ra. Qual é o tamanho mínimo da frame, sendo múltiplo de 16?",
+    "answers": [
+      "32",
+      "24",
+      "20",
+      "48"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.12"
+  },
+  {
+    "question": "Uma função não folha tem uma variável local int v[3] na stack e guarda ra. Qual é o tamanho mínimo da frame, sendo múltiplo de 16?",
+    "answers": [
+      "12",
+      "8",
+      "16",
+      "32"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.12"
+  },
+  {
+    "question": "Numa chamada com mais de 8 argumentos int, em que posição, relativa a sp imediatamente antes de call, é passado o 12.º argumento?",
+    "answers": [
+      "12(sp)",
+      "8(sp)",
+      "16(sp)",
+      "44(sp)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.5"
+  },
+  {
+    "question": "Numa chamada com mais de 8 argumentos int, em que posição, relativa a sp imediatamente antes de call, é passado o 14.º argumento?",
+    "answers": [
+      "16(sp)",
+      "24(sp)",
+      "56(sp)",
+      "20(sp)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.5"
+  },
+  {
+    "question": "Numa chamada de função com 10 argumentos int, em que registo é passado o 6.º argumento?",
+    "answers": [
+      "a6",
+      "a5",
+      "t5",
+      "s5"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.4"
+  },
+  {
+    "question": "Numa chamada de função com 10 argumentos int, em que registo é passado o 7.º argumento?",
+    "answers": [
+      "a7",
+      "a6",
+      "t6",
+      "s6"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.4"
+  },
+  {
+    "question": "Antes de um call, o chamador executa addi sp, sp, -32 e depois sw t0, 16(sp). Que argumento da chamada passa a ser transmitido por esta instrução?",
+    "answers": [
+      "O 12.º",
+      "O 14.º",
+      "O 16.º",
+      "O 13.º"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.5"
+  },
+  {
+    "question": "Uma função recebe 11 argumentos int e começa com addi sp, sp, -16. Em que posição relativa a sp, depois dessa instrução, pode ler o 10.º argumento?",
+    "answers": [
+      "20(sp)",
+      "4(sp)",
+      "16(sp)",
+      "24(sp)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.6"
+  },
+  {
+    "question": "Uma função recebe 11 argumentos int e começa com addi sp, sp, -32. Em que posição relativa a sp, depois dessa instrução, pode ler o 9.º argumento?",
+    "answers": [
+      "0(sp)",
+      "28(sp)",
+      "32(sp)",
+      "36(sp)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.6"
+  },
+  {
+    "question": "Os argumentos 9, 10 e 11 de uma função são os inteiros 90, -4 e 5, guardados em 0(sp), 4(sp) e 8(sp). O código é lw t0, 0(sp) / lw t1, 4(sp) / div a0, t0, t1 / lw t0, 8(sp) / mul a0, a0, t0 / ret. Qual é o valor devolvido em a0?",
+    "answers": [
+      "-115",
+      "110",
+      "-112",
+      "-110"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.9"
+  },
+  {
+    "question": "Os argumentos 9, 10 e 11 de uma função são os inteiros -17, 5 e -2, guardados em 0(sp), 4(sp) e 8(sp). O código é lw t0, 0(sp) / lw t1, 4(sp) / div a0, t0, t1 / lw t0, 8(sp) / mul a0, a0, t0 / ret. Qual é o valor devolvido em a0?",
+    "answers": [
+      "8",
+      "6",
+      "-6",
+      "-8"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.9"
+  },
+  {
+    "question": "Para chamar g(c, a) a partir de uma função com a em a0, b em a1 e c em a2, o código é mv a0, a2 / mv a1, a0 / call g. Se a0 = 1, a1 = 2 e a2 = 3 à entrada, que valor recebe g como segundo argumento?",
+    "answers": [
+      "1",
+      "2",
+      "3",
+      "0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.7"
+  },
+  {
+    "question": "Qual destas variáveis locais tem obrigatoriamente de residir na stack, e não apenas num registo?",
+    "answers": [
+      "Um int cujo endereço é passado a outra função com &",
+      "Um int usado como contador de um ciclo for simples",
+      "Um char lido uma só vez e logo comparado com zero",
+      "Um short usado apenas numa soma de dois valores"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.12"
+  },
+  {
+    "question": "Depois de addi sp, sp, -16 numa função, sp vale 0x1FF0. Que valor fica em a1 após addi a1, sp, 4?",
+    "answers": [
+      "0x1FF0",
+      "0x1FF8",
+      "0x1FF4",
+      "0x2004"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.16"
+  },
+  {
+    "question": "Numa função com frame pointer, fp vale 0x3000. Que valor fica em a1 após addi a1, fp, -12?",
+    "answers": [
+      "0x2FF4",
+      "0x300C",
+      "0x2FF0",
+      "0x2FFC"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.17"
+  },
+  {
+    "question": "Uma frame de 32 bytes tem fp = sp + 32. Uma variável local em 20(sp) é acedida através de fp em que offset?",
+    "answers": [
+      "-20(fp)",
+      "12(fp)",
+      "-32(fp)",
+      "-12(fp)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.11"
+  },
+  {
+    "question": "Uma frame de 48 bytes tem fp = sp + 48. Uma variável local em 40(sp) é acedida através de fp em que offset?",
+    "answers": [
+      "-40(fp)",
+      "-8(fp)",
+      "8(fp)",
+      "-48(fp)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.11"
+  },
+  {
+    "question": "Numa função, int v[6] está na stack a partir de 8(sp). Em que posição relativa a sp está v[3]?",
+    "answers": [
+      "11(sp)",
+      "20(sp)",
+      "14(sp)",
+      "32(sp)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.12"
+  },
+  {
+    "question": "Numa função, int v[4] está na stack a partir de 0(sp). Que elemento é carregado por lw t0, 12(sp)?",
+    "answers": [
+      "v[2]",
+      "v[4]",
+      "v[12]",
+      "v[3]"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.12"
+  },
+  {
+    "question": "Considere int swap_add(int *xp, int *yp){ int x = *xp; int y = *yp; *xp = y; *yp = x; return x + y; } chamada com swap_add(&v[0], &v[1]) e v = {4, 9}. Qual é o resultado?",
+    "answers": [
+      "O vetor passa a {9, 4} e devolve 13",
+      "O vetor fica {4, 9} e devolve 13",
+      "O vetor passa a {9, 4} e devolve 5",
+      "O vetor passa a {9, 9} e devolve 18"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.14"
+  },
+  {
+    "question": "Considere int swap_add(int *xp, int *yp){ int x = *xp; int y = *yp; *xp = y; *yp = x; return x + y; } e int f1(){ int var1 = 7; int var2 = 2; int sum = swap_add(&var1, &var2); int diff = var1 - var2; return sum * diff; }. Qual é o valor devolvido por f1?",
+    "answers": [
+      "45",
+      "9",
+      "-45",
+      "-63"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.14"
+  },
+  {
+    "question": "A função f é chamada com sp = 0x8000 e começa com addi sp, sp, -32. Depois f chama g, que começa com addi sp, sp, -16. Qual é o valor de sp no corpo de g?",
+    "answers": [
+      "0x7FE0",
+      "0x7FC0",
+      "0x7FF0",
+      "0x7FD0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.13"
+  },
+  {
+    "question": "Uma função começa com addi sp, sp, -16 / sw ra, 12(sp) / sw fp, 8(sp) / addi fp, sp, 16. Qual destas instruções repõe corretamente o fp do chamador no epílogo?",
+    "answers": [
+      "lw fp, 12(sp)",
+      "lw fp, 8(sp)",
+      "lw fp, 16(sp)",
+      "lw fp, 0(sp)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.17"
+  },
+  {
+    "question": "Uma função faz addi sp, sp, -16 / sw ra, 12(sp) e, no epílogo, executa addi sp, sp, 16 antes de lw ra, 12(sp). Qual é o problema?",
+    "answers": [
+      "O lw lê ra de um endereço que deixa de estar alinhado a 4",
+      "A instrução addi sp, sp, 16 fica com um imediato inválido",
+      "O lw lê ra de uma zona já desalocada, abaixo de sp",
+      "O ret passa a usar o registo sp em vez de ra"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.23"
+  },
+  {
+    "question": "Com a0 = 10 e a1 = 20, o código é addi sp, sp, -8 / sw a0, 4(sp) / sw a1, 0(sp) / lw a0, 0(sp) / lw a1, 4(sp) / addi sp, sp, 8. Quais são os valores finais de a0 e a1?",
+    "answers": [
+      "Ficam a0 = 20 e a1 = 10",
+      "Ficam a0 = 10 e a1 = 20",
+      "Ficam a0 = 20 e a1 = 20",
+      "Ficam a0 = 10 e a1 = 10"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.13"
+  },
+  {
+    "question": "Considere addi sp, sp, -16 / li t0, 17 / sw t0, 12(sp) / li t1, 34 / sw t1, 8(sp) / lw t2, 12(sp) / lw t3, 8(sp) / sub a0, t2, t3. Qual é o valor de a0?",
+    "answers": [
+      "17",
+      "51",
+      "-17",
+      "-51"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.23"
+  },
+  {
+    "question": "Considere addi sp, sp, -16 / li t0, 0x12345678 / sw t0, 4(sp) / lbu a0, 7(sp). Qual é o valor de a0?",
+    "answers": [
+      "0x12",
+      "0x78",
+      "0x34",
+      "0x56"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.4"
+  },
+  {
+    "question": "Considere addi sp, sp, -16 / li t0, 0x12345678 / sw t0, 4(sp) / lhu a0, 4(sp). Qual é o valor de a0?",
+    "answers": [
+      "0x1234",
+      "0x7856",
+      "0x3412",
+      "0x5678"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.4"
+  },
+  {
+    "question": "A instrução jal ra, f está no endereço 0x400 e a label f está em 0x440. Qual é o valor de ra depois de jal ra, f?",
+    "answers": [
+      "0x400",
+      "0x404",
+      "0x440",
+      "0x444"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.7"
+  },
+  {
+    "question": "A instrução jal ra, f está no endereço 0x400 e a label f está em 0x440. Qual é o valor do PC logo depois de executar jal ra, f?",
+    "answers": [
+      "0x404",
+      "0x440",
+      "0x400",
+      "0x444"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.7"
+  },
+  {
+    "question": "A instrução jalr ra, 8(t0) está no endereço 0x500 e t0 vale 0x600. Qual é o valor do PC logo depois de a executar?",
+    "answers": [
+      "0x508",
+      "0x600",
+      "0x604",
+      "0x608"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.8"
+  },
+  {
+    "question": "A instrução jalr ra, 8(t0) está no endereço 0x500 e t0 vale 0x600. Qual é o valor de ra logo depois de a executar?",
+    "answers": [
+      "0x504",
+      "0x500",
+      "0x608",
+      "0x508"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.8"
+  },
+  {
+    "question": "Antes de jal zero, L o registo ra vale 0x1234. Qual é o valor de ra depois dessa instrução?",
+    "answers": [
+      "0",
+      "O endereço da instrução seguinte",
+      "0x1234",
+      "O endereço de L"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.7"
+  },
+  {
+    "question": "Qual destes registos pode ser alterado livremente por uma função, sem o repor antes do ret?",
+    "answers": [
+      "s11",
+      "s0",
+      "sp",
+      "t6"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.15"
+  },
+  {
+    "question": "Qual é o número do registo s5?",
+    "answers": [
+      "x20",
+      "x21",
+      "x14",
+      "x26"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.15"
+  },
+  {
+    "question": "Qual é o nome ABI do registo x28?",
+    "answers": [
+      "t0",
+      "s8",
+      "t3",
+      "a4"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.15"
+  },
+  {
+    "question": "Qual é o nome ABI do registo x17?",
+    "answers": [
+      "a7",
+      "a6",
+      "s1",
+      "t2"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.15"
+  },
+  {
+    "question": "Quantos registos s (s0 a s11, incluindo o fp) existem no total em RISC-V?",
+    "answers": [
+      "8",
+      "10",
+      "12",
+      "11"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.15"
+  },
+  {
+    "question": "Porque é que uma função folha que só usa a0 e t0 pode dispensar a stack frame?",
+    "answers": [
+      "Porque não faz chamadas e só usa registos livres",
+      "Porque as funções folha usam sempre o registo fp como base",
+      "Porque a0 e t0 são callee-saved e já são repostos pelo chamador",
+      "Porque as funções folha nunca devolvem um valor em a0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.19"
+  },
+  {
+    "question": "Um ciclo percorre um vetor de short com o apontador em s2. Que instrução avança s2 para o elemento seguinte?",
+    "answers": [
+      "addi s2, s2, 1",
+      "addi s2, s2, 4",
+      "addi s2, s2, 8",
+      "addi s2, s2, 2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.29"
+  },
+  {
+    "question": "Em jal rd, imm, o registo rd recebe o endereço PC+4",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.7"
+  },
+  {
+    "question": "Em jal ra, f, o registo ra recebe o endereço da própria instrução jal",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.7"
+  },
+  {
+    "question": "O imediato da instrução jalr tem 20 bits",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.8"
+  },
+  {
+    "question": "Uma função folha que apenas usa os registos a0 e t0 não precisa de guardar ra na stack",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.19"
+  },
+  {
+    "question": "Uma função que contém um call tem de guardar ra antes dele, se quiser regressar ao seu chamador",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.20"
+  },
+  {
+    "question": "Um callee que altera s2 tem de repor o valor original de s2 antes de executar ret",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.21"
+  },
+  {
+    "question": "O chamador tem de guardar t0 na stack antes de um call, se precisar do valor de t0 depois da chamada",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.20"
+  },
+  {
+    "question": "Depois de um call, o chamador pode assumir que t1 mantém o valor que tinha antes da chamada",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.16"
+  },
+  {
+    "question": "Numa frame de 16 bytes com s1 em 8(sp), o s1 guardado está 8 bytes acima do novo sp",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.24"
+  },
+  {
+    "question": "Quando uma função chama g com 11 argumentos int, o 10.º argumento fica em 4(sp) imediatamente antes do call",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.5"
+  },
+  {
+    "question": "Em RV32, cada argumento inteiro passado na stack ocupa 8 bytes",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.6"
+  },
+  {
+    "question": "Uma chamada com 11 argumentos int ocupa 12 bytes de argumentos na stack, mas a reserva tem de ser de 16 bytes para manter sp alinhado",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.5"
+  },
+  {
+    "question": "Uma variável local cujo endereço é obtido com o operador & tem de residir em memória",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.12"
+  },
+  {
+    "question": "Um vetor local de 10 int pode ser mantido num único registo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.12"
+  },
+  {
+    "question": "Com fp = sp + 32 definido no prólogo, uma variável em -12(fp) está em 20(sp)",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.11"
+  },
+  {
+    "question": "O registo a0 é preservado pelo callee, que tem de o repor antes de executar ret",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.15"
+  },
+  {
+    "question": "Ao contrário do código e dos dados, a stack e a heap variam de tamanho durante a execução do programa",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.2"
+  },
+  {
+    "question": "A stack é uma estrutura do tipo FIFO",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.3"
+  },
+  {
+    "question": "O registo sp contém o endereço mais baixo alocado na stack",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.4"
+  },
+  {
+    "question": "A pseudoinstrução ret é equivalente a jalr ra, 0(ra)",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.9"
+  },
+  {
+    "question": "A pseudoinstrução call f guarda em ra o endereço da instrução seguinte ao call",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.11"
+  },
+  {
+    "question": "Numa frame de 16 bytes com ra em 12(sp) e s0 em 8(sp), o ra está num endereço mais alto do que o s0",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.24"
+  },
+  {
+    "question": "Para obter em a1 o endereço de uma variável local guardada em 4(sp) usa-se lw a1, 4(sp)",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.16"
+  },
+  {
+    "question": "A instrução addi a0, sp, 0 tem o mesmo efeito que mv a0, sp",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.16"
+  },
+  {
+    "question": "Depois do call, o chamador desaloca os argumentos extra com addi sp, sp, 16, se tiver reservado 16 bytes para eles",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.7"
+  },
+  {
+    "question": "A instrução div t0, t1, t2 com t1 = -7 e t2 = 2 coloca -4 em t0",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.9"
+  },
+  {
+    "question": "Depois de a função chamada executar addi sp, sp, -16, o 9.º argumento continua em 0(sp)",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.6"
+  },
+  {
+    "question": "Admita li t0, 0xB7 / andi t1, t0, 0x3C. Que valor fica em t1?",
+    "answers": [
+      "0x8B",
+      "0x34",
+      "0xBF",
+      "0x3C"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.4"
+  },
+  {
+    "question": "Admita li t0, 0x61 / xori t1, t0, 0x20. Que valor fica em t1?",
+    "answers": [
+      "0x41",
+      "0x61",
+      "0x81",
+      "0x21"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.8"
+  },
+  {
+    "question": "Admita li t0, 0x14 / ori t1, t0, 0x34. Que valor fica em t1?",
+    "answers": [
+      "0x48",
+      "0x20",
+      "0x14",
+      "0x34"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.6"
+  },
+  {
+    "question": "Admita li t0, 0x0000FF00 / not t1, t0. Que valor fica em t1?",
+    "answers": [
+      "0xFFFFFF00",
+      "0x00FF00FF",
+      "0xFFFF00FF",
+      "0xFFFF0000"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.10"
+  },
+  {
+    "question": "Em que instrução se expande a pseudoinstrução not t2, t0?",
+    "answers": [
+      "xori t2, t0, 0",
+      "xori t2, t0, -1",
+      "sub t2, x0, t0",
+      "andi t2, t0, -1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.10"
+  },
+  {
+    "question": "Admita li t0, 0x12345679 / andi t1, t0, -16. Que valor fica em t1?",
+    "answers": [
+      "0x12345670",
+      "0x1234567F",
+      "0x00000009",
+      "0x00005670"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.16"
+  },
+  {
+    "question": "Qual das instruções seguintes é rejeitada pelo assembler por o imediato não caber em 12 bits com sinal?",
+    "answers": [
+      "andi t0, t1, 2047",
+      "andi t0, t1, -2048",
+      "andi t0, t1, 0",
+      "andi t0, t1, 2048"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.4"
+  },
+  {
+    "question": "Admita li t0, 0x12345678 / ori t1, t0, -128. Que valor fica em t1?",
+    "answers": [
+      "0x123456F8",
+      "0x1234567F",
+      "0xFFFFFFF8",
+      "0xFFFFFF80"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.6"
+  },
+  {
+    "question": "Admita li t0, 77 / andi t0, t0, -8. Que valor fica em t0?",
+    "answers": [
+      "69",
+      "72",
+      "5",
+      "80"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.16"
+  },
+  {
+    "question": "Admita li t0, 77 / addi t0, t0, 7 / andi t0, t0, -8. Que valor fica em t0?",
+    "answers": [
+      "80",
+      "72",
+      "84",
+      "77"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.16"
+  },
+  {
+    "question": "Admita li t0, 0x1D7 / andi t1, t0, 15. Que valor decimal fica em t1?",
+    "answers": [
+      "29",
+      "13",
+      "15",
+      "7"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.16"
+  },
+  {
+    "question": "Admita li a0, 0xAB / li a1, 0x3C / andi a0, a0, 0xF0 / andi a1, a1, 0x0F / or a0, a0, a1. Que valor fica em a0?",
+    "answers": [
+      "0xBC",
+      "0xA3",
+      "0xAC",
+      "0x3B"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.14"
+  },
+  {
+    "question": "Admita li t0, 5 / slli t1, t0, 3. Que valor fica em t1?",
+    "answers": [
+      "15",
+      "40",
+      "20",
+      "35"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.19"
+  },
+  {
+    "question": "Admita li t0, -100 / srli t1, t0, 4. Que valor decimal fica em t1?",
+    "answers": [
+      "268435449",
+      "-7",
+      "-6",
+      "536870905"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.23"
+  },
+  {
+    "question": "Admita li t0, -100 / srai t1, t0, 4 / li t2, 16 / div t3, t0, t2. Que valores ficam em t1 e t3, por esta ordem?",
+    "answers": [
+      "-6 e -7",
+      "-7 e -7",
+      "-6 e -6",
+      "-7 e -6"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.26"
+  },
+  {
+    "question": "Admita li a0, -64 / li a1, 33 / sra a2, a0, a1. Que valor fica em a2?",
+    "answers": [
+      "-1",
+      "-64",
+      "-32",
+      "0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.27"
+  },
+  {
+    "question": "Admita li t0, 3 / li t1, 35 / sll t2, t0, t1. Que valor fica em t2?",
+    "answers": [
+      "3",
+      "24",
+      "0",
+      "105"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.27"
+  },
+  {
+    "question": "Admita li t0, 1 / li t1, -1 / sll t2, t0, t1. Que valor decimal fica em t2?",
+    "answers": [
+      "-2147483648",
+      "0",
+      "1",
+      "2147483647"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.27"
+  },
+  {
+    "question": "Admita li t0, 1 / li t1, 0x105 / sll t2, t0, t1. Que valor decimal fica em t2?",
+    "answers": [
+      "261",
+      "1",
+      "0",
+      "32"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.19"
+  },
+  {
+    "question": "Admita li t0, 0x12345678 / slli t1, t0, 8 / srli t2, t0, 24 / or t3, t1, t2. Que valor fica em t3?",
+    "answers": [
+      "0x78123456",
+      "0x34567800",
+      "0x34567812",
+      "0x00123456"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.18"
+  },
+  {
+    "question": "Admita li t0, 0x12345678 / srli t1, t0, 4 / slli t2, t0, 28 / or t3, t1, t2. Que valor fica em t3?",
+    "answers": [
+      "0x01234567",
+      "0x81234567",
+      "0x23456781",
+      "0x81234560"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.18"
+  },
+  {
+    "question": "Admita li t0, 0x1A2B3C / srli t1, t0, 8 / andi t1, t1, 0xF. Que valor fica em t1?",
+    "answers": [
+      "0xB",
+      "0xA",
+      "0x2",
+      "0xC"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.17"
+  },
+  {
+    "question": "Admita li a0, 0x10 / li a1, 0x20 / li a2, 0x30 / slli t0, a0, 16 / slli t1, a1, 8 / or t0, t0, t1 / or t0, t0, a2. Que valor fica em t0?",
+    "answers": [
+      "0x302010",
+      "0x010203",
+      "0x203010",
+      "0x102030"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.3"
+  },
+  {
+    "question": "Admita li t0, 0xC8 / slli t0, t0, 24 / srai t0, t0, 24. Que valor decimal fica em t0?",
+    "answers": [
+      "200",
+      "56",
+      "-56",
+      "-200"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.24"
+  },
+  {
+    "question": "Admita li t0, 0x80000000 / srai t1, t0, 31 / srli t2, t0, 31. Que valores ficam em t1 e t2, por esta ordem?",
+    "answers": [
+      "1 e -1",
+      "-1 e 1",
+      "-1 e -1",
+      "1 e 1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.21"
+  },
+  {
+    "question": "Admita li a0, 3 / slli t1, a0, 5 / slli t2, a0, 3 / add a0, t1, t2. Que valor fica em a0?",
+    "answers": [
+      "120",
+      "96",
+      "24",
+      "40"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.17"
+  },
+  {
+    "question": "Admita li t0, 1003 / srli t1, t0, 3 / andi t2, t0, 7. Que valores ficam em t1 e t2, por esta ordem?",
+    "answers": [
+      "125 e 0",
+      "3 e 125",
+      "8 e 3",
+      "125 e 3"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.16"
+  },
+  {
+    "question": "Admita a0 = 0xA3000000 e a1 = 0x0000007E ao executar sum_bytes: srli t0, a0, 24 / andi t1, a1, 0xFF / add t0, t0, t1 / sb t0, 0(a2). Que byte fica guardado na memória apontada por a2?",
+    "answers": [
+      "0x7E",
+      "0xA3",
+      "0x21",
+      "0x25"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.29"
+  },
+  {
+    "question": "Em C, com unsigned char c = 0xF0, qual é o valor decimal da expressão c << 4?",
+    "answers": [
+      "0",
+      "3840",
+      "240",
+      "15"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.19"
+  },
+  {
+    "question": "Quantas vezes é executada a atribuição res = res + a na chamada multiply(3, 6), sendo o corpo de multiply: int res = 0; while (b != 0) { if ((b & 1) == 1) res = res + a; a = a << 1; b = (unsigned int)b >> 1; } return res?",
+    "answers": [
+      "2",
+      "3",
+      "6",
+      "1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.30"
+  },
+  {
+    "question": "Qual é o valor devolvido por multiply(5, 13), sendo o corpo de multiply: int res = 0; while (b != 0) { if ((b & 1) == 1) res = res + a; a = a << 1; b = (unsigned int)b >> 1; } return res?",
+    "answers": [
+      "18",
+      "13",
+      "5",
+      "65"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.30"
+  },
+  {
+    "question": "Quantas iterações executa o ciclo while em multiply(7, 40), sendo o corpo de multiply: int res = 0; while (b != 0) { if ((b & 1) == 1) res = res + a; a = a << 1; b = (unsigned int)b >> 1; } return res?",
+    "answers": [
+      "40",
+      "3",
+      "6",
+      "32"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.30"
+  },
+  {
+    "question": "Qual é o valor devolvido por multiply(3, -1), sendo o corpo de multiply: int res = 0; while (b != 0) { if ((b & 1) == 1) res = res + a; a = a << 1; b = (unsigned int)b >> 1; } return res?",
+    "answers": [
+      "3",
+      "-3",
+      "0",
+      "-1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.30"
+  },
+  {
+    "question": "Em C, com unsigned x = 44, qual é o valor da expressão x & (x - 1)?",
+    "answers": [
+      "40",
+      "43",
+      "4",
+      "8"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.16"
+  },
+  {
+    "question": "Em C, com int y = 0, quais são os valores de ~y e de !y?",
+    "answers": [
+      "1 e -1",
+      "-1 e 0",
+      "0 e 1",
+      "-1 e 1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.11"
+  },
+  {
+    "question": "Admita li a0, 12 / li a1, 10 / xor a0, a0, a1 / xor a1, a0, a1 / xor a0, a0, a1. Que valores ficam em a0 e a1, por esta ordem?",
+    "answers": [
+      "6 e 10",
+      "2 e 12",
+      "10 e 12",
+      "12 e 10"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.16"
+  },
+  {
+    "question": "Admita li a2, 0xF0 / xori a2, a2, -1. Que valor fica em a2?",
+    "answers": [
+      "0x0000000F",
+      "0xFFFFFF0F",
+      "0xFFFFFFF0",
+      "0x000000F0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.14"
+  },
+  {
+    "question": "Admita li a0, 0x6C / andi t0, a0, 0x20. Que valor decimal fica em t0?",
+    "answers": [
+      "32",
+      "0",
+      "1",
+      "108"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.16"
+  },
+  {
+    "question": "Qual das instruções seguintes multiplica a0 por 16 sem usar mul?",
+    "answers": [
+      "slli a0, a0, 16",
+      "srli a0, a0, 4",
+      "addi a0, a0, 16",
+      "slli a0, a0, 4"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.20"
+  },
+  {
+    "question": "A instrução andi t1, t0, -1 copia o valor de t0 para t1",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.4"
+  },
+  {
+    "question": "A instrução ori t1, t0, -1 deixa todos os bits de t1 a 1",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.6"
+  },
+  {
+    "question": "Em RV32, a instrução slli t0, t0, 32 é aceite pelo assembler e deixa t0 a zero",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.27"
+  },
+  {
+    "question": "Em RV32, sll t0, t0, t1 com t1 = 32 deixa o valor de t0 inalterado",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.27"
+  },
+  {
+    "question": "O conjunto base RV32I não inclui instruções dedicadas de rotação como rol e ror",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.18"
+  },
+  {
+    "question": "Com t0 = -9, a instrução srai t1, t0, 1 deixa -5 em t1, enquanto uma divisão por 2 com div daria -4",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.26"
+  },
+  {
+    "question": "A instrução sra arredonda o resultado em direção a zero",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.24"
+  },
+  {
+    "question": "Para valores negativos, srli por 1 bit conserva o sinal do valor original",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.21"
+  },
+  {
+    "question": "Em C, com int s = -21, as expressões s >> 2 e s / 4 produzem o mesmo resultado",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.26"
+  },
+  {
+    "question": "Para limpar bits específicos de um registo usa-se or com uma máscara que tem 1 nas posições a limpar",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.16"
+  },
+  {
+    "question": "A instrução xor de dois registos dá zero se e só se os dois valores forem idênticos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.15"
+  },
+  {
+    "question": "O resto da divisão de um valor sem sinal por 8 obtém-se com uma operação and com a máscara 7",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.16"
+  },
+  {
+    "question": "Em sum_bytes, se srli fosse trocada por srai, o byte guardado em *sum seria diferente para um valor de a com o byte mais significativo igual a 0x80",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.29"
+  },
+  {
+    "question": "Em multiply, se b = (unsigned int)b >> 1 fosse trocada por um shift aritmético, a chamada com b negativo nunca terminaria",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.30"
+  },
+  {
+    "question": "Em C, o operador ! aplicado a um inteiro inverte todos os bits do valor",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.11"
+  },
+  {
+    "question": "Em RV32, qual é o tamanho de struct { char a; short b; char c; }?",
+    "answers": [
+      "4 bytes",
+      "8 bytes",
+      "6 bytes",
+      "10 bytes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.20"
+  },
+  {
+    "question": "Em RV32, que instrução carrega para t0 o membro d de uma struct { char a; char b; short c; int d; } apontada por a0?",
+    "answers": [
+      "lw t0, 2(a0)",
+      "lw t0, 4(a0)",
+      "lw t0, 8(a0)",
+      "lw t0, 6(a0)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.9"
+  },
+  {
+    "question": "Em RV32, quantos bytes de padding existem no fim de struct { int a; char b; }?",
+    "answers": [
+      "3",
+      "0",
+      "1",
+      "4"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.20"
+  },
+  {
+    "question": "Em RV32, qual é o offset do membro b de struct { char a[5]; int b; }?",
+    "answers": [
+      "5",
+      "6",
+      "4",
+      "8"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.20"
+  },
+  {
+    "question": "Em RV32, qual é o offset do membro b de struct { char a[3]; short b; char c; }?",
+    "answers": [
+      "3",
+      "2",
+      "4",
+      "6"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.19"
+  },
+  {
+    "question": "Em RV32, qual é o offset do membro h de struct { char name[10]; short age; float h; }?",
+    "answers": [
+      "11",
+      "12",
+      "10",
+      "14"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.19"
+  },
+  {
+    "question": "Considere typedef struct { char age; short number; int grades[10]; char name[80]; char address[120]; } Student. Qual é o offset do membro address em RV32?",
+    "answers": [
+      "124",
+      "120",
+      "204",
+      "128"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.23"
+  },
+  {
+    "question": "Considere typedef struct { char age; short number; int grades[10]; char name[80]; char address[120]; } Student. Qual é o tamanho de Student em RV32?",
+    "answers": [
+      "203 bytes",
+      "240 bytes",
+      "248 bytes",
+      "244 bytes"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.23"
+  },
+  {
+    "question": "Considere typedef struct { char age; short number; int grades[10]; char name[80]; char address[120]; } Student, com a0 a apontar para uma variável Student. Que instrução carrega s->grades[2] em t0?",
+    "answers": [
+      "lw t0, 8(a0)",
+      "lw t0, 10(a0)",
+      "lw t0, 12(a0)",
+      "lw t0, 16(a0)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.24"
+  },
+  {
+    "question": "Em RV32, qual é o offset do membro c de struct { char a; struct { char b; int c; } in; }, medido a partir do início da estrutura exterior?",
+    "answers": [
+      "2",
+      "8",
+      "4",
+      "6"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.20"
+  },
+  {
+    "question": "Admita struct { int id; char tag; } v[5] com v a começar em 0x1000. Qual é o endereço de v[3].tag em RV32?",
+    "answers": [
+      "0x101C",
+      "0x1018",
+      "0x1019",
+      "0x1014"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.20"
+  },
+  {
+    "question": "Admita struct M { float f; char c; float g; } e struct M *p = 0x3000 em RV32. Qual é o valor de p + 2?",
+    "answers": [
+      "0x3002",
+      "0x3008",
+      "0x300C",
+      "0x3018"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.20"
+  },
+  {
+    "question": "Num vetor de estruturas com 12 bytes cada, a0 = 0x5000 e a1 = 3. Que endereço fica em a0 depois de li t1, 12 / mul t2, a1, t1 / add a0, a0, t2?",
+    "answers": [
+      "0x500C",
+      "0x5030",
+      "0x5024",
+      "0x5003"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.14"
+  },
+  {
+    "question": "Num vetor de estruturas com 16 bytes cada, que instrução calcula em t0 o offset do elemento de índice a1?",
+    "answers": [
+      "slli t0, a1, 2",
+      "slli t0, a1, 4",
+      "srli t0, a1, 4",
+      "addi t0, a1, 16"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.14"
+  },
+  {
+    "question": "Considere struct rec { int x; int a[3]; int *p; } e void set_p(struct rec *r) { r->p = &(r->a[r->x]); }. Se r = 0x2000 e r->x = 2, que valor fica em r->p depois de set_p?",
+    "answers": [
+      "0x200C",
+      "0x2008",
+      "0x2002",
+      "0x2010"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.15"
+  },
+  {
+    "question": "Considere struct { int total; int a; int b; } *r em a0 e o código lw t0, 4(a0) / lw t1, 8(a0) / add t0, t0, t1 / sw t0, 0(a0). Que membro é escrito e com que valor?",
+    "answers": [
+      "O membro a, com a soma de b e total",
+      "O membro b, com a soma de total e a",
+      "O membro total, com o dobro de a",
+      "O membro total, com a soma de a e b"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.10"
+  },
+  {
+    "question": "Em struct { char a; int b; } com a0 = 0x1000, executa-se li t0, 0x11223344 / sw t0, 4(a0). Que byte fica no endereço 0x1007 em little-endian?",
+    "answers": [
+      "0x44",
+      "0x22",
+      "0x11",
+      "0x33"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.9"
+  },
+  {
+    "question": "No GNU as para RISC-V, qual é a diretiva que alinha o endereço seguinte a uma fronteira de 4 bytes?",
+    "answers": [
+      ".align 4",
+      ".align 2",
+      ".align 1",
+      ".align 3"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.22"
+  },
+  {
+    "question": "Em RV32, qual é o requisito de alinhamento da estrutura struct { char a; short b; char c; }?",
+    "answers": [
+      "2",
+      "1",
+      "4",
+      "6"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.20"
+  },
+  {
+    "question": "Em RV32, struct { short a; long long b; } tem de começar num endereço múltiplo de quê?",
+    "answers": [
+      "2",
+      "4",
+      "16",
+      "8"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.20"
+  },
+  {
+    "question": "Em RV32, qual dos endereços seguintes está alinhado para um long long?",
+    "answers": [
+      "0x2004",
+      "0x2002",
+      "0x2008",
+      "0x2001"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.19"
+  },
+  {
+    "question": "Em RV32, qual dos endereços seguintes está alinhado para um short mas não para um int?",
+    "answers": [
+      "0x1004",
+      "0x1006",
+      "0x1008",
+      "0x1003"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.19"
+  },
+  {
+    "question": "Em RV32, qual é o tamanho de struct { char a; int b; short c; long long d; char e; }?",
+    "answers": [
+      "32 bytes",
+      "16 bytes",
+      "24 bytes",
+      "20 bytes"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.21"
+  },
+  {
+    "question": "Em RV32, qual é o offset do membro g de struct { float f; char c; float g; }?",
+    "answers": [
+      "5",
+      "6",
+      "4",
+      "8"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.19"
+  },
+  {
+    "question": "Qual é o objetivo de o compilador inserir padding nas estruturas?",
+    "answers": [
+      "Reduzir o tamanho total da estrutura em memória",
+      "Ordenar os membros por tamanho crescente",
+      "Garantir que os membros ficam alinhados",
+      "Proteger os membros contra escritas indevidas"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.18"
+  },
+  {
+    "question": "Se os membros de struct { char c; long long x; char d; } forem reordenados para long long x; char c; char d, qual passa a ser o tamanho em RV32?",
+    "answers": [
+      "10 bytes",
+      "16 bytes",
+      "24 bytes",
+      "12 bytes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.21"
+  },
+  {
+    "question": "Em RV32, que instrução guarda a metade inferior de t0 no membro b de uma struct { char a; short b; int c; } apontada por a0?",
+    "answers": [
+      "sh t0, 2(a0)",
+      "sh t0, 1(a0)",
+      "sw t0, 2(a0)",
+      "sb t0, 2(a0)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.9"
+  },
+  {
+    "question": "O endereço de uma variável struct coincide com o endereço do seu primeiro membro",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.12"
+  },
+  {
+    "question": "Pode ser inserido padding antes do primeiro membro de uma struct",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.20"
+  },
+  {
+    "question": "Num vetor de struct { int id; char tag; }, cada elemento ocupa 5 bytes em RV32",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.20"
+  },
+  {
+    "question": "Reordenar os membros de uma struct pode alterar o seu tamanho",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.21"
+  },
+  {
+    "question": "Os bytes de padding de uma struct têm sempre o valor zero",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.18"
+  },
+  {
+    "question": "Declarar struct s_car { int n; }; sem definir variáveis reserva memória para uma instância",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.4"
+  },
+  {
+    "question": "Depois de typedef struct { int n; } t_car, é obrigatório escrever struct t_car para declarar uma variável",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.5"
+  },
+  {
+    "question": "Se ptr é um apontador para struct, ptr->x é equivalente a (*ptr).x",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.6"
+  },
+  {
+    "question": "Em assembly, os membros de uma estrutura são acedidos pelo nome, tal como em C",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.9"
+  },
+  {
+    "question": "Em struct rec { int x; int a[3]; int *p; } em RV32, o membro p está no offset 16",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.11"
+  },
+  {
+    "question": "Em RV32, um short deve estar num endereço em que o bit menos significativo é 0",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.19"
+  },
+  {
+    "question": "Uma struct que só tem membros char tem sempre tamanho múltiplo de 4",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.20"
+  },
+  {
+    "question": "Em RV32, struct { char a; short b; } tem tamanho 4",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.20"
+  },
+  {
+    "question": "O tamanho total de uma struct tem de ser múltiplo do maior requisito de alinhamento dos seus membros",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.20"
+  },
+  {
+    "question": "Em RV32, struct { int a; char b; } v[3] ocupa 24 bytes",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.20"
+  },
+  {
+    "question": "Em int *a[5], obter a[i][j] também exige dois acessos à memória, um para a[i] e outro para o elemento",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.9"
+  },
+  {
+    "question": "A função free recebe, além do apontador, o número de bytes a libertar",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.5"
+  },
+  {
+    "question": "A instrução slli t0, a1, 2 de write_value seria igualmente correta para um vetor de short",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.15"
+  },
+  {
+    "question": "Em RV32, calloc(y, sizeof(int*)) reserva y bytes",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.7"
+  },
+  {
+    "question": "Se realloc devolver NULL, o block original continua alocado e o seu conteúdo mantém-se",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.9"
+  },
+  {
+    "question": "Em p = realloc(p, novo_tamanho), a atribuição direta ao próprio apontador é sempre segura, mesmo que realloc devolva NULL",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.9"
+  },
+  {
+    "question": "Uma função pode libertar com free um block que foi obtido com malloc noutra função",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.5"
+  },
+  {
+    "question": "O apontador passado a free pode apontar para o meio do block alocado, por exemplo para p + 1",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.5"
+  },
+  {
+    "question": "O heap cresce para endereços mais altos, ao contrário da stack, que cresce para endereços mais baixos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.3"
+  },
+  {
+    "question": "Quando realloc aumenta um block, os bytes acrescentados ficam inicializados a zero",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.8"
+  },
+  {
+    "question": "Quando realloc reduz um block, os dados que cabem no novo tamanho são mantidos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.8"
+  },
+  {
+    "question": "Um pedido a malloc pode falhar mesmo havendo memória livre suficiente no total, se ela não estiver num único block contíguo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.9"
+  },
+  {
+    "question": "Depois de ptr_tmp = realloc(ptr_int, n) com ptr_tmp diferente de NULL, o apontador ptr_int é o que deve continuar a ser usado",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.10"
+  },
+  {
+    "question": "Em int md[5][2], o elemento md[2][1] ocupa a posição 5 do vetor linear de 10 inteiros em que a matriz é guardada",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.2"
+  },
+  {
+    "question": "Numa matriz estática int a[5][2], os elementos da mesma coluna ocupam posições consecutivas da memória",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.2"
+  },
+  {
+    "question": "Numa matriz dinâmica construída com um vetor de apontadores para linhas, obter m[i][j] exige dois acessos à memória",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.8"
+  },
+  {
+    "question": "Numa matriz estática int m[5][2], obter m[i][j] exige dois acessos à memória",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.3"
+  },
+  {
+    "question": "A declaração int a[5][2] numa função reserva os 10 inteiros no heap",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.9"
+  },
+  {
+    "question": "Em int **md, a expressão *(*(md + y) + k) é equivalente a md[y][k]",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.5"
+  },
+  {
+    "question": "Em int **md, a expressão *(md + y) + k tem o tipo int",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.6"
+  },
+  {
+    "question": "Numa matriz dinâmica com um vetor de apontadores, as linhas não têm de ficar contíguas entre si no heap",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.4"
+  },
+  {
+    "question": "Em int get_value(int md_array[][2], int i, int j), cada linha ocupa 8 bytes, em RV32",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.3"
+  },
+  {
+    "question": "Em int get_value(int **m, int i, int j), o offset em bytes da posição m[i] a partir de m é i * 8 quando as linhas têm 2 colunas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.8"
+  },
+  {
+    "question": "Em write_value, a instrução slli t0, a1, 2 converte o índice num offset em bytes para um vetor de int",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.15"
+  },
+  {
+    "question": "A função write_value escreve diretamente na memória do chamador, porque recebe o endereço do vetor",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.15"
+  },
+  {
+    "question": "Em int *a[5] declarado numa função, o vetor de 5 apontadores fica na stack, mas cada linha para onde apontam pode estar no heap",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.9"
+  },
+  {
+    "question": "Para libertar uma matriz int **m, basta a chamada free(m), porque liberta também as linhas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.7"
+  },
+  {
+    "question": "Depois de um realloc bem-sucedido que mudou o block de sítio, o apontador antigo ainda pode ser usado para aceder aos dados",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.14"
+  },
+  {
+    "question": "Qual é a forma correta de aumentar um vetor dinâmico com realloc sem perder o block original em caso de falha?",
+    "answers": [
+      "Atribuir o resultado diretamente ao apontador original e testar depois se este é NULL",
+      "Chamar free ao apontador original antes de realloc e atribuir-lhe o resultado",
+      "Guardar o resultado num apontador temporário e só o copiar se não for NULL",
+      "Usar sempre calloc em vez de realloc, porque calloc nunca devolve NULL"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.9"
+  },
+  {
+    "question": "Considere int *p = malloc(4 * sizeof(int)); int *t = realloc(p, 8 * sizeof(int)); e que realloc devolveu NULL. Que valor e estado tem p?",
+    "answers": [
+      "Mantém o endereço anterior e o block de 16 bytes continua válido",
+      "Fica a NULL e o block de 16 bytes perde-se sem poder ser libertado",
+      "Mantém o endereço anterior, mas o block de 16 bytes já foi libertado",
+      "Fica a NULL, mas o block de 16 bytes continua alocado e válido"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.9"
+  },
+  {
+    "question": "Porque é que p = realloc(p, n * sizeof(int)) pode causar uma memory leak?",
+    "answers": [
+      "Realloc liberta sempre o block antigo, mesmo nos casos em que falha",
+      "Realloc devolve sempre um endereço novo, que fica logo sem dono",
+      "O apontador p passa a apontar para a stack em vez de apontar para o heap",
+      "Se realloc falhar, devolve NULL e o endereço do block original perde-se"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.9"
+  },
+  {
+    "question": "Depois de um realloc bem-sucedido que moveu o block para outro endereço, o que acontece ao block antigo?",
+    "answers": [
+      "Continua alocado e tem de ser libertado depois, com uma chamada a free",
+      "É libertado pelo realloc, pelo que o endereço antigo já não deve ser usado",
+      "Fica alocado com os dados originais, como cópia de segurança do novo",
+      "É libertado apenas no fim do programa, quando o processo termina"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.14"
+  },
+  {
+    "question": "Num vetor, realloc(vec, (pos + 1) * sizeof(int)) é chamado com pos = 10. Quantos bytes são pedidos, em RV32?",
+    "answers": [
+      "40",
+      "44",
+      "41",
+      "11"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.14"
+  },
+  {
+    "question": "Um programa guarda inteiros num vetor com 10 posições iniciais e chama realloc(vec, (pos + 1) * sizeof(int)) sempre que pos >= 10 antes de guardar o valor. O utilizador introduz 12 valores. Quantas chamadas a realloc são feitas?",
+    "answers": [
+      "2",
+      "13",
+      "4",
+      "3"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.14"
+  },
+  {
+    "question": "Com o mesmo comportamento (realloc sempre que pos >= 10), o utilizador introduz 15 valores. Qual é o tamanho final do block, em bytes, em RV32?",
+    "answers": [
+      "64",
+      "60",
+      "40",
+      "68"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.14"
+  },
+  {
+    "question": "Qual dos pedidos seguintes reserva mais bytes, em RV32?",
+    "answers": [
+      "malloc(3 * sizeof(int))",
+      "malloc(5 * sizeof(short))",
+      "calloc(2, sizeof(long long))",
+      "calloc(11, sizeof(char))"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.7"
+  },
+  {
+    "question": "Considere int *v = calloc(4, sizeof(int)); int s = *(v + 3) + v[0]; Quanto vale s?",
+    "answers": [
+      "4",
+      "1",
+      "0",
+      "Indeterminado"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.7"
+  },
+  {
+    "question": "Considere int *v = malloc(3 * sizeof(int)); v[0] = 5; *(v + 1) = 7; v[2] = v[0] + *(v + 1); Quanto vale v[2]?",
+    "answers": [
+      "12",
+      "5",
+      "7",
+      "19"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.6"
+  },
+  {
+    "question": "Considere int *v = calloc(5, sizeof(int)); v[1] = 4; v[3] = 9; *(v + 3) += v[1]; Qual é a soma dos 5 elementos do vetor?",
+    "answers": [
+      "13",
+      "22",
+      "26",
+      "17"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.7"
+  },
+  {
+    "question": "Se malloc devolver o endereço 0x20000100 para um vetor de int, qual é o endereço de v[3], em RV32?",
+    "answers": [
+      "0x20000103",
+      "0x2000010C",
+      "0x20000104",
+      "0x20000110"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.6"
+  },
+  {
+    "question": "Se malloc devolver o endereço 0x1000 para um vetor de short, qual é o endereço de s[5], em RV32?",
+    "answers": [
+      "0x1005",
+      "0x100A",
+      "0x1014",
+      "0x1006"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.6"
+  },
+  {
+    "question": "Considere int *ptr_int = calloc(100, sizeof(int)); declarada dentro de main. Onde ficam a variável ptr_int e o block que ela referencia?",
+    "answers": [
+      "A variável no heap e o block na stack",
+      "A variável e o block no heap",
+      "A variável e o block na stack",
+      "A variável na stack e o block no heap"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.7"
+  },
+  {
+    "question": "Qual é a ordem das regiões do espaço de endereçamento virtual de um processo, dos endereços mais altos para os mais baixos?",
+    "answers": [
+      "Stack, heap, variáveis globais, código do programa",
+      "Heap, stack, variáveis globais, código do programa",
+      "Código do programa, variáveis globais, heap, stack",
+      "Stack, variáveis globais, heap, código do programa"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.3"
+  },
+  {
+    "question": "Num vetor lido do utilizador até ser introduzido um negativo, o ciclo while (*(vec + i) >= 0) { i++; } percorre vec = {4, 9, 2, -5, 7}. Qual é o valor de i no fim?",
+    "answers": [
+      "2",
+      "4",
+      "3",
+      "5"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.13"
+  },
+  {
+    "question": "O que contém a0 depois de call malloc, se o pedido de memória foi satisfeito?",
+    "answers": [
+      "O número de bytes que foram reservados",
+      "O valor 0",
+      "O endereço do início do block reservado",
+      "O endereço do fim do block reservado"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.5"
+  },
+  {
+    "question": "Em assembly, um vetor de n int vai ser reservado com malloc e n está em a0. Que instrução deve preceder call malloc?",
+    "answers": [
+      "slli a0, a0, 2",
+      "addi a0, a0, 4",
+      "srli a0, a0, 2",
+      "slli a0, a0, 4"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.5"
+  },
+  {
+    "question": "Considere a0 = 6 e o excerto slli a0, a0, 2 / call malloc. Quantos bytes são pedidos a malloc?",
+    "answers": [
+      "6",
+      "12",
+      "48",
+      "24"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.5"
+  },
+  {
+    "question": "Quais são os registos dos argumentos de uma chamada call calloc(n, 4) em RV32?",
+    "answers": [
+      "4 em a0 e n em a1",
+      "n em a0 e 4 em a1",
+      "n em a0 e 4 em a2",
+      "n em a1 e 4 em a0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.7"
+  },
+  {
+    "question": "Considere a função com addi sp, sp, -16 / sw ra, 12(sp) / li a0, 40 / call malloc / lw ra, 12(sp) / addi sp, sp, 16 / ret. Porque é necessário guardar ra?",
+    "answers": [
+      "Porque malloc devolve o endereço do block reservado no registo ra",
+      "Porque call malloc escreve em ra o endereço de retorno da chamada",
+      "Porque a0 é perdido se ra não for guardado na stack antes da chamada",
+      "Porque a instrução ret só funciona se o valor de ra estiver na stack"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.5"
+  },
+  {
+    "question": "Considere a função com addi sp, sp, -16 / sw ra, 12(sp) / li a0, 40 / call malloc / lw ra, 12(sp) / addi sp, sp, 16 / ret. Quantos int cabem no block pedido, em RV32?",
+    "answers": [
+      "40",
+      "4",
+      "160",
+      "10"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.5"
+  },
+  {
+    "question": "Considere li a0, 20 / call malloc / mv s1, a0 / li t0, 7 / sw t0, 8(s1). Em que posição do block, visto como vetor de int, fica guardado o valor 7?",
+    "answers": [
+      "No índice 2",
+      "No índice 1",
+      "No índice 8",
+      "No índice 7"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.15"
+  },
+  {
+    "question": "Uma função em assembly chama malloc e precisa do endereço do block depois de uma segunda chamada a outra função. Onde o deve guardar?",
+    "answers": [
+      "Em a0, porque o callee tem de preservar os registos de argumentos",
+      "Num registo tx, porque o callee tem de preservar os registos temporários",
+      "Num registo sx ou na stack, porque a0 e os registos tx podem ser alterados",
+      "Em ra, porque ra nunca é alterado por chamadas a outras funções"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.5"
+  },
+  {
+    "question": "Para libertar em assembly o block cujo endereço está em s0, que sequência está correta?",
+    "answers": [
+      "mv s0, a0 / call free",
+      "mv a1, s0 / call free",
+      "mv a0, s0 / call free",
+      "lw a0, 0(s0) / call free"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.5"
+  },
+  {
+    "question": "Considere write_value: slli t0, a1, 2 / add t1, a0, t0 / sw a2, 0(t1) / ret. Com a0 = 0x1000, a1 = 3 e a2 = 77, em que endereço é escrito o valor 77?",
+    "answers": [
+      "0x100C",
+      "0x1003",
+      "0x1004",
+      "0x1018"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.15"
+  },
+  {
+    "question": "Considere write_value: slli t0, a1, 2 / add t1, a0, t0 / sw a2, 0(t1) / ret. Com a1 = 5, quanto vale t0 depois da primeira instrução?",
+    "answers": [
+      "5",
+      "10",
+      "40",
+      "20"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.15"
+  },
+  {
+    "question": "Se por engano a primeira instrução de write_value fosse slli t0, a1, 3 (e o resto fosse igual), com a0 = 0x2000 e a1 = 2, em que endereço seria escrito o valor?",
+    "answers": [
+      "0x2008",
+      "0x2010",
+      "0x2002",
+      "0x2020"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.15"
+  },
+  {
+    "question": "Qual é a sequência equivalente a slli t0, a1, 2 / add t1, a0, t0 para obter o endereço de vec[pos] num vetor de int?",
+    "answers": [
+      "addi t0, zero, 4 / add t0, a1, t0 / add t1, a0, t0",
+      "addi t0, zero, 4 / mul t0, a1, t0 / add t1, a0, t0",
+      "addi t0, zero, 2 / mul t0, a1, t0 / add t1, a0, t0",
+      "addi t0, zero, 4 / mul t1, a0, t0 / add t1, t1, a1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.15"
+  },
+  {
+    "question": "Uma função semelhante a write_value, mas para um vetor de short, com o vetor em a0, o índice em a1 e o valor em a2, deve ter qual sequência?",
+    "answers": [
+      "slli t0, a1, 2 / add t1, a0, t0 / sh a2, 0(t1)",
+      "slli t0, a1, 1 / add t1, a0, t0 / sw a2, 0(t1)",
+      "add t1, a0, a1 / sh a2, 0(t1)",
+      "slli t0, a1, 1 / add t1, a0, t0 / sh a2, 0(t1)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.15"
+  },
+  {
+    "question": "Porque é que write_value não precisa de prólogo nem de epílogo?",
+    "answers": [
+      "Porque as funções em assembly nunca usam a stack",
+      "Porque os registos tx têm de ser preservados pelo callee",
+      "Porque não chama outras funções e só usa registos temporários",
+      "Porque o registo ra é preservado pelo hardware"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.15"
+  },
+  {
+    "question": "Depois de write_value(vec, 4, 9) com vec = {0, 0, 0, 0, 0, 0}, o que contém vec?",
+    "answers": [
+      "{0, 0, 0, 0, 9, 0}",
+      "{0, 0, 0, 9, 0, 0}",
+      "{9, 0, 0, 0, 0, 0}",
+      "{0, 0, 0, 0, 0, 9}"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.15"
+  },
+  {
+    "question": "Considere int md[5][2] = {{1,2},{3,4},{5,6},{7,8},{9,10}}. Quanto vale md[3][1]?",
+    "answers": [
+      "7",
+      "8",
+      "6",
+      "4"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.2"
+  },
+  {
+    "question": "Considere int md[5][2] = {{1,2},{3,4},{5,6},{7,8},{9,10}}. Quanto vale *(*(md + 2) + 1)?",
+    "answers": [
+      "5",
+      "6",
+      "4",
+      "3"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.3"
+  },
+  {
+    "question": "Considere int md[5][2] = {{1,2},{3,4},{5,6},{7,8},{9,10}}. Quanto vale *(&md[0][0] + 5)?",
+    "answers": [
+      "5",
+      "10",
+      "3",
+      "6"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.2"
+  },
+  {
+    "question": "Considere int md[5][2] = {{1,2},{3,4},{5,6},{7,8},{9,10}}. Quanto vale **(md + 4)?",
+    "answers": [
+      "9",
+      "10",
+      "7",
+      "1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.6"
+  },
+  {
+    "question": "Se int md[5][2] começa no endereço 0x3000, qual é o endereço de md[3][1], em RV32?",
+    "answers": [
+      "0x3007",
+      "0x3018",
+      "0x301C",
+      "0x3020"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.2"
+  },
+  {
+    "question": "Se short t[6][3] começa no endereço 0x4000, qual é o endereço de t[4][2], em RV32?",
+    "answers": [
+      "0x400E",
+      "0x401A",
+      "0x401C",
+      "0x4038"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.2"
+  },
+  {
+    "question": "Em int get_value(int md_array[][2], int i, int j), qual é o número de bytes que separa o início de duas linhas consecutivas, em RV32?",
+    "answers": [
+      "8",
+      "2",
+      "4",
+      "16"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.3"
+  },
+  {
+    "question": "Para uma matriz short m[][3], quantos bytes de offset tem o início da linha 4 em relação ao início da matriz, em RV32?",
+    "answers": [
+      "12",
+      "8",
+      "18",
+      "24"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.3"
+  },
+  {
+    "question": "Considere get_value estática: slli t0, a1, 3 / add t1, a0, t0 / slli t2, a2, 2 / add t3, t1, t2 / lw a0, 0(t3) / ret. Com a0 = 0x2000, a1 = 3 e a2 = 1, de que endereço lê a instrução lw?",
+    "answers": [
+      "0x2010",
+      "0x201C",
+      "0x2019",
+      "0x2004"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.3"
+  },
+  {
+    "question": "Considere get_value estática: slli t0, a1, 3 / add t1, a0, t0 / slli t2, a2, 2 / add t3, t1, t2 / lw a0, 0(t3) / ret, aplicada a int md[5][2] = {{1,2},{3,4},{5,6},{7,8},{9,10}}. Que valor devolve com a1 = 4 e a2 = 1?",
+    "answers": [
+      "9",
+      "10",
+      "8",
+      "5"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.3"
+  },
+  {
+    "question": "Se, na mesma get_value estática para int md[][2], a primeira instrução fosse slli t0, a1, 2 por engano, que valor devolveria get_value(md, 2, 1) com md = {{1,2},{3,4},{5,6},{7,8},{9,10}}?",
+    "answers": [
+      "6",
+      "3",
+      "5",
+      "4"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.3"
+  },
+  {
+    "question": "Em get_value estática para int md[][2], o que calcula a instrução slli t0, a1, 3?",
+    "answers": [
+      "O offset em bytes do início da linha i",
+      "O offset em bytes do elemento j da linha",
+      "O endereço absoluto do início da linha i",
+      "O número de elementos antes do início da linha i"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.3"
+  },
+  {
+    "question": "Para obter 12 * i num registo, sem usar mul (por exemplo, para o início da linha i de int m[][3]), que sequência está correta, com i em a1?",
+    "answers": [
+      "slli t0, a1, 3 / slli t1, a1, 1 / add t0, t0, t1",
+      "slli t0, a1, 4 / slli t1, a1, 2 / add t0, t0, t1",
+      "slli t0, a1, 3 / slli t1, a1, 2 / add t0, t0, t1",
+      "slli t0, a1, 12"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.3"
+  },
+  {
+    "question": "Porque é que o tipo do parâmetro de get_value tem de indicar o número de colunas, como em int md_array[][2]?",
+    "answers": [
+      "Porque o número de colunas define o tamanho de cada linha em bytes",
+      "Porque o número de colunas determina o número de linhas da matriz",
+      "Porque a função copia a matriz inteira para a stack ao ser chamada",
+      "Porque o compilador verifica os limites do índice j ao executar"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.3"
+  },
+  {
+    "question": "Em int a[5][2] declarada numa função, onde ficam reservados os 10 inteiros?",
+    "answers": [
+      "No heap",
+      "Na zona do código do programa",
+      "Num registo guardado",
+      "Na stack"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.9"
+  },
+  {
+    "question": "Considere int **md = calloc(y, sizeof(int*)); em RV32 com y = 5. Quantos bytes tem o vetor de apontadores?",
+    "answers": [
+      "5",
+      "20",
+      "10",
+      "40"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.7"
+  },
+  {
+    "question": "Considere uma matriz dinâmica de 4 linhas e 6 colunas de int, criada com um vetor de apontadores e um calloc por linha. Quantas chamadas a calloc são feitas?",
+    "answers": [
+      "4",
+      "5",
+      "6",
+      "24"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.7"
+  },
+  {
+    "question": "Considere uma matriz dinâmica de 4 linhas e 6 colunas de int, criada com um vetor de apontadores e um calloc por linha. Quantos bytes são reservados no total, em RV32?",
+    "answers": [
+      "96",
+      "100",
+      "24",
+      "112"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.7"
+  },
+  {
+    "question": "Uma matriz dinâmica de 7 linhas foi construída com um vetor de apontadores e uma chamada a calloc por linha. Se apenas se executar free(m), quantos blocks ficam por libertar?",
+    "answers": [
+      "7",
+      "1",
+      "6",
+      "8"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.4"
+  },
+  {
+    "question": "Uma matriz de 5 linhas está a ser construída com um vetor de apontadores e um calloc por linha. O calloc da linha de índice 3 falha. Quantos blocks já estavam alocados nesse momento (incluindo o vetor de apontadores)?",
+    "answers": [
+      "3",
+      "5",
+      "4",
+      "6"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.7"
+  },
+  {
+    "question": "Considere int **m = calloc(y, sizeof(int*)). Que valor têm os apontadores m[0] e m[1] logo após a alocação?",
+    "answers": [
+      "Indeterminado",
+      "Endereços de blocks do heap",
+      "NULL",
+      "O endereço do próprio vetor m"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.7"
+  },
+  {
+    "question": "Considere int **m = malloc(y * sizeof(int*)) em vez de calloc. Que valor têm os apontadores m[i] logo após a alocação?",
+    "answers": [
+      "Indeterminado",
+      "NULL",
+      "Zero, por ser memória nova",
+      "O endereço de m[i + 1]"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.7"
+  },
+  {
+    "question": "Em int **m, qual é o tipo da expressão *(m + 1)?",
+    "answers": [
+      "Apontador para apontador para int (int**)",
+      "int",
+      "Apontador para array de apontadores",
+      "Apontador para int (int*)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.6"
+  },
+  {
+    "question": "Em int **m, qual é o tipo da expressão **m?",
+    "answers": [
+      "Apontador para int (int*)",
+      "int",
+      "Apontador para apontador para int (int**)",
+      "Apontador para array de int"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.6"
+  },
+  {
+    "question": "Numa matriz dinâmica int **m, a expressão *(*m + 1) é equivalente a qual das seguintes?",
+    "answers": [
+      "m[1][0]",
+      "m[1]",
+      "m[0] + 1",
+      "m[0][1]"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.6"
+  },
+  {
+    "question": "Em RV32, quanto vale sizeof(m) para int **m, independentemente de a matriz ter 5 linhas ou 50?",
+    "answers": [
+      "4",
+      "20",
+      "8",
+      "40"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.9"
+  },
+  {
+    "question": "Em RV32, quanto vale sizeof(a) para a declaração int *a[5], no âmbito em que foi declarada?",
+    "answers": [
+      "4",
+      "5",
+      "20",
+      "40"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.9"
+  },
+  {
+    "question": "Considere int *a[5]; seguido de um ciclo com a[i] = malloc(3 * sizeof(int)) para i de 0 a 4. Quantos bytes ficam no heap, em RV32?",
+    "answers": [
+      "60",
+      "20",
+      "15",
+      "80"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.9"
+  },
+  {
+    "question": "Considere get_value dinâmica: slli t0, a1, 2 / add t1, a0, t0 / lw t2, 0(t1) / slli t3, a2, 2 / add t4, t2, t3 / lw a0, 0(t4) / ret. Com a0 = 0x5000 e a1 = 2, de que endereço lê a primeira instrução lw?",
+    "answers": [
+      "0x5002",
+      "0x5004",
+      "0x5010",
+      "0x5008"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.8"
+  },
+  {
+    "question": "Considere get_value dinâmica: slli t0, a1, 2 / add t1, a0, t0 / lw t2, 0(t1) / slli t3, a2, 2 / add t4, t2, t3 / lw a0, 0(t4) / ret. Com a0 = 0x5000, a1 = 2, a2 = 3 e o conteúdo de 0x5008 igual a 0x6040, de que endereço lê a segunda instrução lw?",
+    "answers": [
+      "0x5014",
+      "0x604C",
+      "0x6043",
+      "0x6040"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.8"
+  },
+  {
+    "question": "Na get_value dinâmica, o que fica em t2 depois de lw t2, 0(t1)?",
+    "answers": [
+      "O valor de m[i][j]",
+      "O endereço da linha i (m[i])",
+      "O endereço de m[i][j]",
+      "O offset em bytes da linha i"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.8"
+  },
+  {
+    "question": "Na get_value dinâmica de uma matriz com 10 colunas, porque é que o offset da linha i usa slli t0, a1, 2 e não um offset de 40 * i?",
+    "answers": [
+      "Porque as linhas de uma matriz dinâmica têm sempre 4 elementos cada uma",
+      "Porque o offset em bytes de cada linha é sempre igual ao índice i",
+      "Porque o compilador troca linhas por colunas nas matrizes dinâmicas",
+      "Porque o vetor principal tem apontadores de 4 bytes, sejam quais forem as colunas"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.8"
+  },
+  {
+    "question": "O que acontece se se usar o código de get_value estática (slli t0, a1, 3 / add / slli / add / lw) com uma matriz dinâmica int **m?",
+    "answers": [
+      "Funciona sempre, porque os dois tipos de matriz têm exatamente o mesmo layout",
+      "Devolve sempre o valor de m[0][0], sejam quais forem os valores de i e j",
+      "Lê valores errados, porque a matriz dinâmica não tem linhas de 8 bytes contíguas",
+      "Gera um erro de compilação, porque o tipo int ** não admite este acesso"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.9"
+  },
+  {
+    "question": "Para guardar o nome \"Marta\" num block do heap, quantos bytes são precisos, contando o carácter terminador?",
+    "answers": [
+      "6",
+      "5",
+      "4",
+      "8"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.10"
+  },
+  {
+    "question": "Para guardar n nomes de comprimento variável, o vetor principal é char **names. Qual é a alocação correta desse vetor, em RV32?",
+    "answers": [
+      "names = malloc(n * sizeof(char))",
+      "names = malloc(n)",
+      "names = malloc(sizeof(n))",
+      "names = malloc(n * sizeof(char*))"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.10"
+  },
+  {
+    "question": "Depois de ler um nome para o buffer buf, que alocação é adequada para names[i] e copiar buf para lá?",
+    "answers": [
+      "names[i] = malloc(strlen(buf)); strcpy(names[i], buf)",
+      "names[i] = malloc(strlen(buf) + 1); strcpy(names[i], buf)",
+      "names[i] = malloc(sizeof(buf)); strcpy(buf, names[i])",
+      "names[i] = malloc(strlen(buf) + 1); names[i] = buf"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.10"
+  },
+  {
+    "question": "Considere typedef struct { char age; int id_number; short grades[10]; char name[80]; char address[120]; } student_t. Em RV32, quanto vale sizeof(student_t)?",
+    "answers": [
+      "228",
+      "224",
+      "217",
+      "216"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.11"
+  },
+  {
+    "question": "Considere typedef struct { char age; int id_number; short grades[10]; char name[80]; char address[120]; } student_t. Em RV32, qual é o offset do campo id_number dentro da estrutura?",
+    "answers": [
+      "1",
+      "2",
+      "4",
+      "8"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.11"
+  },
+  {
+    "question": "Considere typedef struct { char age; int id_number; short grades[10]; char name[80]; char address[120]; } student_t. Em RV32, qual é o offset do campo grades dentro da estrutura?",
+    "answers": [
+      "5",
+      "4",
+      "8",
+      "6"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.11"
+  },
+  {
+    "question": "Considere typedef struct { char age; int id_number; short grades[10]; char name[80]; char address[120]; } student_t. Em RV32, qual é o offset do campo name dentro da estrutura?",
+    "answers": [
+      "28",
+      "24",
+      "26",
+      "32"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.11"
+  },
+  {
+    "question": "Considere typedef struct { char age; int id_number; short grades[10]; char name[80]; char address[120]; } student_t. Quantos bytes de padding existem entre age e id_number, em RV32?",
+    "answers": [
+      "0",
+      "3",
+      "1",
+      "4"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.11"
+  },
+  {
+    "question": "Considere typedef struct { char age; int id_number; short grades[10]; char name[80]; char address[120]; } student_t. Que chamada reserva um vetor de n elementos student_t, inicializado a zero?",
+    "answers": [
+      "calloc(n, sizeof(student_t*))",
+      "malloc(n)",
+      "calloc(sizeof(student_t), 1)",
+      "calloc(n, sizeof(student_t))"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.11"
+  },
+  {
+    "question": "Considere typedef struct { char age; int id_number; short grades[10]; char name[80]; char address[120]; } student_t. Se vec = 0x8000, qual é o endereço do campo id_number do elemento vec[2], em RV32?",
+    "answers": [
+      "0x81C8",
+      "0x81D0",
+      "0x81CC",
+      "0x81C4"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.11"
+  },
+  {
+    "question": "Considere typedef struct { char age; int id_number; short grades[10]; char name[80]; char address[120]; } student_t. Se vec = 0x8000, qual é o endereço de vec[2].grades[9], em RV32?",
+    "answers": [
+      "0x81D9",
+      "0x81F4",
+      "0x81E2",
+      "0x81F6"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.11"
+  },
+  {
+    "question": "Considere typedef struct { char age; int id_number; short grades[10]; char name[80]; char address[120]; } student_t. Em get_id_number(student_t *vec, int k), com vec em a0 e k em a1, qual sequência devolve o id_number do elemento k?",
+    "answers": [
+      "addi t0, zero, 228 / mul t0, a1, t0 / add t0, a0, t0 / lw a0, 4(t0)",
+      "slli t0, a1, 8 / add t0, a0, t0 / lw a0, 4(t0)",
+      "addi t0, zero, 228 / mul t0, a1, t0 / add t0, a0, t0 / lw a0, 8(t0)",
+      "addi t0, zero, 228 / add t0, a1, t0 / add t0, a0, t0 / lw a0, 4(t0)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.11"
+  },
+  {
+    "question": "Porque é que, ao calcular o endereço de vec[k] para student_t, não se usa apenas uma instrução slli?",
+    "answers": [
+      "Porque k é sempre negativo",
+      "Porque slli só funciona com valores de 8 bits",
+      "Porque a estrutura tem apontadores",
+      "Porque 228 não é uma potência de 2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.11"
+  },
+  {
+    "question": "Considere typedef struct { char age; int id_number; short grades[10]; char name[80]; char address[120]; } student_t. Em copy_grades, qual é o offset usado em sh para escrever a nota de índice 2 de grades, a partir do início do elemento vec[k]?",
+    "answers": [
+      "2",
+      "12",
+      "4",
+      "10"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.11"
+  },
+  {
+    "question": "Considere typedef struct { char age; int id_number; short grades[10]; char name[80]; char address[120]; } student_t. Com vec = 0x8000 e k = 3, qual é o endereço do campo grades de vec[k], em RV32?",
+    "answers": [
+      "0x82B4",
+      "0x82B0",
+      "0x82C8",
+      "0x80FC"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.11"
+  }
+]

@@ -113,7 +113,7 @@
     "ref": "T5 p.8"
   },
   {
-    "question": "O que identifica um nome de símbolo num operando?",
+    "question": "O que representa um nome de símbolo usado como operando de uma instrução?",
     "answers": [
       "Um registo do processador, escolhido pelo programador da aplicação",
       "Uma instrução que o assembler vai expandir em várias instruções",
@@ -176,7 +176,7 @@
     "ref": "T5 p.11"
   },
   {
-    "question": "Em assembly, como são interpretadas as sequências de algarismos que começam pelo algarismo 0?",
+    "question": "Em assembly, como são interpretadas as sequências de algarismos que começam pelo algarismo 0, sem os prefixos 0x ou 0b?",
     "answers": [
       "Como números em decimal",
       "Como números em hexadecimal",
@@ -382,32 +382,6 @@
     "ref": "T5 p.14"
   },
   {
-    "question": "Qual destes nomes pode ser usado para uma label em assembly?",
-    "answers": [
-      "-var",
-      "a+b",
-      "z12345",
-      "1"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T5 p.14"
-  },
-  {
-    "question": "Qual destes NÃO é um nome de símbolo válido em assembly?",
-    "answers": [
-      "_x",
-      "var1",
-      "_1",
-      "1var"
-    ],
-    "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T5 p.14"
-  },
-  {
     "question": "Num nome de símbolo, o primeiro carácter não pode ser um algarismo",
     "answers": [
       "FALSO",
@@ -539,7 +513,7 @@
     "ref": "T5 p.18"
   },
   {
-    "question": "Qual é a forma geral das instruções lógicas, de deslocamento e aritméticas com dois operandos de origem?",
+    "question": "Qual é a forma geral das instruções lógicas, de shift e aritméticas com dois operandos de origem?",
     "answers": [
       "MNM rs1, rs2, rd (o destino vem no fim)",
       "MNM rd, rs1, rs2 (ou MNM rd, rs1, imm)",
@@ -552,12 +526,12 @@
     "ref": "T5 p.20"
   },
   {
-    "question": "O que é o shamt nas instruções de deslocamento?",
+    "question": "O que é o shamt nas instruções de shift?",
     "answers": [
-      "Um registo que guarda o resultado do deslocamento",
-      "Um imediato de 12 bits com sinal, que indica o sentido do deslocamento",
-      "Um imediato de 5 bits, sem sinal, que indica o número de posições a deslocar",
-      "O número de bits do registo que se desloca"
+      "Um registo que guarda o resultado do shift",
+      "Um imediato de 12 bits com sinal, que indica o sentido do shift",
+      "Um imediato de 5 bits, sem sinal, que indica o número de posições do shift",
+      "O número de bits do registo sujeitos a shift"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -583,7 +557,7 @@
       "R[rd] = ~R[rs1] + 1, o complemento para 2 de R[rs1]",
       "R[rd] = ~R[rs1], o complemento para 1 de R[rs1]",
       "R[rd] = R[rs1] + 1",
-      "R[rd] = 0 − 1"
+      "R[rd] = 0 - 1"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -658,10 +632,10 @@
   {
     "question": "Porque é que xori rd, rs1, -1 calcula o complemento para 1 de rs1?",
     "answers": [
-      "Porque −1 é estendido com zeros para 0x00000001, e o xor com esse valor soma 1 ao registo",
-      "Porque o xor com −1 troca a ordem dos bits do registo, do primeiro para o último",
-      "Porque −1 é estendido com sinal para 0xFFFFFFFF, e o xor com bits a 1 inverte cada bit",
-      "Porque o imediato −1 é convertido em zero pelo assembler antes de ser codificado"
+      "Porque -1 é estendido com zeros para 0x00000001, e o xor com esse valor soma 1 ao registo",
+      "Porque o xor com -1 troca a ordem dos bits do registo, do primeiro para o último",
+      "Porque -1 é estendido com sinal para 0xFFFFFFFF, e o xor com bits a 1 inverte cada bit",
+      "Porque o imediato -1 é convertido em zero pelo assembler antes de ser codificado"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -682,7 +656,7 @@
     "ref": "T5 p.22"
   },
   {
-    "question": "Nos deslocamentos para a esquerda, os bits menos significativos que ficam vazios são preenchidos com o bit de sinal",
+    "question": "Nos shifts para a esquerda, os bits menos significativos que ficam vazios são preenchidos com o bit de sinal",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -696,9 +670,9 @@
     "question": "Qual é a diferença entre srl e sra?",
     "answers": [
       "O srl preenche os bits mais significativos com zeros, e o sra replica o bit de sinal",
-      "O srl desloca os bits para a esquerda e o sra desloca-os para a direita, ambos com zeros",
+      "O srl faz shift dos bits para a esquerda e o sra faz shift dos bits para a direita, ambos com zeros",
       "O srl replica o bit de sinal nos bits mais significativos, e o sra preenche-os com zeros",
-      "O srl usa um imediato como deslocamento, e o sra usa o conteúdo de um registo"
+      "O srl usa um imediato como shift, e o sra usa o conteúdo de um registo"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -745,7 +719,7 @@
     "ref": "T5 p.23"
   },
   {
-    "question": "Admita a1 = 0xFFFFFFF0 (−16) e a2 = 2. Que valor fica em a0 depois de sra a0, a1, a2?",
+    "question": "Admita a1 = 0xFFFFFFF0 (-16) e a2 = 2. Que valor fica em a0 depois de sra a0, a1, a2?",
     "answers": [
       "0xFFFFFFFC",
       "0x3FFFFFFC",
@@ -1066,7 +1040,7 @@
     "ref": "T5 p.27"
   },
   {
-    "question": "Admita a1 = −20 (0xFFFFFFEC) e a2 = 4. Que valor fica em a0 depois de div a0, a1, a2?",
+    "question": "Admita a1 = -20 (0xFFFFFFEC) e a2 = 4. Que valor fica em a0 depois de div a0, a1, a2?",
     "answers": [
       "5",
       "-4",
@@ -1133,10 +1107,10 @@
   {
     "question": "Que tamanho de dados representa a letra h nas instruções de load e store?",
     "answers": [
-      "Meia word, com 16 bits (2 bytes)",
+      "Half word, com 16 bits (2 bytes)",
       "Uma word, com 32 bits (4 bytes)",
       "Um byte, com 8 bits",
-      "Uma word dupla, com 64 bits"
+      "Uma double word, com 64 bits"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1146,10 +1120,10 @@
   {
     "question": "Que tamanho de dados representa a letra w nas instruções de load e store?",
     "answers": [
-      "Meia word, com 16 bits (2 bytes)",
+      "Half word, com 16 bits (2 bytes)",
       "Uma word, com 32 bits (4 bytes)",
       "Um byte, com 8 bits",
-      "Uma word dupla, com 64 bits"
+      "Uma double word, com 64 bits"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1159,7 +1133,7 @@
   {
     "question": "Que tamanho de dados representa a letra b nas instruções de load e store?",
     "answers": [
-      "Meia word, com 16 bits (2 bytes)",
+      "Half word, com 16 bits (2 bytes)",
       "Uma word, com 32 bits (4 bytes)",
       "Um byte, com 8 bits",
       "Um bit"
@@ -1406,7 +1380,7 @@
   {
     "question": "O que faz a pseudoinstrução li rd, imm32?",
     "answers": [
-      "Carrega um imediato de 12 bits para o registo rd",
+      "Soma um imediato de 12 bits ao registo rd",
       "Carrega um imediato de 32 bits para o registo rd",
       "Carrega para rd o conteúdo da memória no endereço imm32",
       "Copia o registo imm32 para o registo rd"
@@ -1671,7 +1645,7 @@
     "ref": "T5 p.42"
   },
   {
-    "question": "As instruções de salto condicional são usadas, tipicamente, para implementar instruções if, switch e ciclos",
+    "question": "As instruções de branch condicional são usadas, tipicamente, para implementar instruções if, switch e ciclos",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1777,7 +1751,7 @@
     "answers": [
       "Não, porque 0xFFFFFFFF é maior do que 1",
       "Sim, porque os dois registos têm valores diferentes",
-      "Sim, porque −1 < 1 quando os valores são tratados com sinal",
+      "Sim, porque -1 < 1 quando os valores são tratados com sinal",
       "Não, porque o blt só compara registos com o mesmo valor"
     ],
     "correct_index": 2,
@@ -1788,7 +1762,7 @@
   {
     "question": "Admita a0 = 0xFFFFFFFF e a1 = 1. A instrução bltu a0, a1, L salta para L?",
     "answers": [
-      "Sim, porque −1 é menor do que 1 quando os valores são tratados como números com sinal",
+      "Sim, porque -1 é menor do que 1 quando os valores são tratados como números com sinal",
       "Sim, porque os dois registos têm valores diferentes e por isso o salto é efetuado",
       "Não, porque o bltu só compara dois registos quando ambos têm exatamente o mesmo valor",
       "Não, porque 0xFFFFFFFF (4294967295) não é menor do que 1 quando tratado sem sinal"
@@ -1838,19 +1812,6 @@
     "ref": "T5 p.44"
   },
   {
-    "question": "No ciclo li a0, 5 / LOOP: (corpo do ciclo) / addi a0, a0, -1 / bne a0, zero, LOOP, quantas vezes se executa o corpo do ciclo?",
-    "answers": [
-      "4",
-      "6",
-      "10",
-      "5"
-    ],
-    "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T5 p.44"
-  },
-  {
     "question": "No ciclo em que a0 é o contador e o bne a0, zero, LOOP está no fim, quando é que o fluxo de execução volta para a label LOOP?",
     "answers": [
       "Quando o contador a0 ainda não chegou a zero",
@@ -1877,7 +1838,7 @@
     "ref": "T5 p.46"
   },
   {
-    "question": "Admita a1 = −1 (0xFFFFFFFF) e a2 = 1. Que valor fica em a0 depois de slt a0, a1, a2?",
+    "question": "Admita a1 = -1 (0xFFFFFFFF) e a2 = 1. Que valor fica em a0 depois de slt a0, a1, a2?",
     "answers": [
       "0",
       "-1",
@@ -1890,7 +1851,7 @@
     "ref": "T5 p.46"
   },
   {
-    "question": "Admita a1 = −1 (0xFFFFFFFF) e a2 = 1. Que valor fica em a0 depois de sltu a0, a1, a2?",
+    "question": "Admita a1 = -1 (0xFFFFFFFF) e a2 = 1. Que valor fica em a0 depois de sltu a0, a1, a2?",
     "answers": [
       "1",
       "-1",
@@ -1981,7 +1942,7 @@
     "ref": "T5 p.46"
   },
   {
-    "question": "Para detetar um overflow no RISC-V podem usar-se instruções de salto condicional e instruções de conjunto condicional normais",
+    "question": "Para detetar um overflow no RISC-V podem usar-se instruções de branch condicional e instruções de conjunto condicional normais",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -2018,10 +1979,10 @@
     "ref": "T5 p.48"
   },
   {
-    "question": "Porque é que a0 < a1 (sem sinal) depois de a0 = a1 + a2 indica que houve overflow?",
+    "question": "Depois de a0 = a1 + a2, com valores sem sinal, porque é que a0 < a1 (comparação sem sinal) indica que houve overflow?",
     "answers": [
       "Porque, sem overflow, a soma nunca seria menor do que um dos operandos",
-      "Porque o resultado da soma é sempre menor do que a1 quando há overflow de sinal",
+      "Porque a soma com overflow é sempre maior do que a1",
       "Porque o add põe a0 a zero quando há overflow",
       "Porque a comparação sem sinal falha sempre quando há overflow"
     ],

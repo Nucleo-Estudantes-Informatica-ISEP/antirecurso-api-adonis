@@ -425,12 +425,12 @@
     "ref": "T2 p.11"
   },
   {
-    "question": "Cada número pode ter várias representações diferentes numa mesma base",
+    "question": "Cada número tem, numa dada base, uma única representação, sem contar com zeros à esquerda",
     "answers": [
       "FALSO",
       "VERDADEIRO"
     ],
-    "correct_index": 0,
+    "correct_index": 1,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T2 p.12"
@@ -591,7 +591,7 @@
     "ref": "T2 p.16"
   },
   {
-    "question": "As operações de deslocamento (shift) e de rotação movem uma sequência de bits para a esquerda ou para a direita",
+    "question": "As operações de shift e de rotação movem uma sequência de bits para a esquerda ou para a direita",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -628,10 +628,10 @@
   {
     "question": "O que designa a representação de dados?",
     "answers": [
-      "A conversão de dados digitais em dados analógicos",
+      "A conversão dos dados digitais em dados analógicos para transmissão",
       "O conjunto de símbolos que representam pessoas e acontecimentos",
-      "A transferência de dados entre o CPU e a memória",
-      "A forma como os dados são armazenados, processados e transmitidos"
+      "A transferência dos dados entre o CPU e a main memory",
+      "A forma como os dados são guardados, processados e transmitidos"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -674,7 +674,7 @@
   {
     "question": "O que é um conjunto de caracteres (character set)?",
     "answers": [
-      "Uma coleção normalizada de caracteres e dos padrões de bits usados para os representar",
+      "Uma coleção normalizada de caracteres e dos seus padrões de bits",
       "O conjunto de todas as teclas que existem num teclado de computador",
       "O conjunto de tipos de letra disponíveis para mostrar texto no ecrã de um computador",
       "Um ficheiro de texto onde ficam guardados todos os caracteres usados num programa"
@@ -746,7 +746,7 @@
     "answers": [
       "Uma versão alargada do ASCII que usa códigos de 8 bits para guardar símbolos gráficos",
       "Um formato de ficheiro usado para guardar imagens digitais com compressão de dados",
-      "Um padrão que define os caracteres necessários para escrever a maioria das línguas vivas usadas em computadores",
+      "Um padrão com os caracteres necessários para a maioria das línguas vivas",
       "Um método de compressão que reduz o tamanho dos ficheiros de texto guardados em disco"
     ],
     "correct_index": 2,
@@ -795,7 +795,7 @@
     "question": "O que é o Basic Multilingual Plane (BMP)?",
     "answers": [
       "As primeiras 256 posições de código do conjunto Unicode",
-      "As primeiras 65 536 posições de código do conjunto de caracteres Unicode",
+      "As primeiras 65536 posições de código do conjunto de caracteres Unicode",
       "O conjunto dos caracteres que são codificados com apenas 1 byte",
       "O bloco do Unicode reservado aos caracteres suplementares"
     ],
@@ -890,7 +890,7 @@
     "ref": "T2 p.22"
   },
   {
-    "question": "Qualquer dispositivo com um ecrã gráfico a cores precisa de um modelo para descrever as cores",
+    "question": "Qualquer device com um ecrã gráfico a cores precisa de um modelo para descrever as cores",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1011,8 +1011,8 @@
     "question": "Qual é a gama de valores de um inteiro sem sinal representado com n bits?",
     "answers": [
       "De 0 a 2^n",
-      "De −2^(n−1) a 2^(n−1) − 1",
-      "De 0 a 2^n − 1",
+      "De -2^(n-1) a 2^(n-1) - 1",
+      "De 0 a 2^n - 1",
       "De 1 a 2^n"
     ],
     "correct_index": 2,
@@ -1082,7 +1082,7 @@
     "ref": "T2 p.28"
   },
   {
-    "question": "Em sinal e magnitude, +34 e −34 diferem em todos os bits",
+    "question": "Em sinal e magnitude, +34 e -34 diferem em todos os bits",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1093,7 +1093,7 @@
     "ref": "T2 p.28"
   },
   {
-    "question": "Em sinal e magnitude com 8 bits, como se representa o número −34?",
+    "question": "Em sinal e magnitude com 8 bits, como se representa o número -34?",
     "answers": [
       "00100010",
       "11011101",
@@ -1109,9 +1109,9 @@
     "question": "Em sinal e magnitude com 8 bits, qual é o valor do padrão 10001010?",
     "answers": [
       "10",
-      "−118",
-      "−5",
-      "−10"
+      "-118",
+      "-5",
+      "-10"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1121,10 +1121,10 @@
   {
     "question": "Qual é a gama de valores da representação em sinal e magnitude com n bits?",
     "answers": [
-      "De −(2^(n−1) − 1) a +(2^(n−1) − 1)",
-      "De −2^(n−1) a +(2^(n−1) − 1)",
-      "De −(2^n − 1) a +(2^n − 1)",
-      "De −(2^(n−1) + 1) a +(2^(n−1) + 1)"
+      "De -(2^(n-1) - 1) a +(2^(n-1) - 1)",
+      "De -2^(n-1) a +(2^(n-1) - 1)",
+      "De -(2^n - 1) a +(2^n - 1)",
+      "De -(2^(n-1) + 1) a +(2^(n-1) + 1)"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1191,7 +1191,7 @@
     "ref": "T2 p.29"
   },
   {
-    "question": "Em complemento para 1 com 8 bits, como se representa o número −5?",
+    "question": "Em complemento para 1 com 8 bits, como se representa o número -5?",
     "answers": [
       "10000101",
       "11111011",
@@ -1206,10 +1206,10 @@
   {
     "question": "Em complemento para 1 com 8 bits, qual é o valor do padrão 11110000?",
     "answers": [
-      "−15",
-      "−16",
-      "−112",
-      "−240"
+      "-15",
+      "-16",
+      "-112",
+      "-240"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1230,10 +1230,10 @@
   {
     "question": "Qual é a gama de valores do complemento para 1 com n bits?",
     "answers": [
-      "De −2^(n−1) a +(2^(n−1) − 1)",
-      "De −(2^(n−1) − 1) a +(2^(n−1) − 1)",
-      "De −(2^n − 1) a +(2^n − 1)",
-      "De −(2^(n−1) − 1) a +2^(n−1)"
+      "De -2^(n-1) a +(2^(n-1) - 1)",
+      "De -(2^(n-1) - 1) a +(2^(n-1) - 1)",
+      "De -(2^n - 1) a +(2^n - 1)",
+      "De -(2^(n-1) - 1) a +2^(n-1)"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1263,7 +1263,7 @@
     "ref": "T2 p.31"
   },
   {
-    "question": "Em complemento para 2 com 8 bits, como se representa o número −5?",
+    "question": "Em complemento para 2 com 8 bits, como se representa o número -5?",
     "answers": [
       "11111010",
       "10000101",
@@ -1276,7 +1276,7 @@
     "ref": "T2 p.31"
   },
   {
-    "question": "Em complemento para 2 com 8 bits, como se representa o número −34?",
+    "question": "Em complemento para 2 com 8 bits, como se representa o número -34?",
     "answers": [
       "11011101",
       "10100010",
@@ -1291,10 +1291,10 @@
   {
     "question": "Em complemento para 2 com 8 bits, qual é o valor do padrão 11110110?",
     "answers": [
-      "−10",
-      "−9",
-      "−118",
-      "−11"
+      "-10",
+      "-9",
+      "-118",
+      "-11"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1304,9 +1304,9 @@
   {
     "question": "Em complemento para 2 com 8 bits, qual é o valor do padrão 10000000?",
     "answers": [
-      "−0",
-      "−128",
-      "−127",
+      "-0",
+      "-128",
+      "-127",
       "128"
     ],
     "correct_index": 1,
@@ -1317,10 +1317,10 @@
   {
     "question": "Em complemento para 2 com 8 bits, qual é o valor do padrão 01111111?",
     "answers": [
-      "−127",
+      "-127",
       "128",
       "127",
-      "−1"
+      "-1"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1330,10 +1330,10 @@
   {
     "question": "Qual é a gama de valores do complemento para 2 com n bits?",
     "answers": [
-      "De −(2^(n−1) − 1) a +(2^(n−1) − 1)",
-      "De 0 a 2^n − 1",
-      "De −2^(n−1) a +2^(n−1)",
-      "De −2^(n−1) a +(2^(n−1) − 1)"
+      "De -(2^(n-1) - 1) a +(2^(n-1) - 1)",
+      "De 0 a 2^n - 1",
+      "De -2^(n-1) a +2^(n-1)",
+      "De -2^(n-1) a +(2^(n-1) - 1)"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1343,10 +1343,10 @@
   {
     "question": "Qual é o menor valor que se pode representar em complemento para 2 com 16 bits?",
     "answers": [
-      "−32768",
-      "−32767",
-      "−65536",
-      "−65535"
+      "-32768",
+      "-32767",
+      "-65536",
+      "-65535"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1367,7 +1367,7 @@
     "ref": "T2 p.31"
   },
   {
-    "question": "Qual é a representação do número −3 em 4 bits, em complemento para 2?",
+    "question": "Qual é a representação do número -3 em 4 bits, em complemento para 2?",
     "answers": [
       "1011",
       "1100",
@@ -1380,7 +1380,7 @@
     "ref": "T2 p.31"
   },
   {
-    "question": "Qual é a representação do número −3 em 4 bits, em sinal e magnitude?",
+    "question": "Qual é a representação do número -3 em 4 bits, em sinal e magnitude?",
     "answers": [
       "1101",
       "1100",
@@ -1393,7 +1393,7 @@
     "ref": "T2 p.31"
   },
   {
-    "question": "Qual é a representação do número −3 em 4 bits, em complemento para 1?",
+    "question": "Qual é a representação do número -3 em 4 bits, em complemento para 1?",
     "answers": [
       "1100",
       "1101",

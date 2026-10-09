@@ -24,23 +24,12 @@
     "ref": "T3 p.5"
   },
   {
-    "question": "É a unidade de memória que executa as operações aritméticas e as restantes operações de processamento de dados especificadas pelo programa",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T3 p.5"
-  },
-  {
-    "question": "Qual destes é um dispositivo de entrada típico, usado para introduzir programas e dados na memória?",
+    "question": "Qual destes é um device de entrada típico, usado para introduzir programas e dados na memória?",
     "answers": [
       "Um ecrã",
       "Um teclado",
-      "A memória principal",
-      "O barramento do sistema"
+      "A main memory",
+      "O system bus"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -48,7 +37,7 @@
     "ref": "T3 p.5"
   },
   {
-    "question": "Um dispositivo de saída, como um ecrã, recebe os resultados dos cálculos para os apresentar ao utilizador",
+    "question": "Um device de saída, como um ecrã, recebe os resultados dos cálculos para os apresentar ao utilizador",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -59,7 +48,7 @@
     "ref": "T3 p.5"
   },
   {
-    "question": "Cada componente de um computador comunica através de um barramento privado, que não é partilhado com os restantes componentes",
+    "question": "Cada componente de um computador comunica através de um bus privado, que não é partilhado com os restantes componentes",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -94,7 +83,7 @@
     "ref": "T3 p.6"
   },
   {
-    "question": "Uma célula binária é um dispositivo com três estados estáveis, capaz de guardar um dígito decimal",
+    "question": "Uma célula binária é um device com três estados estáveis, capaz de guardar um dígito decimal",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -195,7 +184,7 @@
     "question": "O que descreve o termo endianness?",
     "answers": [
       "A ordem pela qual uma sequência de bytes é guardada na memória do computador",
-      "O número de bits que formam uma word, definido pelo barramento de dados",
+      "O número de bits que formam uma word, definido pelo data bus",
       "A ordem pela qual as instruções de um programa são executadas pelo CPU",
       "A velocidade a que os bytes são transferidos do disco para a memória"
     ],
@@ -318,7 +307,7 @@
     "ref": "T3 p.9"
   },
   {
-    "question": "Que informação transporta o barramento de dados?",
+    "question": "Que informação transporta o data bus?",
     "answers": [
       "Dados e instruções",
       "O endereço de origem ou de destino dos dados",
@@ -331,7 +320,7 @@
     "ref": "T3 p.10"
   },
   {
-    "question": "O barramento de dados é bidirecional",
+    "question": "O data bus é bidirecional",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -342,7 +331,7 @@
     "ref": "T3 p.10"
   },
   {
-    "question": "A largura do barramento de dados, isto é, o número de bits que consegue transportar de cada vez, corresponde a que valor?",
+    "question": "A largura do data bus, isto é, o número de bits que consegue transportar de cada vez, corresponde a que valor?",
     "answers": [
       "Ao número de endereços da memória",
       "Ao tamanho da word",
@@ -355,7 +344,7 @@
     "ref": "T3 p.10"
   },
   {
-    "question": "Que informação transporta o barramento de endereços?",
+    "question": "Que informação transporta o address bus?",
     "answers": [
       "As instruções e os dados do programa",
       "Os sinais de controlo e de temporização",
@@ -368,7 +357,7 @@
     "ref": "T3 p.11"
   },
   {
-    "question": "O barramento de endereços é bidirecional",
+    "question": "O address bus é bidirecional",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -379,7 +368,7 @@
     "ref": "T3 p.11"
   },
   {
-    "question": "Para que serve o barramento de controlo?",
+    "question": "Para que serve o control bus?",
     "answers": [
       "Para transportar os dados lidos da memória para o CPU e para os periféricos",
       "Para indicar em que endereço da memória se vai ler ou escrever o próximo dado",
@@ -392,7 +381,7 @@
     "ref": "T3 p.11"
   },
   {
-    "question": "O barramento de controlo é unidirecional",
+    "question": "O control bus é unidirecional",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -403,7 +392,7 @@
     "ref": "T3 p.11"
   },
   {
-    "question": "Qual é o sinal de controlo que coloca no barramento de dados os dados de uma posição de memória?",
+    "question": "Qual é o sinal de controlo que coloca no data bus os dados de uma posição de memória?",
     "answers": [
       "Memory read",
       "Memory write",
@@ -416,7 +405,7 @@
     "ref": "T3 p.11"
   },
   {
-    "question": "Qual é o sinal de controlo que coloca numa posição de memória os dados que estão no barramento de dados?",
+    "question": "Qual é o sinal de controlo que coloca numa posição de memória os dados que estão no data bus?",
     "answers": [
       "Memory read",
       "Memory write",
@@ -429,7 +418,7 @@
     "ref": "T3 p.11"
   },
   {
-    "question": "O sinal I/O read coloca no endereço de I/O os dados que estão no barramento de dados",
+    "question": "O sinal I/O read coloca no endereço de I/O os dados que estão no data bus",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -440,7 +429,7 @@
     "ref": "T3 p.11"
   },
   {
-    "question": "As interrupções são transportadas pelo barramento de dados e não pelo barramento de controlo",
+    "question": "Os interrupts são transportados pelo data bus e não pelo control bus",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -479,21 +468,10 @@
     "answers": [
       "Executar as operações aritméticas e lógicas pedidas pelas instruções do programa",
       "Guardar, em memória de alta velocidade, os dados enquanto estes são processados",
-      "Transportar os dados entre o CPU, a memória e os dispositivos de entrada e saída",
+      "Transportar os dados entre o CPU, a memória e os devices de entrada e saída",
       "Dirigir o funcionamento das outras unidades, fornecendo sinais de controlo e de temporização"
     ],
     "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T3 p.12"
-  },
-  {
-    "question": "A unidade de controlo não intervém no fluxo de dados entre a memória e o CPU, que é gerido pela ALU",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T3 p.12"
@@ -504,7 +482,7 @@
       "A unidade de controlo",
       "A ALU",
       "Os registos",
-      "O barramento de dados"
+      "O data bus"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -597,12 +575,12 @@
     "ref": "T3 p.17"
   },
   {
-    "question": "O que faz o CVE (Common Vulnerabilities and Exposures)?",
+    "question": "O que é o CVE (Common Vulnerabilities and Exposures)?",
     "answers": [
-      "Lista os tipos de fraquezas de software e de hardware",
-      "Identifica, define e cataloga vulnerabilidades de cibersegurança divulgadas publicamente",
-      "Atribui uma pontuação numérica à gravidade de cada vulnerabilidade",
-      "Promove a melhoria da segurança do software numa fundação sem fins lucrativos"
+      "Uma lista dos tipos de fraquezas de software e de hardware",
+      "Um catálogo que identifica e define vulnerabilidades divulgadas publicamente",
+      "Um sistema que atribui uma pontuação numérica à gravidade de cada vulnerabilidade",
+      "Uma fundação sem fins lucrativos que trabalha para melhorar a segurança do software"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -680,7 +658,7 @@
     "ref": "T3 p.19"
   },
   {
-    "question": "Uma variável de 1 byte, sem sinal, com o valor 50, recebe a soma de 240. Qual é o valor final da variável?",
+    "question": "Uma variável de 1 byte, sem sinal, tem o valor 50. Qual é o seu valor final depois de lhe somar 240?",
     "answers": [
       "34",
       "290",
@@ -697,7 +675,7 @@
     "answers": [
       "Porque o CPU não consegue executar operações aritméticas com números muito grandes",
       "Porque se usa um número limitado de bits e o resultado pode ser demasiado grande",
-      "Porque a memória principal só permite guardar valores positivos nas variáveis",
+      "Porque a main memory só permite guardar valores positivos nas variáveis",
       "Porque o compilador troca a ordem dos operandos nas operações aritméticas"
     ],
     "correct_index": 1,
@@ -747,7 +725,7 @@
   {
     "question": "Qual é o valor de uma variável unsigned char com o valor 0, depois de lhe subtrair 1?",
     "answers": [
-      "−1",
+      "-1",
       "255",
       "0",
       "256"
@@ -758,7 +736,7 @@
     "ref": "T3 p.21"
   },
   {
-    "question": "O que é um overflow ou wraparound de inteiros (CWE-190)?",
+    "question": "Quando ocorre um overflow ou wraparound de inteiros (CWE-190)?",
     "answers": [
       "Ocorre quando um inteiro é guardado numa posição de memória que não existe no sistema",
       "Ocorre quando um inteiro é dividido por zero durante a execução do programa",
@@ -806,10 +784,10 @@
   {
     "question": "Em que situações um overflow de inteiros se torna crítico para a segurança?",
     "answers": [
-      "Apenas quando o resultado do cálculo é mostrado no ecrã com um formato de impressão incorreto, sem afetar mais nada",
-      "Apenas quando o programa é executado em arquiteturas de 64 bits e dispõe de muita memória livre",
-      "Apenas quando o inteiro é declarado sem a palavra unsigned, qualquer que seja a operação feita",
-      "Quando o resultado é usado para controlar ciclos, tomar decisões de segurança ou calcular tamanhos de memória"
+      "Quando o resultado é mostrado no ecrã com um formato de impressão incorreto",
+      "Quando o programa é executado numa arquitetura de 64 bits com muita memória",
+      "Quando o inteiro é declarado sem a palavra unsigned, seja qual for a operação",
+      "Quando o resultado controla ciclos, decisões de segurança ou tamanhos de memória"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -878,7 +856,7 @@
     "ref": "T3 p.25"
   },
   {
-    "question": "O tipo double ocupa 4 bytes em RV32 e 8 bytes em RISC-V64",
+    "question": "O tipo double ocupa 4 bytes em RISC-V32 e 8 bytes em RISC-V64",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -900,12 +878,12 @@
     "ref": "T3 p.25"
   },
   {
-    "question": "Em que arquiteturas, de entre RISC-V32, RISC-V64, IA32 e x86-64, o tamanho de um long double é sempre 16 bytes, sem variantes?",
+    "question": "Em que arquiteturas, de entre RISC-V32, RISC-V64, IA32 e x86-64, o tamanho de um long double não varia?",
     "answers": [
       "Apenas em IA32, onde varia entre 10 e 12 bytes",
       "Em IA32 e em x86-64, onde varia entre 10 e 16 bytes",
       "Apenas em x86-64, onde varia entre 10 e 16 bytes",
-      "Em RISC-V32 e em RISC-V64, onde são sempre 16 bytes"
+      "Em RISC-V32 e em RISC-V64, onde tem 16 bytes"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -919,17 +897,6 @@
       "1 byte",
       "2 bytes",
       "8 bytes"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T3 p.25"
-  },
-  {
-    "question": "Em RISC-V32 e em IA32, um apontador ocupa 8 bytes",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1099,7 +1066,7 @@
     "ref": "T3 p.30"
   },
   {
-    "question": "NULL é uma constante com o valor zero, definida em várias bibliotecas standard",
+    "question": "NULL é uma constante com o valor zero, definida em várias bibliotecas padrão",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1110,7 +1077,7 @@
     "ref": "T3 p.30"
   },
   {
-    "question": "O que é referenciar (ou inicializar) um apontador?",
+    "question": "O que é referenciar um apontador, ou seja, dar-lhe um endereço válido?",
     "answers": [
       "Guardar no apontador uma cópia do valor da variável para a qual vai apontar",
       "Fazer o apontador apontar para uma variável, atribuindo-lhe o endereço dessa variável",
@@ -1134,7 +1101,7 @@
     "ref": "T3 p.31"
   },
   {
-    "question": "Admita char c = 50; e int i = 290;. Qual é o output de printf(\"%x, %x\", c, i);?",
+    "question": "Admita char c = 50; e int i = 290;. Qual é o resultado impresso por printf(\"%x, %x\", c, i);?",
     "answers": [
       "50, 290",
       "32, 290",
@@ -1147,7 +1114,7 @@
     "ref": "T3 p.31"
   },
   {
-    "question": "Admita char c = 50; int i = 290; char* ptr_c = &c; int* ptr_i = &i; e, depois, *ptr_c = 0x00; *ptr_i = 0x00;. Qual é o output de printf(\"%x, %x, %x, %x\", c, i, *ptr_c, *ptr_i);?",
+    "question": "Admita char c = 50; int i = 290; char* ptr_c = &c; int* ptr_i = &i; e, depois, *ptr_c = 0x00; *ptr_i = 0x00;. Qual é o resultado impresso por printf(\"%x, %x, %x, %x\", c, i, *ptr_c, *ptr_i);?",
     "answers": [
       "32, 122, 0, 0",
       "0, 0, 32, 122",
@@ -1197,9 +1164,9 @@
   {
     "question": "Quais são os quatro operadores aritméticos que se podem usar com apontadores?",
     "answers": [
-      "++, −−, * e /",
-      "++, −−, + e −",
-      "+, −, * e /",
+      "++, --, * e /",
+      "++, --, + e -",
+      "+, -, * e /",
       "++, +, % e /"
     ],
     "correct_index": 1,
@@ -1406,7 +1373,7 @@
     "ref": "T3 p.37"
   },
   {
-    "question": "Admita int arr[5]; int* ptr = arr; ptr++;. Qual é o valor de ptr − arr?",
+    "question": "Admita int arr[5]; int* ptr = arr; ptr++;. Qual é o valor de ptr - arr?",
     "answers": [
       "4",
       "1",
@@ -1532,7 +1499,7 @@
     "ref": "T3 p.39"
   },
   {
-    "question": "Um int* guarda o endereço 0x1020. Qual é o endereço de ptr − 2 (um int ocupa 4 bytes)?",
+    "question": "Um int* guarda o endereço 0x1020. Qual é o endereço de ptr - 2 (um int ocupa 4 bytes)?",
     "answers": [
       "0x101E",
       "0x1018",
@@ -1632,7 +1599,7 @@
     "ref": "T3 p.42"
   },
   {
-    "question": "Qual é a representação hexadecimal do valor −1 numa variável short (16 bits)?",
+    "question": "Qual é a representação hexadecimal do valor -1 numa variável short (16 bits)?",
     "answers": [
       "0x8000",
       "0x7FFF",
@@ -1695,7 +1662,7 @@
     "ref": "T3 p.43"
   },
   {
-    "question": "Na conversão implícita, quando os operandos têm tipos diferentes, o operando de tipo inferior é automaticamente convertido para o tipo superior (promoção de tipo)",
+    "question": "No casting implícito, quando os operandos têm tipos diferentes, o operando de tipo inferior é automaticamente convertido para o tipo superior (promoção de tipo)",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1706,7 +1673,7 @@
     "ref": "T3 p.43"
   },
   {
-    "question": "Na conversão explícita, o programador altera o tipo de uma expressão através do operador de cast, com a forma (tipo) expressão",
+    "question": "No casting explícito, o programador altera o tipo de uma expressão através do operador de cast, com a forma (tipo) expressão",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1767,7 +1734,7 @@
     "ref": "T3 p.45"
   },
   {
-    "question": "Admita int i = 17; char c = 'c'; (o valor ASCII de 'c' é 99) float sum = i + c;. Qual é o output de printf(\"%f\", sum);?",
+    "question": "Admita int i = 17; char c = 'c'; (o valor ASCII de 'c' é 99) float sum = i + c;. Qual é o resultado impresso por printf(\"%f\", sum);?",
     "answers": [
       "116",
       "99.000000",
@@ -1917,17 +1884,6 @@
     "ref": "T3 p.48"
   },
   {
-    "question": "Em C, a expressão −1 < 0U é avaliada como verdadeira",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T3 p.48"
-  },
-  {
     "question": "Admita unsigned int u = 5; int x = -3;. Qual é o valor da expressão x < u?",
     "answers": [
       "0",
@@ -2041,9 +1997,9 @@
   {
     "question": "Ao truncar um número de w bits para k bits (com w > k), que bits são descartados?",
     "answers": [
-      "Os w − k bits de ordem mais baixa",
+      "Os w - k bits de ordem mais baixa",
       "Os k bits de ordem mais alta",
-      "Os w − k bits de ordem mais alta",
+      "Os w - k bits de ordem mais alta",
       "Os bits que tiverem o valor zero"
     ],
     "correct_index": 2,
@@ -2219,7 +2175,7 @@
     "ref": "T3 p.54"
   },
   {
-    "question": "Em C, o operador << desloca os bits para a direita e o operador >> desloca-os para a esquerda",
+    "question": "Em C, o operador << faz shift dos bits para a direita e o operador >> faz shift dos bits para a esquerda",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -2230,18 +2186,7 @@
     "ref": "T3 p.54"
   },
   {
-    "question": "Os operadores bit a bit atuam sobre os dados bit a bit, começando pelo MSB (o bit mais à esquerda) e avançando até ao LSB (o mais à direita)",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T3 p.55"
-  },
-  {
-    "question": "Um deslocamento diz-se lógico quando é feito sobre inteiros sem sinal, e os bits que ficam vazios são preenchidos com zeros",
+    "question": "Um shift diz-se lógico quando é feito sobre inteiros sem sinal, e os bits que ficam vazios são preenchidos com zeros",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -2252,7 +2197,7 @@
     "ref": "T3 p.55"
   },
   {
-    "question": "Um deslocamento diz-se aritmético quando é feito sobre inteiros com sinal",
+    "question": "Um shift diz-se aritmético quando é feito sobre inteiros com sinal",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -2263,7 +2208,7 @@
     "ref": "T3 p.55"
   },
   {
-    "question": "Num deslocamento aritmético para a direita, o bit de sinal (MSB) é replicado em vez de se preencher com zeros",
+    "question": "Num shift aritmético para a direita, o bit de sinal (MSB) é replicado em vez de se preencher com zeros",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -2274,7 +2219,7 @@
     "ref": "T3 p.55"
   },
   {
-    "question": "O deslocamento aritmético para a esquerda replica o bit de sinal, ao contrário do deslocamento lógico para a esquerda",
+    "question": "O shift aritmético para a esquerda replica o bit de sinal, ao contrário do shift lógico para a esquerda",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -2298,7 +2243,7 @@
     "ref": "T3 p.55"
   },
   {
-    "question": "Admita um signed char com o valor −16 (0xF0), com deslocamento aritmético. Qual é o resultado de aplicar-lhe >> 2?",
+    "question": "Admita um signed char com o valor -16 (0xF0), com shift aritmético. Qual é o resultado de aplicar-lhe >> 2?",
     "answers": [
       "-4",
       "60",
@@ -2352,17 +2297,6 @@
       "VERDADEIRO"
     ],
     "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T3 p.57"
-  },
-  {
-    "question": "Os operadores lógicos não avaliam o segundo argumento se o resultado da expressão já puder ser determinado pelo primeiro",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 1,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T3 p.57"

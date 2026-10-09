@@ -2,7 +2,7 @@
   {
     "question": "O que é uma função, em programação?",
     "answers": [
-      "Um bloco de instruções que realiza uma tarefa específica, identificado por um nome",
+      "Um bloco de instruções que realiza uma tarefa específica, com um nome",
       "Um conjunto de variáveis globais que todas as instruções do programa partilham",
       "Uma região da memória onde ficam apenas os dados de entrada do programa",
       "Uma instrução do processador que realiza uma tarefa específica num só ciclo"
@@ -155,7 +155,7 @@
   {
     "question": "Que elementos fazem parte da passagem de dados numa chamada de função?",
     "answers": [
-      "O endereço de retorno e o apontador da pilha",
+      "O endereço de retorno e o apontador da stack",
       "Os argumentos da função e o valor de retorno",
       "As variáveis globais e as constantes simbólicas",
       "As labels e as diretivas do assembler"
@@ -177,7 +177,7 @@
     "ref": "T8 p.10"
   },
   {
-    "question": "Os mecanismos de chamada de funções são implementados com o suporte de registos e da pilha",
+    "question": "Os mecanismos de chamada de funções são implementados com o suporte de registos e da stack",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -192,7 +192,7 @@
     "answers": [
       "Um conjunto de instruções do processador que só pode ser usado pelo sistema operativo",
       "Uma linguagem de alto nível que é traduzida diretamente para código máquina",
-      "Um conjunto de regras e convenções sobre como o código binário interage com outro código binário",
+      "Um conjunto de regras sobre como o código binário interage com outro código binário",
       "Uma biblioteca com funções para escrever no ecrã e ler do teclado"
     ],
     "correct_index": 2,
@@ -236,7 +236,7 @@
     "ref": "T8 p.11"
   },
   {
-    "question": "Considere int b() { return 0; } int c() { return 0; } int a() { int x = b(); int y = c(); return x + y; } int main() { int x = a(); return 0; } Que funções são folhas (leaf)?",
+    "question": "Considere int b() { return 0; } int c() { return 0; } int a() { int x = b(); int y = c(); return x + y; } int main() { int x = a(); return 0; }. Que funções são folhas (leaf)?",
     "answers": [
       "As funções b e c",
       "Apenas a função main",
@@ -305,7 +305,7 @@
     "answers": [
       "A função main retoma a execução",
       "A função a retoma a execução e chama c",
-      "A função c é executada antes de a regressar",
+      "A função c regressa diretamente a main",
       "O programa termina de imediato"
     ],
     "correct_index": 1,
@@ -314,7 +314,7 @@
     "ref": "T8 p.9"
   },
   {
-    "question": "Na execução de int b() { return 0; } int c() { return 0; } int a() { int x = b(); int y = c(); return x + y; } int main() { int x = a(); return 0; } a função a é simultaneamente caller e callee",
+    "question": "Na execução de int b() { return 0; } int c() { return 0; } int a() { int x = b(); int y = c(); return x + y; } int main() { int x = a(); return 0; }, a função a é simultaneamente caller e callee",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -325,7 +325,7 @@
     "ref": "T8 p.9"
   },
   {
-    "question": "Na execução de int b() { return 0; } int c() { return 0; } int a() { int x = b(); int y = c(); return x + y; } int main() { int x = a(); return 0; } a função c é caller da função a",
+    "question": "Na execução de int b() { return 0; } int c() { return 0; } int a() { int x = b(); int y = c(); return x + y; } int main() { int x = a(); return 0; }, a função c é caller da função a",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -364,7 +364,7 @@
   {
     "question": "Que estrutura de dados é a mais natural para controlar as funções ativas?",
     "answers": [
-      "Uma pilha (stack)",
+      "Uma stack",
       "Uma fila (queue)",
       "Uma tabela de dispersão",
       "Um vetor ordenado"
@@ -397,17 +397,6 @@
     "ref": "T8 p.14"
   },
   {
-    "question": "A informação associada a uma chamada de função tem de se manter na memória depois de a função regressar",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.14"
-  },
-  {
     "question": "Que informação guardam as funções na memória durante a sua execução?",
     "answers": [
       "Apenas as variáveis globais e as constantes do programa",
@@ -421,7 +410,7 @@
     "ref": "T8 p.14"
   },
   {
-    "question": "O que é a pilha do programa (program stack)?",
+    "question": "O que é a stack do programa (program stack)?",
     "answers": [
       "Uma região de memória que guarda o código das instruções do programa",
       "Um conjunto de registos que guarda os resultados de todas as funções",
@@ -434,7 +423,7 @@
     "ref": "T8 p.15"
   },
   {
-    "question": "A pilha do programa está guardada num registo especial do processador",
+    "question": "A stack do programa está guardada num registo especial do processador",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -445,7 +434,7 @@
     "ref": "T8 p.15"
   },
   {
-    "question": "Quando uma função é chamada, a informação que lhe pertence é colocada no topo da pilha, que cresce",
+    "question": "Quando uma função é chamada, a informação que lhe pertence é colocada no topo da stack, o que faz a stack crescer",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -456,7 +445,7 @@
     "ref": "T8 p.15"
   },
   {
-    "question": "Quando uma função regressa, a pilha cresce porque é necessário guardar o valor devolvido",
+    "question": "Quando uma função regressa, a stack cresce porque é necessário guardar o valor devolvido",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -467,12 +456,12 @@
     "ref": "T8 p.15"
   },
   {
-    "question": "O que guarda o stack pointer?",
+    "question": "O que guarda o apontador da stack (stack pointer)?",
     "answers": [
       "O endereço da instrução que está a ser executada",
       "O endereço do início do código do programa",
       "O valor devolvido pela última função",
-      "O endereço do topo da pilha"
+      "O endereço do topo da stack"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -480,10 +469,10 @@
     "ref": "T8 p.15"
   },
   {
-    "question": "Como se faz crescer ou diminuir a pilha?",
+    "question": "Como se faz crescer ou diminuir a stack?",
     "answers": [
-      "Ajustando o valor do stack pointer",
-      "Copiando a pilha inteira para outra região da memória",
+      "Ajustando o valor do apontador da stack",
+      "Copiando a stack inteira para outra região da memória",
       "Alterando o valor do program counter",
       "Executando a instrução ret"
     ],
@@ -506,7 +495,7 @@
     "ref": "T8 p.16"
   },
   {
-    "question": "Em RISC-V, em que sentido cresce a pilha?",
+    "question": "Em RISC-V, em que sentido cresce a stack?",
     "answers": [
       "Para endereços mais altos",
       "Alterna conforme o tipo de dados guardado",
@@ -519,7 +508,7 @@
     "ref": "T8 p.16"
   },
   {
-    "question": "Em RISC-V, reservar espaço na pilha faz-se aumentando o valor do registo sp",
+    "question": "Em RISC-V, reservar espaço na stack faz-se aumentando o valor do registo sp",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -530,7 +519,7 @@
     "ref": "T8 p.16"
   },
   {
-    "question": "Que instrução reserva 4 bytes na pilha?",
+    "question": "Que instrução reserva 4 bytes na stack?",
     "answers": [
       "addi sp, sp, 4",
       "sw sp, sp, -4",
@@ -543,7 +532,7 @@
     "ref": "T8 p.16"
   },
   {
-    "question": "Que instrução liberta 4 bytes da pilha?",
+    "question": "Que instrução liberta 4 bytes da stack?",
     "answers": [
       "addi sp, sp, 4",
       "addi sp, sp, -4",
@@ -556,7 +545,7 @@
     "ref": "T8 p.16"
   },
   {
-    "question": "Depois de reservar espaço com addi sp, sp, -4, que instrução guarda o valor de a0 no topo da pilha?",
+    "question": "Depois de reservar espaço com addi sp, sp, -4, que instrução guarda o valor de a0 no topo da stack?",
     "answers": [
       "lw a0, 0(sp)",
       "sw a0, 0(sp)",
@@ -569,7 +558,7 @@
     "ref": "T8 p.16"
   },
   {
-    "question": "Que instrução lê para a0 o valor que está no topo da pilha, sem alterar sp?",
+    "question": "Que instrução lê para a0 o valor que está no topo da stack, sem alterar sp?",
     "answers": [
       "sw a0, 0(sp)",
       "lw sp, 0(a0)",
@@ -582,7 +571,7 @@
     "ref": "T8 p.16"
   },
   {
-    "question": "A instrução lw a0, 0(sp) retira o valor do topo da pilha e diminui o sp",
+    "question": "A instrução lw a0, 0(sp) retira o valor do topo da stack e diminui o sp",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -593,7 +582,7 @@
     "ref": "T8 p.16"
   },
   {
-    "question": "Depois de addi sp, sp, -16 / sw a0, 12(sp) / sw a1, 8(sp) / sw a2, 4(sp) / sw a3, 0(sp), em que deslocamento relativo a sp fica guardado o valor de a0?",
+    "question": "Depois de addi sp, sp, -16 / sw a0, 12(sp) / sw a1, 8(sp) / sw a2, 4(sp) / sw a3, 0(sp), em que offset relativo a sp fica guardado o valor de a0?",
     "answers": [
       "8(sp)",
       "4(sp)",
@@ -606,46 +595,7 @@
     "ref": "T8 p.17"
   },
   {
-    "question": "Depois de addi sp, sp, -16 / sw a0, 12(sp) / sw a1, 8(sp) / sw a2, 4(sp) / sw a3, 0(sp), em que deslocamento relativo a sp fica guardado o valor de a1?",
-    "answers": [
-      "8(sp)",
-      "12(sp)",
-      "4(sp)",
-      "0(sp)"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.17"
-  },
-  {
-    "question": "Depois de addi sp, sp, -16 / sw a0, 12(sp) / sw a1, 8(sp) / sw a2, 4(sp) / sw a3, 0(sp), em que deslocamento relativo a sp fica guardado o valor de a2?",
-    "answers": [
-      "12(sp)",
-      "4(sp)",
-      "8(sp)",
-      "0(sp)"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.17"
-  },
-  {
-    "question": "Depois de addi sp, sp, -16 / sw a0, 12(sp) / sw a1, 8(sp) / sw a2, 4(sp) / sw a3, 0(sp), em que deslocamento relativo a sp fica guardado o valor de a3?",
-    "answers": [
-      "12(sp)",
-      "8(sp)",
-      "0(sp)",
-      "4(sp)"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.17"
-  },
-  {
-    "question": "Depois de addi sp, sp, -16 / sw a0, 12(sp) / sw a1, 8(sp) / sw a2, 4(sp) / sw a3, 0(sp), quantos bytes foram reservados na pilha?",
+    "question": "Depois de addi sp, sp, -16 / sw a0, 12(sp) / sw a1, 8(sp) / sw a2, 4(sp) / sw a3, 0(sp), quantos bytes foram reservados na stack?",
     "answers": [
       "4 bytes",
       "12 bytes",
@@ -658,7 +608,7 @@
     "ref": "T8 p.17"
   },
   {
-    "question": "Depois de addi sp, sp, -16 / sw a0, 12(sp) / sw a1, 8(sp) / sw a2, 4(sp) / sw a3, 0(sp), quantas palavras (words) de 4 bytes foram reservadas na pilha?",
+    "question": "Depois de addi sp, sp, -16 / sw a0, 12(sp) / sw a1, 8(sp) / sw a2, 4(sp) / sw a3, 0(sp), quantas words de 4 bytes foram reservadas na stack?",
     "answers": [
       "4",
       "16",
@@ -673,10 +623,10 @@
   {
     "question": "No código lw a3, 0(sp) / lw a2, 4(sp) / lw a1, 8(sp) / lw a0, 12(sp) / addi sp, sp, 16, para que serve a última instrução addi sp, sp, 16?",
     "answers": [
-      "Para reservar mais 16 bytes na pilha",
-      "Para libertar as 4 palavras da pilha",
+      "Para reservar mais 16 bytes na stack",
+      "Para libertar as 4 words da stack",
       "Para guardar o valor de sp em a0",
-      "Para ler o último valor da pilha"
+      "Para ler o último valor da stack"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -732,45 +682,6 @@
     "ref": "T8 p.16"
   },
   {
-    "question": "Admita sp = 0x7FFFFFF0. Que valor tem sp depois de addi sp, sp, -32?",
-    "answers": [
-      "0x7FFFFFD0",
-      "0x80000010",
-      "0x7FFFFFE0",
-      "0x7FFFFFCC"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.16"
-  },
-  {
-    "question": "Admita sp = 0x7FFFFFD0. Que valor tem sp depois de addi sp, sp, -8?",
-    "answers": [
-      "0x7FFFFFD8",
-      "0x7FFFFFC8",
-      "0x7FFFFFCC",
-      "0x7FFFFFC4"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.16"
-  },
-  {
-    "question": "Admita sp = 0x7FFFFF00. Que valor tem sp depois de addi sp, sp, -64?",
-    "answers": [
-      "0x7FFFFF40",
-      "0x7FFFFEE0",
-      "0x7FFFFEC0",
-      "0x7FFFFEBC"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.16"
-  },
-  {
     "question": "Admita sp = 0x7FFFFFC0. Que valor tem sp depois de addi sp, sp, 16?",
     "answers": [
       "0x7FFFFFB0",
@@ -779,19 +690,6 @@
       "0x7FFFFFD0"
     ],
     "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.16"
-  },
-  {
-    "question": "Admita sp = 0x7FFFFFB0. Que valor tem sp depois de addi sp, sp, 24?",
-    "answers": [
-      "0x7FFFFFC8",
-      "0x7FFFFF98",
-      "0x7FFFFFCC",
-      "0x7FFFFFBC"
-    ],
-    "correct_index": 0,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T8 p.16"
@@ -886,17 +784,6 @@
     "ref": "T8 p.18"
   },
   {
-    "question": "Quando uma função termina, a execução tem de regressar ao ponto do programa imediatamente a seguir à chamada",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.18"
-  },
-  {
     "question": "O que faz a instrução jal rd, symbol?",
     "answers": [
       "Salta para o endereço em rd e guarda PC + 4 em symbol",
@@ -958,17 +845,6 @@
     "ref": "T8 p.19"
   },
   {
-    "question": "O registo ra é o registo x2 da arquitetura RISC-V",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.19"
-  },
-  {
     "question": "A pseudoinstrução call symbol salta para symbol e guarda em ra o endereço de retorno",
     "answers": [
       "FALSO",
@@ -995,7 +871,7 @@
   {
     "question": "Porque é que ret usa zero como registo de destino em jalr zero, 0(ra)?",
     "answers": [
-      "Porque não é necessário guardar nenhum endereço de retorno",
+      "Porque não é preciso guardar nenhum endereço de retorno",
       "Porque o endereço de retorno tem de ser sempre zero",
       "Porque o registo ra não pode ser usado como destino",
       "Porque o salto é feito para o endereço zero"
@@ -1054,32 +930,6 @@
     "ref": "T8 p.19"
   },
   {
-    "question": "Uma instrução jal ra, f está no endereço 0x00010100 e a label f está em 0x00010020. Que valores ficam em ra e no program counter, respetivamente?",
-    "answers": [
-      "0x00010100 e 0x00010020",
-      "0x00010020 e 0x00010104",
-      "0x00010108 e 0x00010020",
-      "0x00010104 e 0x00010020"
-    ],
-    "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.19"
-  },
-  {
-    "question": "Uma instrução jal ra, f está no endereço 0x000200F8 e a label f está em 0x00020400. Que valores ficam em ra e no program counter, respetivamente?",
-    "answers": [
-      "0x000200FC e 0x00020400",
-      "0x000200F8 e 0x00020400",
-      "0x00020400 e 0x000200FC",
-      "0x00020100 e 0x00020400"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.19"
-  },
-  {
     "question": "Admita ra = 0x00010044. Qual é o valor do program counter depois de executar ret?",
     "answers": [
       "0x00010048",
@@ -1088,19 +938,6 @@
       "0x00000000"
     ],
     "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.19"
-  },
-  {
-    "question": "Admita ra = 0x00020208. Qual é o valor do program counter depois de executar ret?",
-    "answers": [
-      "0x0002020C",
-      "0x00020204",
-      "0x00020208",
-      "0x00000000"
-    ],
-    "correct_index": 2,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T8 p.19"
@@ -1145,17 +982,6 @@
     "ref": "T8 p.21"
   },
   {
-    "question": "Uma função folha é caller de pelo menos uma outra função",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.21"
-  },
-  {
     "question": "Quantos argumentos pode o caller colocar em registos antes da chamada?",
     "answers": [
       "Até quatro, nos registos a0 a a3",
@@ -1174,7 +1000,7 @@
       "Nos registos t0 a t6",
       "Na memória dinâmica",
       "Nos registos s0 a s11",
-      "Na pilha"
+      "Na stack"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1195,23 +1021,12 @@
     "ref": "T8 p.22"
   },
   {
-    "question": "O valor de retorno de uma função é sempre devolvido na pilha",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.22"
-  },
-  {
     "question": "Em RV32, como se trabalha com um valor de 64 bits numa função?",
     "answers": [
       "Usando um único registo de 64 bits",
       "Combinando dois registos, como a1 e a0",
       "Dividindo o valor por 2 e usando só a0",
-      "Usando sempre a pilha e nunca os registos"
+      "Usando sempre a stack e nunca os registos"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1280,7 +1095,7 @@
     "answers": [
       "a3",
       "a5",
-      "Na pilha",
+      "Na stack",
       "a0"
     ],
     "correct_index": 3,
@@ -1294,7 +1109,7 @@
       "a3",
       "a6",
       "a0",
-      "Na pilha"
+      "Na stack"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1307,7 +1122,7 @@
       "a7",
       "a4",
       "a1",
-      "Na pilha"
+      "Na stack"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1320,7 +1135,7 @@
       "a2",
       "a4",
       "a7",
-      "Na pilha"
+      "Na stack"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1333,7 +1148,7 @@
       "No registo a8",
       "No registo t0",
       "No registo a0",
-      "Na pilha"
+      "Na stack"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1343,7 +1158,7 @@
   {
     "question": "Numa função com 10 argumentos, onde é passado o argumento número 10?",
     "answers": [
-      "Na pilha",
+      "Na stack",
       "No registo a9",
       "No registo t1",
       "No registo a1"
@@ -1354,7 +1169,7 @@
     "ref": "T8 p.22"
   },
   {
-    "question": "Quantos argumentos são passados na pilha numa função com 10 argumentos inteiros?",
+    "question": "Quantos argumentos são passados na stack numa função com 10 argumentos inteiros?",
     "answers": [
       "3",
       "2",
@@ -1367,7 +1182,7 @@
     "ref": "T8 p.22"
   },
   {
-    "question": "Quantos argumentos são passados na pilha numa função com 9 argumentos inteiros?",
+    "question": "Quantos argumentos são passados na stack numa função com 9 argumentos inteiros?",
     "answers": [
       "2",
       "3",
@@ -1380,7 +1195,7 @@
     "ref": "T8 p.22"
   },
   {
-    "question": "Quantos argumentos são passados na pilha numa função com 12 argumentos inteiros?",
+    "question": "Quantos argumentos são passados na stack numa função com 12 argumentos inteiros?",
     "answers": [
       "5",
       "6",
@@ -1393,7 +1208,7 @@
     "ref": "T8 p.22"
   },
   {
-    "question": "Quantos argumentos são passados na pilha numa função com 8 argumentos inteiros?",
+    "question": "Quantos argumentos são passados na stack numa função com 8 argumentos inteiros?",
     "answers": [
       "0",
       "1",
@@ -1406,7 +1221,7 @@
     "ref": "T8 p.22"
   },
   {
-    "question": "Quantos argumentos são passados na pilha numa função com 6 argumentos inteiros?",
+    "question": "Quantos argumentos são passados na stack numa função com 6 argumentos inteiros?",
     "answers": [
       "1",
       "0",
@@ -1419,7 +1234,7 @@
     "ref": "T8 p.22"
   },
   {
-    "question": "Quantos argumentos são passados na pilha numa função com 11 argumentos inteiros?",
+    "question": "Quantos argumentos são passados na stack numa função com 11 argumentos inteiros?",
     "answers": [
       "4",
       "5",
@@ -1432,7 +1247,7 @@
     "ref": "T8 p.22"
   },
   {
-    "question": "Quantos bytes ocupam na pilha os argumentos de uma função com 10 argumentos inteiros de 4 bytes?",
+    "question": "Quantos bytes de argumentos, sem contar com o alinhamento de sp, ficam na stack de uma função com 10 argumentos inteiros de 4 bytes?",
     "answers": [
       "16 bytes",
       "40 bytes",
@@ -1445,7 +1260,7 @@
     "ref": "T8 p.23"
   },
   {
-    "question": "Quantos bytes ocupam na pilha os argumentos de uma função com 9 argumentos inteiros de 4 bytes?",
+    "question": "Quantos bytes de argumentos, sem contar com o alinhamento de sp, ficam na stack de uma função com 9 argumentos inteiros de 4 bytes?",
     "answers": [
       "4 bytes",
       "8 bytes",
@@ -1458,7 +1273,7 @@
     "ref": "T8 p.23"
   },
   {
-    "question": "Quantos bytes ocupam na pilha os argumentos de uma função com 12 argumentos inteiros de 4 bytes?",
+    "question": "Quantos bytes ocupam na stack os argumentos de uma função com 12 argumentos inteiros de 4 bytes?",
     "answers": [
       "32 bytes",
       "16 bytes",
@@ -1471,7 +1286,7 @@
     "ref": "T8 p.23"
   },
   {
-    "question": "Quantos bytes ocupam na pilha os argumentos de uma função com 11 argumentos inteiros de 4 bytes?",
+    "question": "Quantos bytes de argumentos, sem contar com o alinhamento de sp, ficam na stack de uma função com 11 argumentos inteiros de 4 bytes?",
     "answers": [
       "24 bytes",
       "20 bytes",
@@ -1484,7 +1299,7 @@
     "ref": "T8 p.23"
   },
   {
-    "question": "Considere int sum10(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) chamada com li a0, 10 / li a1, 20 / li a2, 30 / li a3, 40 / li a4, 50 / li a5, 60 / li a6, 70 / li a7, 80 / addi sp, sp, -8 / li t1, 100 / sw t1, 4(sp) / li t1, 90 / sw t1, 0(sp) / jal sum10 / addi sp, sp, 8. Quantos bytes reserva o caller na pilha?",
+    "question": "Considere int sum10(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) chamada com li a0, 10 / li a1, 20 / li a2, 30 / li a3, 40 / li a4, 50 / li a5, 60 / li a6, 70 / li a7, 80 / addi sp, sp, -8 / li t1, 100 / sw t1, 4(sp) / li t1, 90 / sw t1, 0(sp) / jal sum10 / addi sp, sp, 8. Quantos bytes reserva o caller na stack?",
     "answers": [
       "4 bytes",
       "16 bytes",
@@ -1497,7 +1312,7 @@
     "ref": "T8 p.23"
   },
   {
-    "question": "Considere int sum10(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) chamada com li a0, 10 / li a1, 20 / li a2, 30 / li a3, 40 / li a4, 50 / li a5, 60 / li a6, 70 / li a7, 80 / addi sp, sp, -8 / li t1, 100 / sw t1, 4(sp) / li t1, 90 / sw t1, 0(sp) / jal sum10 / addi sp, sp, 8. Em que posição da pilha fica o nono argumento?",
+    "question": "Considere int sum10(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) chamada com li a0, 10 / li a1, 20 / li a2, 30 / li a3, 40 / li a4, 50 / li a5, 60 / li a6, 70 / li a7, 80 / addi sp, sp, -8 / li t1, 100 / sw t1, 4(sp) / li t1, 90 / sw t1, 0(sp) / jal sum10 / addi sp, sp, 8. Em que posição da stack fica o nono argumento?",
     "answers": [
       "0(sp)",
       "4(sp)",
@@ -1510,7 +1325,7 @@
     "ref": "T8 p.23"
   },
   {
-    "question": "Considere int sum10(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) chamada com li a0, 10 / li a1, 20 / li a2, 30 / li a3, 40 / li a4, 50 / li a5, 60 / li a6, 70 / li a7, 80 / addi sp, sp, -8 / li t1, 100 / sw t1, 4(sp) / li t1, 90 / sw t1, 0(sp) / jal sum10 / addi sp, sp, 8. Em que posição da pilha fica o décimo argumento?",
+    "question": "Considere int sum10(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) chamada com li a0, 10 / li a1, 20 / li a2, 30 / li a3, 40 / li a4, 50 / li a5, 60 / li a6, 70 / li a7, 80 / addi sp, sp, -8 / li t1, 100 / sw t1, 4(sp) / li t1, 90 / sw t1, 0(sp) / jal sum10 / addi sp, sp, 8. Em que posição da stack fica o décimo argumento?",
     "answers": [
       "0(sp)",
       "4(sp)",
@@ -1536,7 +1351,7 @@
     "ref": "T8 p.23"
   },
   {
-    "question": "Considere int sum10(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) chamada com li a0, 10 / li a1, 20 / li a2, 30 / li a3, 40 / li a4, 50 / li a5, 60 / li a6, 70 / li a7, 80 / addi sp, sp, -8 / li t1, 100 / sw t1, 4(sp) / li t1, 90 / sw t1, 0(sp) / jal sum10 / addi sp, sp, 8. Quem liberta o espaço dos argumentos na pilha depois da chamada?",
+    "question": "Considere int sum10(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) chamada com li a0, 10 / li a1, 20 / li a2, 30 / li a3, 40 / li a4, 50 / li a5, 60 / li a6, 70 / li a7, 80 / addi sp, sp, -8 / li t1, 100 / sw t1, 4(sp) / li t1, 90 / sw t1, 0(sp) / jal sum10 / addi sp, sp, 8. Quem liberta o espaço dos argumentos na stack depois da chamada?",
     "answers": [
       "O callee, com addi sp, sp, 8",
       "O callee, com ret",
@@ -1551,10 +1366,10 @@
   {
     "question": "Considere int sum10(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) chamada com li a0, 10 / li a1, 20 / li a2, 30 / li a3, 40 / li a4, 50 / li a5, 60 / li a6, 70 / li a7, 80 / addi sp, sp, -8 / li t1, 100 / sw t1, 4(sp) / li t1, 90 / sw t1, 0(sp) / jal sum10 / addi sp, sp, 8. Para que serve a instrução addi sp, sp, -8?",
     "answers": [
-      "Para reservar na pilha espaço para dois argumentos",
-      "Para guardar o endereço de retorno na pilha",
+      "Para reservar na stack espaço para dois argumentos",
+      "Para guardar o endereço de retorno na stack",
       "Para libertar os argumentos depois da chamada",
-      "Para copiar os oito primeiros argumentos para a pilha"
+      "Para copiar os oito primeiros argumentos para a stack"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1565,8 +1380,8 @@
     "question": "Considere sum10: lw t1, 0(sp) / lw t2, 4(sp) / add a0, a0, a1 / add a0, a0, a2 / add a0, a0, a3 / add a0, a0, a4 / add a0, a0, a5 / add a0, a0, a6 / add a0, a0, a7 / add a0, a0, t1 / add a0, a0, t2 / ret. Como obtém o callee o nono argumento?",
     "answers": [
       "Lê-o do registo a8",
-      "Lê-o da pilha com lw t1, 0(sp)",
-      "Lê-o da pilha com lw t1, 4(sp)",
+      "Lê-o da stack com lw t1, 0(sp)",
+      "Lê-o da stack com lw t1, 4(sp)",
       "Já o encontra em a0"
     ],
     "correct_index": 1,
@@ -1578,24 +1393,11 @@
     "question": "Considere sum10: lw t1, 0(sp) / lw t2, 4(sp) / add a0, a0, a1 / add a0, a0, a2 / add a0, a0, a3 / add a0, a0, a4 / add a0, a0, a5 / add a0, a0, a6 / add a0, a0, a7 / add a0, a0, t1 / add a0, a0, t2 / ret. Como obtém o callee o décimo argumento?",
     "answers": [
       "Lê-o do registo a9",
-      "Lê-o da pilha com lw t2, 0(sp)",
-      "Lê-o da pilha com lw t2, 4(sp)",
-      "Lê-o da pilha com lw t2, 8(sp)"
+      "Lê-o da stack com lw t2, 0(sp)",
+      "Lê-o da stack com lw t2, 4(sp)",
+      "Lê-o da stack com lw t2, 8(sp)"
     ],
     "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.24"
-  },
-  {
-    "question": "Considere sum10: lw t1, 0(sp) / lw t2, 4(sp) / add a0, a0, a1 / add a0, a0, a2 / add a0, a0, a3 / add a0, a0, a4 / add a0, a0, a5 / add a0, a0, a6 / add a0, a0, a7 / add a0, a0, t1 / add a0, a0, t2 / ret. Depois de ler os argumentos da pilha, o callee liberta-os?",
-    "answers": [
-      "Sim, com addi sp, sp, 8 antes do ret",
-      "Sim, com a instrução ret",
-      "Sim, mas só o décimo argumento",
-      "Não, a limpeza é feita pelo caller"
-    ],
-    "correct_index": 3,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T8 p.24"
@@ -1640,7 +1442,7 @@
     "ref": "T8 p.24"
   },
   {
-    "question": "Antes de chamar uma função com dez argumentos, o caller coloca os dois primeiros na pilha",
+    "question": "Antes de chamar uma função com dez argumentos, o caller coloca o primeiro e o segundo argumentos na stack",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1651,18 +1453,7 @@
     "ref": "T8 p.23"
   },
   {
-    "question": "Depois de ler os argumentos da pilha, o callee tem de os libertar com addi sp, sp, 8",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.24"
-  },
-  {
-    "question": "A limpeza dos argumentos passados na pilha é feita pelo caller",
+    "question": "A limpeza dos argumentos passados na stack é feita pelo caller",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1676,9 +1467,9 @@
     "question": "O que são parâmetros passados por valor?",
     "answers": [
       "Parâmetros que contêm o endereço de uma variável do caller",
-      "Parâmetros que só podem ser passados na pilha do caller",
+      "Parâmetros que só podem ser passados na stack do caller",
       "Parâmetros que o callee pode usar para alterar variáveis do caller",
-      "Parâmetros que contêm o próprio valor, nos registos ou na pilha"
+      "Parâmetros que contêm o próprio valor, nos registos ou na stack"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1691,7 +1482,7 @@
       "Parâmetros que contêm o endereço de memória de uma variável",
       "Parâmetros que contêm uma cópia do valor de uma variável",
       "Parâmetros que só existem durante a fase de compilação",
-      "Parâmetros que são sempre passados pela pilha do programa"
+      "Parâmetros que são sempre passados pela stack do programa"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1704,7 +1495,7 @@
       "Apenas para saber onde a função está no código",
       "Para ler ou atualizar o valor da variável",
       "Apenas para ler o valor, nunca para o alterar",
-      "Para libertar a pilha do caller"
+      "Para libertar a stack do caller"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1778,7 +1569,7 @@
     "question": "Considere pow2: mul a0, a0, a0 / ret. Em que registo é recebido o argumento e devolvido o resultado?",
     "answers": [
       "O argumento em a0 e o resultado em a1",
-      "O argumento na pilha e o resultado em a0",
+      "O argumento na stack e o resultado em a0",
       "No registo a0, nos dois casos",
       "O argumento em a0 e o resultado em ra"
     ],
@@ -1830,7 +1621,7 @@
     "question": "Considere inc: lw a1, (a0) / addi a1, a1, 1 / sw a1, (a0) / ret. Para que serve a instrução sw a1, (a0)?",
     "answers": [
       "Para ler o valor atual da variável apontada por a0",
-      "Para guardar na pilha o endereço de retorno do caller",
+      "Para guardar na stack o endereço de retorno do caller",
       "Para escrever o novo valor na variável apontada por a0",
       "Para somar o valor de a1 ao endereço guardado em a0"
     ],
@@ -1840,7 +1631,7 @@
     "ref": "T8 p.26"
   },
   {
-    "question": "No programa que declara y: .skip 4 e chama inc com la a0, y / jal inc, o que faz la a0, y?",
+    "question": "Considere a variável global y: .skip 4 e a chamada la a0, y / jal inc. O que faz la a0, y?",
     "answers": [
       "Coloca em a0 o valor da variável y",
       "Coloca em a0 o valor zero",
@@ -1879,7 +1670,7 @@
   {
     "question": "Onde são alocadas as variáveis globais?",
     "answers": [
-      "Na pilha, quando a função é chamada",
+      "Na stack, quando a função é chamada",
       "No espaço de dados estáticos, pelo assembler",
       "Nos registos s0 a s11",
       "Na memória dinâmica, em tempo de execução"
@@ -1955,17 +1746,6 @@
     "ref": "T8 p.27"
   },
   {
-    "question": "As variáveis globais são alocadas na pilha sempre que a função é chamada",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.27"
-  },
-  {
     "question": "Onde devem ser alocadas, idealmente, as variáveis locais?",
     "answers": [
       "Na memória dinâmica",
@@ -1990,7 +1770,7 @@
     "ref": "T8 p.28"
   },
   {
-    "question": "Considere exchange: lw a2, (a1) / lw a3, (a0) / sw a3, (a1) / sw a2, (a0) / ret. Que valor fica em *a e em *b, respetivamente, se *a = 3 e *b = 9 antes da chamada?",
+    "question": "Considere void exchange(int* a, int* b), com a em a0 e b em a1, e o código exchange: lw a2, (a1) / lw a3, (a0) / sw a3, (a1) / sw a2, (a0) / ret. Que valor fica em *a e em *b, respetivamente, se *a = 3 e *b = 9 antes da chamada?",
     "answers": [
       "9 e 3",
       "3 e 9",
@@ -2003,7 +1783,7 @@
     "ref": "T8 p.28"
   },
   {
-    "question": "Considere exchange: lw a2, (a1) / lw a3, (a0) / sw a3, (a1) / sw a2, (a0) / ret. Que valor fica em *a e em *b, respetivamente, se *a = 20 e *b = 5 antes da chamada?",
+    "question": "Considere void exchange(int* a, int* b), com a em a0 e b em a1, e o código exchange: lw a2, (a1) / lw a3, (a0) / sw a3, (a1) / sw a2, (a0) / ret. Que valor fica em *a e em *b, respetivamente, se *a = 20 e *b = 5 antes da chamada?",
     "answers": [
       "20 e 5",
       "5 e 20",
@@ -2016,24 +1796,11 @@
     "ref": "T8 p.28"
   },
   {
-    "question": "Considere exchange: lw a2, (a1) / lw a3, (a0) / sw a3, (a1) / sw a2, (a0) / ret. Que registo guarda o valor lido de *b, que corresponde à variável local tmp da função C?",
-    "answers": [
-      "O registo a0, que guarda o endereço de a",
-      "O registo a1, que guarda o endereço de b",
-      "O registo a2, que guarda o valor lido de *b",
-      "O registo ra, que guarda o endereço de retorno"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.28"
-  },
-  {
-    "question": "Considere exchange: lw a2, (a1) / lw a3, (a0) / sw a3, (a1) / sw a2, (a0) / ret. Quais são os parâmetros da função?",
+    "question": "Considere void exchange(int* a, int* b), com a em a0 e b em a1, e o código exchange: lw a2, (a1) / lw a3, (a0) / sw a3, (a1) / sw a2, (a0) / ret. Quais são os parâmetros da função?",
     "answers": [
       "Dois valores inteiros, recebidos em a0 e a1",
       "Um endereço em a0 e um valor em a1",
-      "Dois valores inteiros, recebidos na pilha",
+      "Dois valores inteiros, recebidos na stack",
       "Dois endereços de inteiros, recebidos em a0 e a1"
     ],
     "correct_index": 3,
@@ -2042,11 +1809,11 @@
     "ref": "T8 p.28"
   },
   {
-    "question": "Considere exchange: lw a2, (a1) / lw a3, (a0) / sw a3, (a1) / sw a2, (a0) / ret. Porque é que a função não precisa de usar a pilha?",
+    "question": "Considere void exchange(int* a, int* b), com a em a0 e b em a1, e o código exchange: lw a2, (a1) / lw a3, (a0) / sw a3, (a1) / sw a2, (a0) / ret. Porque é que a função não precisa de usar a stack?",
     "answers": [
       "Porque as variáveis locais cabem em registos",
       "Porque a função não tem parâmetros",
-      "Porque a pilha não pode ser usada em funções folha",
+      "Porque a stack não pode ser usada em funções folha",
       "Porque as variáveis locais são globais"
     ],
     "correct_index": 0,
@@ -2081,7 +1848,7 @@
     "ref": "T8 p.29"
   },
   {
-    "question": "Que situação justifica alocar uma variável local na pilha, e não num registo?",
+    "question": "Que situação justifica alocar uma variável local na stack, e não num registo?",
     "answers": [
       "Quando a função tem menos de oito argumentos",
       "Quando a função foi chamada diretamente por main",
@@ -2096,7 +1863,7 @@
   {
     "question": "Onde são alocadas as variáveis locais que precisam de estar na memória?",
     "answers": [
-      "Na pilha do programa",
+      "Na stack do programa",
       "No espaço de dados estáticos",
       "Na secção .text",
       "Na memória dinâmica"
@@ -2107,7 +1874,7 @@
     "ref": "T8 p.29"
   },
   {
-    "question": "Quando deve ser alocado o espaço das variáveis locais na pilha?",
+    "question": "Quando deve ser alocado o espaço das variáveis locais na stack?",
     "answers": [
       "Antes de o programa começar",
       "Na entrada da função",
@@ -2120,7 +1887,7 @@
     "ref": "T8 p.29"
   },
   {
-    "question": "Quando deve ser libertado o espaço das variáveis locais da pilha?",
+    "question": "Quando deve ser libertado o espaço das variáveis locais da stack?",
     "answers": [
       "Quando o programa termina",
       "Na entrada da função seguinte",
@@ -2128,17 +1895,6 @@
       "Pelo caller, depois do regresso"
     ],
     "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.29"
-  },
-  {
-    "question": "O espaço das variáveis locais alocadas na pilha é libertado pelo caller depois do regresso",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T8 p.29"
@@ -2155,7 +1911,7 @@
     "ref": "T8 p.29"
   },
   {
-    "question": "Como se aloca espaço na pilha para variáveis locais?",
+    "question": "Como se aloca espaço na stack para variáveis locais?",
     "answers": [
       "Aumentando o sp do número de bytes necessários",
       "Copiando as variáveis para o registo ra",
@@ -2168,7 +1924,7 @@
     "ref": "T8 p.30"
   },
   {
-    "question": "Como se liberta o espaço das variáveis locais da pilha?",
+    "question": "Como se liberta o espaço das variáveis locais da stack?",
     "answers": [
       "Aumentando o sp do número de bytes a libertar",
       "Diminuindo o sp do número de bytes a libertar",
@@ -2181,7 +1937,7 @@
     "ref": "T8 p.30"
   },
   {
-    "question": "Considere foo: addi sp, sp, -4 / mv a0, sp / jal get_uid / lw a0, (sp) / addi sp, sp, 4 / ret. Que valor tem a0 antes do jal get_uid?",
+    "question": "Considere int foo() { int userid; get_uid(&userid); return userid; } implementada em assembly por foo: addi sp, sp, -4 / mv a0, sp / jal get_uid / lw a0, (sp) / addi sp, sp, 4 / ret. Que valor tem a0 antes do jal get_uid?",
     "answers": [
       "O valor da variável local userid",
       "O endereço da variável local userid",
@@ -2194,7 +1950,7 @@
     "ref": "T8 p.30"
   },
   {
-    "question": "Considere foo: addi sp, sp, -4 / mv a0, sp / jal get_uid / lw a0, (sp) / addi sp, sp, 4 / ret. Porque é que a variável userid está na pilha e não num registo?",
+    "question": "Considere int foo() { int userid; get_uid(&userid); return userid; } implementada em assembly por foo: addi sp, sp, -4 / mv a0, sp / jal get_uid / lw a0, (sp) / addi sp, sp, 4 / ret. Porque é que a variável userid está na stack e não num registo?",
     "answers": [
       "Porque é um inteiro com 4 bytes de tamanho",
       "Porque a função foo é uma função folha",
@@ -2207,12 +1963,12 @@
     "ref": "T8 p.30"
   },
   {
-    "question": "Considere foo: addi sp, sp, -4 / mv a0, sp / jal get_uid / lw a0, (sp) / addi sp, sp, 4 / ret. O que devolve a função foo?",
+    "question": "Considere int foo() { int userid; get_uid(&userid); return userid; } implementada em assembly por foo: addi sp, sp, -4 / mv a0, sp / jal get_uid / lw a0, (sp) / addi sp, sp, 4 / ret. O que devolve a função foo?",
     "answers": [
-      "O endereço de userid, guardado na pilha",
+      "O endereço de userid, guardado na stack",
       "O valor de retorno da função get_uid",
       "O valor do sp antes da reserva de espaço",
-      "O valor de userid, lido da pilha para a0"
+      "O valor de userid, lido da stack para a0"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -2220,7 +1976,7 @@
     "ref": "T8 p.30"
   },
   {
-    "question": "Considere bar: addi sp, sp, -32 / mv a0, sp / jal init_array / lw a0, 16(sp) / addi sp, sp, 32 / ret. Quantos elementos int tem my_array?",
+    "question": "Considere int bar() { int my_array[8]; init_array(my_array); return my_array[4]; } implementada em assembly por bar: addi sp, sp, -32 / mv a0, sp / jal init_array / lw a0, 16(sp) / addi sp, sp, 32 / ret. Quantos elementos int tem my_array?",
     "answers": [
       "8",
       "32",
@@ -2233,7 +1989,7 @@
     "ref": "T8 p.30"
   },
   {
-    "question": "Um vetor int my_array[8] está na pilha a partir de sp. Qual é o deslocamento de my_array[4] relativo a sp?",
+    "question": "Um vetor int my_array[8] está na stack a partir de sp. Qual é o offset de my_array[4] relativo a sp?",
     "answers": [
       "20(sp)",
       "16(sp)",
@@ -2246,7 +2002,7 @@
     "ref": "T8 p.30"
   },
   {
-    "question": "Um vetor int my_array[8] está na pilha a partir de sp. Qual é o deslocamento de my_array[0] relativo a sp?",
+    "question": "Um vetor int my_array[8] está na stack a partir de sp. Qual é o offset de my_array[0] relativo a sp?",
     "answers": [
       "4(sp)",
       "16(sp)",
@@ -2259,7 +2015,7 @@
     "ref": "T8 p.30"
   },
   {
-    "question": "Um vetor int my_array[8] está na pilha a partir de sp. Qual é o deslocamento de my_array[7] relativo a sp?",
+    "question": "Um vetor int my_array[8] está na stack a partir de sp. Qual é o offset de my_array[7] relativo a sp?",
     "answers": [
       "32(sp)",
       "44(sp)",
@@ -2272,7 +2028,7 @@
     "ref": "T8 p.30"
   },
   {
-    "question": "Um vetor int my_array[8] está na pilha a partir de sp. Qual é o deslocamento de my_array[2] relativo a sp?",
+    "question": "Um vetor int my_array[8] está na stack a partir de sp. Qual é o offset de my_array[2] relativo a sp?",
     "answers": [
       "8(sp)",
       "12(sp)",
@@ -2285,7 +2041,7 @@
     "ref": "T8 p.30"
   },
   {
-    "question": "Um vetor int my_array[8] está na pilha a partir de sp. Qual é o deslocamento de my_array[5] relativo a sp?",
+    "question": "Um vetor int my_array[8] está na stack a partir de sp. Qual é o offset de my_array[5] relativo a sp?",
     "answers": [
       "24(sp)",
       "20(sp)",
@@ -2298,23 +2054,10 @@
     "ref": "T8 p.30"
   },
   {
-    "question": "Considere bar: addi sp, sp, -32 / mv a0, sp / jal init_array / lw a0, 16(sp) / addi sp, sp, 32 / ret. Qual é o valor devolvido por bar?",
+    "question": "Considere int bar() { int my_array[8]; init_array(my_array); return my_array[4]; } implementada em assembly por bar: addi sp, sp, -32 / mv a0, sp / jal init_array / lw a0, 16(sp) / addi sp, sp, 32 / ret. Para que serve mv a0, sp?",
     "answers": [
-      "O elemento my_array[16]",
-      "O endereço de my_array",
-      "O elemento my_array[4]",
-      "O elemento my_array[8]"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.30"
-  },
-  {
-    "question": "Considere bar: addi sp, sp, -32 / mv a0, sp / jal init_array / lw a0, 16(sp) / addi sp, sp, 32 / ret. Para que serve mv a0, sp?",
-    "answers": [
-      "Para guardar o valor de a0 na pilha",
-      "Para libertar o vetor da pilha",
+      "Para guardar o valor de a0 na stack",
+      "Para libertar o vetor da stack",
       "Para copiar o vetor para a0",
       "Para passar o endereço do vetor"
     ],
@@ -2447,7 +2190,7 @@
     "correct_index": 3,
     "source": "AI_GENERATED",
     "in_plan": true,
-    "ref": "T8 p.31"
+    "ref": "Cartão de referência RISC-V"
   },
   {
     "question": "Segundo o cartão de referência RISC-V, como é classificado o registo s0?",
@@ -2460,33 +2203,7 @@
     "correct_index": 1,
     "source": "AI_GENERATED",
     "in_plan": true,
-    "ref": "T8 p.31"
-  },
-  {
-    "question": "Segundo o cartão de referência RISC-V, como é classificado o registo s1?",
-    "answers": [
-      "Caller-saved",
-      "Nem caller-saved nem callee-saved",
-      "Callee-saved",
-      "Sem classificação, depende da função"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.31"
-  },
-  {
-    "question": "Segundo o cartão de referência RISC-V, como é classificado o registo ra?",
-    "answers": [
-      "Callee-saved",
-      "Nem caller-saved nem callee-saved",
-      "Sem classificação, depende da função",
-      "Caller-saved"
-    ],
-    "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.31"
+    "ref": "Cartão de referência RISC-V"
   },
   {
     "question": "Segundo o cartão de referência RISC-V, como é classificado o registo s11?",
@@ -2499,7 +2216,7 @@
     "correct_index": 0,
     "source": "AI_GENERATED",
     "in_plan": true,
-    "ref": "T8 p.31"
+    "ref": "Cartão de referência RISC-V"
   },
   {
     "question": "Segundo o cartão de referência RISC-V, como é classificado o registo a7?",
@@ -2512,7 +2229,7 @@
     "correct_index": 2,
     "source": "AI_GENERATED",
     "in_plan": true,
-    "ref": "T8 p.31"
+    "ref": "Cartão de referência RISC-V"
   },
   {
     "question": "Os registos s0 a s11 são callee-saved",
@@ -2587,7 +2304,7 @@
   {
     "question": "O caller precisa do valor de s3 depois de chamar uma função. O que tem de fazer?",
     "answers": [
-      "Guardar s3 na pilha antes da chamada",
+      "Guardar s3 na stack antes da chamada",
       "Nada, porque o callee tem de preservar s3",
       "Copiar s3 para a0 depois da chamada",
       "Chamar a função duas vezes"
@@ -2614,7 +2331,7 @@
     "question": "Considere f: jal g / ret. Que problema tem esta função?",
     "answers": [
       "Usa registos callee-saved sem os guardar antes",
-      "Não reserva espaço na pilha para variáveis locais",
+      "Não reserva espaço na stack para variáveis locais",
       "Usa a instrução ret em vez da instrução jalr",
       "Perde o endereço de retorno, pois o jal altera ra"
     ],
@@ -2637,24 +2354,11 @@
     "ref": "T8 p.34"
   },
   {
-    "question": "Considere f: jal g / ret. Porque é que o jal g altera o valor de ra?",
-    "answers": [
-      "Porque o jal repõe em ra o valor que tinha no início",
-      "Porque o jal guarda em ra o endereço da instrução seguinte",
-      "Porque a função g altera ra antes de regressar",
-      "Porque o ret altera o valor de ra ao saltar"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.34"
-  },
-  {
     "question": "Que solução evita o problema de uma função que chama outra perder o seu endereço de retorno?",
     "answers": [
       "Usar apenas funções folha em todo o programa",
       "Guardar ra no registo a0 até ao fim da função",
-      "Guardar ra na pilha e repô-lo antes do ret",
+      "Guardar ra na stack e repô-lo antes do ret",
       "Evitar usar a instrução ret em qualquer função"
     ],
     "correct_index": 2,
@@ -2674,7 +2378,7 @@
     "ref": "T8 p.34"
   },
   {
-    "question": "Uma função folha tem sempre de guardar ra na pilha",
+    "question": "Uma função folha tem sempre de guardar ra na stack",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -2687,7 +2391,7 @@
   {
     "question": "Porque é que uma função folha não precisa de guardar ra?",
     "answers": [
-      "Porque o registo ra é callee-saved",
+      "Porque o registo ra é preenchido automaticamente pelo ret",
       "Porque não tem variáveis locais",
       "Porque nunca regressa ao seu caller",
       "Porque não chama outras funções"
@@ -2698,7 +2402,7 @@
     "ref": "T8 p.35"
   },
   {
-    "question": "Qual destas funções precisa de guardar ra na pilha?",
+    "question": "Qual destas funções precisa de guardar ra na stack?",
     "answers": [
       "Uma função que chama outra função",
       "Uma função que apenas soma dois argumentos",
@@ -2714,9 +2418,9 @@
     "question": "O que é uma stack frame?",
     "answers": [
       "Uma região da memória que guarda o código de uma função",
-      "Um segmento da pilha com a informação de uma função ativa",
+      "Um segmento da stack com a informação de uma função ativa",
       "Um registo que guarda todos os argumentos de uma função",
-      "Uma instrução que reserva espaço na pilha para a função"
+      "Uma instrução que reserva espaço na stack para a função"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -2736,17 +2440,6 @@
   },
   {
     "question": "Todas as funções ativas partilham uma única stack frame",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.36"
-  },
-  {
-    "question": "As stack frames são criadas pelo compilador e existem no ficheiro executável",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -2803,7 +2496,7 @@
     "ref": "T8 p.41"
   },
   {
-    "question": "Convém minimizar o número e o tamanho das variáveis locais, porque aumentam o tamanho da pilha",
+    "question": "Convém minimizar o número e o tamanho das variáveis locais, porque aumentam o tamanho da stack",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -2814,38 +2507,14 @@
     "ref": "T8 p.41"
   },
   {
-    "question": "Convém usar arrays de comprimento variável, porque nunca causam overflow da pilha",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.41"
-  },
-  {
-    "question": "Porque é que se deve evitar usar arrays de comprimento variável na pilha?",
+    "question": "Porque é que se deve evitar usar arrays de comprimento variável na stack?",
     "answers": [
       "Porque são mais lentos de ler do que arrays normais",
       "Porque não podem ser passados a outras funções",
       "Porque a linguagem C não suporta este tipo de arrays",
-      "Porque podem causar overflow da pilha sem limites"
+      "Porque podem causar overflow ou corrupção da stack"
     ],
     "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.41"
-  },
-  {
-    "question": "Porque é que se deve minimizar o número e o tamanho das variáveis locais?",
-    "answers": [
-      "Porque aumentam o tamanho da pilha e reduzem o espaço para recursão",
-      "Porque as variáveis locais são mais lentas do que as globais",
-      "Porque o assembler limita o número de variáveis locais",
-      "Porque as variáveis locais não podem ser guardadas em registos"
-    ],
-    "correct_index": 0,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T8 p.41"
@@ -2855,7 +2524,7 @@
     "answers": [
       "A ordenação das variáveis locais da frame por nome",
       "O ajuste do sp para alinhar a frame a uma fronteira",
-      "A cópia da frame para o início da memória principal",
+      "A cópia da frame para o início da main memory",
       "A divisão da frame em duas metades de igual tamanho"
     ],
     "correct_index": 1,
@@ -2875,7 +2544,7 @@
     "ref": "T8 p.39"
   },
   {
-    "question": "O alinhamento da stack frame pode introduzir bytes de enchimento (padding) que desperdiçam espaço",
+    "question": "O alinhamento da stack frame pode introduzir bytes de padding que desperdiçam espaço",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -2908,19 +2577,6 @@
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T8 p.39"
-  },
-  {
-    "question": "Qual é o alinhamento do stack pointer, em bits, à entrada de uma função?",
-    "answers": [
-      "32 bits",
-      "64 bits",
-      "16 bits",
-      "128 bits"
-    ],
-    "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.40"
   },
   {
     "question": "Qual deve ser o comprimento de uma stack frame?",
@@ -2960,19 +2616,6 @@
     "ref": "T8 p.40"
   },
   {
-    "question": "Uma função precisa de 12 bytes na sua stack frame. Qual é o menor tamanho de frame que respeita o alinhamento a 16 bytes?",
-    "answers": [
-      "32 bytes",
-      "48 bytes",
-      "16 bytes",
-      "12 bytes"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.40"
-  },
-  {
     "question": "Uma função precisa de 36 bytes na sua stack frame. Qual é o menor tamanho de frame que respeita o alinhamento a 16 bytes?",
     "answers": [
       "64 bytes",
@@ -2981,19 +2624,6 @@
       "48 bytes"
     ],
     "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.40"
-  },
-  {
-    "question": "Uma função precisa de 4 bytes na sua stack frame. Qual é o menor tamanho de frame que respeita o alinhamento a 16 bytes?",
-    "answers": [
-      "16 bytes",
-      "32 bytes",
-      "8 bytes",
-      "48 bytes"
-    ],
-    "correct_index": 0,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T8 p.40"
@@ -3012,19 +2642,6 @@
     "ref": "T8 p.40"
   },
   {
-    "question": "Uma função precisa de 8 bytes na sua stack frame. Qual é o menor tamanho de frame que respeita o alinhamento a 16 bytes?",
-    "answers": [
-      "32 bytes",
-      "12 bytes",
-      "16 bytes",
-      "48 bytes"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.40"
-  },
-  {
     "question": "Uma função precisa de 28 bytes na sua stack frame. Qual é o menor tamanho de frame que respeita o alinhamento a 16 bytes?",
     "answers": [
       "48 bytes",
@@ -3033,19 +2650,6 @@
       "32 bytes"
     ],
     "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.40"
-  },
-  {
-    "question": "Uma função precisa de 40 bytes na sua stack frame. Qual é o menor tamanho de frame que respeita o alinhamento a 16 bytes?",
-    "answers": [
-      "48 bytes",
-      "64 bytes",
-      "44 bytes",
-      "80 bytes"
-    ],
-    "correct_index": 0,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T8 p.40"
@@ -3062,40 +2666,7 @@
     "ref": "T8 p.40"
   },
   {
-    "question": "Um addi sp, sp, -48 na entrada da função mantém o sp alinhado a 16 bytes, se estava alinhado",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.40"
-  },
-  {
     "question": "Um addi sp, sp, -24 na entrada da função mantém o sp alinhado a 16 bytes, se estava alinhado",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.40"
-  },
-  {
-    "question": "Um addi sp, sp, -12 na entrada da função mantém o sp alinhado a 16 bytes, se estava alinhado",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.40"
-  },
-  {
-    "question": "Um addi sp, sp, -20 na entrada da função mantém o sp alinhado a 16 bytes, se estava alinhado",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -3171,7 +2742,7 @@
     "ref": "T8 p.40"
   },
   {
-    "question": "Numa função que guarda ra, s0, s1 e s2 (4 palavras) na entrada, qual é o tamanho mínimo da frame?",
+    "question": "Numa função que guarda ra, s0, s1 e s2 (4 words) na entrada, qual é o tamanho mínimo da frame?",
     "answers": [
       "12 bytes",
       "20 bytes",
@@ -3184,7 +2755,7 @@
     "ref": "T8 p.40"
   },
   {
-    "question": "Numa função que guarda ra, s0, s1, s2 e s3 (5 palavras) na entrada, qual é o tamanho mínimo da frame?",
+    "question": "Numa função que guarda ra, s0, s1, s2 e s3 (5 words) na entrada, qual é o tamanho mínimo da frame?",
     "answers": [
       "20 bytes",
       "16 bytes",
@@ -3199,9 +2770,9 @@
   {
     "question": "O que é o prólogo de uma função?",
     "answers": [
-      "O conjunto de instruções executadas no início da função para preparar o seu ambiente",
-      "O conjunto de instruções executadas no fim da função para limpar o ambiente",
-      "O conjunto de instruções do caller antes de chamar a função",
+      "As instruções executadas no início da função, antes do corpo",
+      "As instruções executadas no fim da função, antes do ret",
+      "As instruções do caller antes de chamar a função",
       "O comentário que descreve os parâmetros da função"
     ],
     "correct_index": 0,
@@ -3236,19 +2807,6 @@
     "ref": "T8 p.42"
   },
   {
-    "question": "O que faz o epílogo à pilha?",
-    "answers": [
-      "Cria uma nova stack frame para a função",
-      "Copia o conteúdo da pilha para os registos",
-      "Reserva na pilha espaço para os argumentos",
-      "Limpa a pilha e restaura o ambiente anterior"
-    ],
-    "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.42"
-  },
-  {
     "question": "O epílogo é também conhecido por sequência de saída da função",
     "answers": [
       "FALSO",
@@ -3262,9 +2820,9 @@
   {
     "question": "Que operações faz o prólogo?",
     "answers": [
-      "Cria a stack frame e guarda ra e os registos callee-saved",
+      "Cria a stack frame e guarda ra e os registos s0 a s11 usados",
       "Repõe os registos callee-saved e destrói a stack frame",
-      "Guarda os registos caller-saved e coloca os argumentos",
+      "Guarda os registos caller-saved e define os argumentos",
       "Trata o valor de retorno e repõe os registos caller-saved"
     ],
     "correct_index": 0,
@@ -3277,8 +2835,8 @@
     "answers": [
       "Cria a stack frame e guarda ra e os registos s0 a s11",
       "Repõe os registos callee-saved e ra e destrói a stack frame",
-      "Guarda os registos caller-saved na pilha do caller",
-      "Define os argumentos nos registos e na pilha"
+      "Guarda os registos caller-saved na stack do caller",
+      "Define os argumentos nos registos e na stack"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -3302,7 +2860,7 @@
     "question": "Que operações faz o post-return, depois da chamada?",
     "answers": [
       "Guarda os registos callee-saved na nova stack frame",
-      "Define os argumentos nos registos a0 a a7 e na pilha",
+      "Define os argumentos nos registos a0 a a7 e na stack",
       "Destrói a stack frame do callee e repõe ra",
       "Trata o valor de retorno e repõe os registos caller-saved"
     ],
@@ -3358,19 +2916,6 @@
     "ref": "T8 p.46"
   },
   {
-    "question": "Porque é que a função strcpy é a mais conhecida como causa de buffer overflows?",
-    "answers": [
-      "Porque copia sempre o dobro dos caracteres que são necessários",
-      "Porque copia até ao carácter nulo, sem verificar o tamanho do destino",
-      "Porque só consegue copiar strings com mais de 8 caracteres",
-      "Porque escreve sempre fora da memória reservada ao programa"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.47"
-  },
-  {
     "question": "Até quando copia a função strcpy os caracteres da string de origem?",
     "answers": [
       "Até preencher o buffer de destino",
@@ -3421,25 +2966,12 @@
   {
     "question": "Em void vulnerableFunction(char* input) { char buffer[8]; strcpy(buffer, input); }, o que acontece se input tiver 8 caracteres, sem contar com o carácter nulo?",
     "answers": [
-      "Há buffer overflow, porque a cópia excede os 8 bytes",
+      "Há buffer overflow, porque o strcpy escreve 9 bytes, incluindo o carácter nulo",
       "Cabe no buffer, incluindo o carácter nulo final",
-      "Cabe no buffer, mas sem espaço para o carácter nulo",
+      "Cabe no buffer, pois o carácter nulo não conta para o tamanho",
       "O strcpy recusa a cópia e devolve um código de erro"
     ],
     "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.48"
-  },
-  {
-    "question": "Em void vulnerableFunction(char* input) { char buffer[8]; strcpy(buffer, input); }, o que acontece se input tiver 3 caracteres, sem contar com o carácter nulo?",
-    "answers": [
-      "Há buffer overflow, porque a cópia excede os 8 bytes",
-      "Cabe no buffer, incluindo o carácter nulo final",
-      "Cabe no buffer, mas sem espaço para o carácter nulo",
-      "O strcpy recusa a cópia e devolve um código de erro"
-    ],
-    "correct_index": 1,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T8 p.48"
@@ -3458,17 +2990,6 @@
     "ref": "T8 p.48"
   },
   {
-    "question": "Copiar com strcpy para um char buffer[8] uma string com 7 caracteres, sem contar com o carácter nulo, provoca buffer overflow",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.48"
-  },
-  {
     "question": "Copiar com strcpy para um char buffer[8] uma string com 9 caracteres, sem contar com o carácter nulo, provoca buffer overflow",
     "answers": [
       "FALSO",
@@ -3482,8 +3003,8 @@
   {
     "question": "Quando ocorre um stack-based buffer overflow?",
     "answers": [
-      "Quando a pilha do programa fica vazia depois de uma função regressar",
-      "Quando se copiam dados para um buffer fixo na pilha sem verificar limites",
+      "Quando a stack do programa fica vazia depois de uma função regressar",
+      "Quando se copiam dados para um buffer fixo na stack sem verificar limites",
       "Quando uma função regressa duas vezes ao mesmo caller sem ser chamada",
       "Quando o stack pointer fica com um valor negativo durante a execução"
     ],
@@ -3498,7 +3019,7 @@
       "Colocar o endereço malicioso na posição do endereço de retorno",
       "Desativar o sistema operativo durante a execução do programa",
       "Preparar dados interpretáveis como código executável, a shellcode",
-      "Apagar a pilha do programa antes de a função regressar"
+      "Apagar a stack do programa antes de a função regressar"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -3508,7 +3029,7 @@
   {
     "question": "Qual é o segundo passo do atacante num stack-based buffer overflow?",
     "answers": [
-      "Preparar a shellcode que será executada com o código malicioso",
+      "Desligar o apontador da stack durante a execução da função",
       "Aumentar o tamanho do buffer até caber toda a shellcode",
       "Substituir o valor do stack pointer por zero no fim da função",
       "Colocar o endereço dos dados maliciosos no local do endereço de retorno"
@@ -3522,7 +3043,7 @@
     "question": "O que é uma shellcode?",
     "answers": [
       "Dados preparados para serem executados como código pelo atacante",
-      "Um programa que protege a pilha contra todos os ataques",
+      "Um programa que protege a stack contra todos os ataques",
       "Uma função da biblioteca padrão da linguagem C para copiar",
       "Um tipo de canary colocado junto ao endereço de retorno"
     ],
@@ -3532,7 +3053,7 @@
     "ref": "T8 p.49"
   },
   {
-    "question": "Que posição da pilha interessa ao atacante sobrescrever?",
+    "question": "Que posição da stack interessa ao atacante sobrescrever?",
     "answers": [
       "O local onde está guardado o código da função",
       "O local onde está guardado o endereço de retorno",
@@ -3547,7 +3068,7 @@
   {
     "question": "Para que serve o Stack Smashing Protector (SSP)?",
     "answers": [
-      "Para impedir que a pilha cresça durante a execução",
+      "Para impedir que a stack cresça durante a execução",
       "Para cifrar o código do programa antes de o executar",
       "Para mitigar a sobrescrita do endereço de retorno",
       "Para aleatorizar a localização dos segmentos"
@@ -3576,7 +3097,7 @@
       "Antes de carregar o endereço de retorno",
       "Depois de o programa terminar a execução",
       "Quando a função é chamada pelo caller",
-      "Sempre que a pilha cresce ou diminui"
+      "Sempre que a stack cresce ou diminui"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -3597,23 +3118,12 @@
     "ref": "T8 p.50"
   },
   {
-    "question": "O canary permite detetar a sobrescrita do endereço de retorno",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.50"
-  },
-  {
     "question": "O que é o ASLR (Address Space Layout Randomisation)?",
     "answers": [
       "Uma técnica que coloca um canary junto ao endereço de retorno",
       "Uma técnica que verifica os limites de todos os vetores do programa",
       "Uma técnica que aleatoriza a localização dos segmentos na memória",
-      "Uma técnica que cifra todos os dados guardados na pilha"
+      "Uma técnica que cifra todos os dados guardados na stack"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -3636,7 +3146,7 @@
   {
     "question": "Com que componente trabalha o ASLR para aleatorizar a localização dos segmentos?",
     "answers": [
-      "Com o gestor de memória virtual",
+      "Com o gestor de virtual memory",
       "Com o compilador da linguagem C",
       "Com o assembler do programa",
       "Com a cache de dados do processador"
@@ -3660,7 +3170,7 @@
     "ref": "T8 p.52"
   },
   {
-    "question": "Porque é que o ASLR impede o atacante de inserir código malicioso?",
+    "question": "Porque é que o ASLR dificulta os ataques que dependem de endereços conhecidos?",
     "answers": [
       "Porque o código malicioso deixa de caber na memória",
       "Porque o ASLR apaga a shellcode antes da execução",
@@ -3682,17 +3192,6 @@
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T8 p.52"
-  },
-  {
-    "question": "O ASLR é uma técnica de proteção contra ataques que dependem de endereços de memória previstos",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T8 p.51"
   },
   {
     "question": "O ASLR coloca um valor canary junto ao endereço de retorno",

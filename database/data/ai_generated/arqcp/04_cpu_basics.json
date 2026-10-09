@@ -37,7 +37,7 @@
   {
     "question": "O que é o conjunto de instruções (instruction set) de um CPU?",
     "answers": [
-      "O conjunto de programas guardados na memória principal",
+      "O conjunto de programas guardados na main memory",
       "A coleção de todas as instruções que o CPU consegue executar",
       "O número de instruções que o CPU executa por segundo",
       "O conjunto de registos disponíveis no CPU"
@@ -181,7 +181,7 @@
     "ref": "T4 p.8"
   },
   {
-    "question": "As arquiteturas CISC são mais pipelined do que as arquiteturas RISC",
+    "question": "As arquiteturas CISC aproveitam mais o pipelining do que as arquiteturas RISC",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -196,7 +196,7 @@
     "answers": [
       "Só através de instruções load e store",
       "Diretamente, em qualquer instrução aritmética",
-      "Através de um barramento próprio que liga ao disco",
+      "Através de um bus próprio que liga ao disco",
       "Não acedem à memória, apenas aos registos"
     ],
     "correct_index": 0,
@@ -244,7 +244,7 @@
     "answers": [
       "Computadores de secretária, portáteis e CPUs de uso geral",
       "Apenas servidores de grande dimensão",
-      "Dispositivos móveis, sistemas embebidos e aplicações de baixo consumo",
+      "Devices móveis, sistemas embebidos e aplicações de baixo consumo",
       "Apenas supercomputadores"
     ],
     "correct_index": 2,
@@ -290,7 +290,7 @@
     "ref": "T4 p.9"
   },
   {
-    "question": "Porque depende a arquitetura RISC muito dos compiladores?",
+    "question": "Porque é que a arquitetura RISC depende muito dos compiladores?",
     "answers": [
       "Porque as instruções RISC são mais complexas do que as instruções CISC",
       "Porque há várias formas de realizar a mesma tarefa, o que complica o compilador",
@@ -303,18 +303,7 @@
     "ref": "T4 p.10"
   },
   {
-    "question": "Numa arquitetura CISC, a complexidade está sobretudo no compilador e não nas instruções do processador",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T4 p.10"
-  },
-  {
-    "question": "Qual destes ISA é open-source?",
+    "question": "Qual destes ISA é de código aberto (open source)?",
     "answers": [
       "x86-64",
       "ARM A64",
@@ -410,11 +399,11 @@
     "ref": "T4 p.12"
   },
   {
-    "question": "Que três dimensões determina o tamanho de word de uma arquitetura?",
+    "question": "Que três dimensões são determinadas pelo tamanho da word de uma arquitetura?",
     "answers": [
-      "O tamanho do disco, da memória principal e do ficheiro executável de cada programa",
+      "O tamanho do disco, da main memory e do ficheiro executável de cada programa",
       "O número de instruções, de registos e de ciclos de relógio por segundo",
-      "O tamanho dos registos, dos barramentos de dados e dos endereços de memória",
+      "O tamanho dos registos, dos data buses e dos endereços de memória",
       "A velocidade do relógio, a capacidade da cache e o tamanho da stack"
     ],
     "correct_index": 2,
@@ -436,7 +425,7 @@
     "ref": "T4 p.13"
   },
   {
-    "question": "Um barramento de dados de n bits tem n fios, mas só consegue transferir um bit de cada vez",
+    "question": "Um data bus de n bits tem n fios, mas só consegue transferir um bit de cada vez",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -447,7 +436,7 @@
     "ref": "T4 p.14"
   },
   {
-    "question": "Qual é o maior endereço que se consegue formar com um barramento de endereços de 10 bits?",
+    "question": "Qual é o maior endereço que se consegue formar com um address bus de 10 bits, sendo 0 o menor endereço?",
     "answers": [
       "1023",
       "1024",
@@ -460,7 +449,7 @@
     "ref": "T4 p.14"
   },
   {
-    "question": "Qual é o maior endereço que se consegue formar com um barramento de endereços de 32 bits?",
+    "question": "Qual é o maior endereço que se consegue formar com um address bus de 32 bits?",
     "answers": [
       "0x80000000",
       "0xFFFFFFFF",
@@ -478,20 +467,9 @@
       "O tempo necessário para executar um programa completo, do início ao fim",
       "O número de instruções que o CPU executa durante cada segundo de funcionamento",
       "A unidade básica de tempo no CPU, também chamada ciclo de máquina ou clock tick",
-      "O tempo que o CPU demora a ler uma posição da memória principal"
+      "O tempo que o CPU demora a ler uma posição da main memory"
     ],
     "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T4 p.15"
-  },
-  {
-    "question": "O ciclo de relógio é determinado por um sinal de relógio interno do CPU",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 1,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T4 p.15"
@@ -548,7 +526,7 @@
     "question": "Qual é um dos objetivos do RISC-V enquanto ISA universal?",
     "answers": [
       "Servir apenas os processadores de computadores de secretária, portáteis e servidores",
-      "Servir todos os tamanhos de processadores, dos controladores embebidos aos de alto desempenho",
+      "Servir todos os tamanhos de processadores, dos controllers embebidos aos de alto desempenho",
       "Funcionar apenas com uma única linguagem de programação, escolhida pelo fabricante",
       "Ser compatível, sem qualquer alteração, com todo o software escrito para o conjunto x86-64"
     ],
@@ -558,7 +536,7 @@
     "ref": "T4 p.19"
   },
   {
-    "question": "Um dos objetivos do RISC-V é funcionar apenas com uma pilha de software específica, e não com uma grande variedade delas",
+    "question": "Um dos objetivos do RISC-V é funcionar apenas com uma stack de software específica, e não com uma grande variedade delas",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -860,7 +838,7 @@
     "answers": [
       "Usam apenas registos como origem e como destino das operações",
       "Especificam os 20 bits superiores do valor imediato de um registo",
-      "Servem para realizar chamadas a sub-rotinas e saltos incondicionais",
+      "Servem para realizar chamadas a sub-rotinas e jumps incondicionais",
       "Um dos dois operandos de origem é uma constante de 12 bits (imediato)"
     ],
     "correct_index": 3,
@@ -884,7 +862,7 @@
     "answers": [
       "Guardar o conteúdo de um registo na memória de dados",
       "Ler dados da memória de dados para um registo",
-      "Controlar o fluxo de execução do programa, com saltos condicionais",
+      "Controlar o fluxo de execução do programa, com branches condicionais",
       "Realizar operações aritméticas entre registos"
     ],
     "correct_index": 0,
@@ -896,7 +874,7 @@
     "question": "Para que se usam as instruções do tipo B?",
     "answers": [
       "Guardar o conteúdo de um registo na memória de dados",
-      "Controlar o fluxo de execução do programa, com saltos condicionais",
+      "Controlar o fluxo de execução do programa, com branches condicionais",
       "Especificar os 20 bits superiores do valor imediato de um registo",
       "Realizar operações aritméticas entre registos"
     ],
@@ -909,7 +887,7 @@
     "question": "Para que se usam as instruções do tipo U?",
     "answers": [
       "Guardar o conteúdo de um registo na memória de dados",
-      "Controlar o fluxo de execução do programa, com saltos condicionais",
+      "Controlar o fluxo de execução do programa, com branches condicionais",
       "Especificar os 20 bits superiores do valor imediato de um registo",
       "Realizar operações aritméticas entre registos"
     ],
@@ -959,9 +937,9 @@
     "question": "Qual é a gama de valores de um imediato de 12 bits interpretado em complemento para 2?",
     "answers": [
       "De 0 a 4095",
-      "De −2048 a 2047",
-      "De −2047 a 2047",
-      "De −4096 a 4095"
+      "De -2048 a 2047",
+      "De -2047 a 2047",
+      "De -4096 a 4095"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -974,7 +952,7 @@
       "O programa de baixo nível que traduz as instruções em sinais de controlo para a ALU",
       "O conjunto de todas as instruções que o CPU consegue executar, definido pelo ISA",
       "O conjunto de elementos de estado, de computação e de ligações que permite o fluxo de dados no CPU",
-      "O barramento de dados que liga o CPU à memória principal e aos dispositivos de E/S"
+      "O data bus que liga o CPU à main memory e aos devices de E/S"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -996,7 +974,7 @@
     "question": "Quando é atualizado o program counter (PC) no datapath?",
     "answers": [
       "A cada flanco descendente do relógio, com o endereço da instrução anterior",
-      "Apenas quando ocorre uma interrupção do sistema operativo, com o endereço do tratador",
+      "Apenas quando ocorre um interrupt do sistema operativo, com o endereço do tratador",
       "Só quando o programa termina, com o endereço da primeira instrução",
       "A cada flanco ascendente do relógio, com o endereço da instrução seguinte (PCNext)"
     ],
@@ -1113,7 +1091,7 @@
       "Indica que a ALU está desligada e não executa operações",
       "Guarda o valor zero para ser escrito no register file",
       "Indica que ocorreu um overflow na última operação",
-      "Sinaliza o resultado das operações de comparação"
+      "Indica que o resultado da operação é zero, sendo usada nas comparações"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1258,19 +1236,6 @@
     "ref": "T4 p.42"
   },
   {
-    "question": "A instrução or x4, x5, x6 está no endereço pc = 0x1008. Qual é o valor do pc depois de a instrução ser executada?",
-    "answers": [
-      "0x100C",
-      "0x1009",
-      "0x1010",
-      "0x1008"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T4 p.42"
-  },
-  {
     "question": "O pc vale 0x2000 e são executadas 5 instruções RV32I seguidas, sem saltos. Qual é o valor final do pc?",
     "answers": [
       "0x2005",
@@ -1279,17 +1244,6 @@
       "0x2004"
     ],
     "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T4 p.42"
-  },
-  {
-    "question": "Numa execução sequencial, o pc aumenta de 1 por cada instrução RV32I executada",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T4 p.42"
@@ -1319,12 +1273,12 @@
     "ref": "T4 p.45"
   },
   {
-    "question": "O que melhora o pipelining no CPU?",
+    "question": "O que é que o pipelining melhora no CPU?",
     "answers": [
       "O tamanho dos registos",
-      "A capacidade da memória principal",
+      "A capacidade da main memory",
       "O número de instruções do conjunto de instruções",
-      "O débito (throughput) de execução"
+      "O throughput (throughput) de execução"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1402,7 +1356,7 @@
       "Lê a instrução da memória de instruções (fetch)",
       "Lê ou escreve na memória de dados, se aplicável",
       "Escreve o resultado no register file, se aplicável",
-      "Realiza um cálculo ou um endereço na ALU"
+      "Realiza um cálculo, ou um cálculo de endereço, na ALU"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1413,7 +1367,7 @@
     "question": "O que faz a fase WB (Write back)?",
     "answers": [
       "Lê ou escreve na memória de dados, se aplicável",
-      "Realiza um cálculo ou um endereço na ALU",
+      "Realiza um cálculo, ou um cálculo de endereço, na ALU",
       "Escreve o resultado no register file, se aplicável",
       "Lê a instrução da memória de instruções (fetch)"
     ],
@@ -1423,7 +1377,7 @@
     "ref": "T4 p.46"
   },
   {
-    "question": "No datapath, as instruções e os dados movem-se, em geral, da esquerda para a direita através das cinco fases",
+    "question": "No datapath single-cycle, o fluxo de instruções e dados faz-se, em geral, pela ordem das fases IF, ID, EX, MEM e WB",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1434,7 +1388,7 @@
     "ref": "T4 p.47"
   },
   {
-    "question": "No datapath, a unidade de controlo também controla o pipeline",
+    "question": "No datapath single-cycle, a unidade de controlo gera os sinais de controlo que comandam os restantes elementos do datapath",
     "answers": [
       "FALSO",
       "VERDADEIRO"

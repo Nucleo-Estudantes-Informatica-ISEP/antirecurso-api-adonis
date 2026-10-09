@@ -244,17 +244,6 @@
     "ref": "T9 p.9"
   },
   {
-    "question": "Em C, duas structs do mesmo tipo podem ser comparadas diretamente com o operador ==",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T9 p.9"
-  },
-  {
     "question": "Porque é que, sem typedef, se tem de escrever struct antes do nome da estrutura?",
     "answers": [
       "Porque as structs têm o seu próprio espaço de nomes",
@@ -308,7 +297,7 @@
       "Cada membro numa região separada da memória",
       "Apenas em registos do processador",
       "Numa região de memória contígua",
-      "Sempre na pilha, e nunca em memória estática"
+      "Sempre na stack, e nunca em memória estática"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -340,18 +329,7 @@
     "ref": "T9 p.11"
   },
   {
-    "question": "O padrão C garante que todos os membros de uma estrutura ocorrem na memória pela mesma ordem da declaração",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T9 p.11"
-  },
-  {
-    "question": "Em código máquina não existe o conceito de estrutura, e os membros acedem-se com deslocamentos relativos ao endereço da estrutura",
+    "question": "Em código máquina não existe o conceito de estrutura, e os membros acedem-se com offsets relativos ao endereço da estrutura",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -373,7 +351,7 @@
     "ref": "T9 p.12"
   },
   {
-    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32. Qual é o deslocamento do membro a?",
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32. Qual é o offset do membro a?",
     "answers": [
       "0",
       "4",
@@ -386,7 +364,7 @@
     "ref": "T9 p.12"
   },
   {
-    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32. Qual é o deslocamento do membro i?",
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32. Qual é o offset do membro i?",
     "answers": [
       "12",
       "16",
@@ -399,7 +377,7 @@
     "ref": "T9 p.12"
   },
   {
-    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32. Qual é o deslocamento do membro next?",
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32. Qual é o offset do membro next?",
     "answers": [
       "20",
       "28",
@@ -425,12 +403,12 @@
     "ref": "T9 p.12"
   },
   {
-    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32. Porque é que o membro i fica no deslocamento 16?",
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32. Porque é que o membro i fica no offset 16?",
     "answers": [
       "Porque a ocupa 16 bytes e 16 já é múltiplo de 8",
-      "Porque o membro a ocupa 20 bytes, incluindo o enchimento final",
+      "Porque o membro a ocupa 20 bytes, incluindo o padding final",
       "Porque o compilador coloca sempre os long long a seguir aos int",
-      "Porque o deslocamento de i é sempre o dobro do deslocamento de a"
+      "Porque o offset de i é sempre o dobro do offset de a"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -503,7 +481,7 @@
     "ref": "T9 p.12"
   },
   {
-    "question": "Considere get_ap: slli a1, a1, 2 / add a0, a0, a1 / ret, com r em a0 e idx em a1. O que devolve a função?",
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32 e get_ap: slli a1, a1, 2 / add a0, a0, a1 / ret, com r em a0 e idx em a1. O que devolve a função?",
     "answers": [
       "O valor de r->a[idx]",
       "O endereço de r->i",
@@ -516,12 +494,12 @@
     "ref": "T9 p.13"
   },
   {
-    "question": "Considere get_ap: slli a1, a1, 2 / add a0, a0, a1 / ret. Porque é que não se soma nenhum deslocamento fixo ao endereço de r?",
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32 e get_ap: slli a1, a1, 2 / add a0, a0, a1 / ret. Porque é que não se soma nenhum offset fixo ao endereço de r?",
     "answers": [
       "Porque o membro a está no fim da estrutura",
       "Porque a função só trabalha com idx igual a zero",
-      "Porque o deslocamento é somado pela instrução ret",
-      "Porque o membro a está no deslocamento 0 da estrutura"
+      "Porque o offset é somado pela instrução ret",
+      "Porque o membro a está no offset 0 da estrutura"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -534,7 +512,7 @@
       "Para multiplicar idx por 4, o tamanho de um int",
       "Para dividir idx por 4, o tamanho de um int",
       "Para multiplicar idx por 2, o tamanho de um short",
-      "Para somar 2 ao valor de idx e ao endereço"
+      "Para somar 2 ao valor de idx"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -542,20 +520,7 @@
     "ref": "T9 p.13"
   },
   {
-    "question": "Em struct rec { int a[4]; long long i; struct rec *next; }, qual é o deslocamento de a[0] relativamente ao início da estrutura?",
-    "answers": [
-      "4",
-      "0",
-      "16",
-      "8"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T9 p.13"
-  },
-  {
-    "question": "Em struct rec { int a[4]; long long i; struct rec *next; }, qual é o deslocamento de a[1] relativamente ao início da estrutura?",
+    "question": "Em struct rec { int a[4]; long long i; struct rec *next; }, qual é o offset de a[1] relativamente ao início da estrutura?",
     "answers": [
       "8",
       "20",
@@ -568,7 +533,7 @@
     "ref": "T9 p.13"
   },
   {
-    "question": "Em struct rec { int a[4]; long long i; struct rec *next; }, qual é o deslocamento de a[3] relativamente ao início da estrutura?",
+    "question": "Em struct rec { int a[4]; long long i; struct rec *next; }, qual é o offset de a[3] relativamente ao início da estrutura?",
     "answers": [
       "16",
       "28",
@@ -581,7 +546,7 @@
     "ref": "T9 p.13"
   },
   {
-    "question": "Em struct rec { int a[4]; long long i; struct rec *next; }, qual é o deslocamento de a[2] relativamente ao início da estrutura?",
+    "question": "Em struct rec { int a[4]; long long i; struct rec *next; }, qual é o offset de a[2] relativamente ao início da estrutura?",
     "answers": [
       "8",
       "12",
@@ -594,7 +559,7 @@
     "ref": "T9 p.13"
   },
   {
-    "question": "Considere length: mv t0, a0 / and a0, a0, zero / j check / loop: addi a0, a0, 1 / lw t0, 24(t0) / check: bnez t0, loop / ret. O que devolve a função?",
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32 e length: mv t0, a0 / and a0, a0, zero / j check / loop: addi a0, a0, 1 / lw t0, 24(t0) / check: bnez t0, loop / ret. O que devolve a função?",
     "answers": [
       "O endereço do último elemento da lista",
       "O número de elementos da lista ligada",
@@ -620,7 +585,7 @@
     "ref": "T9 p.14"
   },
   {
-    "question": "Considere length: mv t0, a0 / and a0, a0, zero / j check / loop: addi a0, a0, 1 / lw t0, 24(t0) / check: bnez t0, loop / ret. O que faz lw t0, 24(t0)?",
+    "question": "Considere struct rec { int a[4]; long long i; struct rec *next; } em RV32 e length: mv t0, a0 / and a0, a0, zero / j check / loop: addi a0, a0, 1 / lw t0, 24(t0) / check: bnez t0, loop / ret. O que faz lw t0, 24(t0)?",
     "answers": [
       "Lê o membro i do elemento atual",
       "Lê o primeiro elemento do vetor a",
@@ -916,7 +881,7 @@
       "Está desalinhado, porque 0x1006 não é múltiplo de 4",
       "Está alinhado, porque 0x1006 é par",
       "Está alinhado, porque 0x1006 é múltiplo de 2",
-      "Está desalinhado, porque 0x1006 não é múltiplo de 8"
+      "Está alinhado, porque 0x1006 é múltiplo de 3"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1132,7 +1097,7 @@
     "ref": "T9 p.19"
   },
   {
-    "question": "No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, em que endereço, relativo ao início da secção .data, fica a variável i?",
+    "question": "Considere o início de cada secção alinhado a 8 bytes. No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, em que endereço, relativo ao início da secção .data, fica a variável i?",
     "answers": [
       "2",
       "4",
@@ -1145,7 +1110,7 @@
     "ref": "T9 p.19"
   },
   {
-    "question": "No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, em que endereço, relativo ao início da secção .data, fica a variável x?",
+    "question": "Considere o início de cada secção alinhado a 8 bytes. No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, em que endereço, relativo ao início da secção .data, fica a variável x?",
     "answers": [
       "2",
       "3",
@@ -1158,7 +1123,7 @@
     "ref": "T9 p.19"
   },
   {
-    "question": "No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, em que endereço, relativo ao início da secção .data, fica a variável y?",
+    "question": "Considere o início de cada secção alinhado a 8 bytes. No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, em que endereço, relativo ao início da secção .data, fica a variável y?",
     "answers": [
       "8",
       "6",
@@ -1171,12 +1136,12 @@
     "ref": "T9 p.19"
   },
   {
-    "question": "No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, porque é que x fica no endereço 4 e não no 2?",
+    "question": "Considere o início de cada secção alinhado a 8 bytes. No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, porque é que x fica no endereço 4 e não no 2?",
     "answers": [
       "Porque a variável i ocupa 4 bytes na memória de dados",
       "Porque o .align 2 avança o location counter de 2 para 4",
       "Porque o .align 2 soma sempre 4 ao location counter",
-      "Porque a diretiva .word reserva antes 2 bytes de enchimento"
+      "Porque a diretiva .word reserva antes 2 bytes de padding"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1184,7 +1149,7 @@
     "ref": "T9 p.19"
   },
   {
-    "question": "No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, quantos bytes de enchimento (padding) existem entre i e x?",
+    "question": "Considere o início de cada secção alinhado a 8 bytes. No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, quantos bytes de padding existem entre i e x?",
     "answers": [
       "0",
       "4",
@@ -1197,7 +1162,7 @@
     "ref": "T9 p.19"
   },
   {
-    "question": "No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, quantos bytes de enchimento (padding) existem entre x e y?",
+    "question": "Considere o início de cada secção alinhado a 8 bytes. No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, quantos bytes de padding existem entre x e y?",
     "answers": [
       "2",
       "4",
@@ -1210,7 +1175,7 @@
     "ref": "T9 p.19"
   },
   {
-    "question": "No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, em que endereço, relativo ao início da secção .bss, fica a variável z?",
+    "question": "Considere o início de cada secção alinhado a 8 bytes. No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, em que endereço, relativo ao início da secção .bss, fica a variável z?",
     "answers": [
       "0",
       "2",
@@ -1223,7 +1188,7 @@
     "ref": "T9 p.19"
   },
   {
-    "question": "No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, quantos bytes ocupa a secção .data?",
+    "question": "Considere o início de cada secção alinhado a 8 bytes. No código .data / .align 1 / i: .half 1 / .align 2 / x: .word 9 / .align 3 / y: .dword 11 / .bss / .align 3 / z: .skip 8, quantos bytes ocupa a secção .data?",
     "answers": [
       "12",
       "16",
@@ -1258,7 +1223,7 @@
     "ref": "T9 p.22"
   },
   {
-    "question": "O primeiro membro de uma estrutura começa sempre depois de um byte de enchimento",
+    "question": "O primeiro membro de uma estrutura começa sempre depois de um byte de padding",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1269,7 +1234,7 @@
     "ref": "T9 p.22"
   },
   {
-    "question": "Pode existir enchimento (padding) antes de cada membro para cumprir as regras de alinhamento",
+    "question": "Pode existir padding antes de cada membro para cumprir as regras de alinhamento",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1291,7 +1256,7 @@
     "ref": "T9 p.22"
   },
   {
-    "question": "Para que serve o enchimento (padding) numa estrutura?",
+    "question": "Para que serve o padding numa estrutura?",
     "answers": [
       "Para guardar o tamanho total da estrutura no fim",
       "Para separar os membros de tipos diferentes entre si",
@@ -1343,7 +1308,7 @@
     "ref": "T9 p.24"
   },
   {
-    "question": "Nunca existe enchimento no fim de uma estrutura",
+    "question": "Nunca existe padding no fim de uma estrutura",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1391,7 +1356,7 @@
     "ref": "T9 p.26"
   },
   {
-    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Qual é o deslocamento do membro c?",
+    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Qual é o offset do membro c?",
     "answers": [
       "0",
       "1",
@@ -1404,7 +1369,7 @@
     "ref": "T9 p.25"
   },
   {
-    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Qual é o deslocamento do membro i?",
+    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Qual é o offset do membro i?",
     "answers": [
       "1",
       "4",
@@ -1417,7 +1382,7 @@
     "ref": "T9 p.25"
   },
   {
-    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Qual é o deslocamento do membro v?",
+    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Qual é o offset do membro v?",
     "answers": [
       "9",
       "12",
@@ -1456,7 +1421,7 @@
     "ref": "T9 p.25"
   },
   {
-    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Quantos bytes de enchimento existem no total?",
+    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Quantos bytes de padding existem no total?",
     "answers": [
       "0",
       "7",
@@ -1469,7 +1434,7 @@
     "ref": "T9 p.25"
   },
   {
-    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Quantos bytes de enchimento existem entre c e i?",
+    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Quantos bytes de padding existem entre c e i?",
     "answers": [
       "0",
       "1",
@@ -1482,7 +1447,7 @@
     "ref": "T9 p.25"
   },
   {
-    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Quantos bytes de enchimento existem entre i e v?",
+    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Quantos bytes de padding existem entre i e v?",
     "answers": [
       "0",
       "3",
@@ -1495,12 +1460,12 @@
     "ref": "T9 p.25"
   },
   {
-    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Porque é que v está no deslocamento 16 e não no 12?",
+    "question": "Considere struct S1 { char c; int i[2]; long long v; } em RV32. Porque é que v está no offset 16 e não no 12?",
     "answers": [
       "Porque 12 não é múltiplo de 8 e v é um long long",
-      "Porque i ocupa 16 bytes",
-      "Porque v tem de ficar logo a seguir ao padding final",
-      "Porque 12 é múltiplo de 8"
+      "Porque o vetor i ocupa 16 bytes",
+      "Porque v só pode ficar depois do padding final",
+      "Porque um long long exige alinhamento a 2 bytes"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1521,7 +1486,7 @@
     "ref": "T9 p.26"
   },
   {
-    "question": "Em RV32, em struct { char a; int b; short c; }, qual é o deslocamento do membro c?",
+    "question": "Em RV32, em struct { char a; int b; short c; }, qual é o offset do membro c?",
     "answers": [
       "9",
       "10",
@@ -1529,32 +1494,6 @@
       "12"
     ],
     "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T9 p.26"
-  },
-  {
-    "question": "Em RV32, qual é o valor de sizeof(struct { char c; int i[2]; long long v; })?",
-    "answers": [
-      "32",
-      "16",
-      "28",
-      "24"
-    ],
-    "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T9 p.26"
-  },
-  {
-    "question": "Em RV32, em struct { char c; int i[2]; long long v; }, qual é o deslocamento do membro v?",
-    "answers": [
-      "16",
-      "17",
-      "18",
-      "20"
-    ],
-    "correct_index": 0,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T9 p.26"
@@ -1573,7 +1512,7 @@
     "ref": "T9 p.26"
   },
   {
-    "question": "Em RV32, em struct { long long v; int i[2]; char c; }, qual é o deslocamento do membro c?",
+    "question": "Em RV32, em struct { long long v; int i[2]; char c; }, qual é o offset do membro c?",
     "answers": [
       "17",
       "18",
@@ -1599,7 +1538,7 @@
     "ref": "T9 p.26"
   },
   {
-    "question": "Em RV32, em struct { char a; char b; short c; int d; }, qual é o deslocamento do membro b?",
+    "question": "Em RV32, em struct { char a; char b; short c; int d; }, qual é o offset do membro b?",
     "answers": [
       "1",
       "2",
@@ -1612,7 +1551,7 @@
     "ref": "T9 p.26"
   },
   {
-    "question": "Em RV32, em struct { char a; char b; short c; int d; }, qual é o deslocamento do membro d?",
+    "question": "Em RV32, em struct { char a; char b; short c; int d; }, qual é o offset do membro d?",
     "answers": [
       "5",
       "4",
@@ -1620,32 +1559,6 @@
       "8"
     ],
     "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T9 p.26"
-  },
-  {
-    "question": "Em RV32, qual é o valor de sizeof(struct { int a; char b; })?",
-    "answers": [
-      "12",
-      "4",
-      "8",
-      "16"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T9 p.26"
-  },
-  {
-    "question": "Em RV32, em struct { int a; char b; }, qual é o deslocamento do membro b?",
-    "answers": [
-      "5",
-      "6",
-      "8",
-      "4"
-    ],
-    "correct_index": 3,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T9 p.26"
@@ -1664,7 +1577,7 @@
     "ref": "T9 p.26"
   },
   {
-    "question": "Em RV32, em struct { char a; double d; char b; }, qual é o deslocamento do membro b?",
+    "question": "Em RV32, em struct { char a; double d; char b; }, qual é o offset do membro b?",
     "answers": [
       "17",
       "16",
@@ -1690,7 +1603,7 @@
     "ref": "T9 p.26"
   },
   {
-    "question": "Em RV32, em struct { short s; char c; }, qual é o deslocamento do membro c?",
+    "question": "Em RV32, em struct { short s; char c; }, qual é o offset do membro c?",
     "answers": [
       "3",
       "4",
@@ -1716,7 +1629,7 @@
     "ref": "T9 p.26"
   },
   {
-    "question": "Em RV32, em struct { char c1; short s; char c2; int i; }, qual é o deslocamento do membro s?",
+    "question": "Em RV32, em struct { char c1; short s; char c2; int i; }, qual é o offset do membro s?",
     "answers": [
       "3",
       "2",
@@ -1729,7 +1642,7 @@
     "ref": "T9 p.26"
   },
   {
-    "question": "Em RV32, em struct { char c1; short s; char c2; int i; }, qual é o deslocamento do membro i?",
+    "question": "Em RV32, em struct { char c1; short s; char c2; int i; }, qual é o offset do membro i?",
     "answers": [
       "9",
       "10",
@@ -1755,7 +1668,7 @@
     "ref": "T9 p.26"
   },
   {
-    "question": "Em RV32, em struct { float f; char c; double d; }, qual é o deslocamento do membro d?",
+    "question": "Em RV32, em struct { float f; char c; double d; }, qual é o offset do membro d?",
     "answers": [
       "8",
       "9",
@@ -1781,7 +1694,7 @@
     "ref": "T9 p.26"
   },
   {
-    "question": "Em RV32, em struct { char c[5]; int i; }, qual é o deslocamento do membro i?",
+    "question": "Em RV32, em struct { char c[5]; int i; }, qual é o offset do membro i?",
     "answers": [
       "9",
       "10",
@@ -1807,7 +1720,7 @@
     "ref": "T9 p.26"
   },
   {
-    "question": "Em RV32, em struct { int i; short s; char c; }, qual é o deslocamento do membro c?",
+    "question": "Em RV32, em struct { int i; short s; char c; }, qual é o offset do membro c?",
     "answers": [
       "6",
       "7",
@@ -1833,7 +1746,7 @@
     "ref": "T9 p.26"
   },
   {
-    "question": "Em RV32, em struct { long long a; char b; }, qual é o deslocamento do membro b?",
+    "question": "Em RV32, em struct { long long a; char b; }, qual é o offset do membro b?",
     "answers": [
       "9",
       "10",
@@ -1859,7 +1772,7 @@
     "ref": "T9 p.26"
   },
   {
-    "question": "Em RV32, em struct { char a; short b; int c; double d; }, qual é o deslocamento do membro b?",
+    "question": "Em RV32, em struct { char a; short b; int c; double d; }, qual é o offset do membro b?",
     "answers": [
       "2",
       "3",
@@ -1872,7 +1785,7 @@
     "ref": "T9 p.26"
   },
   {
-    "question": "Em RV32, em struct { char a; short b; int c; double d; }, qual é o deslocamento do membro d?",
+    "question": "Em RV32, em struct { char a; short b; int c; double d; }, qual é o offset do membro d?",
     "answers": [
       "9",
       "8",
@@ -1898,7 +1811,7 @@
     "ref": "T9 p.26"
   },
   {
-    "question": "Em RV32, em struct { char a; long long b; float c; char d[3]; int * e; int * f; }, qual é o deslocamento do membro b?",
+    "question": "Em RV32, em struct { char a; long long b; float c; char d[3]; int * e; int * f; }, qual é o offset do membro b?",
     "answers": [
       "9",
       "8",
@@ -1911,7 +1824,7 @@
     "ref": "T9 p.26"
   },
   {
-    "question": "Em RV32, em struct { char a; long long b; float c; char d[3]; int * e; int * f; }, qual é o deslocamento do membro f?",
+    "question": "Em RV32, em struct { char a; long long b; float c; char d[3]; int * e; int * f; }, qual é o offset do membro f?",
     "answers": [
       "29",
       "30",
@@ -1924,7 +1837,7 @@
     "ref": "T9 p.26"
   },
   {
-    "question": "Em RV32, quantos bytes de enchimento (padding) tem struct { char a; int b; short c; }?",
+    "question": "Em RV32, quantos bytes de padding tem struct { char a; int b; short c; }?",
     "answers": [
       "6",
       "7",
@@ -1937,7 +1850,7 @@
     "ref": "T9 p.24"
   },
   {
-    "question": "Em RV32, quantos bytes de enchimento (padding) tem struct { char c1; short s; char c2; int i; }?",
+    "question": "Em RV32, quantos bytes de padding tem struct { char c1; short s; char c2; int i; }?",
     "answers": [
       "4",
       "5",
@@ -1950,7 +1863,7 @@
     "ref": "T9 p.24"
   },
   {
-    "question": "Em RV32, quantos bytes de enchimento (padding) tem struct { float f; char c; double d; }?",
+    "question": "Em RV32, quantos bytes de padding tem struct { float f; char c; double d; }?",
     "answers": [
       "4",
       "3",
@@ -1963,7 +1876,7 @@
     "ref": "T9 p.24"
   },
   {
-    "question": "Em RV32, quantos bytes de enchimento (padding) tem struct { char a; double d; char b; }?",
+    "question": "Em RV32, quantos bytes de padding tem struct { char a; double d; char b; }?",
     "answers": [
       "15",
       "16",
@@ -2015,20 +1928,7 @@
     "ref": "T9 p.24"
   },
   {
-    "question": "Em RV32, qual é o alinhamento K de struct { char a; char b; short c; int d; }?",
-    "answers": [
-      "1",
-      "2",
-      "8",
-      "4"
-    ],
-    "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T9 p.24"
-  },
-  {
-    "question": "Colocar primeiro os tipos maiores numa estrutura pode reduzir o enchimento",
+    "question": "Colocar primeiro os tipos maiores numa estrutura pode reduzir o padding",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -2078,7 +1978,7 @@
     "ref": "T9 p.29"
   },
   {
-    "question": "Em RV32, qual é o deslocamento do membro d em struct { char a; long long b; float c; char d[3]; int * e; int * f; }?",
+    "question": "Em RV32, qual é o offset do membro d em struct { char a; long long b; float c; char d[3]; int * e; int * f; }?",
     "answers": [
       "20",
       "19",
@@ -2091,7 +1991,7 @@
     "ref": "T9 p.29"
   },
   {
-    "question": "Em RV32, qual é o deslocamento do membro e em struct { char a; long long b; float c; char d[3]; int * e; int * f; }?",
+    "question": "Em RV32, qual é o offset do membro e em struct { char a; long long b; float c; char d[3]; int * e; int * f; }?",
     "answers": [
       "23",
       "24",
@@ -2156,7 +2056,7 @@
     "ref": "T9 p.28"
   },
   {
-    "question": "Em RV32, struct { long long v; int i[2]; char c; } ocupa 17 bytes. Porque é que sizeof devolve 24?",
+    "question": "Em RV32, a soma dos tamanhos dos membros de struct { long long v; int i[2]; char c; } é 17 bytes. Porque é que sizeof devolve 24?",
     "answers": [
       "Porque o membro c ocupa 8 bytes na estrutura",
       "Porque o membro v ocupa 16 bytes na estrutura",
@@ -2167,30 +2067,6 @@
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T9 p.27"
-  },
-  {
-    "question": "Em struct { char c; int i[2]; long long v; }, reordenar os membros do maior para o menor reduz o valor de sizeof",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T9 p.28"
-  },
-  {
-    "question": "Considere struct S1 { long long v; int i[2]; char c; } a[10] em RV32. Qual é o valor de sizeof(struct S1)?",
-    "answers": [
-      "17",
-      "20",
-      "16",
-      "24"
-    ],
-    "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T9 p.30"
   },
   {
     "question": "Considere struct S1 { long long v; int i[2]; char c; } a[10] em RV32. Quantos bytes ocupa o vetor a?",
@@ -2206,7 +2082,7 @@
     "ref": "T9 p.30"
   },
   {
-    "question": "Considere struct S1 { long long v; int i[2]; char c; } a[10] em RV32. Qual é o deslocamento de a[3] relativamente ao início do vetor?",
+    "question": "Considere struct S1 { long long v; int i[2]; char c; } a[10] em RV32. Qual é o offset de a[3] relativamente ao início do vetor?",
     "answers": [
       "51",
       "72",
@@ -2219,7 +2095,7 @@
     "ref": "T9 p.30"
   },
   {
-    "question": "Considere struct S1 { long long v; int i[2]; char c; } a[10] em RV32. Qual é o deslocamento de a[5].c relativamente ao início do vetor?",
+    "question": "Considere struct S1 { long long v; int i[2]; char c; } a[10] em RV32. Qual é o offset de a[5].c relativamente ao início do vetor?",
     "answers": [
       "85",
       "120",
@@ -2232,7 +2108,7 @@
     "ref": "T9 p.30"
   },
   {
-    "question": "Considere struct S1 { long long v; int i[2]; char c; } a[10] em RV32. Qual é o deslocamento de a[2].i relativamente ao início do vetor?",
+    "question": "Considere struct S1 { long long v; int i[2]; char c; } a[10] em RV32. Qual é o offset de a[2].i relativamente ao início do vetor?",
     "answers": [
       "40",
       "48",
@@ -2245,7 +2121,7 @@
     "ref": "T9 p.30"
   },
   {
-    "question": "Considere struct S1 { long long v; int i[2]; char c; } a[10] em RV32. Qual é o deslocamento de a[9].v relativamente ao início do vetor?",
+    "question": "Considere struct S1 { long long v; int i[2]; char c; } a[10] em RV32. Qual é o offset de a[9].v relativamente ao início do vetor?",
     "answers": [
       "216",
       "153",
@@ -2295,7 +2171,7 @@
     "ref": "T9 p.6"
   },
   {
-    "question": "Em RV32, considere struct rec { int a[4]; long long i; struct rec *next; } vec[50]. Qual é o deslocamento de vec[3].next relativamente ao início do vetor?",
+    "question": "Em RV32, considere struct rec { int a[4]; long long i; struct rec *next; } vec[50]. Qual é o offset de vec[3].next relativamente ao início do vetor?",
     "answers": [
       "96",
       "72",
@@ -2308,7 +2184,7 @@
     "ref": "T9 p.6"
   },
   {
-    "question": "Em RV32, considere struct rec { int a[4]; long long i; struct rec *next; } vec[50]. Qual é o deslocamento de vec[5].i relativamente ao início do vetor?",
+    "question": "Em RV32, considere struct rec { int a[4]; long long i; struct rec *next; } vec[50]. Qual é o offset de vec[5].i relativamente ao início do vetor?",
     "answers": [
       "176",
       "160",
@@ -2321,7 +2197,7 @@
     "ref": "T9 p.6"
   },
   {
-    "question": "Em RV32, considere struct rec { int a[4]; long long i; struct rec *next; } vec[50]. Qual é o deslocamento de vec[2].a[1] relativamente ao início do vetor?",
+    "question": "Em RV32, considere struct rec { int a[4]; long long i; struct rec *next; } vec[50]. Qual é o offset de vec[2].a[1] relativamente ao início do vetor?",
     "answers": [
       "52",
       "68",
@@ -2402,7 +2278,7 @@
     "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. Porque é que o membro c é posto a zero com sb e não com sw?",
     "answers": [
       "Porque c ocupa 4 bytes",
-      "Porque a instrução sw não aceita deslocamentos",
+      "Porque a instrução sw não aceita offsets",
       "Porque c está num endereço desalinhado",
       "Porque c é um char, de 1 byte"
     ],
@@ -2451,58 +2327,6 @@
     "ref": "T9 p.31"
   },
   {
-    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. Quantas iterações executa o ciclo se n = 4?",
-    "answers": [
-      "5",
-      "3",
-      "96",
-      "4"
-    ],
-    "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T9 p.31"
-  },
-  {
-    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. Se o vetor começar no endereço 0x00010000 e n = 4, que valor tem a1 antes do ciclo?",
-    "answers": [
-      "0x00010060",
-      "0x00010040",
-      "0x00010020",
-      "0x00010078"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T9 p.31"
-  },
-  {
-    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. Quantas iterações executa o ciclo se n = 7?",
-    "answers": [
-      "8",
-      "7",
-      "6",
-      "168"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T9 p.31"
-  },
-  {
-    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. Se o vetor começar no endereço 0x00010000 e n = 7, que valor tem a1 antes do ciclo?",
-    "answers": [
-      "0x00010070",
-      "0x00010038",
-      "0x000100A8",
-      "0x000100C0"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T9 p.31"
-  },
-  {
     "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. O que acontece se n = 0?",
     "answers": [
       "O ciclo executa uma iteração",
@@ -2516,7 +2340,7 @@
     "ref": "T9 p.31"
   },
   {
-    "question": "Em RV32, é possível multiplicar por 24 combinando deslocamentos e uma soma, como n * 16 + n * 8",
+    "question": "Em RV32, é possível multiplicar por 24 combinando shifts e uma soma, como n * 16 + n * 8",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -2572,17 +2396,6 @@
       "VERDADEIRO"
     ],
     "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T9 p.33"
-  },
-  {
-    "question": "Os membros de uma union referenciam blocos de memória diferentes",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T9 p.33"
@@ -2732,19 +2545,6 @@
     "ref": "T9 p.37"
   },
   {
-    "question": "Que verificação faz o compilador de C sobre o membro usado de uma union?",
-    "answers": [
-      "Verifica se o membro lido é o último escrito",
-      "Nenhuma, o programador controla o tipo usado",
-      "Verifica se o membro lido é do tipo maior",
-      "Verifica se o membro lido é do tipo int"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T9 p.37"
-  },
-  {
     "question": "Em RV32 little-endian, considere union { int i; char c[4]; } u e u.i = 0x41424344. Que valor tem u.c[0]?",
     "answers": [
       "0x41",
@@ -2771,19 +2571,6 @@
     "ref": "T9 p.35"
   },
   {
-    "question": "Em RV32 little-endian, considere union { int i; char c[4]; } u e u.i = 0x01020304. Que valor tem u.c[0]?",
-    "answers": [
-      "0x04",
-      "0x01",
-      "0x00",
-      "0xFF"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T9 p.35"
-  },
-  {
     "question": "Em RV32 little-endian, considere union { int i; char c[4]; } u e u.i = 0x01020304. Que valor tem u.c[3]?",
     "answers": [
       "0x04",
@@ -2792,19 +2579,6 @@
       "0xFF"
     ],
     "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T9 p.35"
-  },
-  {
-    "question": "Em RV32 little-endian, considere union { int i; char c[4]; } u e u.i = 0x11223344. Que valor tem u.c[0]?",
-    "answers": [
-      "0x11",
-      "0x00",
-      "0x44",
-      "0xFF"
-    ],
-    "correct_index": 2,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T9 p.35"
@@ -2992,7 +2766,7 @@
     "ref": "T9 p.38"
   },
   {
-    "question": "Em RV32, considere typedef union { int units; float kgs; } amount; typedef struct { char selling[15]; float unitprice; int unittype; amount howmuch; } product; Qual é o deslocamento do membro unitprice?",
+    "question": "Em RV32, considere typedef union { int units; float kgs; } amount; typedef struct { char selling[15]; float unitprice; int unittype; amount howmuch; } product; Qual é o offset do membro unitprice?",
     "answers": [
       "15",
       "16",
@@ -3005,7 +2779,7 @@
     "ref": "T9 p.38"
   },
   {
-    "question": "Em RV32, considere typedef union { int units; float kgs; } amount; typedef struct { char selling[15]; float unitprice; int unittype; amount howmuch; } product; Qual é o deslocamento do membro unittype?",
+    "question": "Em RV32, considere typedef union { int units; float kgs; } amount; typedef struct { char selling[15]; float unitprice; int unittype; amount howmuch; } product; Qual é o offset do membro unittype?",
     "answers": [
       "19",
       "16",
@@ -3018,7 +2792,7 @@
     "ref": "T9 p.38"
   },
   {
-    "question": "Em RV32, considere typedef union { int units; float kgs; } amount; typedef struct { char selling[15]; float unitprice; int unittype; amount howmuch; } product; Qual é o deslocamento do membro howmuch?",
+    "question": "Em RV32, considere typedef union { int units; float kgs; } amount; typedef struct { char selling[15]; float unitprice; int unittype; amount howmuch; } product; Qual é o offset do membro howmuch?",
     "answers": [
       "21",
       "20",
@@ -3044,7 +2818,7 @@
     "ref": "T9 p.38"
   },
   {
-    "question": "Em RV32, considere typedef union { int units; float kgs; } amount; typedef struct { char selling[15]; float unitprice; int unittype; amount howmuch; } product; Quantos bytes de enchimento existem entre selling e unitprice?",
+    "question": "Em RV32, considere typedef union { int units; float kgs; } amount; typedef struct { char selling[15]; float unitprice; int unittype; amount howmuch; } product; Quantos bytes de prepadding existem entre selling e unitprice?",
     "answers": [
       "0",
       "1",

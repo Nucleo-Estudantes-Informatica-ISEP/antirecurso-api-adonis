@@ -331,7 +331,7 @@
       "Que a label numérica referida está posicionada antes da referência",
       "Que a label numérica referida está posicionada depois da referência",
       "Que a label numérica referida é binária",
-      "Que a referência é a uma label global"
+      "Que a referência é a uma label simbólica"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -344,7 +344,7 @@
       "Que a label numérica referida está posicionada antes da referência",
       "Que a label numérica referida está posicionada depois da referência",
       "Que a label numérica referida é de vírgula flutuante",
-      "Que a referência é a uma label local"
+      "Que a referência é a uma label simbólica"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -511,7 +511,7 @@
       "Converte-a numa instrução máquina de 32 bits, que junta à secção ativa",
       "Regista-a como símbolo na tabela de símbolos, com o endereço atual do programa",
       "Ignora-a e descarta-a, tal como faz com os comentários do programador",
-      "Guarda-a diretamente no ficheiro objeto, sem a registar em mais nenhum sítio"
+      "Guarda-a diretamente no object file, sem a registar em mais nenhum sítio"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -532,7 +532,7 @@
     "ref": "T6 p.22"
   },
   {
-    "question": "No fim de processar todos os elementos do ficheiro assembly, o que guarda o assembler no ficheiro objeto?",
+    "question": "No fim de processar todos os elementos do ficheiro assembly, o que guarda o assembler no object file?",
     "answers": [
       "Apenas o código da secção .text, sem a tabela de símbolos nem as outras secções",
       "Apenas a tabela de símbolos, sem o conteúdo de qualquer secção do programa",
@@ -584,25 +584,12 @@
     "ref": "T6 p.22"
   },
   {
-    "question": "O que são as diretivas do assembler?",
-    "answers": [
-      "Instruções que o processador executa diretamente",
-      "Comentários que o assembler descarta",
-      "Labels guardadas na tabela de símbolos",
-      "Comandos usados para controlar o assembler"
-    ],
-    "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T6 p.25"
-  },
-  {
     "question": "O que faz a diretiva .section .data?",
     "answers": [
       "Torna a secção .data a secção ativa",
       "Guarda o valor 0 na secção .data",
       "Apaga o conteúdo da secção .data",
-      "Define o nome do ficheiro objeto"
+      "Define o nome do object file"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -871,7 +858,7 @@
       "Definir um símbolo que só existe dentro de uma única instrução do programa",
       "Definir um símbolo cujo valor fica sempre guardado no registo zero",
       "Definir um símbolo cujo valor só é calculado em tempo de execução",
-      "Definir um símbolo com o mesmo nome em ficheiros objeto diferentes"
+      "Definir um símbolo com o mesmo nome em object files diferentes"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1008,7 +995,7 @@
     "question": "O que faz a diretiva .global (ou .globl)?",
     "answers": [
       "Transforma símbolos locais em símbolos globais",
-      "Define uma nova secção global no ficheiro objeto",
+      "Define uma nova secção global no object file",
       "Reserva espaço para uma variável global na secção .bss",
       "Apaga um símbolo da tabela de símbolos"
     ],
@@ -1179,7 +1166,7 @@
     "ref": "T6 p.37"
   },
   {
-    "question": "Além do código em linguagem máquina, o que contém o ficheiro objeto produzido pelo assembler?",
+    "question": "Além do código em linguagem máquina, o que contém o object file produzido pelo assembler?",
     "answers": [
       "Apenas o ficheiro assembly original, em texto, sem ser traduzido",
       "Apenas o código das bibliotecas usadas pelo programa, sem mais nada",
@@ -1192,12 +1179,12 @@
     "ref": "T6 p.37"
   },
   {
-    "question": "Porque é que o ficheiro objeto produzido pelo assembler pode estar incompleto?",
+    "question": "Porque é que o object file produzido pelo assembler pode estar incompleto?",
     "answers": [
       "Porque o assembler só traduz metade das instruções do programa",
-      "Porque o ficheiro objeto não contém código em linguagem máquina",
-      "Porque os ficheiros objeto são sempre apagados depois da montagem",
-      "Porque pode precisar de ser relocado ou ligado a outros ficheiros objeto"
+      "Porque o object file não contém código em linguagem máquina",
+      "Porque os object files são sempre apagados depois da montagem",
+      "Porque pode precisar de ser relocado ou ligado a outros object files"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1207,9 +1194,9 @@
   {
     "question": "O que é um linker?",
     "answers": [
-      "Uma ferramenta que liga um ou mais ficheiros objeto e produz um ficheiro executável",
+      "Uma ferramenta que liga um ou mais object files e produz um ficheiro executável",
       "Uma ferramenta que traduz o código-fonte escrito em C para código assembly",
-      "Uma ferramenta que carrega o ficheiro executável para a memória principal",
+      "Uma ferramenta que carrega o ficheiro executável para a main memory",
       "Uma ferramenta que remove os comentários e os espaços de um ficheiro assembly"
     ],
     "correct_index": 0,
@@ -1220,10 +1207,10 @@
   {
     "question": "Que elementos necessários à execução contém um ficheiro executável?",
     "answers": [
-      "Apenas o código assembly original, escrito pelo programador",
-      "Por exemplo, as bibliotecas e o ponto de entrada",
-      "Apenas a tabela de símbolos do ficheiro objeto de origem",
-      "Apenas os comentários que o programador escreveu no código"
+      "O código assembly original, escrito pelo programador",
+      "As bibliotecas e o ponto de entrada (entry point)",
+      "O código-fonte em C do programa, tal como foi escrito",
+      "Os comentários que o programador escreveu no código"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1231,7 +1218,7 @@
     "ref": "T6 p.37"
   },
   {
-    "question": "O que faz o linker às secções com o mesmo nome, quando liga vários ficheiros objeto?",
+    "question": "O que faz o linker às secções com o mesmo nome, quando liga vários object files?",
     "answers": [
       "Mantém cada uma dessas secções separada no executável, com o seu nome original",
       "Descarta todas essas secções, exceto a primeira que encontra nos ficheiros",
@@ -1239,19 +1226,6 @@
       "Troca os nomes dessas secções entre si, sem alterar o seu conteúdo"
     ],
     "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T6 p.38"
-  },
-  {
-    "question": "Ao ligar vários ficheiros objeto, o que acontece ao conteúdo das secções .text de todos eles?",
-    "answers": [
-      "É guardado em secções .text separadas, uma por cada ficheiro objeto ligado",
-      "É descartado, porque o código só existe no primeiro dos ficheiros objeto",
-      "É colocado na secção .data do executável, junto das variáveis globais",
-      "É agrupado e colocado sequencialmente numa única secção .text do executável"
-    ],
-    "correct_index": 3,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "T6 p.38"
@@ -1281,7 +1255,7 @@
     "ref": "T6 p.40"
   },
   {
-    "question": "O que contém o cabeçalho (ELF header) de um ficheiro ELF?",
+    "question": "O que contém o ELF header de um ficheiro ELF?",
     "answers": [
       "O código das instruções e os dados do programa guardados em secções",
       "Metadados sobre o ficheiro, como o seu tipo, a arquitetura e o ponto de entrada",
@@ -1294,7 +1268,7 @@
     "ref": "T6 p.40"
   },
   {
-    "question": "O que descreve a tabela de cabeçalhos das secções (section header table) de um ficheiro ELF?",
+    "question": "O que descreve a section header table de um ficheiro ELF?",
     "answers": [
       "O tipo do ficheiro, a arquitetura do processador e o ponto de entrada",
       "O código das instruções e os dados do programa, já relocados",
@@ -1322,7 +1296,7 @@
   {
     "question": "Para que serve o comando readelf?",
     "answers": [
-      "Para mostrar informação sobre ficheiros objeto no formato ELF",
+      "Para mostrar informação sobre object files no formato ELF",
       "Para executar um ficheiro executável no formato ELF",
       "Para converter um ficheiro ELF de volta em código assembly",
       "Para apagar os símbolos de depuração de um ficheiro ELF"

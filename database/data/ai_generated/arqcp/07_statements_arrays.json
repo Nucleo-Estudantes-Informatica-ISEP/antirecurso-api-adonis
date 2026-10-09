@@ -208,12 +208,12 @@
     "ref": "T7 p.7"
   },
   {
-    "question": "Que máscara se usa com andi para pôr a 0 o bit 0 de um registo, preservando os restantes bits dos 12 bits inferiores?",
+    "question": "Que imediato se usa com andi para pôr a 0 o bit 0 de um registo, preservando todos os restantes bits?",
     "answers": [
-      "0xFFE",
-      "0x001",
+      "-2",
+      "1",
       "0x7FF",
-      "0xFFF"
+      "0x800"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -225,19 +225,8 @@
     "answers": [
       "or a0, a0, zero",
       "and a0, a0, zero",
-      "xor a0, a0, a0, zero",
+      "xor a0, a0, zero",
       "add a0, a0, a0"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T7 p.9"
-  },
-  {
-    "question": "Três instruções xor consecutivas, xor a0, a0, a1 / xor a1, a1, a0 / xor a0, a0, a1, trocam os valores de a0 e a1 sem usar um registo auxiliar",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -323,23 +312,10 @@
     "ref": "T7 p.9"
   },
   {
-    "question": "Qual é o resultado da função is_power2 com a0 = 0?",
-    "answers": [
-      "1",
-      "0",
-      "-1",
-      "2"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T7 p.9"
-  },
-  {
     "question": "Considere is_power2, com addi t0, a0, -1 / and a0, a0, t0 / seqz a0, a0 / ret. Porque é que a função está errada para o valor 0?",
     "answers": [
       "Porque 0 não pode ser guardado num registo de 32 bits",
-      "Porque 0 & (0 − 1) é 0, pelo que a função devolve 1 e considera o 0 uma potência de 2",
+      "Porque 0 & (0 - 1) é 0, pelo que a função devolve 1 e considera o 0 uma potência de 2",
       "Porque o seqz devolve sempre 0 quando o registo é 0",
       "Porque a instrução addi não aceita o imediato -1"
     ],
@@ -453,7 +429,7 @@
     "ref": "T7 p.9"
   },
   {
-    "question": "Que operação equivale a deslocar para a esquerda n posições um inteiro?",
+    "question": "Que operação equivale a um shift para a esquerda de n posições num inteiro?",
     "answers": [
       "Dividir por 2^n",
       "Multiplicar por n",
@@ -466,7 +442,7 @@
     "ref": "T7 p.10"
   },
   {
-    "question": "Que operação equivale a deslocar para a direita n posições um inteiro?",
+    "question": "Que operação equivale a um shift para a direita de n posições num inteiro sem sinal?",
     "answers": [
       "Multiplicar por 2^n",
       "Dividir por n",
@@ -492,7 +468,7 @@
     "ref": "T7 p.12"
   },
   {
-    "question": "Que instrução divide a0, tratado como valor sem sinal, por 2 através de um deslocamento?",
+    "question": "Que instrução divide a0, tratado como valor sem sinal, por 2 através de um shift?",
     "answers": [
       "slli a0, a0, 1",
       "srli a0, a0, 1",
@@ -559,10 +535,10 @@
   {
     "question": "Na função mult3, com add t0, a0, zero / slli a0, a0, 1 / add a0, a0, t0 / ret, que operações calculam 3 × a?",
     "answers": [
-      "Desloca a0 três posições para a esquerda",
+      "Faz shift de a0 três posições para a esquerda",
       "Soma a0 a si próprio três vezes, com um ciclo",
-      "Copia a para t0, desloca a0 uma posição para a esquerda (2a) e soma t0 (a)",
-      "Desloca a0 uma posição para a direita e soma t0"
+      "Copia a para t0, faz shift de a0 uma posição para a esquerda (2a) e soma t0 (a)",
+      "Faz shift de a0 uma posição para a direita e soma t0"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -620,25 +596,12 @@
     "ref": "T7 p.13"
   },
   {
-    "question": "Na função rot_left, que valor tem t1 depois de sub t1, zero, a1, em função de n (a1 = n)?",
-    "answers": [
-      "O próprio n, copiado de a1",
-      "32 − n, calculado explicitamente pela instrução sub",
-      "−n, usado como quantidade de deslocamento módulo 32",
-      "O dobro de n"
-    ],
-    "correct_index": 2,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T7 p.13"
-  },
-  {
     "question": "Porque é que rot_left usa sub t1, zero, a1 e srl t2, a0, t1 para obter os bits que saem pela esquerda?",
     "answers": [
-      "Porque o srl só aceita quantidades de deslocamento negativas",
-      "Porque o sub troca o sentido do deslocamento",
+      "Porque o srl só aceita quantidades de shift negativas",
+      "Porque o sub troca o sentido do shift",
       "Porque o registo zero guarda o valor 32",
-      "Porque a quantidade de deslocamento é sem sinal e módulo 32, pelo que −n equivale a 32 − n"
+      "Porque a quantidade de shift é módulo 32, logo -n equivale a 32 - n"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -737,7 +700,7 @@
     "ref": "T7 p.15"
   },
   {
-    "question": "Porque é que, na tradução de um if, se usa o salto condicional com a condição inversa (bne para um if x == y)?",
+    "question": "Porque é que, na tradução de um if, se usa o branch condicional com a condição inversa (bne para um if x == y)?",
     "answers": [
       "Porque o bne é a única instrução de salto do RISC-V",
       "Porque o beq não consegue saltar para a frente",
@@ -815,12 +778,12 @@
     "ref": "T7 p.16"
   },
   {
-    "question": "Admita x = 5, y = 8, g = 2, h = 3 e f = 0 em if (x == y) f = g + h; else x = y - h;. Que valores têm f e x no fim, respetivamente?",
+    "question": "Admita x = 5, y = 9, g = 2, h = 3 e f = 0 em if (x == y) f = g + h; else x = y - h;. Que valores têm f e x no fim, respetivamente?",
     "answers": [
       "5 e 5",
-      "0 e 5",
-      "0 e 8",
-      "5 e 8"
+      "0 e 6",
+      "0 e 9",
+      "5 e 9"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1145,7 +1108,7 @@
       "A condição, o corpo do ciclo, o contador e o resultado",
       "A inicialização, a atualização, o salto e o retorno",
       "O código de inicialização, a condição do ciclo, o código de atualização e o corpo do ciclo",
-      "O corpo do ciclo, a pilha, a condição e o contador"
+      "O corpo do ciclo, a stack, a condição e o contador"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1312,7 +1275,7 @@
       "Na stack",
       "No heap",
       "Nas secções data ou bss",
-      "No register file"
+      "Nos registos do processador"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1590,7 +1553,7 @@
     "question": "Na função get_element(int *vec, int i), com addi t0, zero, 4 / mul t0, a1, t0 / add a0, a0, t0 / lw a0, 0(a0) / ret, o que calcula a instrução mul t0, a1, t0 (com a1 = i)?",
     "answers": [
       "O endereço do elemento, vec + i",
-      "O deslocamento em bytes do elemento, i × 4",
+      "O offset em bytes do elemento, i × 4",
       "O valor do elemento vec[i]",
       "O endereço base do array"
     ],
@@ -1613,7 +1576,7 @@
     "ref": "T7 p.34"
   },
   {
-    "question": "Na função get_element(int *vec, int i), com addi t0, zero, 4 / mul t0, a1, t0 / add a0, a0, t0 / lw a0, 0(a0) / ret, que instrução soma o deslocamento ao endereço base do vetor?",
+    "question": "Na função get_element(int *vec, int i), com addi t0, zero, 4 / mul t0, a1, t0 / add a0, a0, t0 / lw a0, 0(a0) / ret, que instrução soma o offset ao endereço base do vetor?",
     "answers": [
       "lw a0, 0(a0)",
       "mul t0, a1, t0",
@@ -1706,7 +1669,7 @@
   {
     "question": "Como se declara uma matriz 2D com R linhas e C colunas, de elementos do tipo T?",
     "answers": [
-      "T M[C][R] com R colunas",
+      "T M[C][R]",
       "T M[R + C]",
       "T M[R][C]",
       "T M[R, C]"
@@ -1821,19 +1784,6 @@
     "ref": "T7 p.38"
   },
   {
-    "question": "Dada a mesma matriz int m[3][6], qual é o valor de m[9], se a matriz fosse vista como vetor?",
-    "answers": [
-      "6",
-      "10",
-      "7",
-      "25"
-    ],
-    "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "T7 p.38"
-  },
-  {
     "question": "Qual é a fórmula do endereço do elemento M[i][j] de uma matriz T M[R][C]?",
     "answers": [
       "M + (i × C + j) × sizeof(T)",
@@ -1902,7 +1852,7 @@
     "question": "Na função get_m_element(int m[][6], int i, int j), com m em a0, i em a1, j em a2 e addi t0, zero, 6 / mul t0, a1, t0 / add t0, a2, t0 / slli t0, t0, 2 / add a0, a0, t0 / lw a0, 0(a0) / ret, para que serve slli t0, t0, 2?",
     "answers": [
       "Para dividir o índice por 4",
-      "Para multiplicar o índice por 4 (sizeof(int)), obtendo o deslocamento em bytes",
+      "Para multiplicar o índice por 4 (sizeof(int)), obtendo o offset em bytes",
       "Para somar 2 ao índice",
       "Para obter o endereço base da matriz"
     ],
@@ -2018,10 +1968,10 @@
   {
     "question": "Na função get_p_element(int **p, int i, int j), com p em a0, i em a1, j em a2 e slli a1, a1, 2 / add a0, a0, a1 / lw a0, 0(a0) / slli a2, a2, 2 / add a0, a0, a2 / lw a0, 0(a0) / ret, que acessos à memória faz o código?",
     "answers": [
-      "Um único load, tal como numa matriz 2D",
-      "Nenhum load, só cálculos de endereços",
-      "Dois loads: o primeiro lê o apontador p[i] e o segundo lê o elemento p[i][j]",
-      "Três loads, um por cada nível"
+      "Uma única leitura da memória, tal como numa matriz 2D",
+      "Nenhuma leitura da memória, só cálculos de endereços",
+      "Duas leituras da memória: a primeira lê o apontador p[i] e a segunda lê o elemento p[i][j]",
+      "Três leituras da memória, uma por cada nível"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -2068,12 +2018,12 @@
     "ref": "T7 p.44"
   },
   {
-    "question": "Com #define N 16, em int m[N][N], que valor pode o compilador calcular de antemão para o endereço de m[i][j]?",
+    "question": "Com #define N 16, em int m[N][N] de elementos de 4 bytes, que parcela do endereço de m[i][j], em bytes, pode o compilador calcular de antemão?",
     "answers": [
-      "i × 16 + j",
-      "j × 4",
-      "i × (C × sizeof(T)) = i × 64, onde C = 16 e sizeof(T) = 4",
-      "i × 4"
+      "i × 16, porque cada linha tem 16 elementos",
+      "j × 64, porque cada coluna ocupa 64 bytes",
+      "i × 64, porque cada linha ocupa 16 × 4 = 64 bytes",
+      "i × 4, porque cada elemento ocupa 4 bytes"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -2110,7 +2060,7 @@
     "question": "Porque se usa slli a1, a1, 6 para multiplicar i por 64?",
     "answers": [
       "Porque 64 = 6 × 10",
-      "Porque 64 = 2^6, e um deslocamento de 6 bits multiplica por 64",
+      "Porque 64 = 2^6, e um shift de 6 bits multiplica por 64",
       "Porque o slli só aceita o imediato 6",
       "Porque 6 é o número de colunas"
     ],
