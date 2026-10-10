@@ -294,6 +294,18 @@ Admin-managed event windows shown in the Antirecurso dashboard.
 | `created_at`  | timestamp | no   |                                |
 | `updated_at`  | timestamp | no   |                                |
 
+## Mobile safety migration
+
+`1791594000000_add_mobile_account_safety.ts` adds:
+
+- `comments.hidden_at`: nullable moderation timestamp, filtered from all user-facing comment reads.
+- `user_blocks`: composite primary key `(user_id, blocked_user_id)`, both user FKs cascade; self-block check.
+- `comment_reports`: comment/reporter FKs cascade, unique pair, bounded validated reason, `pending`/`dismissed`/`removed` status check, creation/review times and nullable reviewer FK (`SET NULL`). Indexed pending queue.
+- `deleted_accounts`: SHA-256 issuer/subject hash primary key plus issued-at cutoff; minimal token invalidation metadata survives local-profile deletion.
+- `note_uploads`: UUID grant primary key, authenticated owner FK (`CASCADE`) and creation timestamp. Existing orphan objects cannot be backfilled without ownership evidence.
+
+[Deletion/moderation behavior and rollout](MOBILE_SAFETY.md). This additive migration is independent of the exam-recovery migration; install both before the updated mobile client.
+
 ## Foreign Key Deletion Behavior
 
 The current schema uses these deletion rules:
@@ -318,14 +330,3 @@ Some important rules are enforced in application code rather than by database co
 - notes can resolve their content either from `url` or from `upload_id`; the schema does not require exactly one of them
 - events must satisfy `end_date >= start_date`
 
-## Mobile safety migration
-
-`1791594000000_add_mobile_account_safety.ts` adds:
-
-- `comments.hidden_at`: nullable moderation timestamp, filtered from all user-facing comment reads.
-- `user_blocks`: composite primary key `(user_id, blocked_user_id)`, both user FKs cascade; self-block check.
-- `comment_reports`: comment/reporter FKs cascade, unique pair, bounded validated reason, `pending`/`dismissed`/`removed` status check, creation/review times and nullable reviewer FK (`SET NULL`). Indexed pending queue.
-- `deleted_accounts`: SHA-256 issuer/subject hash primary key plus issued-at cutoff; minimal token invalidation metadata survives local-profile deletion.
-- `note_uploads`: UUID grant primary key, authenticated owner FK (`CASCADE`) and creation timestamp. Existing orphan objects cannot be backfilled without ownership evidence.
-
-[Deletion/moderation behavior and rollout](MOBILE_SAFETY.md). This additive migration is independent of the exam-recovery migration; install both before the updated mobile client.
