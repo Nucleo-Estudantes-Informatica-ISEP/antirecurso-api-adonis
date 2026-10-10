@@ -329,4 +329,3 @@ Some important rules are enforced in application code rather than by database co
 - `scores.score` is cumulative and updated transactionally after authenticated exam verification
 - notes can resolve their content either from `url` or from `upload_id`; the schema does not require exactly one of them
 - events must satisfy `end_date >= start_date`
-
