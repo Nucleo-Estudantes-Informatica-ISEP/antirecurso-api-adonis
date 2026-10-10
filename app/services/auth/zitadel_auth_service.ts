@@ -2,6 +2,9 @@ import { webcrypto } from 'node:crypto'
 import { DateTime } from 'luxon'
 import env from '#start/env'
 import User from '#models/user'
+import db from '@adonisjs/lucid/services/db'
+import type { TransactionClientContract } from '@adonisjs/lucid/types/database'
+import { accountSubjectHash } from '#services/auth/user_identity'
 import { getAuthNeiRoles, type AuthNeiRole } from '#services/auth/auth_nei_roles'
 
 type JsonWebKey = {
@@ -314,8 +317,31 @@ export default class ZitadelAuthService {
   }
 
   private async findOrCreateUser(claims: AuthClaims): Promise<User> {
-    const existingBySubject = await User.findBy('authSubject', claims.sub)
+    return db.transaction(async (trx) => {
+      const hash = accountSubjectHash(claims.sub)
+      await trx.rawQuery('SELECT pg_advisory_xact_lock(hashtext(?))', [hash])
+      const deleted = await trx.from('deleted_accounts').where('subject_hash', hash).first()
+      if (
+        deleted &&
+        (!Number.isSafeInteger(claims.iat) || claims.iat! <= Number(deleted.issued_before))
+      )
+        throw new UnauthorizedError(
+          'Account deleted; sign in again to create an empty AntiRecurso account'
+        )
+      return this.resolveLocalUser(claims, trx)
+    })
+  }
+
+  private async resolveLocalUser(
+    claims: AuthClaims,
+    trx: TransactionClientContract
+  ): Promise<User> {
+    const existingBySubject = await User.query()
+      .useTransaction(trx)
+      .where('authSubject', claims.sub)
+      .first()
     if (existingBySubject) {
+      existingBySubject.useTransaction(trx)
       existingBySubject.merge({
         email: claims.email,
         name: claims.name,
@@ -325,8 +351,12 @@ export default class ZitadelAuthService {
       return existingBySubject
     }
 
-    const existingByEmail = await User.findBy('email', claims.email)
+    const existingByEmail = await User.query()
+      .useTransaction(trx)
+      .where('email', claims.email)
+      .first()
     if (existingByEmail) {
+      existingByEmail.useTransaction(trx)
       if (existingByEmail.authSubject === claims.sub) {
         existingByEmail.merge({
           name: claims.name,
@@ -337,12 +367,18 @@ export default class ZitadelAuthService {
       }
 
       const { default: AccountLinkPending } = await import('#models/account_link_pending')
-      const existingPending = await AccountLinkPending.findBy('userId', existingByEmail.id)
+      const existingPending = await AccountLinkPending.query()
+        .useTransaction(trx)
+        .where('userId', existingByEmail.id)
+        .first()
       if (!existingPending) {
-        await AccountLinkPending.create({
-          userId: existingByEmail.id,
-          authSubject: claims.sub,
-        })
+        await AccountLinkPending.create(
+          {
+            userId: existingByEmail.id,
+            authSubject: claims.sub,
+          },
+          { client: trx }
+        )
       }
 
       existingByEmail.merge({
@@ -354,12 +390,15 @@ export default class ZitadelAuthService {
       return existingByEmail
     }
 
-    return User.create({
-      authSubject: claims.sub,
-      email: claims.email,
-      name: claims.name,
-      emailVerifiedAt: DateTime.now(),
-    })
+    return User.create(
+      {
+        authSubject: claims.sub,
+        email: claims.email,
+        name: claims.name,
+        emailVerifiedAt: DateTime.now(),
+      },
+      { client: trx }
+    )
   }
 
   private decodeBase64UrlJson<T>(value: string): T {
