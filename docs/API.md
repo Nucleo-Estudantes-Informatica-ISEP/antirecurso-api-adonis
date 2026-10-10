@@ -229,51 +229,51 @@ type SavedExamState = {
 
 ## Route matrix
 
-| Method | Path                             | Access                                  | Success                     | Request summary                |
-| ------ | -------------------------------- | --------------------------------------- | --------------------------- | ------------------------------ |
-| GET    | `/`                              | Public                                  | `200`                       | none                           |
-| GET    | `/subjects`                      | Public                                  | `200 Subject[]`             | query `with_questions?`        |
-| GET    | `/subjects/:id`                  | Public                                  | `200 Subject`               | positive subject id            |
-| GET    | `/subjects/:id/stats`            | Authenticated; current user             | `200 SubjectStats`          | positive subject id            |
-| GET    | `/subjects/:id/scoreboard/:mode` | Public                                  | `200 Scoreboard`            | subject id and scoreboard mode |
-| POST   | `/subjects/:id/scoreboard`       | Authenticated; current user             | `200 Message`               | `{ visibility }`               |
-| GET    | `/comments`                      | Authenticated                           | `200 CommentPage`           | sort and pagination query      |
-| POST   | `/comments`                      | Authenticated; actor from token         | `201 Comment`               | `{ comment, question_id }`     |
-| GET    | `/comments/:id`                  | Authenticated                           | `200 Comment`               | comment id                     |
-| GET    | `/questions/:id`                 | Public                                  | `200 Question`              | question id                    |
-| PUT    | `/questions/:id`                 | Admin                                   | `204`                       | question and option updates    |
-| POST   | `/question-reports`              | Authenticated; actor from token         | `201 QuestionReport`        | `{ question_id, reason? }`     |
-| GET    | `/subjects/:id/notes`            | Optional                                | `200 Page<Note>`            | pagination query               |
-| GET    | `/notes/:id`                     | Optional                                | `200 Note`                  | note id                        |
-| PATCH  | `/notes/:id`                     | Admin                                   | `200 Note`                  | partial note update            |
-| DELETE | `/notes/:id`                     | Admin                                   | `204`                       | note id                        |
-| POST   | `/notes/:id/like`                | Authenticated; actor from token         | `200 Note`                  | note id                        |
-| POST   | `/subjects/:id/notes`            | Admin; actor from token                 | `201 Note`                  | note metadata and upload id    |
-| POST   | `/notes/:id/view`                | Authenticated                           | `200 { url }`               | note id                        |
-| POST   | `/upload`                        | Authenticated                           | `200 UploadGrant`           | target and content type        |
-| GET    | `/exams/generate/:subject_id`    | Optional; mode-dependent                | `200 GeneratedQuestion[]`   | generation query               |
-| POST   | `/exams/verify`                  | Optional; actor from token when present | `200 ExamResult`            | submitted exam                 |
-| POST   | `/exams/state`                   | Authenticated; current user             | `200 SavedState`            | exam identity and state        |
-| GET    | `/exams/state`                   | Authenticated; current user             | `200 SavedState/null`       | subject and mode query         |
-| DELETE | `/exams/state`                   | Authenticated; current user             | `204`                       | subject and mode query         |
-| GET    | `/exams/pending`                 | Authenticated; current user             | `200 { data: PendingState[] }` | none                         |
-| GET    | `/exams`                         | Authenticated; current user             | `200 Page<ExamHistoryItem>` | page query                     |
-| GET    | `/exams/:id`                     | Authenticated owner or Admin            | `200 ExamDetail`            | exam id                        |
-| GET    | `/user`                          | Authenticated; current user             | `200 UserSession`           | none                           |
-| POST   | `/user/account-resolution`       | Authenticated; current user             | `200 Message`               | `{ action }`                   |
-| GET    | `/user/scores`                   | Authenticated; current user             | `200 UserScore[]`           | none                           |
-| GET    | `/user/answers`                  | Authenticated; current user             | `200 UserAnswer[]`          | none                           |
-| GET    | `/search`                        | Admin                                   | `200 Page<UserSummary>`     | query and page                 |
-| GET    | `/users`                         | Admin                                   | `200 Page<UserSummary>`     | page query                     |
-| GET    | `/admin`                         | Admin; current user                     | `200 CurrentUserSummary`    | none                           |
-| GET    | `/admin/exams`                   | Admin                                   | `200 AdminExamStats`        | none                           |
-| GET    | `/events`                        | Admin                                   | `200 Page<Event>`           | pagination query               |
-| POST   | `/events/new`                    | Admin                                   | `201 Event`                 | event body                     |
-| PATCH  | `/events/:id`                    | Admin                                   | `200 Event`                 | partial event body             |
-| DELETE | `/events/:id`                    | Admin                                   | `204`                       | event id                       |
-| GET    | `/question-reports`              | Admin                                   | `200 QuestionReport[]`      | filter/sort query              |
-| POST   | `/question-reports/review`       | Admin; reviewer from token              | `200 QuestionReport[]`      | report ids                     |
-| GET    | `/question-reports/:id`          | Admin                                   | `200 QuestionReport`        | report id                      |
+| Method | Path                             | Access                                  | Success                        | Request summary                |
+| ------ | -------------------------------- | --------------------------------------- | ------------------------------ | ------------------------------ |
+| GET    | `/`                              | Public                                  | `200`                          | none                           |
+| GET    | `/subjects`                      | Public                                  | `200 Subject[]`                | query `with_questions?`        |
+| GET    | `/subjects/:id`                  | Public                                  | `200 Subject`                  | positive subject id            |
+| GET    | `/subjects/:id/stats`            | Authenticated; current user             | `200 SubjectStats`             | positive subject id            |
+| GET    | `/subjects/:id/scoreboard/:mode` | Public                                  | `200 Scoreboard`               | subject id and scoreboard mode |
+| POST   | `/subjects/:id/scoreboard`       | Authenticated; current user             | `200 Message`                  | `{ visibility }`               |
+| GET    | `/comments`                      | Authenticated                           | `200 CommentPage`              | sort and pagination query      |
+| POST   | `/comments`                      | Authenticated; actor from token         | `201 Comment`                  | `{ comment, question_id }`     |
+| GET    | `/comments/:id`                  | Authenticated                           | `200 Comment`                  | comment id                     |
+| GET    | `/questions/:id`                 | Public                                  | `200 Question`                 | question id                    |
+| PUT    | `/questions/:id`                 | Admin                                   | `204`                          | question and option updates    |
+| POST   | `/question-reports`              | Authenticated; actor from token         | `201 QuestionReport`           | `{ question_id, reason? }`     |
+| GET    | `/subjects/:id/notes`            | Optional                                | `200 Page<Note>`               | pagination query               |
+| GET    | `/notes/:id`                     | Optional                                | `200 Note`                     | note id                        |
+| PATCH  | `/notes/:id`                     | Admin                                   | `200 Note`                     | partial note update            |
+| DELETE | `/notes/:id`                     | Admin                                   | `204`                          | note id                        |
+| POST   | `/notes/:id/like`                | Authenticated; actor from token         | `200 Note`                     | note id                        |
+| POST   | `/subjects/:id/notes`            | Admin; actor from token                 | `201 Note`                     | note metadata and upload id    |
+| POST   | `/notes/:id/view`                | Authenticated                           | `200 { url }`                  | note id                        |
+| POST   | `/upload`                        | Authenticated                           | `200 UploadGrant`              | target and content type        |
+| GET    | `/exams/generate/:subject_id`    | Optional; mode-dependent                | `200 GeneratedQuestion[]`      | generation query               |
+| POST   | `/exams/verify`                  | Optional; actor from token when present | `200 ExamResult`               | submitted exam                 |
+| POST   | `/exams/state`                   | Authenticated; current user             | `200 SavedState`               | exam identity and state        |
+| GET    | `/exams/state`                   | Authenticated; current user             | `200 SavedState/null`          | subject and mode query         |
+| DELETE | `/exams/state`                   | Authenticated; current user             | `204`                          | subject and mode query         |
+| GET    | `/exams/pending`                 | Authenticated; current user             | `200 { data: PendingState[] }` | none                           |
+| GET    | `/exams`                         | Authenticated; current user             | `200 Page<ExamHistoryItem>`    | page query                     |
+| GET    | `/exams/:id`                     | Authenticated owner or Admin            | `200 ExamDetail`               | exam id                        |
+| GET    | `/user`                          | Authenticated; current user             | `200 UserSession`              | none                           |
+| POST   | `/user/account-resolution`       | Authenticated; current user             | `200 Message`                  | `{ action }`                   |
+| GET    | `/user/scores`                   | Authenticated; current user             | `200 UserScore[]`              | none                           |
+| GET    | `/user/answers`                  | Authenticated; current user             | `200 UserAnswer[]`             | none                           |
+| GET    | `/search`                        | Admin                                   | `200 Page<UserSummary>`        | query and page                 |
+| GET    | `/users`                         | Admin                                   | `200 Page<UserSummary>`        | page query                     |
+| GET    | `/admin`                         | Admin; current user                     | `200 CurrentUserSummary`       | none                           |
+| GET    | `/admin/exams`                   | Admin                                   | `200 AdminExamStats`           | none                           |
+| GET    | `/events`                        | Admin                                   | `200 Page<Event>`              | pagination query               |
+| POST   | `/events/new`                    | Admin                                   | `201 Event`                    | event body                     |
+| PATCH  | `/events/:id`                    | Admin                                   | `200 Event`                    | partial event body             |
+| DELETE | `/events/:id`                    | Admin                                   | `204`                          | event id                       |
+| GET    | `/question-reports`              | Admin                                   | `200 QuestionReport[]`         | filter/sort query              |
+| POST   | `/question-reports/review`       | Admin; reviewer from token              | `200 QuestionReport[]`         | report ids                     |
+| GET    | `/question-reports/:id`          | Admin                                   | `200 QuestionReport`           | report id                      |
 
 ## Endpoint details
 
@@ -518,7 +518,7 @@ Upload grant contains id, target, maxSize (67108864), expires, url, headers (con
 
 `default` and `realistic` generation work anonymously. `new`, `wrong`, `hard`, and `custom`
 generation require a valid user. Verification may be anonymous for every mode; authenticated
-verification owns answer, updates scoreboard, and completes matching saved state.
+verification owns answer, updates scoreboard, and completes matching saved state. Optional attempt IDs preserve the legacy contract for older clients.
 
 #### `GET /exams/generate/:subject_id`
 
@@ -535,6 +535,7 @@ verification owns answer, updates scoreboard, and completes matching saved state
 ```ts
 {
   subject_id: number
+  attempt_id?: string // UUID recorded during generation
   mode?: ExamMode
   time?: number // positive integer
   n_of_questions?: number // 5..50, required for custom
@@ -545,18 +546,21 @@ verification owns answer, updates scoreboard, and completes matching saved state
 
 - Validation: answer count matches mode; question ids are unique, exist, and belong to subject;
   selected option is one alphanumeric character and must exist for question.
-- Transaction: answer/detail, score, scoreboard, and saved-state completion commit together.
+- Transaction: answer/detail, scoreboard, state completion and optional attempt result commit together. Stable UUIDs are scoped to the owner (or anonymous scope); concurrent/sequential identical submissions return the exact original result and score once. Changed answers, time or configuration after completion return 409. Different UUIDs remain distinct. Grading uses the original snapshot. Deleted underlying question/option rows may invalidate verification; no replacement questions are generated.
+- New-attempt completion only completes the cloud row with that same UUID. Legacy verification only completes a legacy state row.
 - Response: `200 { id, score, wrong_answers, passed, subject }` with numeric fields as numbers.
 - Errors: `400` domain mismatch; `401` invalid supplied token; `404` missing subject; `422` invalid
   body; `429` exam limit.
 
 #### `POST /exams/state`
 
-- Body: `{ subject_id: number, mode: ExamMode, state: SavedExamState }`.
+- Body: `{ subject_id: number, mode: ExamMode, state: SavedExamState, attempt_id?: string, expected_revision?: number, expected_state_id?: number, restart_completed?: boolean }`.
+- CAS: send expected revision zero for absence/completion, or both positive revision and state ID for an active row. Mismatch returns 409 without writing; owner locking serializes competing initial saves. Legacy saves increment revision.
+- Explicit `restart_completed: true` replaces a completed row. A newer active row still fails absence CAS. Optional UUIDs must belong to this owner/subject/mode, be incomplete and match original question order.
 - Identity: inner subject/mode match outer fields; question ids are unique and belong to subject;
   answers reference unique ids in `questionIds`.
-- Ownership/upsert: current user + subject + mode. Completed state cannot change.
-- Response: `200 { id: number, state: SavedExamState }`.
+- Ownership/upsert: current user + subject + mode. Completed state requires explicit restart. Legacy saves with the same question IDs preserve an existing attempt association.
+- Response: `200 { id: number, revision: number, attempt_id: string | null, state: SavedExamState & { savedAt: number } }`.
 - Errors: `400` invalid state/cross-subject questions; `404` missing subject; `409` completed state;
   `422` invalid outer body; `429` mutation limit.
 
@@ -565,15 +569,23 @@ verification owns answer, updates scoreboard, and completes matching saved state
 - Query: required positive integer `subject_id`; `mode?: ExamMode`, default `default`.
 - Ownership: current user's incomplete state only.
 - Response: `200 { state: null }` when absent/invalid stored state, otherwise
-  `200 { id: number, state: SavedExamState & { savedAt: number } }`; `savedAt` is epoch milliseconds.
+  `200 { id: number, revision: number, attempt_id: string | null, state: SavedExamState & { savedAt: number } }`; `savedAt` is epoch milliseconds.
 - Errors: `422` invalid query.
 
 #### `DELETE /exams/state`
 
-- Query: required positive integer `subject_id`; `mode?: ExamMode`, default `default`.
+- Query: required positive integer `subject_id`; `mode?: ExamMode`, default `default`; optional `expected_revision` and `expected_state_id` use the same CAS. Stale deletes return 409 without deleting newer progress; omitting CAS preserves legacy behavior.
 - Ownership: current user's matching state only; absent state is success.
 - Response: `204 No Content`.
 - Errors: `422` invalid query; `429` mutation limit.
+
+#### `GET /exams/attempts/:id`
+
+- Optional auth, enforced against the stored owner; another identity (including admin) gets 404. Anonymous scope uses an unpredictable UUID capability for original questions and summary only, never detailed private review.
+- Response: `{ id: string, questions: GeneratedQuestion[], result: ExamResult | null }`. Immutable original content and exact committed result; never correct answers or internal option IDs. Null result does not prove verification is not running.
+- Clients may explicitly retry the identical verification body with the same UUID after confirming this endpoint; never automatically replay against a legacy API.
+- Owned `/exams/:id` review uses original snapshots for new attempts. Legacy results retain current content.
+- Verification adds 409 for unavailable/mismatched/already-submitted attempts.
 
 #### `GET /exams/pending`
 
@@ -584,6 +596,8 @@ verification owns answer, updates scoreboard, and completes matching saved state
 ```ts
 type PendingState = {
   id: number
+  revision: number
+  attempt_id: string | null
   subject: string
   subject_id: number
   mode: ExamMode

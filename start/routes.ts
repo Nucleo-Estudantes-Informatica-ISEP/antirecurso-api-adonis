@@ -107,6 +107,9 @@ router
 
 // Exams
 router
+  .get('/exams/attempts/:id', (ctx) => examsController.recoverAttempt(ctx))
+  .use(middleware.optionalAuth())
+router
   .get('/exams/generate/:subject_id', (ctx) => examsController.generate(ctx))
   .use([middleware.optionalAuth(), examThrottle])
 router

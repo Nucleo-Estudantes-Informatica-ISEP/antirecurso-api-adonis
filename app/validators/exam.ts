@@ -3,6 +3,7 @@ import { EXAM_MODES, MAX_CUSTOM_QUESTIONS, MIN_CUSTOM_QUESTIONS } from '#service
 
 export const generateExamValidator = vine.compile(
   vine.object({
+    attempt_id: vine.string().uuid().optional(),
     mode: vine.enum(EXAM_MODES).optional(),
     n_of_questions: vine
       .number()
@@ -10,6 +11,7 @@ export const generateExamValidator = vine.compile(
       .min(MIN_CUSTOM_QUESTIONS)
       .max(MAX_CUSTOM_QUESTIONS)
       .optional(),
+    penalizing_factor: vine.number().min(0).max(1).optional(),
     filter: vine.string().trim().optional(),
   })
 )
@@ -17,6 +19,7 @@ export const generateExamValidator = vine.compile(
 export const verifyExamValidator = vine.compile(
   vine.object({
     subject_id: vine.number().withoutDecimals().positive(),
+    attempt_id: vine.string().uuid().optional(),
     mode: vine.enum(EXAM_MODES).optional(),
     time: vine.number().withoutDecimals().positive().optional(),
     n_of_questions: vine
@@ -58,6 +61,10 @@ export const saveExamStateValidator = vine.compile(
   vine.object({
     subject_id: vine.number().withoutDecimals().positive(),
     mode: vine.enum(EXAM_MODES),
+    attempt_id: vine.string().uuid().optional(),
+    expected_revision: vine.number().withoutDecimals().min(0).optional(),
+    expected_state_id: vine.number().withoutDecimals().positive().optional(),
+    restart_completed: vine.boolean().optional(),
     state: vine.any(),
   })
 )

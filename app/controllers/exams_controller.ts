@@ -1,6 +1,8 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import db from '@adonisjs/lucid/services/db'
 import Answer from '#models/answer'
+import ExamAttempt from '#models/exam_attempt'
+import User from '#models/user'
 import ExamState from '#models/exam_state'
 import Question from '#models/question'
 import Subject from '#models/subject'
@@ -12,7 +14,9 @@ import {
   MIN_CUSTOM_QUESTIONS,
   modeRequiresUser,
 } from '#services/exams/exam_config'
-import ExamVerificationService from '#services/exams/exam_verification_service'
+import ExamVerificationService, {
+  AttemptConflictError,
+} from '#services/exams/exam_verification_service'
 import {
   examHistoryValidator,
   examStateIdentifierValidator,
@@ -42,6 +46,8 @@ export default class ExamsController {
 
     const data = await request.validateUsing(generateExamValidator, {
       data: {
+        attempt_id: request.input('attempt_id'),
+        penalizing_factor: this.parseNumericInput(request.input('penalizing_factor')) ?? undefined,
         mode: request.input('mode'),
         filter: request.input('filter'),
         n_of_questions: this.parseNumericInput(request.input('n_of_questions')) ?? undefined,
@@ -73,6 +79,8 @@ export default class ExamsController {
         userId,
         nOfQuestions: data.n_of_questions ?? null,
         filter: data.filter ?? null,
+        attemptId: data.attempt_id,
+        penalizingFactor: data.penalizing_factor ?? null,
       })
 
       return response.ok(questions)
@@ -112,10 +120,13 @@ export default class ExamsController {
         time: data.time ?? null,
         nOfQuestions: data.n_of_questions ?? null,
         penalizingFactor: data.penalizing_factor ?? null,
+        attemptId: data.attempt_id,
       })
 
       return response.ok(result)
     } catch (error) {
+      if (error instanceof AttemptConflictError)
+        return response.conflict({ message: error.message })
       const message = error instanceof Error ? error.message : 'Invalid exam payload'
       return response.badRequest({ message })
     }
@@ -198,25 +209,31 @@ export default class ExamsController {
       return response.notFound({ message: 'Invalid answer' })
     }
 
+    const immutable = await ExamAttempt.query()
+      .where('user_id', exam.userId!)
+      .whereRaw("result->>'id' = ?", [String(exam.id)])
+      .first()
     const questions = exam.questions.map((answerQuestion) => {
       const question = answerQuestion.question
+      const snapshot = immutable?.snapshot.questions.find((item) => item.id === question.id)
 
       return {
         question: {
           id: question.id,
-          question: question.question,
-          correct_option: question.correctOption,
-          question_type: question.questionType?.name ?? 'Multiple Choice',
-          image: question.image ?? '',
+          question: snapshot?.question ?? question.question,
+          correct_option: snapshot?.correctOption ?? question.correctOption,
+          question_type:
+            snapshot?.question_type ?? question.questionType?.name ?? 'Multiple Choice',
+          image: snapshot?.image ?? question.image ?? '',
         },
         selected_option_id: answerQuestion.optionId,
-        options: question.options.map((option) => ({
+        options: (snapshot?.options ?? question.options).map((option) => ({
           id: option.id,
           name: option.name,
           order: option.order,
         })),
         is_wrong: answerQuestion.isWrong,
-        correct_option: question.correctOption,
+        correct_option: snapshot?.correctOption ?? question.correctOption,
         comments: question.comments.map((comment) => ({
           id: comment.id,
           comment: comment.comment,
@@ -301,29 +318,68 @@ export default class ExamsController {
       return response.badRequest({ message: 'Exam state contains questions from another subject' })
     }
 
-    const state = await ExamState.query()
-      .where('user_id', authUser.id)
-      .where('subject_id', data.subject_id)
-      .where('mode', data.mode)
-      .first()
-
-    if (state) {
-      if (state.isCompleted) {
+    return db.transaction(async (trx) => {
+      // Lock the owner even when no state exists, so competing initial saves cannot both win.
+      await User.query({ client: trx }).where('id', authUser.id).forUpdate().firstOrFail()
+      const state = await ExamState.query({ client: trx })
+        .where('user_id', authUser.id)
+        .where('subject_id', data.subject_id)
+        .where('mode', data.mode)
+        .forUpdate()
+        .first()
+      const active = state && !state.isCompleted ? state : null
+      if (
+        data.expected_revision !== undefined &&
+        (data.expected_revision !== (active?.revision ?? 0) ||
+          (active && data.expected_state_id !== active.id))
+      ) {
+        return response.conflict({ message: 'Exam state revision changed' })
+      }
+      if (state?.isCompleted && !data.restart_completed) {
         return response.conflict({ message: 'Completed exam state cannot be modified' })
       }
-      await state.merge({ state: payload }).save()
-      return response.ok({ id: state.id, state: state.state })
-    }
-
-    const newState = await ExamState.create({
-      userId: authUser.id,
-      subjectId: data.subject_id,
-      mode: data.mode,
-      state: payload,
-      isCompleted: false,
+      if (data.attempt_id) {
+        const attempt = await ExamAttempt.query({ client: trx })
+          .where('id', data.attempt_id)
+          .where('user_id', authUser.id)
+          .where('subject_id', data.subject_id)
+          .where('mode', data.mode)
+          .first()
+        if (
+          !attempt ||
+          attempt.result ||
+          JSON.stringify(attempt.snapshot.questions.map((item) => item.id)) !==
+            JSON.stringify(payload.questionIds)
+        ) {
+          return response.conflict({
+            message: 'Attempt is unavailable, completed or has different questions',
+          })
+        }
+      }
+      const saved = state ?? new ExamState()
+      saved.useTransaction(trx)
+      saved.merge({
+        userId: authUser.id,
+        subjectId: data.subject_id,
+        mode: data.mode,
+        state: payload,
+        isCompleted: false,
+        revision: (state?.revision ?? 0) + 1,
+        attemptId:
+          data.attempt_id ??
+          (active &&
+          JSON.stringify(payload.questionIds) === JSON.stringify(active.state.questionIds)
+            ? active.attemptId
+            : null),
+      })
+      await saved.save()
+      return response.ok({
+        id: saved.id,
+        revision: saved.revision,
+        attempt_id: saved.attemptId,
+        state: { ...saved.state, savedAt: saved.updatedAt.toMillis() },
+      })
     })
-
-    return response.ok({ id: newState.id, state: newState.state })
   }
 
   /**
@@ -354,6 +410,8 @@ export default class ExamsController {
       return response.ok({
         state: { ...normalizedState, savedAt: state.updatedAt.toMillis() },
         id: state.id,
+        revision: state.revision,
+        attempt_id: state.attemptId,
       })
     } catch (error) {
       if (error instanceof InvalidExamStateError) {
@@ -375,13 +433,33 @@ export default class ExamsController {
       },
     })
 
-    await ExamState.query()
-      .where('user_id', authUser.id)
-      .where('subject_id', data.subject_id)
-      .where('mode', data.mode)
-      .delete()
-
-    return response.noContent()
+    const revision = request.input('expected_revision')
+    const stateId = request.input('expected_state_id')
+    if (
+      revision !== undefined &&
+      (!/^\d+$/.test(String(revision)) ||
+        (Number(revision) > 0 && !/^[1-9]\d*$/.test(String(stateId))))
+    ) {
+      return response.badRequest({ message: 'Invalid expected state revision' })
+    }
+    return db.transaction(async (trx) => {
+      await User.query({ client: trx }).where('id', authUser.id).forUpdate().firstOrFail()
+      const state = await ExamState.query({ client: trx })
+        .where('user_id', authUser.id)
+        .where('subject_id', data.subject_id)
+        .where('mode', data.mode)
+        .forUpdate()
+        .first()
+      const active = state && !state.isCompleted ? state : null
+      if (
+        revision !== undefined &&
+        (Number(revision) !== (active?.revision ?? 0) || (active && Number(stateId) !== active.id))
+      ) {
+        return response.conflict({ message: 'Exam state revision changed' })
+      }
+      if (state) await state.delete()
+      return response.noContent()
+    })
   }
 
   /**
@@ -406,6 +484,8 @@ export default class ExamsController {
           return [
             {
               id: state.id,
+              revision: state.revision,
+              attempt_id: state.attemptId,
               subject: state.subject.name,
               subject_id: state.subjectId,
               mode: state.mode,
@@ -419,6 +499,27 @@ export default class ExamsController {
           throw error
         }
       }),
+    })
+  }
+  async recoverAttempt({ authUser, params, response }: HttpContext) {
+    if (
+      typeof params.id !== 'string' ||
+      !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(params.id)
+    ) {
+      return response.badRequest({ message: 'Invalid attempt ID' })
+    }
+    const attempt = await ExamAttempt.find(params.id)
+    if (!attempt || attempt.userId !== (authUser?.id ?? null))
+      return response.notFound({ message: 'Attempt unavailable' })
+    return response.ok({
+      id: attempt.id,
+      result: attempt.result,
+      questions: attempt.snapshot.questions.map(
+        ({ correctOption: _correct, options, ...question }) => ({
+          ...question,
+          options: options.map(({ id: _id, ...option }) => option),
+        })
+      ),
     })
   }
   private parseNumericInput(value: unknown): number | null {

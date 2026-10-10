@@ -2,6 +2,7 @@ import { randomInt } from 'node:crypto'
 import Answer from '#models/answer'
 import AnswerQuestion from '#models/answer_question'
 import Question from '#models/question'
+import ExamAttempt from '#models/exam_attempt'
 import type Subject from '#models/subject'
 import { DEFAULT_EXAM_RULE, type ExamMode, getSubjectExamRule } from '#services/exams/exam_config'
 
@@ -25,6 +26,8 @@ export type GenerateExamParams = {
   userId: number | null
   nOfQuestions: number | null
   filter: string | null
+  attemptId?: string
+  penalizingFactor?: number | null
 }
 
 export default class ExamGenerationService {
@@ -61,7 +64,32 @@ export default class ExamGenerationService {
       selectedQuestions = await this.generateDefault(params.subject.id)
     }
 
-    return this.serializeQuestions(this.shuffle(selectedQuestions))
+    const selected = this.shuffle(selectedQuestions)
+    const result = this.serializeQuestions(selected)
+    if (params.attemptId) {
+      await ExamAttempt.create({
+        id: params.attemptId,
+        userId: params.userId,
+        subjectId: params.subject.id,
+        mode: params.mode,
+        snapshot: {
+          nOfQuestions: params.nOfQuestions,
+          penalizingFactor: params.penalizingFactor ?? null,
+          questions: result.map((item) => {
+            const source = selected.find((question) => question.id === item.id)!
+            return {
+              ...item,
+              correctOption: source.correctOption,
+              options: item.options.map((option) => ({
+                ...option,
+                id: source.options.find((value) => value.order === option.order)!.id,
+              })),
+            }
+          }),
+        },
+      })
+    }
+    return result
   }
 
   private async generateDefault(subjectId: number): Promise<Question[]> {
