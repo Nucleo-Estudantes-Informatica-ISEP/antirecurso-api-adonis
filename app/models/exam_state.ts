@@ -24,6 +24,12 @@ export default class ExamState extends BaseModel {
   declare state: any
 
   @column()
+  declare revision: number
+
+  @column()
+  declare attemptId: string | null
+
+  @column()
   declare isCompleted: boolean
 
   @column.dateTime({ autoCreate: true })

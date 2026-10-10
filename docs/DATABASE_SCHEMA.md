@@ -53,15 +53,15 @@ Primary local ownership table used by auth middleware and all user-owned resourc
 source of truth for identity and roles. `name`, `email`, and `email_verified_at` are synchronized
 caches retained for lookup, search, and account resolution; they never grant authorization.
 
-| Column              | Type         | Null | Constraints / Notes                                                     |
-| ------------------- | ------------ | ---- | ----------------------------------------------------------------------- |
-| `id`                | serial       | no   | primary key                                                             |
-| `name`              | varchar      | no   | synchronized AuthNEI display-name cache                                 |
-| `email`             | varchar(254) | no   | unique synchronized AuthNEI lookup cache                                |
-| `email_verified_at` | timestamp    | yes  | synchronized AuthNEI verification cache                                 |
-| `auth_subject`      | varchar(255) | yes  | unique nullable identity-provider subject                               |
-| `created_at`        | timestamp    | no   |                                                                         |
-| `updated_at`        | timestamp    | no   |                                                                         |
+| Column              | Type         | Null | Constraints / Notes                       |
+| ------------------- | ------------ | ---- | ----------------------------------------- |
+| `id`                | serial       | no   | primary key                               |
+| `name`              | varchar      | no   | synchronized AuthNEI display-name cache   |
+| `email`             | varchar(254) | no   | unique synchronized AuthNEI lookup cache  |
+| `email_verified_at` | timestamp    | yes  | synchronized AuthNEI verification cache   |
+| `auth_subject`      | varchar(255) | yes  | unique nullable identity-provider subject |
+| `created_at`        | timestamp    | no   |                                           |
+| `updated_at`        | timestamp    | no   |                                           |
 
 Relations:
 
@@ -110,18 +110,18 @@ Question taxonomy scoped to a subject.
 
 Question bank entries shown in generated exams.
 
-| Column             | Type       | Null | Constraints / Notes                                   |
-| ------------------ | ---------- | ---- | ----------------------------------------------------- |
-| `id`               | serial     | no   | primary key                                           |
-| `question`         | varchar    | no   | question prompt                                       |
-| `image`            | varchar    | no   | image URL or asset reference; required by schema      |
-| `correct_option`   | varchar(1) | no   | application expects a single option order such as `A` |
-| `exam`             | varchar    | no   | source exam identifier                                |
-| `source`           | varchar(20) | no  | provenance; default `REAL_EXAM`; check `questions_source_allowed` (`REAL_EXAM`, `AI_GENERATED`, `MANUAL`) |
-| `subject_id`       | integer    | no   | FK -> `subjects.id`, `ON DELETE CASCADE`              |
-| `question_type_id` | integer    | no   | FK -> `question_types.id`, `ON DELETE CASCADE`        |
-| `created_at`       | timestamp  | no   |                                                       |
-| `updated_at`       | timestamp  | no   |                                                       |
+| Column             | Type        | Null | Constraints / Notes                                                                                       |
+| ------------------ | ----------- | ---- | --------------------------------------------------------------------------------------------------------- |
+| `id`               | serial      | no   | primary key                                                                                               |
+| `question`         | varchar     | no   | question prompt                                                                                           |
+| `image`            | varchar     | no   | image URL or asset reference; required by schema                                                          |
+| `correct_option`   | varchar(1)  | no   | application expects a single option order such as `A`                                                     |
+| `exam`             | varchar     | no   | source exam identifier                                                                                    |
+| `source`           | varchar(20) | no   | provenance; default `REAL_EXAM`; check `questions_source_allowed` (`REAL_EXAM`, `AI_GENERATED`, `MANUAL`) |
+| `subject_id`       | integer     | no   | FK -> `subjects.id`, `ON DELETE CASCADE`                                                                  |
+| `question_type_id` | integer     | no   | FK -> `question_types.id`, `ON DELETE CASCADE`                                                            |
+| `created_at`       | timestamp   | no   |                                                                                                           |
+| `updated_at`       | timestamp   | no   |                                                                                                           |
 
 Relations:
 
@@ -244,19 +244,19 @@ Additional constraints:
 
 Study materials attached to a subject.
 
-| Column        | Type      | Null | Constraints / Notes                                  |
-| ------------- | --------- | ---- | ---------------------------------------------------- |
-| `id`          | serial    | no   | primary key                                          |
-| `title`       | varchar   | no   | note title                                           |
-| `url`         | text      | yes  | direct URL when content is externally hosted         |
-| `description` | varchar   | yes  | short description                                    |
-| `views`       | integer   | no   | default `0`                                          |
-| `n_pages`     | integer   | yes  | optional page count                                  |
-| `upload_id`   | varchar   | yes  | private S3 object identifier |
-| `user_id`     | integer   | no   | FK -> `users.id`, `ON DELETE CASCADE`                |
-| `subject_id`  | integer   | no   | FK -> `subjects.id`, `ON DELETE CASCADE`             |
-| `created_at`  | timestamp | no   |                                                      |
-| `updated_at`  | timestamp | no   |                                                      |
+| Column        | Type      | Null | Constraints / Notes                          |
+| ------------- | --------- | ---- | -------------------------------------------- |
+| `id`          | serial    | no   | primary key                                  |
+| `title`       | varchar   | no   | note title                                   |
+| `url`         | text      | yes  | direct URL when content is externally hosted |
+| `description` | varchar   | yes  | short description                            |
+| `views`       | integer   | no   | default `0`                                  |
+| `n_pages`     | integer   | yes  | optional page count                          |
+| `upload_id`   | varchar   | yes  | private S3 object identifier                 |
+| `user_id`     | integer   | no   | FK -> `users.id`, `ON DELETE CASCADE`        |
+| `subject_id`  | integer   | no   | FK -> `subjects.id`, `ON DELETE CASCADE`     |
+| `created_at`  | timestamp | no   |                                              |
+| `updated_at`  | timestamp | no   |                                              |
 
 Relations:
 
@@ -317,3 +317,11 @@ Some important rules are enforced in application code rather than by database co
 - `scores.score` is cumulative and updated transactionally after authenticated exam verification
 - notes can resolve their content either from `url` or from `upload_id`; the schema does not require exactly one of them
 - events must satisfy `end_date >= start_date`
+
+## Immutable attempt recovery and cloud revisions
+
+Migration `1791590400000_add_exam_attempt_recovery` adds `exam_attempts`: UUID primary key, nullable owner FK (`users`, cascade), subject FK (`subjects`, cascade), mode, immutable JSONB snapshot, nullable SHA-256 request hash, nullable JSONB exact result, and timestamps. Internal snapshots contain original options/IDs/correct choices and custom configuration; public recovery strips correct choices and internal IDs. Result and grading commit under an attempt-row lock. Authenticated writes first lock the owner to serialize state creation and scoreboard changes.
+
+`exam_states` gains integer `revision` (default 1) and nullable `attempt_id` FK (`exam_attempts`, cascade). Saves increment revision; CAS checks revision and state ID. Absence/completion uses expected revision zero. Explicit completed restart increments the existing row's revision; delete supports the same CAS. Older clients remain compatible and gain guarantees when they adopt the optional fields.
+
+Original content cannot be reconstructed retroactively. Removed underlying questions/options retain existing FK behavior and may invalidate ungraded attempts; never substitute new questions. Retention/cleanup policy remains API #83; no destructive backfill or production migration is included.

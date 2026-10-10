@@ -1,4 +1,7 @@
 import db from '@adonisjs/lucid/services/db'
+import { createHash } from 'node:crypto'
+import ExamAttempt from '#models/exam_attempt'
+import User from '#models/user'
 import Answer from '#models/answer'
 import AnswerQuestion from '#models/answer_question'
 import ExamState from '#models/exam_state'
@@ -27,6 +30,7 @@ export type VerifyExamInput = {
   time: number | null
   nOfQuestions: number | null
   penalizingFactor: number | null
+  attemptId?: string
 }
 
 export type VerifyExamResult = {
@@ -39,6 +43,8 @@ export type VerifyExamResult = {
 
 type TransactionClient = Awaited<ReturnType<typeof db.transaction>>
 
+export class AttemptConflictError extends Error {}
+
 export default class ExamVerificationService {
   async verify(input: VerifyExamInput): Promise<VerifyExamResult> {
     const nOfQuestions = this.resolveQuestionCount(
@@ -49,8 +55,6 @@ export default class ExamVerificationService {
     this.validateExpectedAnswerCount(input.answers, nOfQuestions)
     this.validateUniqueQuestionAnswers(input.answers)
 
-    const questionMap = await this.getQuestionMap(input.answers, input.subject.id)
-
     const questionScore = MAX_SCORE / nOfQuestions
 
     let correctAnswers = 0
@@ -58,6 +62,56 @@ export default class ExamVerificationService {
 
     const trx = await db.transaction()
     try {
+      if (input.userId !== null)
+        await User.query({ client: trx }).where('id', input.userId).forUpdate().firstOrFail()
+      const attempt = input.attemptId
+        ? await ExamAttempt.query({ client: trx }).where('id', input.attemptId).forUpdate().first()
+        : null
+      const requestHash = createHash('sha256')
+        .update(
+          JSON.stringify({
+            subject: input.subject.id,
+            mode: input.mode,
+            time: input.time,
+            count: input.nOfQuestions,
+            penalty: input.penalizingFactor,
+            answers: input.answers
+              .map((item) => ({
+                id: item.question_id,
+                order: this.normalizeOptionValue(item.selected_option),
+              }))
+              .sort((a, b) => a.id - b.id),
+          })
+        )
+        .digest('hex')
+      if (input.attemptId) {
+        if (
+          !attempt ||
+          attempt.userId !== input.userId ||
+          attempt.subjectId !== input.subject.id ||
+          attempt.mode !== input.mode
+        ) {
+          throw new AttemptConflictError('Attempt unavailable for this identity')
+        }
+        if (attempt.result) {
+          if (attempt.requestHash !== requestHash)
+            throw new AttemptConflictError('Attempt already submitted with different answers')
+          await trx.commit()
+          return attempt.result
+        }
+        if (
+          attempt.snapshot.nOfQuestions !== input.nOfQuestions ||
+          attempt.snapshot.penalizingFactor !== input.penalizingFactor ||
+          JSON.stringify(
+            [...attempt.snapshot.questions.map((item) => item.id)].sort((a, b) => a - b)
+          ) !== JSON.stringify(input.answers.map((item) => item.question_id).sort((a, b) => a - b))
+        ) {
+          throw new AttemptConflictError('Attempt questions or configuration changed')
+        }
+      }
+      const questionMap = attempt
+        ? new Map(attempt.snapshot.questions.map((item) => [item.id, item]))
+        : await this.getQuestionMap(input.answers, input.subject.id)
       const userAnswer = await Answer.create(
         {
           score: 0,
@@ -70,7 +124,19 @@ export default class ExamVerificationService {
       )
 
       const questionIds = [...questionMap.keys()]
-      const optionMap = await this.getOptionMap(questionIds, trx)
+      const optionMap = attempt
+        ? new Map(
+            attempt.snapshot.questions.flatMap((item) =>
+              item.options.map(
+                (option) =>
+                  [
+                    this.toOptionMapKey(item.id, this.normalizeOptionValue(option.order)!),
+                    option.id,
+                  ] as const
+              )
+            )
+          )
+        : await this.getOptionMap(questionIds, trx)
 
       for (const answerPayload of input.answers) {
         const question = questionMap.get(answerPayload.question_id)
@@ -136,18 +202,27 @@ export default class ExamVerificationService {
           .where('user_id', input.userId)
           .where('subject_id', input.subject.id)
           .where('mode', input.mode)
+          .if(
+            !!input.attemptId,
+            (query) => query.where('attempt_id', input.attemptId!),
+            (query) => query.whereNull('attempt_id')
+          )
           .update({ isCompleted: true })
       }
 
-      await trx.commit()
-
-      return {
+      const result = {
         id: userAnswer.id,
         score: normalizedScore,
         wrong_answers: wrongAnswers,
         passed,
         subject: input.subject.name,
       }
+      if (attempt) {
+        attempt.merge({ result, requestHash })
+        await attempt.save()
+      }
+      await trx.commit()
+      return result
     } catch (error) {
       await trx.rollback()
       throw error
@@ -331,7 +406,7 @@ export default class ExamVerificationService {
     return normalizedValue.length > 0 ? normalizedValue : null
   }
 
-  private getValidatedCorrectOption(question: Question): string {
+  private getValidatedCorrectOption(question: Pick<Question, 'id' | 'correctOption'>): string {
     const correctOption = this.normalizeOptionValue(question.correctOption)
 
     if (!correctOption || !/^[A-Z0-9]$/.test(correctOption)) {
