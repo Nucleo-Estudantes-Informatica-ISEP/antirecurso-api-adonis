@@ -136,6 +136,7 @@ type CurrentUserSummary = {
 type Comment = {
   id: number
   comment: string
+  user_id: number
   user: string
   question_id: number
   created_at: string // ISO 8601
@@ -755,3 +756,7 @@ type UserSession = CurrentUserSummary & {
 
 - Response: `204 No Content`.
 - Errors: `404` missing event; `429` mutation limit.
+
+## Account deletion and comment safety
+
+See [Mobile safety contracts](MOBILE_SAFETY.md) for `DELETE /user`, comment reports, per-viewer author blocks, the admin review queue, issued-at deletion cutoffs, storage cleanup and upload-owner rollout. All comment reads, including owned exam review, exclude globally hidden content and the viewer's blocked authors.

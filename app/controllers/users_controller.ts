@@ -6,6 +6,11 @@ import Answer from '#models/answer'
 import Score from '#models/score'
 import QuestionReport from '#models/question_report'
 import { searchUsersValidator } from '#validators/user'
+import {
+  deleteAccount,
+  DeletionStorageError,
+  SharedNoteError,
+} from '#services/auth/account_deletion'
 import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
 import { serializeUserIdentity } from '#services/auth/user_identity'
 import {
@@ -14,6 +19,20 @@ import {
 } from '#services/auth/account_resolution_service'
 
 export default class UsersController {
+  async destroy({ authUser, authClaims, request, response }: AuthenticatedHttpContext) {
+    if (request.input('confirmation') !== 'DELETE_ANTIRECURSO_DATA')
+      return response.unprocessableEntity({ message: 'Confirm deletion of AntiRecurso data' })
+    try {
+      await deleteAccount(authUser.id, authClaims.sub)
+      return response.noContent()
+    } catch (error) {
+      if (error instanceof DeletionStorageError)
+        return response.serviceUnavailable({ message: error.message })
+      if (error instanceof SharedNoteError) return response.conflict({ message: error.message })
+      throw error
+    }
+  }
+
   /**
    * Get the current user's session info.
    * GET /user
