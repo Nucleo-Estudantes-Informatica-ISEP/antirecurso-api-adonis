@@ -239,3 +239,5 @@ claims and the generic claim cannot grant admin access.
 ## CI/CD gate
 
 Every PR to `main` uses `npm ci` and must pass lint, typecheck, Japa tests, migrations against isolated PostgreSQL, production build and dependency audit, a non-root production Docker image, and Gitleaks. Green CI does not prove deployment: confirm the deployed SHA, migration status, `GET /`, exact CORS behavior, shared limits, storage promotion, and owner/admin boundaries after rollout.
+
+Account deletion, comment reporting/blocking, admin moderation and upload-owner rollout: [Mobile safety contracts](docs/MOBILE_SAFETY.md).
