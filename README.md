@@ -82,6 +82,18 @@ You can verify the status of the migrations at any time using:
 node ace migration:status
 ```
 
+#### Optional: seed the AI-generated question banks
+
+`database/data/ai_generated/<subject>/*.json` holds curated, AI-generated question banks (currently `arqcp`, RV32). They are stored with `source = 'AI_GENERATED'` and are **not** part of the default seed. Load them explicitly, after the migrations:
+
+```bash
+node ace db:seed --files database/seeders/ai_generated_questions_seeder.ts
+```
+
+The seeder validates every file first and aborts without writing anything if a record is invalid (text over 255 characters, `correct_index` out of range, duplicate question text, `source` other than `AI_GENERATED`). It then upserts the questions in a single transaction, so running it again does not create duplicates. Questions use the exam value `<slug>-ai-generated`, which keeps them apart from the real-exam questions of `questions.json`.
+
+The `in_plan` and `ref` review fields in the JSON files are metadata only and are not stored. Never run this against production without explicit authorization and a backup.
+
 ### 5. Start Development Server
 
 Run the AdonisJS development server with Hot Module Replacement (HMR) enabled:
@@ -126,7 +138,9 @@ The events feature is covered by these admin-only routes:
 │   ├── auth.ts           # Authentication configuration
 │   └── ...
 ├── database/
-│   └── migrations/       # Schema definition files
+│   ├── data/             # Question banks (questions.json, ai_generated/<subject>/*.json)
+│   ├── migrations/       # Schema definition files
+│   └── seeders/          # Question seeders (real exams and AI-generated banks)
 ├── start/
 │   ├── env.ts            # Environment variable validation
 │   ├── routes.ts         # All application endpoint definitions
