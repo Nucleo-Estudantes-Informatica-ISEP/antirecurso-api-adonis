@@ -948,7 +948,7 @@
     "ref": "T12 p.24"
   },
   {
-    "question": "Considere void combine2(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); *dest = IDENT; for (i = 0; i < length; i++) { data_t val; get_vec_element(v, i, &val); *dest = *dest OP val; } } Quantas vezes é chamada vec_length, para um vetor de n elementos?",
+    "question": "Em combine2: long int length = vec_length(v); *dest = IDENT; for (i = 0; i < length; i++) { get_vec_element(v, i, &val); *dest = *dest OP val; } Quantas vezes é chamada vec_length, para um vetor de n elementos?",
     "answers": [
       "1",
       "n",
@@ -987,7 +987,7 @@
     "ref": "T12 p.25"
   },
   {
-    "question": "Considere void combine3(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); data_t *data = get_vec_start(v); *dest = IDENT; for (i = 0; i < length; i++) { *dest = *dest OP data[i]; } } Que otimização aplica combine3 em relação a combine2?",
+    "question": "Em combine3: long int length = vec_length(v); data_t *data = get_vec_start(v); *dest = IDENT; for (i = 0; i < length; i++) *dest = *dest OP data[i]; Que otimização aplica combine3 em relação a combine2?",
     "answers": [
       "Evita a chamada a vec_length antes de iniciar o ciclo",
       "Desenrola o ciclo, com dois elementos por iteração",
@@ -1000,7 +1000,7 @@
     "ref": "T12 p.25"
   },
   {
-    "question": "Considere void combine3(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); data_t *data = get_vec_start(v); *dest = IDENT; for (i = 0; i < length; i++) { *dest = *dest OP data[i]; } } Que função devolve o apontador para o início do vetor de dados?",
+    "question": "Em combine3: long int length = vec_length(v); data_t *data = get_vec_start(v); *dest = IDENT; for (i = 0; i < length; i++) *dest = *dest OP data[i]; Que função devolve o apontador para o início do vetor de dados?",
     "answers": [
       "get_vec_start",
       "vec_length",
@@ -1024,7 +1024,7 @@
     "ref": "T12 p.25"
   },
   {
-    "question": "Considere void combine4(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); data_t *data = get_vec_start(v); data_t acc = IDENT; for (i = 0; i < length; i++) { acc = acc OP data[i]; } *dest = acc; } Que otimização aplica combine4 em relação a combine3?",
+    "question": "Em combine4: length = vec_length(v); data = get_vec_start(v); data_t acc = IDENT; for (i = 0; i < length; i++) acc = acc OP data[i]; *dest = acc; Que otimização aplica combine4 em relação a combine3?",
     "answers": [
       "Evita a chamada a get_vec_start no início da função",
       "Acumula o resultado numa variável local, sem usar *dest",
@@ -1037,7 +1037,7 @@
     "ref": "T12 p.26"
   },
   {
-    "question": "Considere void combine4(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); data_t *data = get_vec_start(v); data_t acc = IDENT; for (i = 0; i < length; i++) { acc = acc OP data[i]; } *dest = acc; } Onde fica, normalmente, a variável acc durante o ciclo?",
+    "question": "Em combine4: length = vec_length(v); data = get_vec_start(v); data_t acc = IDENT; for (i = 0; i < length; i++) acc = acc OP data[i]; *dest = acc; Onde fica, normalmente, a variável acc durante o ciclo?",
     "answers": [
       "Na stack, em cada iteração",
       "No heap, alocada por malloc",
@@ -1050,7 +1050,7 @@
     "ref": "T12 p.26"
   },
   {
-    "question": "Considere void combine4(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); data_t *data = get_vec_start(v); data_t acc = IDENT; for (i = 0; i < length; i++) { acc = acc OP data[i]; } *dest = acc; } Quando é escrito o resultado final em *dest?",
+    "question": "Em combine4: length = vec_length(v); data = get_vec_start(v); data_t acc = IDENT; for (i = 0; i < length; i++) acc = acc OP data[i]; *dest = acc; Quando é escrito o resultado final em *dest?",
     "answers": [
       "Em cada iteração do ciclo",
       "Antes de o ciclo começar",
@@ -1089,7 +1089,7 @@
     "ref": "T12 p.27"
   },
   {
-    "question": "Considere void combine5(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); long int limit = length - 1; data_t *data = get_vec_start(v); data_t acc = IDENT; for (i = 0; i < limit; i += 2) { acc = (acc OP data[i]) OP data[i+1]; } for (; i < length; i++) { acc = acc OP data[i]; } *dest = acc; } Quantos elementos processa cada iteração do primeiro ciclo?",
+    "question": "Em combine5: limit = length - 1; for (i = 0; i < limit; i += 2) acc = (acc OP data[i]) OP data[i+1]; for (; i < length; i++) acc = acc OP data[i]; *dest = acc; Quantos elementos processa cada iteração do primeiro ciclo?",
     "answers": [
       "1",
       "3",
@@ -1102,7 +1102,7 @@
     "ref": "T12 p.27"
   },
   {
-    "question": "Considere void combine5(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); long int limit = length - 1; data_t *data = get_vec_start(v); data_t acc = IDENT; for (i = 0; i < limit; i += 2) { acc = (acc OP data[i]) OP data[i+1]; } for (; i < length; i++) { acc = acc OP data[i]; } *dest = acc; } Para que serve o segundo ciclo?",
+    "question": "Em combine5: limit = length - 1; for (i = 0; i < limit; i += 2) acc = (acc OP data[i]) OP data[i+1]; for (; i < length; i++) acc = acc OP data[i]; *dest = acc; Para que serve o segundo ciclo?",
     "answers": [
       "Para repetir o primeiro ciclo mais uma vez",
       "Para inicializar o acumulador a zero",
@@ -1115,7 +1115,7 @@
     "ref": "T12 p.27"
   },
   {
-    "question": "Considere void combine5(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); long int limit = length - 1; data_t *data = get_vec_start(v); data_t acc = IDENT; for (i = 0; i < limit; i += 2) { acc = (acc OP data[i]) OP data[i+1]; } for (; i < length; i++) { acc = acc OP data[i]; } *dest = acc; } Porque é que o limite do primeiro ciclo é length - 1?",
+    "question": "Em combine5: limit = length - 1; for (i = 0; i < limit; i += 2) acc = (acc OP data[i]) OP data[i+1]; for (; i < length; i++) acc = acc OP data[i]; *dest = acc; Porque é que o limite do primeiro ciclo é length - 1?",
     "answers": [
       "Para garantir que data[i+1] existe em cada iteração",
       "Para que o ciclo nunca processe o primeiro elemento",
@@ -1219,7 +1219,7 @@
     "ref": "T12 p.27"
   },
   {
-    "question": "Considere void combine6(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); long int limit = length - 1; data_t *data = get_vec_start(v); data_t acc0 = IDENT; data_t acc1 = IDENT; for (i = 0; i < limit; i += 2) { acc0 = acc0 OP data[i]; acc1 = acc1 OP data[i+1]; } for (; i < length; i++) { acc0 = acc0 OP data[i]; } *dest = acc0 OP acc1; } Que técnica usa combine6?",
+    "question": "Em combine6: limit = length - 1; for (i = 0; i < limit; i += 2) { acc0 = acc0 OP data[i]; acc1 = acc1 OP data[i+1]; } for (; i < length; i++) acc0 = acc0 OP data[i]; *dest = acc0 OP acc1; Que técnica usa combine6?",
     "answers": [
       "Desenrolar sem alterar o número de acumuladores",
       "Vários acumuladores, para aumentar o paralelismo",
@@ -1232,7 +1232,7 @@
     "ref": "T12 p.28"
   },
   {
-    "question": "Considere void combine6(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); long int limit = length - 1; data_t *data = get_vec_start(v); data_t acc0 = IDENT; data_t acc1 = IDENT; for (i = 0; i < limit; i += 2) { acc0 = acc0 OP data[i]; acc1 = acc1 OP data[i+1]; } for (; i < length; i++) { acc0 = acc0 OP data[i]; } *dest = acc0 OP acc1; } Que elementos acumula acc0 no primeiro ciclo?",
+    "question": "Em combine6: limit = length - 1; for (i = 0; i < limit; i += 2) { acc0 = acc0 OP data[i]; acc1 = acc1 OP data[i+1]; } for (; i < length; i++) acc0 = acc0 OP data[i]; *dest = acc0 OP acc1; Que elementos acumula acc0 no primeiro ciclo?",
     "answers": [
       "Os de índice ímpar",
       "Os de índice maior do que a metade",
@@ -1245,7 +1245,7 @@
     "ref": "T12 p.28"
   },
   {
-    "question": "Considere void combine6(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); long int limit = length - 1; data_t *data = get_vec_start(v); data_t acc0 = IDENT; data_t acc1 = IDENT; for (i = 0; i < limit; i += 2) { acc0 = acc0 OP data[i]; acc1 = acc1 OP data[i+1]; } for (; i < length; i++) { acc0 = acc0 OP data[i]; } *dest = acc0 OP acc1; } Que elementos acumula acc1 no primeiro ciclo?",
+    "question": "Em combine6: limit = length - 1; for (i = 0; i < limit; i += 2) { acc0 = acc0 OP data[i]; acc1 = acc1 OP data[i+1]; } for (; i < length; i++) acc0 = acc0 OP data[i]; *dest = acc0 OP acc1; Que elementos acumula acc1 no primeiro ciclo?",
     "answers": [
       "Os de índice par",
       "Os de índice menor do que a metade",
@@ -1258,7 +1258,7 @@
     "ref": "T12 p.28"
   },
   {
-    "question": "Considere void combine6(vec_ptr v, data_t *dest) { long int i; long int length = vec_length(v); long int limit = length - 1; data_t *data = get_vec_start(v); data_t acc0 = IDENT; data_t acc1 = IDENT; for (i = 0; i < limit; i += 2) { acc0 = acc0 OP data[i]; acc1 = acc1 OP data[i+1]; } for (; i < length; i++) { acc0 = acc0 OP data[i]; } *dest = acc0 OP acc1; } Como se obtém o resultado final?",
+    "question": "Em combine6: limit = length - 1; for (i = 0; i < limit; i += 2) { acc0 = acc0 OP data[i]; acc1 = acc1 OP data[i+1]; } for (; i < length; i++) acc0 = acc0 OP data[i]; *dest = acc0 OP acc1; Como se obtém o resultado final?",
     "answers": [
       "Combinando os dois acumuladores com a operação OP",
       "Somando sempre acc0 e acc1, qualquer que seja OP",

@@ -2210,7 +2210,7 @@
     "ref": "T9 p.6"
   },
   {
-    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. O que calcula a sequência slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0?",
+    "question": "Com struct S1 { long long v; int i[2]; char c; } (24 bytes) e n em a1, o que calcula a sequência slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0?",
     "answers": [
       "n * 12, somando n * 8 com n * 4",
       "n * 32, somando n * 16 com n * 16",
@@ -2223,7 +2223,7 @@
     "ref": "T9 p.31"
   },
   {
-    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. O que contém a1 depois de add a1, a1, a0?",
+    "question": "Em init_data (vetor de struct S1 de 24 bytes em a0, n em a1), o que contém a1 depois de slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0?",
     "answers": [
       "O endereço do primeiro elemento do vetor",
       "O número de elementos do vetor",
@@ -2236,7 +2236,7 @@
     "ref": "T9 p.31"
   },
   {
-    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. O que contém a0 em cada iteração do ciclo?",
+    "question": "Em init_data (vetor de struct S1 em a0, elementos de 24 bytes), cada iteração acaba com addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop. O que contém a0 em cada iteração do ciclo?",
     "answers": [
       "O endereço do elemento atual do vetor",
       "O endereço do último elemento do vetor",
@@ -2249,7 +2249,7 @@
     "ref": "T9 p.31"
   },
   {
-    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. Para que serve addi a0, a0, STRUCT_SIZE no fim do ciclo?",
+    "question": "Em init_data (vetor de struct S1 em a0, STRUCT_SIZE = 24), para que serve addi a0, a0, STRUCT_SIZE no fim do ciclo?",
     "answers": [
       "Para recuar para o elemento anterior do vetor",
       "Para avançar para o elemento seguinte do vetor",
@@ -2262,7 +2262,7 @@
     "ref": "T9 p.31"
   },
   {
-    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. Que membros de cada elemento são postos a zero?",
+    "question": "Em struct S1 { long long v; int i[2]; char c; } (offsets 0, 8 e 16), o ciclo faz sw zero, 0(t0) / sw zero, 4(t0) a partir de a0 + 0 e de a0 + 8, e sb zero, 0(t0) a partir de a0 + 16. Que membros de cada elemento são postos a zero?",
     "answers": [
       "Apenas o membro v",
       "Apenas os membros i[0] e i[1]",
@@ -2275,7 +2275,7 @@
     "ref": "T9 p.31"
   },
   {
-    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. Porque é que o membro c é posto a zero com sb e não com sw?",
+    "question": "Em struct S1 { long long v; int i[2]; char c; }, o membro c (offset 16) é posto a zero com sb zero, 0(t0). Porque é que se usa sb e não sw?",
     "answers": [
       "Porque c ocupa 4 bytes",
       "Porque a instrução sw não aceita offsets",
@@ -2288,7 +2288,7 @@
     "ref": "T9 p.31"
   },
   {
-    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. Quando termina o ciclo?",
+    "question": "Em init_data, a1 guarda o endereço final do vetor e o ciclo acaba com addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop. Quando termina o ciclo?",
     "answers": [
       "Quando a0 chega ao endereço final guardado em a1",
       "Quando a1 chega a zero depois de n iterações",
@@ -2301,7 +2301,7 @@
     "ref": "T9 p.31"
   },
   {
-    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. Quantas iterações executa o ciclo se n = 10?",
+    "question": "Em init_data, com a1 = a0 + n × 24, o ciclo salta primeiro para check: bgt a1, a0, loop e avança a0 de 24 em cada iteração. Quantas iterações executa o ciclo se n = 10?",
     "answers": [
       "11",
       "10",
@@ -2314,7 +2314,7 @@
     "ref": "T9 p.31"
   },
   {
-    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. Se o vetor começar no endereço 0x00010000 e n = 10, que valor tem a1 antes do ciclo?",
+    "question": "Em init_data, com struct S1 de 24 bytes, a1 = a0 + n × 24, calculado por slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0. Se o vetor começar em 0x00010000 e n = 10, que valor tem a1 antes do ciclo?",
     "answers": [
       "0x000100A0",
       "0x00010050",
@@ -2327,7 +2327,7 @@
     "ref": "T9 p.31"
   },
   {
-    "question": "Considere init_data: slli t0, a1, 4 / slli a1, a1, 3 / add a1, a1, t0 / add a1, a1, a0 / j check / loop: addi t0, a0, OFFSET_V / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_I / sw zero, 0(t0) / sw zero, 4(t0) / addi t0, a0, OFFSET_C / sb zero, 0(t0) / addi a0, a0, STRUCT_SIZE / check: bgt a1, a0, loop / ret, com struct S1 { long long v; int i[2]; char c; }, STRUCT_SIZE = 24, OFFSET_V = 0, OFFSET_I = 8, OFFSET_C = 16 e com o vetor em a0 e n em a1. O que acontece se n = 0?",
+    "question": "Em init_data, com a1 = a0 + n × 24, o ciclo começa com j check e check: bgt a1, a0, loop. O que acontece se n = 0?",
     "answers": [
       "O ciclo executa uma iteração",
       "O ciclo executa 24 iterações",

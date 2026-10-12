@@ -1699,7 +1699,7 @@
     "ref": "TP5 p.21"
   },
   {
-    "question": "Admita a0 = -6, a1 = 1 e a2 = 4. Que valor fica em a0 depois de executar add t0, a0, a1 / sub t0, t0, a2 / li t1, -4 / bge a0, t1, l2 / bge a1, a2, l1 / mul t0, a0, a1 / j l3 / l1: mul t0, a1, a2 / j l3 / l2: li t1, 5 / ble a0, t1, l3 / mul t0, a0, a2 / l3: mv a0, t0?",
+    "question": "Com a0 = -6, a1 = 1 e a2 = 4, qual o valor final de a0 após add t0, a0, a1 / sub t0, t0, a2 / li t1, -4 / bge a0, t1, l2 / bge a1, a2, l1 / mul t0, a0, a1 / j l3 / l1: mul t0, a1, a2 / j l3 / l2: li t1, 5 / ble a0, t1, l3 / mul t0, a0, a2 / l3: mv a0, t0?",
     "answers": [
       "-9",
       "-6",
@@ -1712,7 +1712,7 @@
     "ref": "TP5 p.12"
   },
   {
-    "question": "Admita a0 = 9, a1 = 1 e a2 = 3. Que valor fica em a0 depois de executar add t0, a0, a1 / sub t0, t0, a2 / li t1, -4 / bge a0, t1, l2 / bge a1, a2, l1 / mul t0, a0, a1 / j l3 / l1: mul t0, a1, a2 / j l3 / l2: li t1, 5 / ble a0, t1, l3 / mul t0, a0, a2 / l3: mv a0, t0?",
+    "question": "Com a0 = 9, a1 = 1 e a2 = 3, qual o valor final de a0 após add t0, a0, a1 / sub t0, t0, a2 / li t1, -4 / bge a0, t1, l2 / bge a1, a2, l1 / mul t0, a0, a1 / j l3 / l1: mul t0, a1, a2 / j l3 / l2: li t1, 5 / ble a0, t1, l3 / mul t0, a0, a2 / l3: mv a0, t0?",
     "answers": [
       "7",
       "3",
@@ -1725,7 +1725,7 @@
     "ref": "TP5 p.12"
   },
   {
-    "question": "Admita a0 = -6, a1 = 8 e a2 = 3. Que valor fica em a0 depois de executar add t0, a0, a1 / sub t0, t0, a2 / li t1, -4 / bge a0, t1, l2 / bge a1, a2, l1 / mul t0, a0, a1 / j l3 / l1: mul t0, a1, a2 / j l3 / l2: li t1, 5 / ble a0, t1, l3 / mul t0, a0, a2 / l3: mv a0, t0?",
+    "question": "Com a0 = -6, a1 = 8 e a2 = 3, qual o valor final de a0 após add t0, a0, a1 / sub t0, t0, a2 / li t1, -4 / bge a0, t1, l2 / bge a1, a2, l1 / mul t0, a0, a1 / j l3 / l1: mul t0, a1, a2 / j l3 / l2: li t1, 5 / ble a0, t1, l3 / mul t0, a0, a2 / l3: mv a0, t0?",
     "answers": [
       "24",
       "-1",
@@ -2024,7 +2024,7 @@
     "ref": "TP6 p.24"
   },
   {
-    "question": "Admita que a0 e a1 contêm 0x4000 e 0x5000 e que em 0x4000 está a string \"isep\" com o terminador. Depois de executar li t1, 0 / ciclo: lbu t0, 0(a0) / beqz t0, fim / sb t0, 0(a1) / addi a0, a0, 1 / addi a1, a1, 1 / addi t1, t1, 1 / j ciclo / fim: sb x0, 0(a1) / mv a0, t1, qual é o valor de a0?",
+    "question": "Com a0 = 0x4000, a1 = 0x5000 e a string \"isep\\0\" em 0x4000, após li t1, 0 / ciclo: lbu t0, 0(a0) / beqz t0, fim / sb t0, 0(a1) / addi a0, a0, 1 / addi a1, a1, 1 / addi t1, t1, 1 / j ciclo / fim: sb x0, 0(a1) / mv a0, t1, qual é o valor de a0?",
     "answers": [
       "5",
       "4",
@@ -2037,7 +2037,7 @@
     "ref": "TP6 p.26"
   },
   {
-    "question": "Admita que a0 e a1 contêm 0x4000 e 0x5000 e que em 0x4000 está a string \"isep\" com o terminador. Depois de executar li t1, 0 / ciclo: lbu t0, 0(a0) / beqz t0, fim / sb t0, 0(a1) / addi a0, a0, 1 / addi a1, a1, 1 / addi t1, t1, 1 / j ciclo / fim: sb x0, 0(a1) / mv a0, t1, que valor tem o byte em 0x5004?",
+    "question": "Com a0 = 0x4000, a1 = 0x5000 e a string \"isep\\0\" em 0x4000, após li t1, 0 / ciclo: lbu t0, 0(a0) / beqz t0, fim / sb t0, 0(a1) / addi a0, a0, 1 / addi a1, a1, 1 / addi t1, t1, 1 / j ciclo / fim: sb x0, 0(a1) / mv a0, t1, que valor tem o byte em 0x5004?",
     "answers": [
       "112",
       "4",

@@ -1641,7 +1641,7 @@
     "ref": "T7 p.36"
   },
   {
-    "question": "Na função array_incr(int *vec, int n), com vec em a0, n em a1 e slli t0, a1, 2 / add t0, a0, t0 / 1: bge a0, t0, 1f / lw t1, 0(a0) / addi t1, t1, 1 / sw t1, 0(a0) / addi a0, a0, 4 / j 1b / 1: ret, que instruções fazem (*p)++ sobre o elemento apontado por a0?",
+    "question": "Em array_incr, num ciclo com 1: bge a0, t0, 1f / lw t1, 0(a0) / addi t1, t1, 1 / sw t1, 0(a0) / addi a0, a0, 4 / j 1b, que instruções fazem (*p)++ sobre o elemento apontado por a0?",
     "answers": [
       "lw t1, 0(a0) / addi t1, t1, 1 / sw t1, 0(a0)",
       "addi a0, a0, 1",
@@ -1836,7 +1836,7 @@
     "ref": "T7 p.38"
   },
   {
-    "question": "Na função get_m_element(int m[][6], int i, int j), com m em a0, i em a1, j em a2 e addi t0, zero, 6 / mul t0, a1, t0 / add t0, a2, t0 / slli t0, t0, 2 / add a0, a0, t0 / lw a0, 0(a0) / ret, o que calcula a sequência mul t0, a1, t0 / add t0, a2, t0 (com t0 = 6 = C)?",
+    "question": "Em get_m_element(int m[][6], int i, int j), com i em a1, j em a2 e t0 = 6 = C, o que calcula a sequência mul t0, a1, t0 / add t0, a2, t0?",
     "answers": [
       "i × C + j, o índice do elemento visto como vetor",
       "i + j × C, o número de colunas",
@@ -2122,7 +2122,7 @@
     "ref": "T7 p.46"
   },
   {
-    "question": "Na versão otimizada de fix_prod_elem, com N = 16, int de 4 bytes e int *Arow = &A[i][0]; int *Bcol = &B[0][k]; int *Bend = &B[N][k]; do { result += *Arow * *Bcol; Arow++; Bcol += N; } while (Bcol != Bend); a que distância, em bytes, estão os elementos sucessivos da coluna k de B?",
+    "question": "Em fix_prod_elem otimizada, com N = 16 e int de 4 bytes, int *Bcol = &B[0][k]; do { result += *Arow * *Bcol; Arow++; Bcol += N; } while (Bcol != Bend); a que distância, em bytes, estão os elementos sucessivos da coluna k de B?",
     "answers": [
       "4 bytes",
       "16 bytes",

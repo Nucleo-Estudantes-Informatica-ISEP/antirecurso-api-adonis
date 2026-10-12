@@ -1299,7 +1299,7 @@
     "ref": "T8 p.23"
   },
   {
-    "question": "Considere int sum10(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) chamada com li a0, 10 / li a1, 20 / li a2, 30 / li a3, 40 / li a4, 50 / li a5, 60 / li a6, 70 / li a7, 80 / addi sp, sp, -8 / li t1, 100 / sw t1, 4(sp) / li t1, 90 / sw t1, 0(sp) / jal sum10 / addi sp, sp, 8. Quantos bytes reserva o caller na stack?",
+    "question": "Em sum10 (dez argumentos int), o caller faz li a0..a7 com 10, 20, ..., 80 / addi sp, sp, -8 / li t1, 100 / sw t1, 4(sp) / li t1, 90 / sw t1, 0(sp) / jal sum10 / addi sp, sp, 8. Quantos bytes reserva o caller na stack?",
     "answers": [
       "4 bytes",
       "16 bytes",
@@ -1312,7 +1312,7 @@
     "ref": "T8 p.23"
   },
   {
-    "question": "Considere int sum10(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) chamada com li a0, 10 / li a1, 20 / li a2, 30 / li a3, 40 / li a4, 50 / li a5, 60 / li a6, 70 / li a7, 80 / addi sp, sp, -8 / li t1, 100 / sw t1, 4(sp) / li t1, 90 / sw t1, 0(sp) / jal sum10 / addi sp, sp, 8. Em que posição da stack fica o nono argumento?",
+    "question": "Em sum10 (dez argumentos int), o caller faz li a0..a7 com 10, 20, ..., 80 / addi sp, sp, -8 / li t1, 100 / sw t1, 4(sp) / li t1, 90 / sw t1, 0(sp) / jal sum10 / addi sp, sp, 8. Em que posição da stack fica o nono argumento?",
     "answers": [
       "0(sp)",
       "4(sp)",
@@ -1325,7 +1325,7 @@
     "ref": "T8 p.23"
   },
   {
-    "question": "Considere int sum10(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) chamada com li a0, 10 / li a1, 20 / li a2, 30 / li a3, 40 / li a4, 50 / li a5, 60 / li a6, 70 / li a7, 80 / addi sp, sp, -8 / li t1, 100 / sw t1, 4(sp) / li t1, 90 / sw t1, 0(sp) / jal sum10 / addi sp, sp, 8. Em que posição da stack fica o décimo argumento?",
+    "question": "Em sum10 (dez argumentos int), o caller faz li a0..a7 com 10, 20, ..., 80 / addi sp, sp, -8 / li t1, 100 / sw t1, 4(sp) / li t1, 90 / sw t1, 0(sp) / jal sum10 / addi sp, sp, 8. Em que posição da stack fica o décimo argumento?",
     "answers": [
       "0(sp)",
       "4(sp)",
@@ -1338,7 +1338,7 @@
     "ref": "T8 p.23"
   },
   {
-    "question": "Considere int sum10(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) chamada com li a0, 10 / li a1, 20 / li a2, 30 / li a3, 40 / li a4, 50 / li a5, 60 / li a6, 70 / li a7, 80 / addi sp, sp, -8 / li t1, 100 / sw t1, 4(sp) / li t1, 90 / sw t1, 0(sp) / jal sum10 / addi sp, sp, 8. Em que registo é passado o oitavo argumento?",
+    "question": "Em sum10 (dez argumentos int), o caller faz li a0..a7 com 10, 20, ..., 80 / addi sp, sp, -8 / li t1, 100 / sw t1, 4(sp) / li t1, 90 / sw t1, 0(sp) / jal sum10 / addi sp, sp, 8. Em que registo é passado o oitavo argumento?",
     "answers": [
       "a8",
       "a6",
@@ -1351,7 +1351,7 @@
     "ref": "T8 p.23"
   },
   {
-    "question": "Considere int sum10(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) chamada com li a0, 10 / li a1, 20 / li a2, 30 / li a3, 40 / li a4, 50 / li a5, 60 / li a6, 70 / li a7, 80 / addi sp, sp, -8 / li t1, 100 / sw t1, 4(sp) / li t1, 90 / sw t1, 0(sp) / jal sum10 / addi sp, sp, 8. Quem liberta o espaço dos argumentos na stack depois da chamada?",
+    "question": "Em sum10 (dez argumentos int), o caller faz li a0..a7 com 10, 20, ..., 80 / addi sp, sp, -8 / li t1, 100 / sw t1, 4(sp) / li t1, 90 / sw t1, 0(sp) / jal sum10 / addi sp, sp, 8. Quem liberta o espaço dos argumentos na stack depois da chamada?",
     "answers": [
       "O callee, com addi sp, sp, 8",
       "O callee, com ret",
@@ -1364,7 +1364,7 @@
     "ref": "T8 p.23"
   },
   {
-    "question": "Considere int sum10(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) chamada com li a0, 10 / li a1, 20 / li a2, 30 / li a3, 40 / li a4, 50 / li a5, 60 / li a6, 70 / li a7, 80 / addi sp, sp, -8 / li t1, 100 / sw t1, 4(sp) / li t1, 90 / sw t1, 0(sp) / jal sum10 / addi sp, sp, 8. Para que serve a instrução addi sp, sp, -8?",
+    "question": "Em sum10 (dez argumentos int), o caller faz li a0..a7 com 10, 20, ..., 80 / addi sp, sp, -8 / li t1, 100 / sw t1, 4(sp) / li t1, 90 / sw t1, 0(sp) / jal sum10 / addi sp, sp, 8. Para que serve a instrução addi sp, sp, -8?",
     "answers": [
       "Para reservar na stack espaço para dois argumentos",
       "Para guardar o endereço de retorno na stack",
@@ -1403,7 +1403,7 @@
     "ref": "T8 p.24"
   },
   {
-    "question": "Considere sum10: lw t1, 0(sp) / lw t2, 4(sp) / add a0, a0, a1 / add a0, a0, a2 / add a0, a0, a3 / add a0, a0, a4 / add a0, a0, a5 / add a0, a0, a6 / add a0, a0, a7 / add a0, a0, t1 / add a0, a0, t2 / ret. Que valor devolve o callee em a0, se os dez argumentos forem 10, 20, 30, 40, 50, 60, 70, 80, 90 e 100?",
+    "question": "Em sum10: lw t1, 0(sp) / lw t2, 4(sp) / add a0, a0, aN para N = 1 a 7 / add a0, a0, t1 / add a0, a0, t2 / ret. Que valor devolve o callee em a0, se os dez argumentos forem 10, 20, 30, 40, 50, 60, 70, 80, 90 e 100?",
     "answers": [
       "550",
       "450",
@@ -1416,7 +1416,7 @@
     "ref": "T8 p.24"
   },
   {
-    "question": "Considere sum10: lw t1, 0(sp) / lw t2, 4(sp) / add a0, a0, a1 / add a0, a0, a2 / add a0, a0, a3 / add a0, a0, a4 / add a0, a0, a5 / add a0, a0, a6 / add a0, a0, a7 / add a0, a0, t1 / add a0, a0, t2 / ret. Que valor devolve o callee em a0, se os dez argumentos forem 1, 2, 3, 4, 5, 6, 7, 8, 9 e 10?",
+    "question": "Em sum10: lw t1, 0(sp) / lw t2, 4(sp) / add a0, a0, aN para N = 1 a 7 / add a0, a0, t1 / add a0, a0, t2 / ret. Que valor devolve o callee em a0, se os dez argumentos forem 1, 2, 3, 4, 5, 6, 7, 8, 9 e 10?",
     "answers": [
       "45",
       "55",
@@ -1429,7 +1429,7 @@
     "ref": "T8 p.24"
   },
   {
-    "question": "Considere sum10: lw t1, 0(sp) / lw t2, 4(sp) / add a0, a0, a1 / add a0, a0, a2 / add a0, a0, a3 / add a0, a0, a4 / add a0, a0, a5 / add a0, a0, a6 / add a0, a0, a7 / add a0, a0, t1 / add a0, a0, t2 / ret. Que valor devolve o callee em a0, se os dez argumentos forem 2, 4, 6, 8, 10, 12, 14, 16, 18 e 20?",
+    "question": "Em sum10: lw t1, 0(sp) / lw t2, 4(sp) / add a0, a0, aN para N = 1 a 7 / add a0, a0, t1 / add a0, a0, t2 / ret. Que valor devolve o callee em a0, se os dez argumentos forem 2, 4, 6, 8, 10, 12, 14, 16, 18 e 20?",
     "answers": [
       "90",
       "112",
