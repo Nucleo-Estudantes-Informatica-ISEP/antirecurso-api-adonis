@@ -21,11 +21,17 @@ export default class UserBlocksController {
     if (id === authUser.id)
       return response.unprocessableEntity({ message: 'Cannot block yourself' })
     if (!(await User.find(id))) return response.notFound({ message: 'User not found' })
-    await db
-      .table('user_blocks')
-      .insert({ user_id: authUser.id, blocked_user_id: id })
-      .onConflict(['user_id', 'blocked_user_id'])
-      .ignore()
+    try {
+      await db
+        .table('user_blocks')
+        .insert({ user_id: authUser.id, blocked_user_id: id })
+        .onConflict(['user_id', 'blocked_user_id'])
+        .ignore()
+    } catch (error) {
+      if (error && typeof error === 'object' && 'code' in error && error.code === '23503')
+        return response.notFound({ message: 'User not found' })
+      throw error
+    }
     return response.noContent()
   }
   async destroy({ authUser, params, request, response }: AuthenticatedHttpContext) {

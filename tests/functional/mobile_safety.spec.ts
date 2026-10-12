@@ -11,7 +11,7 @@ import Answer from '#models/answer'
 import AnswerQuestion from '#models/answer_question'
 import Note from '#models/note'
 import StorageService from '#services/storage_service'
-import { withNoteMutation } from '#services/note_mutation'
+import { lockNoteMutations, withNoteMutation } from '#services/note_mutation'
 import { deleteAccount } from '#services/auth/account_deletion'
 import env from '#start/env'
 import { signUploadAccess } from '#services/uploads/signed_note_access'
@@ -108,7 +108,45 @@ test.group('Mobile account deletion and comment safety', (group) => {
     client,
     assert,
   }) => {
-    const { viewer, author, comment, answer } = await setup()
+    const { viewer, author, comment, answer, subject, question } = await setup()
+    const attemptsTable = await db.rawQuery("SELECT to_regclass('exam_attempts') AS name")
+    if (attemptsTable.rows[0].name) {
+      const options = await Option.query().where('questionId', question.id)
+      await db.table('exam_attempts').insert({
+        id: randomUUID(),
+        user_id: viewer.user.id,
+        subject_id: subject.id,
+        mode: 'default',
+        snapshot: JSON.stringify({
+          nOfQuestions: null,
+          penalizingFactor: null,
+          questions: [
+            {
+              id: question.id,
+              question: 'Immutable safety review',
+              correctOption: 'A',
+              question_type: 'MC',
+              exam: '',
+              image: '',
+              options: options.map((option) => ({
+                id: option.id,
+                name: option.name,
+                order: option.order,
+              })),
+            },
+          ],
+        }),
+        result: JSON.stringify({
+          id: answer.id,
+          score: 100,
+          wrong_answers: 0,
+          passed: true,
+          subject: subject.name,
+        }),
+        created_at: new Date(),
+        updated_at: new Date(),
+      })
+    }
     const auth = `Bearer ${viewer.token}`
     const self = await client.put(`/user/blocks/${viewer.user.id}`).header('authorization', auth)
     self.assertStatus(422)
@@ -128,6 +166,8 @@ test.group('Mobile account deletion and comment safety', (group) => {
     const review = await client.get(`/exams/${answer.id}`).header('authorization', auth)
     review.assertStatus(200)
     assert.deepEqual(review.body().questions[0].comments, [])
+    if (attemptsTable.rows[0].name)
+      assert.equal(review.body().questions[0].question.question, 'Immutable safety review')
     const otherViewer = await client
       .get(`/comments/${comment.id}`)
       .header('authorization', `Bearer ${author.token}`)
@@ -238,6 +278,49 @@ test.group('Mobile account deletion and comment safety', (group) => {
     await db
       .table('exam_states')
       .insert({ state: {}, mode: 'default', user_id: viewer.user.id, subject_id: subject.id })
+
+    const otherNote = await Note.create({
+      title: 'Other account',
+      userId: author.user.id,
+      subjectId: subject.id,
+    })
+    await Note.create({ title: 'Owned row', userId: viewer.user.id, subjectId: subject.id })
+    await db.table('likes').insert({
+      user_id: viewer.user.id,
+      note_id: otherNote.id,
+      created_at: new Date(),
+      updated_at: new Date(),
+    })
+    await db.table('question_reports').insert({
+      user_id: viewer.user.id,
+      question_id: question.id,
+      reason: 'Report',
+      created_at: new Date(),
+      updated_at: new Date(),
+    })
+    const otherComment = await Comment.findByOrFail('userId', author.user.id)
+    await db.table('comment_reports').insert({
+      reporter_id: viewer.user.id,
+      comment_id: otherComment.id,
+      reason: 'Report',
+      created_at: new Date(),
+    })
+    await db.table('user_blocks').insert([
+      { user_id: viewer.user.id, blocked_user_id: author.user.id },
+      { user_id: author.user.id, blocked_user_id: viewer.user.id },
+    ])
+    const attemptsTable = await db.rawQuery("SELECT to_regclass('exam_attempts') AS name")
+    if (attemptsTable.rows[0].name) {
+      await db.table('exam_attempts').insert({
+        id: randomUUID(),
+        user_id: viewer.user.id,
+        subject_id: subject.id,
+        mode: 'default',
+        snapshot: JSON.stringify({ questions: [], nOfQuestions: null, penalizingFactor: null }),
+        created_at: new Date(),
+        updated_at: new Date(),
+      })
+    }
     const deleted = await client
       .delete('/user')
       .header('authorization', `Bearer ${viewer.token}`)
@@ -249,6 +332,21 @@ test.group('Mobile account deletion and comment safety', (group) => {
     assert.isNull(await Comment.findBy('userId', viewer.user.id))
     assert.isNull(await db.from('scores').where('user_id', viewer.user.id).first())
     assert.isNull(await db.from('exam_states').where('user_id', viewer.user.id).first())
+
+    for (const [table, column] of [
+      ['comments', 'user_id'],
+      ['likes', 'user_id'],
+      ['question_reports', 'user_id'],
+      ['comment_reports', 'reporter_id'],
+      ['notes', 'user_id'],
+      ['user_blocks', 'user_id'],
+      ['user_blocks', 'blocked_user_id'],
+    ])
+      assert.isNull(await db.from(table).where(column, viewer.user.id).first())
+    assert.isNull(await AnswerQuestion.findBy('answerId', answer.id))
+    assert.isNotNull(await Note.find(otherNote.id))
+    if (attemptsTable.rows[0].name)
+      assert.isNull(await db.from('exam_attempts').where('user_id', viewer.user.id).first())
     const stale = await client.get('/user').header('authorization', `Bearer ${viewer.token}`)
     stale.assertStatus(401)
     assert.isNull(await User.findBy('authSubject', viewer.sub))
@@ -258,6 +356,10 @@ test.group('Mobile account deletion and comment safety', (group) => {
     const rejoined = await client.get('/user').header('authorization', `Bearer ${fresh}`)
     rejoined.assertStatus(200)
     assert.notEqual(rejoined.body().id, viewer.user.id)
+    const rejectedAfterRejoin = await client
+      .get('/user')
+      .header('authorization', `Bearer ${viewer.token}`)
+    rejectedAfterRejoin.assertStatus(401)
   })
 
   test('storage failure never reports successful deletion or drops account metadata', async ({
@@ -281,7 +383,7 @@ test.group('Mobile account deletion and comment safety', (group) => {
     assert.isNotNull(await Note.find(note.id))
   })
 
-  test('deletion cleans owned published and unpromoted files before dropping metadata', async ({
+  test('deletion cleans owned published and unpromoted files within the metadata transaction', async ({
     client,
     assert,
   }) => {
@@ -394,7 +496,8 @@ test.group('Mobile account deletion and comment safety', (group) => {
       assert.equal(removed, id)
       assert.isTrue(uploaded)
     }
-    const mutation = withNoteMutation(viewer.user.id, async () => {
+    const mutation = withNoteMutation(viewer.user.id, async (trx) => {
+      await lockNoteMutations(trx, [id])
       entered()
       await finish
       uploaded = true
@@ -403,7 +506,8 @@ test.group('Mobile account deletion and comment safety', (group) => {
       await started
       const available = await db.transaction(async (trx) => {
         const result = await trx.rawQuery(
-          "SELECT pg_try_advisory_xact_lock(hashtext('antirecurso-note-assets')) AS available"
+          'SELECT pg_try_advisory_xact_lock(hashtext(?)) AS available',
+          [`antirecurso-note-asset:${id}`]
         )
         return result.rows[0].available
       })
@@ -423,6 +527,245 @@ test.group('Mobile account deletion and comment safety', (group) => {
       release()
       await mutation
       StorageService.prototype.deleteNoteAssets = original
+    }
+  })
+  test('authors cannot report their own comments', async ({ client, assert }) => {
+    const { author, comment } = await setup()
+    const res = await client
+      .post(`/comments/${comment.id}/report`)
+      .header('authorization', `Bearer ${author.token}`)
+      .json({ reason: 'Own comment' })
+    res.assertStatus(422)
+    assert.isNull(await db.from('comment_reports').where('comment_id', comment.id).first())
+  })
+
+  test('note creation and replacement reject another account upload before storage access', async ({
+    client,
+    assert,
+  }) => {
+    const { viewer, admin, subject } = await setup()
+    const id = randomUUID()
+    await db.table('note_uploads').insert({ id, user_id: viewer.user.id, created_at: new Date() })
+    const note = await Note.create({
+      title: 'Original',
+      userId: admin.user.id,
+      subjectId: subject.id,
+    })
+    const original = StorageService.prototype.promoteUploadedNote
+    let promoted = false
+    StorageService.prototype.promoteUploadedNote = async () => {
+      promoted = true
+    }
+    try {
+      const created = await client
+        .post(`/subjects/${subject.id}/notes`)
+        .header('authorization', `Bearer ${admin.token}`)
+        .json({ title: 'Stolen', upload_id: id })
+      created.assertStatus(403)
+      const updated = await client
+        .patch(`/notes/${note.id}`)
+        .header('authorization', `Bearer ${admin.token}`)
+        .json({ upload_id: id })
+      updated.assertStatus(403)
+      assert.isFalse(promoted)
+      const unchanged = await Note.findOrFail(note.id)
+      assert.isNull(unchanged.uploadId)
+    } finally {
+      StorageService.prototype.promoteUploadedNote = original
+    }
+  })
+
+  test('resolved auth reads stay transaction-free', async ({ client, assert }) => {
+    const { viewer } = await setup()
+    const initial = await client.get('/user').header('authorization', `Bearer ${viewer.token}`)
+    initial.assertStatus(200)
+    const original = db.transaction
+    db.transaction = (() => {
+      throw new Error('Unexpected auth transaction')
+    }) as typeof db.transaction
+    try {
+      const repeat = await client.get('/user').header('authorization', `Bearer ${viewer.token}`)
+      repeat.assertStatus(200)
+      assert.equal(repeat.body().id, viewer.user.id)
+    } finally {
+      db.transaction = original
+    }
+  })
+
+  test('blocking an author concurrently deleted returns 404', async ({ client }) => {
+    const { viewer, author } = await setup()
+    const original = User.find
+    User.find = (async (id: number) => {
+      const user = await original.call(User, id)
+      if (id === author.user.id) await User.query().where('id', id).delete()
+      return user
+    }) as typeof User.find
+    try {
+      const res = await client
+        .put(`/user/blocks/${author.user.id}`)
+        .header('authorization', `Bearer ${viewer.token}`)
+      res.assertStatus(404)
+    } finally {
+      User.find = original
+    }
+  })
+
+  test('SQL deletion failure rolls back metadata before touching storage', async ({ assert }) => {
+    const { viewer, subject } = await setup()
+    const note = await Note.create({
+      title: 'Retained',
+      uploadId: randomUUID(),
+      userId: viewer.user.id,
+      subjectId: subject.id,
+    })
+    const originalDelete = User.prototype.delete
+    const originalStorage = StorageService.prototype.deleteNoteAssets
+    let removed = false
+    User.prototype.delete = async () => {
+      throw new Error('Injected SQL failure')
+    }
+    StorageService.prototype.deleteNoteAssets = async () => {
+      removed = true
+    }
+    try {
+      await assert.rejects(() => deleteAccount(viewer.user.id, viewer.sub), /Injected SQL failure/)
+      assert.isFalse(removed)
+      assert.isNotNull(await User.find(viewer.user.id))
+      assert.isNotNull(await Note.find(note.id))
+    } finally {
+      User.prototype.delete = originalDelete
+      StorageService.prototype.deleteNoteAssets = originalStorage
+    }
+  })
+  test('deletion accepts explicit confirmation header without a DELETE body', async ({
+    client,
+    assert,
+  }) => {
+    const { viewer } = await setup()
+    const res = await client
+      .delete('/user')
+      .header('authorization', `Bearer ${viewer.token}`)
+      .header('x-antirecurso-confirmation', 'DELETE_ANTIRECURSO_DATA')
+    res.assertStatus(204)
+    assert.isNull(await User.find(viewer.user.id))
+  })
+
+  test('slow upload body reserves no actor or asset lock and deletion prevents the late write', async ({
+    client,
+    assert,
+  }) => {
+    const { viewer, author } = await setup()
+    const id = randomUUID()
+    const expires = Date.now() + 60000
+    const signature = signUploadAccess(env.get('APP_KEY'), id, expires)
+    await db.table('note_uploads').insert({ id, user_id: viewer.user.id, created_at: new Date() })
+    const originalRead = StorageService.prototype.readNoteUpload
+    const originalUpload = StorageService.prototype.uploadNote
+    const originalDelete = StorageService.prototype.deleteNoteAssets
+    let reads = 0
+    let writes = 0
+    StorageService.prototype.readNoteUpload = async () => {
+      reads++
+      await db.transaction(async (trx) => {
+        await trx.rawQuery("SET LOCAL lock_timeout = '1s'")
+        await trx.from('users').where('id', viewer.user.id).forUpdate().first()
+        const result = await trx.rawQuery(
+          'SELECT pg_try_advisory_xact_lock(hashtext(?)) AS available',
+          [`antirecurso-note-asset:${id}`]
+        )
+        assert.isTrue(result.rows[0].available)
+      })
+      await withNoteMutation(author.user.id, async () => {})
+      await deleteAccount(viewer.user.id, viewer.sub)
+      return Buffer.from('%PDF-test')
+    }
+    StorageService.prototype.uploadNote = async () => {
+      writes++
+    }
+    StorageService.prototype.deleteNoteAssets = async () => {}
+    try {
+      const res = await client
+        .put(`/uploads/${id}?expires=${expires}&signature=${signature}`)
+        .header('authorization', `Bearer ${viewer.token}`)
+        .header('content-type', 'application/pdf')
+      res.assertStatus(401)
+      assert.equal(reads, 1)
+      assert.equal(writes, 0)
+      assert.isNull(await User.find(viewer.user.id))
+    } finally {
+      StorageService.prototype.readNoteUpload = originalRead
+      StorageService.prototype.uploadNote = originalUpload
+      StorageService.prototype.deleteNoteAssets = originalDelete
+    }
+  })
+
+  test('account file cleanup does not block unrelated users or files', async ({ assert }) => {
+    const { viewer, author } = await setup()
+    const id = randomUUID()
+    await db.table('note_uploads').insert({ id, user_id: viewer.user.id, created_at: new Date() })
+    const original = StorageService.prototype.deleteNoteAssets
+    StorageService.prototype.deleteNoteAssets = async () => {
+      await withNoteMutation(author.user.id, async (trx) => {
+        await trx.rawQuery("SET LOCAL lock_timeout = '1s'")
+        await lockNoteMutations(trx, [randomUUID()])
+      })
+    }
+    try {
+      await deleteAccount(viewer.user.id, viewer.sub)
+      assert.isNull(await User.find(viewer.user.id))
+      assert.isNotNull(await User.find(author.user.id))
+    } finally {
+      StorageService.prototype.deleteNoteAssets = original
+    }
+  })
+
+  test('owned note promotion and replacement work; another admin can still edit metadata', async ({
+    client,
+    assert,
+  }) => {
+    const { admin, subject } = await setup()
+    const id = randomUUID()
+    const replacement = randomUUID()
+    await db.table('note_uploads').insert(
+      [id, replacement].map((uploadId) => ({
+        id: uploadId,
+        user_id: admin.user.id,
+        created_at: new Date(),
+      }))
+    )
+    const original = StorageService.prototype.promoteUploadedNote
+    const promoted: string[] = []
+    StorageService.prototype.promoteUploadedNote = async (uploadId) => {
+      promoted.push(uploadId)
+    }
+    try {
+      const created = await client
+        .post(`/subjects/${subject.id}/notes`)
+        .header('authorization', `Bearer ${admin.token}`)
+        .json({ title: 'Owned', upload_id: id })
+      created.assertStatus(201)
+      const updated = await client
+        .patch(`/notes/${created.body().id}`)
+        .header('authorization', `Bearer ${admin.token}`)
+        .json({ upload_id: replacement })
+      updated.assertStatus(200)
+      assert.equal(updated.body().upload_id, replacement)
+      assert.deepEqual(promoted, [id, replacement])
+      const otherActors = await setup()
+      const other = otherActors.admin
+      const edited = await client
+        .patch(`/notes/${created.body().id}`)
+        .header('authorization', `Bearer ${other.token}`)
+        .json({ title: 'Moderated' })
+      edited.assertStatus(200)
+      assert.equal(edited.body().title, 'Moderated')
+      const stolen = await client
+        .patch(`/notes/${created.body().id}`)
+        .header('authorization', `Bearer ${other.token}`)
+        .json({ upload_id: id })
+      stolen.assertStatus(403)
+    } finally {
+      StorageService.prototype.promoteUploadedNote = original
     }
   })
 })

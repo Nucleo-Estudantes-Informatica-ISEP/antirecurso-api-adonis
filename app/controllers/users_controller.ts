@@ -20,7 +20,10 @@ import {
 
 export default class UsersController {
   async destroy({ authUser, authClaims, request, response }: AuthenticatedHttpContext) {
-    if (request.input('confirmation') !== 'DELETE_ANTIRECURSO_DATA')
+    if (
+      (request.header('x-antirecurso-confirmation') ?? request.input('confirmation')) !==
+      'DELETE_ANTIRECURSO_DATA'
+    )
       return response.unprocessableEntity({ message: 'Confirm deletion of AntiRecurso data' })
     try {
       await deleteAccount(authUser.id, authClaims.sub)

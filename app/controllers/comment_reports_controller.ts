@@ -12,6 +12,8 @@ export default class CommentReportsController {
     })
     const comment = await visibleComments(Comment.query(), authUser.id).where('id', data.id).first()
     if (!comment) return response.notFound({ message: 'Comment not found' })
+    if (comment.userId === authUser.id)
+      return response.unprocessableEntity({ message: 'Cannot report your own comment' })
     const created = await db
       .table('comment_reports')
       .insert({

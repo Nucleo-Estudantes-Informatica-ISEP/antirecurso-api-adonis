@@ -317,19 +317,34 @@ export default class ZitadelAuthService {
   }
 
   private async findOrCreateUser(claims: AuthClaims): Promise<User> {
+    const hash = accountSubjectHash(claims.sub)
+    const current = await User.query()
+      .select('users.*', 'deleted_accounts.issued_before as deletion_cutoff')
+      .leftJoin('deleted_accounts', 'deleted_accounts.subject_hash', db.raw('?', [hash]))
+      .where('users.auth_subject', claims.sub)
+      .first()
+    if (current) {
+      this.assertDeletionCutoff(claims, current.$extras.deletion_cutoff)
+      if (current.email === claims.email && current.name === claims.name && current.emailVerifiedAt)
+        return current
+    }
     return db.transaction(async (trx) => {
-      const hash = accountSubjectHash(claims.sub)
       await trx.rawQuery('SELECT pg_advisory_xact_lock(hashtext(?))', [hash])
       const deleted = await trx.from('deleted_accounts').where('subject_hash', hash).first()
-      if (
-        deleted &&
-        (!Number.isSafeInteger(claims.iat) || claims.iat! <= Number(deleted.issued_before))
-      )
-        throw new UnauthorizedError(
-          'Account deleted; sign in again to create an empty AntiRecurso account'
-        )
+      this.assertDeletionCutoff(claims, deleted?.issued_before)
       return this.resolveLocalUser(claims, trx)
     })
+  }
+
+  private assertDeletionCutoff(claims: AuthClaims, cutoff: unknown) {
+    if (
+      cutoff !== null &&
+      cutoff !== undefined &&
+      (!Number.isSafeInteger(claims.iat) || claims.iat! <= Number(cutoff))
+    )
+      throw new UnauthorizedError(
+        'Account deleted; sign in again to create an empty AntiRecurso account'
+      )
   }
 
   private async resolveLocalUser(

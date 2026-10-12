@@ -306,6 +306,8 @@ Admin-managed event windows shown in the Antirecurso dashboard.
 
 [Deletion/moderation behavior and rollout](MOBILE_SAFETY.md). This additive migration is independent of the exam-recovery migration; install both before the updated mobile client.
 
+Migration `1791792100000_index_mobile_safety_owners.ts` adds indexes for `note_uploads.user_id`/`created_at`, `comment_reports.reporter_id` and `user_blocks.blocked_user_id` for cleanup and reverse cascades. Upload ownership rows remain a cleanup ledger after promotion; age alone is not grounds to remove them.
+
 ## Foreign Key Deletion Behavior
 
 The current schema uses these deletion rules:

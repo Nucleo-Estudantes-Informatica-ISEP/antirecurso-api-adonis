@@ -13,7 +13,6 @@ export async function deleteAccount(userId: number, sub: string) {
   await db.transaction(async (trx) => {
     const hash = accountSubjectHash(sub)
     await trx.rawQuery('SELECT pg_advisory_xact_lock(hashtext(?))', [hash])
-    await lockNoteMutations(trx)
     const user = await User.query().useTransaction(trx).where('id', userId).forUpdate().first()
     if (!user || user.authSubject !== sub)
       throw new UnauthorizedError('Account no longer available')
@@ -26,6 +25,7 @@ export async function deleteAccount(userId: number, sub: string) {
         )
       ),
     ]
+    await lockNoteMutations(trx, uploadIds)
     if (uploadIds.length) {
       const shared = await Note.query()
         .useTransaction(trx)
@@ -36,15 +36,6 @@ export async function deleteAccount(userId: number, sub: string) {
         throw new SharedNoteError(
           'A note file is shared with another account; contact an administrator'
         )
-      try {
-        // shortcut: S3 and SQL cannot commit together; retry partial cleanup, use a durable job if background deletion becomes necessary.
-        const storage = new StorageService()
-        for (const id of uploadIds) await storage.deleteNoteAssets(id)
-      } catch {
-        throw new DeletionStorageError(
-          'File cleanup unavailable; account deletion was not completed'
-        )
-      }
     }
     await trx
       .table('deleted_accounts')
@@ -55,5 +46,16 @@ export async function deleteAccount(userId: number, sub: string) {
     await trx.from('answers').where('user_id', userId).delete()
     user.useTransaction(trx)
     await user.delete()
+    if (uploadIds.length) {
+      try {
+        // shortcut: storage and SQL commit are not atomic; retain metadata on failure, use a durable cleanup job for commit-failure recovery.
+        const storage = new StorageService()
+        for (const id of uploadIds) await storage.deleteNoteAssets(id)
+      } catch {
+        throw new DeletionStorageError(
+          'File cleanup unavailable; account deletion was not completed'
+        )
+      }
+    }
   })
 }
