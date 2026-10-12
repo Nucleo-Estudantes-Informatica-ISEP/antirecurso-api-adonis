@@ -1,4 +1,5 @@
 import { test } from '@japa/runner'
+import limiter from '@adonisjs/limiter/services/main'
 import { randomUUID } from 'node:crypto'
 import ZitadelAuthService from '#services/auth/zitadel_auth_service'
 import Subject from '#models/subject'
@@ -17,6 +18,7 @@ import {
 } from '#tests/helpers/token_factory'
 
 test.group('Exams', (group) => {
+  group.each.setup(() => limiter.clear(['memory']))
   const suffix = randomUUID().slice(0, 8)
   const USER_SUB = `exams-user-${suffix}`
   const USER_EMAIL = `exams-user-${suffix}@example.test`
@@ -390,7 +392,7 @@ test.group('Exams', (group) => {
   test('another identity cannot recover or submit the owned attempt', async ({ client }) => {
     const attempt = await mobileAttempt(client)
     const anonymous = await client.get(`/exams/attempts/${attempt.id}`)
-    anonymous.assertStatus(404)
+    anonymous.assertStatus(401)
     const other = await client
       .get(`/exams/attempts/${attempt.id}`)
       .header('authorization', `Bearer ${adminToken}`)
@@ -400,5 +402,151 @@ test.group('Exams', (group) => {
       .header('authorization', `Bearer ${adminToken}`)
       .json(attempt.verify)
     submit.assertStatus(409)
+  })
+  test('attempt persistence requires auth while legacy anonymous exams remain supported', async ({
+    client,
+  }) => {
+    const id = randomUUID()
+    const generated = await client.get(`/exams/generate/${subject.id}?attempt_id=${id}`)
+    generated.assertStatus(401)
+    const verified = await client.post('/exams/verify').json({
+      subject_id: subject.id,
+      attempt_id: id,
+      answers: questions.map((q) => ({ question_id: q.id, selected_option: 'A' })),
+    })
+    verified.assertStatus(401)
+  })
+
+  test('duplicate and concurrent generation return clean conflicts without replacing snapshots', async ({
+    client,
+    assert,
+  }) => {
+    const attempt = await mobileAttempt(client)
+    for (const token of [userToken, adminToken]) {
+      const duplicate = await client
+        .get(`/exams/generate/${subject.id}?attempt_id=${attempt.id}`)
+        .header('authorization', `Bearer ${token}`)
+      duplicate.assertStatus(409)
+      assert.equal(
+        duplicate.body().message,
+        'Attempt ID already exists; recover it or use a new ID'
+      )
+    }
+    const recovered = await client
+      .get(`/exams/attempts/${attempt.id}`)
+      .header('authorization', `Bearer ${userToken}`)
+    assert.deepEqual(recovered.body().questions, attempt.generated)
+    const id = randomUUID()
+    const concurrent = await Promise.all(
+      [0, 1].map(() =>
+        client
+          .get(`/exams/generate/${subject.id}?attempt_id=${id}`)
+          .header('authorization', `Bearer ${userToken}`)
+      )
+    )
+    assert.sameMembers(
+      concurrent.map((res) => res.status()),
+      [200, 409]
+    )
+  })
+
+  test('UUID v7 can generate, recover and replay grading with changed retry time', async ({
+    client,
+    assert,
+  }) => {
+    const id = randomUUID().replace(/-4/, '-7')
+    const generated = await client
+      .get(`/exams/generate/${subject.id}?attempt_id=${id}`)
+      .header('authorization', `Bearer ${userToken}`)
+    generated.assertStatus(200)
+    const recovered = await client
+      .get(`/exams/attempts/${id}`)
+      .header('authorization', `Bearer ${userToken}`)
+    recovered.assertStatus(200)
+    assert.deepEqual(recovered.body().questions, generated.body())
+    const body = {
+      subject_id: subject.id,
+      attempt_id: id,
+      time: 5,
+      answers: generated.body().map((q: any) => ({ question_id: q.id, selected_option: 'A' })),
+    }
+    const first = await client
+      .post('/exams/verify')
+      .header('authorization', `Bearer ${userToken}`)
+      .json(body)
+    first.assertStatus(200)
+    const retry = await client
+      .post('/exams/verify')
+      .header('authorization', `Bearer ${userToken}`)
+      .json({ ...body, time: 20 })
+    retry.assertStatus(200)
+    assert.deepEqual(retry.body(), first.body())
+    const stored = await Answer.findOrFail(first.body().id)
+    assert.equal(stored.time, 5)
+    const changedConfig = await client
+      .post('/exams/verify')
+      .header('authorization', `Bearer ${userToken}`)
+      .json({ ...body, n_of_questions: 10 })
+    changedConfig.assertStatus(409)
+  })
+
+  test('deleted snapshot option returns clean 409 and rolls back grading', async ({
+    client,
+    assert,
+  }) => {
+    const attempt = await mobileAttempt(client)
+    const option = await Option.query()
+      .where('questionId', questions[0].id)
+      .where('order', 'A')
+      .firstOrFail()
+    const attrs = {
+      id: option.id,
+      name: option.name,
+      order: option.order,
+      questionId: option.questionId,
+    }
+    await option.delete()
+    try {
+      const res = await client
+        .post('/exams/verify')
+        .header('authorization', `Bearer ${userToken}`)
+        .json(attempt.verify)
+      res.assertStatus(409)
+      assert.equal(res.body().message, 'Attempt question or option no longer available')
+      const recovered = await client
+        .get(`/exams/attempts/${attempt.id}`)
+        .header('authorization', `Bearer ${userToken}`)
+      assert.isNull(recovered.body().result)
+    } finally {
+      await Option.create(attrs)
+    }
+  })
+
+  test('state deletion validates revision and row ID with the same numeric rules as saves', async ({
+    client,
+  }) => {
+    for (const query of [
+      'expected_revision=-1',
+      'expected_revision=1.5',
+      'expected_revision=oops',
+      'expected_revision=1&expected_state_id=0',
+    ]) {
+      const res = await client
+        .delete(`/exams/state?subject_id=${subject.id}&mode=default&${query}`)
+        .header('authorization', `Bearer ${userToken}`)
+      res.assertStatus(422)
+    }
+  })
+  test('attempt recovery is exam-throttled', async ({ client }) => {
+    for (let i = 0; i < 20; i++) {
+      const res = await client
+        .get(`/exams/attempts/${randomUUID()}`)
+        .header('authorization', `Bearer ${userToken}`)
+      res.assertStatus(404)
+    }
+    const blocked = await client
+      .get(`/exams/attempts/${randomUUID()}`)
+      .header('authorization', `Bearer ${userToken}`)
+    blocked.assertStatus(429)
   })
 })

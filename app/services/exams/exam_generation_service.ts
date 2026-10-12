@@ -1,9 +1,10 @@
 import { randomInt } from 'node:crypto'
 import Answer from '#models/answer'
 import AnswerQuestion from '#models/answer_question'
-import Question from '#models/question'
 import ExamAttempt from '#models/exam_attempt'
+import Question from '#models/question'
 import type Subject from '#models/subject'
+import { AttemptConflictError } from '#services/exams/exam_verification_service'
 import { DEFAULT_EXAM_RULE, type ExamMode, getSubjectExamRule } from '#services/exams/exam_config'
 
 export type GeneratedQuestionOption = {
@@ -32,6 +33,8 @@ export type GenerateExamParams = {
 
 export default class ExamGenerationService {
   async generate(params: GenerateExamParams): Promise<GeneratedQuestion[]> {
+    if (params.attemptId && params.userId === null)
+      throw new AttemptConflictError('Authentication required for stored attempts')
     let selectedQuestions: Question[] = []
 
     if (params.mode === 'realistic') {
@@ -67,27 +70,33 @@ export default class ExamGenerationService {
     const selected = this.shuffle(selectedQuestions)
     const result = this.serializeQuestions(selected)
     if (params.attemptId) {
-      await ExamAttempt.create({
-        id: params.attemptId,
-        userId: params.userId,
-        subjectId: params.subject.id,
-        mode: params.mode,
-        snapshot: {
-          nOfQuestions: params.nOfQuestions,
-          penalizingFactor: params.penalizingFactor ?? null,
-          questions: result.map((item) => {
-            const source = selected.find((question) => question.id === item.id)!
-            return {
-              ...item,
-              correctOption: source.correctOption,
-              options: item.options.map((option) => ({
-                ...option,
-                id: source.options.find((value) => value.order === option.order)!.id,
-              })),
-            }
-          }),
-        },
-      })
+      try {
+        await ExamAttempt.create({
+          id: params.attemptId,
+          userId: params.userId,
+          subjectId: params.subject.id,
+          mode: params.mode,
+          snapshot: {
+            nOfQuestions: params.nOfQuestions,
+            penalizingFactor: params.penalizingFactor ?? null,
+            questions: result.map((item) => {
+              const source = selected.find((question) => question.id === item.id)!
+              return {
+                ...item,
+                correctOption: source.correctOption,
+                options: item.options.map((option) => ({
+                  ...option,
+                  id: source.options.find((value) => value.order === option.order)!.id,
+                })),
+              }
+            }),
+          },
+        })
+      } catch (error) {
+        if (error && typeof error === 'object' && 'code' in error && error.code === '23505')
+          throw new AttemptConflictError('Attempt ID already exists; recover it or use a new ID')
+        throw error
+      }
     }
     return result
   }

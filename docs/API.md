@@ -107,7 +107,7 @@ Limits use authenticated local user id when available, otherwise request IP.
 
 | Policy             | Routes                                                                                                    | Limit / block    |
 | ------------------ | --------------------------------------------------------------------------------------------------------- | ---------------- |
-| Exam               | `GET /exams/generate/:subject_id`, `POST /exams/verify`                                                   | 20/min; 5 min    |
+| Exam               | `GET /exams/generate/:subject_id`, `POST /exams/verify`, `GET /exams/attempts/:id` | 20/min; 5 min    |
 | Mutation           | Scoreboard/comment/question/report/note/event mutations, note view, exam-state save/delete, report review | 30/min; 5 min    |
 | Upload             | `POST /upload`                                                                                            | 10/5 min; 15 min |
 | Account resolution | `POST /user/account-resolution`                                                                           | 5/15 min; 1 hour |
@@ -517,16 +517,16 @@ Upload grant contains id, target, maxSize (67108864), expires, url, headers (con
 ### Exams
 
 `default` and `realistic` generation work anonymously. `new`, `wrong`, `hard`, and `custom`
-generation require a valid user. Verification may be anonymous for every mode; authenticated
+generation require a valid user. Legacy verification without `attempt_id` may be anonymous for every mode; authenticated
 verification owns answer, updates scoreboard, and completes matching saved state. Optional attempt IDs preserve the legacy contract for older clients.
 
 #### `GET /exams/generate/:subject_id`
 
 - Query: `mode?: ExamMode`, default `default`; `n_of_questions?: integer` in `5..50`, required for
-  `custom`; `filter?: string`, with only `filter=new` changing current custom behavior.
+  `custom`; `filter?: string`, with only `filter=new` changing current custom behavior. Optional `attempt_id` (UUID, all validator-supported versions) and `penalizing_factor` record an authenticated snapshot.
 - Response: `200 GeneratedQuestion[]`.
 - Errors: `400` invalid id/custom count/generation; `401` user-dependent mode without user or invalid
-  token; `404` missing subject; `422` invalid query; `429` exam limit.
+  token; `404` missing subject; `409` repeated attempt ID; `422` invalid query; `429` exam limit. Stored attempts require auth (`401`). Generation is not idempotent: after a lost response, recover the existing ID; use a new ID for a new exam.
 
 #### `POST /exams/verify`
 
@@ -546,10 +546,11 @@ verification owns answer, updates scoreboard, and completes matching saved state
 
 - Validation: answer count matches mode; question ids are unique, exist, and belong to subject;
   selected option is one alphanumeric character and must exist for question.
-- Transaction: answer/detail, scoreboard, state completion and optional attempt result commit together. Stable UUIDs are scoped to the owner (or anonymous scope); concurrent/sequential identical submissions return the exact original result and score once. Changed answers, time or configuration after completion return 409. Different UUIDs remain distinct. Grading uses the original snapshot. Deleted underlying question/option rows may invalidate verification; no replacement questions are generated.
+- Transaction: answer/detail, scoreboard, state completion and optional attempt result commit together. Stable UUIDs require authentication and are scoped to the owner; concurrent/sequential identical submissions return the exact original result and score once. Changed answers or configuration after completion return 409. Retry time is excluded from the request hash; the first committed elapsed time remains stored. Different UUIDs remain distinct. Grading uses the original snapshot. Deleted underlying question/option rows invalidate ungraded attempts with a clean 409; grading rolls back and no replacement questions are generated.
+- Clients must echo generation `n_of_questions` and `penalizing_factor`, including omission/null: stored configuration is immutable, and substituting an explicit value returns 409.
 - New-attempt completion only completes the cloud row with that same UUID. Legacy verification only completes a legacy state row.
 - Response: `200 { id, score, wrong_answers, passed, subject }` with numeric fields as numbers.
-- Errors: `400` domain mismatch; `401` invalid supplied token; `404` missing subject; `422` invalid
+- Errors: `400` domain mismatch; `401` missing auth for stored attempts or invalid supplied token; `404` missing subject; `422` invalid
   body; `429` exam limit.
 
 #### `POST /exams/state`
@@ -581,9 +582,9 @@ verification owns answer, updates scoreboard, and completes matching saved state
 
 #### `GET /exams/attempts/:id`
 
-- Optional auth, enforced against the stored owner; another identity (including admin) gets 404. Anonymous scope uses an unpredictable UUID capability for original questions and summary only, never detailed private review.
+- Authentication required (`401`); only the stored owner can recover. Another identity (including admin) gets `404`. UUID validation matches generation/verification, including v7 (`422` for invalid IDs). Exam throttle applies (`429`). Existing anonymous snapshots cannot be recovered.
 - Response: `{ id: string, questions: GeneratedQuestion[], result: ExamResult | null }`. Immutable original content and exact committed result; never correct answers or internal option IDs. Null result does not prove verification is not running.
-- Clients may explicitly retry the identical verification body with the same UUID after confirming this endpoint; never automatically replay against a legacy API.
+- Clients may explicitly retry verification with the same answers/configuration and UUID after confirming this endpoint; never automatically replay against a legacy API.
 - Owned `/exams/:id` review uses original snapshots for new attempts. Legacy results retain current content.
 - Verification adds 409 for unavailable/mismatched/already-submitted attempts.
 

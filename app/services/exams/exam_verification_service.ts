@@ -1,14 +1,14 @@
-import db from '@adonisjs/lucid/services/db'
 import { createHash } from 'node:crypto'
-import ExamAttempt from '#models/exam_attempt'
-import User from '#models/user'
+import db from '@adonisjs/lucid/services/db'
 import Answer from '#models/answer'
 import AnswerQuestion from '#models/answer_question'
+import ExamAttempt from '#models/exam_attempt'
 import ExamState from '#models/exam_state'
 import Option from '#models/option'
 import Question from '#models/question'
 import Score from '#models/score'
 import type Subject from '#models/subject'
+import User from '#models/user'
 import {
   DEFAULT_EXAM_RULE,
   type ExamMode,
@@ -72,7 +72,6 @@ export default class ExamVerificationService {
           JSON.stringify({
             subject: input.subject.id,
             mode: input.mode,
-            time: input.time,
             count: input.nOfQuestions,
             penalty: input.penalizingFactor,
             answers: input.answers
@@ -86,6 +85,7 @@ export default class ExamVerificationService {
         .digest('hex')
       if (input.attemptId) {
         if (
+          input.userId === null ||
           !attempt ||
           attempt.userId !== input.userId ||
           attempt.subjectId !== input.subject.id ||
@@ -225,6 +225,14 @@ export default class ExamVerificationService {
       return result
     } catch (error) {
       await trx.rollback()
+      if (
+        input.attemptId &&
+        error &&
+        typeof error === 'object' &&
+        'code' in error &&
+        error.code === '23503'
+      )
+        throw new AttemptConflictError('Attempt question or option no longer available')
       throw error
     }
   }

@@ -2,10 +2,10 @@ import type { HttpContext } from '@adonisjs/core/http'
 import db from '@adonisjs/lucid/services/db'
 import Answer from '#models/answer'
 import ExamAttempt from '#models/exam_attempt'
-import User from '#models/user'
 import ExamState from '#models/exam_state'
 import Question from '#models/question'
 import Subject from '#models/subject'
+import User from '#models/user'
 import ExamGenerationService from '#services/exams/exam_generation_service'
 import type { ExamMode } from '#services/exams/exam_config'
 import {
@@ -18,9 +18,11 @@ import ExamVerificationService, {
   AttemptConflictError,
 } from '#services/exams/exam_verification_service'
 import {
+  clearExamStateValidator,
   examHistoryValidator,
   examStateIdentifierValidator,
   generateExamValidator,
+  recoverExamAttemptValidator,
   saveExamStateValidator,
   verifyExamValidator,
 } from '#validators/exam'
@@ -61,6 +63,8 @@ export default class ExamsController {
     }
 
     const userId = authUser?.id ?? null
+    if (data.attempt_id && userId === null)
+      return response.unauthorized({ message: 'Authentication required for stored attempts' })
 
     if (modeRequiresUser(mode) && userId === null) {
       return response.unauthorized({ message: 'You must be logged in to generate this exam mode' })
@@ -85,6 +89,8 @@ export default class ExamsController {
 
       return response.ok(questions)
     } catch (error) {
+      if (error instanceof AttemptConflictError)
+        return response.conflict({ message: error.message })
       const message = error instanceof Error ? error.message : 'Unable to generate exam'
       return response.badRequest({ message })
     }
@@ -104,6 +110,8 @@ export default class ExamsController {
     }
 
     const userId = authUser?.id ?? null
+    if (data.attempt_id && userId === null)
+      return response.unauthorized({ message: 'Authentication required for stored attempts' })
 
     if (mode === 'custom' && data.n_of_questions === undefined) {
       return response.badRequest({
@@ -209,10 +217,13 @@ export default class ExamsController {
       return response.notFound({ message: 'Invalid answer' })
     }
 
-    const immutable = await ExamAttempt.query()
-      .where('user_id', exam.userId!)
-      .whereRaw("result->>'id' = ?", [String(exam.id)])
-      .first()
+    const immutable =
+      exam.userId === null
+        ? null
+        : await ExamAttempt.query()
+            .where('user_id', exam.userId)
+            .whereRaw("result->>'id' = ?", [String(exam.id)])
+            .first()
     const questions = exam.questions.map((answerQuestion) => {
       const question = answerQuestion.question
       const snapshot = immutable?.snapshot.questions.find((item) => item.id === question.id)
@@ -426,22 +437,18 @@ export default class ExamsController {
    * DELETE /exams/state?subject_id=1&mode=default
    */
   async clearState({ authUser, request, response }: AuthenticatedHttpContext) {
-    const data = await request.validateUsing(examStateIdentifierValidator, {
+    const data = await request.validateUsing(clearExamStateValidator, {
       data: {
         subject_id: this.parseNumericInput(request.input('subject_id')) ?? undefined,
         mode: request.input('mode', 'default'),
+        expected_revision: request.input('expected_revision'),
+        expected_state_id: request.input('expected_state_id'),
       },
     })
-
-    const revision = request.input('expected_revision')
-    const stateId = request.input('expected_state_id')
-    if (
-      revision !== undefined &&
-      (!/^\d+$/.test(String(revision)) ||
-        (Number(revision) > 0 && !/^[1-9]\d*$/.test(String(stateId))))
-    ) {
-      return response.badRequest({ message: 'Invalid expected state revision' })
-    }
+    const revision = data.expected_revision
+    const stateId = data.expected_state_id
+    if (revision !== undefined && revision > 0 && stateId === undefined)
+      return response.badRequest({ message: 'Expected state ID required with revision' })
     return db.transaction(async (trx) => {
       await User.query({ client: trx }).where('id', authUser.id).forUpdate().firstOrFail()
       const state = await ExamState.query({ client: trx })
@@ -453,7 +460,7 @@ export default class ExamsController {
       const active = state && !state.isCompleted ? state : null
       if (
         revision !== undefined &&
-        (Number(revision) !== (active?.revision ?? 0) || (active && Number(stateId) !== active.id))
+        (revision !== (active?.revision ?? 0) || (active && stateId !== active.id))
       ) {
         return response.conflict({ message: 'Exam state revision changed' })
       }
@@ -501,15 +508,13 @@ export default class ExamsController {
       }),
     })
   }
-  async recoverAttempt({ authUser, params, response }: HttpContext) {
-    if (
-      typeof params.id !== 'string' ||
-      !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(params.id)
-    ) {
-      return response.badRequest({ message: 'Invalid attempt ID' })
-    }
-    const attempt = await ExamAttempt.find(params.id)
-    if (!attempt || attempt.userId !== (authUser?.id ?? null))
+
+  async recoverAttempt({ authUser, params, request, response }: AuthenticatedHttpContext) {
+    const { id } = await request.validateUsing(recoverExamAttemptValidator, {
+      data: { id: params.id },
+    })
+    const attempt = await ExamAttempt.find(id)
+    if (!attempt || attempt.userId !== authUser.id)
       return response.notFound({ message: 'Attempt unavailable' })
     return response.ok({
       id: attempt.id,
@@ -522,6 +527,7 @@ export default class ExamsController {
       ),
     })
   }
+
   private parseNumericInput(value: unknown): number | null {
     if (typeof value === 'number' && Number.isFinite(value)) {
       return value

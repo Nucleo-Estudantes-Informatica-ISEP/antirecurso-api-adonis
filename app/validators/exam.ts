@@ -68,3 +68,14 @@ export const saveExamStateValidator = vine.compile(
     state: vine.any(),
   })
 )
+
+export const recoverExamAttemptValidator = vine.compile(vine.object({ id: vine.string().uuid() }))
+
+export const clearExamStateValidator = vine.compile(
+  vine.object({
+    subject_id: vine.number().withoutDecimals().positive(),
+    mode: vine.enum(EXAM_MODES),
+    expected_revision: vine.number().withoutDecimals().min(0).optional(),
+    expected_state_id: vine.number().withoutDecimals().positive().optional(),
+  })
+)
