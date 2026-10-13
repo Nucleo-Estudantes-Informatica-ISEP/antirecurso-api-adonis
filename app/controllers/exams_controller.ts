@@ -224,28 +224,33 @@ export default class ExamsController {
             .where('user_id', exam.userId)
             .whereRaw("result->>'id' = ?", [String(exam.id)])
             .first()
-    const questions = exam.questions.map((answerQuestion) => {
-      const question = answerQuestion.question
-      const snapshot = immutable?.snapshot.questions.find((item) => item.id === question.id)
+    const questionIds = immutable?.snapshot.grading
+      ? immutable.snapshot.questions.map((question) => question.id)
+      : exam.questions.map((answerQuestion) => answerQuestion.questionId)
+    const questions = questionIds.map((id) => {
+      const answerQuestion = exam.questions.find((item) => item.questionId === id)
+      const question = answerQuestion?.question
+      const snapshot = immutable?.snapshot.questions.find((item) => item.id === id)
+      const grading = immutable?.snapshot.grading?.find((item) => item.questionId === id)
 
       return {
         question: {
-          id: question.id,
-          question: snapshot?.question ?? question.question,
-          correct_option: snapshot?.correctOption ?? question.correctOption,
+          id,
+          question: snapshot?.question ?? question!.question,
+          correct_option: snapshot?.correctOption ?? question!.correctOption,
           question_type:
-            snapshot?.question_type ?? question.questionType?.name ?? 'Multiple Choice',
-          image: snapshot?.image ?? question.image ?? '',
+            snapshot?.question_type ?? question?.questionType?.name ?? 'Multiple Choice',
+          image: snapshot?.image ?? question?.image ?? '',
         },
-        selected_option_id: answerQuestion.optionId,
-        options: (snapshot?.options ?? question.options).map((option) => ({
+        selected_option_id: grading ? grading.optionId : answerQuestion!.optionId,
+        options: (snapshot?.options ?? question!.options).map((option) => ({
           id: option.id,
           name: option.name,
           order: option.order,
         })),
-        is_wrong: answerQuestion.isWrong,
-        correct_option: snapshot?.correctOption ?? question.correctOption,
-        comments: question.comments.map((comment) => ({
+        is_wrong: grading ? grading.isWrong : answerQuestion!.isWrong,
+        correct_option: snapshot?.correctOption ?? question!.correctOption,
+        comments: (question?.comments ?? []).map((comment) => ({
           id: comment.id,
           comment: comment.comment,
           user: comment.user.name,

@@ -585,7 +585,7 @@ verification owns answer, updates scoreboard, and completes matching saved state
 - Authentication required (`401`); only the stored owner can recover. Another identity (including admin) gets `404`. UUID validation matches generation/verification, including v7 (`422` for invalid IDs). Exam throttle applies (`429`). Existing anonymous snapshots cannot be recovered.
 - Response: `{ id: string, questions: GeneratedQuestion[], result: ExamResult | null }`. Immutable original content and exact committed result; never correct answers or internal option IDs. Null result does not prove verification is not running.
 - Clients may explicitly retry verification with the same answers/configuration and UUID after confirming this endpoint; never automatically replay against a legacy API.
-- Owned `/exams/:id` review uses original snapshots for new attempts. Legacy results retain current content.
+- Owned `/exams/:id` review uses original snapshots and atomically stored per-question grading for newly completed attempts, retaining all questions, selected option IDs, original order and correctness after canonical question/option deletion. Comments remain live; deleted questions have no comments. Recovery still strips private grading. Legacy results and snapshots completed before grading was stored retain live answer-detail behavior; already lost selections/details cannot be reconstructed.
 - Verification adds 409 for unavailable/mismatched/already-submitted attempts.
 
 #### `GET /exams/pending`

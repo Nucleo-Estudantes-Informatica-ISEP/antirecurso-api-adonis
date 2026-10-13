@@ -138,6 +138,7 @@ export default class ExamVerificationService {
           )
         : await this.getOptionMap(questionIds, trx)
 
+      const grading: NonNullable<ExamAttempt['snapshot']['grading']> = []
       for (const answerPayload of input.answers) {
         const question = questionMap.get(answerPayload.question_id)
         if (!question) {
@@ -159,6 +160,7 @@ export default class ExamVerificationService {
         }
 
         const isWrong = correctOption !== selectedOption
+        grading.push({ questionId: question.id, optionId, isWrong })
         if (!isWrong) {
           correctAnswers++
         }
@@ -218,7 +220,7 @@ export default class ExamVerificationService {
         subject: input.subject.name,
       }
       if (attempt) {
-        attempt.merge({ result, requestHash })
+        attempt.merge({ result, requestHash, snapshot: { ...attempt.snapshot, grading } })
         await attempt.save()
       }
       await trx.commit()

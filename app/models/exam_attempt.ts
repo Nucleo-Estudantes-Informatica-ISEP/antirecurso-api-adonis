@@ -22,6 +22,7 @@ export default class ExamAttempt extends BaseModel {
   })
   declare snapshot: {
     questions: AttemptQuestion[]
+    grading?: { questionId: number; optionId: number | null; isWrong: boolean }[]
     nOfQuestions: number | null
     penalizingFactor: number | null
   }

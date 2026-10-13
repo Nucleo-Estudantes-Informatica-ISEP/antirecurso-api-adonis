@@ -10,6 +10,8 @@ import Answer from '#models/answer'
 import Score from '#models/score'
 import User from '#models/user'
 import ExamState from '#models/exam_state'
+import ExamAttempt from '#models/exam_attempt'
+import db from '@adonisjs/lucid/services/db'
 import {
   createOidcFixture,
   installFetchMock,
@@ -517,6 +519,8 @@ test.group('Exams', (group) => {
         .get(`/exams/attempts/${attempt.id}`)
         .header('authorization', `Bearer ${userToken}`)
       assert.isNull(recovered.body().result)
+      const stored = await ExamAttempt.findOrFail(attempt.id)
+      assert.isUndefined(stored.snapshot.grading)
     } finally {
       await Option.create(attrs)
     }
@@ -548,5 +552,104 @@ test.group('Exams', (group) => {
       .get(`/exams/attempts/${randomUUID()}`)
       .header('authorization', `Bearer ${userToken}`)
     blocked.assertStatus(429)
+  })
+  for (const removed of ['option', 'question'] as const) {
+    test(`completed review retains questions and selections after canonical ${removed} deletion`, async ({
+      client,
+      assert,
+    }) => {
+      const attempt = await mobileAttempt(client)
+      const answers = attempt.verify.answers
+        .map((item: any, index: number) => ({
+          question_id: item.question_id,
+          ...(index === 1 ? {} : { selected_option: index === 2 ? 'B' : 'A' }),
+        }))
+        .reverse()
+      const body = { ...attempt.verify, answers }
+      const graded = await client
+        .post('/exams/verify')
+        .header('authorization', `Bearer ${userToken}`)
+        .json(body)
+      graded.assertStatus(200)
+      const before = await client
+        .get(`/exams/${graded.body().id}`)
+        .header('authorization', `Bearer ${userToken}`)
+      before.assertStatus(200)
+      const snapshot = await ExamAttempt.findOrFail(attempt.id)
+      const first = snapshot.snapshot.questions[0]
+      const questionRow = await db.from('questions').where('id', first.id).firstOrFail()
+      const optionRows = await db.from('options').where('question_id', first.id)
+      const selected = first.options.find((option) => option.order === 'A')!
+      if (removed === 'option') await Option.query().where('id', selected.id).delete()
+      else await Question.query().where('id', first.id).delete()
+      try {
+        const after = await client
+          .get(`/exams/${graded.body().id}`)
+          .header('authorization', `Bearer ${userToken}`)
+        after.assertStatus(200)
+        assert.lengthOf(after.body().questions, 10)
+        assert.deepEqual(after.body(), before.body())
+        assert.deepEqual(
+          after.body().questions.map((item: any) => item.question.id),
+          attempt.generated.map((item: any) => item.id)
+        )
+        const review = after.body().questions.find((item: any) => item.question.id === first.id)
+        assert.equal(review.selected_option_id, selected.id)
+        assert.isFalse(review.is_wrong)
+        const unanswered = after.body().questions[1]
+        assert.isNull(unanswered.selected_option_id)
+        assert.isTrue(unanswered.is_wrong)
+        assert.isTrue(after.body().questions[2].is_wrong)
+        const retry = await client
+          .post('/exams/verify')
+          .header('authorization', `Bearer ${userToken}`)
+          .json(body)
+        retry.assertStatus(200)
+        assert.deepEqual(retry.body(), graded.body())
+        const recovered = await client
+          .get(`/exams/attempts/${attempt.id}`)
+          .header('authorization', `Bearer ${userToken}`)
+        recovered.assertStatus(200)
+        assert.deepEqual(recovered.body().questions, attempt.generated)
+        assert.isUndefined(recovered.body().grading)
+        const adminReview = await client
+          .get(`/exams/${graded.body().id}`)
+          .header('authorization', `Bearer ${adminToken}`)
+        adminReview.assertStatus(200)
+        assert.deepEqual(adminReview.body(), before.body())
+      } finally {
+        if (removed === 'question') await db.table('questions').insert(questionRow)
+        await db
+          .table('options')
+          .insert(
+            removed === 'option'
+              ? optionRows.filter((option) => option.id === selected.id)
+              : optionRows
+          )
+      }
+    })
+  }
+  test('completed snapshots without grading retain the existing review contract', async ({
+    client,
+    assert,
+  }) => {
+    const attempt = await mobileAttempt(client)
+    const graded = await client
+      .post('/exams/verify')
+      .header('authorization', `Bearer ${userToken}`)
+      .json(attempt.verify)
+    graded.assertStatus(200)
+    const before = await client
+      .get(`/exams/${graded.body().id}`)
+      .header('authorization', `Bearer ${userToken}`)
+    before.assertStatus(200)
+    const stored = await ExamAttempt.findOrFail(attempt.id)
+    delete stored.snapshot.grading
+    await stored.merge({ snapshot: { ...stored.snapshot } }).save()
+    const after = await client
+      .get(`/exams/${graded.body().id}`)
+      .header('authorization', `Bearer ${userToken}`)
+    after.assertStatus(200)
+    assert.deepEqual(after.body(), before.body())
   })
 })
