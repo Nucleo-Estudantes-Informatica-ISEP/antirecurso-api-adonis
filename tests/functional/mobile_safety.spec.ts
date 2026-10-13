@@ -120,6 +120,7 @@ test.group('Mobile account deletion and comment safety', (group) => {
         snapshot: JSON.stringify({
           nOfQuestions: null,
           penalizingFactor: null,
+          grading: [{ questionId: question.id, optionId: options[0].id, isWrong: false }],
           questions: [
             {
               id: question.id,
