@@ -1,4 +1,5 @@
 import type { HttpContext } from '@adonisjs/core/http'
+import { visibleComments } from '#services/comment_visibility'
 import db from '@adonisjs/lucid/services/db'
 import Answer from '#models/answer'
 import ExamAttempt from '#models/exam_attempt'
@@ -207,7 +208,7 @@ export default class ExamsController {
           questionQuery.preload('options')
           questionQuery.preload('questionType')
           questionQuery.preload('comments', (commentsQuery) => {
-            commentsQuery.orderBy('createdAt', 'desc').preload('user')
+            visibleComments(commentsQuery, authUser.id).orderBy('createdAt', 'desc').preload('user')
           })
         })
       })
@@ -254,6 +255,7 @@ export default class ExamsController {
           id: comment.id,
           comment: comment.comment,
           user: comment.user.name,
+          user_id: comment.userId,
           question_id: comment.questionId,
           created_at: comment.createdAt.toISO(),
           user_avatar: getUserAvatar(comment.user.email),
