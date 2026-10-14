@@ -53,15 +53,15 @@ Primary local ownership table used by auth middleware and all user-owned resourc
 source of truth for identity and roles. `name`, `email`, and `email_verified_at` are synchronized
 caches retained for lookup, search, and account resolution; they never grant authorization.
 
-| Column              | Type         | Null | Constraints / Notes                                                     |
-| ------------------- | ------------ | ---- | ----------------------------------------------------------------------- |
-| `id`                | serial       | no   | primary key                                                             |
-| `name`              | varchar      | no   | synchronized AuthNEI display-name cache                                 |
-| `email`             | varchar(254) | no   | unique synchronized AuthNEI lookup cache                                |
-| `email_verified_at` | timestamp    | yes  | synchronized AuthNEI verification cache                                 |
-| `auth_subject`      | varchar(255) | yes  | unique nullable identity-provider subject                               |
-| `created_at`        | timestamp    | no   |                                                                         |
-| `updated_at`        | timestamp    | no   |                                                                         |
+| Column              | Type         | Null | Constraints / Notes                       |
+| ------------------- | ------------ | ---- | ----------------------------------------- |
+| `id`                | serial       | no   | primary key                               |
+| `name`              | varchar      | no   | synchronized AuthNEI display-name cache   |
+| `email`             | varchar(254) | no   | unique synchronized AuthNEI lookup cache  |
+| `email_verified_at` | timestamp    | yes  | synchronized AuthNEI verification cache   |
+| `auth_subject`      | varchar(255) | yes  | unique nullable identity-provider subject |
+| `created_at`        | timestamp    | no   |                                           |
+| `updated_at`        | timestamp    | no   |                                           |
 
 Relations:
 
@@ -110,18 +110,23 @@ Question taxonomy scoped to a subject.
 
 Question bank entries shown in generated exams.
 
-| Column             | Type       | Null | Constraints / Notes                                   |
-| ------------------ | ---------- | ---- | ----------------------------------------------------- |
-| `id`               | serial     | no   | primary key                                           |
-| `question`         | varchar    | no   | question prompt                                       |
-| `image`            | varchar    | no   | image URL or asset reference; required by schema      |
-| `correct_option`   | varchar(1) | no   | application expects a single option order such as `A` |
-| `exam`             | varchar    | no   | source exam identifier                                |
-| `source`           | varchar(20) | no  | provenance; default `REAL_EXAM`; check `questions_source_allowed` (`REAL_EXAM`, `AI_GENERATED`, `MANUAL`) |
-| `subject_id`       | integer    | no   | FK -> `subjects.id`, `ON DELETE CASCADE`              |
-| `question_type_id` | integer    | no   | FK -> `question_types.id`, `ON DELETE CASCADE`        |
-| `created_at`       | timestamp  | no   |                                                       |
-| `updated_at`       | timestamp  | no   |                                                       |
+| Column             | Type         | Null | Constraints / Notes                                                                                       |
+| ------------------ | ------------ | ---- | --------------------------------------------------------------------------------------------------------- |
+| `id`               | serial       | no   | primary key                                                                                               |
+| `question`         | text         | no   | full question prompt                                                                                      |
+| `image`            | varchar      | no   | image URL or asset reference; required by schema                                                          |
+| `correct_option`   | varchar(1)   | no   | application expects a single option order such as `A`                                                     |
+| `exam`             | varchar      | no   | source exam identifier                                                                                    |
+| `source`           | varchar(20)  | no   | provenance; default `REAL_EXAM`; check `questions_source_allowed` (`REAL_EXAM`, `AI_GENERATED`, `MANUAL`) |
+| `import_key`       | varchar(160) | yes  | globally unique, immutable import identity; null for unmapped published rows                              |
+| `review`           | jsonb        | yes  | academic approval evidence: status, reviewer, reviewed_at, reference, duplicates_checked                  |
+| `repeated`         | boolean      | yes  | reviewed repetition flag; null means unknown                                                              |
+| `in_plan`          | boolean      | yes  | reviewed curriculum flag; null means unknown                                                              |
+| `ref`              | text         | yes  | retained source/review reference                                                                          |
+| `subject_id`       | integer      | no   | FK -> `subjects.id`, `ON DELETE CASCADE`                                                                  |
+| `question_type_id` | integer      | no   | FK -> `question_types.id`, `ON DELETE CASCADE`                                                            |
+| `created_at`       | timestamp    | no   |                                                                                                           |
+| `updated_at`       | timestamp    | no   |                                                                                                           |
 
 Relations:
 
@@ -132,6 +137,20 @@ Relations:
 - one-to-many with `question_reports`
 - one-to-many with `answer_questions`
 
+### `question_import_batches`
+
+Transactional publication audit; independent of question deletion so recovery evidence survives.
+
+| Column       | Type         | Null | Constraints / Notes                                                          |
+| ------------ | ------------ | ---- | ---------------------------------------------------------------------------- |
+| `batch_id`   | varchar(160) | no   | primary key; immutable applied batch identifier                              |
+| `digest`     | varchar(64)  | no   | SHA-256 of validated batch                                                   |
+| `report`     | jsonb        | no   | counts, problems, actual IDs and full before/after question/option snapshots |
+| `applied_at` | timestamptz  | no   | commit operation time                                                        |
+
+Dry-runs and blocked batches create no audit. Reapplying identical unchanged data preserves
+original audit. See [reviewed import and recovery](QUESTION_IMPORT.md).
+
 ### `options`
 
 Possible answers for a question.
@@ -139,7 +158,7 @@ Possible answers for a question.
 | Column        | Type       | Null | Constraints / Notes                        |
 | ------------- | ---------- | ---- | ------------------------------------------ |
 | `id`          | serial     | no   | primary key                                |
-| `name`        | varchar    | no   | option text                                |
+| `name`        | text       | no   | full option text                           |
 | `order`       | varchar(1) | no   | canonical choice key such as `A`, `B`, `C` |
 | `question_id` | integer    | no   | FK -> `questions.id`, `ON DELETE CASCADE`  |
 | `created_at`  | timestamp  | no   |                                            |

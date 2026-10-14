@@ -28,6 +28,10 @@ docker build -t antirecurso-api-check .
 
 Use an isolated test database for migrations and API/integration tests. Never run production migrations, seeds, or destructive checks without explicit authorization and a backup.
 
+Question publication uses `node ace questions:import` with explicit academic approval,
+verified stable identity and a dry-run/repeat check; raw bank seeders refuse writes.
+Retain the transactional before/after audit and backup. See `docs/QUESTION_IMPORT.md`.
+
 ## CI/CD
 
 `.github/workflows/ci.yml` requires frozen install, lint, typecheck, Japa tests, migrations against isolated PostgreSQL, production build/audit, and non-root Docker build for every PR to `dev` or `main`. The separate security workflow runs for pull requests.
