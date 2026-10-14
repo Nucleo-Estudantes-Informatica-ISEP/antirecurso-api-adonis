@@ -74,7 +74,7 @@ Once your `.env` file is populated with the database credentials, execute all th
 node ace migration:run
 ```
 
-Native clients can opt into immutable snapshots, idempotent grading and revision-controlled cloud saves; see [API contract](docs/API.md#exams). Deploy the additive migration before mobile. Existing web/installed clients remain compatible.
+Native clients can opt into immutable snapshots, idempotent grading and revision-controlled cloud saves; see [API contract](docs/API.md#exams). Stored UUIDs are scoped to authenticated owners, with an atomic limit of 20 unfinished attempts per owner. Deploy all pending migrations before mobile; owner-scope migration preconditions and rollback limits are documented in the [schema reference](docs/DATABASE_SCHEMA.md#immutable-attempt-recovery-and-cloud-revisions). Existing web/installed clients remain compatible.
 
 This applies the complete, versioned migration history, including pending-account and shared rate-limit state. Do not rely on a hard-coded table count; `node ace migration:status` is authoritative.
 
