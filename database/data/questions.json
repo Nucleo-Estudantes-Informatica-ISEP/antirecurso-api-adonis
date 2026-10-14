@@ -6990,7 +6990,6 @@
         "Servem para invocar serviços do Sistema Operativo."
       ],
       "correct_index": 3,
-      "repeated": [49],
       "in_plan": true
     },
     {
@@ -7013,7 +7012,7 @@
         "Nenhuma das anteriores."
       ],
       "correct_index": 0,
-      "repeated": [50],
+      "repeated": [49],
       "in_plan": true
     },
     {
@@ -7064,7 +7063,7 @@
         "Nenhuma das anteriores."
       ],
       "correct_index": 0,
-      "repeated": [60],
+      "repeated": [59],
       "in_plan": true
     },
     {
@@ -7120,7 +7119,7 @@
         "Permitir a utilização de endereços físicos contíguos."
       ],
       "correct_index": 0,
-      "repeated": [68],
+      "repeated": [67],
       "in_plan": false
     },
     {
@@ -7269,18 +7268,6 @@
       "in_plan": false
     },
     {
-      "question": "Em relação às chamadas ao sistema operativo:",
-      "answers": [
-        "Servem para invocar serviços do sistema operativo.",
-        "Funcionam em User Mode.",
-        "Todas as chamadas necessitam do armazenamento de dados em disco.",
-        "Funcionam apenas através de interrupções de hardware."
-      ],
-      "correct_index": 0,
-      "repeated": [23],
-      "in_plan": true
-    },
-    {
       "question": "Nos sistemas operativos Windows e Linux toda a configuração e tratamento de interrupções passa pelo sistema operativo, dado que:",
       "answers": [
         "Tal permite que todos os pedidos de acesso aos periféricos sejam controlados pelo sistema operativo.",
@@ -7334,7 +7321,7 @@
         "Diminuir a quantidade de memória ocupada."
       ],
       "correct_index": 0,
-      "repeated": [71],
+      "repeated": [70],
       "in_plan": true
     },
     {
@@ -7346,7 +7333,7 @@
         "Aumentar a performance do sistema."
       ],
       "correct_index": 0,
-      "repeated": [56],
+      "repeated": [55],
       "in_plan": true
     },
     {
@@ -7358,7 +7345,7 @@
         "Permitir que um programa utilize a memória como sendo constituída por pedaços do mesmo tamanho e eliminar totalmente a fragmentação interna da memória."
       ],
       "correct_index": 0,
-      "repeated": [55],
+      "repeated": [54],
       "in_plan": true
     },
     {
@@ -7437,7 +7424,7 @@
         "A alocação de memória para o código de um programa e a criação do Process Control Block do processo."
       ],
       "correct_index": 0,
-      "repeated": [67],
+      "repeated": [66],
       "in_plan": true
     },
     {
@@ -7482,7 +7469,7 @@
         "A alocação de memória para o código de um programa e a criação do Process Control Block do processo."
       ],
       "correct_index": 0,
-      "repeated": [63],
+      "repeated": [62],
       "in_plan": true
     },
     {
@@ -7523,7 +7510,7 @@
         "Diminuir a quantidade de memória ocupada."
       ],
       "correct_index": 0,
-      "repeated": [54],
+      "repeated": [53],
       "in_plan": true
     }
   ],
