@@ -9,6 +9,8 @@
 
 import router from '@adonisjs/core/services/router'
 import CommentsController from '#controllers/comments_controller'
+import CommentReportsController from '#controllers/comment_reports_controller'
+import UserBlocksController from '#controllers/user_blocks_controller'
 import EventsController from '#controllers/events_controller'
 import ExamsController from '#controllers/exams_controller'
 import NotesController from '#controllers/notes_controller'
@@ -28,6 +30,8 @@ import {
 import { middleware } from './kernel.js'
 
 const commentsController = new CommentsController()
+const commentReportsController = new CommentReportsController()
+const userBlocksController = new UserBlocksController()
 const eventsController = new EventsController()
 const examsController = new ExamsController()
 const notesController = new NotesController()
@@ -56,11 +60,28 @@ router
   .use([middleware.auth(), mutationThrottle])
 
 // Comments
-router.get('/comments', (ctx) => commentsController.index(ctx)).use(middleware.auth())
+router
+  .get('/comments', (ctx) => commentsController.index(ctx as AuthenticatedHttpContext))
+  .use(middleware.auth())
 router
   .post('/comments', (ctx) => commentsController.store(ctx as AuthenticatedHttpContext))
   .use([middleware.auth(), mutationThrottle])
-router.get('/comments/:id', (ctx) => commentsController.show(ctx)).use(middleware.auth())
+router
+  .get('/comments/:id', (ctx) => commentsController.show(ctx as AuthenticatedHttpContext))
+  .use(middleware.auth())
+router
+  .post('/comments/:id/report', (ctx) =>
+    commentReportsController.store(ctx as AuthenticatedHttpContext)
+  )
+  .use([middleware.auth(), mutationThrottle])
+router
+  .get('/comment-reports', (ctx) => commentReportsController.index(ctx as AuthenticatedHttpContext))
+  .use([middleware.auth(), middleware.admin()])
+router
+  .post('/comment-reports/:id/review', (ctx) =>
+    commentReportsController.review(ctx as AuthenticatedHttpContext)
+  )
+  .use([middleware.auth(), middleware.admin(), mutationThrottle])
 
 // Questions
 router
@@ -81,10 +102,10 @@ router
   .use(middleware.optionalAuth())
 router.get('/notes/:id', (ctx) => notesController.show(ctx)).use(middleware.optionalAuth())
 router
-  .patch('/notes/:id', (ctx) => notesController.update(ctx))
+  .patch('/notes/:id', (ctx) => notesController.update(ctx as AuthenticatedHttpContext))
   .use([middleware.auth(), middleware.admin(), mutationThrottle])
 router
-  .delete('/notes/:id', (ctx) => notesController.destroy(ctx))
+  .delete('/notes/:id', (ctx) => notesController.destroy(ctx as AuthenticatedHttpContext))
   .use([middleware.auth(), middleware.admin(), mutationThrottle])
 router
   .post('/notes/:id/like', (ctx) => notesController.like(ctx))
@@ -99,10 +120,10 @@ router
   .use([middleware.auth(), mutationThrottle])
 router.get('/notes/:id/file', (ctx) => notesController.file(ctx)).use(middleware.auth())
 router
-  .post('/upload', (ctx) => uploadsController.upload(ctx))
+  .post('/upload', (ctx) => uploadsController.upload(ctx as AuthenticatedHttpContext))
   .use([middleware.auth(), uploadThrottle])
 router
-  .put('/uploads/:id', (ctx) => uploadsController.put(ctx))
+  .put('/uploads/:id', (ctx) => uploadsController.put(ctx as AuthenticatedHttpContext))
   .use([middleware.auth(), uploadThrottle])
 
 // Exams
@@ -131,6 +152,20 @@ router
   .get('/exams/:id', (ctx) => examsController.show(ctx as AuthenticatedHttpContext))
   .use(middleware.auth())
 // User (auth required)
+router
+  .delete('/user', (ctx) => usersController.destroy(ctx as AuthenticatedHttpContext))
+  .use([middleware.auth(), accountResolutionThrottle])
+router
+  .get('/user/blocks', (ctx) => userBlocksController.index(ctx as AuthenticatedHttpContext))
+  .use(middleware.auth())
+router
+  .put('/user/blocks/:id', (ctx) => userBlocksController.store(ctx as AuthenticatedHttpContext))
+  .use([middleware.auth(), mutationThrottle])
+router
+  .delete('/user/blocks/:id', (ctx) =>
+    userBlocksController.destroy(ctx as AuthenticatedHttpContext)
+  )
+  .use([middleware.auth(), mutationThrottle])
 router
   .get('/user', (ctx) => usersController.session(ctx as AuthenticatedHttpContext))
   .use(middleware.auth())

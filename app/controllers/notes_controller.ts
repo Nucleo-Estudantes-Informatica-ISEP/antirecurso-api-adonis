@@ -1,4 +1,5 @@
 import type { HttpContext } from '@adonisjs/core/http'
+import { lockNoteMutations, withNoteMutation } from '#services/note_mutation'
 import Like from '#models/like'
 import Note from '#models/note'
 import Subject from '#models/subject'
@@ -106,88 +107,142 @@ export default class NotesController {
       return response.notFound({ message: 'Subject not found' })
     }
 
-    try {
-      await storageService.promoteUploadedNote(data.upload_id)
-    } catch (error) {
-      return this.handleStorageError(error, response, 'Invalid upload id')
-    }
+    return withNoteMutation(authUser.id, async (trx) => {
+      await lockNoteMutations(trx, [data.upload_id])
+      if (
+        !(await trx
+          .from('note_uploads')
+          .where('id', data.upload_id)
+          .where('user_id', authUser.id)
+          .first())
+      )
+        return response.forbidden({ message: 'Upload is not owned by this account' })
+      try {
+        await storageService.promoteUploadedNote(data.upload_id)
+      } catch (error) {
+        return this.handleStorageError(error, response, 'Invalid upload id')
+      }
 
-    const note = await Note.create({
-      uploadId: data.upload_id,
-      title: data.title,
-      description: data.description ?? null,
-      nPages: data.n_pages ?? null,
-      userId: authUser.id,
-      subjectId: subjectId,
+      const note = await Note.create(
+        {
+          uploadId: data.upload_id,
+          title: data.title,
+          description: data.description ?? null,
+          nPages: data.n_pages ?? null,
+          userId: authUser.id,
+          subjectId: subjectId,
+        },
+        { client: trx }
+      )
+
+      await note.load('user')
+      await note.load('subject')
+      await note.load('likes')
+
+      return response.created(this.serialize(note))
     })
-
-    await note.load('user')
-    await note.load('subject')
-    await note.load('likes')
-
-    return response.created(this.serialize(note))
   }
 
   /**
    * Update an existing note (admin only).
    * PATCH /notes/:id
    */
-  async update({ authClaims, params, request, response }: HttpContext) {
+  async update({ authUser, authClaims, params, request, response }: AuthenticatedHttpContext) {
     if (!hasAuthNeiRole(authClaims, 'admin')) {
       return response.forbidden({ message: 'You are not an admin' })
     }
 
     const data = await request.validateUsing(updateNoteValidator)
-    const note = await Note.findOrFail(params.id)
+    const owner = await Note.findOrFail(params.id)
+    return withNoteMutation(
+      authUser.id,
+      async (trx) => {
+        const note = await Note.query()
+          .useTransaction(trx)
+          .where('id', params.id)
+          .forUpdate()
+          .firstOrFail()
+        note.useTransaction(trx)
 
-    if (data.upload_id) {
-      try {
-        await storageService.promoteUploadedNote(data.upload_id)
-      } catch (error) {
-        return this.handleStorageError(error, response, 'Invalid upload id')
-      }
-    }
+        await lockNoteMutations(
+          trx,
+          [note.uploadId, data.upload_id].filter((id): id is string => Boolean(id))
+        )
+        if (data.upload_id) {
+          if (
+            note.userId !== authUser.id ||
+            !(await trx
+              .from('note_uploads')
+              .where('id', data.upload_id)
+              .where('user_id', authUser.id)
+              .first())
+          )
+            return response.forbidden({
+              message: 'File replacement requires an upload owned by the note author',
+            })
+          try {
+            await storageService.promoteUploadedNote(data.upload_id)
+          } catch (error) {
+            return this.handleStorageError(error, response, 'Invalid upload id')
+          }
+        }
 
-    note.merge({
-      title: data.title ?? note.title,
-      description: data.description ?? note.description,
-      subjectId: data.subject_id ?? note.subjectId,
-      uploadId: data.upload_id ?? note.uploadId,
-      nPages: data.n_pages ?? note.nPages,
-    })
+        note.merge({
+          title: data.title ?? note.title,
+          description: data.description ?? note.description,
+          subjectId: data.subject_id ?? note.subjectId,
+          uploadId: data.upload_id ?? note.uploadId,
+          nPages: data.n_pages ?? note.nPages,
+        })
 
-    await note.save()
-    await note.load('user')
-    await note.load('subject')
-    await note.load('likes')
+        await note.save()
+        await note.load('user')
+        await note.load('subject')
+        await note.load('likes')
 
-    return response.ok(this.serialize(note))
+        return response.ok(this.serialize(note))
+      },
+      owner.userId
+    )
   }
 
   /**
    * Delete an existing note (admin only).
    * DELETE /notes/:id
    */
-  async destroy({ authClaims, params, response }: HttpContext) {
+  async destroy({ authUser, authClaims, params, response }: AuthenticatedHttpContext) {
     if (!hasAuthNeiRole(authClaims, 'admin')) {
       return response.forbidden({ message: 'You are not an admin' })
     }
 
-    const note = await Note.findOrFail(params.id)
+    const owner = await Note.findOrFail(params.id)
+    return withNoteMutation(
+      authUser.id,
+      async (trx) => {
+        const note = await Note.query()
+          .useTransaction(trx)
+          .where('id', params.id)
+          .forUpdate()
+          .firstOrFail()
+        note.useTransaction(trx)
 
-    if (note.uploadId) {
-      try {
-        await storageService.deleteNoteAssets(note.uploadId)
-      } catch (error) {
-        if (!(error instanceof StorageNotConfiguredError)) {
-          return this.handleStorageError(error, response, 'File not found')
+        if (note.uploadId) {
+          await lockNoteMutations(trx, [note.uploadId])
+          try {
+            await storageService.deleteNoteAssets(note.uploadId)
+          } catch (error) {
+            if (!(error instanceof StorageNotConfiguredError)) {
+              return this.handleStorageError(error, response, 'File not found')
+            }
+          }
         }
-      }
-    }
 
-    await note.delete()
+        await note.delete()
 
-    return response.noContent()
+        return response.noContent()
+      },
+      owner.userId
+    )
   }
 
   /**

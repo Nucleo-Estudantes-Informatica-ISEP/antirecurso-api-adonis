@@ -1,0 +1,2447 @@
+[
+  {
+    "question": "Os principais componentes de um computador são o CPU, o disco rígido e a placa gráfica",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.5"
+  },
+  {
+    "question": "Que função tem a unidade de memória de um computador?",
+    "answers": [
+      "Guardar os programas e os dados",
+      "Executar as operações aritméticas e de processamento de dados",
+      "Ligar todos os componentes do computador entre si",
+      "Apresentar ao utilizador os resultados dos cálculos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.5"
+  },
+  {
+    "question": "Qual destes é um device de entrada típico, usado para introduzir programas e dados na memória?",
+    "answers": [
+      "Um ecrã",
+      "Um teclado",
+      "A main memory",
+      "O system bus"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.5"
+  },
+  {
+    "question": "Um device de saída, como um ecrã, recebe os resultados dos cálculos para os apresentar ao utilizador",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.5"
+  },
+  {
+    "question": "Cada componente de um computador comunica através de um bus privado, que não é partilhado com os restantes componentes",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.5"
+  },
+  {
+    "question": "A memória está dividida num grande número de pequenas partes, designadas células de memória",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.6"
+  },
+  {
+    "question": "Quantos bits tem uma célula de memória (um byte)?",
+    "answers": [
+      "4 bits",
+      "16 bits",
+      "8 bits",
+      "32 bits"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.6"
+  },
+  {
+    "question": "Uma célula binária é um device com três estados estáveis, capaz de guardar um dígito decimal",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.6"
+  },
+  {
+    "question": "A partir de que endereço começa a numeração dos bytes da memória?",
+    "answers": [
+      "Um",
+      "O endereço da primeira instrução do programa",
+      "O maior endereço que o CPU consegue gerar",
+      "Zero"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.6"
+  },
+  {
+    "question": "Numa memória com 1024 bytes, qual é o endereço do último byte?",
+    "answers": [
+      "1023",
+      "1024",
+      "1022",
+      "1025"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.6"
+  },
+  {
+    "question": "O que é uma word?",
+    "answers": [
+      "Um grupo de oito bits, que corresponde sempre à unidade mínima endereçável",
+      "O número específico de bits que o processador consegue processar em conjunto",
+      "O número total de endereços que a memória consegue ter, do primeiro ao último",
+      "Um conjunto de quatro bits que é sempre processado em conjunto pelo CPU"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.7"
+  },
+  {
+    "question": "A word define a quantidade de dados (número de bits) que pode ser transferida entre o CPU e a memória numa única operação",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.7"
+  },
+  {
+    "question": "Quantos bits tem um nibble?",
+    "answers": [
+      "2 bits",
+      "8 bits",
+      "4 bits",
+      "16 bits"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.7"
+  },
+  {
+    "question": "O que é o bit mais significativo (MSB) de um conjunto de bits?",
+    "answers": [
+      "O bit de ordem mais baixa",
+      "O bit colocado mais à direita",
+      "O primeiro bit que tem o valor 1",
+      "O bit de ordem mais alta"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.7"
+  },
+  {
+    "question": "O bit menos significativo (LSB) é o bit de ordem mais alta de um conjunto de bits",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.7"
+  },
+  {
+    "question": "O que descreve o termo endianness?",
+    "answers": [
+      "A ordem pela qual uma sequência de bytes é guardada na memória do computador",
+      "O número de bits que formam uma word, definido pelo data bus",
+      "A ordem pela qual as instruções de um programa são executadas pelo CPU",
+      "A velocidade a que os bytes são transferidos do disco para a memória"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.8"
+  },
+  {
+    "question": "O que é a ordem big-endian?",
+    "answers": [
+      "O byte menos significativo da sequência é guardado primeiro, no endereço mais baixo",
+      "O byte mais significativo da sequência é guardado primeiro, no endereço mais baixo",
+      "O byte mais significativo da sequência é guardado no endereço mais alto",
+      "Os bytes da sequência são guardados por uma ordem definida pelo sistema operativo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.8"
+  },
+  {
+    "question": "O que é a ordem little-endian?",
+    "answers": [
+      "O byte mais significativo da sequência é guardado primeiro, no endereço mais baixo",
+      "O byte menos significativo da sequência é guardado no endereço mais alto",
+      "O byte menos significativo da sequência é guardado primeiro, no endereço mais baixo",
+      "Os bytes da sequência são guardados pela ordem inversa do seu valor numérico"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.8"
+  },
+  {
+    "question": "Numa máquina little-endian, o inteiro 0x12345678 é guardado a partir do endereço 0x100. Que valor tem o byte guardado no endereço 0x100?",
+    "answers": [
+      "0x12",
+      "0x56",
+      "0x34",
+      "0x78"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.8"
+  },
+  {
+    "question": "Numa máquina big-endian, o inteiro 0x12345678 é guardado a partir do endereço 0x100. Que valor tem o byte guardado no endereço 0x100?",
+    "answers": [
+      "0x12",
+      "0x78",
+      "0x56",
+      "0x34"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.8"
+  },
+  {
+    "question": "Numa máquina little-endian, o inteiro 0x12345678 é guardado a partir do endereço 0x100. Que valor tem o byte guardado no endereço 0x102?",
+    "answers": [
+      "0x12",
+      "0x34",
+      "0x78",
+      "0x56"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.8"
+  },
+  {
+    "question": "Numa máquina big-endian, o inteiro 0x12345678 é guardado a partir do endereço 0x100. Que valor tem o byte guardado no endereço 0x103?",
+    "answers": [
+      "0x12",
+      "0x56",
+      "0x78",
+      "0x34"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.8"
+  },
+  {
+    "question": "Numa máquina little-endian, o valor 0xABCD, de 2 bytes, é guardado a partir do endereço 0x200. Que valor tem o byte guardado no endereço 0x201?",
+    "answers": [
+      "0xCD",
+      "0xBA",
+      "0xDC",
+      "0xAB"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.8"
+  },
+  {
+    "question": "Os números hexadecimais escrevem-se com o prefixo 0b",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.8"
+  },
+  {
+    "question": "Numa memória endereçável por word, o tamanho da word é sempre de 32 bits, qualquer que seja a arquitetura",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.9"
+  },
+  {
+    "question": "Que informação transporta o data bus?",
+    "answers": [
+      "Dados e instruções",
+      "O endereço de origem ou de destino dos dados",
+      "Sinais de controlo e de temporização",
+      "Apenas os resultados das operações aritméticas"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.10"
+  },
+  {
+    "question": "O data bus é bidirecional",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.10"
+  },
+  {
+    "question": "A largura do data bus, isto é, o número de bits que consegue transportar de cada vez, corresponde a que valor?",
+    "answers": [
+      "Ao número de endereços da memória",
+      "Ao tamanho da word",
+      "Ao número de registos do CPU",
+      "Ao número de instruções do programa"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.10"
+  },
+  {
+    "question": "Que informação transporta o address bus?",
+    "answers": [
+      "As instruções e os dados do programa",
+      "Os sinais de controlo e de temporização",
+      "O endereço de origem ou de destino dos dados",
+      "O resultado das operações da ALU"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.11"
+  },
+  {
+    "question": "O address bus é bidirecional",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.11"
+  },
+  {
+    "question": "Para que serve o control bus?",
+    "answers": [
+      "Para transportar os dados lidos da memória para o CPU e para os periféricos",
+      "Para indicar em que endereço da memória se vai ler ou escrever o próximo dado",
+      "Para guardar os resultados das operações aritméticas até serem escritos",
+      "Para transferir sinais de controlo e de temporização de um componente para outro"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.11"
+  },
+  {
+    "question": "O control bus é unidirecional",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.11"
+  },
+  {
+    "question": "Qual é o sinal de controlo que coloca no data bus os dados de uma posição de memória?",
+    "answers": [
+      "Memory read",
+      "Memory write",
+      "I/O write",
+      "Interrupt"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.11"
+  },
+  {
+    "question": "Qual é o sinal de controlo que coloca numa posição de memória os dados que estão no data bus?",
+    "answers": [
+      "Memory read",
+      "Memory write",
+      "I/O read",
+      "Interrupt"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.11"
+  },
+  {
+    "question": "O sinal I/O read coloca no endereço de I/O os dados que estão no data bus",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.11"
+  },
+  {
+    "question": "Os interrupts são transportados pelo data bus e não pelo control bus",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.11"
+  },
+  {
+    "question": "Que função tem a ALU (Arithmetic Logic Unit)?",
+    "answers": [
+      "Guardar dados durante o processamento",
+      "Dirigir o fluxo de dados entre o CPU e os outros componentes",
+      "Executar operações lógicas e matemáticas",
+      "Transferir dados entre o CPU e os periféricos"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.12"
+  },
+  {
+    "question": "Os registos são zonas de memória de alta velocidade existentes no CPU, que guardam dados durante o processamento",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.12"
+  },
+  {
+    "question": "Que função tem a unidade de controlo do CPU?",
+    "answers": [
+      "Executar as operações aritméticas e lógicas pedidas pelas instruções do programa",
+      "Guardar, em memória de alta velocidade, os dados enquanto estes são processados",
+      "Transportar os dados entre o CPU, a memória e os devices de entrada e saída",
+      "Dirigir o funcionamento das outras unidades, fornecendo sinais de controlo e de temporização"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.12"
+  },
+  {
+    "question": "Que componente do CPU descodifica as instruções do programa durante a execução?",
+    "answers": [
+      "A unidade de controlo",
+      "A ALU",
+      "Os registos",
+      "O data bus"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.13"
+  },
+  {
+    "question": "Quantos bytes tem um kilobyte (KB) no contexto dos computadores?",
+    "answers": [
+      "1000",
+      "1024",
+      "1008",
+      "1048576"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.14"
+  },
+  {
+    "question": "Quantos bytes tem uma memória de 4 KB?",
+    "answers": [
+      "4000",
+      "4194304",
+      "4096",
+      "1028"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.14"
+  },
+  {
+    "question": "O que é uma vulnerabilidade de software?",
+    "answers": [
+      "Um programa malicioso instalado no computador por um utilizador desatento, que rouba dados",
+      "Uma falha de hardware que impede o computador de arrancar depois de uma atualização",
+      "Um erro de compilação que impede a geração do ficheiro executável do programa",
+      "Uma fraqueza numa aplicação, de conceção ou implementação, que permite a um atacante causar dano"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.16"
+  },
+  {
+    "question": "As partes interessadas (stakeholders) de uma aplicação incluem apenas o seu proprietário",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.16"
+  },
+  {
+    "question": "As vulnerabilidades de software surgem quando as aplicações têm erros ou bugs",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.16"
+  },
+  {
+    "question": "Os atacantes veem o software com erros como uma oportunidade para atacar o sistema, tirando partido dessas falhas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.16"
+  },
+  {
+    "question": "O que é a Common Weakness Enumeration (CWE)?",
+    "answers": [
+      "Uma lista, desenvolvida pela comunidade, de tipos de fraquezas de software e de hardware",
+      "Um catálogo de vulnerabilidades divulgadas publicamente, com um identificador cada",
+      "Um sistema que atribui uma pontuação numérica à gravidade de uma vulnerabilidade",
+      "Uma fundação sem fins lucrativos que trabalha para melhorar a segurança do software"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.17"
+  },
+  {
+    "question": "O que é o CVE (Common Vulnerabilities and Exposures)?",
+    "answers": [
+      "Uma lista dos tipos de fraquezas de software e de hardware",
+      "Um catálogo que identifica e define vulnerabilidades divulgadas publicamente",
+      "Um sistema que atribui uma pontuação numérica à gravidade de cada vulnerabilidade",
+      "Uma fundação sem fins lucrativos que trabalha para melhorar a segurança do software"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.17"
+  },
+  {
+    "question": "O que produz o CVSS (Common Vulnerability Scoring System)?",
+    "answers": [
+      "Um identificador único para cada vulnerabilidade divulgada publicamente",
+      "Uma lista de tipos de fraquezas de software e de hardware, feita pela comunidade",
+      "Uma pontuação numérica que reflete a gravidade de uma vulnerabilidade",
+      "Um relatório sobre as dez maiores ameaças de segurança a aplicações web"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.17"
+  },
+  {
+    "question": "O que é o OWASP (Open Web Application Security Project)?",
+    "answers": [
+      "Uma lista de tipos de fraquezas de software e de hardware",
+      "Um catálogo de vulnerabilidades de cibersegurança divulgadas publicamente",
+      "Um sistema de pontuação da gravidade das vulnerabilidades",
+      "Uma fundação sem fins lucrativos que trabalha para melhorar a segurança do software"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.17"
+  },
+  {
+    "question": "Os CPUs só têm instruções para manipular quantidades de 4 bytes, e não bytes individuais",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.19"
+  },
+  {
+    "question": "Os CPUs fornecem formas de testar e manipular bits individuais",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.19"
+  },
+  {
+    "question": "Cada contentor de memória é endereçável a partir do endereço do seu primeiro byte, que é o mais baixo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.19"
+  },
+  {
+    "question": "O tamanho de cada contentor de memória é independente das instruções do CPU",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.19"
+  },
+  {
+    "question": "Uma variável de 1 byte, sem sinal, tem o valor 50. Qual é o seu valor final depois de lhe somar 240?",
+    "answers": [
+      "34",
+      "290",
+      "240",
+      "50"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.21"
+  },
+  {
+    "question": "Porque podem ocorrer overflow ou underflow em operações aritméticas?",
+    "answers": [
+      "Porque o CPU não consegue executar operações aritméticas com números muito grandes",
+      "Porque se usa um número limitado de bits e o resultado pode ser demasiado grande",
+      "Porque a main memory só permite guardar valores positivos nas variáveis",
+      "Porque o compilador troca a ordem dos operandos nas operações aritméticas"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.21"
+  },
+  {
+    "question": "Para escrever o valor 50 numa variável de 2 bytes (short), como procede o computador, a partir do endereço do primeiro byte?",
+    "answers": [
+      "Usa uma instrução que escreve 1 byte, repetida duas vezes, a partir do último byte",
+      "Usa uma instrução que escreve 4 bytes, ocupando também os dois bytes seguintes",
+      "Usa uma instrução que escreve 2 bytes de uma só vez, a partir do endereço do primeiro byte",
+      "Usa uma instrução que escreve 1 byte, porque o valor 50 cabe num único byte"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.20"
+  },
+  {
+    "question": "Qual é o valor de uma variável unsigned char depois de lhe somar 100, se tinha o valor 200?",
+    "answers": [
+      "300",
+      "255",
+      "100",
+      "44"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.21"
+  },
+  {
+    "question": "Qual é o valor de uma variável unsigned char com o valor 255, depois de lhe somar 1?",
+    "answers": [
+      "0",
+      "256",
+      "255",
+      "1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.21"
+  },
+  {
+    "question": "Qual é o valor de uma variável unsigned char com o valor 0, depois de lhe subtrair 1?",
+    "answers": [
+      "-1",
+      "255",
+      "0",
+      "256"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.21"
+  },
+  {
+    "question": "Quando ocorre um overflow ou wraparound de inteiros (CWE-190)?",
+    "answers": [
+      "Ocorre quando um inteiro é guardado numa posição de memória que não existe no sistema",
+      "Ocorre quando um inteiro é dividido por zero durante a execução do programa",
+      "Ocorre quando um inteiro é incrementado para um valor demasiado grande para a sua representação",
+      "Ocorre quando um inteiro negativo é convertido num número em vírgula flutuante"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.22"
+  },
+  {
+    "question": "Quando ocorre um overflow de inteiros, o resultado é sempre um erro que interrompe a execução do programa",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.22"
+  },
+  {
+    "question": "O wraparound de inteiros pode ser um comportamento pretendido, mas tem consequências de segurança se for inesperado",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.22"
+  },
+  {
+    "question": "Um overflow de inteiros só é perigoso quando é causado pelo próprio programador, nunca por dados introduzidos pelo utilizador",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.22"
+  },
+  {
+    "question": "Em que situações um overflow de inteiros se torna crítico para a segurança?",
+    "answers": [
+      "Quando o resultado é mostrado no ecrã com um formato de impressão incorreto",
+      "Quando o programa é executado numa arquitetura de 64 bits com muita memória",
+      "Quando o inteiro é declarado sem a palavra unsigned, seja qual for a operação",
+      "Quando o resultado controla ciclos, decisões de segurança ou tamanhos de memória"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.22"
+  },
+  {
+    "question": "Em RV32, quantos bytes ocupa uma variável do tipo int?",
+    "answers": [
+      "4 bytes",
+      "1 byte",
+      "2 bytes",
+      "8 bytes"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.25"
+  },
+  {
+    "question": "Quantos bytes ocupa um char em qualquer das arquiteturas RISC-V32, RISC-V64, IA32 e x86-64?",
+    "answers": [
+      "2 bytes",
+      "1 byte",
+      "4 bytes",
+      "Depende da arquitetura, entre 1 e 8 bytes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.25"
+  },
+  {
+    "question": "O tipo short ocupa 2 bytes em RISC-V32 e 4 bytes em RISC-V64",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.25"
+  },
+  {
+    "question": "Em que arquiteturas, de entre RISC-V32, RISC-V64, IA32 e x86-64, um long ocupa 8 bytes?",
+    "answers": [
+      "RISC-V32 e IA32",
+      "RISC-V32 e RISC-V64",
+      "RISC-V64 e x86-64",
+      "IA32 e x86-64"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.25"
+  },
+  {
+    "question": "O tipo long long ocupa 8 bytes em RISC-V32, RISC-V64, IA32 e x86-64",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.25"
+  },
+  {
+    "question": "O tipo double ocupa 4 bytes em RISC-V32 e 8 bytes em RISC-V64",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.25"
+  },
+  {
+    "question": "O tipo float ocupa 8 bytes em RISC-V64 e em x86-64",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.25"
+  },
+  {
+    "question": "Em que arquiteturas, de entre RISC-V32, RISC-V64, IA32 e x86-64, o tamanho de um long double não varia?",
+    "answers": [
+      "Apenas em IA32, onde varia entre 10 e 12 bytes",
+      "Em IA32 e em x86-64, onde varia entre 10 e 16 bytes",
+      "Apenas em x86-64, onde varia entre 10 e 16 bytes",
+      "Em RISC-V32 e em RISC-V64, onde tem 16 bytes"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.25"
+  },
+  {
+    "question": "Em RV32, quantos bytes ocupa uma variável apontador (type*)?",
+    "answers": [
+      "4 bytes",
+      "1 byte",
+      "2 bytes",
+      "8 bytes"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.25"
+  },
+  {
+    "question": "Os tipos inteiros char, short, int, long e long long podem guardar valores não negativos quando são declarados unsigned",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.25"
+  },
+  {
+    "question": "Os tipos float e double podem ser declarados unsigned para guardarem apenas valores não negativos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.25"
+  },
+  {
+    "question": "Uma variável é o valor numérico guardado numa posição de memória, sem qualquer nome simbólico associado",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.26"
+  },
+  {
+    "question": "Chama-se variável porque os dados nela guardados podem ser alterados durante a execução do programa",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.26"
+  },
+  {
+    "question": "Que operador permite obter o endereço de memória de uma variável?",
+    "answers": [
+      "O operador de indireção *",
+      "O operador de referência &",
+      "O operador de seleção ->",
+      "O operador de diretiva #"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.27"
+  },
+  {
+    "question": "Que especificador de formato do printf se usa para escrever um endereço (apontador)?",
+    "answers": [
+      "%d",
+      "%c",
+      "%p",
+      "%s"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.27"
+  },
+  {
+    "question": "Um apontador em C é também um tipo de dados, isto é, um grupo de bytes contíguos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.29"
+  },
+  {
+    "question": "Qual é a declaração correta de uma variável apontador para int, chamada ip?",
+    "answers": [
+      "int ip*;",
+      "*int ip;",
+      "pointer int ip;",
+      "int* ip;"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.29"
+  },
+  {
+    "question": "O tipo indicado na declaração de um apontador deve ser sempre int, qualquer que seja a variável para a qual aponta",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.29"
+  },
+  {
+    "question": "O número de bytes de uma variável apontador é o mesmo, quer seja um int*, um double*, um float* ou um char*",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.29"
+  },
+  {
+    "question": "Um apontador do tipo char* ocupa 1 byte, porque aponta para um char",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.29"
+  },
+  {
+    "question": "O que acontece a um apontador declarado sem inicialização?",
+    "answers": [
+      "Aponta para um sítio qualquer, que pode ser uma posição de memória inválida",
+      "Aponta automaticamente para o endereço zero da memória, sendo por isso um apontador nulo",
+      "Aponta para a primeira variável que for declarada a seguir no mesmo bloco",
+      "Fica com o valor NULL atribuído pelo compilador no momento da declaração"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.30"
+  },
+  {
+    "question": "Não se deve atribuir NULL a um apontador na declaração, que deve ficar por inicializar até lhe ser atribuído um endereço",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.30"
+  },
+  {
+    "question": "Um apontador a que foi atribuído NULL chama-se apontador nulo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.30"
+  },
+  {
+    "question": "NULL é uma constante com o valor zero, definida em várias bibliotecas padrão",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.30"
+  },
+  {
+    "question": "O que é referenciar um apontador, ou seja, dar-lhe um endereço válido?",
+    "answers": [
+      "Guardar no apontador uma cópia do valor da variável para a qual vai apontar",
+      "Fazer o apontador apontar para uma variável, atribuindo-lhe o endereço dessa variável",
+      "Declarar o apontador com o mesmo tipo de dados da variável a que vai apontar",
+      "Atribuir o valor NULL ao apontador logo no momento da sua declaração"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.31"
+  },
+  {
+    "question": "O valor de uma variável apontador é o valor da variável para a qual ela aponta",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.31"
+  },
+  {
+    "question": "Admita char c = 50; e int i = 290;. Qual é o resultado impresso por printf(\"%x, %x\", c, i);?",
+    "answers": [
+      "50, 290",
+      "32, 290",
+      "32, 122",
+      "50, 122"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.31"
+  },
+  {
+    "question": "Admita char c = 50; int i = 290; char* ptr_c = &c; int* ptr_i = &i; e, depois, *ptr_c = 0x00; *ptr_i = 0x00;. Qual é o resultado impresso por printf(\"%x, %x, %x, %x\", c, i, *ptr_c, *ptr_i);?",
+    "answers": [
+      "32, 122, 0, 0",
+      "0, 0, 32, 122",
+      "32, 122, 32, 122",
+      "0, 0, 0, 0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.32"
+  },
+  {
+    "question": "Como se chama o operador * quando usado à frente do nome de uma variável apontador?",
+    "answers": [
+      "Operador de indireção (ou de desreferenciação), que dá acesso ao conteúdo apontado",
+      "Operador de referência, que devolve o endereço de memória de uma variável",
+      "Operador de multiplicação, que só se pode usar entre dois valores numéricos",
+      "Operador de endereço, que devolve a posição de memória ocupada por uma variável"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.32"
+  },
+  {
+    "question": "Alterar o conteúdo apontado por um apontador, com *ptr = valor, altera o valor da variável para a qual o apontador aponta",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.32"
+  },
+  {
+    "question": "Não é possível efetuar operações aritméticas com apontadores, porque um endereço não é um valor numérico",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.33"
+  },
+  {
+    "question": "Quais são os quatro operadores aritméticos que se podem usar com apontadores?",
+    "answers": [
+      "++, --, * e /",
+      "++, --, + e -",
+      "+, -, * e /",
+      "++, +, % e /"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.33"
+  },
+  {
+    "question": "Admita int arr[3] = {1,2,3}; int* p = arr; p++; int x = *(p + 1);. Qual é o valor de x?",
+    "answers": [
+      "1",
+      "2",
+      "3",
+      "0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.33"
+  },
+  {
+    "question": "Admita int arr[3] = {1,2,3}; int* p = arr + 2; p--; int x = *(p - 1);. Qual é o valor de x?",
+    "answers": [
+      "2",
+      "3",
+      "0",
+      "1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.33"
+  },
+  {
+    "question": "Os apontadores não podem ser comparados com os operadores relacionais, apenas com o operador ==",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.34"
+  },
+  {
+    "question": "Admita int arr[5] = {1,2,3,4,5}; int* ptr = arr;. Quantas vezes se executa o ciclo while (ptr < arr + 5) { ptr++; }?",
+    "answers": [
+      "5",
+      "4",
+      "6",
+      "0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.34"
+  },
+  {
+    "question": "O nome de um vetor (o seu endereço base) é um apontador para o primeiro elemento do vetor",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.35"
+  },
+  {
+    "question": "Qual é a fórmula usada para obter o endereço do elemento array[i]?",
+    "answers": [
+      "Endereço base do vetor + i",
+      "Endereço base do vetor + (sizeof(tipo de dados) * i)",
+      "Endereço base do vetor * sizeof(tipo de dados) + i",
+      "Endereço base do vetor + sizeof(tipo de dados) + i"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.35"
+  },
+  {
+    "question": "Um vetor int v[10] começa no endereço 0x1000 (um int ocupa 4 bytes). Qual é o endereço de v[3]?",
+    "answers": [
+      "0x1003",
+      "0x1018",
+      "0x100C",
+      "0x1010"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.35"
+  },
+  {
+    "question": "Um vetor short s[8] começa no endereço 0x2000 (um short ocupa 2 bytes). Qual é o endereço de s[5]?",
+    "answers": [
+      "0x2005",
+      "0x2014",
+      "0x200C",
+      "0x200A"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.35"
+  },
+  {
+    "question": "Um vetor double d[4] começa no endereço 0x3000 (um double ocupa 8 bytes). Qual é o endereço de d[2]?",
+    "answers": [
+      "0x3010",
+      "0x3002",
+      "0x3008",
+      "0x3018"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.35"
+  },
+  {
+    "question": "Admita char arr[5];. Qual é a diferença, em bytes, entre o endereço de arr[4] e o de arr[0]?",
+    "answers": [
+      "5",
+      "4",
+      "1",
+      "8"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.35"
+  },
+  {
+    "question": "Admita int arr[5];. Qual é a diferença, em bytes, entre o endereço de arr[4] e o de arr[0]?",
+    "answers": [
+      "4",
+      "20",
+      "16",
+      "5"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.35"
+  },
+  {
+    "question": "Percorrer (traversal) uma estrutura de dados é o processo em que se visita cada um dos seus elementos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.36"
+  },
+  {
+    "question": "Admita char arr[5]; char* p; for (p = arr; p < arr + 5; p++) { *p = (p - arr) + 1; }. Que valor fica em arr[2]?",
+    "answers": [
+      "2",
+      "4",
+      "0",
+      "3"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.36"
+  },
+  {
+    "question": "Porque é que um apontador precisa de ter um tipo?",
+    "answers": [
+      "Para saber quantos bytes envolvem uma leitura ou escrita a partir do endereço que guarda",
+      "Para que o compilador possa guardar o apontador numa zona de memória diferente, conforme o tipo",
+      "Para que o endereço guardado tenha um número de bits diferente, conforme o tipo apontado",
+      "Para impedir que o apontador seja comparado com apontadores de outros tipos de dados"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.37"
+  },
+  {
+    "question": "Com um apontador char*, qualquer operação de leitura ou de escrita envolve um único byte",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.37"
+  },
+  {
+    "question": "Com um apontador int*, qualquer operação de leitura ou de escrita envolve quatro bytes",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.37"
+  },
+  {
+    "question": "Admita int arr[5]; int* ptr = arr; ptr++;. Qual é o valor de ptr - arr?",
+    "answers": [
+      "4",
+      "1",
+      "0",
+      "5"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.37"
+  },
+  {
+    "question": "Admita int arr[5]; int* ptr = arr; ptr++;. Quantos bytes separam o endereço guardado em ptr do endereço de arr?",
+    "answers": [
+      "1",
+      "0",
+      "4",
+      "8"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.37"
+  },
+  {
+    "question": "Quando um apontador é incrementado, avança um número de bytes igual ao tamanho do tipo de dados para o qual aponta",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.38"
+  },
+  {
+    "question": "Um int* guarda o endereço 0x1000. Qual é o endereço depois de ptr++ (um int ocupa 4 bytes)?",
+    "answers": [
+      "0x1001",
+      "0x1008",
+      "0x1002",
+      "0x1004"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.38"
+  },
+  {
+    "question": "Um short* guarda o endereço 0x2000. Qual é o endereço depois de ptr++ (um short ocupa 2 bytes)?",
+    "answers": [
+      "0x2002",
+      "0x2001",
+      "0x2004",
+      "0x2008"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.38"
+  },
+  {
+    "question": "Um double* guarda o endereço 0x3000. Qual é o endereço depois de ptr++ (um double ocupa 8 bytes)?",
+    "answers": [
+      "0x3001",
+      "0x3008",
+      "0x3004",
+      "0x3010"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.38"
+  },
+  {
+    "question": "Um int* guarda o endereço 0x1010. Qual é o endereço depois de ptr-- (um int ocupa 4 bytes)?",
+    "answers": [
+      "0x100F",
+      "0x1008",
+      "0x100C",
+      "0x1014"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.38"
+  },
+  {
+    "question": "Quando se soma um inteiro a um apontador, o inteiro é primeiro multiplicado pelo tamanho do tipo de dados e só depois é somado ao apontador",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.39"
+  },
+  {
+    "question": "Um int* guarda o endereço 0x1000. Qual é o endereço de ptr + 3 (um int ocupa 4 bytes)?",
+    "answers": [
+      "0x1003",
+      "0x1010",
+      "0x1006",
+      "0x100C"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.39"
+  },
+  {
+    "question": "Um short* guarda o endereço 0x2000. Qual é o endereço de ptr + 5 (um short ocupa 2 bytes)?",
+    "answers": [
+      "0x200A",
+      "0x2005",
+      "0x2014",
+      "0x2007"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.39"
+  },
+  {
+    "question": "Um int* guarda o endereço 0x1020. Qual é o endereço de ptr - 2 (um int ocupa 4 bytes)?",
+    "answers": [
+      "0x101E",
+      "0x1018",
+      "0x1010",
+      "0x1022"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.39"
+  },
+  {
+    "question": "Os inteiros em C e C++ são com sinal por omissão, e só são sem sinal quando declarados como unsigned",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.41"
+  },
+  {
+    "question": "Num inteiro com sinal em complemento para 2, o que indica o bit mais significativo?",
+    "answers": [
+      "O sinal: 1 para não negativo e 0 para negativo",
+      "A paridade do valor guardado",
+      "O sinal: 0 para não negativo e 1 para negativo",
+      "Se o valor excede o limite do tipo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.41"
+  },
+  {
+    "question": "A verificação dos limites dos inteiros tem sido aplicada de forma sistemática no desenvolvimento da maioria do software em C e C++",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.41"
+  },
+  {
+    "question": "Em que ficheiro de cabeçalho estão definidos os limites dos tipos inteiros em C?",
+    "answers": [
+      "<stdint.h>",
+      "<stdlib.h>",
+      "<stdio.h>",
+      "<limits.h>"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.42"
+  },
+  {
+    "question": "Qual é o valor de INT_MAX, o maior valor de um int?",
+    "answers": [
+      "2147483647",
+      "2147483648",
+      "4294967295",
+      "2147483646"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.42"
+  },
+  {
+    "question": "Qual é o valor de INT_MIN, o menor valor de um int?",
+    "answers": [
+      "-2147483647",
+      "-2147483648",
+      "-4294967296",
+      "-2147483649"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.42"
+  },
+  {
+    "question": "Qual é o valor de UINT_MAX, o maior valor de um unsigned int?",
+    "answers": [
+      "2147483647",
+      "4294967296",
+      "4294967295",
+      "4294967294"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.42"
+  },
+  {
+    "question": "Qual é a representação hexadecimal do valor -1 numa variável short (16 bits)?",
+    "answers": [
+      "0x8000",
+      "0x7FFF",
+      "0x0001",
+      "0xFFFF"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.42"
+  },
+  {
+    "question": "Qual é a representação hexadecimal do menor valor que um short (16 bits) consegue guardar?",
+    "answers": [
+      "0x8000",
+      "0xFFFF",
+      "0x7FFF",
+      "0x0000"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.42"
+  },
+  {
+    "question": "Qual é a representação hexadecimal do maior valor que um short (16 bits) consegue guardar?",
+    "answers": [
+      "0x8000",
+      "0x7FFF",
+      "0xFFFF",
+      "0x0001"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.42"
+  },
+  {
+    "question": "O typecasting é uma forma de converter uma variável ou um dado de um tipo de dados para outro tipo de dados",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.43"
+  },
+  {
+    "question": "Quais são os dois tipos de conversão de tipos (casting) em C?",
+    "answers": [
+      "Estática (feita em compilação) e dinâmica (feita em execução)",
+      "Direta (feita pelo CPU) e indireta (feita pelo sistema operativo)",
+      "Sem sinal (unsigned) e com sinal (signed)",
+      "Implícita (feita pelo compilador) e explícita (feita pelo programador)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.43"
+  },
+  {
+    "question": "No casting implícito, quando os operandos têm tipos diferentes, o operando de tipo inferior é automaticamente convertido para o tipo superior (promoção de tipo)",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.43"
+  },
+  {
+    "question": "No casting explícito, o programador altera o tipo de uma expressão através do operador de cast, com a forma (tipo) expressão",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.43"
+  },
+  {
+    "question": "Quando um tipo de dados superior é convertido para um inferior, os dados são truncados",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.43"
+  },
+  {
+    "question": "Admita int sum = 17, count = 5; double mean; mean = sum / count;. Qual é o valor de mean?",
+    "answers": [
+      "3.000000",
+      "3.400000",
+      "3.500000",
+      "4.000000"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.44"
+  },
+  {
+    "question": "Admita int sum = 17, count = 5; double mean; mean = (double) sum / count;. Qual é o valor de mean?",
+    "answers": [
+      "3.000000",
+      "3.400000",
+      "3.500000",
+      "4.000000"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.44"
+  },
+  {
+    "question": "Admita int i = 17; char c = 'c'; (o valor ASCII de 'c' é 99) int sum = i + c;. Qual é o valor de sum?",
+    "answers": [
+      "17",
+      "99",
+      "116",
+      "115"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.45"
+  },
+  {
+    "question": "Admita int i = 17; char c = 'c'; (o valor ASCII de 'c' é 99) float sum = i + c;. Qual é o resultado impresso por printf(\"%f\", sum);?",
+    "answers": [
+      "116",
+      "99.000000",
+      "17.000000",
+      "116.000000"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.45"
+  },
+  {
+    "question": "Na conversão entre números com sinal e sem sinal do mesmo tamanho, os valores numéricos podem mudar, mas os padrões de bits não",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.46"
+  },
+  {
+    "question": "Admita short v = -12345; unsigned short uv = (unsigned short) v;. Qual é o valor de uv?",
+    "answers": [
+      "53191",
+      "12345",
+      "-12345",
+      "53192"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.46"
+  },
+  {
+    "question": "Qual é o valor de (unsigned char) -1?",
+    "answers": [
+      "-1",
+      "255",
+      "127",
+      "256"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.46"
+  },
+  {
+    "question": "Qual é o valor de (unsigned short) -1?",
+    "answers": [
+      "-1",
+      "32767",
+      "65535",
+      "65536"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.46"
+  },
+  {
+    "question": "Admita unsigned int u = 4000000000u; int x = (int) u;, com a conversão a manter o padrão de bits. Qual é o valor de x?",
+    "answers": [
+      "4000000000",
+      "294967296",
+      "-4000000000",
+      "-294967296"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.46"
+  },
+  {
+    "question": "Admita unsigned short us = 40000; short s = (short) us;, com a conversão a manter o padrão de bits. Qual é o valor de s?",
+    "answers": [
+      "-25536",
+      "40000",
+      "25536",
+      "-40000"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.46"
+  },
+  {
+    "question": "Uma constante como 12345 ou 0x1A2B é considerada sem sinal por omissão",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.48"
+  },
+  {
+    "question": "Qual é o sufixo que torna uma constante inteira do tipo unsigned int?",
+    "answers": [
+      "l ou L",
+      "u ou U",
+      "ul ou UL",
+      "ll ou LL"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.48"
+  },
+  {
+    "question": "Qual é o sufixo que torna uma constante inteira do tipo unsigned long long int?",
+    "answers": [
+      "ul ou UL",
+      "ll ou LL",
+      "ull ou ULL",
+      "u ou U"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.48"
+  },
+  {
+    "question": "Qual é o sufixo que torna uma constante inteira do tipo long int?",
+    "answers": [
+      "ll ou LL",
+      "u ou U",
+      "ul ou UL",
+      "l ou L"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.48"
+  },
+  {
+    "question": "Quando uma operação envolve um operando com sinal e outro sem sinal, o C converte implicitamente o operando com sinal para sem sinal",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.48"
+  },
+  {
+    "question": "Admita unsigned int u = 5; int x = -3;. Qual é o valor da expressão x < u?",
+    "answers": [
+      "0",
+      "1",
+      "-1",
+      "5"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.48"
+  },
+  {
+    "question": "Que operação se faz ao converter um número sem sinal para um tipo de dados maior?",
+    "answers": [
+      "Copia-se o bit mais significativo para a esquerda",
+      "Acrescentam-se zeros à esquerda (extensão com zeros)",
+      "Acrescentam-se uns à esquerda",
+      "Descartam-se os bits de ordem mais alta"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.49"
+  },
+  {
+    "question": "Que operação se faz ao converter um número em complemento para 2 para um tipo de dados maior?",
+    "answers": [
+      "Acrescentam-se sempre zeros à esquerda, qualquer que seja o sinal do número",
+      "Descartam-se os bits de ordem mais alta do número, mantendo o valor",
+      "Copia-se o bit mais significativo para a esquerda (extensão de sinal)",
+      "Acrescentam-se zeros à direita do número, o que o multiplica pela base"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.49"
+  },
+  {
+    "question": "Admita short x = 15213; int ix = (int) x;. Qual é a representação hexadecimal de ix?",
+    "answers": [
+      "0xFFFF3B6D",
+      "0x3B6D0000",
+      "0x00003B6C",
+      "0x00003B6D"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.49"
+  },
+  {
+    "question": "Admita short y = -15213; int iy = (int) y;. Qual é a representação hexadecimal de iy?",
+    "answers": [
+      "0xFFFFC493",
+      "0x0000C493",
+      "0xC4930000",
+      "0xFFFFC492"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.49"
+  },
+  {
+    "question": "Admita short sx = -12345; unsigned int uy = sx;. Qual é o valor de uy?",
+    "answers": [
+      "4294954952",
+      "4294954951",
+      "4294967295",
+      "4294979641"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.50"
+  },
+  {
+    "question": "Na conversão de um short com sinal para um unsigned int, primeiro converte-se para sem sinal e só depois se altera o tamanho",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.50"
+  },
+  {
+    "question": "Converter um tipo de dados de maior tamanho (maior rank) para um de menor tamanho chama-se demotion",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.51"
+  },
+  {
+    "question": "Quando o compilador deteta uma demotion, emite um aviso (warning) que interrompe a compilação",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.51"
+  },
+  {
+    "question": "Ao truncar um número de w bits para k bits (com w > k), que bits são descartados?",
+    "answers": [
+      "Os w - k bits de ordem mais baixa",
+      "Os k bits de ordem mais alta",
+      "Os w - k bits de ordem mais alta",
+      "Os bits que tiverem o valor zero"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.52"
+  },
+  {
+    "question": "Admita int x = 53191; short sx = (short) x;. Qual é o valor de sx?",
+    "answers": [
+      "53191",
+      "12345",
+      "-53191",
+      "-12345"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.52"
+  },
+  {
+    "question": "Admita short x = 300; unsigned char y = (unsigned char) x;. Qual é o valor de y?",
+    "answers": [
+      "44",
+      "300",
+      "255",
+      "256"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.52"
+  },
+  {
+    "question": "Admita unsigned int x = 1000; unsigned char y = (unsigned char) x;. Qual é o valor de y?",
+    "answers": [
+      "1000",
+      "232",
+      "233",
+      "255"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.52"
+  },
+  {
+    "question": "Qual é o valor de (unsigned char) 456?",
+    "answers": [
+      "456",
+      "255",
+      "200",
+      "256"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.52"
+  },
+  {
+    "question": "Qual é o valor de (int) 45656.453?",
+    "answers": [
+      "45657",
+      "45656.453",
+      "45650",
+      "45656"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.52"
+  },
+  {
+    "question": "Para um número sem sinal x, truncá-lo para k bits equivale a calcular x mod 2^k",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.52"
+  },
+  {
+    "question": "Qual é o operador em C que corresponde ao OU exclusivo (XOR) bit a bit?",
+    "answers": [
+      "^",
+      "&",
+      "|",
+      "~"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.54"
+  },
+  {
+    "question": "Qual é o operador em C que corresponde ao complemento para 1 (unário), que inverte todos os bits?",
+    "answers": [
+      "!",
+      "~",
+      "^",
+      "-"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.54"
+  },
+  {
+    "question": "Qual é o resultado de 0xF0 & 0x3C?",
+    "answers": [
+      "0xFC",
+      "0xCC",
+      "0x30",
+      "0x3C"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.54"
+  },
+  {
+    "question": "Qual é o resultado de 0xF0 | 0x0F?",
+    "answers": [
+      "0x00",
+      "0xF0",
+      "0x0F",
+      "0xFF"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.54"
+  },
+  {
+    "question": "Qual é o resultado de 0xAA ^ 0xFF?",
+    "answers": [
+      "0x55",
+      "0xAA",
+      "0xFF",
+      "0x00"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.54"
+  },
+  {
+    "question": "Qual é o valor de (unsigned char) ~0x0F?",
+    "answers": [
+      "0x0F",
+      "0xF0",
+      "0xFF",
+      "0x00"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.54"
+  },
+  {
+    "question": "Qual é o valor de 0x01 << 4?",
+    "answers": [
+      "0x04",
+      "0x40",
+      "0x10",
+      "0x08"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.54"
+  },
+  {
+    "question": "Em C, o operador << faz shift dos bits para a direita e o operador >> faz shift dos bits para a esquerda",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.54"
+  },
+  {
+    "question": "Um shift diz-se lógico quando é feito sobre inteiros sem sinal, e os bits que ficam vazios são preenchidos com zeros",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.55"
+  },
+  {
+    "question": "Um shift diz-se aritmético quando é feito sobre inteiros com sinal",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.55"
+  },
+  {
+    "question": "Num shift aritmético para a direita, o bit de sinal (MSB) é replicado em vez de se preencher com zeros",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.55"
+  },
+  {
+    "question": "O shift aritmético para a esquerda replica o bit de sinal, ao contrário do shift lógico para a esquerda",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.55"
+  },
+  {
+    "question": "Qual é o resultado de 0xF0u >> 2, em que 0xF0u é um inteiro sem sinal?",
+    "answers": [
+      "0xFC",
+      "0x78",
+      "0x3F",
+      "0x3C"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.55"
+  },
+  {
+    "question": "Admita um signed char com o valor -16 (0xF0), com shift aritmético. Qual é o resultado de aplicar-lhe >> 2?",
+    "answers": [
+      "-4",
+      "60",
+      "-16",
+      "-8"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.55"
+  },
+  {
+    "question": "Qual é o valor de 5 << 3?",
+    "answers": [
+      "15",
+      "40",
+      "53",
+      "8"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.55"
+  },
+  {
+    "question": "Os operadores lógicos ||, && e ! correspondem às operações lógicas Or, And e Not",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.57"
+  },
+  {
+    "question": "Os operadores lógicos tratam apenas o valor 1 como verdadeiro e qualquer outro valor como falso",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.57"
+  },
+  {
+    "question": "Os operadores lógicos devolvem o valor de um dos operandos, e não os valores 1 ou 0",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.57"
+  },
+  {
+    "question": "Admita int a = 0;. O que acontece ao avaliar a expressão a && 5/a?",
+    "answers": [
+      "Causa uma divisão por zero, porque os dois argumentos são sempre avaliados",
+      "Devolve o valor 5, que é o resultado da divisão",
+      "Nunca causa uma divisão por zero, porque o segundo argumento não é avaliado",
+      "Não compila, porque a divisão por uma variável é inválida"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.57"
+  },
+  {
+    "question": "Qual é o valor de (0x01 && 0x02), uma operação lógica?",
+    "answers": [
+      "2",
+      "3",
+      "0",
+      "1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.57"
+  },
+  {
+    "question": "Qual é o valor de (0x01 & 0x02), uma operação bit a bit?",
+    "answers": [
+      "0",
+      "1",
+      "3",
+      "2"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.57"
+  },
+  {
+    "question": "Qual é o valor de (5 || 0)?",
+    "answers": [
+      "5",
+      "1",
+      "0",
+      "-1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.57"
+  },
+  {
+    "question": "Qual é o valor de (5 | 0)?",
+    "answers": [
+      "1",
+      "0",
+      "5",
+      "-1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.57"
+  },
+  {
+    "question": "Qual é o valor de !0x41?",
+    "answers": [
+      "1",
+      "0x41",
+      "-66",
+      "0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.57"
+  },
+  {
+    "question": "Qual é o valor de !!5?",
+    "answers": [
+      "1",
+      "5",
+      "0",
+      "-1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.57"
+  },
+  {
+    "question": "Admita int x = 0; int r = (0 && (x = 5));. Qual é o valor de x no fim?",
+    "answers": [
+      "5",
+      "0",
+      "1",
+      "-1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.57"
+  },
+  {
+    "question": "Admita int x = 0; int r = (1 || (x = 5));. Qual é o valor de x no fim?",
+    "answers": [
+      "5",
+      "1",
+      "0",
+      "-1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.57"
+  },
+  {
+    "question": "Admita int x = 0; int r = (1 | (x = 5));. Qual é o valor de x no fim?",
+    "answers": [
+      "0",
+      "1",
+      "-1",
+      "5"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.57"
+  },
+  {
+    "question": "Qual é a diferença essencial entre && e & em C?",
+    "answers": [
+      "O && é uma operação lógica, que devolve 1 ou 0, e o & atua bit a bit sobre os operandos",
+      "O && atua bit a bit sobre os operandos e o & é uma operação lógica que devolve 1 ou 0",
+      "O && só funciona com inteiros sem sinal e o & só funciona com inteiros com sinal",
+      "Não há diferença, são dois nomes diferentes para o mesmo operador da linguagem C"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.57"
+  }
+]
