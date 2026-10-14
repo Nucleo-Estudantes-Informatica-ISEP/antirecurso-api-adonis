@@ -4618,7 +4618,7 @@
       "question": "Na arquitetura IEEE 802 a camada MAC implementa um mecanismo de deteção de erros.",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [374],
+      "repeated": [366],
       "in_plan": true
     },
     {
@@ -4637,7 +4637,7 @@
       "question": "Duplicando a taxa de transmissão, o tempo que demora a transferir um pacote entre dois nós passa sempre para metade.",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [381],
+      "repeated": [373],
       "in_plan": true
     },
     {
@@ -4714,7 +4714,7 @@
       "question": "O Wireless Local Loop (WLL) permite alcances de vários quilómetros usando a tecnologia 802.11.",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [401],
+      "repeated": [393],
       "in_plan": true
     },
     {
@@ -4746,14 +4746,14 @@
       "question": "Nas redes ATM numa sequência de células associadas ao mesmo canal virtual a ordem é garantida.",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [326],
+      "repeated": [320],
       "in_plan": true
     },
     {
       "question": "As células ATM (Asynchronous Transfer Mode) possuem um mecanismo de deteção de erros nos dados transportados.",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [110, 165, 325],
+      "repeated": [110, 165, 319],
       "in_plan": true
     },
     {
@@ -4772,7 +4772,7 @@
       "question": "Para permitir o roaming entre células 802.11, todas as células devem ter o mesmo SSID (Service Set Identifier).",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [327],
+      "repeated": [321],
       "in_plan": true
     },
     {
@@ -4798,14 +4798,14 @@
       "question": "Nas redes locais sem fios 802.11 assim que ocorre uma colisão os nós deixam imediatamente de emitir.",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [251, 368],
+      "repeated": [251, 360],
       "in_plan": true
     },
     {
       "question": "A utilização de VLAN (Virtual Local Area Network) implica sempre a colocação de etiquetas nas tramas (IEEE802.1Q).",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [252, 369],
+      "repeated": [252, 361],
       "in_plan": true
     },
     {
@@ -4857,7 +4857,7 @@
       "question": "Se um router está ligado a cinco redes IPv4 diferentes, o número máximo de diferentes next-hop que pode usar é cinco.",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [312],
+      "repeated": [309],
       "in_plan": true
     },
     {
@@ -4871,14 +4871,14 @@
       "question": "Num segmento TCP o valor zero no campo WINDOW (tamanho da janela de receção) impede o envio de dados.",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [194, 237, 314],
+      "repeated": [194, 237, 311],
       "in_plan": true
     },
     {
       "question": "Em TCP, quando o valor do RTT (Round Trip Time) aumenta, o RTO (Retransmission TimeOut) também vai aumentar.",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [391],
+      "repeated": [383],
       "in_plan": true
     },
     {
@@ -4928,14 +4928,14 @@
       "question": "Quando um subscritor emite uma trama ethernet no local loop, essa trama nunca pode chegar a outro subscritor.",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [246, 323],
+      "repeated": [246, 318],
       "in_plan": true
     },
     {
       "question": "Num local loop através de CATV são necessários mecanismos de controlo de acesso ao meio e garantia de privacidade.",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [199, 400],
+      "repeated": [199, 392],
       "in_plan": true
     },
     {
@@ -4948,7 +4948,7 @@
       "question": "Num datagrama IPv6 que transporta um datagrama UDP, onde termina o cabeçalho IPv6 começa sempre o cabeçalho UDP.",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [417],
+      "repeated": [409],
       "in_plan": true
     },
     {
@@ -4998,28 +4998,28 @@
       "question": "Quando um servidor TCP aceita uma ligação TCP de um cliente, é gerado um novo socket ligado ao cliente.",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [386],
+      "repeated": [378],
       "in_plan": true
     },
     {
       "question": "Ao contrário do que acontece em UDP, em TCP não é possível usar endereços de broadcast.",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [344],
+      "repeated": [336],
       "in_plan": true
     },
     {
       "question": "Quando se solicita a receção de um datagrama através de um socket UDP é necessário indicar o tamanho exato do datagrama e tem de coincidir exatamente com o tamanho do datagrama que foi enviado.",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [387],
+      "repeated": [379],
       "in_plan": true
     },
     {
       "question": "Quando se utiliza a system-call connect para associar um socket UDP a um endereço remoto obtém-se um socket TCP.",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [385],
+      "repeated": [377],
       "in_plan": true
     },
     {
@@ -5062,7 +5062,7 @@
       "question": "Nos protocolos do tipo distance-vector cada router divulga aos vizinhos a sua tabela de encaminhamento.",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [271, 388],
+      "repeated": [271, 380],
       "in_plan": true
     },
     {
@@ -5075,21 +5075,21 @@
       "question": "No SNMP quando é usada a mensagem TRAP o emissor nunca sabe se ela chegou ao destino.",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [208, 357],
+      "repeated": [208, 349],
       "in_plan": true
     },
     {
       "question": "Todas as mensagens SNMPv1 contêm um string de controlo de acesso cifrado designado “Community”.",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [281, 356],
+      "repeated": [281, 348],
       "in_plan": true
     },
     {
       "question": "No SNMPv1 o agente é um pequeno servidor UDP que também funciona como cliente quando envia a mensagem TRAP.",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [359],
+      "repeated": [351],
       "in_plan": true
     },
     {
@@ -5126,14 +5126,14 @@
       "question": "Um pedido HTTP com o método POST nunca contém a linha de cabeçalho “Content-type:”.",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [159, 362],
+      "repeated": [159, 354],
       "in_plan": true
     },
     {
       "question": "Um pedido HTTP com o método GET pode ter corpo (body/content/entity).",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [402],
+      "repeated": [394],
       "in_plan": true
     },
     {
@@ -5204,7 +5204,7 @@
       "question": "No protocolo L2TP as caraterísticas de segurança são asseguradas pelo IPSEC e eventualmente o PPP.",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [352],
+      "repeated": [344],
       "in_plan": true
     },
     {
@@ -5223,7 +5223,7 @@
       "question": "Uma ligação de VPN tanto pode ser usada para simular uma ligação entre switches como uma ligação entre routers.",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [421],
+      "repeated": [413],
       "in_plan": true
     },
     {
@@ -5268,7 +5268,7 @@
       "question": "Para acesso remoto à respetiva mailbox um utilizador pode usar em alternativa ao SMTP, os protocolos POP3 ou IMAP4.",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [354],
+      "repeated": [346],
       "in_plan": true
     },
     {
@@ -5307,7 +5307,7 @@
       "question": "Nas células ATM não existe deteção de erros de transmissão que possam ocorrer nos dados transportados",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [24, 165, 325],
+      "repeated": [24, 165, 319],
       "in_plan": true
     },
     {
@@ -5345,7 +5345,6 @@
       "question": "O controlo de erros ARQ (Automatic Repeat reQuest) contínuo é do tipo BEC (Backward Error Correction).",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [300],
       "in_plan": true
     },
     {
@@ -5358,14 +5357,13 @@
       "question": "Os nós intermédios a operar em modo cut-through têm como principal vantagem uma redução do tempo de atraso na rede.",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [303],
       "in_plan": true
     },
     {
       "question": "O tempo que um pacote demora a ser transferido entre dois nós intermédios não depende da distância entre eles.",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [178, 379],
+      "repeated": [178, 371],
       "in_plan": true
     },
     {
@@ -5378,7 +5376,7 @@
       "question": "A comutação de pacotes com circuitos virtuais garante que os pacotes chegam ao destino na ordem em que foram emitidos.",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [383],
+      "repeated": [375],
       "in_plan": true
     },
     {
@@ -5391,7 +5389,6 @@
       "question": "As técnicas ASK, FSK e PSK produzem sinais digitais em que o nível de sinal é uma representação direta dos dados a transmitir.",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [308],
       "in_plan": true
     },
     {
@@ -5437,7 +5434,7 @@
       "question": "No sistema DNS (Domain Name System) qualquer Name Server tem a capacidade de resolver qualquer nome da Internet",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [183, 412],
+      "repeated": [183, 404],
       "in_plan": true
     },
     {
@@ -5450,21 +5447,20 @@
       "question": "Se o campo NEXT-HEADER do cabeçalho IPv6 indicar o protocolo TCP, então não existem cabeçalhos de extensão",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [339],
       "in_plan": true
     },
     {
       "question": "A mesma versão do protocolo ICMP é usada com IPv4 e IPv6",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [415],
+      "repeated": [407],
       "in_plan": true
     },
     {
       "question": "O protocolo IPv6 não utiliza o protocolo ARP (Address Resolution Protocol)",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [267, 338],
+      "repeated": [267, 331],
       "in_plan": true
     },
     {
@@ -5483,7 +5479,6 @@
       "question": "Para o DHCP (Dynamic Host Configuration Protocol) funcionar é necessário que cliente e servidor estejam na mesma rede local",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [319],
       "in_plan": true
     },
     {
@@ -5515,7 +5510,6 @@
       "question": "No TCP (Transmission Control Protocol) o valor do RTO (Retransmission Time Out) nunca pode ser de 10 segundos",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [315],
       "in_plan": true
     },
     {
@@ -5535,7 +5529,6 @@
       "question": "Numa ligação DSL (Digital Subscriber Line) é utilizado um par de fibras óticas para transmitir sinais digitais em full-duplex",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [324],
       "in_plan": true
     },
     {
@@ -5548,7 +5541,7 @@
       "question": "A modulação FSK (“Frequency Shift Keying”) produz um sinal analógico em que a respetiva frequência varia",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [348],
+      "repeated": [340],
       "in_plan": true
     },
     {
@@ -5586,21 +5579,19 @@
       "question": "Num cabeçalho SMTP Content-Transfer-Encoding: base64 apenas é válido se estiver presente MIME-Version: 1.0",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [423],
+      "repeated": [415],
       "in_plan": true
     },
     {
       "question": "O SMTP (Simple Mail Transfer Protocol) permite aos utilizadores receberem mensagens armazenadas em servidores remotos",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [425],
       "in_plan": true
     },
     {
       "question": "A mensagem TRAP do SNMP é enviada pelo agente ao sistema gestor em resposta a um pedido Getbulk Request",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [427],
       "in_plan": true
     },
     {
@@ -5625,14 +5616,14 @@
       "question": "A linha de cabeçalho Content-Type do HTTP nunca é usada nas mensagens de pedido, apenas nas respostas",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [82, 362],
+      "repeated": [82, 354],
       "in_plan": true
     },
     {
       "question": "No protocolo HTTP os métodos GET e POST podem ser usados para enviar dados ao servidor",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [287, 404],
+      "repeated": [287, 396],
       "in_plan": true
     },
     {
@@ -5646,14 +5637,13 @@
       "question": "O diálogo com os servidores de nomes do sistema DNS recorre apenas ao UDP, nunca ao TCP",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [406],
+      "repeated": [398],
       "in_plan": true
     },
     {
       "question": "O registo TXT com o valor “v=spf1 +mx –all” associado ao nome do domínio serve para controlar o envio de correio eletrónico",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [329],
       "in_plan": true
     },
     {
@@ -5666,7 +5656,7 @@
       "question": "A tecnologia ATM (“Asynchronous Transfer Mode”) tem como principal objetivo garantir que não ocorrem erros na transmissão",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [24, 110, 325],
+      "repeated": [24, 110, 319],
       "in_plan": true
     },
     {
@@ -5722,14 +5712,14 @@
       "question": "O controlo de fluxo “stop & wait” é mais adequado para comunicações de longa distância em que existem grandes atrasos",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [225, 302],
+      "repeated": [225, 301],
       "in_plan": true
     },
     {
       "question": "Para que o protocolo de janela deslizante consiga operar sem pausas é necessário que a transmissão seja “full-duplex”",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [378],
+      "repeated": [370],
       "in_plan": true
     },
     {
@@ -5748,7 +5738,7 @@
       "question": "Se duplicarmos a distância entre dois nós, o tempo total para transferir um pacote entre eles também duplica",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [119, 379],
+      "repeated": [119, 371],
       "in_plan": true
     },
     {
@@ -5761,7 +5751,7 @@
       "question": "A deteção de erros de transmissão garante que todos os erros ocorridos são detetados, mas podem existir falsas deteções",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [382],
+      "repeated": [374],
       "in_plan": true
     },
     {
@@ -5775,14 +5765,14 @@
       "question": "No sistema DNS os registos do tipo NS (“Name Server”) são também vulgarmente designados “glue records”",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [334],
+      "repeated": [327],
       "in_plan": true
     },
     {
       "question": "O DNS (“Domain Name System”) permite resolver qualquer nome da “Internet” desde que se conheça os “root name servers”",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [130, 412],
+      "repeated": [130, 404],
       "in_plan": true
     },
     {
@@ -5851,7 +5841,7 @@
       "question": "Num segmento TCP (“Transmission Control Protocol”) o valor do parâmetro WINDOW nunca pode ser zero",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [42, 237, 314],
+      "repeated": [42, 237, 311],
       "in_plan": true
     },
     {
@@ -5883,7 +5873,7 @@
       "question": "O DOCSIS (“Data Over Cable Service Interface Specification”) inclui mecanismos de controlo de acesso ao meio partilhado",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [52, 400],
+      "repeated": [52, 392],
       "in_plan": true
     },
     {
@@ -5941,7 +5931,7 @@
       "question": "No SNMP versão 1, quando um agente envia uma mensagem TRAP não tem nenhuma forma de saber se ela foi recebida",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [74, 357],
+      "repeated": [74, 349],
       "in_plan": true
     },
     {
@@ -5991,7 +5981,7 @@
       "question": "O nome DNS “200.30.89.120.in-addr.arpa” corresponde a um registo do tipo PTR para o endereço IPv4 “120.89.30.200”",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [291, 409],
+      "repeated": [291, 401],
       "in_plan": true
     },
     {
@@ -6047,7 +6037,7 @@
       "question": "As vantagens do controlo de fluxo com janela deslizante são mais evidentes quando os atrasos de propagação são elevados",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [174, 302],
+      "repeated": [174, 301],
       "in_plan": true
     },
     {
@@ -6111,7 +6101,7 @@
       "question": "Os sinais eletromagnéticos de baixa frequência (< 1 KHz) são sinais analógicos também conhecidos como “micro-ondas”",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [351],
+      "repeated": [343],
       "in_plan": true
     },
     {
@@ -6124,7 +6114,7 @@
       "question": "O parâmetro “WINDOW” dos cabeçalhos TCP é usado para controlo de fluxo, nunca pode ter o valor zero",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [42, 194, 314],
+      "repeated": [42, 194, 311],
       "in_plan": true
     },
     {
@@ -6156,7 +6146,7 @@
       "question": "O protocolo UDP (“User Datagram Protocol”) é usado como meio de transporte pelo DHCP (“Dynamic Host Configuration Protocol”)",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [396],
+      "repeated": [388],
       "in_plan": true
     },
     {
@@ -6182,7 +6172,7 @@
       "question": "O “local loop” é uma ligação de nível 2, mas a ligação entre subscritores tem de recorrer a um protocolo de nível 3",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [51, 323],
+      "repeated": [51, 318],
       "in_plan": true
     },
     {
@@ -6214,14 +6204,14 @@
       "question": "Na técnica CSMA/CA usada nas redes 802.11, as colisões são detetadas pelo facto de não haver um ACK do recetor",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [31, 368],
+      "repeated": [31, 360],
       "in_plan": true
     },
     {
       "question": "A utilização de etiquetas IEEE 802.1q é obrigatória quando várias VLAN passam através de uma mesma ligação física",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [32, 369],
+      "repeated": [32, 361],
       "in_plan": true
     },
     {
@@ -6288,7 +6278,7 @@
       "question": "No IPv6 todos os endereços “multicast” começam (bits mais significativos) com a sequência “FF02”",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [416],
+      "repeated": [408],
       "in_plan": true
     },
     {
@@ -6313,7 +6303,7 @@
       "question": "Um endereço de nó IPv6 tem capacidade para conter um endereço de nível 2 com 48 bits, por isso o ARP não é necessário",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [134, 338],
+      "repeated": [134, 331],
       "in_plan": true
     },
     {
@@ -6339,7 +6329,7 @@
       "question": "No protocolo RIP (“Routing Information Protocol”) cada “router” divulga aos “routers” vizinhos a sua tabela de encaminhamento",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [72, 388],
+      "repeated": [72, 380],
       "in_plan": true
     },
     {
@@ -6403,7 +6393,7 @@
       "question": "No SNMP um pedido só é aceite pelo agente se o nome de comunidade constante do pedido for o correto",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [75, 356],
+      "repeated": [75, 348],
       "in_plan": true
     },
     {
@@ -6428,7 +6418,7 @@
       "question": "A mensagem de resposta a um pedido do método HEAD é uma mensagem que nunca contém corpo (“content”)",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [403],
+      "repeated": [395],
       "in_plan": true
     },
     {
@@ -6441,7 +6431,7 @@
       "question": "Embora de formas diferentes, ambos os métodos GET e POST podem ser usados para submeter formulários",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [160, 404],
+      "repeated": [160, 396],
       "in_plan": true
     },
     {
@@ -6466,7 +6456,7 @@
       "question": "No sistema DNS o domínio “in-addr.arpa” é usado para implementar a resolução inversa de endereços IPv4",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [216, 409],
+      "repeated": [216, 401],
       "in_plan": true
     },
     {
@@ -6521,13 +6511,6 @@
       "in_plan": true
     },
     {
-      "question": "O controlo de erros ARQ (“Automatic Repeat reQuest”) contínuo é do tipo BEC (“Backward Error Correction”)",
-      "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0,
-      "repeated": [116],
-      "in_plan": true
-    },
-    {
       "question": "O controlo de fluxo com janela deslizante serve para garantir que os pacotes são recebidos na mesma ordem em que são emitidos",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
@@ -6538,13 +6521,6 @@
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
       "repeated": [174, 225],
-      "in_plan": true
-    },
-    {
-      "question": "Os nós intermédios a operar em modo “cut-through” têm como principal vantagem uma redução do tempo de atraso na rede",
-      "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0,
-      "repeated": [118],
       "in_plan": true
     },
     {
@@ -6569,13 +6545,6 @@
       "question": "Numa rede de comutação de pacotes, não é possível emitir um pacote de tal forma que seja recebido em todos os nós da rede",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "in_plan": true
-    },
-    {
-      "question": "As técnicas ASK, FSK e PSK produzem sinais digitais em que o nível de sinal é uma representação direta dos dados a transmitir",
-      "answers": ["Falso", "Verdadeiro"],
-      "correct_index": 0,
-      "repeated": [123],
       "in_plan": true
     },
     {
@@ -6617,13 +6586,6 @@
       "in_plan": true
     },
     {
-      "question": "No TCP (“Transmission Control Protocol”) o valor do RTO (“Retransmission TimeOut”) nunca pode ser de 10 segundos",
-      "answers": ["Falso", "Verdadeiro"],
-      "correct_index": 0,
-      "repeated": [142],
-      "in_plan": true
-    },
-    {
       "question": "A mensagem de erro ICMP do tipo “Redirect” é produzida pelos “routers” quando não está a ser utilizado o caminho correto",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
@@ -6639,13 +6601,6 @@
       "question": "O ICMP (“Internet Control Message Protocol”) usa números de porto que possibilitam a utilização simultânea por várias aplicações",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "in_plan": true
-    },
-    {
-      "question": "Para o DHCP (“Dynamic Host Configuration Protocol”) funcionar é necessário que cliente e servidor estejam na mesma rede local",
-      "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0,
-      "repeated": [137],
       "in_plan": true
     },
     {
@@ -6674,13 +6629,6 @@
       "in_plan": true
     },
     {
-      "question": "Numa ligação DSL (“Digital Subscriber Line”) é utilizado um par de fibras óticas para transmitir sinais digitais em “full-duplex”",
-      "answers": ["Falso", "Verdadeiro"],
-      "correct_index": 0,
-      "repeated": [145],
-      "in_plan": true
-    },
-    {
       "question": "A principal característica das redes ATM é que qualquer erro de transmissão nos dados é automaticamente detetado e corrigido",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
@@ -6705,13 +6653,6 @@
       "question": "Nas redes 802.11, quer seja utilizado CSMA/CA ou RTS/CTS, após a receção de dados bem sucedida é sempre enviado um “ACK”",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "in_plan": true
-    },
-    {
-      "question": "O registo TXT com o valor “v=spf1 +mx –all” associado ao nome do domínio serve para controlar o envio de correio eletrónico",
-      "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0,
-      "repeated": [163],
       "in_plan": true
     },
     {
@@ -6768,13 +6709,6 @@
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
       "repeated": [134, 267],
-      "in_plan": true
-    },
-    {
-      "question": "Se o campo “NEXT-HEADER” do cabeçalho IPv6 indicar o protocolo TCP, então não existem cabeçalhos de extensão",
-      "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0,
-      "repeated": [132],
       "in_plan": true
     },
     {
@@ -7324,23 +7258,9 @@
       "in_plan": true
     },
     {
-      "question": "O SMTP (“Simple Mail Transfer Protocol”) permite aos utilizadores receberem mensagens armazenadas em servidores remotos",
-      "answers": ["Falso", "Verdadeiro"],
-      "correct_index": 0,
-      "repeated": [154],
-      "in_plan": true
-    },
-    {
       "question": "O SNMP versão 1 suporta autenticação baseada numa chave pré-partilhada protegida com os algoritmos MD5 ou SHA",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "in_plan": true
-    },
-    {
-      "question": "A mensagem TRAP do SNMP é enviada pelo agente ao sistema gestor em resposta a um pedido “Getbulk Request”",
-      "answers": ["Falso", "Verdadeiro"],
-      "correct_index": 0,
-      "repeated": [155],
       "in_plan": true
     },
     {
