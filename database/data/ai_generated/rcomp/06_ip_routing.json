@@ -1,0 +1,1956 @@
+[
+  {
+    "question": "Um router remoto, que não esteja diretamente ligado, pode ser usado como next-hop.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.4"
+  },
+  {
+    "question": "Os routers interagem apenas com os routers vizinhos, que são os únicos next-hops possíveis.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.4"
+  },
+  {
+    "question": "O destino de uma linha da tabela de encaminhamento pode ser uma rede, um único nó (prefixo de 32 bits) ou um conjunto de redes agregadas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.5"
+  },
+  {
+    "question": "O next-hop de uma linha da tabela de encaminhamento é o endereço do nó de destino final do pacote.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.5"
+  },
+  {
+    "question": "A rota por omissão (default route) é 255.255.255.255/32 e corresponde apenas ao endereço de broadcast.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.7"
+  },
+  {
+    "question": "O next-hop da rota por omissão é habitualmente designado default gateway ou default router.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.7"
+  },
+  {
+    "question": "Todos os next-hops de uma tabela de encaminhamento têm de pertencer a uma rede local do nó, caso contrário algo está errado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.7"
+  },
+  {
+    "question": "Todos os nós IP têm uma tabela de encaminhamento, não apenas os routers.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.8"
+  },
+  {
+    "question": "Para um nó terminal simples, a única configuração de encaminhamento necessária é o default gateway, porque as redes locais já são conhecidas pela atribuição dos endereços e máscaras às interfaces.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.8"
+  },
+  {
+    "question": "Se um nó não conhecer o default gateway nem qualquer outro router local, só consegue comunicar com redes locais.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.8"
+  },
+  {
+    "question": "Com caminhos alternativos para o mesmo destino, o router usa sempre a primeira linha encontrada na tabela, independentemente do custo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.9"
+  },
+  {
+    "question": "A existência de caminhos alternativos torna a rede tolerante a falhas e permite o balanceamento de carga.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.9"
+  },
+  {
+    "question": "A tolerância a falhas e o balanceamento de carga entre caminhos alternativos podem ser obtidos apenas com encaminhamento estático.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.10"
+  },
+  {
+    "question": "Os protocolos de encaminhamento só funcionam se todos os routers usarem o mesmo protocolo de encaminhamento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.10"
+  },
+  {
+    "question": "Nos protocolos distance-vector com envio periódico, as linhas recebidas dos vizinhos têm um tempo de vida limitado; se não forem renovadas, acabam por ser removidas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.12"
+  },
+  {
+    "question": "Nos algoritmos link-state, não é necessário haver anúncios cíclicos: só há novo envio da lista quando é detetada uma alteração.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.13"
+  },
+  {
+    "question": "Nos algoritmos link-state, a tabela de encaminhamento vai sendo construída progressivamente à medida que a informação percorre os caminhos, tal como no distance-vector.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.13"
+  },
+  {
+    "question": "Uma alteração detetada num protocolo link-state provoca, durante um curto período, uma inundação da rede com atualizações das listas link-state.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.13"
+  },
+  {
+    "question": "O BGP também pode ser usado internamente num sistema autónomo local, desde que se usem ASN privados e não ligados ao BGP exterior.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.15"
+  },
+  {
+    "question": "O RIP e o IGRP são IGP do tipo distance-vector; o OSPF e o IS-IS são IGP do tipo link-state.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.16"
+  },
+  {
+    "question": "O RIP e o OSPF são ambos protocolos do tipo link-state.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.16"
+  },
+  {
+    "question": "O RIPv1 transmite as máscaras de rede e, por isso, suporta endereçamento classless (CIDR).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.17"
+  },
+  {
+    "question": "O RIPv1 não transmite máscaras de rede, pelo que assume redes classful e não pode ser usado com endereçamento classless (CIDR).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.17"
+  },
+  {
+    "question": "O RIP é inseguro porque aceita toda a informação dos vizinhos sem autenticação (versão 1).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.17"
+  },
+  {
+    "question": "No RIP não existe o conceito de sistema autónomo nem números de AS, por isso um router não pode estar ligado a dois sistemas autónomos RIP diferentes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.17"
+  },
+  {
+    "question": "O RIPv2 suporta autenticação com o algoritmo MD5 e uma chave pré-partilhada (PSK).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.18"
+  },
+  {
+    "question": "O RIPv2 elimina o limite de 15 saltos do RIPv1.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.18"
+  },
+  {
+    "question": "A informação do OSPF é transportada em segmentos TCP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.19"
+  },
+  {
+    "question": "No OSPF, quando um router deteta uma alteração, envia um novo LSA, o que desencadeia o envio de LSA por todos os outros routers (LSA flood).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.19"
+  },
+  {
+    "question": "No OSPF, os LSA incluem máscaras de rede (suporta CIDR) e uma métrica de ligação, normalmente a taxa de transmissão.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.19"
+  },
+  {
+    "question": "O OSPF suporta autenticação MD5 e HMAC-SHA.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.19"
+  },
+  {
+    "question": "As restantes áreas OSPF têm de ser adjacentes à área zero.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.20"
+  },
+  {
+    "question": "Os routers que interligam o domínio OSPF a outros sistemas autónomos chamam-se ABR.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.20"
+  },
+  {
+    "question": "No EIGRP, a métrica do caminho tem em conta a taxa de transmissão, o MTU, o atraso, a fiabilidade e a carga das ligações utilizadas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.21"
+  },
+  {
+    "question": "Os números de sistema autónomo do EIGRP são os mesmos que os do BGP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.22"
+  },
+  {
+    "question": "Os routers de fronteira entre sistemas autónomos não transferem informação de encaminhamento de um sistema autónomo para outros.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.23"
+  },
+  {
+    "question": "Entre as vantagens dos sistemas autónomos contam-se uma administração mais fácil, independência administrativa, tabelas mais pequenas e menos tráfego de protocolos de encaminhamento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.23"
+  },
+  {
+    "question": "Quando uma rota é redistribuída entre protocolos diferentes, tem de ser definida uma nova métrica adequada ao formato de métrica do protocolo de destino.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.24"
+  },
+  {
+    "question": "O encaminhamento dinâmico distribui o tráfego por todas as alternativas disponíveis, com balanceamento de carga efetivo, e não apenas por failover.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.15"
+  },
+  {
+    "question": "Se um router ficar indisponível, o protocolo de encaminhamento remove essa alternativa de todas as tabelas de encaminhamento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.15"
+  },
+  {
+    "question": "O custo de caminho (path metric) que os protocolos inserem na tabela é calculado com base em todas as métricas de ligação ao longo do caminho, por exemplo somando-as.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.17"
+  },
+  {
+    "question": "No exemplo de RIP da aula, antes de qualquer envio, cada router só conhece as redes a que está diretamente ligado, todas com custo 1.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.19"
+  },
+  {
+    "question": "Uma linha com o mesmo next-hop que a rota por omissão pode, em princípio, ser removida da tabela, porque os pacotes acabariam na rota por omissão e seguiriam para o mesmo next-hop.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.6"
+  },
+  {
+    "question": "Uma linha com o mesmo next-hop que a rota por omissão pode sempre ser removida, sem qualquer exceção.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.8"
+  },
+  {
+    "question": "Numa tabela de encaminhamento, a ordem das linhas importa: uma linha mais específica deve aparecer antes de outra mais abrangente que a inclua.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.8"
+  },
+  {
+    "question": "A rota por omissão deve ser sempre a última linha da tabela de encaminhamento; as linhas seguintes nunca seriam alcançadas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.6"
+  },
+  {
+    "question": "Para agregar duas redes numa só, é necessário que ambas tenham o mesmo next-hop e o mesmo comprimento de prefixo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "Que nome têm os routers diretamente ligados a um router, que são os únicos destinos possíveis para o seu encaminhamento?",
+    "answers": [
+      "Default gateways",
+      "Sistemas autónomos",
+      "Next-hops",
+      "Áreas de backbone"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.3"
+  },
+  {
+    "question": "Qual é a decisão essencial que um router tem de tomar para cada pacote que recebe?",
+    "answers": [
+      "Escolher o protocolo de transporte do pacote",
+      "Escolher o endereço MAC do nó de destino final",
+      "Escolher a camada 2 mais rápida disponível",
+      "Escolher o next-hop correto para onde enviar o pacote"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.4"
+  },
+  {
+    "question": "O que são os dois elementos fundamentais de uma linha de uma tabela de encaminhamento?",
+    "answers": [
+      "O número de saltos e o tempo de vida do pacote",
+      "O destino (endereço e máscara ou prefixo) e o next-hop",
+      "O endereço de origem e o endereço de destino do pacote",
+      "O endereço MAC do router e o endereço IP do router"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.5"
+  },
+  {
+    "question": "Como verifica o router se um endereço de destino pertence a uma linha da tabela?",
+    "answers": [
+      "Comparação direta do endereço de destino com o endereço do next-hop da linha",
+      "Soma do endereço de destino com a máscara da linha e comparação com o next-hop",
+      "AND bit a bit com a máscara da linha e comparação com o endereço de rede da linha",
+      "OR bit a bit do endereço de destino com a máscara e comparação com o TTL do pacote"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.6"
+  },
+  {
+    "question": "O que acontece a um datagrama IP que não corresponde a nenhuma linha da tabela de encaminhamento, inclusive a rota por omissão?",
+    "answers": [
+      "É descartado",
+      "É devolvido à origem com o TTL incrementado",
+      "É retido até a rede de destino ser aprendida",
+      "É enviado por broadcast para todas as interfaces"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.6"
+  },
+  {
+    "question": "Qual é a representação da rota por omissão numa tabela de encaminhamento IPv4?",
+    "answers": [
+      "255.255.255.255/32",
+      "224.0.0.0/4",
+      "0.0.0.0/0",
+      "127.0.0.1/8"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.7"
+  },
+  {
+    "question": "Numa tabela de encaminhamento, qual é o next-hop das linhas de redes locais?",
+    "answers": [
+      "O nome da interface de rede",
+      "O endereço IP do default gateway",
+      "O endereço IP do router mais próximo",
+      "O endereço MAC do nó de destino"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.7"
+  },
+  {
+    "question": "Um nó tem o endereço 193.100.10.50, a máscara 255.255.255.0 e o default gateway 193.100.10.1. Quantas linhas tem a sua tabela de encaminhamento mínima?",
+    "answers": [
+      "Uma: apenas a rede 193.100.10.0/24, ligada diretamente à interface do nó",
+      "Três: a rede, o endereço de broadcast da rede e a rota por omissão",
+      "Duas: a rede 193.100.10.0/24 (direta) e a rota por omissão 0.0.0.0/0",
+      "Uma: apenas a rota por omissão 0.0.0.0/0, que serve também a rede local"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.7"
+  },
+  {
+    "question": "Para que serve a coluna de custo (métrica) numa tabela de encaminhamento?",
+    "answers": [
+      "Para indicar o número de interfaces de rede que o router tem ligadas ao destino",
+      "Para indicar a MTU máxima que o caminho até ao destino consegue transportar",
+      "Para indicar o tempo de vida de cada linha da tabela de encaminhamento do router",
+      "Para escolher a melhor alternativa quando existem várias linhas para o mesmo destino"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.9"
+  },
+  {
+    "question": "O que é a convergência (convergence) no encaminhamento dinâmico?",
+    "answers": [
+      "A escolha do melhor router vizinho para ser usado como default gateway da rede",
+      "A fusão de dois sistemas autónomos vizinhos num único sistema autónomo administrado em conjunto",
+      "O processo de refletir nas tabelas de encaminhamento uma alteração da infraestrutura",
+      "A agregação de várias redes numa única linha da tabela de encaminhamento do router"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.10"
+  },
+  {
+    "question": "Qual é a grande motivação do encaminhamento dinâmico, além de evitar construir tabelas à mão?",
+    "answers": [
+      "Manter as tabelas atualizadas quando a infraestrutura muda, algo que o encaminhamento estático não faz",
+      "Aumentar a MTU de cada ligação entre routers vizinhos, reduzindo assim a fragmentação dos pacotes",
+      "Permitir que os routers de uma mesma infraestrutura usem protocolos de encaminhamento diferentes entre si",
+      "Eliminar a necessidade de rota por omissão em todos os routers de toda a infraestrutura de rede"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.10"
+  },
+  {
+    "question": "Qual é a diferença essencial entre distance-vector e link-state?",
+    "answers": [
+      "O distance-vector usa métricas de custo e o link-state não usa qualquer métrica",
+      "No distance-vector cada router envia a sua tabela aos vizinhos; no link-state cada router envia a lista de vizinhos e constrói sozinho a tabela",
+      "O distance-vector só funciona em sistemas autónomos e o link-state só em redes locais",
+      "No distance-vector cada router constrói sozinho a tabela; no link-state cada router envia a sua tabela aos vizinhos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.11"
+  },
+  {
+    "question": "Nos algoritmos distance-vector, o que faz um router a cada linha que recebe de um vizinho?",
+    "answers": [
+      "Copia a linha sem alterar o custo nem o next-hop",
+      "Descarta a linha e pede a lista completa de vizinhos",
+      "Soma um valor ao custo e define o next-hop como o endereço de origem da informação",
+      "Subtrai um valor ao custo e define o next-hop como o seu próprio endereço"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.12"
+  },
+  {
+    "question": "Como constrói um router a sua tabela de encaminhamento num protocolo link-state?",
+    "answers": [
+      "Usa a lista de routers e redes recebida e calcula o caminho mais curto para cada rede",
+      "Copia as tabelas dos vizinhos e soma o custo da interface por onde as recebeu",
+      "Recebe a tabela já pronta do router de fronteira do sistema autónomo a que pertence",
+      "Consulta o servidor DNS para obter os endereços dos next-hops de cada rede"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.13"
+  },
+  {
+    "question": "Porque não se usa um único protocolo de encaminhamento em toda a Internet?",
+    "answers": [
+      "Porque as tabelas seriam enormes, o tráfego do protocolo intolerável e um erro afetaria toda a Internet",
+      "Porque os routers não conseguem trocar tabelas de encaminhamento através de UDP ou TCP",
+      "Porque a Internet é demasiado pequena para justificar o uso de um protocolo de encaminhamento",
+      "Porque os protocolos de encaminhamento só funcionam em redes com endereçamento classful"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.14"
+  },
+  {
+    "question": "O que são os routers de fronteira (boundary routers) de um sistema autónomo?",
+    "answers": [
+      "Routers que substituem o protocolo BGP em redes pequenas sem ligação à Internet",
+      "Routers que usam apenas rotas estáticas e que não participam em protocolos dinâmicos",
+      "Routers configurados para não reencaminhar informação do protocolo de encaminhamento para fora do AS",
+      "Routers que fazem a ligação entre áreas OSPF diferentes dentro de um mesmo sistema autónomo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.14"
+  },
+  {
+    "question": "Que protocolo gere o encaminhamento entre sistemas autónomos na Internet?",
+    "answers": [
+      "OSPF (Open Shortest Path First)",
+      "RIP (Routing Information Protocol)",
+      "EIGRP (Enhanced Interior Gateway Routing Protocol)",
+      "BGP (Border Gateway Protocol)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.15"
+  },
+  {
+    "question": "Quem atribui os números de sistema autónomo (ASN) usados no BGP?",
+    "answers": [
+      "A ISO (International Organization for Standardization)",
+      "O IEEE (Institute of Electrical and Electronics Engineers)",
+      "A IANA (Internet Assigned Numbers Authority) ou uma entidade delegada",
+      "Cada operador, de forma livre e sem coordenação"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.15"
+  },
+  {
+    "question": "Qual é a gama de ASN privados, para uso interno do BGP?",
+    "answers": [
+      "De 64512 a 65534",
+      "De 1 a 65535",
+      "De 1024 a 49151",
+      "De 0 a 1023"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.16"
+  },
+  {
+    "question": "Qual das seguintes afirmações é correta?",
+    "answers": [
+      "O RIP é distance-vector e o OSPF é link-state",
+      "O RIP e o OSPF são ambos link-state",
+      "O RIP e o OSPF são ambos distance-vector",
+      "O RIP é link-state e o OSPF é distance-vector"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.16"
+  },
+  {
+    "question": "Qual é a métrica do caminho no RIP?",
+    "answers": [
+      "A taxa de transmissão das ligações do caminho",
+      "O número de redes de camada 2 atravessadas",
+      "O número de routers a atravessar até ao destino (hops)",
+      "A soma dos atrasos de todas as ligações do caminho"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.17"
+  },
+  {
+    "question": "Qual é o valor máximo da métrica de um caminho RIP considerado alcançável?",
+    "answers": [
+      "100 saltos",
+      "16 saltos",
+      "255 saltos",
+      "15 saltos"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.17"
+  },
+  {
+    "question": "Que métrica indica, no RIP, que um destino está inalcançável?",
+    "answers": [
+      "15",
+      "0",
+      "255",
+      "16"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.17"
+  },
+  {
+    "question": "Com que periodicidade aproximada o RIP envia as tabelas de encaminhamento?",
+    "answers": [
+      "Apenas quando há uma alteração",
+      "A cada 30 segundos",
+      "A cada 180 segundos",
+      "A cada 5 segundos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.17"
+  },
+  {
+    "question": "Ao fim de quanto tempo sem renovação uma linha RIP é marcada como inalcançável?",
+    "answers": [
+      "120 segundos",
+      "16 segundos",
+      "30 segundos",
+      "180 segundos"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.17"
+  },
+  {
+    "question": "Que endereço usa o RIPv2 para enviar as tabelas de encaminhamento?",
+    "answers": [
+      "224.0.0.5 (multicast)",
+      "224.0.0.10 (multicast)",
+      "224.0.0.9 (multicast)",
+      "255.255.255.255 (broadcast)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.18"
+  },
+  {
+    "question": "Que protocolo de transporte usa o RIP para enviar as tabelas?",
+    "answers": [
+      "UDP",
+      "ICMP",
+      "Nenhum: vai diretamente em pacotes IP",
+      "TCP"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.17"
+  },
+  {
+    "question": "Que melhorias traz o RIPv2 relativamente ao RIPv1?",
+    "answers": [
+      "Usa TCP em vez de UDP e passa a ser do tipo link-state",
+      "Elimina o limite de 15 saltos e usa a taxa de transmissão como métrica",
+      "Passa a suportar vários sistemas autónomos RIP ligados ao mesmo router",
+      "Envia as máscaras de rede (suporta CIDR), usa multicast e suporta autenticação MD5"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.18"
+  },
+  {
+    "question": "Qual é o tempo de convergência típico do RIP?",
+    "answers": [
+      "De alguns milissegundos por salto",
+      "Imediato, porque o RIP envia informação sempre que há alterações",
+      "Notoriamente longo, até 180 segundos por cada salto",
+      "Fixo em 30 segundos, qualquer que seja a dimensão da rede"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.18"
+  },
+  {
+    "question": "Que endereços multicast usa o OSPF para detetar vizinhos e propagar os LSA?",
+    "answers": [
+      "224.0.0.1 para detetar vizinhos e 224.0.0.2 para os LSA",
+      "224.0.0.5 para detetar vizinhos e 224.0.0.6 para os LSA",
+      "224.0.0.9 para detetar vizinhos e 224.0.0.10 para os LSA",
+      "255.255.255.255 para ambos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.19"
+  },
+  {
+    "question": "Como é transportada a informação do OSPF?",
+    "answers": [
+      "Em segmentos TCP, tal como no BGP",
+      "Diretamente em pacotes IP, sem UDP nem TCP",
+      "Em mensagens ICMP",
+      "Em datagramas UDP, tal como no RIP"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.19"
+  },
+  {
+    "question": "Qual é a métrica de ligação usada, em geral, no OSPF?",
+    "answers": [
+      "O atraso de propagação da ligação",
+      "O número de routers a atravessar",
+      "A MTU da ligação",
+      "A taxa de transmissão da ligação"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.19"
+  },
+  {
+    "question": "O que é um LSA (Link-State Advertisement) no OSPF?",
+    "answers": [
+      "Um endereço multicast reservado pelo OSPF para os routers de uma área",
+      "A lista de vizinhos e ligações de um router, propagada pelos restantes",
+      "Uma mensagem de autenticação MD5 trocada entre dois routers OSPF vizinhos",
+      "A tabela de encaminhamento completa de um router, enviada periodicamente a todos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.19"
+  },
+  {
+    "question": "Como se chama a área OSPF que tem de ser criada primeiro e à qual todas as outras têm de ser adjacentes?",
+    "answers": [
+      "Área ASBR",
+      "Área 32",
+      "Área 0 (área backbone)",
+      "Área 1 (área de acesso)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.20"
+  },
+  {
+    "question": "Como se chamam os routers que interligam áreas OSPF?",
+    "answers": [
+      "ASBR (Autonomous System Boundary Router)",
+      "ABR (Area Border Router)",
+      "DR (Designated Router)",
+      "BGP speakers"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.20"
+  },
+  {
+    "question": "Como se chamam os routers que interligam o domínio OSPF a outros sistemas autónomos?",
+    "answers": [
+      "Routers internos da área 0 do OSPF",
+      "ASBR (Autonomous System Boundary Router)",
+      "ABR (Area Border Router) da área zero",
+      "DR (Designated Router) da área zero"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.20"
+  },
+  {
+    "question": "Quantos bits têm os identificadores de área OSPF?",
+    "answers": [
+      "8 bits",
+      "48 bits",
+      "32 bits",
+      "16 bits"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.20"
+  },
+  {
+    "question": "Que endereço multicast usa o EIGRP para propagar as tabelas de encaminhamento?",
+    "answers": [
+      "224.0.0.10",
+      "224.0.0.5",
+      "224.0.0.9",
+      "224.0.0.6"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.21"
+  },
+  {
+    "question": "Quando propaga o EIGRP as tabelas de encaminhamento aos vizinhos?",
+    "answers": [
+      "Sempre que recebe um pacote de dados",
+      "Periodicamente, a cada 30 segundos",
+      "Periodicamente, a cada 180 segundos",
+      "Apenas quando há uma alteração"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.21"
+  },
+  {
+    "question": "Qual é o limite de saltos por omissão do EIGRP, para um destino ser considerado alcançável?",
+    "answers": [
+      "255 saltos",
+      "100 saltos",
+      "224 saltos",
+      "15 saltos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.21"
+  },
+  {
+    "question": "Que valores pode ter o número de sistema autónomo (ASN) do EIGRP?",
+    "answers": [
+      "De 1 a 65535",
+      "De 64512 a 65534",
+      "De 0 a 255",
+      "De 1 a 15"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.22"
+  },
+  {
+    "question": "Porque é que o EIGRP é classificado como protocolo híbrido?",
+    "answers": [
+      "Porque suporta endereços IPv4 e IPv6 na mesma tabela de encaminhamento",
+      "Porque é, no essencial, distance-vector, mas tem algumas características link-state",
+      "Porque funciona dentro e fora dos sistemas autónomos, tal como o BGP",
+      "Porque usa simultaneamente os protocolos TCP e UDP para trocar informação"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.21"
+  },
+  {
+    "question": "O que é a redistribuição de rotas (route redistribution)?",
+    "answers": [
+      "Inserir num sistema autónomo informação sobre redes exteriores, como rotas estáticas ou de outro AS",
+      "Dividir uma área OSPF em duas áreas independentes para reduzir o tráfego do protocolo",
+      "Remover da tabela as linhas com o mesmo next-hop que a rota por omissão da rede",
+      "Reenviar a mesma tabela de encaminhamento a todos os vizinhos do router sem a alterar"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.24"
+  },
+  {
+    "question": "Para que serve, por regra, a redistribuição de uma rota estática?",
+    "answers": [
+      "Substituir o protocolo de encaminhamento dinâmico do sistema autónomo por rotas fixas",
+      "Propagar no sistema autónomo a rota por omissão e os blocos de endereços de outros ASs",
+      "Repor o valor inicial do TTL nos pacotes que saem do sistema autónomo para o exterior",
+      "Impedir que o protocolo dinâmico altere a rota por omissão dos routers do sistema autónomo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.24"
+  },
+  {
+    "question": "Qual é a regra básica para poder combinar duas linhas de uma tabela de encaminhamento numa só?",
+    "answers": [
+      "Estarem seguidas na tabela",
+      "Terem o mesmo next-hop",
+      "Pertencerem a classes IPv4 diferentes",
+      "Terem o mesmo número de saltos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.8"
+  },
+  {
+    "question": "Segundo a TP05, porque não pode ser removida a segunda linha desta tabela? 193.100.10.0/24 direta; 120.5.10.0/24 via 193.100.10.1; 120.5.0.0/16 via 193.100.10.5; 0.0.0.0/0 via 193.100.10.1.",
+    "answers": [
+      "Porque as linhas de redes /24 nunca podem ser removidas de uma tabela",
+      "Porque a rota por omissão só funciona com redes locais",
+      "Porque o next-hop de uma linha tem de ser diferente do next-hop da rota por omissão",
+      "Porque a linha seguinte contém essa rede e os pacotes passariam a ser enviados para 193.100.10.5"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.8"
+  },
+  {
+    "question": "Para a tabela do slide (192.168.10.0/24 direta pela interface Ethernet 1; 172.14.0.0/16 direta pela interface Ethernet 2; 194.121.12.0/24 via 172.14.5.100; 0.0.0.0/0 via 192.168.10.200), para onde é enviado um pacote destinado a 194.121.12.77?",
+    "answers": [
+      "Para o router 192.168.10.200",
+      "Para o router 172.14.5.100",
+      "Diretamente pela interface Ethernet 1",
+      "Diretamente pela interface Ethernet 2"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.7"
+  },
+  {
+    "question": "Na mesma tabela, para onde é enviado um pacote destinado a 8.8.8.8?",
+    "answers": [
+      "Para o default gateway 192.168.10.200",
+      "É descartado",
+      "Para o router 172.14.5.100",
+      "Diretamente pela interface Ethernet 1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.7"
+  },
+  {
+    "question": "Na mesma tabela, como é entregue um pacote destinado a 172.14.200.1?",
+    "answers": [
+      "Diretamente, pela interface Ethernet 1",
+      "Pelo router 172.14.5.100",
+      "Diretamente, pela interface Ethernet 2",
+      "Pelo default gateway 192.168.10.200"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.7"
+  },
+  {
+    "question": "Que mensagem é gerada quando uma linha RIP não é renovada em 180 segundos?",
+    "answers": [
+      "A linha é apagada de imediato, sem aviso aos vizinhos",
+      "A linha é marcada como inalcançável, com métrica 16",
+      "A linha passa a ter métrica 15",
+      "O router envia um LSA com a nova topologia"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.17"
+  },
+  {
+    "question": "Qual é o objetivo de usar sistemas autónomos, do ponto de vista da administração?",
+    "answers": [
+      "Eliminar a necessidade de rota por omissão em todos os routers do sistema autónomo",
+      "Obrigar todos os routers do AS a ter a mesma tabela de encaminhamento completa",
+      "Independência administrativa: as alterações de encaminhamento são internas ao AS",
+      "Permitir que todas as redes da Internet usem o mesmo protocolo de encaminhamento"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.23"
+  },
+  {
+    "question": "Segundo o exemplo de RIP da aula, que custo tem inicialmente, no Router 1, uma rede diretamente ligada?",
+    "answers": [
+      "16",
+      "2",
+      "0",
+      "1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.19"
+  },
+  {
+    "question": "Segundo o exemplo de RIP da aula, que custo tem no Router 1 a rede 190.10.13.0/24, que está ligada ao Router 3 e é aprendida através dele?",
+    "answers": [
+      "1",
+      "2",
+      "3",
+      "16"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.22"
+  },
+  {
+    "question": "Segundo a TP05, quanto tempo demora o RIP a detetar que uma ligação está em baixo?",
+    "answers": [
+      "1 segundo (o RTO mínimo do TCP)",
+      "5 minutos (300 segundos)",
+      "30 segundos (um período de envio)",
+      "3 minutos (180 segundos)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.21"
+  },
+  {
+    "question": "As redes 192.168.4.0/24 e 192.168.5.0/24, com o mesmo next-hop, podem ser agregadas numa única rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "Qual é a rede resultante da agregação de 192.168.4.0/24 com 192.168.5.0/24, ambas com o mesmo next-hop?",
+    "answers": [
+      "192.168.4.0/25",
+      "192.168.4.0/22",
+      "192.168.4.0/24",
+      "192.168.4.0/23"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "As redes 192.168.5.0/24 e 192.168.6.0/24, com o mesmo next-hop, podem ser agregadas numa única rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "As redes 10.1.8.0/22 e 10.1.12.0/22, com o mesmo next-hop, podem ser agregadas numa única rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "Qual é a rede resultante da agregação de 10.1.8.0/22 com 10.1.12.0/22, ambas com o mesmo next-hop?",
+    "answers": [
+      "10.1.8.0/22",
+      "10.1.8.0/23",
+      "10.1.8.0/21",
+      "10.1.0.0/20"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "As redes 10.1.0.0/22 e 10.1.8.0/22, com o mesmo next-hop, podem ser agregadas numa única rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "As redes 195.20.64.0/20 e 195.20.80.0/20, com o mesmo next-hop, podem ser agregadas numa única rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "Qual é a rede resultante da agregação de 195.20.64.0/20 com 195.20.80.0/20, ambas com o mesmo next-hop?",
+    "answers": [
+      "195.20.64.0/21",
+      "195.20.64.0/20",
+      "195.20.64.0/18",
+      "195.20.64.0/19"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "As redes 170.10.0.0/24 e 170.10.1.0/24, com o mesmo next-hop, podem ser agregadas numa única rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "Qual é a rede resultante da agregação de 170.10.0.0/24 com 170.10.1.0/24, ambas com o mesmo next-hop?",
+    "answers": [
+      "170.10.0.0/24",
+      "170.10.0.0/23",
+      "170.10.0.0/22",
+      "170.10.0.0/25"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "As redes 170.10.1.0/24 e 170.10.2.0/24, com o mesmo next-hop, podem ser agregadas numa única rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "As redes 172.16.32.0/24 e 172.16.33.0/24, com o mesmo next-hop, podem ser agregadas numa única rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "Qual é a rede resultante da agregação de 172.16.32.0/24 com 172.16.33.0/24, ambas com o mesmo next-hop?",
+    "answers": [
+      "172.16.32.0/22",
+      "172.16.32.0/25",
+      "172.16.32.0/24",
+      "172.16.32.0/23"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "As redes 172.16.33.0/24 e 172.16.34.0/24, com o mesmo next-hop, podem ser agregadas numa única rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "As redes 200.1.1.128/26 e 200.1.1.192/26, com o mesmo next-hop, podem ser agregadas numa única rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "Qual é a rede resultante da agregação de 200.1.1.128/26 com 200.1.1.192/26, ambas com o mesmo next-hop?",
+    "answers": [
+      "200.1.1.128/25",
+      "200.1.1.128/26",
+      "200.1.1.0/24",
+      "200.1.1.128/27"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "As redes 200.1.1.64/26 e 200.1.1.128/26, com o mesmo next-hop, podem ser agregadas numa única rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "As redes 150.30.16.0/21 e 150.30.24.0/21, com o mesmo next-hop, podem ser agregadas numa única rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "Qual é a rede resultante da agregação de 150.30.16.0/21 com 150.30.24.0/21, ambas com o mesmo next-hop?",
+    "answers": [
+      "150.30.0.0/19",
+      "150.30.16.0/22",
+      "150.30.16.0/21",
+      "150.30.16.0/20"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "No encaminhamento estático (static routing), as tabelas de encaminhamento são criadas manualmente pelo administrador.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.10"
+  },
+  {
+    "question": "As redes diretamente ligadas a um router já são conhecidas por ele, pelo que não é necessário acrescentá-las manualmente à tabela de encaminhamento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.10"
+  },
+  {
+    "question": "Um router escolhe o next-hop com base no endereço MAC de destino do pacote IP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.4"
+  },
+  {
+    "question": "Cada router conhece a topologia completa da Internet e escolhe o caminho completo do pacote.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.4"
+  },
+  {
+    "question": "A rota por omissão deve ser a primeira linha da tabela de encaminhamento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.6"
+  },
+  {
+    "question": "Numa tabela de encaminhamento, o next-hop pode ser o endereço de um router de uma rede que não está ligada diretamente ao nó.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.7"
+  },
+  {
+    "question": "Um nó terminal precisa de uma tabela de encaminhamento com todas as redes remotas da Internet.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.8"
+  },
+  {
+    "question": "Com encaminhamento estático, os pacotes passam a seguir caminhos diferentes consoante a carga dos routers.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.10"
+  },
+  {
+    "question": "O encaminhamento dinâmico só serve para construir as tabelas pela primeira vez; depois as tabelas mantêm-se fixas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.10"
+  },
+  {
+    "question": "Nos protocolos link-state, cada router envia periodicamente a sua tabela de encaminhamento completa aos vizinhos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.13"
+  },
+  {
+    "question": "No distance-vector, cada router recebe a lista completa da topologia e calcula sozinho o caminho mais curto.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.12"
+  },
+  {
+    "question": "O BGP é um protocolo usado exclusivamente dentro de sistemas autónomos, nunca entre eles.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.15"
+  },
+  {
+    "question": "O RIP usa como métrica a taxa de transmissão das ligações do caminho.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.17"
+  },
+  {
+    "question": "No RIP, o valor máximo da métrica de um caminho alcançável é 16.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.17"
+  },
+  {
+    "question": "O RIPv2 envia as tabelas de encaminhamento por broadcast.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.18"
+  },
+  {
+    "question": "O RIPv2 usa o endereço multicast 224.0.0.10.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.18"
+  },
+  {
+    "question": "O OSPF usa o protocolo UDP para transportar a informação de encaminhamento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.19"
+  },
+  {
+    "question": "No OSPF, a métrica de ligação é o número de saltos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.19"
+  },
+  {
+    "question": "O OSPF é um protocolo de encaminhamento do tipo distance-vector.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.19"
+  },
+  {
+    "question": "No OSPF, a área zero (backbone) é opcional e pode ser criada em último lugar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.20"
+  },
+  {
+    "question": "No OSPF, as áreas são sistemas autónomos independentes, entre os quais não passa qualquer informação de encaminhamento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.20"
+  },
+  {
+    "question": "O EIGRP envia as tabelas de encaminhamento a cada 30 segundos, tal como o RIP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.21"
+  },
+  {
+    "question": "O EIGRP usa o número de saltos como única métrica do caminho.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.21"
+  },
+  {
+    "question": "Os routers de fronteira de um sistema autónomo divulgam normalmente as redes internas a todos os outros sistemas autónomos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.23"
+  },
+  {
+    "question": "Sem configuração adicional, os sistemas autónomos conseguem comunicar entre si.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.23"
+  },
+  {
+    "question": "Quando se redistribuem rotas entre protocolos diferentes, a métrica original é sempre mantida.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.24"
+  },
+  {
+    "question": "Duas redes com o mesmo next-hop mas com prefixos diferentes podem ser agregadas sem alterar o comportamento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "No RIP, o custo de cada interface é tipicamente 10.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.18"
+  },
+  {
+    "question": "No RIP, ao receber uma tabela, o router define o next-hop como o seu próprio endereço.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.17"
+  },
+  {
+    "question": "Quando um router tem várias linhas para o mesmo destino, mantém sempre todas, mesmo as de custo mais elevado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.16"
+  },
+  {
+    "question": "Qual protocolo de encaminhamento usa o endereço multicast 224.0.0.9?",
+    "answers": [
+      "BGP",
+      "EIGRP",
+      "OSPF",
+      "RIPv2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.18"
+  },
+  {
+    "question": "Qual protocolo de encaminhamento usa o endereço multicast 224.0.0.5 para detetar vizinhos?",
+    "answers": [
+      "OSPF",
+      "IGRP",
+      "RIPv2",
+      "EIGRP"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.19"
+  },
+  {
+    "question": "Qual protocolo de encaminhamento usa o endereço multicast 224.0.0.10?",
+    "answers": [
+      "EIGRP",
+      "BGP",
+      "RIPv2",
+      "OSPF"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.21"
+  },
+  {
+    "question": "Qual dos seguintes protocolos coloca a sua informação diretamente em pacotes IP, sem UDP nem TCP?",
+    "answers": [
+      "OSPF",
+      "EIGRP",
+      "RIPv2",
+      "RIP"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.19"
+  },
+  {
+    "question": "Qual dos seguintes protocolos de encaminhamento não suporta CIDR, por não transmitir máscaras de rede?",
+    "answers": [
+      "RIPv1",
+      "OSPF",
+      "EIGRP",
+      "RIPv2"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.17"
+  },
+  {
+    "question": "Qual dos seguintes protocolos de encaminhamento é proprietário da Cisco?",
+    "answers": [
+      "IS-IS",
+      "OSPF",
+      "EIGRP",
+      "RIP"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.21"
+  },
+  {
+    "question": "Qual dos seguintes protocolos de encaminhamento é do tipo link-state?",
+    "answers": [
+      "RIP",
+      "IGRP",
+      "OSPF",
+      "RIPv2"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.16"
+  },
+  {
+    "question": "Qual dos seguintes protocolos suporta autenticação MD5 e HMAC-SHA?",
+    "answers": [
+      "RIPv1",
+      "BGP",
+      "RIPv2",
+      "OSPF"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.19"
+  },
+  {
+    "question": "Na tabela 172.16.0.0/16 (interface Ethernet 1), 172.17.0.0/16 (interface Ethernet 2), 172.18.0.0/16 (via 172.16.0.5), 172.19.0.0/16 (via 172.17.0.9), 0.0.0.0/0 (via 172.16.0.1), para onde vai um pacote destinado a 172.19.4.4?",
+    "answers": [
+      "Diretamente, pela interface Ethernet 2",
+      "Para o router 172.16.0.5",
+      "Para o router 172.17.0.9",
+      "Para o default gateway 172.16.0.1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.6"
+  },
+  {
+    "question": "Na mesma tabela, para onde vai um pacote destinado a 172.18.200.1?",
+    "answers": [
+      "Para o default gateway 172.16.0.1",
+      "Para o router 172.16.0.5",
+      "Diretamente, pela interface Ethernet 1",
+      "Para o router 172.17.0.9"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.6"
+  },
+  {
+    "question": "Na mesma tabela, para onde vai um pacote destinado a 200.1.1.1?",
+    "answers": [
+      "Para o default gateway 172.16.0.1, por corresponder a 0.0.0.0/0",
+      "Para o router 172.16.0.5, associado à rede 172.18.0.0/16",
+      "Para o router 172.17.0.9, associado à rede 172.19.0.0/16",
+      "É descartado, porque o destino não consta das redes da tabela"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.6"
+  },
+  {
+    "question": "Na mesma tabela, como é entregue um pacote destinado a 172.17.9.9?",
+    "answers": [
+      "Pelo router 172.17.0.9",
+      "Diretamente, pela interface Ethernet 2",
+      "Diretamente, pela interface Ethernet 1",
+      "Pelo default gateway 172.16.0.1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.6"
+  },
+  {
+    "question": "Na tabela 193.100.10.0/24 (direta), 120.5.10.0/24 (via 193.100.10.1), 120.5.0.0/16 (via 193.100.10.5), 0.0.0.0/0 (via 193.100.10.1), para onde vai um pacote destinado a 120.5.10.20?",
+    "answers": [
+      "Para o router 193.100.10.1",
+      "Para o router 193.100.10.5",
+      "É descartado",
+      "Diretamente, pela interface local"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.8"
+  },
+  {
+    "question": "Na mesma tabela, para onde vai um pacote destinado a 120.5.99.20?",
+    "answers": [
+      "É descartado",
+      "Para o router 193.100.10.5",
+      "Para o router 193.100.10.1",
+      "Diretamente, pela interface local"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.8"
+  }
+]

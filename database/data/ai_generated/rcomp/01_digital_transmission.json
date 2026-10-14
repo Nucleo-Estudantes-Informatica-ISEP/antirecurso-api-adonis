@@ -1,0 +1,2258 @@
+[
+  {
+    "question": "Os dados digitais são discretos: só existe um conjunto finito de valores possíveis e entre dois valores consecutivos não existe nenhum outro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.2"
+  },
+  {
+    "question": "Os dados analógicos do mundo real são discretos, pelo que a sua conversão para dados digitais não implica qualquer perda de informação.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.2"
+  },
+  {
+    "question": "Se os dados digitais puderem tomar dezasseis valores diferentes, são necessários oito bits para os representar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.2"
+  },
+  {
+    "question": "Qual das seguintes afirmações descreve corretamente a conversão de dados analógicos em dados digitais?",
+    "answers": [
+      "Perde-se informação, porque os dados digitais só podem assumir um conjunto finito de valores",
+      "Não se perde informação, porque os dados digitais também são contínuos como os analógicos",
+      "Só se perde informação se forem usados menos de oito bits para cada valor medido",
+      "Não se perde informação desde que a conversão seja feita uma única vez e sem filtros"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.2"
+  },
+  {
+    "question": "Quantos bits são necessários, no mínimo, para representar dezasseis valores digitais diferentes?",
+    "answers": [
+      "8 bits",
+      "4 bits",
+      "16 bits",
+      "2 bits"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.2"
+  },
+  {
+    "question": "O armazenamento de dados num meio físico baseia-se na alteração de uma propriedade física duradoura, que passa a representar os dados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.3"
+  },
+  {
+    "question": "Num suporte magnético, a polaridade do campo magnético criado pela bobina depende de se pretender guardar um bit zero ou um bit um.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.4"
+  },
+  {
+    "question": "Num CD-RW, um feixe laser intenso torna o ponto da superfície refletor e um feixe menos intenso torna-o não refletor.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.5"
+  },
+  {
+    "question": "Para ler os dados de um CD-RW usa-se um feixe laser de baixa intensidade e um sensor que deteta a luz refletida ou a sua ausência.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.5"
+  },
+  {
+    "question": "Num CD-RW, o que acontece à superfície quando é atingida por um feixe laser muito intenso?",
+    "answers": [
+      "Cristaliza e o ponto passa a refletir a luz do laser de leitura",
+      "Mantém as propriedades refletoras e apenas aquece durante a escrita",
+      "Funde-se a temperatura elevada e o ponto torna-se não refletor",
+      "Fica magnetizada com polaridade invertida em relação ao bit anterior"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.5"
+  },
+  {
+    "question": "Num CD-RW, que tipo de feixe laser faz o ponto da superfície cristalizar, tornando-o refletor?",
+    "answers": [
+      "Uma corrente elétrica aplicada à superfície",
+      "Um feixe laser muito intenso",
+      "Um campo magnético de polaridade invertida",
+      "Um feixe laser menos intenso"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.5"
+  },
+  {
+    "question": "Como se designa o fenómeno físico imaterial, capaz de se propagar, cujas propriedades o emissor altera para representar os dados?",
+    "answers": [
+      "Circuito virtual (caminho fixo entre dois nós)",
+      "Sinal (também chamado portadora ou carrier)",
+      "Payload (a parte útil dos dados de um pacote)",
+      "Nó de rede (emissor ou recetor de dados)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.6"
+  },
+  {
+    "question": "Na transmissão de dados através de um sinal, o emissor envia o sinal sem o alterar e é o recetor que modifica as suas propriedades para representar os dados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.7"
+  },
+  {
+    "question": "Qual é a propriedade de um sinal mais frequentemente usada para representar dados, por exemplo um sinal menos intenso para o bit zero e um mais intenso para o bit um?",
+    "answers": [
+      "A taxa de erros",
+      "A cor",
+      "O comprimento do cabo",
+      "A intensidade"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.7"
+  },
+  {
+    "question": "Na prática, o som e o ultrassom raramente são usados como sinais para transmitir dados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.7"
+  },
+  {
+    "question": "A propagação da luz no espaço livre não é afetada por objetos opacos que surjam no caminho.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.8"
+  },
+  {
+    "question": "Que meio de transmissão é usado para conduzir a luz através de percursos sinuosos?",
+    "answers": [
+      "Pares de condutores de cobre entrelaçados",
+      "Ondas de rádio no espaço livre",
+      "Cabos coaxiais de cobre",
+      "Fibras óticas, que são fibras de vidro muito finas"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.8"
+  },
+  {
+    "question": "O cobre é o material condutor mais usado para transportar sinais elétricos, devido à sua condutividade, características mecânicas e custo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.8"
+  },
+  {
+    "question": "Ao contrário da luz, a radiação eletromagnética (ondas rádio) consegue, em certas condições, atravessar materiais sólidos sem grandes problemas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.8"
+  },
+  {
+    "question": "As ondas eletromagnéticas são produzidas por uma variação cíclica da corrente elétrica num circuito eletrónico, tipicamente ligado a uma antena.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.9"
+  },
+  {
+    "question": "A frequência de um sinal eletromagnético, medida em Hertz, indica...",
+    "answers": [
+      "o número de ciclos que ocorrem em cada segundo",
+      "o número de bits que o sinal transporta em cada símbolo",
+      "a distância máxima que o sinal consegue percorrer",
+      "a potência perdida em cada metro de cabo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.9"
+  },
+  {
+    "question": "As micro-ondas (frequências superiores a 2 GHz) atravessam facilmente a maioria dos materiais sólidos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.9"
+  },
+  {
+    "question": "Relativamente às micro-ondas (frequências superiores a 2 GHz), qual das afirmações é correta?",
+    "answers": [
+      "Atravessam sem dificuldade a maioria dos materiais sólidos, tal como as ondas de radiofrequência",
+      "A propagação assemelha-se à da luz: não atravessam materiais sólidos e são refletidas por eles",
+      "Têm alcance muito limitado no ar e no espaço livre, mas passam bem por materiais sólidos",
+      "Propagam-se muito bem em condutores de cobre, onde têm maior alcance do que no ar"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.9"
+  },
+  {
+    "question": "Que tipo de ondas eletromagnéticas se espalha em todas as direções e atravessa a maioria dos materiais sólidos?",
+    "answers": [
+      "A luz visível",
+      "Os sinais de baixa frequência (inferior a 1 kHz)",
+      "As ondas de radiofrequência (RF)",
+      "As micro-ondas com frequência superior a 2 GHz"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.9"
+  },
+  {
+    "question": "Os sinais de baixa frequência (inferior a 1 kHz) têm alcance limitado no ar e no espaço livre, mas propagam-se bem em condutores elétricos como o cobre.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.9"
+  },
+  {
+    "question": "A atenuação é a perda de potência de um sinal à medida que este se propaga.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.10"
+  },
+  {
+    "question": "Quanto mais longe estiver o recetor do emissor, maior é a intensidade do sinal que recebe.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.10"
+  },
+  {
+    "question": "O ruído é constituído por sinais aleatórios, introduzidos de forma natural ou artificial, que se misturam com o sinal do emissor.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.10"
+  },
+  {
+    "question": "O que mede a relação sinal/ruído (S/N ou SNR)?",
+    "answers": [
+      "A dificuldade que o recetor terá em distinguir o sinal do emissor no meio do ruído",
+      "O número de bits que o emissor consegue transmitir em cada símbolo do sinal",
+      "A distância máxima a que dois nós da mesma rede podem comunicar sem repetidores",
+      "A velocidade a que o sinal se propaga ao longo do meio de transmissão"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.10"
+  },
+  {
+    "question": "Os sinais elétricos e eletromagnéticos estão muito expostos a ruído externo devido ao fenómeno da interferência eletromagnética (EMI).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.11"
+  },
+  {
+    "question": "De onde provém o ruído interno (internal noise) de um sistema de transmissão?",
+    "answers": [
+      "Dos nós intermédios da rede de comutação, que descartam pacotes quando estão congestionados",
+      "Do próprio sistema de transmissão, por exemplo de amplificadores e meios que alteram ligeiramente o sinal",
+      "Da distância entre o emissor e o recetor, que faz o sinal perder potência ao longo do meio",
+      "De fontes externas ao sistema de transmissão, como a interferência eletromagnética de equipamentos próximos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.11"
+  },
+  {
+    "question": "Qual é o fenómeno responsável pelo ruído externo nos sinais elétricos e eletromagnéticos?",
+    "answers": [
+      "O line coding NRZ-L usado pelo emissor",
+      "A comutação de pacotes nos nós intermédios",
+      "A dispersão modal das fibras óticas multimode",
+      "A interferência eletromagnética (EMI)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.11"
+  },
+  {
+    "question": "À medida que o recetor se afasta do emissor, o que acontece à relação sinal/ruído, assumindo que o ruído é aproximadamente igual ao longo do meio?",
+    "answers": [
+      "Mantém-se constante, porque o sinal e o ruído são atenuados exatamente da mesma forma",
+      "Diminui, porque o sinal é atenuado e o ruído mantém aproximadamente o mesmo nível",
+      "Torna-se igual a um, qualquer que seja a distância entre emissor e recetor",
+      "Aumenta, porque o ruído é atenuado mais depressa do que o sinal ao longo do meio"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.11"
+  },
+  {
+    "question": "A relação sinal/ruído aumenta com a distância percorrida pelo sinal, porque o ruído diminui ao longo do meio.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.11"
+  },
+  {
+    "question": "O que estabelece o alcance efetivo máximo de um sistema de transmissão?",
+    "answers": [
+      "A relação sinal/ruído no recetor",
+      "Apenas a intensidade do sinal à saída do emissor",
+      "O número de nós ligados ao meio",
+      "O número de níveis do line coding utilizado"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.11"
+  },
+  {
+    "question": "Um sinal sinusoidal puro é constituído por uma única frequência.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.12"
+  },
+  {
+    "question": "Qualquer sinal elétrico ou eletromagnético não sinusoidal é a soma de vários sinais sinusoidais com frequências e amplitudes diferentes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.12"
+  },
+  {
+    "question": "O que é o espetro (spectrum) de um sinal não sinusoidal?",
+    "answers": [
+      "O conjunto das frequências de que o sinal é constituído",
+      "O número de níveis diferentes que o sinal pode tomar",
+      "A distância máxima que o sinal consegue percorrer",
+      "A diferença entre a potência do sinal e a do ruído"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.12"
+  },
+  {
+    "question": "A atenuação e o atraso de propagação de um meio de transmissão são iguais para todas as frequências do sinal.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.12"
+  },
+  {
+    "question": "Num meio baseband, um sinal elétrico estático (frequência zero) tem baixa atenuação.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.13"
+  },
+  {
+    "question": "Num meio passband, um sinal elétrico estático (frequência zero) passa com baixa atenuação.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.13"
+  },
+  {
+    "question": "Num meio de transmissão passband...",
+    "answers": [
+      "a atenuação é igual para todas as frequências do sinal, desde zero até ao máximo",
+      "só passam com baixa atenuação as frequências entre um valor mínimo, superior a zero, e um valor máximo",
+      "os sinais de frequência zero passam com baixa atenuação, tal como num meio baseband",
+      "só se podem usar sinais digitais obtidos por line coding, sem qualquer modulação"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.13"
+  },
+  {
+    "question": "A rede telefónica pública (PSTN), originalmente concebida para transportar apenas voz humana, tem um comportamento passband.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.13"
+  },
+  {
+    "question": "Qual das seguintes características é típica de um meio de transmissão baseband?",
+    "answers": [
+      "A atenuação é nula para todas as frequências, pelo que o sinal chega sempre intacto",
+      "Tem baixa atenuação desde a frequência zero até um valor máximo, como acontece com a maioria dos meios de cobre",
+      "Só deixa passar com baixa atenuação frequências acima de um valor mínimo superior a zero",
+      "Só consegue transportar sinais analógicos obtidos por digital modulation, nunca sinais digitais"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.13"
+  },
+  {
+    "question": "Qual é a causa da interferência entre símbolos (ISI, Inter Symbol Interference)?",
+    "answers": [
+      "Frequências diferentes propagam-se a velocidades ligeiramente diferentes, e parte de um símbolo sobrepõe-se ao seguinte",
+      "Dois nós emitem em simultâneo no mesmo meio partilhado, e os sinais sobrepõem-se no recetor",
+      "O endereço de destino não consta do cabeçalho, pelo que o pacote é reencaminhado para todos os nós",
+      "A atenuação é exatamente igual para todas as frequências, o que deforma o sinal digital"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.14"
+  },
+  {
+    "question": "Como procuram os emissores reduzir a distorção provocada pelo meio num sinal não sinusoidal?",
+    "answers": [
+      "Duplicando a frequência do sinal para compensar o atraso de propagação",
+      "Aplicando um filtro passband que o transforma num sinal aproximadamente sinusoidal",
+      "Eliminando por completo o ruído interno através de amplificadores perfeitos",
+      "Enviando cada símbolo duas vezes seguidas para o recetor os poder comparar"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.14"
+  },
+  {
+    "question": "Em teoria, um sinal digital pode ter frequências desde zero, quando está estável num nível, até frequências muito elevadas, quando salta instantaneamente entre níveis.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.14"
+  },
+  {
+    "question": "Line coding é o conjunto de técnicas que criam um sinal digital diretamente a partir dos dados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.15"
+  },
+  {
+    "question": "Em NRZ-L, o bit zero é representado por um nível baixo e o bit um por um nível alto.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.15"
+  },
+  {
+    "question": "Em NRZ-S, cada bit um é representado por uma transição de nível do sinal.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.15"
+  },
+  {
+    "question": "Em que técnica de line coding cada bit zero é representado por uma transição de nível do sinal?",
+    "answers": [
+      "NRZ-S",
+      "NRZ-L",
+      "NRZ-M",
+      "Nenhuma, porque o line coding não usa transições"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.15"
+  },
+  {
+    "question": "Em que técnica de line coding cada bit um é representado por uma transição de nível do sinal?",
+    "answers": [
+      "NRZ-L",
+      "Nenhuma, porque o line coding não usa transições",
+      "NRZ-M",
+      "NRZ-S"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.15"
+  },
+  {
+    "question": "Com NRZ-L é possível usar mais de dois níveis de sinal, o que permite transmitir mais bits em cada símbolo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.15"
+  },
+  {
+    "question": "Quantos níveis de sinal são necessários para transmitir símbolos de 3 bits com NRZ-L?",
+    "answers": [
+      "8 níveis",
+      "9 níveis",
+      "6 níveis",
+      "3 níveis"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.15"
+  },
+  {
+    "question": "Quantos bits transporta cada símbolo num sinal NRZ-L com quatro níveis?",
+    "answers": [
+      "1 bit",
+      "8 bits",
+      "2 bits",
+      "4 bits"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.15"
+  },
+  {
+    "question": "Com quatro níveis de sinal, cada símbolo NRZ-L transmite quatro bits.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.15"
+  },
+  {
+    "question": "Em relação à taxa de transmissão de dados, qual é a frequência máxima do sinal produzido por line coding NRZ?",
+    "answers": [
+      "Igual à taxa de transmissão",
+      "O dobro da taxa de transmissão",
+      "Um quarto da taxa de transmissão",
+      "Metade da taxa de transmissão"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.15"
+  },
+  {
+    "question": "No recetor, o valor do sinal deve ser lido no centro do símbolo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.16"
+  },
+  {
+    "question": "O recetor usa as transições de nível do sinal para acertar o desfasamento (offset) do seu relógio local.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.16"
+  },
+  {
+    "question": "As técnicas de line coding NRZ garantem a sincronização do recetor, porque o nível do sinal muda em todos os símbolos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.16"
+  },
+  {
+    "question": "Porque é que o line coding NRZ-L tem problemas de sincronização dos símbolos (symbol synchronisation)?",
+    "answers": [
+      "Porque o sinal tem de ser lido sempre no fim do símbolo, quando já está distorcido pela ISI",
+      "Porque só permite transmitir símbolos de um bit, o que exige relógios de frequência muito elevada",
+      "Porque algumas sequências de símbolos mantêm o sinal no mesmo nível, sem transições para o recetor se sincronizar",
+      "Porque produz sempre sinais analógicos, que só podem ser transmitidos em meios passband"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.16"
+  },
+  {
+    "question": "Qual é a desvantagem dos esquemas de line coding bifásicos relativamente ao NRZ?",
+    "answers": [
+      "Só permitem transmitir sequências muito curtas de símbolos, de 7 ou 8 bits",
+      "Produzem um sinal com frequência máxima igual à taxa de transmissão, em vez de metade",
+      "Não forçam transições de nível, pelo que o recetor perde a sincronização com facilidade",
+      "Exigem obrigatoriamente um meio de transmissão passband e digital modulation"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.16"
+  },
+  {
+    "question": "Na transmissão assíncrona, um bit de start altera o nível do sinal e permite ao recetor acertar o seu relógio antes dos bits de dados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.17"
+  },
+  {
+    "question": "Que tipo de transmissão envia primeiro um bit de start, seguido de apenas 7 ou 8 bits de dados?",
+    "answers": [
+      "Transmissão com modulação 16 QAM",
+      "Transmissão por circuito virtual",
+      "Transmissão síncrona",
+      "Transmissão assíncrona"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.17"
+  },
+  {
+    "question": "Que tipo de transmissão usa line coding bifásico e permite enviar sequências muito longas de símbolos, designadas frames?",
+    "answers": [
+      "Transmissão assíncrona",
+      "Transmissão síncrona",
+      "Transmissão em meio passband sem modulação",
+      "Transmissão por comutação de circuitos analógica"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.17"
+  },
+  {
+    "question": "Para atingir taxas de transmissão cada vez mais elevadas, abandonou-se o NRZ e passaram a usar-se apenas esquemas bifásicos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.17"
+  },
+  {
+    "question": "Nos sistemas de taxa de transmissão elevada que voltam a usar NRZ, o problema da sincronização costuma ser resolvido inserindo símbolos adicionais entre os símbolos de dados, que garantem transições de nível.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.17"
+  },
+  {
+    "question": "Em FSK (Frequency Shift Keying) o desfasamento do sinal é usado para representar os símbolos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.18"
+  },
+  {
+    "question": "Que técnica de digital modulation representa os símbolos através de pequenas alterações da frequência do sinal?",
+    "answers": [
+      "PSK (Phase Shift Keying)",
+      "ASK (Amplitude Shift Keying)",
+      "NRZ-L (Non-Return-to-Zero Level)",
+      "FSK (Frequency Shift Keying)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.18"
+  },
+  {
+    "question": "Que técnica de digital modulation representa os símbolos através do desfasamento do sinal?",
+    "answers": [
+      "PSK (Phase Shift Keying)",
+      "FSK (Frequency Shift Keying)",
+      "NRZ-S (Non-Return-to-Zero Space)",
+      "ASK (Amplitude Shift Keying)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.18"
+  },
+  {
+    "question": "Que técnica de digital modulation representa os símbolos através da amplitude do sinal?",
+    "answers": [
+      "MLT-3",
+      "FSK (Frequency Shift Keying)",
+      "ASK (Amplitude Shift Keying)",
+      "PSK (Phase Shift Keying)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.18"
+  },
+  {
+    "question": "Em PSK, o desfasamento é medido no círculo unitário e um desfasamento de zero ou de 360 graus significa que não há desfasamento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.18"
+  },
+  {
+    "question": "Quando a digital modulation é a solução adequada, em vez de um sinal digital obtido por line coding?",
+    "answers": [
+      "Sempre que se transmitem frames com mais de 7 bits",
+      "Quando o meio é baseband e se pretende frequência zero",
+      "Quando o meio de transmissão é passband, como as ondas de rádio",
+      "Quando se quer evitar qualquer tipo de sinal sinusoidal"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.18"
+  },
+  {
+    "question": "Quantos bits transmite cada símbolo numa modulação 16 QAM?",
+    "answers": [
+      "2 bits",
+      "16 bits",
+      "8 bits",
+      "4 bits"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.19"
+  },
+  {
+    "question": "Numa modulação PSK com quatro valores de desfasamento possíveis, quantos bits transporta cada símbolo?",
+    "answers": [
+      "8 bits",
+      "4 bits",
+      "2 bits",
+      "1 bit"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 extras p.8"
+  },
+  {
+    "question": "Qual é a vantagem de nenhum dos símbolos de uma modulação PSK ter desfasamento nulo?",
+    "answers": [
+      "O sinal passa a poder ser transmitido em meios baseband sem qualquer modulação adicional",
+      "A frequência do sinal duplica, o que dispensa o uso de um relógio local no recetor",
+      "Há sempre uma alteração do sinal entre símbolos, o que permite ao recetor manter a sincronização",
+      "Cada símbolo passa a transportar o dobro dos bits, sem aumentar o número de valores"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 extras p.8"
+  },
+  {
+    "question": "Numa rede de computadores, os nós são simultaneamente emissores e recetores de dados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.20"
+  },
+  {
+    "question": "Como se designa o identificador que cada nó de uma rede tem de possuir, único em toda a rede?",
+    "answers": [
+      "Payload (dados úteis do pacote)",
+      "Endereço de nó (node address)",
+      "Cabeçalho de controlo do pacote",
+      "Identificador de circuito virtual"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.21"
+  },
+  {
+    "question": "Uma rede de meio partilhado pode ser tão simples como um único meio de transmissão partilhado, como acontece nas redes sem fios.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.21"
+  },
+  {
+    "question": "Numa rede de meio partilhado, os dados chegam apenas ao nó a que se destinam.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.22"
+  },
+  {
+    "question": "Numa rede de meio partilhado, a taxa de transmissão do meio tem de ser dividida pelos nós, porque só um nó pode emitir de cada vez.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.22"
+  },
+  {
+    "question": "Qual é o papel de um mecanismo MAC (Media Access Control) numa rede de meio partilhado?",
+    "answers": [
+      "Estabelecer circuitos virtuais entre a origem e o destino",
+      "Escolher o caminho dos pacotes através dos nós intermédios",
+      "Converter sinais analógicos em sinais digitais",
+      "Garantir que apenas um nó emite de cada vez, evitando colisões"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.22"
+  },
+  {
+    "question": "Sem um mecanismo de controlo de acesso ao meio, a emissão simultânea de dois nós no mesmo meio partilhado provoca uma colisão.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.22"
+  },
+  {
+    "question": "Qual é um dos problemas das redes de meio partilhado?",
+    "answers": [
+      "Os dados chegam a todos os nós, que verificam se lhes são dirigidos, o que prejudica privacidade e desempenho",
+      "Só permitem ligar dois nós de cada vez, pelo que não servem para redes com muitos nós",
+      "Exigem sempre a criação prévia de um circuito virtual antes de cada transmissão de dados",
+      "Os nós intermédios têm de decidir o caminho de cada pacote, o que atrasa o envio dos dados"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.22"
+  },
+  {
+    "question": "Qual é a regra a seguir, para maior eficiência, nas redes sem fios de meio partilhado?",
+    "answers": [
+      "Manter o número de nós o mais reduzido possível",
+      "Aumentar o número de nós para dividir melhor a carga",
+      "Usar sempre circuitos virtuais entre todos os nós",
+      "Enviar cada pacote por um caminho diferente"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.23"
+  },
+  {
+    "question": "Numa rede de comutação (switching network), qual é a missão importante dos nós intermédios?",
+    "answers": [
+      "Dividir a taxa de transmissão do meio igualmente pelos nós, evitando colisões entre eles",
+      "Garantir que apenas um nó emite de cada vez no meio de transmissão partilhado",
+      "Tomar decisões de encaminhamento, escolhendo para que nó enviar os dados com base no endereço de destino",
+      "Converter os pacotes recebidos em sinais analógicos antes de os reencaminhar para o destino"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.23"
+  },
+  {
+    "question": "Porque é que as redes impõem um limite à quantidade de dados que um nó pode enviar de cada vez?",
+    "answers": [
+      "Porque os endereços de nó só têm espaço para identificar pacotes de pequena dimensão",
+      "Para evitar que um nó perturbe a utilização da infraestrutura partilhada pelos restantes nós",
+      "Para garantir que os pacotes chegam sempre ao destino pela mesma ordem de emissão",
+      "Para dispensar o cabeçalho de controlo, que só é necessário em pacotes grandes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.24"
+  },
+  {
+    "question": "O payload de um pacote é a parte útil dos dados transportados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.25"
+  },
+  {
+    "question": "A informação de controlo enviada antes dos dados chama-se cabeçalho de controlo (control header), e a que eventualmente é enviada depois dos dados chama-se tail.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.25"
+  },
+  {
+    "question": "Onde é, em certos casos, transportado o código de deteção de erros de um pacote?",
+    "answers": [
+      "No payload, antes dos dados úteis enviados pela aplicação",
+      "No endereço do nó de origem, no início do cabeçalho",
+      "No identificador do circuito virtual, em cada pacote",
+      "No tail, porque só é útil depois de recebido o payload"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.25"
+  },
+  {
+    "question": "Que informação costuma existir no cabeçalho de controlo de um pacote?",
+    "answers": [
+      "Apenas o endereço do nó de destino e o código de deteção de erros calculado sobre o payload",
+      "O endereço do nó de origem, o código de deteção de erros e o tamanho do cabo utilizado",
+      "Os endereços de origem e de destino e uma etiqueta que identifica o tipo de dados do payload",
+      "Os dados úteis da aplicação e o número de nós intermédios por onde o pacote irá passar"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.25"
+  },
+  {
+    "question": "Porque é que o cabeçalho de um pacote inclui o endereço do nó de origem?",
+    "answers": [
+      "Para que os nós intermédios possam descartar o pacote",
+      "Para dispensar o endereço do nó de destino",
+      "Para que o recetor possa enviar uma resposta ao emissor",
+      "Para indicar o tamanho do payload"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.25"
+  },
+  {
+    "question": "A eficiência de um pacote (packet efficiency) é dada por (tamanho do pacote − tamanho do payload) / tamanho do pacote.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.25"
+  },
+  {
+    "question": "O overhead de um pacote é dado por (tamanho do pacote − tamanho do payload) / tamanho do pacote.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.25"
+  },
+  {
+    "question": "Como se calcula a eficiência de um pacote (packet efficiency)?",
+    "answers": [
+      "(Tamanho do pacote − tamanho do payload) / tamanho do pacote",
+      "Tamanho do pacote / tamanho do payload",
+      "Tamanho do payload / tamanho do pacote",
+      "Tamanho do cabeçalho / tamanho do payload"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.25"
+  },
+  {
+    "question": "Um pacote tem 1500 bytes no total, dos quais 1460 bytes são payload. Qual é, aproximadamente, o overhead do pacote?",
+    "answers": [
+      "2,67 %",
+      "0,27 %",
+      "2,74 %",
+      "97,33 %"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.25"
+  },
+  {
+    "question": "Um pacote tem 200 bytes no total, dos quais 150 bytes são payload. Qual é a eficiência do pacote?",
+    "answers": [
+      "133 %",
+      "75 %",
+      "25 %",
+      "33 %"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.25"
+  },
+  {
+    "question": "Um pacote tem 1000 bytes no total, com um cabeçalho de 40 bytes e um tail de 4 bytes. Qual é o seu overhead?",
+    "answers": [
+      "4,0 %",
+      "4,4 %",
+      "0,44 %",
+      "95,6 %"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.25"
+  },
+  {
+    "question": "Um pacote tem eficiência de 90 % e transporta 900 bytes de payload. Qual é o tamanho total do pacote?",
+    "answers": [
+      "1000 bytes",
+      "1100 bytes",
+      "810 bytes",
+      "990 bytes"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.25"
+  },
+  {
+    "question": "Numa rede de comutação de pacotes sem circuitos virtuais, os pacotes chegam sempre ao destino pela mesma ordem em que foram emitidos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.26"
+  },
+  {
+    "question": "Numa rede de comutação de pacotes sem circuitos virtuais, o que acontece a cada pacote?",
+    "answers": [
+      "Segue o seu próprio caminho, podendo ultrapassar outros pacotes, pelo que a sequência não é garantida",
+      "Segue sempre o mesmo caminho que os restantes pacotes da mesma transação, tal como num circuito virtual",
+      "É difundido para todos os nós da rede, que verificam se o pacote lhes é dirigido",
+      "É encaminhado com base num identificador de circuito virtual definido antes do envio"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.26"
+  },
+  {
+    "question": "Numa rede de comutação de pacotes sem circuitos virtuais, a quem cabe a tarefa adicional de reordenar os pacotes recebidos?",
+    "answers": [
+      "Ao nó recetor",
+      "Aos nós intermédios",
+      "Ao nó emissor",
+      "Ao mecanismo MAC"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.26"
+  },
+  {
+    "question": "Qual é o primeiro passo para criar um circuito virtual?",
+    "answers": [
+      "O nó de destino reordena os pacotes recebidos e devolve o VCI ao nó de origem",
+      "O nó de origem envia o primeiro pacote de dados já com o identificador do circuito virtual",
+      "O nó de origem pede à rede a criação de um circuito virtual, indicando o endereço do nó de destino",
+      "Os nós intermédios descartam os pacotes que cheguem fora de ordem ao nó de destino"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.26"
+  },
+  {
+    "question": "O que devolve a rede ao nó de origem depois de os nós intermédios estabelecerem o caminho de um circuito virtual?",
+    "answers": [
+      "A lista de todos os nós intermédios do caminho",
+      "O endereço do nó de destino da transação",
+      "O identificador do circuito virtual (VCI)",
+      "Um código de deteção de erros do circuito"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.26"
+  },
+  {
+    "question": "O que transporta o cabeçalho de cada pacote de dados enviado através de um circuito virtual?",
+    "answers": [
+      "Apenas o código de deteção de erros",
+      "O identificador do circuito virtual (VCI), em vez do endereço do nó de destino",
+      "O tamanho total do caminho percorrido",
+      "O endereço do nó de destino e um identificador diferente para cada nó intermédio"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.26"
+  },
+  {
+    "question": "Qual é a vantagem do uso de circuitos virtuais numa rede de comutação de pacotes?",
+    "answers": [
+      "Os pacotes deixam de transportar qualquer informação de controlo no cabeçalho",
+      "A rede deixa de precisar de nós intermédios para encaminhar os pacotes até ao destino",
+      "Os pacotes passam a poder ter qualquer dimensão, de acordo com as necessidades da origem",
+      "Todos os pacotes seguem o mesmo caminho, pelo que a sequência de entrega é garantida"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.26"
+  },
+  {
+    "question": "Em qualquer rede de comutação de pacotes, o cabeçalho de todos os pacotes inclui sempre o endereço do nó de destino.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.26"
+  },
+  {
+    "question": "O NRZ-L produz um sinal desequilibrado, cujo valor médio varia e não é constante.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 extras p.1"
+  },
+  {
+    "question": "Quantos níveis de sinal usa a codificação MLT-3, utilizada nas redes 100baseTX?",
+    "answers": [
+      "2 níveis",
+      "8 níveis",
+      "3 níveis",
+      "4 níveis"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 extras p.3"
+  },
+  {
+    "question": "Qual é a frequência máxima do sinal produzido pela codificação MLT-3, em relação à taxa de transmissão?",
+    "answers": [
+      "Igual à taxa de transmissão",
+      "O dobro da taxa de transmissão",
+      "Um quarto da taxa de transmissão",
+      "Metade da taxa de transmissão"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 extras p.3"
+  },
+  {
+    "question": "No MLT-3, um bit um provoca uma transição do nível atual para o nível seguinte, de acordo com um ciclo fechado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 extras p.3"
+  },
+  {
+    "question": "Quantos bits de saída produz a técnica de block coding 4B5B para cada 4 bits de entrada?",
+    "answers": [
+      "4 bits",
+      "6 bits",
+      "8 bits",
+      "5 bits"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 extras p.4"
+  },
+  {
+    "question": "Quais são alguns dos objetivos da inserção de bits de controlo entre os bits de dados (block coding)?",
+    "answers": [
+      "Substituir a digital modulation nos meios passband, tornando-a desnecessária em rádio",
+      "Eliminar a necessidade de relógio no emissor, que passa a ser sincronizado pelo recetor",
+      "Aumentar o número de níveis do sinal para oito e duplicar a frequência máxima do sinal",
+      "Garantir mudanças de nível do sinal, estabilizar o seu valor médio e permitir detetar erros"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 extras p.4"
+  },
+  {
+    "question": "A codificação 2B1Q usa quatro níveis de sinal, enviando dois bits em cada símbolo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 extras p.2"
+  },
+  {
+    "question": "Qual das seguintes é uma vantagem dos cabos de fibra ótica relativamente aos de cobre?",
+    "answers": [
+      "Maior facilidade de montagem e de ligação às tomadas dos utilizadores",
+      "Menor atenuação, imunidade ao ruído externo e não geram ruído externo",
+      "Maior atenuação, mas menor custo de instalação e menor dispersão",
+      "Aceitam apenas sinais elétricos, o que simplifica o equipamento terminal"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.2"
+  },
+  {
+    "question": "Que problema coloca a radiação eletromagnética (EMR) gerada pelos sinais elétricos em cabos de cobre, para além do ruído externo?",
+    "answers": [
+      "A perda do endereço de origem nos pacotes que atravessam o cabo de cobre",
+      "O aumento do diâmetro do núcleo, que deixa de permitir sinais digitais",
+      "A dispersão, porque partes do sinal seguem caminhos de comprimentos diferentes",
+      "A escuta (tapping), em que um intruso infere o sinal original e acede aos dados"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.3"
+  },
+  {
+    "question": "À medida que a frequência de um sinal elétrico aumenta, o sinal tende a propagar-se melhor através do espaço do que através do próprio cobre.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.3"
+  },
+  {
+    "question": "Os cabos coaxiais usam uma blindagem condutora que envolve o condutor interno, criando um efeito de gaiola de Faraday.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.4"
+  },
+  {
+    "question": "As primeiras redes locais Ethernet usavam cabo coaxial como meio de transmissão partilhado, a 10 Mbps.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.4"
+  },
+  {
+    "question": "Na transmissão balanceada com par entrelaçado (twisted pair), como mede o recetor o sinal transmitido?",
+    "answers": [
+      "Como a diferença entre os dois cabos, pelo que a interferência externa, igual em ambos, desaparece",
+      "Com referência à terra ou ao valor médio do sinal, tal como acontece num cabo coaxial blindado",
+      "Apenas num dos cabos, ignorando o outro, que serve unicamente de blindagem ao primeiro",
+      "Como a soma dos sinais dos dois cabos, o que duplica o efeito da interferência externa"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.5"
+  },
+  {
+    "question": "A transmissão diferencial balanceada simples elimina também o ruído que os próprios cabos geram para o exterior.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.5"
+  },
+  {
+    "question": "Na transmissão diferencial simétrica, o emissor injeta o sinal num cabo e o sinal simétrico no outro, de modo que as radiações eletromagnéticas geradas se cancelam.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.6"
+  },
+  {
+    "question": "A blindagem e as linhas balanceadas não são técnicas incompatíveis: alguns cabos de pares entrelaçados também usam blindagem.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.6"
+  },
+  {
+    "question": "Numa fibra ótica, a cladding mantém a luz dentro do núcleo (core) porque tem um índice de refração mais baixo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.7"
+  },
+  {
+    "question": "Qual é o principal problema da fibra ótica, que limita a taxa de transmissão e sobretudo o comprimento do cabo?",
+    "answers": [
+      "A elevada sensibilidade à interferência eletromagnética (EMI) gerada por equipamentos próximos",
+      "A radiação eletromagnética que gera para o exterior e permite a escuta por intrusos",
+      "A dispersão, porque partes do sinal luminoso seguem percursos de reflexão de comprimentos diferentes",
+      "A elevada atenuação do sinal, que obriga a usar repetidores a poucas centenas de metros"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.7"
+  },
+  {
+    "question": "Que diâmetro de núcleo caracteriza uma fibra ótica multimode?",
+    "answers": [
+      "Exatamente 125 μm",
+      "Inferior a 10 μm, tipicamente entre 3 e 10 μm",
+      "Inferior a 1 μm",
+      "Superior a 10 μm, tipicamente 50 μm ou 62,5 μm"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.8"
+  },
+  {
+    "question": "Que diâmetro de núcleo caracteriza uma fibra ótica monomode?",
+    "answers": [
+      "Exatamente 125 μm",
+      "Inferior a 10 μm, tipicamente entre 3 e 10 μm",
+      "Superior a 100 μm",
+      "Superior a 10 μm, tipicamente 50 μm ou 62,5 μm"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.8"
+  },
+  {
+    "question": "A fibra ótica monomode é imune à dispersão, o que permite taxas de transmissão mais elevadas e cabos mais longos do que na fibra multimode.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.8"
+  },
+  {
+    "question": "A fibra ótica monomode é a que sofre mais com a dispersão, por isso só serve para distâncias de algumas centenas de metros.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.8"
+  },
+  {
+    "question": "Qual é a ordem de grandeza do comprimento de cabo que uma fibra ótica multimode permite?",
+    "answers": [
+      "Vários milhares de metros",
+      "Até algumas centenas de metros",
+      "Apenas alguns metros",
+      "Sem qualquer limite de comprimento"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.8"
+  },
+  {
+    "question": "O que são backbones num sistema de cablagem?",
+    "answers": [
+      "Partes do sistema com grandes fluxos de dados, que não estão diretamente ligadas às tomadas dos utilizadores",
+      "Os equipamentos ativos de uma rede, como switches e routers, instalados nos distribuidores",
+      "Os cabos que ligam cada tomada ao computador ou ao telefone do utilizador no posto de trabalho",
+      "Os cabos de cobre usados exclusivamente na cablagem horizontal de cada piso do edifício"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.8"
+  },
+  {
+    "question": "A topologia em barramento (bus) das primeiras redes Ethernet era pouco fiável, porque qualquer problema elétrico ao longo do barramento deixava toda a rede fora de serviço.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.9"
+  },
+  {
+    "question": "Que topologia de rede utilizam as redes Token-Ring (IEEE 802.5) e FDDI?",
+    "answers": [
+      "Barramento (bus)",
+      "Malha completa",
+      "Estrela (star)",
+      "Anel (ring)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.9"
+  },
+  {
+    "question": "Na topologia em estrela, o concentrador de cabos separa eletricamente os segmentos de cabo, pelo que um problema num cabo afeta apenas o nó ligado por esse cabo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.10"
+  },
+  {
+    "question": "A utilização de uma topologia em estrela implica, por si só, que a rede deixa de ter um meio de transmissão partilhado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.10"
+  },
+  {
+    "question": "Se os concentradores de cabos se limitarem a amplificar e repetir os sinais recebidos para todos os cabos ligados, a rede continua a ter um meio de transmissão partilhado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.10"
+  },
+  {
+    "question": "As normas de cablagem estruturada referem-se apenas a cabos e conectores, e não ao equipamento ativo, e servem para planear toda a infraestrutura de rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.11"
+  },
+  {
+    "question": "Porque se recorre a normas de cablagem estruturada?",
+    "answers": [
+      "Porque a cablagem deve ser desenhada à medida de uma única tecnologia de camada 2, a mais recente",
+      "Porque as normas definem também o equipamento ativo a instalar, como switches e routers",
+      "Porque os cabos são difíceis de substituir e as tecnologias de camada 2 evoluem depressa",
+      "Porque os cabos são o componente mais barato e mais fácil de trocar numa infraestrutura de rede"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.11"
+  },
+  {
+    "question": "Na cablagem estruturada, como se designa o ponto de distribuição de cabos de nível mais alto, único, que dá origem ao Cabling Subsystem 3 (campus backbone)?",
+    "answers": [
+      "Main cross-connect (MC), também chamado Campus Distributor (CD)",
+      "Horizontal cross-connect (HC), também chamado Floor Distributor (FD)",
+      "Work area outlet (WAO), também chamado tomada do posto de trabalho",
+      "Intermediate cross-connect (IC), também chamado Building Distributor (BD)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.12"
+  },
+  {
+    "question": "Na cablagem estruturada, qual é o ponto de distribuição de segundo nível, habitualmente um por edifício?",
+    "answers": [
+      "Work area outlet (WAO), também chamado tomada do posto de trabalho",
+      "Main cross-connect (MC), também chamado Campus Distributor (CD)",
+      "Horizontal cross-connect (HC), também chamado Floor Distributor (FD)",
+      "Intermediate cross-connect (IC), também chamado Building Distributor (BD)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.12"
+  },
+  {
+    "question": "Na cablagem estruturada, qual é o ponto de distribuição de nível mais baixo, a partir do qual deixam de existir backbones?",
+    "answers": [
+      "Work area outlet (WAO), também chamado tomada do posto de trabalho",
+      "Intermediate cross-connect (IC), também chamado Building Distributor (BD)",
+      "Main cross-connect (MC), também chamado Campus Distributor (CD)",
+      "Horizontal cross-connect (HC), também chamado Floor Distributor (FD)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.12"
+  },
+  {
+    "question": "Como se designam os cabos que, partindo do horizontal cross-connect, ligam às tomadas dos utilizadores no piso?",
+    "answers": [
+      "Backbone vertical",
+      "Cabling Subsystem 1, ou cablagem horizontal",
+      "Cabling Subsystem 3, ou campus backbone",
+      "Cabling Subsystem 2, ou building backbone"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.12"
+  },
+  {
+    "question": "Como se designam os cabos que ligam o intermediate cross-connect aos horizontal cross-connects?",
+    "answers": [
+      "Horizontal cross-connect, ponto de distribuição que serve cada piso do edifício",
+      "Cabling Subsystem 1, também chamado cablagem horizontal do piso",
+      "Cabling Subsystem 3, também chamado campus backbone entre edifícios",
+      "Cabling Subsystem 2, também chamado building backbone ou backbone vertical"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.12"
+  },
+  {
+    "question": "Em NRZ-L, o bit zero é representado por um nível alto e o bit um por um nível baixo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.15"
+  },
+  {
+    "question": "As micro-ondas propagam-se, tal como os sinais de baixa frequência, melhor em condutores de cobre do que no ar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.9"
+  },
+  {
+    "question": "O ruído externo é produzido pelo próprio sistema de transmissão, por exemplo pelos amplificadores.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.11"
+  },
+  {
+    "question": "O ruído interno resulta da interferência eletromagnética (EMI) de equipamentos externos ao sistema de transmissão.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.11"
+  },
+  {
+    "question": "Um sinal digital tem sempre uma única frequência, tal como um sinal sinusoidal puro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.12"
+  },
+  {
+    "question": "Num meio baseband, os sinais de frequência zero não conseguem passar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.13"
+  },
+  {
+    "question": "A maioria dos meios de transmissão de cobre tem comportamento passband.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.13"
+  },
+  {
+    "question": "Os sinais digitais obtidos por line coding podem ser usados em qualquer meio passband, como as ondas de rádio.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.18"
+  },
+  {
+    "question": "A ISI (Inter Symbol Interference) é causada por colisões entre dois nós que emitem em simultâneo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.14"
+  },
+  {
+    "question": "Com NRZ-L, para transmitir símbolos de 3 bits bastam 3 níveis de sinal.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.15"
+  },
+  {
+    "question": "A frequência máxima de um sinal produzido por line coding NRZ é o dobro da taxa de transmissão.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.15"
+  },
+  {
+    "question": "Os esquemas de line coding bifásicos produzem um sinal com frequência máxima igual a metade da taxa de transmissão.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.16"
+  },
+  {
+    "question": "Num sinal bifásico, o recetor não consegue sincronizar-se porque o nível do sinal não muda durante o símbolo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.16"
+  },
+  {
+    "question": "A transmissão síncrona usa line coding NRZ-L e, por isso, só permite enviar 7 ou 8 bits de cada vez.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.17"
+  },
+  {
+    "question": "Em PSK, um desfasamento de 180 graus corresponde a ausência de desfasamento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.18"
+  },
+  {
+    "question": "A modulação 16 QAM transmite 16 bits em cada símbolo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.19"
+  },
+  {
+    "question": "Numa rede de comutação, os dados são sempre recebidos por todos os nós, tal como numa rede de meio partilhado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.23"
+  },
+  {
+    "question": "Numa rede de meio partilhado, vários nós podem emitir ao mesmo tempo sem que ocorram colisões.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.22"
+  },
+  {
+    "question": "O código de deteção de erros é sempre colocado no cabeçalho do pacote, porque só assim é útil ao recetor.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.25"
+  },
+  {
+    "question": "O endereço do nó de origem é dispensável no cabeçalho, porque o recetor responde sempre ao endereço de destino.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.25"
+  },
+  {
+    "question": "Num circuito virtual, cada pacote segue um caminho diferente, determinado pelo endereço de destino do cabeçalho.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.26"
+  },
+  {
+    "question": "Num circuito virtual, o caminho é determinado só depois de enviado o primeiro pacote de dados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.26"
+  },
+  {
+    "question": "Na fibra ótica multimode não existe dispersão, por isso permite distâncias superiores às da fibra monomode.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.8"
+  },
+  {
+    "question": "Na topologia em estrela, uma falha num cabo deixa toda a rede fora de serviço.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.10"
+  },
+  {
+    "question": "Os cabos de fibra ótica geram interferência eletromagnética (EMI) que pode ser captada por cabos vizinhos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.2"
+  },
+  {
+    "question": "No MLT-3, a frequência máxima do sinal é metade da taxa de transmissão.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 extras p.3"
+  },
+  {
+    "question": "Uma ligação transmite dados a 100 Mbps com line coding NRZ. Qual é a frequência máxima do sinal produzido?",
+    "answers": [
+      "25 MHz",
+      "50 MHz",
+      "200 MHz",
+      "100 MHz"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.15"
+  },
+  {
+    "question": "As primeiras redes Ethernet em cabo coaxial transmitiam a 10 Mbps com um sinal de frequência máxima igual à taxa de transmissão. Que frequência máxima tinha o sinal?",
+    "answers": [
+      "2,5 MHz",
+      "10 MHz",
+      "20 MHz",
+      "5 MHz"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.4"
+  },
+  {
+    "question": "Quantos bits transporta cada símbolo num sinal NRZ-L com oito níveis?",
+    "answers": [
+      "8 bits",
+      "4 bits",
+      "3 bits",
+      "2 bits"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.15"
+  },
+  {
+    "question": "Em NRZ-L, como é representado o bit zero?",
+    "answers": [
+      "Pela ausência de sinal durante todo o símbolo",
+      "Por um nível alto do sinal",
+      "Por um nível baixo do sinal",
+      "Por uma transição de nível"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.15"
+  },
+  {
+    "question": "Qual das seguintes é um exemplo de meio de transmissão com comportamento passband?",
+    "answers": [
+      "Um meio em que um sinal elétrico estático tem baixa atenuação",
+      "Um cabo de cobre onde passam sinais de frequência zero",
+      "Um meio com a mesma atenuação para todas as frequências",
+      "A rede telefónica pública (PSTN), concebida para transportar voz humana"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.13"
+  },
+  {
+    "question": "Porque é que a transmissão assíncrona não sofre uma dessincronização significativa?",
+    "answers": [
+      "Porque usa line coding bifásico com transições em todos os símbolos",
+      "Porque o recetor lê o sinal no início de cada símbolo",
+      "Porque o tempo necessário para transmitir tão poucos bits de dados é muito curto",
+      "Porque usa digital modulation em vez de line coding"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.17"
+  },
+  {
+    "question": "Na transmissão assíncrona, qual é a função do bit de start enviado antes dos bits de dados?",
+    "answers": [
+      "Alterar o nível do sinal, para que o recetor possa acertar o desfasamento do seu relógio",
+      "Detetar erros ocorridos durante a transmissão dos bits de dados que se seguem ao start",
+      "Dividir a taxa de transmissão do meio pelos nós da rede que partilham a mesma ligação",
+      "Indicar ao recetor o endereço do nó de destino dos dados que vão ser transmitidos a seguir"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.17"
+  },
+  {
+    "question": "Como se designa a sequência de símbolos, com algumas centenas ou milhares de bytes, enviada numa transmissão síncrona?",
+    "answers": [
+      "Frame",
+      "Portadora (carrier)",
+      "Circuito virtual",
+      "Start bit"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.17"
+  },
+  {
+    "question": "Quantos níveis de sinal usa a codificação 2B1Q?",
+    "answers": [
+      "4 níveis",
+      "3 níveis",
+      "2 níveis",
+      "8 níveis"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 extras p.2"
+  },
+  {
+    "question": "O que acontece ao overhead de um pacote quando o payload aumenta e o cabeçalho se mantém igual?",
+    "answers": [
+      "Mantém-se constante, porque só depende do cabeçalho",
+      "Diminui, porque o cabeçalho passa a representar uma fração menor do pacote",
+      "Aumenta, porque o pacote passa a ter mais informação de controlo",
+      "Passa a ser sempre igual a 100 %"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.25"
+  },
+  {
+    "question": "Um pacote tem 100 bytes no total, dos quais 20 bytes são cabeçalho e não tem tail. Qual é a eficiência do pacote?",
+    "answers": [
+      "20 %",
+      "25 %",
+      "80 %",
+      "120 %"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.25"
+  },
+  {
+    "question": "Um pacote tem um payload de 46 bytes e um cabeçalho de 18 bytes, sem tail. Qual é, aproximadamente, a eficiência do pacote?",
+    "answers": [
+      "71,9 %",
+      "28,1 %",
+      "139,1 %",
+      "39,1 %"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.25"
+  },
+  {
+    "question": "Um pacote tem um overhead de 20 % e um payload de 800 bytes. Qual é o tamanho total do pacote?",
+    "answers": [
+      "1000 bytes",
+      "960 bytes",
+      "800 bytes",
+      "4000 bytes"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.25"
+  },
+  {
+    "question": "Qual é o diâmetro exterior total de uma fibra ótica, incluindo a cladding?",
+    "answers": [
+      "50 μm",
+      "10 μm",
+      "62,5 μm",
+      "125 μm"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.7"
+  },
+  {
+    "question": "Porque é que o uso da fibra ótica fica limitado, em geral, aos backbones?",
+    "answers": [
+      "Porque a fibra ótica sofre mais ruído externo do que os cabos de cobre convencionais",
+      "Porque a fibra ótica não permite taxas de transmissão elevadas nem grandes distâncias",
+      "Porque a fibra ótica só consegue transportar sinais elétricos, nunca sinais óticos",
+      "Porque a maior parte do hardware atual dos utilizadores finais não tem ligação ótica"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.8"
+  },
+  {
+    "question": "Que dificuldade prática levanta a montagem e a ligação de cabos de fibra ótica?",
+    "answers": [
+      "A necessidade de blindar o cabo contra a interferência eletromagnética (EMI) de equipamentos próximos",
+      "A necessidade de entrelaçar os cabos aos pares para cancelar a radiação eletromagnética",
+      "A impossibilidade de ligar a fibra a equipamentos terminais, mesmo com conversores",
+      "O diâmetro muito fino e a necessidade de transferir um sinal ótico, em vez de um sinal elétrico"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.8"
+  },
+  {
+    "question": "Como se pode reduzir ou eliminar a dispersão da luz numa fibra ótica?",
+    "answers": [
+      "Usando uma cladding com índice de refração superior ao do núcleo",
+      "Usando um núcleo mais fino",
+      "Usando um núcleo mais largo",
+      "Aumentando o número de nós ligados à fibra"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.8"
+  },
+  {
+    "question": "Abaixo de que diâmetro do núcleo a dispersão desaparece completamente numa fibra ótica?",
+    "answers": [
+      "50 μm",
+      "10 μm",
+      "125 μm",
+      "62,5 μm"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.8"
+  },
+  {
+    "question": "Em que aplicações são ainda hoje usados os cabos coaxiais, sempre que há sinais de frequência elevada?",
+    "answers": [
+      "Na televisão por cabo (CATV) e em ligações a antenas externas",
+      "Na cablagem horizontal de todos os pisos de um edifício",
+      "Apenas em backbones entre edifícios",
+      "Em todas as redes locais Ethernet modernas"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.4"
+  }
+]

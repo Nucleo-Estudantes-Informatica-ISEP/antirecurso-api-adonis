@@ -1,0 +1,3293 @@
+[
+  {
+    "question": "O IPv4 define um formato de pacote, endereços de rede e, dentro de cada rede, endereços de nó.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.2"
+  },
+  {
+    "question": "O IPv4 define a deteção de erros tanto no cabeçalho como nos dados transportados (payload).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.5"
+  },
+  {
+    "question": "O IPv4 foi imposto pela crescente aceitação dos utilizadores; uma das suas vantagens era não ser um protocolo novo, tendo já evoluído com o uso prático.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.2"
+  },
+  {
+    "question": "O cabeçalho de um pacote IPv4 tem sempre o comprimento de 20 bytes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.3"
+  },
+  {
+    "question": "O campo IHL do cabeçalho IPv4 indica o tamanho do cabeçalho em bytes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.3"
+  },
+  {
+    "question": "O campo QoS de 8 bits do IPv4 está atualmente dividido em DSCP (6 bits) e ECN (2 bits).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.4"
+  },
+  {
+    "question": "O campo TTL do IPv4 transporta uma etiqueta data/hora indicativa do momento em que o pacote foi emitido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.4"
+  },
+  {
+    "question": "O checksum do cabeçalho IPv4 tem 16 bits e é usado para detetar erros no cabeçalho.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.5"
+  },
+  {
+    "question": "Quando o checksum do cabeçalho de um pacote IPv4 recebido não coincide com o valor do campo, o pacote é descartado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.5"
+  },
+  {
+    "question": "No cálculo do checksum do cabeçalho IPv4, o próprio campo checksum entra com o valor que tem no pacote recebido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.5"
+  },
+  {
+    "question": "O TCP faz sempre a sua própria deteção de erros nos dados, ao passo que o UDP pode ou não implementá-la.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.5"
+  },
+  {
+    "question": "O IPv4 é transportado numa trama de camada 2 com valor 0x0800 no campo E-TYPE.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.12"
+  },
+  {
+    "question": "A MTU de uma trama Ethernet II é de 64 Kbytes, tal como a de um PDU AAL5.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.6"
+  },
+  {
+    "question": "Quando um router recebe um pacote com a flag DF ativa e maior do que a MTU, fragmenta o pacote e reencaminha os fragmentos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.8"
+  },
+  {
+    "question": "A mensagem ICMP Fragmentation needed and DF set indica ao emissor o valor da MTU que causou o problema.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.8"
+  },
+  {
+    "question": "Como a MTU local típica é 1500 bytes (Ethernet) e a maioria das redes a suporta, as correções da path MTU são apenas esporádicas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.9"
+  },
+  {
+    "question": "Cada nó IPv4 tem um endereço único de 32 bits, e cada pacote IPv4 transporta no cabeçalho dois endereços: o de origem e o de destino.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "A máscara de rede é uma sequência de bits zero (parte de rede) seguida de bits um (parte do nó).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Quando o endereço IPv4 de destino pertence à mesma rede do emissor, o pacote pode ser enviado diretamente ao nó de destino.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.11"
+  },
+  {
+    "question": "Quando o endereço IPv4 de destino pertence a uma rede diferente da do emissor, o pacote tem de ser enviado a um router.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.11"
+  },
+  {
+    "question": "Um router limita-se a descartar os pacotes IPv4 cujo endereço de destino não é o seu.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.11"
+  },
+  {
+    "question": "Numa ligação dedicada entre dois nós, o endereçamento de camada 2 é implícito e usa-se tipicamente o PPP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.12"
+  },
+  {
+    "question": "Quando o destino IPv4 pertence à mesma rede, o endereço MAC de destino da trama tem de corresponder ao nó de destino; caso contrário, corresponde ao router a usar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.12"
+  },
+  {
+    "question": "Um ARP request é enviado em unicast para o nó de destino e o ARP reply é enviado em broadcast.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.13"
+  },
+  {
+    "question": "O nó que reconhece o seu próprio endereço IPv4 num ARP request responde com um ARP reply, informando o emissor do seu endereço MAC.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.14"
+  },
+  {
+    "question": "O ARP é um protocolo stateless: não relaciona os ARP replies recebidos com os ARP requests enviados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.14"
+  },
+  {
+    "question": "Um nó só copia para a tabela ARP os ARP replies que correspondam a um ARP request que tenha enviado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.14"
+  },
+  {
+    "question": "Um ataque de ARP spoofing (ARP cache poisoning) pode ser usado para criar ataques Man-In-The-Middle (MITM).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.14"
+  },
+  {
+    "question": "Dois nós IPv4 só comunicam diretamente, sem routers, se estiverem ligados à mesma LAN/VLAN (mesmo domínio de broadcast) e se os endereços pertencerem à mesma rede IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.7"
+  },
+  {
+    "question": "Dois nós IPv4 ligados à mesma LAN conseguem comunicar diretamente mesmo que os seus endereços pertençam a redes IPv4 diferentes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.12"
+  },
+  {
+    "question": "O cabeçalho UDP tem 20 bytes: porta de origem, porta de destino, números de sequência e janela.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.15"
+  },
+  {
+    "question": "Num nó, os números de porta UDP têm de ser únicos, cada um atribuído a uma só aplicação.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.15"
+  },
+  {
+    "question": "Os números de porta bem conhecidos (well-known) são atribuídos a tipos de serviço específicos, pelo que o cliente só precisa de indicar o endereço do servidor.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.16"
+  },
+  {
+    "question": "O DHCP é uma evolução do BOOTP e ambos usam datagramas UDP para configurar automaticamente nós IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.17"
+  },
+  {
+    "question": "Os routers reencaminham os pacotes enviados para o endereço de broadcast 255.255.255.255 para as outras redes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.17"
+  },
+  {
+    "question": "O servidor DHCP regista o endereço MAC de cada cliente para controlar que endereço IPv4 atribuiu a cada um.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.17"
+  },
+  {
+    "question": "O DHCP e o BOOTP fornecem, além do endereço IPv4, a máscara de rede, o router por omissão (default gateway) e a configuração de DNS.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.18"
+  },
+  {
+    "question": "No DHCP, os endereços são atribuídos apenas por um período (lease time); se o cliente continuar a usar o endereço, tem de enviar um pedido de renovação antes de o lease expirar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.18"
+  },
+  {
+    "question": "No BOOTP, os endereços são atribuídos por um período (lease time) e têm de ser renovados pelo cliente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.18"
+  },
+  {
+    "question": "O ICMP é usado para testes e para comunicar erros relativos ao funcionamento do IPv4, e as mensagens ICMP são transportadas em pacotes IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.19"
+  },
+  {
+    "question": "A mensagem ICMP de tipo 0 é um echo request e é respondida com uma mensagem de tipo 8 (echo reply).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.19"
+  },
+  {
+    "question": "No echo reply, todos os dados (Data) são copiados do echo request.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.19"
+  },
+  {
+    "question": "O identificador e o número de sequência do echo request permitem ao emissor associar a resposta recebida ao pedido enviado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.19"
+  },
+  {
+    "question": "A mensagem ICMP Destination Unreachable é enviada para o nó cujo endereço IPv4 de origem corresponde ao pacote descartado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.20"
+  },
+  {
+    "question": "A mensagem ICMP Destination Unreachable com código 2 (Protocol Unreachable) indica que o porto de destino não está em uso no nó de destino.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.20"
+  },
+  {
+    "question": "A mensagem ICMP Time Exceeded com código 0 informa que o TTL do pacote chegou a zero.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.21"
+  },
+  {
+    "question": "O TCP é um protocolo fiável e orientado à ligação, e é o mais usado na Internet para transferências de dados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.22"
+  },
+  {
+    "question": "O TCP é um protocolo sem ligação que não garante a ordem de entrega dos bytes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.22"
+  },
+  {
+    "question": "Uma ligação TCP só permite a comunicação entre um par de aplicações, garante que a sequência dos dados é preservada e impõe controlo de fluxo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.22"
+  },
+  {
+    "question": "Antes de qualquer transferência de dados úteis, tem de ser estabelecida uma ligação TCP entre as duas aplicações.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.22"
+  },
+  {
+    "question": "Os pacotes TCP chamam-se segmentos e são transportados no interior de pacotes IPv4 ou IPv6.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.23"
+  },
+  {
+    "question": "Um segmento TCP é transportado no campo de dados de um datagrama UDP, e este, por sua vez, num pacote IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.23"
+  },
+  {
+    "question": "Os números de porta TCP são independentes dos números de porta UDP, porque são implementados por camadas diferentes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.23"
+  },
+  {
+    "question": "Todos os segmentos que pertencem à mesma ligação TCP têm o mesmo número de sequência.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.23"
+  },
+  {
+    "question": "A flag SYN é usada no estabelecimento da ligação e define o número de sequência inicial.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.24"
+  },
+  {
+    "question": "Os segmentos de uma ligação TCP devem ter todos a flag SYN ativa, caso contrário são ignorados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.24"
+  },
+  {
+    "question": "A flag ACK está sempre a um, exceto no primeiro segmento de estabelecimento da ligação, que tem a flag SYN.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.24"
+  },
+  {
+    "question": "Na ligação TCP estabelecida pelo three-way handshake, cada aplicação define o seu próprio número de sequência inicial aleatório.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.24"
+  },
+  {
+    "question": "No three-way handshake, o terceiro segmento tem a flag SYN ativa e a flag ACK desativada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.25"
+  },
+  {
+    "question": "Se o nó contrário responder a um FIN apenas com um ACK, a ligação TCP fica half-open, podendo ser totalmente fechada mais tarde quando esse nó enviar o seu FIN.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.26"
+  },
+  {
+    "question": "O TCP permite o envio de dados out-of-band (OOB), através da flag URG e do campo Urgent Pointer.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.26"
+  },
+  {
+    "question": "O RTO (Retransmission Timeout) é o tempo que o TCP espera pelo ACK de um segmento antes de assumir que se perdeu e o retransmitir.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.27"
+  },
+  {
+    "question": "O TCP mede continuamente o RTT (Round-Trip Time) da ligação para ajustar o valor do RTO.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.27"
+  },
+  {
+    "question": "Quando o recetor anuncia WINDOW=0, o emissor fica proibido de enviar mais dados até receber uma janela maior.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.28"
+  },
+  {
+    "question": "Um endereço multicast representa um conjunto de nós, e todos os nós do conjunto recebem uma cópia do pacote.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.29"
+  },
+  {
+    "question": "O broadcast IPv4 é um caso especial de multicast, em que o conjunto de nós é formado por todos os nós de uma rede IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.29"
+  },
+  {
+    "question": "O multicast IPv4 está limitado a uma única rede IPv4, tal como o broadcast.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.30"
+  },
+  {
+    "question": "Os endereços Ethernet entre 01:00:5E:00:00:00 e 01:00:5E:7F:FF:FF estão reservados para multicast IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.30"
+  },
+  {
+    "question": "Os routers só precisam de saber se existe pelo menos um membro do grupo na rede, sendo irrelevante saber se existe um ou vários.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.31"
+  },
+  {
+    "question": "Os switches de camada 2 normais reencaminham os pacotes multicast apenas para os segmentos onde existem membros do grupo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.31"
+  },
+  {
+    "question": "Existem switches de camada 2 que escutam mensagens IGMP e reencaminham os pacotes multicast apenas para os segmentos onde existem membros do grupo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.31"
+  },
+  {
+    "question": "Qualquer trama Ethernet com o bit menos significativo do primeiro byte do endereço de destino a um é retransmitida para todas as portas pelos switches e bridges.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.29"
+  },
+  {
+    "question": "Qual é o valor do campo Version no cabeçalho de um pacote IPv4?",
+    "answers": [
+      "4 (bits 0100)",
+      "1 (bits 0001)",
+      "6 (bits 0110)",
+      "5 (bits 0101)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.3"
+  },
+  {
+    "question": "Qual é o comprimento mínimo do cabeçalho de um pacote IPv4 e o valor correspondente do IHL?",
+    "answers": [
+      "20 bytes, com IHL = 5",
+      "32 bytes, com IHL = 8",
+      "20 bytes, com IHL = 20",
+      "5 bytes, com IHL = 5"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.3"
+  },
+  {
+    "question": "Qual é o comprimento máximo do cabeçalho IPv4, sabendo que o IHL tem 4 bits e se mede em unidades de 32 bits?",
+    "answers": [
+      "20 bytes",
+      "60 bytes",
+      "64 bytes",
+      "15 bytes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.3"
+  },
+  {
+    "question": "Um pacote IPv4 tem IHL = 8. Qual é o comprimento do seu cabeçalho?",
+    "answers": [
+      "64 bytes",
+      "8 bytes",
+      "32 bytes",
+      "20 bytes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.3"
+  },
+  {
+    "question": "Um datagrama IPv4 tem Total length = 1500 bytes e IHL = 5. Quantos bytes de dados (payload) transporta?",
+    "answers": [
+      "1500 bytes",
+      "1480 bytes",
+      "1496 bytes",
+      "1460 bytes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.3"
+  },
+  {
+    "question": "Qual é a dimensão máxima de um pacote IPv4, incluindo o cabeçalho?",
+    "answers": [
+      "1 Mbyte",
+      "576 bytes",
+      "64 Kbytes",
+      "1500 bytes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.4"
+  },
+  {
+    "question": "Para que serve o campo TTL do cabeçalho IPv4?",
+    "answers": [
+      "Indica o tempo máximo, em segundos, que o pacote pode ficar nas filas dos routers do caminho",
+      "Limita o número de routers que o pacote pode atravessar, sendo decrementado em cada router",
+      "Indica a data e a hora em que o pacote foi emitido pelo nó de origem, para controlo de atrasos",
+      "Indica o número de fragmentos em que o pacote original foi dividido pelos routers do caminho"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.4"
+  },
+  {
+    "question": "O que acontece a um pacote IPv4 cujo TTL chega a zero?",
+    "answers": [
+      "É reencaminhado com o TTL reposto no valor inicial",
+      "É entregue ao nó de destino mesmo assim",
+      "É fragmentado e reencaminhado pelo router seguinte",
+      "É descartado e é enviada uma mensagem de erro ICMP"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.4"
+  },
+  {
+    "question": "Que valor do campo Protocol do IPv4 identifica o TCP?",
+    "answers": [
+      "2",
+      "17",
+      "1",
+      "6"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.4"
+  },
+  {
+    "question": "Que valor do campo Protocol do IPv4 identifica o ICMP?",
+    "answers": [
+      "1",
+      "2",
+      "17",
+      "6"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.19"
+  },
+  {
+    "question": "Que valor do campo Protocol do IPv4 identifica o IGMP?",
+    "answers": [
+      "17",
+      "6",
+      "1",
+      "2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.30"
+  },
+  {
+    "question": "Que valor do campo Protocol do IPv4 identifica o UDP?",
+    "answers": [
+      "2",
+      "1",
+      "17",
+      "6"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.19"
+  },
+  {
+    "question": "Qual é a função do campo Protocol do cabeçalho IPv4?",
+    "answers": [
+      "Identificar o protocolo a que pertencem os dados transportados, permitindo a multiplexagem",
+      "Indicar a aplicação de destino dentro do nó que recebe o pacote, através de um porto",
+      "Identificar a tecnologia de camada 2 usada na ligação seguinte do caminho do pacote",
+      "Indicar a versão do protocolo IP usada pelo emissor do pacote no cabeçalho"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.4"
+  },
+  {
+    "question": "Sobre que parte do pacote IPv4 incide o cálculo do checksum do cabeçalho?",
+    "answers": [
+      "Sobre o cabeçalho e sobre a trama Ethernet",
+      "Sobre o cabeçalho e sobre os dados transportados",
+      "Apenas sobre o cabeçalho, sem incluir os dados transportados",
+      "Apenas sobre os dados transportados"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.5"
+  },
+  {
+    "question": "Porque é que um router tem de recalcular o checksum do cabeçalho IPv4 antes de retransmitir o pacote?",
+    "answers": [
+      "Porque altera o cabeçalho, por exemplo decrementando o TTL",
+      "Porque o checksum também protege os dados do pacote",
+      "Porque fragmenta sempre os pacotes que recebe",
+      "Porque muda o endereço IPv4 de origem do pacote"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.5"
+  },
+  {
+    "question": "Qual é a MTU de uma trama Ethernet II?",
+    "answers": [
+      "1518 bytes",
+      "576 bytes",
+      "64 Kbytes",
+      "1500 bytes"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.6"
+  },
+  {
+    "question": "Qual é a MTU de um PDU AAL5, segundo a aula?",
+    "answers": [
+      "1500 bytes",
+      "64 Kbytes",
+      "53 bytes",
+      "576 bytes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.6"
+  },
+  {
+    "question": "Qual é a MTU de uma ligação X.25, segundo o exemplo da aula?",
+    "answers": [
+      "576 bytes",
+      "64 Kbytes",
+      "1500 bytes",
+      "53 bytes"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.6"
+  },
+  {
+    "question": "Que duas abordagens oferece o IPv4 para lidar com MTU diferentes ao longo do caminho?",
+    "answers": [
+      "A fragmentação e a PMTUD (Path MTU Discovery)",
+      "O DHCP e a fragmentação",
+      "A PMTUD e o IGMP (Internet Group Management Protocol)",
+      "A fragmentação e o ARP (Address Resolution Protocol)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.6"
+  },
+  {
+    "question": "Para que serve o campo Fragment identifier do cabeçalho IPv4?",
+    "answers": [
+      "Para indicar se existem mais fragmentos a seguir",
+      "Para indicar a MTU máxima do caminho",
+      "Para identificar os fragmentos que pertencem ao mesmo datagrama",
+      "Para indicar a posição do fragmento no datagrama original"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.7"
+  },
+  {
+    "question": "Para que serve o campo Fragment offset do cabeçalho IPv4?",
+    "answers": [
+      "Para identificar os fragmentos que pertencem ao mesmo datagrama",
+      "Para indicar se o pacote pode ser fragmentado",
+      "Para indicar a posição do fragmento no datagrama original",
+      "Para indicar o número de fragmentos do datagrama"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.7"
+  },
+  {
+    "question": "Qual é a principal desvantagem prática da fragmentação IPv4?",
+    "answers": [
+      "Provoca atrasos nos routers, que têm de esperar pelos fragmentos e reconstruir os pacotes",
+      "Impede o uso de toda a MTU disponível em cada rede ao longo do caminho do datagrama",
+      "Obriga o emissor a conhecer a MTU de todas as redes do caminho antes de enviar",
+      "Impossibilita o uso de pacotes com mais de 1500 bytes em redes Ethernet"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.7"
+  },
+  {
+    "question": "O que é a path MTU?",
+    "answers": [
+      "A soma das MTU de todas as redes atravessadas pelo pacote no caminho",
+      "A MTU da rede local do emissor, que é sempre a que limita o caminho",
+      "A maior MTU encontrada ao longo do caminho entre o emissor e o recetor",
+      "A menor MTU encontrada ao longo do caminho entre o emissor e o recetor"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.8"
+  },
+  {
+    "question": "O que significa a flag DF (Don't Fragment) de um pacote IPv4?",
+    "answers": [
+      "Que o recetor deve descartar fragmentos repetidos",
+      "Que os routers estão proibidos de fragmentar o pacote",
+      "Que o pacote é o último fragmento do datagrama",
+      "Que o pacote já foi fragmentado por um router"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.8"
+  },
+  {
+    "question": "Que mensagem recebe o emissor quando um router descarta um pacote com DF ativa por exceder a MTU?",
+    "answers": [
+      "ICMP Time Exceeded com o código 0, a informar que o TTL chegou a zero no router",
+      "ICMP Redirect com o endereço do melhor router a usar para chegar ao destino",
+      "ICMP Echo Reply com o valor da MTU do router que descartou o pacote",
+      "ICMP Destination Unreachable com o código Fragmentation needed and DF set e a MTU em causa"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.8"
+  },
+  {
+    "question": "Como determina o emissor a path MTU na PMTUD?",
+    "answers": [
+      "Usa sempre o valor mínimo de 576 bytes em todos os pacotes enviados para o destino",
+      "Pergunta a MTU a cada router do caminho através de pedidos ARP dirigidos a cada um",
+      "Usa a MTU local com DF ativa e reduz o tamanho segundo as mensagens ICMP recebidas",
+      "Fragmenta sempre os pacotes na camada TCP antes de os entregar ao IPv4 do emissor"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.9"
+  },
+  {
+    "question": "Qual é a máscara de rede com prefixo de 21 bits?",
+    "answers": [
+      "255.255.255.248",
+      "255.255.252.0",
+      "255.255.248.0",
+      "255.255.240.0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Como é uma máscara de rede, em binário?",
+    "answers": [
+      "Bits um e zero alternados ao longo dos 32 bits",
+      "Uma sequência de bits zero (parte de rede) seguida de bits um (parte do nó)",
+      "Uma sequência de bits um apenas nos últimos 8 bits",
+      "Uma sequência de bits um (parte de rede) seguida de bits zero (parte do nó)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Como decide um nó IPv4 se o destino é alcançável diretamente?",
+    "answers": [
+      "Consulta o campo Protocol do cabeçalho do pacote para saber a tecnologia de camada 2 usada",
+      "Compara o TTL do pacote com o número de routers que conhece na sua tabela de encaminhamento",
+      "Verifica se o endereço de destino pertence à sua rede IPv4, usando a máscara de rede",
+      "Envia sempre um ARP request e, se não obtiver resposta, envia o pacote ao router por omissão"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.11"
+  },
+  {
+    "question": "Que endereço MAC de destino tem a trama que transporta um pacote IPv4 destinado a uma rede remota?",
+    "answers": [
+      "O endereço MAC do nó de destino final do pacote",
+      "Uma cópia do endereço IPv4 de destino do pacote",
+      "O endereço de broadcast FF:FF:FF:FF:FF:FF",
+      "O endereço MAC do router (default gateway) usado"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.12"
+  },
+  {
+    "question": "Qual é a função do protocolo ARP?",
+    "answers": [
+      "Obter o endereço MAC correspondente a um endereço IPv4 da rede local",
+      "Obter o endereço MAC do servidor DNS da rede",
+      "Atribuir dinamicamente um endereço IPv4 aos nós da rede",
+      "Obter o endereço IPv4 correspondente a um nome de domínio"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.13"
+  },
+  {
+    "question": "Como é enviado um ARP request?",
+    "answers": [
+      "Em multicast, para o endereço 224.0.0.1",
+      "Em broadcast IPv4, para o endereço 255.255.255.255",
+      "Em unicast, para o endereço MAC do nó de destino",
+      "Em broadcast de camada 2, para o endereço FF:FF:FF:FF:FF:FF"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.13"
+  },
+  {
+    "question": "Como é enviado um ARP reply?",
+    "answers": [
+      "Em multicast, para o grupo 224.0.0.1",
+      "Em unicast, para o nó que fez o ARP request",
+      "Em broadcast, para todos os nós da rede",
+      "Em unicast, para o router por omissão da rede"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.13"
+  },
+  {
+    "question": "Quanto tempo se mantém, aproximadamente, uma linha na tabela ARP sem ser renovada?",
+    "answers": [
+      "Até ao reinício do nó",
+      "Indefinidamente",
+      "Apenas alguns milissegundos",
+      "Apenas alguns minutos"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.13"
+  },
+  {
+    "question": "Porque é considerado inseguro o protocolo ARP?",
+    "answers": [
+      "Porque as respostas não são autenticadas e qualquer ARP reply é copiado para a tabela ARP",
+      "Porque transporta as passwords dos nós em texto simples dentro das mensagens ARP",
+      "Porque só funciona com endereços IPv4 de classe A, que não têm qualquer proteção",
+      "Porque usa o endereço de broadcast IPv4 para os pedidos, e não o de camada 2"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.14"
+  },
+  {
+    "question": "Como se designa o ataque em que um intruso envia ARP replies forjados para inserir informação falsa nas tabelas ARP?",
+    "answers": [
+      "ICMP flooding (inundação de pings)",
+      "DHCP starvation (esgotamento de leases)",
+      "ARP spoofing (ARP cache poisoning)",
+      "TCP SYN flooding (inundação de SYN)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.14"
+  },
+  {
+    "question": "O que identifica o campo porta de um datagrama UDP?",
+    "answers": [
+      "O protocolo de camada 3 transportado dentro do datagrama UDP",
+      "O nó de origem ou de destino do datagrama, dentro da rede",
+      "A aplicação, dentro do nó, de origem ou de destino do datagrama",
+      "A tecnologia de camada 2 usada na ligação seguinte do datagrama"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.15"
+  },
+  {
+    "question": "Quantos bits tem o cabeçalho UDP?",
+    "answers": [
+      "160 bits",
+      "64 bits",
+      "32 bits",
+      "128 bits"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.15"
+  },
+  {
+    "question": "Que campos tem o cabeçalho UDP?",
+    "answers": [
+      "Porta de origem, porta de destino, número de sequência e janela",
+      "Endereço de origem, endereço de destino, TTL e checksum",
+      "Porta de origem, porta de destino, comprimento e checksum",
+      "Porta de origem, porta de destino, flags e ponteiro urgente"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.15"
+  },
+  {
+    "question": "Que funcionalidades acrescenta o UDP ao IPv4?",
+    "answers": [
+      "Fiabilidade, controlo de fluxo e preservação da sequência dos dados transportados",
+      "Deteção de erros nos dados transportados e identificação das aplicações através de portas",
+      "Fragmentação, reassemblagem e controlo do TTL dos datagramas ao longo do caminho",
+      "Resolução de endereços IPv4 em endereços MAC dos nós da mesma rede local"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.15"
+  },
+  {
+    "question": "Numa comunicação UDP, a aplicação A (porta 1351, nó 192.168.1.8) envia um datagrama à aplicação E (porta 234, nó 192.168.1.3). Que porta de destino e que endereço usa E para responder?",
+    "answers": [
+      "Porta 1351 do nó 192.168.1.3",
+      "Porta 234 do nó 192.168.1.8",
+      "Porta 234 do nó 192.168.1.3",
+      "Porta 1351 do nó 192.168.1.8"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.16"
+  },
+  {
+    "question": "Que porto UDP é usado pelo servidor DHCP/BOOTP?",
+    "answers": [
+      "67",
+      "68",
+      "53",
+      "80"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.17"
+  },
+  {
+    "question": "Qual é a ordem das mensagens trocadas, no início, entre um cliente DHCP e um servidor?",
+    "answers": [
+      "DHCP Discover em unicast, seguido de ARP reply",
+      "DHCP Discover (broadcast), seguido de DHCP Offer",
+      "ARP request, seguido de DHCP Offer em broadcast",
+      "DHCP Offer, seguido de DHCP Discover (broadcast)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.17"
+  },
+  {
+    "question": "Para que endereço é enviado o DHCP Discover?",
+    "answers": [
+      "255.255.255.255, o endereço de broadcast",
+      "O endereço IPv4 do router por omissão",
+      "0.0.0.0, o endereço da rede por omissão",
+      "224.0.0.1, o endereço all hosts"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.17"
+  },
+  {
+    "question": "Porque é que o servidor DHCP tem de estar na mesma rede do cliente, sem outros mecanismos adicionais?",
+    "answers": [
+      "Porque o servidor DHCP precisa de usar o mesmo TTL do cliente",
+      "Porque o DHCP só funciona com endereços MAC de fabricantes conhecidos",
+      "Porque o DHCP Discover é enviado com a flag DF ativa",
+      "Porque os routers não reencaminham os pacotes enviados para o endereço de broadcast"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.17"
+  },
+  {
+    "question": "Que informação regista o servidor DHCP para controlar os endereços atribuídos?",
+    "answers": [
+      "O endereço IPv4 do router de cada cliente",
+      "O número de porta TCP de cada cliente",
+      "O endereço IPv6 de cada cliente",
+      "O endereço MAC de camada 2 de cada cliente"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.17"
+  },
+  {
+    "question": "Qual é a vantagem do DHCP sobre o BOOTP na gestão de uma gama de endereços?",
+    "answers": [
+      "A possibilidade de atribuir endereços estáticos associados ao endereço MAC",
+      "O uso do TCP em vez do UDP para trocar as mensagens com os clientes",
+      "A atribuição de endereços IPv6 em vez de endereços IPv4 aos nós da rede",
+      "O lease time: os endereços são atribuídos só por um período e podem ser reutilizados"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.18"
+  },
+  {
+    "question": "O que tem de fazer um cliente DHCP que continua a usar o endereço quando o lease está a expirar?",
+    "answers": [
+      "Enviar um ARP reply com o seu endereço IPv4",
+      "Enviar um pedido de renovação (refresh request) ao servidor",
+      "Esperar que o servidor lhe envie um novo DHCP Offer",
+      "Enviar um novo DHCP Discover em broadcast"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.18"
+  },
+  {
+    "question": "Que tipo de mensagem ICMP é o echo request?",
+    "answers": [
+      "Tipo 3",
+      "Tipo 8",
+      "Tipo 11",
+      "Tipo 0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.19"
+  },
+  {
+    "question": "Que tipo de mensagem ICMP é o echo reply?",
+    "answers": [
+      "Tipo 5",
+      "Tipo 0",
+      "Tipo 8",
+      "Tipo 3"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.19"
+  },
+  {
+    "question": "Que comando usa mensagens ICMP echo request e echo reply?",
+    "answers": [
+      "O comando nslookup",
+      "O comando ping",
+      "O comando arp",
+      "O comando traceroute"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.19"
+  },
+  {
+    "question": "Que comando usa mensagens ICMP Time Exceeded (código 0) enviadas pelos routers para descobrir o caminho?",
+    "answers": [
+      "O comando ping",
+      "O comando traceroute",
+      "O comando arp",
+      "O comando netstat"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.21"
+  },
+  {
+    "question": "Que tipo de mensagem ICMP é o Destination Unreachable?",
+    "answers": [
+      "Tipo 3",
+      "Tipo 5",
+      "Tipo 11",
+      "Tipo 0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.20"
+  },
+  {
+    "question": "Que tipo de mensagem ICMP é o Redirect?",
+    "answers": [
+      "Tipo 3",
+      "Tipo 8",
+      "Tipo 5",
+      "Tipo 11"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.21"
+  },
+  {
+    "question": "Que tipo de mensagem ICMP é o Time Exceeded?",
+    "answers": [
+      "Tipo 5",
+      "Tipo 8",
+      "Tipo 3",
+      "Tipo 11"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.21"
+  },
+  {
+    "question": "Que código do ICMP Destination Unreachable indica que o porto de destino não está em uso por nenhuma aplicação no destino?",
+    "answers": [
+      "Código 3 (Port Unreachable)",
+      "Código 1 (Host Unreachable)",
+      "Código 2 (Protocol Unreachable)",
+      "Código 0 (Network Unreachable)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.20"
+  },
+  {
+    "question": "Que código do ICMP Destination Unreachable indica que o pacote chegou ao destino, mas o protocolo indicado no campo Protocol não existe nesse nó?",
+    "answers": [
+      "Código 4 (Fragmentation needed and DF set)",
+      "Código 3 (Port Unreachable)",
+      "Código 2 (Protocol Unreachable)",
+      "Código 1 (Host Unreachable)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.20"
+  },
+  {
+    "question": "Que código do ICMP Destination Unreachable indica um problema de encaminhamento, em que o pacote não chegou à rede de destino?",
+    "answers": [
+      "Código 3 (Port Unreachable)",
+      "Código 0 (Network Unreachable)",
+      "Código 1 (Host Unreachable)",
+      "Código 2 (Protocol Unreachable)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.20"
+  },
+  {
+    "question": "Que código do ICMP Destination Unreachable indica que o pacote chegou à rede de destino, mas não foi entregue ao nó?",
+    "answers": [
+      "Código 0 (Network Unreachable)",
+      "Código 1 (Host Unreachable)",
+      "Código 4 (Fragmentation needed and DF set)",
+      "Código 3 (Port Unreachable)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.20"
+  },
+  {
+    "question": "Que informação contém o campo Data de uma mensagem ICMP de erro, como o Destination Unreachable?",
+    "answers": [
+      "Uma cópia completa do pacote descartado, com todos os dados até ao limite de 64 Kbytes",
+      "O endereço MAC do nó de origem do pacote descartado e o seu endereço IPv4",
+      "Apenas o endereço IPv4 do router que descartou o pacote e o motivo do descarte",
+      "Uma cópia do cabeçalho IPv4 do pacote descartado mais os 8 primeiros bytes de dados"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.20"
+  },
+  {
+    "question": "Para que nó é enviada uma mensagem ICMP de erro como o Destination Unreachable?",
+    "answers": [
+      "Para o nó cujo endereço IPv4 era a origem do pacote descartado",
+      "Para o nó cujo endereço IPv4 era o destino do pacote descartado",
+      "Para todos os nós da rede local, em broadcast",
+      "Para o router por omissão do nó de destino"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.20"
+  },
+  {
+    "question": "Para que serve a mensagem ICMP Redirect?",
+    "answers": [
+      "Informar que o destino não responde a pedidos ICMP echo enviados pelo emissor do pacote",
+      "Informar um nó de que deve atualizar a sua tabela de encaminhamento, por não usar o melhor caminho",
+      "Pedir ao emissor que reduza o tamanho dos pacotes enviados para o destino indicado",
+      "Informar que o TTL de um pacote chegou a zero e que o pacote foi descartado por um router"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.21"
+  },
+  {
+    "question": "Que mecanismo usa o TCP para garantir a entrega fiável dos dados?",
+    "answers": [
+      "Retransmissão automática feita pelo IPv4 quando o checksum falha",
+      "Código de correção de erros FEC incluído em todos os segmentos enviados",
+      "Controlo de erros baseado num protocolo de janela deslizante orientado ao byte",
+      "Circuitos virtuais estabelecidos pelos routers antes do envio dos segmentos"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.22"
+  },
+  {
+    "question": "Quantos bits tem o campo Sequence Number do cabeçalho TCP?",
+    "answers": [
+      "32 bits",
+      "48 bits",
+      "8 bits",
+      "16 bits"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.23"
+  },
+  {
+    "question": "Quantos bits tem o campo Reception Window Size do cabeçalho TCP?",
+    "answers": [
+      "32 bits",
+      "16 bits",
+      "8 bits",
+      "12 bits"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.28"
+  },
+  {
+    "question": "O que indica o Sequence Number de um segmento TCP?",
+    "answers": [
+      "O número de sequência do primeiro byte de dados do segmento",
+      "O número do segmento dentro da ligação TCP",
+      "O número de segmentos já recebidos corretamente",
+      "O número de sequência do último byte enviado antes do segmento"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.23"
+  },
+  {
+    "question": "O que indica o ACK Sequence Number de um segmento TCP?",
+    "answers": [
+      "O número de sequência do próximo byte que o emissor do segmento espera receber",
+      "O número de bytes que o recetor ainda consegue guardar no seu buffer",
+      "O número do último segmento recebido corretamente pelo emissor do segmento",
+      "O número de sequência do último byte recebido corretamente pelo emissor"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.23"
+  },
+  {
+    "question": "Qual é o valor mínimo e máximo do campo HLEN do cabeçalho TCP?",
+    "answers": [
+      "20 (sem opções) e 60",
+      "0 (sem opções) e 15",
+      "5 (sem opções) e 15",
+      "5 (sem opções) e 255"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.23"
+  },
+  {
+    "question": "Que flags TCP têm de estar ativas no segundo segmento do three-way handshake?",
+    "answers": [
+      "Apenas ACK",
+      "Apenas SYN",
+      "SYN e FIN",
+      "SYN e ACK"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.25"
+  },
+  {
+    "question": "No three-way handshake, A envia um SYN com Sequence Number 1000. Que ACK Sequence Number tem o SYN-ACK de B?",
+    "answers": [
+      "O número de sequência aleatório de B",
+      "999",
+      "1001",
+      "1000"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.25"
+  },
+  {
+    "question": "No three-way handshake, A envia SYN com Na = 1000 e B responde com SYN-ACK com Nb = 5000. Que Sequence Number e ACK Sequence Number tem o ACK final de A?",
+    "answers": [
+      "Sequence Number 1001 e ACK Sequence Number 5000",
+      "Sequence Number 5001 e ACK Sequence Number 1001",
+      "Sequence Number 1000 e ACK Sequence Number 5000",
+      "Sequence Number 1001 e ACK Sequence Number 5001"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.25"
+  },
+  {
+    "question": "Qual é a flag TCP que indica que o nó não tem mais dados a enviar e quer fechar a ligação?",
+    "answers": [
+      "PSH",
+      "SYN",
+      "FIN",
+      "URG"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.24"
+  },
+  {
+    "question": "Para que serve a flag URG do TCP?",
+    "answers": [
+      "Para indicar que a janela do recetor está esgotada neste momento",
+      "Para enviar dados out-of-band, que ultrapassam o fluxo normal de dados",
+      "Para forçar o fecho imediato da ligação sem esperar pelo FIN",
+      "Para pedir a abertura urgente de uma nova ligação TCP ao outro nó"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.26"
+  },
+  {
+    "question": "O que significa o estado half-open numa ligação TCP?",
+    "answers": [
+      "Um lado respondeu ao FIN só com ACK, e a ligação fecha totalmente quando esse lado enviar o seu FIN",
+      "A ligação só permite enviar dados num sentido desde o momento em que foi aberta",
+      "A ligação perdeu o último segmento e aguarda a retransmissão do mesmo pelo emissor",
+      "A ligação foi aberta apenas com um SYN e ainda não recebeu o SYN-ACK do outro nó"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.26"
+  },
+  {
+    "question": "Qual é o valor inicial do RTO (Retransmission Timeout) do TCP?",
+    "answers": [
+      "60 segundos",
+      "3 segundos",
+      "1 segundo",
+      "300 milissegundos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.27"
+  },
+  {
+    "question": "Qual é o valor mínimo do RTO do TCP?",
+    "answers": [
+      "0 segundos",
+      "100 milissegundos",
+      "3 segundos",
+      "1 segundo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.27"
+  },
+  {
+    "question": "Para o primeiro ACK recebido numa ligação TCP, com um RTT medido de 600 ms, que valor passa o RTO a ter?",
+    "answers": [
+      "1,8 s",
+      "0,6 s",
+      "0,2 s",
+      "3 s"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.27"
+  },
+  {
+    "question": "O que mede o RTT (Round-Trip Time) no TCP?",
+    "answers": [
+      "O tempo total da ligação TCP desde o SYN inicial até ao FIN final",
+      "O tempo que o recetor demora a processar o segmento antes de enviar o ACK",
+      "O tempo desde que um segmento é enviado até chegar o ACK correspondente",
+      "O tempo que o segmento demora a chegar ao recetor, sem contar com o ACK"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.27"
+  },
+  {
+    "question": "No controlo de fluxo do TCP, o recetor anuncia ACK=200 e WINDOW=1000. Quais os bytes que o emissor pode enviar?",
+    "answers": [
+      "Os bytes 200 a 1199",
+      "Os bytes 201 a 1200",
+      "Os bytes 201 a 1000",
+      "Os bytes 1 a 1000"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.28"
+  },
+  {
+    "question": "No controlo de fluxo do TCP, o recetor anuncia ACK=1200 e WINDOW=0. O que deve fazer o emissor?",
+    "answers": [
+      "Parar de enviar dados até receber uma janela maior",
+      "Enviar dados com a flag URG ativa",
+      "Retransmitir os últimos 1200 bytes enviados",
+      "Fechar a ligação com um FIN"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.28"
+  },
+  {
+    "question": "Que gama de endereços IPv4 está reservada para multicast?",
+    "answers": [
+      "128.0.0.0/2 (começam pelos bits 10)",
+      "224.0.0.0/4 (começam pelos bits 1110)",
+      "240.0.0.0/4 (começam pelos bits 1111)",
+      "192.0.0.0/3 (começam pelos bits 110)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.29"
+  },
+  {
+    "question": "A que classe de endereços IPv4 pertencem os endereços multicast?",
+    "answers": [
+      "Classe B",
+      "Classe A",
+      "Classe D",
+      "Classe C"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.29"
+  },
+  {
+    "question": "Que endereço multicast representa todos os nós (all hosts) da rede local?",
+    "answers": [
+      "224.0.0.2",
+      "224.0.0.5",
+      "224.0.0.1",
+      "255.255.255.255"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.29"
+  },
+  {
+    "question": "Que endereço multicast representa todos os routers (all routers) da rede local?",
+    "answers": [
+      "224.0.0.1",
+      "224.0.0.5",
+      "224.0.0.2",
+      "255.255.255.255"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.29"
+  },
+  {
+    "question": "Que endereço Ethernet de destino tem a trama que transporta um pacote IPv4 enviado para 224.0.0.7?",
+    "answers": [
+      "FF:FF:FF:FF:FF:FF",
+      "01:00:5E:7F:FF:FF",
+      "00:00:5E:00:00:07",
+      "01:00:5E:00:00:07"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.30"
+  },
+  {
+    "question": "Quantos bits menos significativos do endereço IPv4 multicast são copiados para o endereço Ethernet de multicast?",
+    "answers": [
+      "24 bits",
+      "32 bits",
+      "23 bits",
+      "28 bits"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.30"
+  },
+  {
+    "question": "Para que serve o IGMP?",
+    "answers": [
+      "Gerir os grupos multicast IPv4, permitindo aos routers saber que redes têm membros de cada grupo",
+      "Atribuir endereços multicast aos nós, com um lease time, a partir de um servidor central",
+      "Reencaminhar pacotes multicast entre sistemas autónomos diferentes da Internet",
+      "Converter endereços multicast IPv4 em endereços MAC de multicast de camada 2"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.30"
+  },
+  {
+    "question": "Para que endereço envia o router as mensagens IGMP Membership Query?",
+    "answers": [
+      "255.255.255.255 (broadcast)",
+      "224.0.0.2 (all routers)",
+      "224.0.0.1 (all hosts)",
+      "O endereço de cada grupo multicast"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.31"
+  },
+  {
+    "question": "Para que endereço envia um nó a mensagem IGMP Membership Report?",
+    "answers": [
+      "224.0.0.2, o endereço all routers da rede local do nó",
+      "O endereço unicast do router que enviou o Membership Query",
+      "224.0.0.1, o endereço all hosts da rede local do nó",
+      "O endereço multicast do grupo a que se refere o relatório"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.31"
+  },
+  {
+    "question": "Porque esperam os nós um período aleatório antes de enviar o IGMP Membership Report?",
+    "answers": [
+      "Para renovar o lease time do endereço multicast atribuído ao grupo pelo router",
+      "Para dar tempo ao router de calcular o checksum do relatório que vai receber",
+      "Para evitar colisões entre o relatório e o ARP reply enviado pelo router da rede",
+      "Para evitar tráfego redundante: se ouvirem o relatório de outro nó para o grupo, não enviam o seu"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.31"
+  },
+  {
+    "question": "Qual é o comportamento de um switch de camada 2 normal perante pacotes multicast?",
+    "answers": [
+      "Reencaminha-os para todas as portas, inundando a rede",
+      "Descarta-os, porque o multicast só funciona em camada 3",
+      "Reencaminha-os só para as portas onde há membros do grupo",
+      "Reencaminha-os só para a porta do router"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.31"
+  },
+  {
+    "question": "O que permite a um switch IGMP-aware reencaminhar o tráfego multicast apenas para os segmentos com membros do grupo?",
+    "answers": [
+      "Escutar as mensagens IGMP para saber em que segmentos existem membros de cada grupo",
+      "Ler o campo TTL de cada pacote multicast para escolher as portas de saída",
+      "Consultar a tabela ARP para saber em que portas estão os membros de cada grupo",
+      "Usar VLAN separadas para cada grupo multicast configurado na rede local"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.31"
+  },
+  {
+    "question": "Segundo a aula, qual é a classe de um endereço IPv4 cujo primeiro octeto está entre 128 e 191?",
+    "answers": [
+      "Classe A",
+      "Classe D",
+      "Classe C",
+      "Classe B"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Segundo a aula, qual é a classe de um endereço IPv4 cujo primeiro octeto está entre 192 e 223?",
+    "answers": [
+      "Classe B",
+      "Classe D",
+      "Classe A",
+      "Classe C"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Segundo a aula, qual é a classe de um endereço IPv4 cujo primeiro octeto está entre 0 e 127?",
+    "answers": [
+      "Classe C",
+      "Classe A",
+      "Classe B",
+      "Classe D"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Qual é o número máximo de nós válidos numa rede IPv4 de classe C?",
+    "answers": [
+      "256",
+      "255",
+      "254",
+      "65534"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Qual é o número máximo de nós válidos numa rede IPv4 de classe B?",
+    "answers": [
+      "65534",
+      "65535",
+      "65536",
+      "16777214"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Qual é o número máximo de nós válidos numa rede IPv4 de classe A?",
+    "answers": [
+      "16777216",
+      "16777214",
+      "65534",
+      "16777215"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Quais são as máscaras de rede das classes A, B e C?",
+    "answers": [
+      "255.0.0.0, 255.255.0.0 e 255.255.255.255",
+      "255.0.0.0, 255.255.255.0 e 255.255.0.0",
+      "255.0.0.0, 255.255.0.0 e 255.255.255.0",
+      "255.255.255.0, 255.255.0.0 e 255.0.0.0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.12"
+  },
+  {
+    "question": "Que dois endereços estão reservados em cada rede IPv4?",
+    "answers": [
+      "O primeiro e o segundo endereços válidos da rede, usados pelos routers da rede",
+      "O endereço da rede (bits de nó a zero) e o endereço de broadcast (bits de nó a um)",
+      "O endereço do router e o endereço do servidor DHCP da rede em causa",
+      "O endereço de loopback e o endereço multicast da rede em causa"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Como se obtém o endereço de rede a partir de um endereço IPv4 e da respetiva máscara?",
+    "answers": [
+      "Fazendo um AND bit a bit entre o endereço e a máscara",
+      "Fazendo um OR bit a bit entre o endereço e a máscara",
+      "Subtraindo a máscara ao endereço em decimal",
+      "Somando o endereço e a máscara em decimal"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Qual é o endereço da rota por omissão (default route) numa tabela de encaminhamento?",
+    "answers": [
+      "127.0.0.1/8, o endereço de loopback do próprio nó",
+      "224.0.0.0/4, os endereços reservados para multicast",
+      "255.255.255.255/32, o endereço de broadcast limitado da rede",
+      "0.0.0.0/0, que corresponde a qualquer endereço de destino"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.8"
+  },
+  {
+    "question": "Porque pode ser removida de uma tabela de encaminhamento uma entrada cujo next-hop é o default gateway?",
+    "answers": [
+      "Porque as entradas com o default gateway como next-hop nunca chegam a ser usadas",
+      "Porque, sem essa entrada, o pacote chegaria à rota por omissão e seguiria para o mesmo router",
+      "Porque o next-hop de cada entrada da tabela tem de ser diferente do de todas as outras",
+      "Porque o default gateway só serve para encaminhar o tráfego ICMP e as mensagens ARP"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.8"
+  },
+  {
+    "question": "Quando é válido o endereço de um router como next-hop?",
+    "answers": [
+      "Quando pertence a uma rede IPv4 local do nó que o usa",
+      "Quando pertence a qualquer rede conhecida da tabela",
+      "Quando é o endereço de broadcast da rede de destino",
+      "Quando tem o mesmo prefixo que o endereço de destino"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.7"
+  },
+  {
+    "question": "Numa tabela de encaminhamento, o que acontece a um pacote cujo destino não corresponde a nenhuma entrada, nem sequer a uma rota por omissão?",
+    "answers": [
+      "É guardado até a rede de destino ser aprendida",
+      "É enviado em broadcast para todas as interfaces",
+      "É descartado, porque o router desconhece a rede de destino",
+      "É devolvido ao emissor com o TTL decrementado"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.8"
+  },
+  {
+    "question": "Dois nós com endereços da mesma rede IPv4 mas ligados a VLAN diferentes conseguem comunicar diretamente?",
+    "answers": [
+      "Não, porque o ARP só funciona dentro de um domínio de broadcast",
+      "Não, porque os endereços MAC dos dois nós são necessariamente diferentes",
+      "Sim, porque ambos pertencem à mesma rede IPv4 e partilham o mesmo prefixo",
+      "Sim, desde que o switch use o modo store & forward em todas as portas"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.7"
+  },
+  {
+    "question": "Qual é o endereço da rede a que pertence o nó 192.168.10.77/26?",
+    "answers": [
+      "192.168.10.128",
+      "192.168.10.127",
+      "192.168.10.64",
+      "192.168.10.0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é o endereço de broadcast da rede 192.168.10.64/26?",
+    "answers": [
+      "192.168.10.126",
+      "192.168.10.127",
+      "192.168.10.64",
+      "192.168.10.128"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Qual é o endereço da rede a que pertence o nó 172.16.45.9/20?",
+    "answers": [
+      "172.16.48.0",
+      "172.16.16.0",
+      "172.16.47.255",
+      "172.16.32.0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é o endereço de broadcast da rede 172.16.32.0/20?",
+    "answers": [
+      "172.16.47.254",
+      "172.16.32.0",
+      "172.16.48.0",
+      "172.16.47.255"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Qual é o endereço da rede a que pertence o nó 10.200.17.200/13?",
+    "answers": [
+      "10.208.0.0",
+      "10.200.0.0",
+      "10.207.255.255",
+      "10.192.0.0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é o endereço de broadcast da rede 10.200.0.0/13?",
+    "answers": [
+      "10.200.0.0",
+      "10.208.0.0",
+      "10.207.255.255",
+      "10.207.255.254"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Qual é o endereço da rede a que pertence o nó 195.34.56.30/24?",
+    "answers": [
+      "195.34.55.0",
+      "195.34.56.255",
+      "195.34.57.0",
+      "195.34.56.0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é o endereço de broadcast da rede 195.34.56.0/24?",
+    "answers": [
+      "195.34.56.254",
+      "195.34.57.0",
+      "195.34.56.255",
+      "195.34.56.0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Qual é o endereço da rede a que pertence o nó 130.5.200.14/22?",
+    "answers": [
+      "130.5.204.0",
+      "130.5.196.0",
+      "130.5.200.0",
+      "130.5.203.255"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é o endereço de broadcast da rede 130.5.200.0/22?",
+    "answers": [
+      "130.5.203.255",
+      "130.5.200.0",
+      "130.5.204.0",
+      "130.5.203.254"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Qual é o endereço da rede a que pertence o nó 192.168.1.130/25?",
+    "answers": [
+      "192.168.1.128",
+      "192.168.2.0",
+      "192.168.1.255",
+      "192.168.1.0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é o endereço de broadcast da rede 192.168.1.128/25?",
+    "answers": [
+      "192.168.2.0",
+      "192.168.1.128",
+      "192.168.1.254",
+      "192.168.1.255"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Qual é o endereço da rede a que pertence o nó 10.1.2.3/9?",
+    "answers": [
+      "9.128.0.0",
+      "10.127.255.255",
+      "10.0.0.0",
+      "10.128.0.0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é o endereço de broadcast da rede 10.0.0.0/9?",
+    "answers": [
+      "10.0.0.0",
+      "10.127.255.255",
+      "10.128.0.0",
+      "10.127.255.254"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Qual é o endereço da rede a que pertence o nó 172.20.130.99/18?",
+    "answers": [
+      "172.20.128.0",
+      "172.20.192.0",
+      "172.20.64.0",
+      "172.20.191.255"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é o endereço de broadcast da rede 172.20.128.0/18?",
+    "answers": [
+      "172.20.192.0",
+      "172.20.191.255",
+      "172.20.128.0",
+      "172.20.191.254"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Qual é o endereço da rede a que pertence o nó 192.168.100.200/27?",
+    "answers": [
+      "192.168.100.224",
+      "192.168.100.223",
+      "192.168.100.160",
+      "192.168.100.192"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é o endereço de broadcast da rede 192.168.100.192/27?",
+    "answers": [
+      "192.168.100.222",
+      "192.168.100.192",
+      "192.168.100.224",
+      "192.168.100.223"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Qual é o endereço da rede a que pertence o nó 203.0.113.250/29?",
+    "answers": [
+      "203.0.114.0",
+      "203.0.113.255",
+      "203.0.113.240",
+      "203.0.113.248"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é o endereço de broadcast da rede 203.0.113.248/29?",
+    "answers": [
+      "203.0.113.248",
+      "203.0.113.255",
+      "203.0.113.254",
+      "203.0.114.0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Quantos nós válidos pode ter, no máximo, uma rede IPv4 com prefixo /24?",
+    "answers": [
+      "256",
+      "126",
+      "255",
+      "254"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Quantos nós válidos pode ter, no máximo, uma rede IPv4 com prefixo /26?",
+    "answers": [
+      "62",
+      "64",
+      "63",
+      "30"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Quantos nós válidos pode ter, no máximo, uma rede IPv4 com prefixo /27?",
+    "answers": [
+      "30",
+      "31",
+      "14",
+      "32"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Quantos nós válidos pode ter, no máximo, uma rede IPv4 com prefixo /28?",
+    "answers": [
+      "6",
+      "14",
+      "15",
+      "16"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Quantos nós válidos pode ter, no máximo, uma rede IPv4 com prefixo /30?",
+    "answers": [
+      "2",
+      "3",
+      "4",
+      "0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Quantos nós válidos pode ter, no máximo, uma rede IPv4 com prefixo /22?",
+    "answers": [
+      "510",
+      "1022",
+      "1023",
+      "1024"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Quantos nós válidos pode ter, no máximo, uma rede IPv4 com prefixo /20?",
+    "answers": [
+      "4094",
+      "2046",
+      "4096",
+      "4095"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Qual é a máscara de rede equivalente ao prefixo /8?",
+    "answers": [
+      "255.192.0.0",
+      "254.0.0.0",
+      "255.0.0.0",
+      "255.128.0.0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é a máscara de rede equivalente ao prefixo /12?",
+    "answers": [
+      "255.240.0.0",
+      "255.248.0.0",
+      "255.252.0.0",
+      "255.224.0.0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é a máscara de rede equivalente ao prefixo /16?",
+    "answers": [
+      "255.255.192.0",
+      "255.255.128.0",
+      "255.255.0.0",
+      "255.254.0.0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é a máscara de rede equivalente ao prefixo /19?",
+    "answers": [
+      "255.255.248.0",
+      "255.255.240.0",
+      "255.255.224.0",
+      "255.255.192.0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é a máscara de rede equivalente ao prefixo /20?",
+    "answers": [
+      "255.255.224.0",
+      "255.255.248.0",
+      "255.255.240.0",
+      "255.255.252.0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é a máscara de rede equivalente ao prefixo /21?",
+    "answers": [
+      "255.255.254.0",
+      "255.255.248.0",
+      "255.255.252.0",
+      "255.255.240.0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é a máscara de rede equivalente ao prefixo /22?",
+    "answers": [
+      "255.255.255.0",
+      "255.255.252.0",
+      "255.255.254.0",
+      "255.255.248.0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é a máscara de rede equivalente ao prefixo /25?",
+    "answers": [
+      "255.255.255.0",
+      "255.255.255.224",
+      "255.255.255.192",
+      "255.255.255.128"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é a máscara de rede equivalente ao prefixo /26?",
+    "answers": [
+      "255.255.255.224",
+      "255.255.255.240",
+      "255.255.255.128",
+      "255.255.255.192"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é a máscara de rede equivalente ao prefixo /27?",
+    "answers": [
+      "255.255.255.192",
+      "255.255.255.248",
+      "255.255.255.224",
+      "255.255.255.240"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é a máscara de rede equivalente ao prefixo /28?",
+    "answers": [
+      "255.255.255.252",
+      "255.255.255.224",
+      "255.255.255.248",
+      "255.255.255.240"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é a máscara de rede equivalente ao prefixo /29?",
+    "answers": [
+      "255.255.255.248",
+      "255.255.255.240",
+      "255.255.255.254",
+      "255.255.255.252"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é o prefixo de rede mais longo que permite endereçar pelo menos 60 nós em um segmento, sem desperdiçar espaço de endereçamento?",
+    "answers": [
+      "/27",
+      "/26",
+      "/28",
+      "/25"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.14"
+  },
+  {
+    "question": "Qual é o prefixo de rede mais longo que permite endereçar pelo menos 30 nós em uma sala, sem desperdiçar espaço de endereçamento?",
+    "answers": [
+      "/29",
+      "/28",
+      "/27",
+      "/26"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.14"
+  },
+  {
+    "question": "Qual é o prefixo de rede mais longo que permite endereçar pelo menos 500 nós em um piso, sem desperdiçar espaço de endereçamento?",
+    "answers": [
+      "/23",
+      "/22",
+      "/25",
+      "/24"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.14"
+  },
+  {
+    "question": "Qual é o prefixo de rede mais longo que permite endereçar pelo menos 120 nós em um laboratório, sem desperdiçar espaço de endereçamento?",
+    "answers": [
+      "/27",
+      "/24",
+      "/26",
+      "/25"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.14"
+  },
+  {
+    "question": "Qual é o prefixo de rede mais longo que permite endereçar pelo menos 14 nós em um escritório, sem desperdiçar espaço de endereçamento?",
+    "answers": [
+      "/27",
+      "/30",
+      "/28",
+      "/29"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.14"
+  },
+  {
+    "question": "Qual é o prefixo de rede mais longo que permite endereçar pelo menos 2000 nós em um campus, sem desperdiçar espaço de endereçamento?",
+    "answers": [
+      "/20",
+      "/21",
+      "/23",
+      "/22"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.14"
+  },
+  {
+    "question": "Os nós 192.168.10.70 e 192.168.10.120, com prefixo /26, pertencem à mesma rede IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Os nós 192.168.10.70 e 192.168.10.130, com prefixo /26, pertencem à mesma rede IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Os nós 172.16.33.4 e 172.16.47.250, com prefixo /20, pertencem à mesma rede IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Os nós 172.16.33.4 e 172.16.48.1, com prefixo /20, pertencem à mesma rede IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Os nós 10.5.6.7 e 10.5.200.9, com prefixo /16, pertencem à mesma rede IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Os nós 10.5.6.7 e 10.6.6.7, com prefixo /16, pertencem à mesma rede IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Os nós 200.1.1.17 e 200.1.1.30, com prefixo /28, pertencem à mesma rede IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Os nós 200.1.1.17 e 200.1.1.33, com prefixo /28, pertencem à mesma rede IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Os nós 150.20.64.1 e 150.20.127.254, com prefixo /18, pertencem à mesma rede IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Os nós 150.20.64.1 e 150.20.128.1, com prefixo /18, pertencem à mesma rede IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Os nós 192.168.5.100 e 192.168.5.104, com prefixo /30, pertencem à mesma rede IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Os nós 192.168.5.101 e 192.168.5.102, com prefixo /30, pertencem à mesma rede IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.10"
+  },
+  {
+    "question": "Qual é o primeiro endereço de nó válido da rede a que pertence 195.34.56.30, tratado como endereço classful?",
+    "answers": [
+      "195.34.56.2",
+      "195.34.56.1",
+      "195.34.56.254",
+      "195.34.56.0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.14"
+  },
+  {
+    "question": "Qual é o primeiro endereço de nó válido da rede a que pertence 120.10.50.3, tratado como endereço classful?",
+    "answers": [
+      "120.0.0.1",
+      "120.0.0.0",
+      "120.0.0.2",
+      "120.255.255.254"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.14"
+  },
+  {
+    "question": "Qual é o primeiro endereço de nó válido da rede a que pertence 170.17.23.8, tratado como endereço classful?",
+    "answers": [
+      "170.17.0.0",
+      "170.17.0.1",
+      "170.17.0.2",
+      "170.17.255.254"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.14"
+  },
+  {
+    "question": "Qual é o primeiro endereço de nó válido da rede a que pertence 190.0.0.8, tratado como endereço classful?",
+    "answers": [
+      "190.0.0.2",
+      "190.0.255.254",
+      "190.0.0.0",
+      "190.0.0.1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.14"
+  },
+  {
+    "question": "O IPv4 garante a entrega fiável dos pacotes, retransmitindo-os quando ocorrem erros.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.2"
+  },
+  {
+    "question": "Um cabeçalho IPv4 com IHL igual a 5 tem 5 bytes de comprimento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.3"
+  },
+  {
+    "question": "O campo Total length do cabeçalho IPv4 não inclui o comprimento do cabeçalho.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.4"
+  },
+  {
+    "question": "O campo QoS do cabeçalho IPv4 tem 16 bits.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.4"
+  },
+  {
+    "question": "O TTL de um pacote IPv4 é decrementado por cada segundo que o pacote passa na rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.4"
+  },
+  {
+    "question": "O IPv4 usa o checksum do cabeçalho para detetar erros nos dados transportados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.5"
+  },
+  {
+    "question": "Os routers não precisam de recalcular o checksum do cabeçalho IPv4, porque o cabeçalho nunca muda no caminho.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.5"
+  },
+  {
+    "question": "A PMTUD garante que os pacotes são sempre fragmentados pelos routers ao longo do caminho.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.8"
+  },
+  {
+    "question": "Na PMTUD, o emissor ativa a flag DF para obrigar os routers a fragmentarem os pacotes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.8"
+  },
+  {
+    "question": "O endereço MAC de destino da trama que transporta um pacote IPv4 é uma cópia exata do endereço IPv4 de destino.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.12"
+  },
+  {
+    "question": "O endereço MAC de destino da trama que transporta um pacote para uma rede remota é sempre FF:FF:FF:FF:FF:FF.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.12"
+  },
+  {
+    "question": "Uma linha da tabela ARP é permanente enquanto o nó estiver ligado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.13"
+  },
+  {
+    "question": "O ARP é um protocolo stateful, que só aceita ARP replies correspondentes a ARP requests que enviou.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.14"
+  },
+  {
+    "question": "Várias aplicações do mesmo nó podem partilhar o mesmo número de porta UDP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.15"
+  },
+  {
+    "question": "O servidor DHCP/BOOTP escuta no porto UDP 80.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.17"
+  },
+  {
+    "question": "O DHCP Discover é enviado em unicast para o endereço IPv4 do servidor DHCP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.17"
+  },
+  {
+    "question": "As mensagens ICMP são transportadas diretamente em tramas de camada 2, sem pacote IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.19"
+  },
+  {
+    "question": "A mensagem ICMP Destination Unreachable com código 3 (Port Unreachable) indica um problema de encaminhamento da rede de destino.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.20"
+  },
+  {
+    "question": "O comando traceroute usa pacotes IP com valores de TTL decrescentes a partir de 255.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.21"
+  },
+  {
+    "question": "O valor inicial do RTO de uma ligação TCP é de 1 segundo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.27"
+  },
+  {
+    "question": "O TCP termina sempre a ligação com um único segmento FIN, sem qualquer resposta do outro nó.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.26"
+  },
+  {
+    "question": "O primeiro segmento de uma ligação TCP tem a flag ACK ativa e a flag SYN desativada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.24"
+  },
+  {
+    "question": "Os números de sequência do TCP identificam segmentos e não bytes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.23"
+  },
+  {
+    "question": "O campo Reception Window Size do TCP indica quantos segmentos o recetor está pronto a receber.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.28"
+  },
+  {
+    "question": "O endereço 224.0.0.1 representa todos os routers da rede local.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.29"
+  },
+  {
+    "question": "Os endereços Ethernet de multicast IPv4 copiam os 24 bits menos significativos do endereço IPv4 multicast.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.30"
+  },
+  {
+    "question": "O IGMP é transportado em IPv4 com o valor 17 no campo Protocol.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.30"
+  },
+  {
+    "question": "O router envia o IGMP Membership Query para o endereço 224.0.0.2 (all routers).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.31"
+  },
+  {
+    "question": "Os nós respondem imediatamente ao IGMP Membership Query, sem qualquer espera.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.31"
+  },
+  {
+    "question": "Os routers precisam de saber quantos membros existem de cada grupo multicast em cada rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.31"
+  },
+  {
+    "question": "Um endereço IPv4 de classe C permite 65534 nós por rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  },
+  {
+    "question": "Numa rede IPv4, o endereço com todos os bits de nó a um é o endereço da própria rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL02 p.13"
+  }
+]
