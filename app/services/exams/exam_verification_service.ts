@@ -65,24 +65,25 @@ export default class ExamVerificationService {
       if (input.userId !== null)
         await User.query({ client: trx }).where('id', input.userId).forUpdate().firstOrFail()
       const attempt = input.attemptId
-        ? await ExamAttempt.query({ client: trx }).where('id', input.attemptId).forUpdate().first()
+        ? await ExamAttempt.query({ client: trx })
+            .where('id', input.attemptId)
+            .where('user_id', input.userId!)
+            .forUpdate()
+            .first()
         : null
-      const requestHash = createHash('sha256')
-        .update(
-          JSON.stringify({
-            subject: input.subject.id,
-            mode: input.mode,
-            count: input.nOfQuestions,
-            penalty: input.penalizingFactor,
-            answers: input.answers
-              .map((item) => ({
-                id: item.question_id,
-                order: this.normalizeOptionValue(item.selected_option),
-              }))
-              .sort((a, b) => a.id - b.id),
-          })
-        )
-        .digest('hex')
+      const requestPayload = {
+        subject: input.subject.id,
+        mode: input.mode,
+        count: nOfQuestions,
+        penalty: input.penalizingFactor,
+        answers: input.answers
+          .map((item) => ({
+            id: item.question_id,
+            order: this.normalizeOptionValue(item.selected_option),
+          }))
+          .sort((a, b) => a.id - b.id),
+      }
+      const requestHash = createHash('sha256').update(JSON.stringify(requestPayload)).digest('hex')
       if (input.attemptId) {
         if (
           input.userId === null ||
@@ -94,13 +95,17 @@ export default class ExamVerificationService {
           throw new AttemptConflictError('Attempt unavailable for this identity')
         }
         if (attempt.result) {
-          if (attempt.requestHash !== requestHash)
+          // Earlier snapshots hashed the submitted count instead of the effective mode count.
+          const previousHash = createHash('sha256')
+            .update(JSON.stringify({ ...requestPayload, count: attempt.snapshot.nOfQuestions }))
+            .digest('hex')
+          if (attempt.requestHash !== requestHash && attempt.requestHash !== previousHash)
             throw new AttemptConflictError('Attempt already submitted with different answers')
           await trx.commit()
           return attempt.result
         }
         if (
-          attempt.snapshot.nOfQuestions !== input.nOfQuestions ||
+          attempt.snapshot.questions.length !== nOfQuestions ||
           attempt.snapshot.penalizingFactor !== input.penalizingFactor ||
           JSON.stringify(
             [...attempt.snapshot.questions.map((item) => item.id)].sort((a, b) => a - b)

@@ -1,11 +1,18 @@
 import { randomInt } from 'node:crypto'
+import db from '@adonisjs/lucid/services/db'
 import Answer from '#models/answer'
 import AnswerQuestion from '#models/answer_question'
 import ExamAttempt from '#models/exam_attempt'
 import Question from '#models/question'
 import type Subject from '#models/subject'
+import User from '#models/user'
 import { AttemptConflictError } from '#services/exams/exam_verification_service'
-import { DEFAULT_EXAM_RULE, type ExamMode, getSubjectExamRule } from '#services/exams/exam_config'
+import {
+  DEFAULT_EXAM_RULE,
+  MAX_UNFINISHED_ATTEMPTS,
+  type ExamMode,
+  getSubjectExamRule,
+} from '#services/exams/exam_config'
 
 export type GeneratedQuestionOption = {
   name: string
@@ -71,26 +78,46 @@ export default class ExamGenerationService {
     const result = this.serializeQuestions(selected)
     if (params.attemptId) {
       try {
-        await ExamAttempt.create({
-          id: params.attemptId,
-          userId: params.userId,
-          subjectId: params.subject.id,
-          mode: params.mode,
-          snapshot: {
-            nOfQuestions: params.nOfQuestions,
-            penalizingFactor: params.penalizingFactor ?? null,
-            questions: result.map((item) => {
-              const source = selected.find((question) => question.id === item.id)!
-              return {
-                ...item,
-                correctOption: source.correctOption,
-                options: item.options.map((option) => ({
-                  ...option,
-                  id: source.options.find((value) => value.order === option.order)!.id,
-                })),
-              }
-            }),
-          },
+        await db.transaction(async (trx) => {
+          await User.query({ client: trx }).where('id', params.userId!).forUpdate().firstOrFail()
+          const pending = await ExamAttempt.query({ client: trx })
+            .where('user_id', params.userId!)
+            .whereNull('result')
+            .count('* as total')
+            .firstOrFail()
+          if (Number(pending.$extras.total) >= MAX_UNFINISHED_ATTEMPTS)
+            throw new AttemptConflictError(
+              'Too many unfinished attempts; complete an existing attempt before generating another'
+            )
+          await ExamAttempt.create(
+            {
+              id: params.attemptId,
+              userId: params.userId!,
+              subjectId: params.subject.id,
+              mode: params.mode,
+              snapshot: {
+                nOfQuestions: params.nOfQuestions,
+                penalizingFactor: params.penalizingFactor ?? null,
+                questions: result.map((item) => {
+                  const source = selected.find((question) => question.id === item.id)
+                  if (!source) throw new Error(`Snapshot question ${item.id} is unavailable`)
+                  return {
+                    ...item,
+                    correctOption: source.correctOption,
+                    options: item.options.map((option) => {
+                      const canonical = source.options.find((value) => value.order === option.order)
+                      if (!canonical)
+                        throw new Error(
+                          `Snapshot option ${option.order} is unavailable for question ${item.id}`
+                        )
+                      return { ...option, id: canonical.id }
+                    }),
+                  }
+                }),
+              },
+            },
+            { client: trx }
+          )
         })
       } catch (error) {
         if (error && typeof error === 'object' && 'code' in error && error.code === '23505')

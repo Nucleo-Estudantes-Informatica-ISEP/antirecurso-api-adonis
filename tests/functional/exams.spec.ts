@@ -1,6 +1,6 @@
 import { test } from '@japa/runner'
 import limiter from '@adonisjs/limiter/services/main'
-import { randomUUID } from 'node:crypto'
+import { createHash, randomUUID } from 'node:crypto'
 import ZitadelAuthService from '#services/auth/zitadel_auth_service'
 import Subject from '#models/subject'
 import QuestionType from '#models/question_type'
@@ -12,6 +12,7 @@ import User from '#models/user'
 import ExamState from '#models/exam_state'
 import ExamAttempt from '#models/exam_attempt'
 import db from '@adonisjs/lucid/services/db'
+import ExamGenerationService from '#services/exams/exam_generation_service'
 import {
   createOidcFixture,
   installFetchMock,
@@ -424,16 +425,11 @@ test.group('Exams', (group) => {
     assert,
   }) => {
     const attempt = await mobileAttempt(client)
-    for (const token of [userToken, adminToken]) {
-      const duplicate = await client
-        .get(`/exams/generate/${subject.id}?attempt_id=${attempt.id}`)
-        .header('authorization', `Bearer ${token}`)
-      duplicate.assertStatus(409)
-      assert.equal(
-        duplicate.body().message,
-        'Attempt ID already exists; recover it or use a new ID'
-      )
-    }
+    const duplicate = await client
+      .get(`/exams/generate/${subject.id}?attempt_id=${attempt.id}`)
+      .header('authorization', `Bearer ${userToken}`)
+    duplicate.assertStatus(409)
+    assert.equal(duplicate.body().message, 'Attempt ID already exists; recover it or use a new ID')
     const recovered = await client
       .get(`/exams/attempts/${attempt.id}`)
       .header('authorization', `Bearer ${userToken}`)
@@ -489,7 +485,8 @@ test.group('Exams', (group) => {
       .post('/exams/verify')
       .header('authorization', `Bearer ${userToken}`)
       .json({ ...body, n_of_questions: 10 })
-    changedConfig.assertStatus(409)
+    changedConfig.assertStatus(200)
+    assert.deepEqual(changedConfig.body(), first.body())
   })
 
   test('deleted snapshot option returns clean 409 and rolls back grading', async ({
@@ -519,7 +516,7 @@ test.group('Exams', (group) => {
         .get(`/exams/attempts/${attempt.id}`)
         .header('authorization', `Bearer ${userToken}`)
       assert.isNull(recovered.body().result)
-      const stored = await ExamAttempt.findOrFail(attempt.id)
+      const stored = await ExamAttempt.findByOrFail('id', attempt.id)
       assert.isUndefined(stored.snapshot.grading)
     } finally {
       await Option.create(attrs)
@@ -575,7 +572,7 @@ test.group('Exams', (group) => {
         .get(`/exams/${graded.body().id}`)
         .header('authorization', `Bearer ${userToken}`)
       before.assertStatus(200)
-      const snapshot = await ExamAttempt.findOrFail(attempt.id)
+      const snapshot = await ExamAttempt.findByOrFail('id', attempt.id)
       const first = snapshot.snapshot.questions[0]
       const questionRow = await db.from('questions').where('id', first.id).firstOrFail()
       const optionRows = await db.from('options').where('question_id', first.id)
@@ -643,7 +640,7 @@ test.group('Exams', (group) => {
       .get(`/exams/${graded.body().id}`)
       .header('authorization', `Bearer ${userToken}`)
     before.assertStatus(200)
-    const stored = await ExamAttempt.findOrFail(attempt.id)
+    const stored = await ExamAttempt.findByOrFail('id', attempt.id)
     delete stored.snapshot.grading
     await stored.merge({ snapshot: { ...stored.snapshot } }).save()
     const after = await client
@@ -651,5 +648,376 @@ test.group('Exams', (group) => {
       .header('authorization', `Bearer ${userToken}`)
     after.assertStatus(200)
     assert.deepEqual(after.body(), before.body())
+  })
+  test('non-custom verification accepts its resolved count even when generation omitted it', async ({
+    client,
+    assert,
+  }) => {
+    const attempt = await mobileAttempt(client)
+    const graded = await client
+      .post('/exams/verify')
+      .header('authorization', `Bearer ${userToken}`)
+      .json({ ...attempt.verify, n_of_questions: 10 })
+    graded.assertStatus(200)
+    const retry = await client
+      .post('/exams/verify')
+      .header('authorization', `Bearer ${userToken}`)
+      .json(attempt.verify)
+    retry.assertStatus(200)
+    assert.deepEqual(retry.body(), graded.body())
+  })
+
+  test('different owners can reuse UUIDs without sharing recovery, grading or state', async ({
+    client,
+    assert,
+  }) => {
+    await resetState()
+    const first = await mobileAttempt(client)
+    const second = await client
+      .get(`/exams/generate/${subject.id}?attempt_id=${first.id}`)
+      .header('authorization', `Bearer ${adminToken}`)
+    second.assertStatus(200)
+    const other = await client
+      .get(`/exams/attempts/${first.id}`)
+      .header('authorization', `Bearer ${adminToken}`)
+    other.assertStatus(200)
+    assert.deepEqual(other.body().questions, second.body())
+    const saved = await client
+      .post('/exams/state')
+      .header('authorization', `Bearer ${userToken}`)
+      .json({
+        subject_id: subject.id,
+        mode: 'default',
+        state: first.state,
+        attempt_id: first.id,
+      })
+    saved.assertStatus(200)
+    const results = await Promise.all([
+      client
+        .post('/exams/verify')
+        .header('authorization', `Bearer ${userToken}`)
+        .json(first.verify),
+      client
+        .post('/exams/verify')
+        .header('authorization', `Bearer ${adminToken}`)
+        .json({
+          ...first.verify,
+          answers: second.body().map((q: any) => ({ question_id: q.id, selected_option: 'B' })),
+        }),
+    ])
+    results.forEach((r) => r.assertStatus(200))
+    assert.notEqual(results[0].body().id, results[1].body().id)
+    assert.equal(results[0].body().score, 100)
+    assert.equal(results[1].body().score, 0)
+    for (const [index, token] of [userToken, adminToken].entries()) {
+      const recovered = await client
+        .get(`/exams/attempts/${first.id}`)
+        .header('authorization', `Bearer ${token}`)
+      assert.deepEqual(recovered.body().result, results[index].body())
+    }
+    const owner = await User.findByOrFail('authSubject', USER_SUB)
+    const attempts = await ExamAttempt.query().where('id', first.id)
+    assert.lengthOf(attempts, 2)
+    const wrongOwnerId = await User.create({
+      authSubject: randomUUID(),
+      email: `${randomUUID()}@test.example`,
+      name: 'Other',
+    })
+    try {
+      await assert.rejects(
+        () =>
+          db.table('exam_states').insert({
+            user_id: wrongOwnerId.id,
+            subject_id: subject.id,
+            mode: 'default',
+            attempt_id: first.id,
+            state: {},
+          }),
+        /foreign key/
+      )
+      await assert.rejects(
+        () =>
+          db.table('exam_attempts').insert({
+            id: randomUUID(),
+            user_id: null,
+            subject_id: subject.id,
+            mode: 'default',
+            snapshot: '{}',
+            created_at: new Date(),
+            updated_at: new Date(),
+          }),
+        /not-null/
+      )
+    } finally {
+      await wrongOwnerId.delete()
+    }
+    const completedState = await ExamState.query()
+      .where('user_id', owner.id)
+      .where('subject_id', subject.id)
+      .firstOrFail()
+    assert.isTrue(completedState.isCompleted)
+  })
+
+  test('incomplete-attempt cap is atomic, per owner, and completion frees a slot', async ({
+    client,
+    assert,
+  }) => {
+    const user = await User.findByOrFail('authSubject', USER_SUB)
+    const original = await ExamAttempt.query().where('user_id', user.id).whereNull('result')
+    // Remove only this test group's unfinished fixtures to make the cap boundary deterministic.
+    await ExamState.query().where('user_id', user.id).delete()
+    await ExamAttempt.query()
+      .whereIn(
+        'id',
+        original.map((a) => a.id)
+      )
+      .where('user_id', user.id)
+      .delete()
+    const first = await mobileAttempt(client)
+    const source = await ExamAttempt.query()
+      .where('user_id', user.id)
+      .where('id', first.id)
+      .firstOrFail()
+    await db.table('exam_attempts').insert(
+      Array.from({ length: 18 }, () => ({
+        id: randomUUID(),
+        user_id: user.id,
+        subject_id: subject.id,
+        mode: 'default',
+        snapshot: JSON.stringify(source.snapshot),
+        created_at: new Date(),
+        updated_at: new Date(),
+      }))
+    )
+    const responses = await Promise.all(
+      [0, 1].map(() =>
+        client
+          .get(`/exams/generate/${subject.id}?attempt_id=${randomUUID()}`)
+          .header('authorization', `Bearer ${userToken}`)
+      )
+    )
+    assert.sameMembers(
+      responses.map((r) => r.status()),
+      [200, 409]
+    )
+    const full = await client
+      .get(`/exams/generate/${subject.id}?attempt_id=${randomUUID()}`)
+      .header('authorization', `Bearer ${userToken}`)
+    full.assertStatus(409)
+    assert.equal(
+      full.body().message,
+      'Too many unfinished attempts; complete an existing attempt before generating another'
+    )
+    const anotherOwner = await client
+      .get(`/exams/generate/${subject.id}?attempt_id=${randomUUID()}`)
+      .header('authorization', `Bearer ${adminToken}`)
+    anotherOwner.assertStatus(200)
+    const graded = await client
+      .post('/exams/verify')
+      .header('authorization', `Bearer ${userToken}`)
+      .json(first.verify)
+    graded.assertStatus(200)
+    const released = await client
+      .get(`/exams/generate/${subject.id}?attempt_id=${randomUUID()}`)
+      .header('authorization', `Bearer ${userToken}`)
+    released.assertStatus(200)
+    const count = await ExamAttempt.query()
+      .where('user_id', user.id)
+      .whereNull('result')
+      .count('* as total')
+      .firstOrFail()
+    assert.equal(Number(count.$extras.total), 20)
+  })
+
+  test('legacy verification never completes an attempt-bound draft, but does complete legacy state', async ({
+    client,
+    assert,
+  }) => {
+    await resetState()
+    const user = await User.findByOrFail('authSubject', USER_SUB)
+    await ExamAttempt.query().where('user_id', user.id).whereNull('result').delete()
+    const attempt = await mobileAttempt(client)
+    const state = await client
+      .post('/exams/state')
+      .header('authorization', `Bearer ${userToken}`)
+      .json({
+        subject_id: subject.id,
+        mode: 'default',
+        state: attempt.state,
+        attempt_id: attempt.id,
+      })
+    state.assertStatus(200)
+    const { attempt_id: attemptId, ...legacy } = attempt.verify
+    const completed = await client
+      .post('/exams/verify')
+      .header('authorization', `Bearer ${userToken}`)
+      .json(legacy)
+    completed.assertStatus(200)
+    const recorded = await ExamAttempt.query()
+      .where('user_id', user.id)
+      .where('id', attemptId)
+      .firstOrFail()
+    assert.isNull(recorded.result)
+    const current = await client
+      .get(`/exams/state?subject_id=${subject.id}&mode=default`)
+      .header('authorization', `Bearer ${userToken}`)
+    current.assertStatus(200)
+    assert.equal(current.body().attempt_id, attempt.id)
+    assert.isUndefined(current.body().state.isCompleted)
+    await resetState()
+    const legacyState = await client
+      .post('/exams/state')
+      .header('authorization', `Bearer ${userToken}`)
+      .json({ subject_id: subject.id, mode: 'default', state: attempt.state })
+    legacyState.assertStatus(200)
+    const verified = await client
+      .post('/exams/verify')
+      .header('authorization', `Bearer ${userToken}`)
+      .json(legacy)
+    verified.assertStatus(200)
+    const after = await client
+      .get(`/exams/state?subject_id=${subject.id}&mode=default`)
+      .header('authorization', `Bearer ${userToken}`)
+    assert.isNull(after.body().state)
+  })
+
+  test('generation rejects a serialized option absent from the canonical question', async ({
+    assert,
+  }) => {
+    const service = new ExamGenerationService()
+    const user = await User.findByOrFail('authSubject', USER_SUB)
+    ;(service as any).serializeQuestions = () => [
+      {
+        id: questions[0].id,
+        question: 'Broken',
+        exam: '',
+        image: '',
+        question_type: 'MC',
+        options: [{ name: 'Unknown', order: 'Z' }],
+      },
+    ]
+    await assert.rejects(
+      () =>
+        service.generate({
+          subject,
+          mode: 'default',
+          userId: user.id,
+          nOfQuestions: null,
+          filter: null,
+          attemptId: randomUUID(),
+        }),
+      /Snapshot option Z is unavailable/
+    )
+  })
+  test('pre-normalization completed hashes still replay with omitted or resolved counts', async ({
+    client,
+    assert,
+  }) => {
+    const attempt = await mobileAttempt(client)
+    const completed = await client
+      .post('/exams/verify')
+      .header('authorization', `Bearer ${userToken}`)
+      .json(attempt.verify)
+    completed.assertStatus(200)
+    const stored = await ExamAttempt.findByOrFail('id', attempt.id)
+    stored.requestHash = createHash('sha256')
+      .update(
+        JSON.stringify({
+          subject: subject.id,
+          mode: 'default',
+          count: null,
+          penalty: null,
+          answers: attempt.verify.answers
+            .map((item: any) => ({ id: item.question_id, order: 'A' }))
+            .sort((a: any, b: any) => a.id - b.id),
+        })
+      )
+      .digest('hex')
+    await stored.save()
+    const retry = await client
+      .post('/exams/verify')
+      .header('authorization', `Bearer ${userToken}`)
+      .json({ ...attempt.verify, n_of_questions: 10 })
+    retry.assertStatus(200)
+    assert.deepEqual(retry.body(), completed.body())
+  })
+
+  test('custom count and penalty remain immutable', async ({ client, assert }) => {
+    const id = randomUUID()
+    const generated = await client
+      .get(
+        `/exams/generate/${subject.id}?mode=custom&n_of_questions=5&penalizing_factor=0.5&attempt_id=${id}`
+      )
+      .header('authorization', `Bearer ${userToken}`)
+    generated.assertStatus(200)
+    const body = {
+      subject_id: subject.id,
+      attempt_id: id,
+      mode: 'custom',
+      n_of_questions: 5,
+      penalizing_factor: 0.5,
+      answers: generated.body().map((q: any) => ({ question_id: q.id, selected_option: 'A' })),
+    }
+    const changed = await client
+      .post('/exams/verify')
+      .header('authorization', `Bearer ${userToken}`)
+      .json({ ...body, penalizing_factor: 0 })
+    changed.assertStatus(409)
+    const missingCount = await client
+      .post('/exams/verify')
+      .header('authorization', `Bearer ${userToken}`)
+      .json({ ...body, n_of_questions: undefined })
+    missingCount.assertStatus(400)
+    const valid = await client
+      .post('/exams/verify')
+      .header('authorization', `Bearer ${userToken}`)
+      .json(body)
+    valid.assertStatus(200)
+    assert.equal(valid.body().score, 100)
+  })
+
+  test('review fails cleanly for an incomplete grading snapshot', async ({ client }) => {
+    const attempt = await mobileAttempt(client)
+    const graded = await client
+      .post('/exams/verify')
+      .header('authorization', `Bearer ${userToken}`)
+      .json(attempt.verify)
+    graded.assertStatus(200)
+    const stored = await ExamAttempt.findByOrFail('id', attempt.id)
+    await stored.merge({ snapshot: { ...stored.snapshot, grading: [] } }).save()
+    const review = await client
+      .get(`/exams/${graded.body().id}`)
+      .header('authorization', `Bearer ${userToken}`)
+    review.assertStatus(409)
+    review.assertBodyContains({ message: 'Exam review details are unavailable' })
+  })
+
+  test('legacy review after canonical question deletion follows cascade instead of returning 500', async ({
+    client,
+    assert,
+  }) => {
+    const body = {
+      subject_id: subject.id,
+      mode: 'default',
+      answers: questions.map((q) => ({ question_id: q.id, selected_option: 'A' })),
+    }
+    const graded = await client
+      .post('/exams/verify')
+      .header('authorization', `Bearer ${userToken}`)
+      .json(body)
+    graded.assertStatus(200)
+    const questionRow = await db.from('questions').where('id', questions[0].id).firstOrFail()
+    const optionRows = await db.from('options').where('question_id', questions[0].id)
+    await Question.query().where('id', questions[0].id).delete()
+    try {
+      const review = await client
+        .get(`/exams/${graded.body().id}`)
+        .header('authorization', `Bearer ${userToken}`)
+      review.assertStatus(200)
+      assert.lengthOf(review.body().questions, 9)
+    } finally {
+      await db.table('questions').insert(questionRow)
+      await db.table('options').insert(optionRows)
+    }
   })
 })

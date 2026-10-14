@@ -233,24 +233,26 @@ export default class ExamsController {
       const question = answerQuestion?.question
       const snapshot = immutable?.snapshot.questions.find((item) => item.id === id)
       const grading = immutable?.snapshot.grading?.find((item) => item.questionId === id)
+      const content = snapshot ?? question
+      if (!content || (!grading && (!answerQuestion || immutable?.snapshot.grading))) return null
 
       return {
         question: {
           id,
-          question: snapshot?.question ?? question!.question,
-          correct_option: snapshot?.correctOption ?? question!.correctOption,
+          question: content.question,
+          correct_option: content.correctOption,
           question_type:
             snapshot?.question_type ?? question?.questionType?.name ?? 'Multiple Choice',
           image: snapshot?.image ?? question?.image ?? '',
         },
-        selected_option_id: grading ? grading.optionId : answerQuestion!.optionId,
-        options: (snapshot?.options ?? question!.options).map((option) => ({
+        selected_option_id: grading ? grading.optionId : (answerQuestion?.optionId ?? null),
+        options: content.options.map((option) => ({
           id: option.id,
           name: option.name,
           order: option.order,
         })),
-        is_wrong: grading ? grading.isWrong : answerQuestion!.isWrong,
-        correct_option: snapshot?.correctOption ?? question!.correctOption,
+        is_wrong: grading?.isWrong ?? answerQuestion?.isWrong,
+        correct_option: content.correctOption,
         comments: (question?.comments ?? []).map((comment) => ({
           id: comment.id,
           comment: comment.comment,
@@ -262,6 +264,9 @@ export default class ExamsController {
         })),
       }
     })
+
+    if (questions.some((question) => question === null))
+      return response.conflict({ message: 'Exam review details are unavailable' })
 
     return response.ok({
       id: exam.id,
@@ -520,7 +525,7 @@ export default class ExamsController {
     const { id } = await request.validateUsing(recoverExamAttemptValidator, {
       data: { id: params.id },
     })
-    const attempt = await ExamAttempt.find(id)
+    const attempt = await ExamAttempt.query().where('id', id).where('user_id', authUser.id).first()
     if (!attempt || attempt.userId !== authUser.id)
       return response.notFound({ message: 'Attempt unavailable' })
     return response.ok({

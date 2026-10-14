@@ -527,7 +527,7 @@ verification owns answer, updates scoreboard, and completes matching saved state
   `custom`; `filter?: string`, with only `filter=new` changing current custom behavior. Optional `attempt_id` (UUID, all validator-supported versions) and `penalizing_factor` record an authenticated snapshot.
 - Response: `200 GeneratedQuestion[]`.
 - Errors: `400` invalid id/custom count/generation; `401` user-dependent mode without user or invalid
-  token; `404` missing subject; `409` repeated attempt ID; `422` invalid query; `429` exam limit. Stored attempts require auth (`401`). Generation is not idempotent: after a lost response, recover the existing ID; use a new ID for a new exam.
+  token; `404` missing subject; `409` repeated owner/attempt ID or 20 unfinished attempts for that owner; `422` invalid query; `429` exam limit. Stored attempts require auth (`401`). Generation is not idempotent: after a lost response, recover the existing owner-scoped ID; use a new ID for a new exam. Each owner may retain at most 20 unfinished snapshots across subjects/modes; an owner-row lock makes the cap atomic across workers. Completing one frees a slot. Completed history is excluded, and another owner may reuse the same UUID independently. No TTL purge is applied; existing rows above the cap remain available but new stored generation is blocked until below the cap.
 
 #### `POST /exams/verify`
 
@@ -548,8 +548,8 @@ verification owns answer, updates scoreboard, and completes matching saved state
 - Validation: answer count matches mode; question ids are unique, exist, and belong to subject;
   selected option is one alphanumeric character and must exist for question.
 - Transaction: answer/detail, scoreboard, state completion and optional attempt result commit together. Stable UUIDs require authentication and are scoped to the owner; concurrent/sequential identical submissions return the exact original result and score once. Changed answers or configuration after completion return 409. Retry time is excluded from the request hash; the first committed elapsed time remains stored. Different UUIDs remain distinct. Grading uses the original snapshot. Deleted underlying question/option rows invalidate ungraded attempts with a clean 409; grading rolls back and no replacement questions are generated.
-- Clients must echo generation `n_of_questions` and `penalizing_factor`, including omission/null: stored configuration is immutable, and substituting an explicit value returns 409.
-- New-attempt completion only completes the cloud row with that same UUID. Legacy verification only completes a legacy state row.
+- Count validation compares the effective mode count with the original snapshot length. Non-custom verification may omit `n_of_questions` or send an explicit value; mode rules supply its effective count. Custom count remains required and must match the snapshot. Replay hashes use that effective count and accept earlier completed hashes. `penalizing_factor` still echoes generation, including omission/null; changing it returns 409.
+- New-attempt completion only completes the cloud row with that same UUID. Legacy verification without `attempt_id` only completes a legacy state row; it leaves an attempt-bound draft untouched because the server cannot know which attempt the legacy payload belongs to. Clients must send its ID to grade/complete a stored attempt.
 - Response: `200 { id, score, wrong_answers, passed, subject }` with numeric fields as numbers.
 - Errors: `400` domain mismatch; `401` missing auth for stored attempts or invalid supplied token; `404` missing subject; `422` invalid
   body; `429` exam limit.
@@ -583,7 +583,7 @@ verification owns answer, updates scoreboard, and completes matching saved state
 
 #### `GET /exams/attempts/:id`
 
-- Authentication required (`401`); only the stored owner can recover. Another identity (including admin) gets `404`. UUID validation matches generation/verification, including v7 (`422` for invalid IDs). Exam throttle applies (`429`). Existing anonymous snapshots cannot be recovered.
+- Authentication required (`401`); only the stored owner can recover. An ID is resolved only within the authenticated owner; another identity (including admin) gets `404` unless it has its own separately generated attempt with that same ID. UUID validation matches generation/verification, including v7 (`422` for invalid IDs). Exam throttle applies (`429`). Existing anonymous snapshots cannot be recovered.
 - Response: `{ id: string, questions: GeneratedQuestion[], result: ExamResult | null }`. Immutable original content and exact committed result; never correct answers or internal option IDs. Null result does not prove verification is not running.
 - Clients may explicitly retry verification with the same answers/configuration and UUID after confirming this endpoint; never automatically replay against a legacy API.
 - Owned `/exams/:id` review uses original snapshots and atomically stored per-question grading for newly completed attempts, retaining all questions, selected option IDs, original order and correctness after canonical question/option deletion. Comments remain live; deleted questions have no comments. Recovery still strips private grading. Legacy results and snapshots completed before grading was stored retain live answer-detail behavior; already lost selections/details cannot be reconstructed.
@@ -647,7 +647,7 @@ type ExamDetail = {
 }
 ```
 
-- Errors: `400` invalid id; `403` not owner/admin; `404` missing attempt.
+- Errors: `400` invalid id; `403` not owner/admin; `404` missing attempt; `409` inconsistent/missing review details. Removed legacy questions cascade their details, so legacy review may omit them; it cannot reconstruct historical content without a snapshot.
 
 #### `GET /admin/exams`
 

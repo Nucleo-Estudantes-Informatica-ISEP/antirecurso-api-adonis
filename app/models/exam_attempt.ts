@@ -9,9 +9,11 @@ export type AttemptQuestion = Omit<GeneratedQuestion, 'options'> & {
 }
 export default class ExamAttempt extends BaseModel {
   @column({ isPrimary: true })
+  declare rowId: number
+  @column()
   declare id: string
   @column()
-  declare userId: number | null
+  declare userId: number
   @column()
   declare subjectId: number
   @column()
