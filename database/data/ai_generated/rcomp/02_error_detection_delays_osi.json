@@ -1,0 +1,2211 @@
+[
+  {
+    "question": "O código de validação de um pacote é gerado por uma função que recebe o conteúdo do pacote e produz um código pequeno, de tamanho fixo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.2"
+  },
+  {
+    "question": "Quanto mais dados tem o pacote, maior é o código de validação que lhe é acrescentado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.2"
+  },
+  {
+    "question": "A função que gera o código de validação deve produzir um código diferente perante qualquer pequena alteração dos dados de entrada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.2"
+  },
+  {
+    "question": "O código de deteção de erros pode ser colocado no cabeçalho ou no tail do pacote.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.2"
+  },
+  {
+    "question": "Se o código calculado pelo recetor for igual ao código recebido, existe certeza absoluta de que não ocorreu nenhum erro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.3"
+  },
+  {
+    "question": "Se o código calculado pelo recetor for diferente do código recebido, o recetor sabe que ocorreu um erro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.3"
+  },
+  {
+    "question": "Quando os dois códigos são iguais, o recetor sabe apenas que provavelmente não houve erro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.3"
+  },
+  {
+    "question": "Quando o código está no tail do pacote, o recetor consegue determinar se houve erro logo que acaba de receber o cabeçalho.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.2"
+  },
+  {
+    "question": "Na FEC (Forward Error Correction) o recetor corrige de forma autónoma, sem pedir retransmissão, erros de extensão limitada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.4"
+  },
+  {
+    "question": "A FEC dispensa qualquer informação de validação adicional, bastando um código simples de tamanho fixo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.4"
+  },
+  {
+    "question": "A FEC só resolve erros limitados a um pequeno número de bits, por isso deve ser combinada com a BEC.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.4"
+  },
+  {
+    "question": "Na BEC (Backward Error Correction), o recetor corrige os erros sozinho, sem comunicar com o emissor.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.4"
+  },
+  {
+    "question": "A BEC também é conhecida por ARQ (Automatic Repeat Request).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.4"
+  },
+  {
+    "question": "Os atrasos da rede entre o emissor e o recetor têm um impacto significativo na eficiência da BEC.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.4"
+  },
+  {
+    "question": "No stop and wait, o emissor é obrigado a esperar pelo ACK do recetor antes de enviar o pacote seguinte.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.8"
+  },
+  {
+    "question": "O stop and wait pode ser muito ineficiente devido ao atraso de propagação: a rede pode estar livre e o emissor não a pode usar até receber o ACK.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.8"
+  },
+  {
+    "question": "No sliding window protocol, o emissor pode enviar uma rajada de W pacotes sem receber qualquer ACK.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.9"
+  },
+  {
+    "question": "No sliding window protocol, o tamanho da janela W é fixo e não pode ser configurado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.8"
+  },
+  {
+    "question": "No sliding window protocol, depois de enviar W pacotes o emissor tem de parar, mas cada ACK recebido permite-lhe enviar mais um pacote.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.9"
+  },
+  {
+    "question": "O sliding window protocol consegue 100 % de eficiência mesmo numa ligação simplex.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.9"
+  },
+  {
+    "question": "Uma rede de comutação é intrinsecamente full-duplex, mesmo que algumas ligações sejam half-duplex.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.9"
+  },
+  {
+    "question": "O objetivo do controlo de fluxo é evitar que o recetor receba mais pacotes do que consegue tratar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.8"
+  },
+  {
+    "question": "Um NACK enviado pelo recetor significa que o pacote foi recebido corretamente e que pode ser enviado o seguinte.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.10"
+  },
+  {
+    "question": "Um NACK indica que foi detetado um erro e que o pacote referido tem de ser retransmitido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.10"
+  },
+  {
+    "question": "Para usar o sliding window protocol, os pacotes têm de ser identificados, normalmente com um número de sequência.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.10"
+  },
+  {
+    "question": "O controlo de erros ARQ pode ser usado num meio de transmissão simplex, em que só é possível transmitir num sentido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.10"
+  },
+  {
+    "question": "Como se faz a deteção de erros através de um código de validação?",
+    "answers": [
+      "O recetor calcula o código a partir dos dados e envia-o ao emissor, que o compara com o que guardou",
+      "O emissor envia cada pacote duas vezes e o recetor compara entre si as duas cópias recebidas",
+      "O emissor calcula o código e junta-o ao pacote; o recetor repete o cálculo e compara os dois códigos",
+      "O recetor soma todos os bits do pacote e compara o resultado com o tamanho do pacote em bytes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.3"
+  },
+  {
+    "question": "Se o código calculado pelo recetor for diferente do código recebido, o que pode o recetor concluir?",
+    "answers": [
+      "Que o pacote está correto e que só o código foi alterado em trânsito",
+      "Que provavelmente ocorreu um erro, mas pode não ter ocorrido nenhum",
+      "Que ocorreu um erro de transmissão no pacote recebido",
+      "Que o emissor calculou mal o código e o pacote chegou sem erros"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.3"
+  },
+  {
+    "question": "Se o código calculado pelo recetor for igual ao código recebido, o que se pode concluir?",
+    "answers": [
+      "Que provavelmente não ocorreu nenhum erro, embora não haja garantia absoluta",
+      "Que ocorreu um erro, mas que o código não o consegue localizar no pacote",
+      "Que o pacote chegou fora de ordem, mas sem erros de transmissão",
+      "Que não ocorreu nenhum erro, com 100 % de certeza, qualquer que seja o código"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.3"
+  },
+  {
+    "question": "Porque é que a igualdade dos dois códigos não garante, em absoluto, que não houve erros?",
+    "answers": [
+      "Porque o código viaja sempre num canal separado do pacote, sujeito a muito mais ruído do que os dados",
+      "Porque o recetor só verifica uma parte dos bits do pacote, ignorando os restantes bits de cada símbolo",
+      "Porque o emissor e o recetor calculam o código com funções diferentes entre si, o que impede uma comparação exata",
+      "Porque uma alteração aleatória pode, com probabilidade muito baixa, resultar num pacote e num código que coincidem"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.3"
+  },
+  {
+    "question": "Qual é a diferença entre FEC e BEC?",
+    "answers": [
+      "Na FEC o recetor corrige sozinho erros de extensão limitada; na BEC pede ao emissor que retransmita o pacote",
+      "Na FEC o recetor pede ao emissor que retransmita o pacote; na BEC corrige os erros sozinho",
+      "A FEC deteta erros através de um código e a BEC corrige-os com o mesmo código, sem retransmissão",
+      "A FEC só se aplica a erros muito extensos e a BEC apenas a erros de poucos bits"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.4"
+  },
+  {
+    "question": "Como se designa o controlo de erros baseado em pedidos de retransmissão feitos ao emissor?",
+    "answers": [
+      "ARQ (Automatic Repeat Request), do tipo BEC",
+      "FEC (Forward Error Correction), do tipo ARQ",
+      "ACK (Acknowledgement), do tipo FEC",
+      "MAC (Media Access Control), do tipo BEC"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.4"
+  },
+  {
+    "question": "Porque deve a FEC ser combinada com a BEC?",
+    "answers": [
+      "Porque a BEC é necessária para calcular o código de validação que a FEC utiliza na correção dos erros",
+      "Porque a FEC só funciona em meios de transmissão simplex, enquanto a BEC apenas funciona em meios full-duplex",
+      "Porque a FEC não consegue corrigir erros, apenas detetá-los, e é a BEC que depois os corrige por retransmissão",
+      "Porque a FEC só corrige erros limitados a poucos bits; os mais extensos têm de ser resolvidos por retransmissão"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.4"
+  },
+  {
+    "question": "No stop and wait, o que obriga o emissor a esperar antes de enviar o pacote seguinte?",
+    "answers": [
+      "A receção de um NACK com o número de sequência do pacote seguinte",
+      "A receção do sinal ACK enviado pelo recetor",
+      "O esgotamento da janela de W pacotes configurada no emissor",
+      "A libertação do meio de transmissão pelos outros nós da rede"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.8"
+  },
+  {
+    "question": "Qual é o principal problema de eficiência do stop and wait?",
+    "answers": [
+      "O emissor fica parado à espera do ACK, mesmo com a rede livre, por causa dos atrasos de propagação",
+      "O recetor fica sobrecarregado porque recebe vários pacotes antes do primeiro ACK",
+      "Os pacotes têm de ser numerados, o que aumenta muito o tamanho do cabeçalho",
+      "O emissor envia sempre uma rajada de W pacotes que esgota a janela do recetor"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.8"
+  },
+  {
+    "question": "O que representa o parâmetro W no sliding window protocol?",
+    "answers": [
+      "O tempo máximo, em segundos, que o emissor espera por um ACK antes de retransmitir",
+      "O número de bits do código de validação acrescentado a cada pacote enviado",
+      "O número de nós intermédios por onde passa cada pacote até chegar ao recetor",
+      "O tamanho da janela: o número de pacotes que o emissor pode enviar em rajada sem receber ACK"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.8"
+  },
+  {
+    "question": "Em que condição o sliding window protocol permite ao emissor transmitir sem paragens?",
+    "answers": [
+      "Quando a ligação entre emissor e recetor é simplex, só num sentido",
+      "Quando o tamanho da janela W é igual a um único pacote",
+      "Quando o ACK do primeiro pacote chega antes de a janela se esgotar",
+      "Quando o recetor envia um NACK antes de cada ACK recebido pelo emissor"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.9"
+  },
+  {
+    "question": "Em que tipo de ligação é possível atingir 100 % de eficiência com o sliding window protocol?",
+    "answers": [
+      "Numa ligação full-duplex, com transmissão simultânea nos dois sentidos",
+      "Numa ligação simplex, com transmissão apenas num sentido",
+      "Em qualquer ligação, desde que o tamanho da janela W seja igual a um",
+      "Numa ligação half-duplex, com transmissão alternada nos dois sentidos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.9"
+  },
+  {
+    "question": "Porque são as redes de comutação intrinsecamente full-duplex?",
+    "answers": [
+      "Porque cada pacote é enviado simultaneamente pelos dois sentidos da ligação até chegar ao destino",
+      "Porque, mesmo com ligações half-duplex, os pacotes em sentidos opostos podem cruzar-se nos nós intermédios",
+      "Porque os nós intermédios descartam os pacotes que viajam em sentidos opostos para evitar colisões",
+      "Porque todas as ligações entre nós intermédios são constituídas sempre por dois cabos de fibra ótica distintos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.9"
+  },
+  {
+    "question": "Que mensagem envia o recetor para pedir a retransmissão do pacote número 5?",
+    "answers": [
+      "Um ACK com o código de validação do pacote 5",
+      "Um NACK com o tamanho da janela W igual a 5",
+      "Um NACK com o número de sequência 5 (NACK 5)",
+      "Um ACK com o número de sequência 5 (ACK 5)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.10"
+  },
+  {
+    "question": "O que é o continuous ARQ?",
+    "answers": [
+      "Uma técnica de FEC em que o recetor corrige erros continuamente",
+      "O mecanismo de pedido de retransmissão (ARQ) quando combinado com o stop and wait",
+      "O envio contínuo de ACK pelo recetor mesmo quando não recebe pacotes",
+      "O mecanismo de pedido de retransmissão (ARQ) quando combinado com o sliding window protocol"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.10"
+  },
+  {
+    "question": "Porque têm os pacotes de ser identificados (por exemplo com número de sequência) quando se usa o sliding window protocol?",
+    "answers": [
+      "Porque o recetor tem de saber a que porta da aplicação deve entregar o pacote",
+      "Porque o número de sequência substitui o código de validação do pacote",
+      "Porque, em caso de erro, o recetor tem de indicar ao emissor qual o pacote a retransmitir",
+      "Porque os nós intermédios precisam do número para calcular o caminho do pacote"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.10"
+  },
+  {
+    "question": "Qual é o objetivo do controlo de fluxo?",
+    "answers": [
+      "Corrigir os erros detetados nos pacotes através da retransmissão dos pacotes afetados pelo erro",
+      "Garantir que dois nós não emitem em simultâneo no mesmo meio de transmissão partilhado",
+      "Escolher o caminho mais curto entre emissor e recetor, através dos nós intermédios da rede",
+      "Regular o fluxo entre emissor e recetor, evitando que este receba mais pacotes do que consegue tratar"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.8"
+  },
+  {
+    "question": "Qual é o objetivo do controlo de erros (error control)?",
+    "answers": [
+      "Impedir que o recetor receba mais pacotes do que consegue tratar",
+      "Atribuir um endereço único a cada um dos nós da rede",
+      "Corrigir os erros que foram detetados pelo mecanismo de deteção de erros",
+      "Detetar se um pacote foi alterado durante a sua transmissão"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.10"
+  },
+  {
+    "question": "O packet delivery time é medido desde que o emissor emite o primeiro bit do pacote até que o último bit do pacote chega ao recetor.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.5"
+  },
+  {
+    "question": "O packet delivery time é a soma do tempo de transmissão do pacote com o atraso de propagação.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.5"
+  },
+  {
+    "question": "O tempo de transmissão de um pacote é o quociente entre a distância e a velocidade de propagação do sinal.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.5"
+  },
+  {
+    "question": "O tempo de transmissão de um pacote é o quociente entre o tamanho do pacote e a taxa de transmissão.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.5"
+  },
+  {
+    "question": "O atraso de propagação depende do tamanho do pacote e da taxa de transmissão, mas não da distância.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.5"
+  },
+  {
+    "question": "Num meio partilhado sem nós intermédios, o atraso de propagação é a distância a dividir pela velocidade de propagação do sinal.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.5"
+  },
+  {
+    "question": "Num nó intermédio, o pacote é recebido e depois emitido, pelo que o respetivo tempo de transmissão se soma à latência da rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.6"
+  },
+  {
+    "question": "Os nós intermédios usam filas (FIFO) que funcionam como buffers, guardando os pacotes recebidos antes de os emitir.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.6"
+  },
+  {
+    "question": "Num nó intermédio store & forward, o pacote é totalmente recebido antes de se começar a emiti-lo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.7"
+  },
+  {
+    "question": "No modo cut-through, o nó intermédio recebe totalmente o pacote antes de começar a emiti-lo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.7"
+  },
+  {
+    "question": "Os nós intermédios podem receber e emitir a taxas de transmissão diferentes, o que influencia o cálculo da latência.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.7"
+  },
+  {
+    "question": "Como se define o packet delivery time?",
+    "answers": [
+      "O tempo decorrido desde que o emissor emite o primeiro bit do pacote até o último bit chegar ao recetor",
+      "O tempo que o primeiro bit demora a chegar ao recetor, sem contar com o resto do pacote",
+      "O tempo que o pacote passa nas filas dos nós intermédios antes de ser emitido",
+      "O tempo que o recetor demora a enviar o ACK depois de receber o último bit do pacote"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.5"
+  },
+  {
+    "question": "De que parcelas é composto o packet delivery time?",
+    "answers": [
+      "Do atraso de propagação e do tempo de cálculo do código de validação",
+      "Do tempo de transmissão do pacote e do tempo de espera pelo ACK do recetor",
+      "Do tempo de transmissão do pacote e do atraso de propagação",
+      "Do tempo de transmissão do pacote e do tempo de reordenação no recetor"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.5"
+  },
+  {
+    "question": "Como se calcula o tempo de transmissão de um pacote?",
+    "answers": [
+      "Tamanho do pacote multiplicado pela velocidade de propagação do sinal",
+      "Tamanho do pacote dividido pela taxa de transmissão",
+      "Taxa de transmissão dividida pelo tamanho do pacote",
+      "Distância dividida pela velocidade de propagação do sinal"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.5"
+  },
+  {
+    "question": "Como se calcula o atraso de propagação num meio de transmissão sem nós intermédios?",
+    "answers": [
+      "Tamanho do pacote dividido pela taxa de transmissão",
+      "Distância multiplicada pela velocidade de propagação do sinal",
+      "Velocidade de propagação do sinal dividida pelo tamanho do pacote",
+      "Distância dividida pela velocidade de propagação do sinal"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.5"
+  },
+  {
+    "question": "Que latência acrescenta um nó intermédio store & forward ao percurso de um pacote, mesmo com a fila vazia?",
+    "answers": [
+      "O dobro do atraso de propagação do pacote entre os dois nós vizinhos",
+      "O tempo de transmissão do pacote, porque o recebe totalmente e só depois o emite",
+      "O tempo de espera por um ACK enviado pelo nó de destino do pacote",
+      "Nenhuma, porque o pacote é emitido assim que o primeiro bit é recebido"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.6"
+  },
+  {
+    "question": "Para que servem as filas (FIFO) dos nós intermédios?",
+    "answers": [
+      "Para calcular o código de validação de cada pacote antes de o emitir",
+      "Para guardar os pacotes recebidos quando o nó não consegue emiti-los à mesma taxa a que os recebe",
+      "Para guardar cópias dos pacotes enquanto aguardam o ACK do recetor final",
+      "Para ordenar os pacotes pelo número de sequência antes de os entregar à aplicação"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.6"
+  },
+  {
+    "question": "Qual é a diferença entre os modos store & forward e cut-through num nó intermédio?",
+    "answers": [
+      "No store & forward o pacote começa a ser emitido antes de ser totalmente recebido; no cut-through só depois",
+      "No store & forward o pacote é totalmente recebido antes de ser emitido; no cut-through começa a ser emitido antes disso",
+      "No store & forward os pacotes ficam numa fila FIFO; no cut-through ficam numa fila de prioridades",
+      "No store & forward o nó descarta os pacotes com erros; no cut-through reencaminha todos os pacotes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.7"
+  },
+  {
+    "question": "Um pacote de 1500 bytes é emitido a 100 Mbps. Qual é o tempo de transmissão?",
+    "answers": [
+      "1,2 ms",
+      "15 μs",
+      "12 μs",
+      "120 μs"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.5"
+  },
+  {
+    "question": "Um pacote de 1000 bytes é emitido a 10 Mbps. Qual é o tempo de transmissão?",
+    "answers": [
+      "800 μs",
+      "100 μs",
+      "80 μs",
+      "8 ms"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.5"
+  },
+  {
+    "question": "Um sinal propaga-se a 200 000 km/s num cabo com 2 km. Qual é o atraso de propagação?",
+    "answers": [
+      "10 ms",
+      "1 μs",
+      "100 μs",
+      "10 μs"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.5"
+  },
+  {
+    "question": "Um sinal propaga-se a 2×10^8 m/s numa ligação com 5000 km. Qual é o atraso de propagação?",
+    "answers": [
+      "25 ms",
+      "25 μs",
+      "2,5 ms",
+      "250 ms"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.5"
+  },
+  {
+    "question": "Dois nós partilham o mesmo meio, sem nós intermédios. O pacote tem 1250 bytes, a taxa é 10 Mbps, a distância é 400 m e o sinal propaga-se a 2×10^8 m/s. Qual é o packet delivery time?",
+    "answers": [
+      "1002 μs",
+      "2 μs",
+      "1000 μs",
+      "1,2 ms"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.5"
+  },
+  {
+    "question": "Um pacote de 125 bytes é enviado a 1 Mbps por um meio com 3 km, em que o sinal se propaga a 2×10^8 m/s. Qual é o packet delivery time?",
+    "answers": [
+      "1 ms",
+      "1,5 ms",
+      "1,15 ms",
+      "1,015 ms"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.5"
+  },
+  {
+    "question": "O emissor liga a um switch store & forward e este ao recetor, ambas as ligações a 100 Mbps. O pacote tem 1250 bytes; o atraso de propagação é desprezável e não há filas. Qual é o packet delivery time?",
+    "answers": [
+      "400 μs",
+      "100 μs",
+      "200 μs",
+      "300 μs"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.6"
+  },
+  {
+    "question": "Um pacote demora 500 μs a ser transmitido a 20 Mbps. Qual é o tamanho do pacote?",
+    "answers": [
+      "2500 bytes",
+      "10 000 bytes",
+      "625 bytes",
+      "1250 bytes"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.5"
+  },
+  {
+    "question": "A estratégia de dividir a comunicação em módulos sucessivos, designados camadas (layers), foi adotada desde os anos 70 devido à complexidade da comunicação em rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.11"
+  },
+  {
+    "question": "O princípio fundamental das camadas é que cada camada usa a camada abaixo e lhe acrescenta novas funcionalidades, disponibilizadas à camada acima.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.11"
+  },
+  {
+    "question": "As primeiras redes de computadores, nos anos 70, usavam arquiteturas proprietárias, em que cada fabricante desenvolvia o seu próprio sistema fechado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.12"
+  },
+  {
+    "question": "A SNA da IBM, a NetWare da Novell e a NetBIOS/SMB da Microsoft são exemplos de arquiteturas proprietárias.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.12"
+  },
+  {
+    "question": "O modelo OSI foi estabelecido pela ISO e descreve sete camadas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.13"
+  },
+  {
+    "question": "O modelo OSI descreve cinco camadas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.13"
+  },
+  {
+    "question": "A camada 2 do modelo OSI trabalha com pacotes universais e endereços universais.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.13"
+  },
+  {
+    "question": "A camada 2 do modelo OSI trabalha com pacotes e endereços locais.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.13"
+  },
+  {
+    "question": "A camada 1 do modelo OSI inclui o line coding, a modulação, o envio e a receção de sinais e os meios físicos (cabos e conectores).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.13"
+  },
+  {
+    "question": "No modelo OSI, as camadas sucessivas interagem segundo um modelo de chamada de serviços descendente, através de service access points (SAP).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.14"
+  },
+  {
+    "question": "A PCI (Protocol Control Information) é a informação de controlo que cada camada acrescenta aos dados vindos da camada superior.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.14"
+  },
+  {
+    "question": "Em cada camada, a PCI e a SDU (Service Data Unit) em conjunto formam a PDU (Protocol Data Unit).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.14"
+  },
+  {
+    "question": "A SDU é a informação de controlo que cada camada acrescenta ao pacote.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.14"
+  },
+  {
+    "question": "A SDU de uma camada corresponde aos dados (payload) recebidos da camada superior.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.14"
+  },
+  {
+    "question": "Num mesmo nó, a interação direta ocorre entre todas as camadas do modelo OSI em simultâneo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.15"
+  },
+  {
+    "question": "As camadas do mesmo nível, alojadas em nós diferentes, comunicam entre si através da PCI específica dessa camada, segundo um protocolo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.15"
+  },
+  {
+    "question": "A maior parte das implementações concretas propostas pelo modelo OSI foi amplamente adotada nas redes de computadores reais.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.16"
+  },
+  {
+    "question": "O modelo OSI é muitas vezes chamado modelo de referência, por ser um ponto de referência em qualquer discussão sobre redes de computadores.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.16"
+  },
+  {
+    "question": "Um dos motivos para o insucesso das implementações OSI foi os fabricantes não quererem abandonar as suas arquiteturas proprietárias.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.16"
+  },
+  {
+    "question": "O principal objetivo do OSI, unir as arquiteturas de rede para que todos os nós comuniquem entre si, acabou por ser alcançado pela arquitetura TCP/IP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.16"
+  },
+  {
+    "question": "A maioria das tecnologias LAN é normalizada pelo IEEE e pela ISO e corresponde às camadas 1 e 2 do modelo OSI.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.17"
+  },
+  {
+    "question": "A norma IEEE 802.3 (ISO 8802-3) identifica as redes Ethernet.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.17"
+  },
+  {
+    "question": "As redes Ethernet a 100 Mbps estão definidas na norma 802.3u e as redes Ethernet a 1 Gbps na norma 802.3z.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.17"
+  },
+  {
+    "question": "As redes Ethernet a 100 Mbps estão definidas na norma 802.3z e as redes Ethernet a 1 Gbps na norma 802.3u.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.17"
+  },
+  {
+    "question": "Na maioria das implementações reais da arquitetura IEEE 802 não se usa a camada LLC, interagindo-se diretamente com a camada MAC.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.17"
+  },
+  {
+    "question": "A camada MAC da arquitetura IEEE 802 implementa, além do controlo de acesso ao meio, o endereçamento de nós e a deteção de erros.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.17"
+  },
+  {
+    "question": "Nas redes locais atuais os mecanismos de controlo de acesso ao meio deixaram de ser usados na maior parte dos casos, com exceção das redes sem fios IEEE 802.11.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.17"
+  },
+  {
+    "question": "A arquitetura TCP/IP resultou de uma abordagem pragmática e minimalista, em que os problemas são resolvidos à medida que surgem.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.18"
+  },
+  {
+    "question": "O UDP é um protocolo de pacotes sem ligação (connectionless), sem fiabilidade, apenas com deteção de erros simples.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.18"
+  },
+  {
+    "question": "O TCP é um protocolo orientado à ligação, fiável, com controlo de fluxo por sliding window e controlo de erros.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.18"
+  },
+  {
+    "question": "Dos dois protocolos de transporte principais do TCP/IP, o mais usado na Internet é o UDP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.18"
+  },
+  {
+    "question": "O TCP/IP não define as camadas 1 e 2 do modelo OSI: espera que o IP use qualquer tecnologia de transmissão de pacotes de camada 2 existente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.19"
+  },
+  {
+    "question": "O IP define um formato de pacote universal e um endereçamento de nós universal, o que permite interligar redes de tipos diferentes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.19"
+  },
+  {
+    "question": "Os routers são os nós intermédios das redes IP e estão ligados a mais de uma rede de camada 2, que podem usar tecnologias diferentes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.19"
+  },
+  {
+    "question": "Um nó IP ligado a uma LAN consegue entregar diretamente pacotes a qualquer nó IP da Internet, sem necessidade de routers.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.19"
+  },
+  {
+    "question": "No IP, o encaminhamento é feito com base no endereço de rede e não no endereço de cada nó.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.20"
+  },
+  {
+    "question": "Cada endereço IP de nó é composto por duas partes: uma identifica a rede a que o nó pertence e a outra identifica o nó dentro dessa rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.20"
+  },
+  {
+    "question": "Para o UDP e o TCP, os destinos finais dos dados são as aplicações, identificadas por números de porta de 16 bits.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.20"
+  },
+  {
+    "question": "Os números de porta do UDP e do TCP têm 32 bits.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.20"
+  },
+  {
+    "question": "O IPv6 aumenta o tamanho dos endereços de nó de 32 para 128 bits.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.21"
+  },
+  {
+    "question": "O TCP e o UDP usam o IPv6 da mesma forma que usam o IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.21"
+  },
+  {
+    "question": "O IPv6 já substituiu totalmente o IPv4 na Internet.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.21"
+  },
+  {
+    "question": "O multiplexing, baseado em etiquetas (tags), garante que os dados de uma implementação X de uma camada, num nó, são entregues à mesma implementação X da camada no nó de destino.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.21"
+  },
+  {
+    "question": "Num pacote, a informação de controlo inclui normalmente o endereço de destino, o endereço de origem, uma etiqueta do tipo de dados e um número de sequência do pacote.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 extras p.3"
+  },
+  {
+    "question": "Quantas camadas descreve o modelo OSI?",
+    "answers": [
+      "Cinco camadas",
+      "Sete camadas",
+      "Seis camadas",
+      "Quatro camadas"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.13"
+  },
+  {
+    "question": "Qual é a ordem correta das camadas do modelo OSI, da camada 7 para a camada 1?",
+    "answers": [
+      "Application, Presentation, Session, Network, Transport, Logical link, Physical link",
+      "Application, Session, Presentation, Transport, Network, Logical link, Physical link",
+      "Application, Presentation, Transport, Session, Network, Logical link, Physical link",
+      "Application, Presentation, Session, Transport, Network, Logical link, Physical link"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.13"
+  },
+  {
+    "question": "Que funcionalidade caracteriza a camada 3 (network) do modelo OSI?",
+    "answers": [
+      "Pacotes universais e endereços universais",
+      "Pacotes locais e endereços locais",
+      "Transporte fiável de dados entre aplicações",
+      "Line coding e modulação dos sinais"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.13"
+  },
+  {
+    "question": "Que funcionalidade caracteriza a camada 2 (logical link) do modelo OSI?",
+    "answers": [
+      "Controlo do diálogo entre aplicações",
+      "Formato e representação dos dados",
+      "Pacotes locais e endereços locais",
+      "Pacotes universais e endereços universais"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.13"
+  },
+  {
+    "question": "Que funcionalidade caracteriza a camada 4 (transport) do modelo OSI?",
+    "answers": [
+      "Pacotes locais e endereços locais",
+      "Controlo do diálogo entre aplicações",
+      "Transporte fiável",
+      "Pacotes universais e endereços universais"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.13"
+  },
+  {
+    "question": "Que funcionalidade caracteriza a camada 5 (session) do modelo OSI?",
+    "answers": [
+      "Aplicações de rede para os utilizadores",
+      "Transporte fiável de dados entre nós",
+      "Formato e representação dos dados",
+      "Controlo do diálogo (dialog control)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.13"
+  },
+  {
+    "question": "Que funcionalidade caracteriza a camada 6 (presentation) do modelo OSI?",
+    "answers": [
+      "Formato e representação dos dados",
+      "Transporte fiável entre dois nós",
+      "Controlo do diálogo entre aplicações",
+      "Pacotes locais e endereços locais"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.13"
+  },
+  {
+    "question": "Que camada do modelo OSI trata do line coding, da modulação e dos meios físicos (cabos e conectores)?",
+    "answers": [
+      "A camada 1 (physical link)",
+      "A camada 2 (logical link)",
+      "A camada 4 (transport)",
+      "A camada 3 (network)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.13"
+  },
+  {
+    "question": "O que significa a sigla PCI no modelo OSI?",
+    "answers": [
+      "Protocol Control Information, a informação de controlo acrescentada por cada camada",
+      "Protocol Control Interface, a interface entre camadas vizinhas da pilha",
+      "Packet Control Identifier, o identificador do pacote ao longo da rede",
+      "Physical Connection Interface, a ligação ao meio físico de transmissão"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.14"
+  },
+  {
+    "question": "O que designa a sigla SDU (Service Data Unit)?",
+    "answers": [
+      "Os dados (payload) que uma camada recebe da camada superior",
+      "O ponto de acesso através do qual a camada usa os serviços da inferior",
+      "O pacote completo que a camada entrega à camada inferior",
+      "A informação de controlo que a camada acrescenta aos dados recebidos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.14"
+  },
+  {
+    "question": "O que designa a sigla PDU (Protocol Data Unit)?",
+    "answers": [
+      "Apenas os dados recebidos da camada imediatamente superior",
+      "O conjunto da PCI e da SDU, ou seja, o pacote dessa camada",
+      "Apenas a informação de controlo acrescentada pela própria camada",
+      "O ponto de acesso entre duas camadas consecutivas da pilha"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.14"
+  },
+  {
+    "question": "O que são os service access points (SAP) do modelo OSI?",
+    "answers": [
+      "As portas físicas dos equipamentos de rede onde se ligam os cabos",
+      "Os endereços dos nós intermédios da rede por onde passa o pacote",
+      "Os campos do cabeçalho que identificam o protocolo da camada superior",
+      "Os pontos através dos quais uma camada usa os serviços da camada imediatamente abaixo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.14"
+  },
+  {
+    "question": "Como comunicam, no modelo OSI, camadas do mesmo nível alojadas em nós diferentes?",
+    "answers": [
+      "Através da PCI própria dessa camada, seguindo o protocolo dessa camada",
+      "Através de service access points ligados aos nós vizinhos da rede",
+      "Diretamente, sem usar qualquer informação de controlo adicional",
+      "Através da camada física, que lê a PCI de todas as camadas do pacote"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.15"
+  },
+  {
+    "question": "Porque é que a maioria das implementações concretas propostas pelo OSI nunca foi amplamente adotada?",
+    "answers": [
+      "Porque o OSI não definia camadas suficientes para descrever as redes locais da época",
+      "Porque a ISO proibiu a sua utilização em redes comerciais de grande dimensão",
+      "Porque os fabricantes não queriam abandonar as suas arquiteturas proprietárias e recomeçar do zero",
+      "Porque o OSI exigia o uso exclusivo de fibra ótica em toda a camada física"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.16"
+  },
+  {
+    "question": "Qual é a importância do modelo OSI, apesar do insucesso das suas implementações?",
+    "answers": [
+      "Impôs o uso do IP como protocolo de camada 3 em todas as redes de computadores existentes",
+      "É um ponto de referência (conceitos, normas e nomenclatura) em qualquer discussão sobre redes de computadores",
+      "Definiu o formato das tramas Ethernet que continuam a ser usadas nas redes locais atuais",
+      "Foi o modelo efetivamente implementado na Internet, que substituiu as arquiteturas proprietárias"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.16"
+  },
+  {
+    "question": "Que camadas do modelo OSI correspondem às tecnologias LAN normalizadas pela arquitetura IEEE 802?",
+    "answers": [
+      "As camadas 5, 6 e 7",
+      "As camadas 1, 2 e 3",
+      "As camadas 1 e 2",
+      "As camadas 3 e 4"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.17"
+  },
+  {
+    "question": "Que norma identifica as redes Ethernet?",
+    "answers": [
+      "IEEE 802.5 (ISO 8802-5)",
+      "IEEE 802.3 (ISO 8802-3)",
+      "IEEE 802.15 (ISO 8802-15)",
+      "IEEE 802.11 (ISO 8802-11)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.17"
+  },
+  {
+    "question": "Que norma define as redes Ethernet a 100 Mbps?",
+    "answers": [
+      "802.3u",
+      "802.5u",
+      "802.3z",
+      "802.11u"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.17"
+  },
+  {
+    "question": "Que norma define as redes Ethernet a 1 Gbps?",
+    "answers": [
+      "802.5z",
+      "802.3z",
+      "802.11z",
+      "802.3u"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.17"
+  },
+  {
+    "question": "Porque é que a camada MAC permite, na maioria das implementações IEEE 802, dispensar a camada LLC?",
+    "answers": [
+      "Porque implementa, além do controlo de acesso ao meio, o endereçamento de nós e a deteção de erros",
+      "Porque a camada LLC só é necessária nas redes sem fios IEEE 802.11, e não nas cablagens",
+      "Porque a camada física já garante a entrega dos pacotes sem erros, dispensando a camada LLC",
+      "Porque a camada LLC foi substituída pelo protocolo IP em todas as redes locais atuais"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.17"
+  },
+  {
+    "question": "Qual é a grande exceção, nas redes locais atuais, ao abandono dos mecanismos de controlo de acesso ao meio?",
+    "answers": [
+      "As redes baseadas em circuitos virtuais",
+      "As redes sem fios IEEE 802.11",
+      "As redes que usam endereçamento IPv6",
+      "As redes Ethernet com switches"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.17"
+  },
+  {
+    "question": "Que camadas do modelo OSI não são definidas pela arquitetura TCP/IP?",
+    "answers": [
+      "As camadas 3 e 4 (network e transport)",
+      "Apenas a camada 4 (transport)",
+      "As camadas 5, 6 e 7 (session, presentation e application)",
+      "As camadas 1 e 2 (physical link e logical link)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.19"
+  },
+  {
+    "question": "Quais são os protocolos de transporte mais importantes da arquitetura TCP/IP?",
+    "answers": [
+      "ARP e UDP",
+      "IP e TCP",
+      "UDP e TCP",
+      "ICMP e IP"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.18"
+  },
+  {
+    "question": "Que característica distingue o UDP do TCP?",
+    "answers": [
+      "O UDP é orientado à ligação e fiável, enquanto o TCP não tem ligação nem fiabilidade",
+      "O UDP não tem ligação nem fiabilidade, só deteção simples de erros; o TCP é orientado à ligação e fiável",
+      "O UDP funciona na camada de rede e o TCP na camada de ligação lógica",
+      "O UDP usa sliding window no controlo de fluxo e o TCP não tem controlo de fluxo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.18"
+  },
+  {
+    "question": "Qual é a vantagem de o TCP/IP não definir as camadas 1 e 2?",
+    "answers": [
+      "Obriga todas as redes a usar Ethernet na camada 2, o que simplifica o encaminhamento dos pacotes",
+      "O IP pode usar qualquer tecnologia de camada 2, o que permite interligar redes de tipos diferentes",
+      "Elimina a necessidade de endereços de nó nas redes locais de camada 2 que usam IP",
+      "Permite que o TCP corrija os erros de transmissão que ocorrem na camada física"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.19"
+  },
+  {
+    "question": "Qual é a função de um router numa rede IP?",
+    "answers": [
+      "Atribuir números de porta às aplicações dos nós da rede local",
+      "Transferir pacotes IP entre redes de camada 2, mesmo que estas usem tecnologias diferentes",
+      "Garantir a entrega fiável dos pacotes através de ACK e NACK",
+      "Converter pacotes IP em tramas Ethernet sem os reencaminhar para outras redes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.19"
+  },
+  {
+    "question": "Em que se baseia o encaminhamento IP?",
+    "answers": [
+      "No número de porta da aplicação de destino indicado no cabeçalho UDP ou TCP",
+      "No endereço de camada 2 do nó de origem de cada pacote que o router recebe",
+      "Numa tabela de circuitos virtuais configurada previamente entre os dois nós",
+      "No endereço de rede do endereço IP de destino, e não em endereços de nós individuais"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.20"
+  },
+  {
+    "question": "Quantos bits tem um número de porta UDP ou TCP?",
+    "answers": [
+      "128 bits",
+      "32 bits",
+      "16 bits",
+      "8 bits"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.20"
+  },
+  {
+    "question": "Quantos bits tem um endereço IPv4?",
+    "answers": [
+      "48 bits",
+      "16 bits",
+      "32 bits",
+      "128 bits"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.21"
+  },
+  {
+    "question": "Quantos bits tem um endereço IPv6?",
+    "answers": [
+      "32 bits",
+      "128 bits",
+      "64 bits",
+      "48 bits"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.21"
+  },
+  {
+    "question": "O que significa dual-stack?",
+    "answers": [
+      "A existência de dois routers redundantes na mesma rede local",
+      "A utilização de duas tecnologias de camada 2 no mesmo nó terminal",
+      "A implementação simultânea do IPv4 e do IPv6 nos nós terminais",
+      "A utilização simultânea de TCP e UDP numa mesma aplicação"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.21"
+  },
+  {
+    "question": "O que são os números de porta (port numbers) do UDP e do TCP?",
+    "answers": [
+      "Identificadores dos circuitos virtuais estabelecidos pelo protocolo TCP entre dois nós",
+      "Endereços de 32 bits que identificam o nó de destino dentro da rede de camada 3",
+      "Etiquetas de 16 bits que identificam a aplicação de destino dentro do nó, como endereços internos ao nó",
+      "Números de sequência usados pelo sliding window protocol para identificar pacotes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.20"
+  },
+  {
+    "question": "Que valor do campo de protocolo do cabeçalho IP identifica o TCP?",
+    "answers": [
+      "17",
+      "6",
+      "80",
+      "1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.22"
+  },
+  {
+    "question": "Que valor do campo de protocolo do cabeçalho IP identifica o UDP?",
+    "answers": [
+      "6",
+      "23",
+      "1",
+      "17"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.22"
+  },
+  {
+    "question": "Que valor do campo de protocolo do cabeçalho IP identifica o ICMP?",
+    "answers": [
+      "1",
+      "17",
+      "80",
+      "6"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.22"
+  },
+  {
+    "question": "Que valor do campo E-TYPE de uma trama Ethernet identifica o IPv4?",
+    "answers": [
+      "0x0806",
+      "0x8137",
+      "0x86DD",
+      "0x0800"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.22"
+  },
+  {
+    "question": "Que valor do campo E-TYPE de uma trama Ethernet identifica o IPv6?",
+    "answers": [
+      "0x86DD",
+      "0x0800",
+      "0x0806",
+      "0x8137"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.22"
+  },
+  {
+    "question": "Que valor do campo E-TYPE de uma trama Ethernet identifica o ARP?",
+    "answers": [
+      "0x86DD",
+      "0x8137",
+      "0x0800",
+      "0x0806"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.22"
+  },
+  {
+    "question": "No modelo cliente-servidor, o que tem o cliente de conhecer para contactar o servidor?",
+    "answers": [
+      "O endereço do nó do cliente, para o enviar ao servidor no pedido",
+      "Apenas o número de porta que o cliente usa na sua própria aplicação",
+      "O endereço do nó do servidor e o número de porta do serviço pretendido",
+      "O número de sequência do primeiro pacote que o servidor vai enviar"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.23"
+  },
+  {
+    "question": "No modelo cliente-servidor, como fica o servidor a saber o endereço e a porta do cliente?",
+    "answers": [
+      "Porque o cliente os configura previamente no servidor, antes de cada pedido",
+      "Porque são fixos para cada tipo de serviço, tal como a porta do servidor",
+      "Porque o utilizador os indica ao servidor depois de receber a resposta",
+      "Verificando o endereço e a porta de origem do pedido que recebeu"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.23"
+  },
+  {
+    "question": "Qual é a sequência do diálogo cliente-servidor?",
+    "answers": [
+      "O servidor envia dados periodicamente ao cliente, que se limita a confirmar a receção",
+      "O cliente envia um pedido, o servidor processa-o enquanto o cliente espera e, no fim, o servidor responde",
+      "O servidor envia um pedido, o cliente processa-o enquanto o servidor espera e, no fim, o cliente responde",
+      "O cliente envia um pedido e o servidor responde logo, sem chegar a processar o pedido"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.23"
+  },
+  {
+    "question": "Como é normalmente fornecido ao cliente o endereço de rede do servidor?",
+    "answers": [
+      "Pelo router, que o acrescenta ao cabeçalho de cada pacote enviado",
+      "Pelo utilizador, possivelmente sob a forma de um nome de host (hostname)",
+      "Pelo servidor, que o envia ao cliente antes de receber qualquer pedido",
+      "Pelo número de porta, que o cliente converte automaticamente em endereço"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.23"
+  },
+  {
+    "question": "O número de porta de um serviço, no modelo cliente-servidor, é...",
+    "answers": [
+      "igual ao número de sequência do primeiro pacote do pedido",
+      "indicado pelo router sempre que o cliente contacta o servidor",
+      "normalmente fixo (standard) para cada tipo de serviço",
+      "escolhido ao acaso pelo servidor em cada novo pedido do cliente"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.23"
+  },
+  {
+    "question": "Se o código calculado pelo recetor for diferente do código recebido, existe apenas uma probabilidade de ter ocorrido um erro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.3"
+  },
+  {
+    "question": "O código de deteção de erros é sempre colocado no tail, nunca no cabeçalho do pacote.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.2"
+  },
+  {
+    "question": "Na FEC, o recetor tem de pedir sempre ao emissor a retransmissão do pacote que contém erros.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.4"
+  },
+  {
+    "question": "A BEC permite ao recetor corrigir de imediato e sozinho qualquer erro, por mais extenso que seja.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.4"
+  },
+  {
+    "question": "A eficiência da BEC é independente dos atrasos da rede entre o emissor e o recetor.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.4"
+  },
+  {
+    "question": "No stop and wait, o emissor envia uma rajada de W pacotes antes de esperar pelo ACK.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.8"
+  },
+  {
+    "question": "No sliding window protocol, o emissor nunca precisa de parar, qualquer que seja o tamanho da janela.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.9"
+  },
+  {
+    "question": "No sliding window protocol, o emissor só pode enviar o pacote seguinte depois de receber o ACK do pacote anterior.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.8"
+  },
+  {
+    "question": "O controlo de fluxo tem como objetivo corrigir os erros detetados nos pacotes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.8"
+  },
+  {
+    "question": "O ARQ combinado com o stop and wait designa-se continuous ARQ.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.10"
+  },
+  {
+    "question": "O recetor pede a retransmissão de um pacote enviando um ACK com o número de sequência desse pacote.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.10"
+  },
+  {
+    "question": "Quanto maior for a distância entre o emissor e o recetor, maior é o tempo de transmissão do pacote.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.5"
+  },
+  {
+    "question": "Num nó intermédio store & forward, o tempo de transmissão não se soma à latência, porque o nó emite logo que recebe o primeiro bit.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.6"
+  },
+  {
+    "question": "As filas dos nós intermédios servem para ordenar os pacotes pelo número de sequência antes de os emitir.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.6"
+  },
+  {
+    "question": "O modelo OSI foi criado pelo IEEE e descreve quatro camadas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.13"
+  },
+  {
+    "question": "A camada 3 do modelo OSI é responsável pelo transporte fiável dos dados entre aplicações.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.13"
+  },
+  {
+    "question": "No modelo OSI, a camada 5 (session) trata do formato e da representação dos dados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.13"
+  },
+  {
+    "question": "No modelo OSI, o payload de cada camada designa-se PCI.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.14"
+  },
+  {
+    "question": "No modelo OSI, a PDU de uma camada é apenas a informação de controlo acrescentada por essa camada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.14"
+  },
+  {
+    "question": "O modelo OSI foi um grande sucesso em implementações concretas e tornou-se a arquitetura da Internet.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.16"
+  },
+  {
+    "question": "A arquitetura IEEE 802 especifica a camada de rede e a camada de transporte do modelo OSI.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.17"
+  },
+  {
+    "question": "A arquitetura TCP/IP define implementações para a camada física e para a camada de ligação lógica do modelo OSI.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.19"
+  },
+  {
+    "question": "A arquitetura TCP/IP foi desenvolvida com um extenso planeamento teórico, ao contrário do modelo OSI.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.18"
+  },
+  {
+    "question": "O UDP é um protocolo orientado à ligação e fiável, com controlo de fluxo por sliding window.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.18"
+  },
+  {
+    "question": "Os números de porta identificam o nó dentro da rede, enquanto os endereços IP identificam a aplicação.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.20"
+  },
+  {
+    "question": "Os routers só podem interligar redes de camada 2 que utilizem a mesma tecnologia.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.19"
+  },
+  {
+    "question": "O IPv6 reduz o tamanho dos endereços de nó de 128 para 32 bits.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.21"
+  },
+  {
+    "question": "A estratégia dual-stack consiste em implementar o TCP e o UDP no mesmo nó terminal.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.21"
+  },
+  {
+    "question": "No modelo cliente-servidor, o servidor tem de conhecer previamente o endereço do cliente para poder responder.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.23"
+  },
+  {
+    "question": "No modelo cliente-servidor, todos os serviços exigem sempre uma resposta do servidor.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.23"
+  }
+]
