@@ -8396,14 +8396,14 @@
       "question": "É sempre possível diminuir o tamanho de uma estrutura alinhada alterando a ordem dos seus campos",
       "answers": ["FALSO", "VERDADEIRO"],
       "correct_index": 0,
-      "repeated": [69, 111],
+      "repeated": [69, 110],
       "in_plan": true
     },
     {
       "question": "Uma estrutura, alinhada de acordo com as regras estudadas, com um vector de 2 char, 1 int e 1 short (por esta ordem) ocupa 12 bytes",
       "answers": ["VERDADEIRO", "FALSO"],
       "correct_index": 0,
-      "repeated": [112],
+      "repeated": [111],
       "in_plan": true
     },
     {
@@ -8440,7 +8440,7 @@
       "question": "Em IA32 é usada a stack para armazenar o valor de retorno de uma função, à semelhança do que acontece com o seu endereço de retorno",
       "answers": ["FALSO", "VERDADEIRO"],
       "correct_index": 0,
-      "repeated": [37, 54, 108],
+      "repeated": [37, 54],
       "in_plan": false,
       "translation": {
         "question": "Em RV32 é usada a stack para armazenar o valor de retorno de uma função, à semelhança do que acontece com o seu endereço de retorno",
@@ -8559,7 +8559,7 @@
       "question": "De acordo com a convenção usada em Linux/IA32, a responsabilidade de salvaguarda e restauro de %esi é da função invocada",
       "answers": ["VERDADEIRO", "FALSO"],
       "correct_index": 0,
-      "repeated": [114],
+      "repeated": [113],
       "in_plan": false,
       "translation": {
         "question": "De acordo com a convenção usada em Linux/RV32, a responsabilidade de salvaguarda e restauro de s1 é da função invocada",
@@ -8699,7 +8699,7 @@
       "question": "Em IA32, a stack é usada para suportar a passagem do valor de retorno de uma função invocada à função invocadora",
       "answers": ["FALSO", "VERDADEIRO"],
       "correct_index": 0,
-      "repeated": [5, 54, 108],
+      "repeated": [5, 54],
       "in_plan": false,
       "translation": {
         "question": "Em RV32, a stack é usada para suportar a passagem do valor de retorno de uma função invocada à função invocadora",
@@ -8815,7 +8815,7 @@
       "question": "O tamanho de uma union sujeita a alinhamento pode ser menor se indicarmos os seus campos por ordem crescente do seu tamanho",
       "answers": ["FALSO", "VERDADEIRO"],
       "correct_index": 0,
-      "repeated": [110],
+      "repeated": [109],
       "in_plan": true
     },
     {
@@ -8828,7 +8828,7 @@
       "question": "Em IA32, a stack é usada para suportar o retorno do valor de saída de uma função, tal como acontece com o controlo de fluxo",
       "answers": ["FALSO", "VERDADEIRO"],
       "correct_index": 0,
-      "repeated": [5, 37, 108],
+      "repeated": [5, 37],
       "in_plan": false,
       "translation": {
         "question": "Em RV32, a stack é usada para suportar o retorno do valor de saída de uma função, tal como acontece com o controlo de fluxo",
@@ -8944,7 +8944,7 @@
       "question": "O tamanho de uma estrutura é garantidamente menor se indicarmos os seus campos por ordem decrescente do seu tamanho",
       "answers": ["FALSO", "VERDADEIRO"],
       "correct_index": 0,
-      "repeated": [0, 111],
+      "repeated": [0, 110],
       "in_plan": true
     },
     {
@@ -8962,7 +8962,7 @@
       "question": "Admita a matriz global int m[4][5]. No Assembly, acedemos ao endereço de m[i] calculando m + i*20",
       "answers": ["VERDADEIRO", "FALSO"],
       "correct_index": 0,
-      "repeated": [113],
+      "repeated": [112],
       "in_plan": true
     },
     {
@@ -9233,18 +9233,6 @@
       "answers": ["FALSO", "VERDADEIRO"],
       "correct_index": 0,
       "in_plan": false
-    },
-    {
-      "question": "Em IA32, a stack é usada para suportar o retorno do valor de saída de uma função, tal como acontece com o controlo de fluxo",
-      "answers": ["FALSO", "VERDADEIRO"],
-      "correct_index": 0,
-      "repeated": [5, 37, 54],
-      "in_plan": false,
-      "translation": {
-        "question": "Em RV32, a stack é usada para suportar o retorno do valor de saída de uma função, tal como acontece com o controlo de fluxo",
-        "answers": ["FALSO", "VERDADEIRO"],
-        "correct_index": 0
-      }
     },
     {
       "question": "O compilador não tem qualquer dificuldade em mover a invocação de funções para outro local do programa com vista à sua optimização",
