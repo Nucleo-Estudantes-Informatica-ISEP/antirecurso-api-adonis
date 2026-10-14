@@ -82,6 +82,18 @@ You can verify the status of the migrations at any time using:
 node ace migration:status
 ```
 
+#### Optional: seed the AI-generated question banks
+
+`database/data/ai_generated/<subject>/*.json` holds curated, AI-generated question banks (currently `arqcp`, RV32). They are stored with `source = 'AI_GENERATED'` and are **not** part of the default seed. Load them explicitly, after the migrations:
+
+```bash
+node ace db:seed --files database/seeders/ai_generated_questions_seeder.ts
+```
+
+The seeder validates every file first and aborts without writing anything if a record is invalid (text over 255 characters, `correct_index` out of range, duplicate question text, `source` other than `AI_GENERATED`). It then upserts the questions in a single transaction, so running it again does not create duplicates. Questions use the exam value `<slug>-ai-generated`, which keeps them apart from the real-exam questions of `questions.json`.
+
+The `in_plan` and `ref` review fields in the JSON files are metadata only and are not stored. Never run this against production without explicit authorization and a backup.
+
 ### 5. Start Development Server
 
 Run the AdonisJS development server with Hot Module Replacement (HMR) enabled:
@@ -126,7 +138,9 @@ The events feature is covered by these admin-only routes:
 │   ├── auth.ts           # Authentication configuration
 │   └── ...
 ├── database/
-│   └── migrations/       # Schema definition files
+│   ├── data/             # Question banks (questions.json, ai_generated/<subject>/*.json)
+│   ├── migrations/       # Schema definition files
+│   └── seeders/          # Question seeders (real exams and AI-generated banks)
 ├── start/
 │   ├── env.ts            # Environment variable validation
 │   ├── routes.ts         # All application endpoint definitions
@@ -223,16 +237,21 @@ The web client must request `urn:zitadel:iam:org:project:id:<AUTH_PROJECT_ID>:au
 `openid email profile offline_access`). The API authorizes the resulting signed `aud` claim rather
 than trusting a client-supplied scope string.
 
-Project roles are normalized to `student`, `nei_member`, `admin`, and `employee` from the standard
-ZITADEL project-role claim (including project-ID claim variants). Authenticated application routes
-accept any valid identity with the AntiRecurso audience; they do not require a `student` role. Admin
-middleware and controller checks require `admin` from the validated token. AuthNEI owns the current
-name, email, verification state, picture, and roles. Local name, email, and verification columns are
-synchronized lookup/search caches, never authorization inputs.
+Only `admin` is retained in normalized application roles. Authenticated application routes accept
+valid identities with the AntiRecurso audience and verified email; they do not require a `student`
+role. Account-resolution and resource-ownership checks still apply. Admin middleware and controller
+checks additionally require `admin` from validated AuthNEI claims. Other role names do not grant
+separate application privileges. AuthNEI owns the current name, email, verification state, picture,
+and roles. Local name, email, and verification columns are synchronized lookup/search caches,
+never authorization inputs.
 
-Set `AUTH_ROLE_CLAIM` only when the shared NEI Platform project emits a custom claim name. The
-default is `urn:zitadel:iam:org:project:roles`.
+Roles are read only from the claim selected by `AUTH_ROLE_CLAIM`, which defaults to
+`urn:zitadel:iam:org:project:roles`. Set it to the shared NEI Platform project's claim name when
+using that project's admin assertions. When a project-specific claim is configured, other project
+claims and the generic claim cannot grant admin access.
 
 ## CI/CD gate
 
 Every PR to `main` uses `npm ci` and must pass lint, typecheck, Japa tests, migrations against isolated PostgreSQL, production build and dependency audit, a non-root production Docker image, and Gitleaks. Green CI does not prove deployment: confirm the deployed SHA, migration status, `GET /`, exact CORS behavior, shared limits, storage promotion, and owner/admin boundaries after rollout.
+
+Account deletion, comment reporting/blocking, admin moderation and upload-owner rollout: [Mobile safety contracts](docs/MOBILE_SAFETY.md).

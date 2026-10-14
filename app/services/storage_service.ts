@@ -60,12 +60,7 @@ export default class StorageService {
     return `distribution/${target}/${id}`
   }
 
-  async uploadNote(
-    id: string,
-    stream: Readable,
-    contentType: string | null,
-    contentLength: number | null
-  ) {
+  async readNoteUpload(stream: Readable, contentType: string | null, contentLength: number | null) {
     this.assertConfigured()
     if (
       !Number.isSafeInteger(contentLength) ||
@@ -87,6 +82,16 @@ export default class StorageService {
       throw new StorageRequestError('Uploaded PDF length does not match', 400)
     const body = Buffer.concat(chunks)
     validateUploadedPdf({ contentType, contentLength: size, prefix: body.subarray(0, 5) })
+    return body
+  }
+
+  async uploadNote(id: string, body: Buffer) {
+    this.assertConfigured()
+    validateUploadedPdf({
+      contentType: 'application/pdf',
+      contentLength: body.length,
+      prefix: body.subarray(0, 5),
+    })
     const key = this.buildUploadedPath('notes', id)
     if (await this.exists(key)) throw new StorageRequestError('Upload already exists', 409)
     await this.client!.send(
@@ -139,7 +144,17 @@ export default class StorageService {
       this.buildUploadedPath('notes', uploadId),
       this.buildDistributionPath('notes', uploadId),
     ]) {
-      await this.client!.send(new DeleteObjectCommand({ Bucket: this.bucket, Key }))
+      try {
+        await this.client!.send(new DeleteObjectCommand({ Bucket: this.bucket, Key }))
+      } catch (error) {
+        if (!(
+          error &&
+          typeof error === 'object' &&
+          '$metadata' in error &&
+          (error.$metadata as { httpStatusCode?: number }).httpStatusCode === 404
+        ))
+          throw error
+      }
     }
   }
 

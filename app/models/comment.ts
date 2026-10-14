@@ -17,6 +17,9 @@ export default class Comment extends BaseModel {
   @column()
   declare questionId: number
 
+  @column.dateTime()
+  declare hiddenAt: DateTime | null
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
