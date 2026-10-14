@@ -238,7 +238,6 @@
       "question": "Um “target” iSCSI pode ser implementado com recurso a “hardware” corrente e um sistema operativo corrente",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [306],
       "in_plan": true
     },
     {
@@ -275,7 +274,6 @@
       "question": "Não é possível implementar uma SAN com recurso a hardware de rede corrente como por exemplo “Gigabit Ethernet”",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [307],
       "in_plan": true
     },
     {
@@ -288,7 +286,6 @@
       "question": "A virtualização sem recurso a uma SAN não permite que um mesmo disco seja usado por vários servidores virtuais",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [308],
       "in_plan": true
     },
     {
@@ -301,14 +298,13 @@
       "question": "A virtualização de servidores reduz os custos operacionais",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [309, 323, 696],
+      "repeated": [293, 664],
       "in_plan": true
     },
     {
       "question": "Para cada servidor virtual é necessário existir um CPU físico (real) na plataforma de virtualização",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [274],
       "in_plan": true
     },
     {
@@ -321,28 +317,24 @@
       "question": "O custo operacional que mais importante de um CPD é o custo com o pessoal para a sua administração",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [275],
       "in_plan": true
     },
     {
       "question": "Num CPD (“Centro de Processamento de Dados”) o número de servidores não afeta o consumo energético.",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [276],
       "in_plan": true
     },
     {
       "question": "A gestão da base de dados de utilizadores do sistema não é da responsabilidade do administrador de sistemas.",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [277],
       "in_plan": true
     },
     {
       "question": "Um objeto de uma base de dados LDAP tem de usar todos os atributos definidos nas classes a que pertence",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [300],
       "in_plan": true
     },
     {
@@ -361,7 +353,6 @@
       "question": "O servidor LDAP nunca pode ser usado diretamente para validar credenciais, é necessário usar o servidor RADIUS",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [301],
       "in_plan": true
     },
     {
@@ -380,14 +371,12 @@
       "question": "O protocolo RADIUS (“Remote Authentication Dial In User Service”) utiliza pacotes UDP para todas as transações",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [302],
       "in_plan": true
     },
     {
       "question": "O protocolo de autenticação PAP (“Password Authentication Protocol”) não é seguro em nenhum tipo de aplicação",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [303],
       "in_plan": true
     },
     {
@@ -418,14 +407,12 @@
       "question": "A manutenção de cópias de segurança atualizadas permite minimizar a possibilidade de ocorrência de falhas",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [304],
       "in_plan": true
     },
     {
       "question": "A deteção de intrusos é um meio de reduzir as consequências das falhas",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [305],
       "in_plan": true
     },
     {
@@ -474,7 +461,6 @@
       "question": "Na posse de uma mensagem cifrada e o respetivo original torna-se possível “quebrar” a chave por “força bruta”",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [296],
       "in_plan": true
     },
     {
@@ -517,7 +503,6 @@
       "question": "Muitos ataques de “IP Spoofing” podem ser evitados com recurso a ACLs estáticas",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [298],
       "in_plan": true
     },
     {
@@ -560,7 +545,6 @@
       "question": "O KERBEROS garante a confidencialidade dos dados transacionados entre os PRINCIPAL",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [299],
       "in_plan": true
     },
     {
@@ -573,7 +557,7 @@
       "question": "O único tipo de SAN (“Storage Area Network”) que permite a utilização da pilha TCP/IP é o iSCSI",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [585],
+      "repeated": [553],
       "in_plan": true
     },
     {
@@ -592,28 +576,28 @@
       "question": "A virtualização de servidores reduz os custos, mas aumenta a complexidade das tarefas de administração",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [586],
+      "repeated": [554],
       "in_plan": true
     },
     {
       "question": "A virtualização de “hardware” permite criar novos servidores sem aumentar a quantidade de equipamento",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
-      "repeated": [565, 656],
+      "repeated": [533, 624],
       "in_plan": true
     },
     {
       "question": "O CPD (“Centro de Processamento de Dados”) é o local de trabalho permanente do administrador de sistemas e operadores.",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [587],
+      "repeated": [555],
       "in_plan": true
     },
     {
       "question": "O administrador de sistemas é o responsável pela salvaguarda de sistemas e dados (“backup”)",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [588],
+      "repeated": [556],
       "in_plan": true
     },
     {
@@ -632,7 +616,6 @@
       "question": "A técnica RED (“Random Early Detection”) descarta (“drop”) pacotes mesmo que a fila não esteja completamente cheia",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [328],
       "in_plan": true
     },
     {
@@ -651,14 +634,12 @@
       "question": "No algoritmo “Custom Queuing” um pacote prioritário pode ficar mais tempo retido do que um de baixa prioridade",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [292],
       "in_plan": true
     },
     {
       "question": "A fragmentação e “Interleaving” de tráfego IP é uma técnica de gestão das filas nos “routers”",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [293],
       "in_plan": true
     },
     {
@@ -701,14 +682,14 @@
       "question": "Nas cifras de chave simétrica para desencriptar é necessário usar a mesma chave que foi usada na encriptação",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [611],
+      "repeated": [579],
       "in_plan": true
     },
     {
       "question": "A continuidade de negócio de categoria 6 (“Tier 6”) pressupõe valores de RTO entre 24 e 48 horas",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [612],
+      "repeated": [580],
       "in_plan": false
     },
     {
@@ -733,7 +714,7 @@
       "question": "Num sistema de “storage” com “mirroring” síncrono o RPO (“Recovery Point Objective”) é nulo",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [613],
+      "repeated": [581],
       "in_plan": true
     },
     {
@@ -746,28 +727,28 @@
       "question": "O sistema RAID 1 assegura a disponibilidade desde que pelo menos um dos discos se mantenha operacional",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [614],
+      "repeated": [582],
       "in_plan": true
     },
     {
       "question": "Uma “common-mode fault” é uma falha que afeta apenas um dos componentes de um sistema redundante",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [615],
+      "repeated": [583],
       "in_plan": true
     },
     {
       "question": "Um sistema designa-se “fail safe” se a falha de um componente não provoca qualquer degradação do desempenho",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [616],
+      "repeated": [584],
       "in_plan": true
     },
     {
       "question": "Um sistema de alta disponibilidade do tipo “três noves” tem uma disponibilidade superior a 99%",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [617],
+      "repeated": [585],
       "in_plan": true
     },
     {
@@ -780,7 +761,7 @@
       "question": "O parâmetro MTBF (“Mean Time Between Failures”) e o parâmetro FIT (“Failures In Time”) não têm qualquer relação entre si",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [140, 618],
+      "repeated": [586],
       "in_plan": true
     },
     {
@@ -793,42 +774,42 @@
       "question": "O FCoE (“Fibre Channel over Ethernet”) não utiliza a pilha de protocolos TCP/IP",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [619],
+      "repeated": [587],
       "in_plan": true
     },
     {
       "question": "Nas implementações iSCSI, a opção de ligação que garante a melhor performance é o TOE (“TCP/IP Offload Engine”)",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [620],
+      "repeated": [588],
       "in_plan": true
     },
     {
       "question": "A funcionalidade “stateful packet inspection” (SPI) não está presente nos “firewalls” estáticos",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [638],
+      "repeated": [606],
       "in_plan": true
     },
     {
       "question": "Para um pacote com determinadas caraterísticas, um “firewall” do tipo “packet-filter” tem sempre o mesmo comportamento.",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [130, 639],
+      "repeated": [607],
       "in_plan": true
     },
     {
       "question": "O TLS exige sempre a utilização de uma cifra de chave assimétrica com troca de certificados de chave pública",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [131, 603],
+      "repeated": [571],
       "in_plan": true
     },
     {
       "question": "No TLS (“Transport Layer Security”) quem decide a versão que vai ser usada é o servidor",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [132, 604],
+      "repeated": [572],
       "in_plan": true
     },
     {
@@ -841,42 +822,42 @@
       "question": "A utilização do sistema KERBEROS sem pré-autenticação não garante a autenticidade nas comunicações entre os “principal”",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [133, 605],
+      "repeated": [573],
       "in_plan": false
     },
     {
       "question": "O sistema KERBEROS só pode ser usado por quem tiver uma chave pré-partilhada com o AS (“Authentication Server”)",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [134],
+      "repeated": [129],
       "in_plan": true
     },
     {
       "question": "Numa base de dados LDAP vários objetos podem ter o mesmo RDN (“Relative Distinguished Name”)",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [135],
+      "repeated": [130],
       "in_plan": true
     },
     {
       "question": "Numa base de dados LDAP um objeto nunca pode pertencer a mais do que uma classe estrutural",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
-      "repeated": [250],
+      "repeated": [239],
       "in_plan": true
     },
     {
       "question": "O “Active Directory” da “Microsoft” é uma implementação LDAP",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [606],
+      "repeated": [574],
       "in_plan": true
     },
     {
       "question": "Uma implementação PIP muito usada é um servidor LDAP (“Lightweight Directory Access Protocol”)",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [607],
+      "repeated": [575],
       "in_plan": true
     },
     {
@@ -889,35 +870,34 @@
       "question": "O protocolo RADIUS é usado nas comunicações entre o PEP e o PIP (“Policy Information Point”)",
       "answers": ["Falso", "Verdadeira"],
       "correct_index": 0,
-      "repeated": [768],
       "in_plan": true
     },
     {
       "question": "Num sistema AAA, é o PEP (“Policy Enforcement Point”) que toma a decisão de permitir ou não o acesso.",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [136, 581, 608],
+      "repeated": [549, 576],
       "in_plan": true
     },
     {
       "question": "Num sistema AAA, só depois de validada a autenticação (“authentication”) é que é verificada a autorização (“authorization”).",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [137, 609],
+      "repeated": [577],
       "in_plan": true
     },
     {
       "question": "Uma aplicação do PAP (“Password Authentication Protocol”) garante a autenticidade de apenas um dos intervenientes",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [138, 610],
+      "repeated": [578],
       "in_plan": true
     },
     {
       "question": "O algoritmo RSA (“Ron Rivest, Adi Shamir e Leonard Adleman”) é uma cifra de chave simétrica",
       "answers": ["Falso", "Verdadeira"],
       "correct_index": 0,
-      "repeated": [139],
+      "repeated": [131],
       "in_plan": true
     },
     {
@@ -936,21 +916,21 @@
       "question": "No RSVP (“Resource Reservation Protocol”) os pedidos de reserva de recursos são efetuados pelos emissores dos dados.",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [625],
+      "repeated": [593],
       "in_plan": true
     },
     {
       "question": "No “Weighted RED” (WRED) o tráfego é sempre tratado de forma diferenciada, seja qual for o estado da fila de saída",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [162, 627],
+      "repeated": [595],
       "in_plan": true
     },
     {
       "question": "A gestão de filas do tipo “Fair Queueing” (FQ) trata de forma igual as várias filas criadas",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [628],
+      "repeated": [596],
       "in_plan": true
     },
     {
@@ -963,7 +943,7 @@
       "question": "A utilização de 100% da capacidade das ligações é garantida quer se use HARD QoS, quer se use SOFT QoS",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [163, 629],
+      "repeated": [597],
       "in_plan": true
     },
     {
@@ -977,7 +957,7 @@
       "question": "O NBAR (“Network Based Application Recognition”) serve para classificar o tráfego através dos endereços de origem",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [630],
+      "repeated": [598],
       "in_plan": false
     },
     {
@@ -990,49 +970,49 @@
       "question": "O “Congestion avoidance” e “Slow Start” são mecanismos de controlo de fluxo regulados pelo recetor dos dados",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [631],
+      "repeated": [599],
       "in_plan": true
     },
     {
       "question": "Quando a rede fica congestionada, o TCP aumenta automaticamente o RTO (“Retransmission TimeOut”)",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [129, 632],
+      "repeated": [600],
       "in_plan": true
     },
     {
       "question": "O LFI (“Link Fragmentation and Interleaving”) garante que os pacotes maiores são retransmitidos mais rapidamente",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [633],
+      "repeated": [601],
       "in_plan": true
     },
     {
       "question": "A compressão de cabeçalhos (“header compression”) é mais vantajosa para pacotes de grande dimensão",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [634],
+      "repeated": [602],
       "in_plan": true
     },
     {
       "question": "Tal como o protocolo TCP, o protocolo RTP (“Real-time Transport Protocol”) corrige automaticamente os erros",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [635],
+      "repeated": [603],
       "in_plan": true
     },
     {
       "question": "O ataque aos números de sequência TCP tem como objetivo a utilização de “spoofing” de endereços IP",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [636],
+      "repeated": [604],
       "in_plan": false
     },
     {
       "question": "O ataque “SYN flood” é um ataque do tipo DoS (“Denial of Service”), mas apenas pode ser aplicado a serviços TCP",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [637],
+      "repeated": [605],
       "in_plan": true
     },
     {
@@ -1061,41 +1041,6 @@
       "in_plan": true
     },
     {
-      "question": "Quando a rede fica congestionada, o TCP aumenta automaticamente o RTO (“Retransmission TimeOut”)",
-      "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0,
-      "repeated": [119, 632],
-      "in_plan": true
-    },
-    {
-      "question": "Para um pacote com determinadas caraterísticas, um “firewall” do tipo “packet-filter” tem sempre o mesmo comportamento",
-      "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0,
-      "repeated": [92, 639],
-      "in_plan": true
-    },
-    {
-      "question": "O TLS exige sempre a utilização de uma cifra de chave assimétrica com troca de certificados de chave pública",
-      "answers": ["Falso", "Verdadeiro"],
-      "correct_index": 0,
-      "repeated": [93, 603],
-      "in_plan": true
-    },
-    {
-      "question": "No TLS (“Transport Layer Security”) quem decide a versão que vai ser usada é o servidor",
-      "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0,
-      "repeated": [94, 604],
-      "in_plan": true
-    },
-    {
-      "question": "A utilização do sistema KERBEROS sem pré-autenticação não garante a autenticidade nas comunicações entre os “principal”",
-      "answers": ["Falso", "Verdadeiro"],
-      "correct_index": 0,
-      "repeated": [96, 605],
-      "in_plan": false
-    },
-    {
       "question": "O sistema KERBEROS só pode ser usado por quem tiver uma chave pré-partilhada com o AS (“Authentication Server”)",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
@@ -1110,38 +1055,10 @@
       "in_plan": true
     },
     {
-      "question": "Num sistema AAA, é o PEP (“Policy Enforcement Point”) que toma a decisão de permitir ou não o acesso",
-      "answers": ["Falso", "Verdadeiro"],
-      "correct_index": 0,
-      "repeated": [104, 581, 608],
-      "in_plan": true
-    },
-    {
-      "question": "Num sistema AAA, só depois de validada a autenticação (“authentication”) é que é verificada a autorização (“authorization”).",
-      "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0,
-      "repeated": [105, 609],
-      "in_plan": true
-    },
-    {
-      "question": "Uma aplicação do PAP (“Password Authentication Protocol”) garante a autenticidade de apenas um dos intervenientes.",
-      "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0,
-      "repeated": [106, 610],
-      "in_plan": true
-    },
-    {
       "question": "O algoritmo RSA (“Ron Rivest, Adi Shamir e Leonard Adleman”) é uma cifra de chave simétrica.",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
       "repeated": [107],
-      "in_plan": true
-    },
-    {
-      "question": "O parâmetro MTBF (“Mean Time Between Failures”) e o parâmetro FIT (“Failures In Time”) não têm qualquer relação entre si",
-      "answers": ["Falso", "Verdadeiro"],
-      "correct_index": 0,
-      "repeated": [87, 618],
       "in_plan": true
     },
     {
@@ -1160,14 +1077,14 @@
       "question": "O suporte de ESP é obrigatório em todos os nós IPsec",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
-      "repeated": [160],
+      "repeated": [151],
       "in_plan": true
     },
     {
       "question": "O protocolo IKE (“Internet Key Exchange Protocol”) estabelece SAs (“Security Associations”) entre nós",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
-      "repeated": [161],
+      "repeated": [152],
       "in_plan": false
     },
     {
@@ -1264,29 +1181,15 @@
       "question": "O suporte de ESP é obrigatório em todos os nós IPsec",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [143],
+      "repeated": [134],
       "in_plan": true
     },
     {
       "question": "O protocolo IKE (“Internet Key Exchange Protocol”) estabelece SAs (“Security Associations”) entre nós",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [144],
+      "repeated": [135],
       "in_plan": false
-    },
-    {
-      "question": "No “Weighted RED” (WRED) o tráfego é sempre tratado de forma diferenciada, seja qual for o estado da fila de saída",
-      "answers": ["Falso", "Verdadeiro"],
-      "correct_index": 0,
-      "repeated": [111, 627],
-      "in_plan": true
-    },
-    {
-      "question": "A utilização de 100% da capacidade das ligações é garantida quer se use HARD QoS, quer se use SOFT QoS",
-      "answers": ["Falso", "Verdadeiro"],
-      "correct_index": 0,
-      "repeated": [114, 629],
-      "in_plan": true
     },
     {
       "question": "Uma limitação dos servidores RADIUS é que o PIP (“Policy Information Point”) tem de estar localizado na mesma máquina física do servidor",
@@ -1436,7 +1339,7 @@
       "question": "O “firewall” que separa a DMZ (“DeMilitarized Zone”) da “Internet” nunca pode ser o mesmo que separa a DMZ da Intranet",
       "answers": ["Falso", "Verdadeiro"],
       "correct_index": 0,
-      "repeated": [516],
+      "repeated": [484],
       "in_plan": true
     },
     {
@@ -1951,34 +1854,6 @@
       "in_plan": true
     },
     {
-      "question": "Para cada servidor virtual é necessário existir um CPU físico (real) na plataforma de virtualização.",
-      "answers": ["Falso", "Verdadeiro"],
-      "correct_index": 0,
-      "repeated": [13],
-      "in_plan": true
-    },
-    {
-      "question": "O custo operacional que mais importante de um CPD é o custo com o pessoal para a sua administração.",
-      "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0,
-      "repeated": [15],
-      "in_plan": true
-    },
-    {
-      "question": "Num CPD (“Centro de Processamento de Dados”) o número de servidores não afeta o consumo energético.",
-      "answers": ["Falso", "Verdadeiro"],
-      "correct_index": 0,
-      "repeated": [16],
-      "in_plan": true
-    },
-    {
-      "question": "A gestão da base de dados de utilizadores do sistema não é da responsabilidade do administrador de sistemas",
-      "answers": ["Falso", "Verdadeiro"],
-      "correct_index": 0,
-      "repeated": [17],
-      "in_plan": true
-    },
-    {
       "question": "O RSVP (“Resource Reservation Protocol”) permite a um nó solicitar à rede determinadas condições QoS",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
@@ -1988,7 +1863,7 @@
       "question": "O WRED (“Weighted RED”) pode ser usado pelo CAR através da marcação dos pacotes",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [626],
+      "repeated": [594],
       "in_plan": true
     },
     {
@@ -2019,7 +1894,6 @@
       "question": "O CAR (“Committed Access Rate”) é uma técnica HARD QoS",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [376],
       "in_plan": true
     },
     {
@@ -2065,20 +1939,6 @@
       "in_plan": true
     },
     {
-      "question": "No algoritmo “Custom Queuing” um pacote prioritário pode ficar mais tempo retido do que um de baixa prioridade",
-      "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0,
-      "repeated": [67],
-      "in_plan": true
-    },
-    {
-      "question": "A fragmentação e “Interleaving” de tráfego IP é uma técnica de gestão das filas nos “routers”",
-      "answers": ["Falso", "Verdadeiro"],
-      "correct_index": 0,
-      "repeated": [68],
-      "in_plan": true
-    },
-    {
       "question": "A marcação de pacotes é necessária se o local onde é feita a classificação de pacotes não é o mesmo onde ela é aplicada",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
@@ -2091,100 +1951,9 @@
       "in_plan": true
     },
     {
-      "question": "Na posse de uma mensagem cifrada e o respetivo original torna-se possível “quebrar” a chave por “força bruta”",
-      "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0,
-      "repeated": [39],
-      "in_plan": true
-    },
-    {
       "question": "Para blocos de dados de entrada iguais, uma função de “hash” produz sempre o mesmo resultado (“digest”)",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "in_plan": true
-    },
-    {
-      "question": "Muitos ataques de “IP Spoofing” podem ser evitados com recurso a ACLs estáticas",
-      "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0,
-      "repeated": [46],
-      "in_plan": true
-    },
-    {
-      "question": "O KERBEROS garante a confidencialidade dos dados transacionados entre os PRINCIPAL",
-      "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0,
-      "repeated": [53],
-      "in_plan": true
-    },
-    {
-      "question": "Um objeto de uma base de dados LDAP tem de usar todos os atributos definidos nas classes a que pertence",
-      "answers": ["Falso", "Verdadeiro"],
-      "correct_index": 0,
-      "repeated": [18],
-      "in_plan": true
-    },
-    {
-      "question": "O servidor LDAP nunca pode ser usado diretamente para validar credenciais, é necessário usar o servidor RADIUS",
-      "answers": ["Falso", "Verdadeiro"],
-      "correct_index": 0,
-      "repeated": [21],
-      "in_plan": true
-    },
-    {
-      "question": "O protocolo RADIUS (“Remote Authentication Dial In User Service”) utiliza pacotes UDP para todas as transações",
-      "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0,
-      "repeated": [24],
-      "in_plan": true
-    },
-    {
-      "question": "O protocolo de autenticação PAP (“Password Authentication Protocol”) não é seguro em nenhum tipo de aplicação",
-      "answers": ["Falso", "Verdadeiro"],
-      "correct_index": 0,
-      "repeated": [25],
-      "in_plan": true
-    },
-    {
-      "question": "A manutenção de cópias de segurança atualizadas permite minimizar a possibilidade de ocorrência de falhas",
-      "answers": ["Falso", "Verdadeiro"],
-      "correct_index": 0,
-      "repeated": [30],
-      "in_plan": true
-    },
-    {
-      "question": "A deteção de intrusos é um meio de reduzir as consequências das falhas",
-      "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0,
-      "repeated": [31],
-      "in_plan": true
-    },
-    {
-      "question": "Um “target” iSCSI pode ser implementado com recurso a “hardware” corrente e um sistema operativo corrente",
-      "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0,
-      "repeated": [2],
-      "in_plan": true
-    },
-    {
-      "question": "Não é possível implementar uma SAN com recurso a hardware de rede corrente como por exemplo “Gigabit Ethernet”",
-      "answers": ["Falso", "Verdadeiro"],
-      "correct_index": 0,
-      "repeated": [8],
-      "in_plan": true
-    },
-    {
-      "question": "A virtualização sem recurso a uma SAN não permite que um mesmo disco seja usado por vários servidores virtuais",
-      "answers": ["Falso", "Verdadeiro"],
-      "correct_index": 0,
-      "repeated": [10],
-      "in_plan": true
-    },
-    {
-      "question": "A virtualização de servidores reduz os custos operacionais",
-      "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0,
-      "repeated": [12, 323, 696],
       "in_plan": true
     },
     {
@@ -2269,7 +2038,7 @@
       "question": "A virtualização de servidores reduz os custos operacionais de um CPD",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [12, 309, 696],
+      "repeated": [12, 664],
       "in_plan": true
     },
     {
@@ -2294,13 +2063,6 @@
       "question": "O administrador de sistemas é o responsável pela gestão das contas de utilizador",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "in_plan": true
-    },
-    {
-      "question": "A técnica RED (“Random Early Detection”) descarta (“drop”) pacotes mesmo que a fila não esteja completamente cheia",
-      "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0,
-      "repeated": [64],
       "in_plan": true
     },
     {
@@ -2475,7 +2237,7 @@
       "question": "O “cipher suite” “TLS_RSA_WITH_AES_256_CBC_SHA256” usa autenticação através de certificados de chave pública",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [765],
+      "repeated": [733],
       "in_plan": false
     },
     {
@@ -2554,7 +2316,7 @@
       "question": "No “Layer 2 Tunneling Protocol” (L2TP) um LAC (“L2TP Access Concentrator”) opera como um comutador de rede (nível 2).",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "repeated": [624],
+      "repeated": [592],
       "in_plan": false
     },
     {
@@ -2585,13 +2347,6 @@
       "question": "O RSVP (“Resource Reservation Protocol”) permite aos nós recetores configurar o QoS nos nós intermédios",
       "answers": ["Verdadeiro", "Falso"],
       "correct_index": 0,
-      "in_plan": true
-    },
-    {
-      "question": "O CAR (“Committed Access Rate”) é uma técnica HARD QoS",
-      "answers": ["Verdadeiro", "Falso"],
-      "correct_index": 0,
-      "repeated": [284],
       "in_plan": true
     },
     {
@@ -3066,7 +2821,7 @@
       "question": "A virtualização de “hardware” permite criar novos servidores sem aceder fisicamente ao Centro de Processamento de Dados",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
-      "repeated": [655, 695],
+      "repeated": [623, 663],
       "in_plan": true
     },
     {
@@ -3331,7 +3086,7 @@
       "question": "O valor do RPO (“Recovery Point Objective”) nunca é inferior ao tempo de demora a realizar a cópia de segurança (“backup”)",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
-      "repeated": [715],
+      "repeated": [683],
       "in_plan": true
     },
     {
@@ -3434,7 +3189,7 @@
       "question": "O “firewall” que separa a DMZ (“DeMilitarized Zone”) da “Internet” nunca pode ser o mesmo que separa a DMZ da “Intranet”",
       "answers": ["Falso", "Verdadeira"],
       "correct_index": 0,
-      "repeated": [188],
+      "repeated": [177],
       "in_plan": true
     },
     {
@@ -3729,7 +3484,7 @@
       "question": "Com a virtualização de servidores é possível reduzir a quantidade de hardware necessário para prestar os mesmos serviços",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
-      "repeated": [59, 656],
+      "repeated": [59, 624],
       "in_plan": true
     },
     {
@@ -3826,7 +3581,7 @@
       "question": "Num sistema AAA, o PEP (“Policy Enforcement Point”) é o componente que toma a decisão de permitir ou não o acesso",
       "answers": ["Falso", "Verdadeira"],
       "correct_index": 0,
-      "repeated": [104, 136, 608],
+      "repeated": [104, 576],
       "in_plan": true
     },
     {
@@ -3963,21 +3718,21 @@
       "question": "O TLS exige sempre a utilização de uma cifra de chave assimétrica com troca de certificados de chave pública",
       "answers": ["Falso", "Verdadeira"],
       "correct_index": 0,
-      "repeated": [93, 131],
+      "repeated": [93],
       "in_plan": true
     },
     {
       "question": "No TLS (“Transport Layer Security”) quem decide a versão que vai ser usada é o servidor",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
-      "repeated": [94, 132],
+      "repeated": [94],
       "in_plan": true
     },
     {
       "question": "A utilização do sistema KERBEROS sem pré-autenticação não garante a autenticidade nas comunicações entre os “principal”",
       "answers": ["Falso", "Verdadeira"],
       "correct_index": 0,
-      "repeated": [96, 133],
+      "repeated": [96],
       "in_plan": false
     },
     {
@@ -3998,21 +3753,21 @@
       "question": "Num sistema AAA, é o PEP (“Policy Enforcement Point”) que toma a decisão de permitir ou não o acesso",
       "answers": ["Falso", "Verdadeira"],
       "correct_index": 0,
-      "repeated": [104, 136, 581],
+      "repeated": [104, 549],
       "in_plan": true
     },
     {
       "question": "Num sistema AAA, só depois de validada a autenticação (“authentication”) é que é verificada a autorização (“authorization”)",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
-      "repeated": [105, 137],
+      "repeated": [105],
       "in_plan": true
     },
     {
       "question": "Uma aplicação do PAP (“Password Authentication Protocol”) garante a autenticidade de apenas um dos intervenientes",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
-      "repeated": [106, 138],
+      "repeated": [106],
       "in_plan": true
     },
     {
@@ -4068,7 +3823,7 @@
       "question": "O parâmetro MTBF (“Mean Time Between Failures”) e o parâmetro FIT (“Failures In Time”) não têm qualquer relação entre si",
       "answers": ["Falso", "Verdadeira"],
       "correct_index": 0,
-      "repeated": [87, 140],
+      "repeated": [87],
       "in_plan": true
     },
     {
@@ -4107,7 +3862,7 @@
       "question": "No “Layer 2 Tunneling Protocol” (L2TP) um LAC (“L2TP Access Concentrator”) opera como um comutador de rede (nível 2)",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
-      "repeated": [370],
+      "repeated": [339],
       "in_plan": false
     },
     {
@@ -4121,14 +3876,14 @@
       "question": "O WRED (“Weighted RED”) pode ser usado pelo CAR através da marcação dos pacotes",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
-      "repeated": [279],
+      "repeated": [264],
       "in_plan": true
     },
     {
       "question": "No “Weighted RED” (WRED) o tráfego é sempre tratado de forma diferenciada, seja qual for o estado da fila de saída",
       "answers": ["Falso", "Verdadeira"],
       "correct_index": 0,
-      "repeated": [111, 162],
+      "repeated": [111],
       "in_plan": true
     },
     {
@@ -4142,7 +3897,7 @@
       "question": "A utilização de 100% da capacidade das ligações é garantida quer se use HARD QoS, quer se use SOFT QoS",
       "answers": ["Falso", "Verdadeira"],
       "correct_index": 0,
-      "repeated": [114, 163],
+      "repeated": [114],
       "in_plan": true
     },
     {
@@ -4163,7 +3918,7 @@
       "question": "Quando a rede fica congestionada, o TCP aumenta automaticamente o RTO (“Retransmission TimeOut”)",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
-      "repeated": [119, 129],
+      "repeated": [119],
       "in_plan": true
     },
     {
@@ -4212,7 +3967,7 @@
       "question": "Para um pacote com determinadas caraterísticas, um “firewall” do tipo “packet-filter” tem sempre o mesmo comportamento",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
-      "repeated": [92, 130],
+      "repeated": [92],
       "in_plan": true
     },
     {
@@ -4309,14 +4064,14 @@
       "question": "Com a virtualização é possível criar um novo servidor virtual e instalar o respetivo sistema operativo sem aceder fisicamente ao CPD",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
-      "repeated": [455, 695],
+      "repeated": [423, 663],
       "in_plan": true
     },
     {
       "question": "A virtualização de “hardware” permite reduzir a quantidade de “hardware” físico necessário para implementar as mesmas funções",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
-      "repeated": [59, 565],
+      "repeated": [59, 533],
       "in_plan": true
     },
     {
@@ -4551,14 +4306,14 @@
       "question": "Criar um servidor virtual e instalar o respetivo sistema operativo são operações que podem ser realizadas remotamente, sem acesso físico",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
-      "repeated": [455, 655],
+      "repeated": [423, 623],
       "in_plan": true
     },
     {
       "question": "A virtualização de “hardware” reduz de forma significativa os custos operacionais de um CPD (“Centro de Processamento de Dados”)",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
-      "repeated": [12, 309, 323],
+      "repeated": [12, 293],
       "in_plan": true
     },
     {
@@ -4673,7 +4428,7 @@
       "question": "O valor do RPO (“Recovery Point Objective”) nunca pode ser inferior ao tempo que demora a realizar a cópia de segurança (“backup”)",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
-      "repeated": [499],
+      "repeated": [467],
       "in_plan": true
     },
     {
@@ -4974,7 +4729,7 @@
       "question": "O “cipher suite” “TLS_RSA_WITH_AES_256_CBC_SHA256” realiza a autenticação através de certificados de chave pública",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
-      "repeated": [357],
+      "repeated": [326],
       "in_plan": false
     },
     {
@@ -4987,13 +4742,6 @@
       "question": "O AES (“Advanced Encryption Standard”) é uma das cifras suportadas pelo KERBEROS",
       "answers": ["Verdadeira", "Falso"],
       "correct_index": 0,
-      "in_plan": true
-    },
-    {
-      "question": "O protocolo RADIUS é usado nas comunicações entre o PEP e o PIP (“Policy Information Point”)",
-      "answers": ["Falso", "Verdadeira"],
-      "correct_index": 0,
-      "repeated": [103],
       "in_plan": true
     },
     {
