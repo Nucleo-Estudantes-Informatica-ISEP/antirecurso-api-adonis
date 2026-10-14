@@ -1,29 +1,32 @@
 {
   "algav": [
     {
-      "question": "Em quais dos seguintes métodos o próximo nó a ser expandido não está garantidamento no mesmo nível ou no nível seguinte do último nó expandido:",
+      "question": "Em quais dos seguintes métodos o próximo nó a ser expandido não está garantidamente no mesmo nível ou no nível seguinte do último nó expandido:",
       "answers": [
         "Branch and Bound",
         "Primeiro o Melhor",
         "Primeiro em Largura",
         "Primeiro em Profundidade"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "Em quais dos seguintes métodos o próximo nó a ser expandido é garantidamente um descendente do ultimo nó expandido:",
+      "question": "Em quais dos seguintes métodos o próximo nó a ser expandido é garantidamente um descendente do último nó expandido:",
       "answers": ["Primeiro em Profundidade", "Primeiro em Largura", "A*", "Branch and Bound"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O método de pesquisa primeiro em profundidade:",
       "answers": [
         "Nenhuma das anteriores.",
         "Com níveis de corte garante que se encontra a melhor solução.",
-        "Com níveis de corte garante que se encontra a soluçao até ao nivel de corte definido.",
-        "Dá-nos a solução no nível mais proxímo da raiz."
+        "Com níveis de corte garante que se encontra a solução até ao nível de corte definido.",
+        "Dá-nos a solução no nível mais próximo da raiz."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Considere o grafo G que envolve as quatro operações A, B, C e D e as duas restrições { A precede B } e { C precede D}. Considere ainda o grafo G' que envolve as quatro operações A',B', C' e D' e as duas restrições { A' precede B'} e { B' precede C'}. Podemos afirmar que:",
@@ -31,39 +34,43 @@
         "Há mais planos alternativos em G do que em G'.",
         "G e G' são equivalentes.",
         "Há mais planos alternativos em G' do que em G.",
-        "Há exatamento o mesmo número de planos alternativos em G e em G' apesar de G e G' não serem equivalentes."
+        "Há exatamente o mesmo número de planos alternativos em G e em G' apesar de G e G' não serem equivalentes."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     },
     {
-      "question": "Considere que num dado problema de planeamento temos um dado Grafo G com N nós que representam operações e A arcos dirigidos entre nós que representam as precedencias entre essas operações. Qual das seguintes afirmações é verdadeira quando se cria um Grafo G1 a partir de G incluindo mais um arco entre dois nós já existentes (e mantendo todos os outros nós e arcos que já existiam)?",
+      "question": "Considere que num dado problema de planeamento temos um dado Grafo G com N nós que representam operações e A arcos dirigidos entre nós que representam as precedências entre essas operações. Qual das seguintes afirmações é verdadeira quando se cria um Grafo G1 a partir de G incluindo mais um arco entre dois nós já existentes (e mantendo todos os outros nós e arcos que já existiam)?",
       "answers": [
-        "O número de planos alternativos que existem em G1 só será menor que o número de planos alternativos de G se o arco incluído não for redudante.",
+        "O número de planos alternativos que existem em G1 só será menor que o número de planos alternativos de G se o arco incluído não for redundante.",
         "O número de planos alternativos que existem em G1 será sempre maior que o número de planos alternativos de G.",
         "O número de planos alternativos que existem em G1 será sempre menor que o número de planos alternativos de G.",
         "O número de planos alternativos que existem em G1 só será maior que o número de planos alternativos de G se o arco incluído não for redundante."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     },
     {
-      "question": "Considere que um dado projeto envolverá uma equipa de trabalhadores que trabalham 8 horas por dia. Esse projeto deverá estar completo em 3 dias ou menos e envolve entre 80 a 100 horas de trabalho. No projeto devem estar envolvidos entre 4 e 6 trabalhadores. Tal corresponde às seguintes restrições: 4 =< nº trabalhadores <= 61 =< nº dias <= 380 =< nº horas =< 100O projeto pode realizar-se em:",
+      "question": "Considere que um dado projeto envolverá uma equipa de trabalhadores que trabalham 8 horas por dia. Esse projeto deverá estar completo em 3 dias ou menos e envolve entre 80 a 100 horas de trabalho. No projeto devem estar envolvidos entre 4 e 6 trabalhadores. Tal corresponde às seguintes restrições: 4 =< nº trabalhadores <= 6; 1 =< nº dias <= 3; 80 =< nº horas =< 100. O projeto pode realizar-se em:",
       "answers": [
         "2 dias com 5 trabalhadores e também em 3 dias com 4 trabalhadores.",
         "2 dias com 4 trabalhadores e também em 2 dias com 5 trabalhadores.",
         "3 dias com 4 trabalhadores e também em 3 dias com 5 trabalhadores.",
         "1 dias com 6 trabalhadores e também em 2 dias com 5 trabalhadores."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     },
     {
-      "question": "Considere as afirmações A e B. A: Se chover, o campo de golfe será fechado. B: O campo de golfe está fechado.Ao concluir que está a chover",
+      "question": "Considere as afirmações A e B. A: Se chover, o campo de golfe será fechado. B: O campo de golfe está fechado. Ao concluir que está a chover",
       "answers": [
         "Estamos a usar raciocínio abdutivo.",
         "Estamos a usar modus ponens.",
         "Estamos a usar raciocínio dedutivo.",
         "Estamos a usar modus tollens."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Se p -> !q é verdadeiro e se q for falso então assumirmos que p é verdadeiro estamos a usar:",
@@ -73,7 +80,8 @@
         "O modus tollens.",
         "O modus ponens."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Um cientista descobre que várias pessoas que tomaram um dado medicamento no passado vieram mais tarde a contrair uma dada doença da qual não se conheciam as causas. Ao assumir que uma dada pessoa tomou o referido medicamento virá a ter tal doença, esse médico usa:",
@@ -83,17 +91,19 @@
         "Um raciocínio abdutivo.",
         "Um raciocínio redutivo."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "Considere a seguinte base de conhecimento:pp -> qq -> z.",
+      "question": "Considere a seguinte base de conhecimento: p; p -> q; q -> z.",
       "answers": [
         "É possível provar que z é verdade por refutação.",
-        "Não é possivel provar que z é verdade por refutação.",
-        "Não é possivel provar que z é verddade recorrendo ao modus ponens.",
-        "z toma sempre o valoder de verdade falso."
+        "Não é possível provar que z é verdade por refutação.",
+        "Não é possível provar que z é verdade recorrendo ao modus ponens.",
+        "z toma sempre o valor de de verdade falso."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Qual das seguintes fórmulas é uma tautologia?",
@@ -103,27 +113,32 @@
         "(s V !s) -> (s ^ !q)",
         "(s V !q) -> (s ^ !s)"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "Considere que se representa conhecimento com o seguinte predicado PROLOG p:a :-b.a :-c. Em Lógica o mesmo conhecimento pode ser representado por:",
+      "question": "Considere que se representa conhecimento com o seguinte predicado PROLOG p: a :- b. a :- c. Em Lógica o mesmo conhecimento pode ser representado por:",
       "answers": ["(b v c) -> a", "a -> (b ^ c)", "a -> (b v c)", "(b ^ c) -> a"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Qual das seguintes máscaras de um operador de cruzamento uniforme permitiria efectuar um cruzamento em 3 pontos de corte",
       "answers": ["00110111", "10000011", "11000111", "00110010"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Qual das seguintes máscaras de um operador de cruzamento uniforme permitiria efectuar um cruzamento em 4 pontos de corte",
       "answers": ["00110010", "00110111", "10000010", "11000111"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Considere os seguintes progenitores P1: 10101010 e P2: 11100010. Aplicando um cruzamento uniforme com a seguinte máscara 11001011 um dos descendentes seria:",
       "answers": ["11100010", "11101010", "10101011", "10100010"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "O operador de cruzamento uniforme com máscara:",
@@ -133,27 +148,30 @@
         "Não permite fazer cruzamentos em 2 pontos de corte.",
         "Permite fazer cruzamentos em N pontos de corte, se e só se N > 2."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Qual das seguintes afirmações é verdadeira:",
       "answers": [
         "Nenhuma das anteriores.",
         "O algoritmo subir a colina é uma boa estratégia para evitar planaltos.",
-        "No algoritmo primeiro em profundidade deve expandir-se o nó que esta mais proximo do destino.",
+        "No algoritmo primeiro em profundidade deve expandir-se o nó que está mais próximo do destino.",
         "O método de pesquisa primeiro em profundidade com níveis de corte garante que se encontra a melhor solução."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
-      "question": "A funcção g(n) usada no algoritmo A* representa:",
+      "question": "A função g(n) usada no algoritmo A* representa:",
       "answers": [
         "O custo para ir da origem ao nó n",
-        "A profundiade do nó n",
+        "A profundidade do nó n",
         "A estimativa do custo para ir do nó n até ao nó destino",
         "O custo para ir do nó n ao nó destino."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Determinados algoritmos de pesquisa tentam primeiro explorar o espaço de pesquisa em amplitude, para depois explorar mais em detalhe determinadas zonas desse mesmo espaço de pesquisa. Um exemplo desse tipo de métodos é:",
@@ -163,62 +181,71 @@
         "Pesquisa Local",
         "Branch and Bound"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     },
     {
       "question": "Qual das seguintes afirmações não é verdadeira:",
       "answers": [
         "Se no algoritmo A* colocarmos h(n)=0, este degenera no primeiro em profundidade com retrocesso.",
-        "Uma das desvantagens da procura em profundidade com cortes face à procura em profundidade é que pode não encontar a solução se esta estiver além do nível de corte.",
+        "Uma das desvantagens da procura em profundidade com cortes face à procura em profundidade é que pode não encontrar a solução se esta estiver além do nível de corte.",
         "O algoritmo subir a colina pode estagnar em máximo ou mínimos locais.",
         "O algoritmo primeiro em largura garante a obtenção da solução no nível mais próximo da raiz."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "Qual dos seguintes métodos usa o conceito de aprendizagem:",
       "answers": ["Pesquisa Tabu", "A*", "Branch and Bound", "Colónia de Formigas"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     },
     {
-      "question": "Qual dos seguintes métodos se baseia não principio fisico do arrefecimento de metais que foram postos a temperaturas elevadas:",
+      "question": "Qual dos seguintes métodos se baseia no princípio físico do arrefecimento de metais que foram postos a temperaturas elevadas:",
       "answers": [
         "Simulated Annealing",
         "GRASP",
         "Particle Swarm Intelligence",
         "Pesquisa Local Aleatorizada"
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     },
     {
-      "question": "Em quais dos seguintes métodos o próximo nó a ser expandido pode não ser um descendento do último nó expandido:",
+      "question": "Em quais dos seguintes métodos o próximo nó a ser expandido pode não ser um descendente do último nó expandido:",
       "answers": [
         "Nenhuma das anteriores.",
         "Branch and Bound e Primeiro em Profundidade.",
         "A* e Primeiro o Melhor.",
         "Primeiro em Profundidade e Primeiro em Largura."
       ],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     },
     {
       "question": "No caso do jogo do galo e recorrendo ao método minimax, quantos nós teremos no final do jogo?",
       "answers": ["(3^2)!", "3^2", "(9!)^2", "9^2"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     },
     {
-      "question": "Considere  um  jogo  em  que  um  dado  jogador  J1  tem  5 cartas  e  o  seu  adversário  J2  também  tem  5  cartas  que J1  conhece.  J1  é  sempre  o  primeiro  a  jogar, respondendo J2 a cada jogada até as cartas terminarem (5  jogadas  de  J1  respondidas  uma  a  uma  por  J2).  Se usarmos  o  método  MINIMAX  quantos  nós  teremos ao fim de todas as jogadas (após  as  5  jogadas  de  cada jogador)?",
+      "question": "Considere um jogo em que um dado jogador J1 tem 5 cartas e o seu adversário J2 também tem 5 cartas que J1 conhece. J1 é sempre o primeiro a jogar, respondendo J2 a cada jogada até as cartas terminarem (5 jogadas de J1 respondidas uma a uma por J2). Se usarmos o método MINIMAX quantos nós teremos ao fim de todas as jogadas (após as 5 jogadas de cada jogador)?",
       "answers": ["14400", "510", "120", "15"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     },
     {
-      "question": "Considere  um  jogo  com  2  jogadores  (por  exemplo  o xadrez). Na sua vez de jogar cada jogador pode fazer n jogadas  (j1,j2,…jn).  Se  usarmos  o  método  MINIMAX quantos  nós  teremos  ao  fim  de m níveis  (m=3  níveis corresponde  a  todas  as  possibilidades  que  envolvem uma  jogada  do  jogador  A  seguida  de  uma  jogada  do jogador B seguida de uma nova jogada do jogador A)?",
+      "question": "Considere um jogo com 2 jogadores (por exemplo o xadrez). Na sua vez de jogar cada jogador pode fazer n jogadas (j1,j2,…jn). Se usarmos o método MINIMAX quantos nós teremos ao fim de m níveis (m=3 níveis corresponde a todas as possibilidades que envolvem uma jogada do jogador A seguida de uma jogada do jogador B seguida de uma nova jogada do jogador A)?",
       "answers": ["n^m", "n+m", "n*m", "m^n"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": false
     },
     {
-      "question": "Qual dos seguintes decendentes não poderia ser gerado a partir dos cromossomas 547386 e 347568 se usarmos um cruzamento com manutenção de ordem?",
+      "question": "Qual dos seguintes descendentes não poderia ser gerado a partir dos cromossomas 547386 e 347568 se usarmos um cruzamento com manutenção de ordem?",
       "answers": ["547586", "567384", "347865", "475386"],
-      "correct_index": 0
+      "correct_index": 0,
+      "in_plan": true
     }
   ],
   "asist": [
