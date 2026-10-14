@@ -294,6 +294,44 @@ Admin-managed event windows shown in the Antirecurso dashboard.
 | `created_at`  | timestamp | no   |                                |
 | `updated_at`  | timestamp | no   |                                |
 
+### `exam_attempts`
+
+Immutable stored generation and committed grading/replay data. Client UUIDs are scoped to the owner; internal row IDs are used for ORM updates.
+
+| Column | Type | Null | Constraints / Notes |
+| ------ | ---- | ---- | ------------------- |
+| `row_id` | serial | no | primary key |
+| `id` | uuid | no | unique with `user_id`; external attempt ID |
+| `user_id` | integer | no | FK -> `users.id`, `ON DELETE CASCADE` |
+| `subject_id` | integer | no | FK -> `subjects.id`, `ON DELETE CASCADE` |
+| `mode` | varchar | no | validated exam mode |
+| `snapshot` | jsonb | no | original questions/options/configuration; optional committed per-question grading |
+| `request_hash` | varchar(64) | yes | SHA-256 normalized verification request |
+| `result` | jsonb | yes | exact committed result; null means unfinished |
+| `created_at` | timestamp | no | |
+| `updated_at` | timestamp | no | |
+
+Unique `(user_id, id)`; owner/result expression index `(user_id, (result->>'id'))`; partial owner index where `result IS NULL`. Generation caps unfinished rows at 20 per owner; explicit owned discard removes unfinished rows, while completed history/replay is retained.
+
+### `exam_states`
+
+Current cloud progress for each owner, subject and mode.
+
+| Column | Type | Null | Constraints / Notes |
+| ------ | ---- | ---- | ------------------- |
+| `id` | serial | no | primary key |
+| `user_id` | integer | no | FK -> `users.id`, `ON DELETE CASCADE` |
+| `subject_id` | integer | no | FK -> `subjects.id`, `ON DELETE CASCADE` |
+| `mode` | varchar | no | validated exam mode |
+| `state` | jsonb | no | bounded validated saved progress |
+| `is_completed` | boolean | no | default false |
+| `revision` | integer | no | default 1; incremented on saves |
+| `attempt_id` | uuid | yes | composite FK `(user_id, attempt_id)` -> `exam_attempts(user_id, id)`, `ON DELETE CASCADE` |
+| `created_at` | timestamp | yes | ORM fills on creation |
+| `updated_at` | timestamp | yes | ORM updates on save |
+
+Unique `(user_id, subject_id, mode)`; `attempt_id` index supports associations/cascades. CAS uses row ID/revision. Saved question order is preserved because `currentQuestionIndex` refers to that sequence. Legacy verification cannot write scores for an attempt-bound state without its attempt ID.
+
 ## Mobile safety migration
 
 `1791594000000_add_mobile_account_safety.ts` adds:
@@ -344,4 +382,10 @@ Migration `1791792000000_index_exam_attempt_recovery.ts` indexes `exam_states.at
 
 Migration `1791936000000_scope_exam_attempts_to_owner.ts` adds an internal `row_id` serial primary key, makes `user_id` non-null, and replaces global UUID uniqueness with `(user_id, id)`. Lucid updates use `row_id`; external APIs retain the client UUID scoped to authenticated owner. `exam_states(user_id, attempt_id)` references the same owner/UUID pair with cascade deletion. A partial owner index on `result IS NULL` supports the cap. Owner caps count only unfinished rows and serialize on the user row, alongside verification/account deletion.
 
-This migration preserves owned snapshots and state associations. It intentionally fails transactionally if pre-existing anonymous snapshots or cross-owner state references need operator reconciliation; it does not delete or invent ownership. Rollback to global UUID uniqueness intentionally fails transactionally when duplicate UUIDs across owners exist; reconcile them and dependent state references first. No automated history cleanup or destructive reconciliation is run by the API. Operators must establish abandoned-attempt cleanup under #83, especially for capped accounts whose underlying questions were removed.
+This migration preserves owned snapshots and state associations. It intentionally fails transactionally if pre-existing anonymous snapshots or cross-owner state references need operator reconciliation; it does not delete or invent ownership. Rollback to global UUID uniqueness intentionally fails transactionally when duplicate UUIDs across owners exist; reconcile them and dependent state references first. No automated history cleanup or destructive reconciliation is run by the API. Owners can discard unfinished attempts, including those invalidated by canonical deletion; completed history is retained. Automated retention remains #83.
+
+### Migration deployment constraints
+
+The index migrations and owner-scope migration use transactional, non-concurrent index/constraint creation. Owner-scope preflight takes `ACCESS EXCLUSIVE` locks on `exam_attempts` and `exam_states` so diagnostics and key changes see the same rows. Preflight names up to 20 anonymous attempt IDs, mismatched/missing-owner state references, or duplicate rollback UUIDs and owners; it rejects the migration before key changes. No rows are deleted or assigned invented owners.
+
+These migrations are suitable for empty/small tables during initial rollout, with API writes drained and a maintenance window. Rehearse timing/lock impact against staging row counts and take a backup before authorized production migration. They are not an online migration plan for large/live tables: use a separate reviewed deployment with concurrent indexes outside a transaction and staged constraint validation in that case. Committed Japa tests cover index apply/rollback/reapply, populated upgrades (including legacy null attempt references), preflight rejections and transactional data preservation.

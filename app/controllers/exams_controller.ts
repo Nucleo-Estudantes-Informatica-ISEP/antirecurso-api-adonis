@@ -540,6 +540,24 @@ export default class ExamsController {
     })
   }
 
+  async discardAttempt({ authUser, params, request, response }: AuthenticatedHttpContext) {
+    const { id } = await request.validateUsing(recoverExamAttemptValidator, {
+      data: { id: params.id },
+    })
+    return db.transaction(async (trx) => {
+      await User.query({ client: trx }).where('id', authUser.id).forUpdate().firstOrFail()
+      const attempt = await ExamAttempt.query({ client: trx })
+        .where('user_id', authUser.id)
+        .where('id', id)
+        .forUpdate()
+        .first()
+      if (attempt?.result)
+        return response.conflict({ message: 'Completed attempts cannot be discarded' })
+      if (attempt) await attempt.delete()
+      return response.noContent()
+    })
+  }
+
   private parseNumericInput(value: unknown): number | null {
     if (typeof value === 'number' && Number.isFinite(value)) {
       return value

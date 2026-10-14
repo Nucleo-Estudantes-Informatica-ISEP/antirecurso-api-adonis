@@ -252,6 +252,8 @@ type SavedExamState = {
 | POST   | `/subjects/:id/notes`            | Admin; actor from token                 | `201 Note`                     | note metadata and upload id    |
 | POST   | `/notes/:id/view`                | Authenticated                           | `200 { url }`                  | note id                        |
 | POST   | `/upload`                        | Authenticated                           | `200 UploadGrant`              | target and content type        |
+| GET    | `/exams/attempts/:id`             | Authenticated; current owner            | `200 AttemptRecovery`          | attempt UUID                   |
+| DELETE | `/exams/attempts/:id`             | Authenticated; current owner            | `204`                          | unfinished attempt UUID        |
 | GET    | `/exams/generate/:subject_id`    | Optional; mode-dependent                | `200 GeneratedQuestion[]`      | generation query               |
 | POST   | `/exams/verify`                  | Optional; actor from token when present | `200 ExamResult`               | submitted exam                 |
 | POST   | `/exams/state`                   | Authenticated; current user             | `200 SavedState`               | exam identity and state        |
@@ -527,7 +529,7 @@ verification owns answer, updates scoreboard, and completes matching saved state
   `custom`; `filter?: string`, with only `filter=new` changing current custom behavior. Optional `attempt_id` (UUID, all validator-supported versions) and `penalizing_factor` record an authenticated snapshot.
 - Response: `200 GeneratedQuestion[]`.
 - Errors: `400` invalid id/custom count/generation; `401` user-dependent mode without user or invalid
-  token; `404` missing subject; `409` repeated owner/attempt ID or 20 unfinished attempts for that owner; `422` invalid query; `429` exam limit. Stored attempts require auth (`401`). Generation is not idempotent: after a lost response, recover the existing owner-scoped ID; use a new ID for a new exam. Each owner may retain at most 20 unfinished snapshots across subjects/modes; an owner-row lock makes the cap atomic across workers. Completing one frees a slot. Completed history is excluded, and another owner may reuse the same UUID independently. No TTL purge is applied; existing rows above the cap remain available but new stored generation is blocked until below the cap.
+  token; `404` missing subject; `409` repeated owner/attempt ID or 20 unfinished attempts for that owner; `422` invalid query; `429` exam limit. Stored attempts require auth (`401`). Generation is not idempotent: after a lost response, recover the existing owner-scoped ID; use a new ID for a new exam. Each owner may retain at most 20 unfinished snapshots across subjects/modes; an owner-row lock makes the cap atomic across workers. Completing or explicitly discarding one frees a slot. Completed history is excluded, and another owner may reuse the same UUID independently. No automatic TTL purge is applied; capped owners can discard abandoned/ungradable attempts with `DELETE /exams/attempts/:id`. Existing rows above the cap remain available, but new stored generation is blocked until below the cap.
 
 #### `POST /exams/verify`
 
@@ -549,7 +551,7 @@ verification owns answer, updates scoreboard, and completes matching saved state
   selected option is one alphanumeric character and must exist for question.
 - Transaction: answer/detail, scoreboard, state completion and optional attempt result commit together. Stable UUIDs require authentication and are scoped to the owner; concurrent/sequential identical submissions return the exact original result and score once. Changed answers or configuration after completion return 409. Retry time is excluded from the request hash; the first committed elapsed time remains stored. Different UUIDs remain distinct. Grading uses the original snapshot. Deleted underlying question/option rows invalidate ungraded attempts with a clean 409; grading rolls back and no replacement questions are generated.
 - Count validation compares the effective mode count with the original snapshot length. Non-custom verification may omit `n_of_questions` or send an explicit value; mode rules supply its effective count. Custom count remains required and must match the snapshot. Replay hashes use that effective count and accept earlier completed hashes. `penalizing_factor` still echoes generation, including omission/null; changing it returns 409.
-- New-attempt completion only completes the cloud row with that same UUID. Legacy verification without `attempt_id` only completes a legacy state row; it leaves an attempt-bound draft untouched because the server cannot know which attempt the legacy payload belongs to. Clients must send its ID to grade/complete a stored attempt.
+- New-attempt completion only completes the cloud row with that same UUID. Legacy verification without `attempt_id` is rejected with `409` when the matching owner/subject/mode state is attempt-bound, including completed bound state. No answer or scoreboard write occurs; this prevents legacy-then-UUID double scoring. Legacy state/no state remains supported. Clients must send the stored ID to grade/complete a stored attempt.
 - Response: `200 { id, score, wrong_answers, passed, subject }` with numeric fields as numbers.
 - Errors: `400` domain mismatch; `401` missing auth for stored attempts or invalid supplied token; `404` missing subject; `422` invalid
   body; `429` exam limit.
@@ -558,7 +560,7 @@ verification owns answer, updates scoreboard, and completes matching saved state
 
 - Body: `{ subject_id: number, mode: ExamMode, state: SavedExamState, attempt_id?: string, expected_revision?: number, expected_state_id?: number, restart_completed?: boolean }`.
 - CAS: send expected revision zero for absence/completion, or both positive revision and state ID for an active row. Mismatch returns 409 without writing; owner locking serializes competing initial saves. Legacy saves increment revision.
-- Explicit `restart_completed: true` replaces a completed row. A newer active row still fails absence CAS. Optional UUIDs must belong to this owner/subject/mode, be incomplete and match original question order.
+- Explicit `restart_completed: true` replaces a completed row. A newer active row still fails absence CAS. Optional UUIDs must belong to this owner/subject/mode, be incomplete and match original question order. Order is intentional: `currentQuestionIndex` refers to that sequence; a reordered list returns `409` even with the same IDs.
 - Identity: inner subject/mode match outer fields; question ids are unique and belong to subject;
   answers reference unique ids in `questionIds`.
 - Ownership/upsert: current user + subject + mode. Completed state requires explicit restart. Legacy saves with the same question IDs preserve an existing attempt association.
@@ -588,6 +590,13 @@ verification owns answer, updates scoreboard, and completes matching saved state
 - Clients may explicitly retry verification with the same answers/configuration and UUID after confirming this endpoint; never automatically replay against a legacy API.
 - Owned `/exams/:id` review uses original snapshots and atomically stored per-question grading for newly completed attempts, retaining all questions, selected option IDs, original order and correctness after canonical question/option deletion. Comments remain live; deleted questions have no comments. Recovery still strips private grading. Legacy results and snapshots completed before grading was stored retain live answer-detail behavior; already lost selections/details cannot be reconstructed.
 - Verification adds 409 for unavailable/mismatched/already-submitted attempts.
+
+#### `DELETE /exams/attempts/:id`
+
+- Authentication required; deletes only the current owner's unfinished attempt. UUID validation matches recovery (`422`); mutation throttle applies (`429`).
+- Response: `204`, including absent/discarded IDs or an ID belonging only to another owner. Completed attempts return `409` and are retained for history/replay.
+- The owner lock serializes discard with generation, cloud-state saves and grading. Deleting an attempt cascades only its bound cloud draft and releases a cap slot; another owner using the same UUID and newer drafts tied to another attempt are untouched.
+- Racing verification either commits first (discard gets `409`) or discard commits first (verification gets `409`, with no score). Confirm discard before dropping local progress.
 
 #### `GET /exams/pending`
 

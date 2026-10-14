@@ -64,6 +64,16 @@ export default class ExamVerificationService {
     try {
       if (input.userId !== null)
         await User.query({ client: trx }).where('id', input.userId).forUpdate().firstOrFail()
+      if (input.userId !== null && !input.attemptId) {
+        const state = await ExamState.query({ client: trx })
+          .where('user_id', input.userId)
+          .where('subject_id', input.subject.id)
+          .where('mode', input.mode)
+          .forUpdate()
+          .first()
+        if (state?.attemptId)
+          throw new AttemptConflictError('Stored exam state requires attempt_id')
+      }
       const attempt = input.attemptId
         ? await ExamAttempt.query({ client: trx })
             .where('id', input.attemptId)
@@ -231,7 +241,7 @@ export default class ExamVerificationService {
       await trx.commit()
       return result
     } catch (error) {
-      await trx.rollback()
+      if (!trx.isCompleted) await trx.rollback()
       if (
         input.attemptId &&
         error &&

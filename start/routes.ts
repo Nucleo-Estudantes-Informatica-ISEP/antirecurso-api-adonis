@@ -128,6 +128,11 @@ router
 
 // Exams
 router
+  .delete('/exams/attempts/:id', (ctx) =>
+    examsController.discardAttempt(ctx as AuthenticatedHttpContext)
+  )
+  .use([middleware.auth(), mutationThrottle])
+router
   .get('/exams/attempts/:id', (ctx) =>
     examsController.recoverAttempt(ctx as AuthenticatedHttpContext)
   )

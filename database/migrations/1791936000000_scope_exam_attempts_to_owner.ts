@@ -2,6 +2,29 @@ import { BaseSchema } from '@adonisjs/lucid/schema'
 
 export default class extends BaseSchema {
   async up() {
+    this.defer(async (client) => {
+      await client.rawQuery('LOCK TABLE exam_attempts, exam_states IN ACCESS EXCLUSIVE MODE')
+      const anonymous = await client
+        .from('exam_attempts')
+        .whereNull('user_id')
+        .select('id')
+        .limit(20)
+      if (anonymous.length)
+        throw new Error(
+          `Anonymous exam attempts require reconciliation: ${JSON.stringify(anonymous)}`
+        )
+      const mismatched = await client
+        .from('exam_states as state')
+        .leftJoin('exam_attempts as attempt', 'attempt.id', 'state.attempt_id')
+        .whereNotNull('state.attempt_id')
+        .whereRaw('(state.user_id IS DISTINCT FROM attempt.user_id OR attempt.id IS NULL)')
+        .select('state.id', 'state.user_id', 'state.attempt_id')
+        .limit(20)
+      if (mismatched.length)
+        throw new Error(
+          `Exam states reference another owner or missing attempt: ${JSON.stringify(mismatched)}`
+        )
+    })
     this.schema.raw('ALTER TABLE exam_states DROP CONSTRAINT exam_states_attempt_id_foreign')
     this.schema.raw('ALTER TABLE exam_attempts DROP CONSTRAINT exam_attempts_pkey')
     this.schema.raw('ALTER TABLE exam_attempts ALTER COLUMN user_id SET NOT NULL')
@@ -18,7 +41,16 @@ export default class extends BaseSchema {
   }
 
   async down() {
-    // Duplicate UUIDs across owners must be reconciled before reverting to a global UUID key.
+    this.defer(async (client) => {
+      await client.rawQuery('LOCK TABLE exam_attempts, exam_states IN ACCESS EXCLUSIVE MODE')
+      const duplicates = await client.rawQuery(
+        'SELECT id, array_agg(user_id ORDER BY user_id) AS owners FROM exam_attempts GROUP BY id HAVING count(*) > 1 LIMIT 20'
+      )
+      if (duplicates.rows.length)
+        throw new Error(
+          `Duplicate exam UUIDs require reconciliation before rollback: ${JSON.stringify(duplicates.rows)}`
+        )
+    })
     this.schema.raw('ALTER TABLE exam_states DROP CONSTRAINT exam_states_owner_attempt_foreign')
     this.schema.raw('DROP INDEX exam_attempts_unfinished_owner_idx')
     this.schema.raw('ALTER TABLE exam_attempts DROP COLUMN row_id')

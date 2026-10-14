@@ -87,7 +87,7 @@ export default class ExamGenerationService {
             .firstOrFail()
           if (Number(pending.$extras.total) >= MAX_UNFINISHED_ATTEMPTS)
             throw new AttemptConflictError(
-              'Too many unfinished attempts; complete an existing attempt before generating another'
+              'Too many unfinished attempts; complete or discard an existing attempt before generating another'
             )
           await ExamAttempt.create(
             {
