@@ -60,16 +60,16 @@ type QuestionRow = {
   repeated: boolean | null
   in_plan: boolean | null
   ref: string | null
-  created_at: Date
-  updated_at: Date
+  created_at: string
+  updated_at: string
 }
 type OptionRow = {
   id: number
   question_id: number
   order: string
   name: string
-  created_at: Date
-  updated_at: Date
+  created_at: string
+  updated_at: string
 }
 type Snapshot = { question: Partial<QuestionRow>; options: Partial<OptionRow>[] }
 type Action = 'insert' | 'update' | 'unchanged' | 'conflict'
@@ -91,9 +91,21 @@ export type ImportReport = {
 const normalizedText = (text: string) => text.trim().replace(/\s+/g, ' ').toLowerCase()
 
 async function snapshot(trx: TransactionClientContract, id: number): Promise<Snapshot> {
+  // PostgreSQL JSON preserves timestamp microseconds that JavaScript Date discards.
+  const row = await trx
+    .from('questions')
+    .where('id', id)
+    .select(trx.raw('to_jsonb(questions) AS record'))
+    .firstOrFail()
+  const options = await trx
+    .from('options')
+    .where('question_id', id)
+    .select(trx.raw('to_jsonb(options) AS record'))
+    .orderBy('order')
+    .orderBy('id')
   return {
-    question: await trx.from('questions').where('id', id).firstOrFail(),
-    options: await trx.from('options').where('question_id', id).orderBy('order').orderBy('id'),
+    question: row.record,
+    options: options.map((option) => option.record),
   }
 }
 
@@ -289,10 +301,14 @@ export async function importReviewedQuestions(
           }))
         )
       } else {
+        const attributes = { ...change.after.question }
+        delete attributes.id
+        delete attributes.created_at
+        delete attributes.updated_at
         await trx
           .from('questions')
           .where('id', change.question_id!)
-          .update({ ...change.after.question, updated_at: now })
+          .update({ ...attributes, updated_at: now })
         for (const option of change.after.options) {
           await trx
             .from('options')

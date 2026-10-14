@@ -168,6 +168,29 @@ test.group('Reviewed question import', (group) => {
     assert.isNull(stored.ref)
   })
 
+  test('updates preserve creation timestamps and audit snapshots keep PostgreSQL microseconds', async ({
+    assert,
+  }) => {
+    const timestamp = '2026-10-11 10:00:00.123456+00:00'
+    await db
+      .from('questions')
+      .where('id', question.id)
+      .update({ created_at: timestamp, updated_at: timestamp })
+    await db
+      .from('options')
+      .where('question_id', question.id)
+      .update({ created_at: timestamp, updated_at: timestamp })
+    const report = await importReviewedQuestions(batch(), true)
+    assert.equal(report.changes[0].before?.question.created_at, '2026-10-11T10:00:00.123456+00:00')
+    assert.equal(report.changes[0].before?.question.updated_at, '2026-10-11T10:00:00.123456+00:00')
+    assert.equal(report.changes[0].after.question.created_at, '2026-10-11T10:00:00.123456+00:00')
+    assert.equal(
+      report.changes[0].before?.options[0].updated_at,
+      '2026-10-11T10:00:00.123456+00:00'
+    )
+    assert.equal(report.changes[0].after.options[0].created_at, '2026-10-11T10:00:00.123456+00:00')
+  })
+
   test('option order comparison is independent of database/text collation', async ({ assert }) => {
     await db.from('options').where('id', options[1].id).update({ order: 'a' })
     const input = batch([
@@ -292,7 +315,7 @@ test.group('Reviewed question import', (group) => {
 
   test('audit failure rolls back all question and option changes', async ({ assert }) => {
     await db.rawQuery(
-      "ALTER TABLE question_import_batches ADD CONSTRAINT test_no_inserts CHECK ((report->'counts'->>'insert')::integer = 0)"
+      "ALTER TABLE question_import_batches ADD CONSTRAINT test_no_inserts CHECK ((report->'counts'->>'insert')::integer = 0) NOT VALID"
     )
     try {
       const fresh = {
