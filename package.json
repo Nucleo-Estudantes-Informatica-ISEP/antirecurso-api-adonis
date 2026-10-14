@@ -69,7 +69,7 @@
   },
   "overrides": {
     "edge-lexer": "6.0.4",
-    "braces": "npm:@dieub/braces-depth-guard@3.0.3-pn.3"
+    "braces": "npm:@bleedingdev/braces@3.0.4"
   },
   "hotHook": {
     "boundaries": [

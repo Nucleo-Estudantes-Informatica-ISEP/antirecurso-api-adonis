@@ -13,19 +13,25 @@ advisory is ignored or suppressed.
   [GHSA-jggr-w7fw-pc2j](https://github.com/advisories/GHSA-jggr-w7fw-pc2j).
 - Upstream `braces` 3.0.3 has no patched release for
   [GHSA-vfj7-8cjw-p6xm](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm).
-  The exact override `npm:@dieub/braces-depth-guard@3.0.3-pn.3` replaces the affected
+  The exact override `npm:@bleedingdev/braces@3.0.4` replaces the affected
   package used by `micromatch`, and consequently the Adonis build/lint/HMR chains.
 
 ## Guarded braces derivative
 
-[Source and maintenance notes](https://github.com/dieub/braces-depth-guard) identify
-the package as an MIT derivative of upstream 3.0.3, not an upstream fixed release.
-The published npm artifact was compared with installed upstream runtime sources:
-the public entry point is unchanged; parsing tracks brace/parenthesis nesting;
-compile/expand/stringify enforce a maximum 100-level traversal; expansion detects
-parent-chain cycles; limit helpers prevent invalid options from bypassing the bounds.
-Original license and attribution are retained. The exact artifact and SHA-512 integrity
-are pinned in `package-lock.json`; registry signatures and provenance are available.
+[Source and maintenance pipeline](https://github.com/ultramodernjs/ultramodern.js/tree/main-ultramodern/scripts/ultramodern-supply)
+identify the package as an MIT derivative, not an upstream fixed release. The published
+npm artifact was compared with installed upstream 3.0.3 runtime sources: the public
+entry point is unchanged; parser guards bound brace/parenthesis nesting; compile,
+expand and stringify guard each recursive level with a fixed 100-level ceiling.
+This ceiling cannot be raised by caller options. Original license and attribution
+are retained. The exact artifact and SHA-512 integrity are pinned in
+`package-lock.json`; registry signatures and provenance are verified.
+
+GitHub dependency review currently treats npm aliases as their original names.
+An earlier reviewed derivative used a prerelease version below upstream 3.0.3 and
+was therefore falsely flagged as vulnerable `braces`. This post-patch 3.0.4 release
+avoids that version ambiguity while retaining tested protection. No scan or advisory
+exclusion was added, and the lockfile retains the derivative's actual package name.
 
 Regression coverage exercises the installed derivative through its actual `micromatch`
 resolution, rejects malicious nested strings and direct ASTs, and checks ordinary

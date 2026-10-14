@@ -21,7 +21,7 @@ test.group('Dependency security', () => {
     ]) {
       const pattern = open.repeat(4000) + 'x' + close.repeat(4000)
       for (const process of [braces.parse, braces.compile, braces.expand, braces.stringify]) {
-        assert.throws(() => process(pattern), /exceeds max depth/)
+        assert.throws(() => process(pattern), /AST nesting depth exceeds the maximum of 100/)
       }
     }
   })
@@ -39,7 +39,7 @@ test.group('Dependency security', () => {
       return root
     }
     for (const process of [braces.compile, braces.expand, braces.stringify]) {
-      assert.throws(() => process(deepAst()), /exceeds max depth/)
+      assert.throws(() => process(deepAst()), /AST nesting depth exceeds the maximum of 100/)
     }
   })
 
