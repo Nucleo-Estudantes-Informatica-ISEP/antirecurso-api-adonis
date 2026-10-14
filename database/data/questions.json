@@ -9003,7 +9003,7 @@
         "Favorece os processos CPUBound em detrimento dos processos IO Bound de igual prioridade."
       ],
       "correct_index": 0,
-      "repeated": [15, 18, 37],
+      "repeated": [34],
       "in_plan": true
     },
     {
@@ -9015,7 +9015,7 @@
         "Que um programa seja compilado para que possa ser executado em várias máquinas diferentes."
       ],
       "correct_index": 2,
-      "repeated": [29],
+      "repeated": [26],
       "in_plan": false
     },
     {
@@ -9027,7 +9027,7 @@
         "Escalonamento multinível com realimentação por filas."
       ],
       "correct_index": 0,
-      "repeated": [16, 21, 31],
+      "repeated": [15, 28],
       "in_plan": true
     },
     {
@@ -9096,7 +9096,7 @@
         "Compilador, linker e editor."
       ],
       "correct_index": 0,
-      "repeated": [52],
+      "repeated": [49],
       "in_plan": true
     },
     {
@@ -9108,7 +9108,7 @@
         "Não é transparente para o processo que é interrompido."
       ],
       "correct_index": 0,
-      "repeated": [30],
+      "repeated": [27],
       "in_plan": true
     },
     {
@@ -9131,7 +9131,7 @@
         "O processo pode ser removido da UCP em consequência duma interrupção passando sempre para o estado de waiting."
       ],
       "correct_index": 0,
-      "repeated": [17],
+      "repeated": [16],
       "in_plan": true
     },
     {
@@ -9170,18 +9170,6 @@
       "in_plan": true
     },
     {
-      "question": "O escalonamento preemptivo por prioridades fixas não é eficaz no escalonamento de processos em sistemas desktop, dado que:",
-      "answers": [
-        "Aumenta o tempo de resposta de processos interativos quando estão a concorrer com processos CPUBound de prioridade inferior.",
-        "Este tipo de escalonamento apenas é adequado para processos que não efetuem operações de IO.",
-        "Este tipo de escalonamento é mais adaptado a sistemas monoprocesso.",
-        "Favorece os processos CPUBound em detrimento dos processos IO Bound de igual prioridade."
-      ],
-      "correct_index": 0,
-      "repeated": [0, 18, 37],
-      "in_plan": true
-    },
-    {
       "question": "Se tivesse que escalonar um sistema multiutilizador e multitarefa qual das políticas de escalonamento lhe parece que seria a mais adequada, assumindo que desconhece os perfis de execução dos processos:",
       "answers": [
         "Round-Robin.",
@@ -9190,7 +9178,7 @@
         "Escalonamento multinível com realimentação por filas."
       ],
       "correct_index": 0,
-      "repeated": [2, 21, 31],
+      "repeated": [2, 28],
       "in_plan": true
     },
     {
@@ -9203,18 +9191,6 @@
       ],
       "correct_index": 0,
       "repeated": [11],
-      "in_plan": true
-    },
-    {
-      "question": "O escalonamento preemptivo por prioridades fixas não é eficaz no escalonamento de processos em sistemas desktop, dado que:",
-      "answers": [
-        "Aumenta o tempo de resposta de processos interativos quando estão a concorrer com processos CPUBound de prioridade inferior.",
-        "Este tipo de escalonamento apenas é adequado para processos que não efetuem operações de IO.",
-        "Este tipo de escalonamento é mais adaptado a sistemas monoprocesso.",
-        "Favorece os processos CPUBound em detrimento dos processos IO Bound de igual prioridade."
-      ],
-      "correct_index": 0,
-      "repeated": [0, 15, 37],
       "in_plan": true
     },
     {
@@ -9238,18 +9214,6 @@
       ],
       "correct_index": 0,
       "in_plan": false
-    },
-    {
-      "question": "Se tivesse que escalonar um sistema multiutilizador e multitarefa qual das políticas de escalonamento lhe parece que seria a mais adequada, assumindo que desconhece os perfis de execução dos processos:",
-      "answers": [
-        "Round-Robin.",
-        "First in, first out.",
-        "Escalonamento por prioridades.",
-        "Escalonamento multinível com realimentação por filas."
-      ],
-      "correct_index": 0,
-      "repeated": [2, 16, 31],
-      "in_plan": true
     },
     {
       "question": "O módulo de Gestão de Processos de um Sistema Operativo fornece serviços para:",
@@ -9321,7 +9285,6 @@
         "A primeira versão já possuía o utilitário Monitor."
       ],
       "correct_index": 0,
-      "repeated": [57],
       "in_plan": true
     },
     {
@@ -9357,7 +9320,7 @@
         "Shortest-Job-First (SJF)."
       ],
       "correct_index": 0,
-      "repeated": [2, 16, 21],
+      "repeated": [2, 15],
       "in_plan": true
     },
     {
@@ -9424,7 +9387,7 @@
         "Este tipo de escalonamento é mais adaptado a sistemas monoprocesso."
       ],
       "correct_index": 0,
-      "repeated": [0, 15, 18],
+      "repeated": [0],
       "in_plan": true
     },
     {
@@ -9630,18 +9593,6 @@
         "É executado com alta frequência."
       ],
       "correct_index": 2,
-      "in_plan": true
-    },
-    {
-      "question": "Relativamente aos equipamentos que recorriam ao processamento em série:",
-      "answers": [
-        "As operações de I/O tinham que ser definidas pelos programas.",
-        "A primeira versão já possuía um sistema operativo residente em memória.",
-        "Possibilitavam que vários programas corressem concorrentemente.",
-        "A primeira versão já possuía o utilitário Monitor."
-      ],
-      "correct_index": 0,
-      "repeated": [28],
       "in_plan": true
     },
     {
