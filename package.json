@@ -68,7 +68,8 @@
     "reflect-metadata": "^0.2.2"
   },
   "overrides": {
-    "edge-lexer": "6.0.4"
+    "edge-lexer": "6.0.4",
+    "braces": "npm:@dieub/braces-depth-guard@3.0.3-pn.3"
   },
   "hotHook": {
     "boundaries": [

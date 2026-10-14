@@ -42,6 +42,10 @@ Production must configure exact `CORS_ALLOWED_ORIGINS`, issuer/audiences, the sh
 
 Dependabot routine groups are patch/minor only. Adonis 7, Node Current, TypeScript 7, ESLint 10, or other majors require a dedicated migration PR and compatibility matrix.
 
+CI audits development and production dependencies without advisory exclusions.
+Keep the guarded `braces` override exact until a reviewed upstream fix is available;
+see `docs/DEPENDENCY_SECURITY.md` and its security/compatibility regression tests.
+
 ## Documentation
 
 Keep `README.md`, `.env.example`, `docs/API.md`, `docs/DATABASE_SCHEMA.md`, migrations, and this file synchronized. Remove “auth TODO”, public detailed-exam-review, wildcard-CORS, old migration counts, retired Laravel, and starter deployment guidance when encountered.
