@@ -1,3 +1,4 @@
+import type { QueryClientContract } from '@adonisjs/lucid/types/database'
 import { BaseSchema } from '@adonisjs/lucid/schema'
 
 export default class extends BaseSchema {
@@ -24,8 +25,8 @@ export default class extends BaseSchema {
         throw new Error(
           `Exam states reference another owner or missing attempt: ${JSON.stringify(mismatched)}`
         )
+      await this.dropAttemptForeignKeys(client)
     })
-    this.schema.raw('ALTER TABLE exam_states DROP CONSTRAINT exam_states_attempt_id_foreign')
     this.schema.raw('ALTER TABLE exam_attempts DROP CONSTRAINT exam_attempts_pkey')
     this.schema.raw('ALTER TABLE exam_attempts ALTER COLUMN user_id SET NOT NULL')
     this.schema.raw('ALTER TABLE exam_attempts ADD COLUMN row_id SERIAL PRIMARY KEY')
@@ -50,8 +51,8 @@ export default class extends BaseSchema {
         throw new Error(
           `Duplicate exam UUIDs require reconciliation before rollback: ${JSON.stringify(duplicates.rows)}`
         )
+      await this.dropAttemptForeignKeys(client)
     })
-    this.schema.raw('ALTER TABLE exam_states DROP CONSTRAINT exam_states_owner_attempt_foreign')
     this.schema.raw('DROP INDEX exam_attempts_unfinished_owner_idx')
     this.schema.raw('ALTER TABLE exam_attempts DROP COLUMN row_id')
     this.schema.raw('ALTER TABLE exam_attempts ADD PRIMARY KEY (id)')
@@ -60,5 +61,14 @@ export default class extends BaseSchema {
     this.schema.raw(
       'ALTER TABLE exam_states ADD CONSTRAINT exam_states_attempt_id_foreign FOREIGN KEY (attempt_id) REFERENCES exam_attempts (id) ON DELETE CASCADE'
     )
+  }
+
+  private async dropAttemptForeignKeys(client: QueryClientContract) {
+    const constraints = await client.rawQuery(
+      "SELECT conname FROM pg_constraint WHERE conrelid = 'exam_states'::regclass AND confrelid = 'exam_attempts'::regclass AND contype = 'f'"
+    )
+    for (const constraint of constraints.rows) {
+      await client.rawQuery('ALTER TABLE exam_states DROP CONSTRAINT ??', [constraint.conname])
+    }
   }
 }

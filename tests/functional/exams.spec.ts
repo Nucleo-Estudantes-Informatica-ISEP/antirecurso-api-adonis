@@ -830,7 +830,7 @@ test.group('Exams', (group) => {
     assert.equal(Number(count.$extras.total), 20)
   })
 
-  test('legacy verify cannot score an attempt-bound draft before or after UUID grading', async ({
+  test('legacy verify blocks unfinished stored state but permits a new exam after UUID grading', async ({
     client,
     assert,
   }) => {
@@ -884,8 +884,13 @@ test.group('Exams', (group) => {
         .header('authorization', `Bearer ${userToken}`)
         .json(attempt.verify),
     ])
-    responses[0].assertStatus(409)
+    // The legacy request is rejected while pending, or starts a new exam if UUID grading wins.
+    assert.oneOf(responses[0].status(), [200, 409])
     responses[1].assertStatus(200)
+    const scoredExams = responses[0].status() === 200 ? 3 : 2
+    const completedState = await ExamState.findOrFail(state.body().id)
+    assert.isTrue(completedState.isCompleted)
+    assert.equal(completedState.attemptId, attemptId)
     const retry = await client
       .post('/exams/verify')
       .header('authorization', `Bearer ${userToken}`)
@@ -896,17 +901,20 @@ test.group('Exams', (group) => {
       .post('/exams/verify')
       .header('authorization', `Bearer ${userToken}`)
       .json(legacy)
-    lateLegacy.assertStatus(409)
+    lateLegacy.assertStatus(200)
     const scoreAfter = await Score.query()
       .where('user_id', user.id)
       .where('subject_id', subject.id)
       .firstOrFail()
-    assert.equal(scoreAfter.score, (scoreBefore?.score ?? 0) + 100)
+    assert.equal(scoreAfter.score, (scoreBefore?.score ?? 0) + scoredExams * 100)
     const answersAfter = await Answer.query()
       .where('user_id', user.id)
       .count('* as total')
       .firstOrFail()
-    assert.equal(Number(answersAfter.$extras.total), Number(answersBefore.$extras.total) + 1)
+    assert.equal(
+      Number(answersAfter.$extras.total),
+      Number(answersBefore.$extras.total) + scoredExams
+    )
     await resetState()
     const legacyState = await client
       .post('/exams/state')
@@ -983,6 +991,56 @@ test.group('Exams', (group) => {
       .json({ ...attempt.verify, n_of_questions: 10 })
     retry.assertStatus(200)
     assert.deepEqual(retry.body(), completed.body())
+  })
+
+  test('non-custom grading and replay ignore penalty, including old hashes', async ({
+    client,
+    assert,
+  }) => {
+    const attempt = await mobileAttempt(client)
+    const completed = await client
+      .post('/exams/verify')
+      .header('authorization', `Bearer ${userToken}`)
+      .json({ ...attempt.verify, penalizing_factor: 0.5 })
+    completed.assertStatus(200)
+    assert.equal(completed.body().score, 100)
+    const stored = await ExamAttempt.findByOrFail('id', attempt.id)
+    for (const oldHash of [false, true]) {
+      if (oldHash) {
+        stored.snapshot = { ...stored.snapshot, penalizingFactor: 0.5 }
+        stored.requestHash = createHash('sha256')
+          .update(
+            JSON.stringify({
+              subject: subject.id,
+              mode: 'default',
+              count: 10,
+              penalty: 0.5,
+              answers: attempt.verify.answers
+                .map((item: any) => ({ id: item.question_id, order: 'A' }))
+                .sort((a: any, b: any) => a.id - b.id),
+            })
+          )
+          .digest('hex')
+        await stored.save()
+      }
+      const retry = await client
+        .post('/exams/verify')
+        .header('authorization', `Bearer ${userToken}`)
+        .json({ ...attempt.verify, penalizing_factor: 1 })
+      retry.assertStatus(200)
+      assert.deepEqual(retry.body(), completed.body())
+      const changed = await client
+        .post('/exams/verify')
+        .header('authorization', `Bearer ${userToken}`)
+        .json({
+          ...attempt.verify,
+          answers: attempt.verify.answers.map((item: any) => ({
+            ...item,
+            selected_option: 'B',
+          })),
+        })
+      changed.assertStatus(409)
+    }
   })
 
   test('custom count and penalty remain immutable', async ({ client, assert }) => {

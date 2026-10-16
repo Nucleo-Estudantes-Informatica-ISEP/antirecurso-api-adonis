@@ -107,6 +107,31 @@ test.group('Exam migration data and indexes', () => {
     })
   })
 
+  test('owner scope handles renamed foreign keys on upgrade and rollback', async ({ assert }) => {
+    await isolatedSchema(async (trx) => {
+      await trx.table('exam_attempts').insert(attempt(1))
+      await trx.table('exam_states').insert({ user_id: 1, attempt_id: id })
+      await trx.rawQuery(
+        'ALTER TABLE exam_states RENAME CONSTRAINT exam_states_attempt_id_foreign TO custom_attempt_fk'
+      )
+      await new OwnerScope(trx, 'scope').execUp()
+      await trx.rawQuery(
+        'ALTER TABLE exam_states RENAME CONSTRAINT exam_states_owner_attempt_foreign TO custom_owner_fk'
+      )
+      await new OwnerScope(trx, 'scope').execDown()
+      const state = await trx.from('exam_states').firstOrFail()
+      assert.equal(state.attempt_id, id)
+      await new OwnerScope(trx, 'scope').execUp()
+      await assert.rejects(
+        () =>
+          trx.transaction(async (child) => {
+            await child.table('exam_states').insert({ user_id: 2, attempt_id: id })
+          }),
+        /foreign key/
+      )
+    })
+  })
+
   test('null owners get actionable diagnostics and preserve the old schema/data', async ({
     assert,
   }) => {

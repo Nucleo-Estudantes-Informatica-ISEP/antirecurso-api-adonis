@@ -69,6 +69,7 @@ export default class ExamVerificationService {
           .where('user_id', input.userId)
           .where('subject_id', input.subject.id)
           .where('mode', input.mode)
+          .where('is_completed', false)
           .forUpdate()
           .first()
         if (state?.attemptId)
@@ -85,7 +86,7 @@ export default class ExamVerificationService {
         subject: input.subject.id,
         mode: input.mode,
         count: nOfQuestions,
-        penalty: input.penalizingFactor,
+        penalty: input.mode === 'custom' ? input.penalizingFactor : null,
         answers: input.answers
           .map((item) => ({
             id: item.question_id,
@@ -105,18 +106,34 @@ export default class ExamVerificationService {
           throw new AttemptConflictError('Attempt unavailable for this identity')
         }
         if (attempt.result) {
-          // Earlier snapshots hashed the submitted count instead of the effective mode count.
-          const previousHash = createHash('sha256')
-            .update(JSON.stringify({ ...requestPayload, count: attempt.snapshot.nOfQuestions }))
-            .digest('hex')
-          if (attempt.requestHash !== requestHash && attempt.requestHash !== previousHash)
+          // Earlier versions hashed raw count/penalty values. Use the stored configuration
+          // for compatibility, so ignored retry fields cannot change the original answers.
+          const previousHashes = [nOfQuestions, attempt.snapshot.nOfQuestions].map((count) =>
+            createHash('sha256')
+              .update(
+                JSON.stringify({
+                  ...requestPayload,
+                  count,
+                  penalty:
+                    input.mode === 'custom'
+                      ? input.penalizingFactor
+                      : attempt.snapshot.penalizingFactor,
+                })
+              )
+              .digest('hex')
+          )
+          if (
+            attempt.requestHash !== requestHash &&
+            !previousHashes.some((hash) => hash === attempt.requestHash)
+          )
             throw new AttemptConflictError('Attempt already submitted with different answers')
           await trx.commit()
           return attempt.result
         }
         if (
           attempt.snapshot.questions.length !== nOfQuestions ||
-          attempt.snapshot.penalizingFactor !== input.penalizingFactor ||
+          (input.mode === 'custom' &&
+            attempt.snapshot.penalizingFactor !== input.penalizingFactor) ||
           JSON.stringify(
             [...attempt.snapshot.questions.map((item) => item.id)].sort((a, b) => a - b)
           ) !== JSON.stringify(input.answers.map((item) => item.question_id).sort((a, b) => a - b))

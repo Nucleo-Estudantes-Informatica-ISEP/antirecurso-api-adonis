@@ -330,7 +330,7 @@ Current cloud progress for each owner, subject and mode.
 | `created_at` | timestamp | yes | ORM fills on creation |
 | `updated_at` | timestamp | yes | ORM updates on save |
 
-Unique `(user_id, subject_id, mode)`; `attempt_id` index supports associations/cascades. CAS uses row ID/revision. Saved question order is preserved because `currentQuestionIndex` refers to that sequence. Legacy verification cannot write scores for an attempt-bound state without its attempt ID.
+Unique `(user_id, subject_id, mode)`; `attempt_id` index supports associations/cascades. CAS uses row ID/revision. Saved question order is preserved because `currentQuestionIndex` refers to that sequence. Legacy verification cannot write scores for an unfinished attempt-bound state without its attempt ID. Completed state does not block a new legacy exam.
 
 ## Mobile safety migration
 
