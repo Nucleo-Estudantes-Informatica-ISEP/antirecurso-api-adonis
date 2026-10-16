@@ -61,8 +61,9 @@ verified data before use.
 For new questions omit `question_id`; retain the same key in later batches. Source
 is `REAL_EXAM`, `AI_GENERATED` or `MANUAL`. Each entry needs approved review evidence,
 a nonblank reviewer/reference, a valid past ISO timestamp with timezone, and explicit
-duplicate review. Options need 2–9 unique nonblank names and unique single alphanumeric
-orders; `correct_option` must match one. For raw `answers`/`correct_index` data, map
+duplicate review. Options need 2–9 unique nonblank names and unique single uppercase
+letter or digit orders (`A`–`Z`, `0`–`9`); `correct_option` must match one. Lowercase
+letters are rejected to match exam verification. For raw `answers`/`correct_index` data, map
 answers to verified stored orders (normally `1`–`9`), then map the index to that order.
 Carry `in_plan`, `repeated` and `ref` without discarding them. Restore full statements
 from verified source material instead of retaining previously shortened versions.

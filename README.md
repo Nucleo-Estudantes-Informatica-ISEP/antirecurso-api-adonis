@@ -150,7 +150,7 @@ The events feature is covered by these admin-only routes:
 ├── database/
 │   ├── data/             # Question banks (questions.json, ai_generated/<subject>/*.json)
 │   ├── migrations/       # Schema definition files
-│   └── seeders/          # Question seeders (real exams and AI-generated banks)
+│   └── seeders/          # Legacy question seeders (publication disabled; use questions:import)
 ├── start/
 │   ├── env.ts            # Environment variable validation
 │   ├── routes.ts         # All application endpoint definitions

@@ -191,21 +191,45 @@ test.group('Reviewed question import', (group) => {
     assert.equal(report.changes[0].after.options[0].created_at, '2026-10-11T10:00:00.123456+00:00')
   })
 
-  test('option order comparison is independent of database/text collation', async ({ assert }) => {
-    await db.from('options').where('id', options[1].id).update({ order: 'a' })
-    const input = batch([
+  test('lowercase answers, lowercase orders and mixed-case collisions are rejected without writes', async ({
+    assert,
+  }) => {
+    for (const bad of [
+      { ...entry(), correct_option: 'b' },
       {
         ...entry(),
-        correct_option: 'a',
+        options: [
+          { order: 'a', name: 'Lowercase' },
+          { order: 'B', name: 'Correct answer' },
+        ],
+      },
+      {
+        ...entry(),
+        correct_option: 'A',
         options: [
           { order: 'a', name: 'Lowercase' },
           { order: 'A', name: 'Uppercase' },
         ],
       },
-    ])
-    await importReviewedQuestions(input, true)
-    const repeat = await importReviewedQuestions(input, true)
-    assert.equal(repeat.counts.unchanged, 1)
+    ]) {
+      const input = batch([entry(), bad])
+      await assert.rejects(() => importReviewedQuestions(input, true))
+      const current = await Question.findOrFail(question.id)
+      assert.equal(current.question, 'Before correction')
+      assert.equal(current.correctOption, 'A')
+      const currentOptions = await Option.query().where('questionId', question.id).orderBy('order')
+      assert.deepEqual(
+        currentOptions.map((option) => option.order),
+        ['A', 'B']
+      )
+      assert.deepEqual(
+        currentOptions.map((option) => option.name),
+        ['Before A', 'Before B']
+      )
+      assert.isNull(
+        await db.from('question_import_batches').where('batch_id', input.batch_id).first()
+      )
+    }
   })
 
   test('new approved questions insert once; duplicate text and keys block entire batch', async ({

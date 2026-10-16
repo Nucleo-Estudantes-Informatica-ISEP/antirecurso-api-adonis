@@ -20,11 +20,11 @@ const importValidator = vine.compile(
           image: vine.string().maxLength(255).optional(),
           source: vine.enum(QUESTION_SOURCES),
           question: vine.string().minLength(1),
-          correct_option: vine.string().regex(/^[A-Za-z0-9]$/),
+          correct_option: vine.string().regex(/^[A-Z0-9]$/),
           options: vine
             .array(
               vine.object({
-                order: vine.string().regex(/^[A-Za-z0-9]$/),
+                order: vine.string().regex(/^[A-Z0-9]$/),
                 name: vine.string().minLength(1),
               })
             )
