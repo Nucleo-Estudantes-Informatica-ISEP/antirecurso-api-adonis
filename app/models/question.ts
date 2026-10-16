@@ -28,6 +28,27 @@ export default class Question extends BaseModel {
   declare source: QuestionSource
 
   @column()
+  declare importKey: string | null
+
+  @column()
+  declare review: {
+    status: 'approved'
+    reviewer: string
+    reviewed_at: string
+    reference: string
+    duplicates_checked: true
+  } | null
+
+  @column()
+  declare repeated: boolean | null
+
+  @column()
+  declare inPlan: boolean | null
+
+  @column()
+  declare ref: string | null
+
+  @column()
   declare subjectId: number
 
   @column()

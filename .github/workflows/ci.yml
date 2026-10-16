@@ -72,8 +72,8 @@ jobs:
       - name: Production build
         run: npm run build
 
-      - name: Reject critical production dependency advisories
-        run: npm audit --omit=dev --audit-level=critical
+      - name: Reject dependency advisories (including development)
+        run: npm audit
 
   docker:
     name: Production Docker image
