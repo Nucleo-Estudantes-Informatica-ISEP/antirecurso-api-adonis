@@ -1,6 +1,7 @@
 export const MAX_SCORE = 100
 export const PASSING_SCORE_TOLERANCE = 5
 export const EXAM_HISTORY_PAGE_SIZE = 10
+export const MAX_UNFINISHED_ATTEMPTS = 20
 export const MIN_CUSTOM_QUESTIONS = 5
 export const MAX_CUSTOM_QUESTIONS = 50
 

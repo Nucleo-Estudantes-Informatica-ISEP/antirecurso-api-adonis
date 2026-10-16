@@ -36,12 +36,12 @@ A robust backend API built with AdonisJS 7 for the Antirecurso platform. It prov
 
 ### Node 25 compatibility
 
-| Component | Node 24 (previous) | Node 25 (current) |
-| --- | --- | --- |
-| Build and runtime image | `node:24-alpine` | `node:25-alpine` |
-| CI runtime | 24 | 25 |
-| Node type definitions | `@types/node` 24 | `@types/node` 25 |
-| Verification | Existing CI baseline | Lint, typecheck, tests, migrations, build, audit, Docker build |
+| Component               | Node 24 (previous)   | Node 25 (current)                                              |
+| ----------------------- | -------------------- | -------------------------------------------------------------- |
+| Build and runtime image | `node:24-alpine`     | `node:25-alpine`                                               |
+| CI runtime              | 24                   | 25                                                             |
+| Node type definitions   | `@types/node` 24     | `@types/node` 25                                               |
+| Verification            | Existing CI baseline | Lint, typecheck, tests, migrations, build, audit, Docker build |
 
 ---
 
@@ -73,6 +73,8 @@ Once your `.env` file is populated with the database credentials, execute all th
 ```bash
 node ace migration:run
 ```
+
+Native clients can opt into immutable snapshots, idempotent grading and revision-controlled cloud saves; see [API contract](docs/API.md#exams). Stored UUIDs are scoped to authenticated owners, with an atomic limit of 20 unfinished attempts per owner and an owner-only discard endpoint for abandoned drafts. Deploy all pending migrations before mobile; owner-scope migration preconditions, maintenance-window locks and rollback limits are documented in the [schema reference](docs/DATABASE_SCHEMA.md#immutable-attempt-recovery-and-cloud-revisions). Existing web/installed clients remain compatible.
 
 This applies the complete, versioned migration history, including pending-account and shared rate-limit state. Do not rely on a hard-coded table count; `node ace migration:status` is authoritative.
 

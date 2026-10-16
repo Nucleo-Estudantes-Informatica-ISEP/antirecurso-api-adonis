@@ -1,9 +1,18 @@
 import { randomInt } from 'node:crypto'
+import db from '@adonisjs/lucid/services/db'
 import Answer from '#models/answer'
 import AnswerQuestion from '#models/answer_question'
+import ExamAttempt from '#models/exam_attempt'
 import Question from '#models/question'
 import type Subject from '#models/subject'
-import { DEFAULT_EXAM_RULE, type ExamMode, getSubjectExamRule } from '#services/exams/exam_config'
+import User from '#models/user'
+import { AttemptConflictError } from '#services/exams/exam_verification_service'
+import {
+  DEFAULT_EXAM_RULE,
+  MAX_UNFINISHED_ATTEMPTS,
+  type ExamMode,
+  getSubjectExamRule,
+} from '#services/exams/exam_config'
 
 export type GeneratedQuestionOption = {
   name: string
@@ -25,10 +34,14 @@ export type GenerateExamParams = {
   userId: number | null
   nOfQuestions: number | null
   filter: string | null
+  attemptId?: string
+  penalizingFactor?: number | null
 }
 
 export default class ExamGenerationService {
   async generate(params: GenerateExamParams): Promise<GeneratedQuestion[]> {
+    if (params.attemptId && params.userId === null)
+      throw new AttemptConflictError('Authentication required for stored attempts')
     let selectedQuestions: Question[] = []
 
     if (params.mode === 'realistic') {
@@ -61,7 +74,58 @@ export default class ExamGenerationService {
       selectedQuestions = await this.generateDefault(params.subject.id)
     }
 
-    return this.serializeQuestions(this.shuffle(selectedQuestions))
+    const selected = this.shuffle(selectedQuestions)
+    const result = this.serializeQuestions(selected)
+    if (params.attemptId) {
+      try {
+        await db.transaction(async (trx) => {
+          await User.query({ client: trx }).where('id', params.userId!).forUpdate().firstOrFail()
+          const pending = await ExamAttempt.query({ client: trx })
+            .where('user_id', params.userId!)
+            .whereNull('result')
+            .count('* as total')
+            .firstOrFail()
+          if (Number(pending.$extras.total) >= MAX_UNFINISHED_ATTEMPTS)
+            throw new AttemptConflictError(
+              'Too many unfinished attempts; complete or discard an existing attempt before generating another'
+            )
+          await ExamAttempt.create(
+            {
+              id: params.attemptId,
+              userId: params.userId!,
+              subjectId: params.subject.id,
+              mode: params.mode,
+              snapshot: {
+                nOfQuestions: params.nOfQuestions,
+                penalizingFactor: params.penalizingFactor ?? null,
+                questions: result.map((item) => {
+                  const source = selected.find((question) => question.id === item.id)
+                  if (!source) throw new Error(`Snapshot question ${item.id} is unavailable`)
+                  return {
+                    ...item,
+                    correctOption: source.correctOption,
+                    options: item.options.map((option) => {
+                      const canonical = source.options.find((value) => value.order === option.order)
+                      if (!canonical)
+                        throw new Error(
+                          `Snapshot option ${option.order} is unavailable for question ${item.id}`
+                        )
+                      return { ...option, id: canonical.id }
+                    }),
+                  }
+                }),
+              },
+            },
+            { client: trx }
+          )
+        })
+      } catch (error) {
+        if (error && typeof error === 'object' && 'code' in error && error.code === '23505')
+          throw new AttemptConflictError('Attempt ID already exists; recover it or use a new ID')
+        throw error
+      }
+    }
+    return result
   }
 
   private async generateDefault(subjectId: number): Promise<Question[]> {
