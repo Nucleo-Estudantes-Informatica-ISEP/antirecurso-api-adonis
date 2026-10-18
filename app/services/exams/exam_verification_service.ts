@@ -1,4 +1,6 @@
 import { createHash } from 'node:crypto'
+import { AttemptConflictError } from '#services/exams/attempt_conflict_error'
+import { lockExamOwner } from '#services/exams/exam_attempt_lifecycle'
 import db from '@adonisjs/lucid/services/db'
 import Answer from '#models/answer'
 import AnswerQuestion from '#models/answer_question'
@@ -8,7 +10,6 @@ import Option from '#models/option'
 import Question from '#models/question'
 import Score from '#models/score'
 import type Subject from '#models/subject'
-import User from '#models/user'
 import {
   DEFAULT_EXAM_RULE,
   type ExamMode,
@@ -43,8 +44,6 @@ export type VerifyExamResult = {
 
 type TransactionClient = Awaited<ReturnType<typeof db.transaction>>
 
-export class AttemptConflictError extends Error {}
-
 export default class ExamVerificationService {
   async verify(input: VerifyExamInput): Promise<VerifyExamResult> {
     const nOfQuestions = this.resolveQuestionCount(
@@ -62,8 +61,7 @@ export default class ExamVerificationService {
 
     const trx = await db.transaction()
     try {
-      if (input.userId !== null)
-        await User.query({ client: trx }).where('id', input.userId).forUpdate().firstOrFail()
+      if (input.userId !== null) await lockExamOwner(trx, input.userId)
       if (input.userId !== null && !input.attemptId) {
         const state = await ExamState.query({ client: trx })
           .where('user_id', input.userId)

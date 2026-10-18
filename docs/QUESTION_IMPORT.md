@@ -84,6 +84,14 @@ change while question/option IDs, comments, reports and exam references stay int
 Structural option changes need a separate reviewed history migration; this command
 never deletes/recreates options. Notes and subjects are untouched.
 
+Stored exam attempts retain the question content and answer key shown at generation.
+Corrections apply to new attempts; in-flight verification, completed review/replay and
+existing scoreboard contributions keep the original snapshot, even for an old wrong
+key. Import does not regrade history. Retrospective score changes need a separately
+reviewed transaction updating answers, snapshots/results and scoreboard deltas together.
+Legacy exams without snapshots continue using live content. See [exam lifecycle and
+correction policy](DATABASE_SCHEMA.md#attempt-lifecycle-and-correction-policy).
+
 ## Manual bootstrap and legacy identity mapping
 
 On a fresh development/staging database, run migrations first. The disabled bank

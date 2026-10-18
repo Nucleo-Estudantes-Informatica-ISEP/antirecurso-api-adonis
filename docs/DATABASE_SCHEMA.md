@@ -395,16 +395,71 @@ Migration `1791590400000_add_exam_attempt_recovery` adds `exam_attempts`: UUID p
 
 `exam_states` gains integer `revision` (default 1) and nullable `attempt_id` FK (`exam_attempts`, cascade). Saves increment revision; CAS checks revision and state ID. Absence/completion uses expected revision zero. Explicit completed restart increments the existing row's revision; delete supports the same CAS. Older clients remain compatible and gain guarantees when they adopt the optional fields.
 
-Original content cannot be reconstructed retroactively. Removed underlying questions/options retain existing FK behavior and may invalidate ungraded attempts; never substitute new questions. Retention/cleanup policy remains API #83; no destructive backfill or production migration is included.
+Original content cannot be reconstructed retroactively. Removed underlying questions/options retain existing FK behavior and may invalidate ungraded attempts; never substitute new questions. Unfinished attempt cleanup is described below; broader legacy-state retention remains API #83. No destructive backfill or production migration is included.
 
-Migration `1791792000000_index_exam_attempt_recovery.ts` indexes `exam_states.attempt_id` and the composite owner/result expression `(user_id, (result->>'id'))` used for owned review and owner cascades. New snapshot writes and recovery require auth. The later owner-scope migration requires a non-null owner. Abandoned attempt/state retention remains a rollout requirement under #83; no cleanup scheduler is introduced here.
+Migration `1791792000000_index_exam_attempt_recovery.ts` indexes `exam_states.attempt_id` and the composite owner/result expression `(user_id, (result->>'id'))` used for owned review and owner cascades. New snapshot writes and recovery require auth. The later owner-scope migration requires a non-null owner. The unfinished-owner index also bounds owner-scoped cleanup; deploy the daily pruning command below for owners who never generate again.
 
 Migration `1791936000000_scope_exam_attempts_to_owner.ts` adds an internal `row_id` serial primary key, makes `user_id` non-null, and replaces global UUID uniqueness with `(user_id, id)`. Lucid updates use `row_id`; external APIs retain the client UUID scoped to authenticated owner. `exam_states(user_id, attempt_id)` references the same owner/UUID pair with cascade deletion. A partial owner index on `result IS NULL` supports the cap. Owner caps count only unfinished rows and serialize on the user row, alongside verification/account deletion.
 
-This migration preserves owned snapshots and state associations. It intentionally fails transactionally if pre-existing anonymous snapshots or cross-owner state references need operator reconciliation; it does not delete or invent ownership. Rollback to global UUID uniqueness intentionally fails transactionally when duplicate UUIDs across owners exist; reconcile them and dependent state references first. No automated history cleanup or destructive reconciliation is run by the API. Owners can discard unfinished attempts, including those invalidated by canonical deletion; completed history is retained. Automated retention remains #83.
+This migration preserves owned snapshots and state associations. It intentionally fails transactionally if pre-existing anonymous snapshots or cross-owner state references need operator reconciliation; it does not delete or invent ownership. Rollback to global UUID uniqueness intentionally fails transactionally when duplicate UUIDs across owners exist; reconcile them and dependent state references first. Owners can discard unfinished attempts, including those invalidated by canonical deletion. Generation prunes only the caller’s unfinished attempts inactive for 30 days; the daily command below also cleans inactive owners. Completed history is retained. Broader legacy-state retention remains #83; migration preflight never deletes data.
 
 ### Migration deployment constraints
 
 The index migrations and owner-scope migration use transactional, non-concurrent index/constraint creation. Owner-scope preflight takes `ACCESS EXCLUSIVE` locks on `exam_attempts` and `exam_states` so diagnostics and key changes see the same rows. Preflight names up to 20 anonymous attempt IDs, mismatched/missing-owner state references, or duplicate rollback UUIDs and owners; it rejects the migration before key changes. No rows are deleted or assigned invented owners.
 
 These migrations are suitable for empty/small tables during initial rollout, with API writes drained and a maintenance window. Rehearse timing/lock impact against staging row counts and take a backup before authorized production migration. They are not an online migration plan for large/live tables: use a separate reviewed deployment with concurrent indexes outside a transaction and staged constraint validation in that case. Committed Japa tests cover index apply/rollback/reapply, populated upgrades (including legacy null attempt references), preflight rejections and transactional data preservation.
+
+### Attempt lifecycle and correction policy
+
+Reviewed imports update canonical questions/options in place. New stored attempts see
+those corrections; existing in-flight and completed attempts keep their original
+content and answer key. Completed results and scoreboard contributions are historical,
+including previously wrong keys. No automatic regrading is claimed. Any retrospective
+correction requires a separately reviewed, audited transaction updating answer scores,
+snapshot grading/results and scoreboard deltas together. The API regression uses the
+actual reviewed importer, then checks old/new attempts, review, replay and scoreboard.
+
+Canonical deletion remains available for controlled removal of invalid/withdrawn
+content and subject deletion. The schema confirms question CASCADE and option SET NULL
+on answer details. Changing these to RESTRICT would change existing deletion behavior
+and still would not preserve old wording/options across in-place edits. Stored snapshots
+preserve the exact exam shown across both edits and deletion. Owner/account and subject
+cascades still remove their snapshots; this is not indefinite retention after erasure.
+
+All exam mutations and pruning acquire owner first, then state/attempt/score rows.
+The owner row exists before the first state, attempt or score: locking only those child
+rows cannot serialize concurrent initial inserts or the cap across subjects. Account
+deletion follows the same owner-first order. Transactions touching these resources must
+keep that order; unrelated ownership reads do not require this mutex. Advisory locks
+would add a second protocol while deletion and FK protection still need the user row.
+
+Schedule `node ace exams:prune-attempts` daily in the deployment scheduler, using the
+normal runtime DB role/environment. It visits stale owners in batches of 100 and
+locks one owner per transaction before deleting only unfinished rows whose `updated_at`
+is older than 30 days. Successful bound cloud saves refresh this timestamp. Completed
+results and their grading are never purged. Cascades remove only drafts bound to deleted
+attempts; other drafts remain. Run once after migrations during rollout, then verify
+that stale unfinished counts fall and completed counts remain unchanged. Generation
+performs the same cleanup for its own owner before the 20-row cap, so missing client
+discard calls cannot cause a permanent lockout. Unsynced local progress cannot extend
+server retention; expired recovery returns 404 and verification returns 409. Scheduler
+installation and production cleanup are deployment actions, not performed by this PR.
+
+Before enabling `RUN_MIGRATIONS=true` on an existing deployment, inspect
+`node ace migration:status`. If `exam_attempts` already exists, run these read-only
+checks with the deployment schema selected; both result sets must be empty:
+
+```sql
+SELECT id FROM exam_attempts WHERE user_id IS NULL;
+SELECT state.id, state.user_id, state.attempt_id
+FROM exam_states AS state
+LEFT JOIN exam_attempts AS attempt ON attempt.id = state.attempt_id
+WHERE state.attempt_id IS NOT NULL
+  AND (state.user_id IS DISTINCT FROM attempt.user_id OR attempt.id IS NULL);
+```
+
+For a fresh installation the first migration creates an empty table; no production
+inventory is inferred from that. Stop rollout and reconcile existing anonymous/mismatched
+rows from an authorized backup/review plan before restarting. Do not silently delete
+snapshots or invent owners to bypass the fail-closed migration. Production inventory
+and backup approval remain operator prerequisites.

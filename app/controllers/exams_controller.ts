@@ -1,3 +1,6 @@
+import { DateTime } from 'luxon'
+import { UnauthorizedError } from '#services/auth/zitadel_auth_service'
+import { lockExamOwner } from '#services/exams/exam_attempt_lifecycle'
 import type { HttpContext } from '@adonisjs/core/http'
 import { visibleComments } from '#services/comment_visibility'
 import db from '@adonisjs/lucid/services/db'
@@ -6,7 +9,6 @@ import ExamAttempt from '#models/exam_attempt'
 import ExamState from '#models/exam_state'
 import Question from '#models/question'
 import Subject from '#models/subject'
-import User from '#models/user'
 import ExamGenerationService from '#services/exams/exam_generation_service'
 import type { ExamMode } from '#services/exams/exam_config'
 import {
@@ -15,9 +17,8 @@ import {
   MIN_CUSTOM_QUESTIONS,
   modeRequiresUser,
 } from '#services/exams/exam_config'
-import ExamVerificationService, {
-  AttemptConflictError,
-} from '#services/exams/exam_verification_service'
+import ExamVerificationService from '#services/exams/exam_verification_service'
+import { AttemptConflictError } from '#services/exams/attempt_conflict_error'
 import {
   clearExamStateValidator,
   examHistoryValidator,
@@ -30,7 +31,11 @@ import {
 import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
 import { hasAuthNeiRole } from '#services/auth/auth_nei_roles'
 import { canViewExamAttempt } from '#services/exams/exam_access_policy'
-import { InvalidExamStateError, normalizeSavedExamState } from '#services/exams/exam_state_policy'
+import {
+  InvalidExamStateError,
+  normalizeSavedExamState,
+  sameQuestionIds,
+} from '#services/exams/exam_state_policy'
 import { getUserAvatar } from '#services/auth/user_identity'
 
 export default class ExamsController {
@@ -90,6 +95,8 @@ export default class ExamsController {
 
       return response.ok(questions)
     } catch (error) {
+      if (error instanceof UnauthorizedError)
+        return response.unauthorized({ message: error.message })
       if (error instanceof AttemptConflictError)
         return response.conflict({ message: error.message })
       const message = error instanceof Error ? error.message : 'Unable to generate exam'
@@ -134,6 +141,8 @@ export default class ExamsController {
 
       return response.ok(result)
     } catch (error) {
+      if (error instanceof UnauthorizedError)
+        return response.unauthorized({ message: error.message })
       if (error instanceof AttemptConflictError)
         return response.conflict({ message: error.message })
       const message = error instanceof Error ? error.message : 'Invalid exam payload'
@@ -343,7 +352,7 @@ export default class ExamsController {
 
     return db.transaction(async (trx) => {
       // Lock the owner even when no state exists, so competing initial saves cannot both win.
-      await User.query({ client: trx }).where('id', authUser.id).forUpdate().firstOrFail()
+      await lockExamOwner(trx, authUser.id)
       const state = await ExamState.query({ client: trx })
         .where('user_id', authUser.id)
         .where('subject_id', data.subject_id)
@@ -371,8 +380,10 @@ export default class ExamsController {
         if (
           !attempt ||
           attempt.result ||
-          JSON.stringify(attempt.snapshot.questions.map((item) => item.id)) !==
-            JSON.stringify(payload.questionIds)
+          !sameQuestionIds(
+            attempt.snapshot.questions.map((item) => item.id),
+            payload.questionIds
+          )
         ) {
           return response.conflict({
             message: 'Attempt is unavailable, completed or has different questions',
@@ -390,12 +401,18 @@ export default class ExamsController {
         revision: (state?.revision ?? 0) + 1,
         attemptId:
           data.attempt_id ??
-          (active &&
-          JSON.stringify(payload.questionIds) === JSON.stringify(active.state.questionIds)
+          (active && sameQuestionIds(payload.questionIds, active.state.questionIds)
             ? active.attemptId
             : null),
       })
       await saved.save()
+      if (saved.attemptId) {
+        await ExamAttempt.query({ client: trx })
+          .where('user_id', authUser.id)
+          .where('id', saved.attemptId)
+          .whereNull('result')
+          .update({ updatedAt: DateTime.utc() })
+      }
       return response.ok({
         id: saved.id,
         revision: saved.revision,
@@ -462,7 +479,7 @@ export default class ExamsController {
     if (revision !== undefined && revision > 0 && stateId === undefined)
       return response.badRequest({ message: 'Expected state ID required with revision' })
     return db.transaction(async (trx) => {
-      await User.query({ client: trx }).where('id', authUser.id).forUpdate().firstOrFail()
+      await lockExamOwner(trx, authUser.id)
       const state = await ExamState.query({ client: trx })
         .where('user_id', authUser.id)
         .where('subject_id', data.subject_id)
@@ -526,8 +543,7 @@ export default class ExamsController {
       data: { id: params.id },
     })
     const attempt = await ExamAttempt.query().where('id', id).where('user_id', authUser.id).first()
-    if (!attempt || attempt.userId !== authUser.id)
-      return response.notFound({ message: 'Attempt unavailable' })
+    if (!attempt) return response.notFound({ message: 'Attempt unavailable' })
     return response.ok({
       id: attempt.id,
       result: attempt.result,
@@ -545,7 +561,7 @@ export default class ExamsController {
       data: { id: params.id },
     })
     return db.transaction(async (trx) => {
-      await User.query({ client: trx }).where('id', authUser.id).forUpdate().firstOrFail()
+      await lockExamOwner(trx, authUser.id)
       const attempt = await ExamAttempt.query({ client: trx })
         .where('user_id', authUser.id)
         .where('id', id)

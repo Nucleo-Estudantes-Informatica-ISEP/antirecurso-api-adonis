@@ -1,3 +1,4 @@
+import { lockExamOwner, pruneUnfinishedAttempts } from '#services/exams/exam_attempt_lifecycle'
 import { randomInt } from 'node:crypto'
 import db from '@adonisjs/lucid/services/db'
 import Answer from '#models/answer'
@@ -5,8 +6,7 @@ import AnswerQuestion from '#models/answer_question'
 import ExamAttempt from '#models/exam_attempt'
 import Question from '#models/question'
 import type Subject from '#models/subject'
-import User from '#models/user'
-import { AttemptConflictError } from '#services/exams/exam_verification_service'
+import { AttemptConflictError } from '#services/exams/attempt_conflict_error'
 import {
   DEFAULT_EXAM_RULE,
   MAX_UNFINISHED_ATTEMPTS,
@@ -79,7 +79,8 @@ export default class ExamGenerationService {
     if (params.attemptId) {
       try {
         await db.transaction(async (trx) => {
-          await User.query({ client: trx }).where('id', params.userId!).forUpdate().firstOrFail()
+          await lockExamOwner(trx, params.userId!)
+          await pruneUnfinishedAttempts(trx, params.userId!)
           const pending = await ExamAttempt.query({ client: trx })
             .where('user_id', params.userId!)
             .whereNull('result')
