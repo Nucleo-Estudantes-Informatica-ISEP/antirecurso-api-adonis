@@ -36,6 +36,8 @@ export default class QuestionsController {
     try {
       await db.transaction(async (trx) => {
         question.useTransaction(trx)
+        // Admin edits invalidate the operator review note; stable identity remains intact.
+        question.review = null
         question.question = data.question
         question.correctOption = data.correct_option
         if (data.source !== undefined && data.source !== null) {

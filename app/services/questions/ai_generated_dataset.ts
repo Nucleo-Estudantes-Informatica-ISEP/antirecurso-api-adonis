@@ -1,8 +1,6 @@
 import { readdir, readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 
-export const MAX_DB_STRING_LENGTH = 255
-
 export const MAX_ANSWERS_PER_QUESTION = 9
 
 export type AiGeneratedQuestion = {
@@ -37,8 +35,6 @@ export function getAiGeneratedQuestionProblems(record: unknown): string[] {
 
   if (typeof question !== 'string' || question.trim().length === 0) {
     problems.push('question must be a non-empty string')
-  } else if (question.length > MAX_DB_STRING_LENGTH) {
-    problems.push(`question has ${question.length} characters (limit ${MAX_DB_STRING_LENGTH})`)
   }
 
   if (!Array.isArray(answers) || answers.length < 2 || answers.length > MAX_ANSWERS_PER_QUESTION) {
@@ -47,10 +43,6 @@ export function getAiGeneratedQuestionProblems(record: unknown): string[] {
     answers.forEach((answer, index) => {
       if (typeof answer !== 'string' || answer.trim().length === 0) {
         problems.push(`answer ${index} must be a non-empty string`)
-      } else if (answer.length > MAX_DB_STRING_LENGTH) {
-        problems.push(
-          `answer ${index} has ${answer.length} characters (limit ${MAX_DB_STRING_LENGTH})`
-        )
       }
     })
 

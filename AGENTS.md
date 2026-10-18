@@ -28,6 +28,11 @@ docker build -t antirecurso-api-check .
 
 Use an isolated test database for migrations and API/integration tests. Never run production migrations, seeds, or destructive checks without explicit authorization and a backup.
 
+Question publication uses `node ace questions:import` with operator-supplied review notes,
+verified stable identity and a dry-run/repeat check; raw bank seeders refuse writes.
+Academic approval is a separate human prerequisite, not authenticated by the importer.
+Retain the transactional before/after audit and backup. See `docs/QUESTION_IMPORT.md`.
+
 ## CI/CD
 
 `.github/workflows/ci.yml` requires frozen install, lint, typecheck, Japa tests, migrations against isolated PostgreSQL, production build/audit, and non-root Docker build for every PR to `dev` or `main`. The separate security workflow runs for pull requests.
@@ -37,6 +42,10 @@ Deployment is a reviewed `main` image rollout. `RUN_MIGRATIONS=true` makes the e
 Production must configure exact `CORS_ALLOWED_ORIGINS`, issuer/audiences, the shared database limiter, and bucket-scoped S3 credentials and private MinIO bucket. Actor/owner identity comes from the validated token, never request input. Stored note promotion validates object size, type, and PDF signature.
 
 Dependabot routine groups are patch/minor only. Adonis 7, Node Current, TypeScript 7, ESLint 10, or other majors require a dedicated migration PR and compatibility matrix.
+
+CI audits development and production dependencies without advisory exclusions.
+Keep the guarded `braces` override exact until a reviewed upstream fix is available;
+see `docs/DEPENDENCY_SECURITY.md` and its security/compatibility regression tests.
 
 ## Documentation
 

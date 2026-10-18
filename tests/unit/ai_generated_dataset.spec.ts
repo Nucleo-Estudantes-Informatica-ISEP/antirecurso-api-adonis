@@ -8,7 +8,6 @@ import {
   InvalidAiGeneratedDatasetError,
   listAiGeneratedSubjects,
   loadAiGeneratedSubjectQuestions,
-  MAX_DB_STRING_LENGTH,
 } from '#services/questions/ai_generated_dataset'
 
 const datasetRoot = fileURLToPath(new URL('../../database/data/ai_generated', import.meta.url))
@@ -29,15 +28,13 @@ test.group('AI-generated question record validation', () => {
     )
   })
 
-  test('rejects text that does not fit the varchar(255) columns', ({ assert }) => {
-    const tooLong = 'x'.repeat(MAX_DB_STRING_LENGTH + 1)
-
-    assert.isNotEmpty(getAiGeneratedQuestionProblems({ ...validRecord, question: tooLong }))
-    assert.isNotEmpty(getAiGeneratedQuestionProblems({ ...validRecord, answers: ['ok', tooLong] }))
+  test('accepts full statements and options beyond 255 characters', ({ assert }) => {
+    const longText = 'x'.repeat(1000)
     assert.deepEqual(
       getAiGeneratedQuestionProblems({
         ...validRecord,
-        question: 'x'.repeat(MAX_DB_STRING_LENGTH),
+        question: longText,
+        answers: ['ok', longText],
       }),
       []
     )
@@ -102,7 +99,7 @@ test.group('AI-generated question loader', (group) => {
       JSON.stringify([
         validRecord,
         { ...validRecord, question: 'bad index', correct_index: 9 },
-        { ...validRecord, question: 'x'.repeat(MAX_DB_STRING_LENGTH + 1) },
+        { ...validRecord, question: ' ' },
       ])
     )
 
@@ -147,7 +144,7 @@ test.group('AI-generated question loader', (group) => {
 })
 
 test.group('Committed AI-generated question bank', () => {
-  test('every committed subject loads and can be seeded as-is', async ({ assert }) => {
+  test('every committed candidate subject loads for review', async ({ assert }) => {
     const subjects = await listAiGeneratedSubjects(datasetRoot)
     assert.include(subjects, 'arqcp')
 

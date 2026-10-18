@@ -421,6 +421,11 @@ type Scoreboard = {
   `null` keeps the stored value; option ids
   must belong to question; only names change; `correct_option` must match an existing option
   order. Entire update is transactional.
+- Question and option text supports more than 255 characters without truncation.
+- Stable import identity and review/repeated/in-plan metadata are managed through the
+  [reviewed import command](QUESTION_IMPORT.md). Admin edits clear the unauthenticated
+  operator review note and preserve the stable key and repetition/curriculum metadata.
+  This endpoint does not record academic sign-off.
 - Response: `204 No Content`.
 - Errors: `404` missing question; `422` invalid body, option ownership, or correct option.
 

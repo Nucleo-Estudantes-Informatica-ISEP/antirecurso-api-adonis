@@ -36,12 +36,17 @@ A robust backend API built with AdonisJS 7 for the Antirecurso platform. It prov
 
 ### Node 25 compatibility
 
-| Component               | Node 24 (previous)   | Node 25 (current)                                              |
-| ----------------------- | -------------------- | -------------------------------------------------------------- |
-| Build and runtime image | `node:24-alpine`     | `node:25-alpine`                                               |
-| CI runtime              | 24                   | 25                                                             |
-| Node type definitions   | `@types/node` 24     | `@types/node` 25                                               |
-| Verification            | Existing CI baseline | Lint, typecheck, tests, migrations, build, audit, Docker build |
+Dependency audits cover the full production/development tree. The pinned guarded
+`braces` derivative addresses an advisory with no upstream fixed release; see
+[dependency security and maintenance](docs/DEPENDENCY_SECURITY.md) for remediation,
+compatibility checks and override removal criteria.
+
+| Component | Node 24 (previous) | Node 25 (current) |
+| --- | --- | --- |
+| Build and runtime image | `node:24-alpine` | `node:25-alpine` |
+| CI runtime | 24 | 25 |
+| Node type definitions | `@types/node` 24 | `@types/node` 25 |
+| Verification | Existing CI baseline | Lint, typecheck, tests, migrations, build, audit, Docker build |
 
 ---
 
@@ -84,17 +89,23 @@ You can verify the status of the migrations at any time using:
 node ace migration:status
 ```
 
-#### Optional: seed the AI-generated question banks
+#### Apply academically reviewed question corrections
 
-`database/data/ai_generated/<subject>/*.json` holds curated, AI-generated question banks (currently `arqcp`, RV32). They are stored with `source = 'AI_GENERATED'` and are **not** part of the default seed. Load them explicitly, after the migrations:
+Raw question banks are candidates only. The legacy and AI seeders now refuse publication;
+use the reviewed importer after migrations and manual subject/type bootstrap. Stable identity updates existing records,
+metadata is retained, and full question/option text is stored beyond 255 characters.
 
 ```bash
-node ace db:seed --files database/seeders/ai_generated_questions_seeder.ts
+node ace questions:import reviewed-batch.json
+node ace questions:import reviewed-batch.json --apply
+node ace questions:import reviewed-batch.json
 ```
 
-The seeder validates every file first and aborts without writing anything if a record is invalid (text over 255 characters, `correct_index` out of range, duplicate question text, `source` other than `AI_GENERATED`). It then upserts the questions in a single transaction, so running it again does not create duplicates. Questions use the exam value `<slug>-ai-generated`, which keeps them apart from the real-exam questions of `questions.json`.
-
-The `in_plan` and `ref` review fields in the JSON files are metadata only and are not stored. Never run this against production without explicit authorization and a backup.
+First command is a dry-run; apply records recoverable before/after snapshots in one
+transaction. Repeat must report only unchanged entries. See [the reviewed import workflow](docs/QUESTION_IMPORT.md)
+for separate academic sign-off, manual bootstrap, identity mapping, format, duplicate checks and recovery.
+Review fields are unauthenticated operator notes; the importer does not verify approval. Never
+apply production changes without explicit authorization and a verified backup.
 
 ### 5. Start Development Server
 
@@ -142,7 +153,7 @@ The events feature is covered by these admin-only routes:
 ├── database/
 │   ├── data/             # Question banks (questions.json, ai_generated/<subject>/*.json)
 │   ├── migrations/       # Schema definition files
-│   └── seeders/          # Question seeders (real exams and AI-generated banks)
+│   └── seeders/          # Legacy question seeders (publication disabled; use questions:import)
 ├── start/
 │   ├── env.ts            # Environment variable validation
 │   ├── routes.ts         # All application endpoint definitions
