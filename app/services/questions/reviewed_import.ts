@@ -109,7 +109,7 @@ async function snapshot(trx: TransactionClientContract, id: number): Promise<Sna
   }
 }
 
-/** Dry-run is the default. Approval evidence is supplied by a trusted academic operator. */
+/** Dry-run is the default. Review fields are unauthenticated operator-supplied notes. */
 export async function importReviewedQuestions(
   input: unknown,
   apply = false
@@ -143,9 +143,11 @@ export async function importReviewedQuestions(
 
   return db.transaction(async (trx) => {
     // Serialize imports with all question/option writers, including admin edits.
-    await trx.rawQuery(
-      'LOCK TABLE questions, options, question_import_batches IN SHARE ROW EXCLUSIVE MODE'
-    )
+    if (apply) {
+      await trx.rawQuery(
+        'LOCK TABLE questions, options, question_import_batches IN SHARE ROW EXCLUSIVE MODE'
+      )
+    }
     const previousBatch = await trx
       .from('question_import_batches')
       .where('batch_id', data.batch_id)
@@ -167,9 +169,9 @@ export async function importReviewedQuestions(
     const rows = await trx
       .from('questions')
       .whereIn('subject_id', [...new Set(data.questions.map((entry) => entry.subject_id))])
-      .select('id', 'subject_id', 'question')
+      .select('id', 'subject_id', 'exam', 'question')
     for (const row of rows) {
-      const textKey = `${row.subject_id}:${normalizedText(row.question)}`
+      const textKey = JSON.stringify([row.subject_id, row.exam, normalizedText(row.question)])
       storedTexts.set(textKey, [...(storedTexts.get(textKey) ?? []), row.id])
     }
 
@@ -200,7 +202,7 @@ export async function importReviewedQuestions(
       seenKeys.add(entry.import_key)
       if (existing && seenIds.has(existing.id)) problems.push('question appears twice in batch')
       if (existing) seenIds.add(existing.id)
-      const textKey = `${entry.subject_id}:${normalizedText(entry.question)}`
+      const textKey = JSON.stringify([entry.subject_id, entry.exam, normalizedText(entry.question)])
       if (seenTexts.has(textKey)) problems.push('duplicate question text in batch')
       seenTexts.add(textKey)
       const duplicateId = storedTexts.get(textKey)?.find((id) => id !== existing?.id)
@@ -275,13 +277,14 @@ export async function importReviewedQuestions(
       report.status = 'blocked'
       return report
     }
-    if (!apply) return report
     // Reusing a committed batch is only a no-op. Never replay it over later corrections.
     if (previousBatch && (report.counts.insert || report.counts.update)) {
       throw new Error(
         'batch_id already applied; stored records changed since then; review a new batch'
       )
     }
+
+    if (!apply) return report
 
     for (const change of report.changes) {
       if (change.action === 'unchanged') continue

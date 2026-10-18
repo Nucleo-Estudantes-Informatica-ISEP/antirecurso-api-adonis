@@ -119,7 +119,7 @@ Question bank entries shown in generated exams.
 | `exam`             | varchar      | no   | source exam identifier                                                                                    |
 | `source`           | varchar(20)  | no   | provenance; default `REAL_EXAM`; check `questions_source_allowed` (`REAL_EXAM`, `AI_GENERATED`, `MANUAL`) |
 | `import_key`       | varchar(160) | yes  | globally unique, immutable import identity; null for unmapped published rows                              |
-| `review`           | jsonb        | yes  | academic approval evidence: status, reviewer, reviewed_at, reference, duplicates_checked                  |
+| `review`           | jsonb        | yes  | unauthenticated operator note: status, reviewer, reviewed_at, reference, duplicates_checked                  |
 | `repeated`         | boolean      | yes  | reviewed repetition flag; null means unknown                                                              |
 | `in_plan`          | boolean      | yes  | reviewed curriculum flag; null means unknown                                                              |
 | `ref`              | text         | yes  | retained source/review reference                                                                          |

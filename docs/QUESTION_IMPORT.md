@@ -6,13 +6,16 @@ Both former question seeders fail before writing and point to this command. Exis
 published records remain intact. This implementation neither approves candidates
 nor applies the outstanding subject reviews from #119.
 
-## Prepare an approved batch
+## Prepare a batch with an operator review note
 
 An academic reviewer verifies statements, images, options, correct answers, sources
 and flags against source material. Review near-duplicates manually: automated checks
-cover exact text after case/whitespace normalization, not semantic similarity. Keep
+cover exact text within the same subject and exam after case/whitespace normalization,
+not semantic similarity. The same statement in different exams is allowed. Keep
 unverifiable entries out. The trusted operator records the actual reviewer, time and
-evidence; JSON fields are attestations, not authenticated approval signatures. Never
+reference; JSON fields are unauthenticated operator-supplied notes. The importer only
+validates their shape and timestamp; it cannot verify reviewer identity or approval.
+Academic sign-off must be checked separately by maintainers before publication. Never
 invent or automatically stamp approval while converting a candidate bank.
 
 Use an immutable, globally namespaced `import_key` (maximum 160 characters), e.g.
@@ -59,7 +62,7 @@ verified data before use.
 ```
 
 For new questions omit `question_id`; retain the same key in later batches. Source
-is `REAL_EXAM`, `AI_GENERATED` or `MANUAL`. Each entry needs approved review evidence,
+is `REAL_EXAM`, `AI_GENERATED` or `MANUAL`. Each entry needs an operator-supplied review note,
 a nonblank reviewer/reference, a valid past ISO timestamp with timezone, and explicit
 duplicate review. Options need 2–9 unique nonblank names and unique single uppercase
 letter or digit orders (`A`–`Z`, `0`–`9`); `correct_option` must match one. Lowercase
@@ -72,12 +75,71 @@ Question/option text uses PostgreSQL `text`: over 255 characters stores in full.
 `exam`/`image` still have a 255-character limit and fail validation, never silently
 skip/truncate. Omitted `image` preserves its value. Omitted `repeated`, `in_plan`,
 `ref` preserve stored metadata; explicit `null` clears them. New omitted metadata
-is null. Every import requires review evidence.
+is null. Every import requires an operator-supplied review note. Admin PUT edits clear this
+note while preserving the stable import key and other metadata. A new reviewed batch
+can deliberately replace those edits; an already-applied batch cannot be replayed.
 
 Existing option orders/count must stay identical. Names and correct answers can
 change while question/option IDs, comments, reports and exam references stay intact.
 Structural option changes need a separate reviewed history migration; this command
 never deletes/recreates options. Notes and subjects are untouched.
+
+## Manual bootstrap and legacy identity mapping
+
+On a fresh development/staging database, run migrations first. The disabled bank
+seeders do not create subjects or question types. An authorized operator can create
+these explicitly using SQL in an isolated database (replace the illustrative values):
+
+```sql
+BEGIN;
+INSERT INTO subjects (name, slug, year, created_at, updated_at)
+VALUES ('Computer Architecture', 'arqcp', 1, now(), now())
+RETURNING id;
+-- Use the returned subject ID below; never assume IDs from another database.
+INSERT INTO question_types (name, subject_id, created_at, updated_at)
+VALUES ('Multiple choice', <returned_subject_id>, now(), now())
+RETURNING id;
+COMMIT;
+```
+
+If subjects/types already exist, query and reuse them instead of inserting duplicates:
+
+```sql
+SELECT s.id AS subject_id, s.slug, t.id AS question_type_id, t.name
+FROM subjects s LEFT JOIN question_types t ON t.subject_id = s.id
+ORDER BY s.id, t.id;
+SELECT q.id AS question_id, q.subject_id, q.question_type_id, q.exam,
+       q.question, q.import_key, o.id AS option_id, o."order", o.name
+FROM questions q LEFT JOIN options o ON o.question_id = q.id
+ORDER BY q.id, o."order";
+```
+
+Export these results and manually match each candidate bank entry by subject, exam,
+full statement and options. Resolve ambiguous matches against source material; never
+use text alone to assign identity. Assign each verified legacy row a permanent key
+and its database `question_id`. Preserve stored option orders and map the answer to
+that order. For a genuinely new question, omit `question_id` and allocate a new key.
+Use the subject/type IDs returned above. Convert legacy `answers`/`correct_index`
+arrays to the illustrated `options`/`correct_option` format, preserving flags and
+references. Do not automatically fill review fields: obtain and record the separate
+academic review first. Preview a small batch, inspect every identity, then apply
+and repeat before converting the rest.
+
+To measure existing same-exam duplicates before planning a production import, an
+authorized maintainer can run this read-only diagnostic on the target database:
+
+```sql
+SELECT subject_id, exam,
+       lower(regexp_replace(btrim(question), '\s+', ' ', 'g')) AS normalized_text,
+       count(*), array_agg(id ORDER BY id) AS question_ids
+FROM questions
+GROUP BY subject_id, exam, normalized_text
+HAVING count(*) > 1;
+```
+
+No production query has been performed here. Same-exam duplicates remain conflicts;
+resolve their identities/history separately rather than deleting or merging rows
+through the importer. Cross-exam repeats are valid and do not block updates.
 
 ## Preview, apply, repeat
 
@@ -89,7 +151,7 @@ node ace questions:import reviewed-batch.json --apply > applied.json
 node ace questions:import reviewed-batch.json > repeat.json
 ```
 
-Default dry-run writes no questions/options/audit. JSON includes `status`, `counts`
+Default dry-run writes no questions/options/audit and takes no table write lock. JSON includes `status`, `counts`
 (`insert`, `update`, `unchanged`, `conflict`) and per-entry identity, problems and full
 before/after snapshots including metadata. Validation/conflicts exit nonzero; blocked
 batches write nothing. Inspect the concrete report before deliberate application.

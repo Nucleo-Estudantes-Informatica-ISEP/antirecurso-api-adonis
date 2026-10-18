@@ -255,6 +255,41 @@ test.group('Reviewed question import', (group) => {
     assert.equal(sameKey.status, 'blocked')
   })
 
+  test('identical statements in different exams can be imported and updated', async ({
+    assert,
+  }) => {
+    const first = entry()
+    const second = {
+      ...entry(),
+      question_id: undefined,
+      import_key: `${key}:other-exam`,
+      exam: `${first.exam}-resit`,
+    }
+    const inserted = await importReviewedQuestions(batch([first, second]), true)
+    assert.equal(inserted.counts.update, 1)
+    assert.equal(inserted.counts.insert, 1)
+    const updated = await importReviewedQuestions(
+      batch([first, { ...second, ref: 'Updated reference' }]),
+      true
+    )
+    assert.equal(updated.counts.unchanged, 1)
+    assert.equal(updated.counts.update, 1)
+  })
+
+  test('dry-run does not acquire a lock that blocks writers', async ({ assert }) => {
+    await db.transaction(async (trx) => {
+      await trx.rawQuery('LOCK TABLE questions IN ROW EXCLUSIVE MODE')
+      const report = await Promise.race([
+        importReviewedQuestions(batch()),
+        new Promise<never>((_, reject) => {
+          const timer = setTimeout(() => reject(new Error('dry-run blocked by writer')), 2000)
+          timer.unref()
+        }),
+      ])
+      assert.equal(report.status, 'ready')
+    })
+  })
+
   test('missing IDs, foreign types, conflicting identity and option removal never fall back to insert', async ({
     assert,
   }) => {
@@ -370,6 +405,7 @@ test.group('Reviewed question import', (group) => {
       .from('questions')
       .where('id', question.id)
       .update({ question: 'Later admin correction' })
+    await assert.rejects(() => importReviewedQuestions(input), /stored records changed/)
     await assert.rejects(() => importReviewedQuestions(input, true), /stored records changed/)
     const current = await Question.findOrFail(question.id)
     assert.equal(current.question, 'Later admin correction')

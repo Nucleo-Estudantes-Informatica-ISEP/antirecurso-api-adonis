@@ -4,7 +4,7 @@ import { importReviewedQuestions } from '#services/questions/reviewed_import'
 
 export default class ImportQuestions extends BaseCommand {
   static commandName = 'questions:import'
-  static description = 'Report or apply an academically approved question batch'
+  static description = 'Report or apply a question batch with operator-supplied review notes'
   static options = { startApp: true }
 
   @args.string({ description: 'Reviewed JSON batch file' })

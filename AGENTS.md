@@ -28,8 +28,9 @@ docker build -t antirecurso-api-check .
 
 Use an isolated test database for migrations and API/integration tests. Never run production migrations, seeds, or destructive checks without explicit authorization and a backup.
 
-Question publication uses `node ace questions:import` with explicit academic approval,
+Question publication uses `node ace questions:import` with operator-supplied review notes,
 verified stable identity and a dry-run/repeat check; raw bank seeders refuse writes.
+Academic approval is a separate human prerequisite, not authenticated by the importer.
 Retain the transactional before/after audit and backup. See `docs/QUESTION_IMPORT.md`.
 
 ## CI/CD

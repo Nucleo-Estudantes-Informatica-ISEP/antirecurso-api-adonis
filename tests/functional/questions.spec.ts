@@ -111,7 +111,13 @@ test.group('Questions source', (group) => {
     await db
       .from('questions')
       .where('id', question.id)
-      .update({ in_plan: true, repeated: false, ref: 'Reviewed source' })
+      .update({
+        in_plan: true,
+        repeated: false,
+        ref: 'Reviewed source',
+        import_key: `admin-edit:${question.id}`,
+        review: JSON.stringify({ status: 'approved', reviewer: 'Operator' }),
+      })
     const longText = 'Full correction ' + 'x'.repeat(300)
     const res = await client
       .put(`/questions/${question.id}`)
@@ -124,6 +130,8 @@ test.group('Questions source', (group) => {
     res.assertStatus(204)
     const row = await db.from('questions').where('id', question.id).first()
     assert.equal(row.question, longText)
+    assert.isNull(row.review)
+    assert.equal(row.import_key, `admin-edit:${question.id}`)
     assert.isTrue(row.in_plan)
     assert.isFalse(row.repeated)
     assert.equal(row.ref, 'Reviewed source')

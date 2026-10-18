@@ -90,7 +90,7 @@ node ace migration:status
 #### Apply academically reviewed question corrections
 
 Raw question banks are candidates only. The legacy and AI seeders now refuse publication;
-use the reviewed importer after migrations. Stable identity updates existing records,
+use the reviewed importer after migrations and manual subject/type bootstrap. Stable identity updates existing records,
 metadata is retained, and full question/option text is stored beyond 255 characters.
 
 ```bash
@@ -101,7 +101,8 @@ node ace questions:import reviewed-batch.json
 
 First command is a dry-run; apply records recoverable before/after snapshots in one
 transaction. Repeat must report only unchanged entries. See [the reviewed import workflow](docs/QUESTION_IMPORT.md)
-for academic sign-off, identity mapping, format, duplicate checks and recovery. Never
+for separate academic sign-off, manual bootstrap, identity mapping, format, duplicate checks and recovery.
+Review fields are unauthenticated operator notes; the importer does not verify approval. Never
 apply production changes without explicit authorization and a verified backup.
 
 ### 5. Start Development Server
