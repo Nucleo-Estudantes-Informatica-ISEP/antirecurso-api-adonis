@@ -10,10 +10,19 @@ import Subject from '#models/subject'
 const DEFAULT_YEAR = 2024
 const MAX_DB_STRING_LENGTH = 255
 
+type LegacyQuestionTranslation = {
+  question: string
+  answers: string[]
+  correct_index: number
+}
+
 type LegacyQuestion = {
   question: string
   answers: string[]
   correct_index: number
+  repeated?: number[]
+  in_plan?: boolean
+  translation?: LegacyQuestionTranslation
 }
 
 type LegacyQuestionDataset = Record<string, LegacyQuestion[]>
