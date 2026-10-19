@@ -1,0 +1,2903 @@
+[
+  {
+    "question": "Qual das seguintes situações é um exemplo de ruído interno num sistema de transmissão?",
+    "answers": [
+      "Um motor elétrico a funcionar junto ao cabo de cobre",
+      "Um amplificador que deforma ligeiramente o sinal",
+      "Um emissor de rádio próximo a gerar sinais parasitas",
+      "Um cabo vizinho a induzir corrente no cabo de dados"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.11"
+  },
+  {
+    "question": "Entre os meios de transmissão seguintes, qual é o menos exposto à interferência eletromagnética (EMI) externa?",
+    "answers": [
+      "A fibra ótica, que conduz o sinal sob a forma de luz",
+      "O cabo de cobre, que conduz corrente elétrica",
+      "O cabo coaxial, que conduz corrente elétrica",
+      "O par entrançado, que conduz corrente elétrica"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.11"
+  },
+  {
+    "question": "Qual das descrições corresponde a um meio de transmissão baseband?",
+    "answers": [
+      "Tem baixa atenuação só entre dois valores de frequência não nulos",
+      "Tem atenuação igual para todas as frequências do espetro",
+      "Tem baixa atenuação apenas para frequências acima de 2 GHz",
+      "Tem baixa atenuação desde a frequência zero até um valor máximo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.13"
+  },
+  {
+    "question": "Qual é a causa da interferência entre símbolos (ISI) à chegada ao recetor?",
+    "answers": [
+      "A potência do sinal aumenta com a distância percorrida no meio",
+      "O emissor e o recetor usam sempre níveis de sinal distintos",
+      "As frequências do sinal propagam-se a velocidades diferentes",
+      "Os símbolos são enviados com amplitudes sempre iguais entre si"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.14"
+  },
+  {
+    "question": "Um meio de transmissão suporta sinais até 80 MHz. Usando NRZ-L com dois níveis, qual é a taxa máxima de transmissão possível?",
+    "answers": [
+      "80 Mbps",
+      "160 Mbps",
+      "40 Mbps",
+      "320 Mbps"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.15"
+  },
+  {
+    "question": "Um meio de transmissão suporta sinais até 100 MHz. Usando NRZ-L com 8 níveis de sinal, qual é a taxa máxima de transmissão possível?",
+    "answers": [
+      "600 Mbps",
+      "200 Mbps",
+      "400 Mbps",
+      "800 Mbps"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.15"
+  },
+  {
+    "question": "Num sinal NRZ-L em que o bit 0 é o nível baixo (L) e o bit 1 o nível alto (H), que sequência de níveis representa os bits 1 1 0 1 0 0?",
+    "answers": [
+      "L L H L H H",
+      "H L L H H L",
+      "H H L L H L",
+      "H H L H L L"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.15"
+  },
+  {
+    "question": "Em NRZ-S, o que provoca uma transição de nível do sinal?",
+    "answers": [
+      "Cada bit com valor um",
+      "Cada par de bits iguais consecutivos",
+      "Cada bit com valor zero",
+      "Cada bit, independentemente do seu valor"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.15"
+  },
+  {
+    "question": "Um sinal MLT-3 transporta dados a 100 Mbps. Qual é a frequência máxima desse sinal?",
+    "answers": [
+      "12,5 MHz",
+      "25 MHz",
+      "50 MHz",
+      "100 MHz"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01-extras p.1"
+  },
+  {
+    "question": "Um sistema usa a codificação de bloco 4B5B e tem de transportar 80 Mbps de dados úteis. Qual é a taxa de bits na linha?",
+    "answers": [
+      "100 Mbps",
+      "64 Mbps",
+      "80 Mbps",
+      "125 Mbps"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01-extras p.1"
+  },
+  {
+    "question": "Um meio de transmissão suporta sinais até 50 MHz. Com line coding bifásico, em que a frequência máxima do sinal é igual à taxa de dados, qual é a taxa máxima possível?",
+    "answers": [
+      "25 Mbps",
+      "100 Mbps",
+      "200 Mbps",
+      "50 Mbps"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.16"
+  },
+  {
+    "question": "Qual é a propriedade do sinal sinusoidal que a digital modulation PSK altera para representar símbolos?",
+    "answers": [
+      "A amplitude do sinal",
+      "A frequência do sinal",
+      "A fase do sinal",
+      "A potência de ruído do sinal"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.18"
+  },
+  {
+    "question": "Uma digital modulation distingue 64 valores diferentes do sinal. Quantos bits são transmitidos em cada símbolo?",
+    "answers": [
+      "4 bits",
+      "6 bits",
+      "8 bits",
+      "32 bits"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.19"
+  },
+  {
+    "question": "Um sistema usa 16-QAM e emite 3 milhões de símbolos por segundo. Qual é a taxa de dados obtida?",
+    "answers": [
+      "12 Mbps",
+      "3 Mbps",
+      "24 Mbps",
+      "48 Mbps"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.19"
+  },
+  {
+    "question": "Um pacote de 800 bytes transporta 740 bytes de payload. Qual é o overhead do pacote?",
+    "answers": [
+      "8,1%",
+      "92,5%",
+      "60%",
+      "7,5%"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.25"
+  },
+  {
+    "question": "Um pacote tem 26 bytes de header, 4 bytes de tail e 470 bytes de payload. Qual é a eficiência do pacote?",
+    "answers": [
+      "6%",
+      "95,2%",
+      "94%",
+      "99,2%"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.25"
+  },
+  {
+    "question": "Uma aplicação envia 100000 bytes de dados e cada pacote transporta no máximo 1460 bytes de payload. Quantos pacotes são necessários?",
+    "answers": [
+      "68",
+      "69",
+      "70",
+      "100"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.24"
+  },
+  {
+    "question": "Um pacote de 1200 bytes é emitido a 10 Mbps. Qual é o tempo de transmissão do pacote?",
+    "answers": [
+      "960 microssegundos",
+      "120 microssegundos",
+      "9,6 milissegundos",
+      "96 microssegundos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.5"
+  },
+  {
+    "question": "Um sinal propaga-se num meio a 200000 km/s ao longo de 600 km. Qual é o atraso de propagação?",
+    "answers": [
+      "0,3 ms",
+      "30 ms",
+      "12 ms",
+      "3 ms"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.5"
+  },
+  {
+    "question": "Um pacote de 4000 bytes é enviado a 8 Mbps através de um meio com 300 km, onde o sinal se propaga a 200000 km/s. Qual é o tempo de entrega do pacote?",
+    "answers": [
+      "4 ms",
+      "1,5 ms",
+      "5,5 ms",
+      "9,5 ms"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.5"
+  },
+  {
+    "question": "Um emissor liga-se a um recetor através de um nó intermédio store & forward, com duas ligações a 10 Mbps. Desprezando propagação e filas, quanto tempo demora a entrega de um pacote de 2500 bytes?",
+    "answers": [
+      "2 ms",
+      "4 ms",
+      "8 ms",
+      "5 ms"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.6"
+  },
+  {
+    "question": "Num protocolo de janela deslizante, o tempo de transmissão de cada pacote é 0,5 ms e o atraso de propagação num sentido é 4,5 ms. Desprezando o tempo de emissão dos ACK, qual é a janela mínima W para o emissor não parar?",
+    "answers": [
+      "19 pacotes",
+      "10 pacotes",
+      "9 pacotes",
+      "18 pacotes"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.9"
+  },
+  {
+    "question": "Qual das técnicas de controlo de erros exige que o recetor peça ao emissor a retransmissão do pacote?",
+    "answers": [
+      "Forward Error Correction (FEC)",
+      "Deteção de erros com código de validação",
+      "Multiplexagem por etiquetas",
+      "Backward Error Correction (BEC)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.4"
+  },
+  {
+    "question": "O que é necessário acrescentar aos pacotes para o Continuous ARQ funcionar sobre uma janela deslizante?",
+    "answers": [
+      "Um segundo código de deteção em cada símbolo",
+      "Uma cópia integral do pacote anterior no payload",
+      "Um número de sequência que identifica cada pacote",
+      "Um endereço de destino diferente por cada pacote"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.10"
+  },
+  {
+    "question": "Qual das funções seguintes cabe à camada 3 do modelo OSI?",
+    "answers": [
+      "Pacotes e endereços locais",
+      "Pacotes e endereços universais",
+      "Transporte fiável de dados",
+      "Controlo do diálogo entre aplicações"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.13"
+  },
+  {
+    "question": "Numa camada do modelo OSI, o que forma o PDU (Protocol Data Unit)?",
+    "answers": [
+      "A PCI juntamente com o SDU vindo da camada superior",
+      "Apenas a PCI da própria camada",
+      "O SDU juntamente com a PCI da camada inferior",
+      "Apenas os dados da aplicação sem informação de controlo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.14"
+  },
+  {
+    "question": "A que camadas do modelo OSI correspondem as tecnologias de redes locais normalizadas pelo IEEE 802?",
+    "answers": [
+      "Às camadas 2 e 3",
+      "Às camadas 3 e 4",
+      "Às camadas 5, 6 e 7",
+      "Às camadas 1 e 2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.17"
+  },
+  {
+    "question": "Qual das camadas seguintes a arquitetura TCP/IP deixa deliberadamente por definir?",
+    "answers": [
+      "A camada de transporte, usando só o protocolo UDP",
+      "A camada de rede, usando endereços locais",
+      "As camadas 1 e 2, usando as tecnologias existentes",
+      "A camada de aplicação, usando só o modelo OSI"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.19"
+  },
+  {
+    "question": "Numa rede de comutação de pacotes com circuitos virtuais, o que transporta o header de cada pacote de dados?",
+    "answers": [
+      "O endereço do nó de destino",
+      "O identificador do circuito virtual (VCI)",
+      "A rota completa até ao destino",
+      "O número de nós intermédios do caminho"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.26"
+  },
+  {
+    "question": "Porque razão o código de deteção de erros é frequentemente colocado na tail do pacote?",
+    "answers": [
+      "Só é útil depois de o recetor ter recebido o payload",
+      "Evita que o recetor tenha de ler o header do pacote",
+      "Impede que o payload seja corrompido durante o trânsito",
+      "Reduz o atraso de propagação total do pacote"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.25"
+  },
+  {
+    "question": "À medida que o recetor se afasta do emissor, a relação sinal/ruído tende a aumentar, porque a atenuação reduz também o nível do ruído.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.11"
+  },
+  {
+    "question": "Num meio de transmissão, a atenuação do sinal é igual para todas as frequências que o compõem.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.12"
+  },
+  {
+    "question": "Um sinal digital contém frequências desde zero, quando está estável num nível, até valores muito elevados, quando muda de nível quase instantaneamente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.14"
+  },
+  {
+    "question": "Com line coding NRZ-L, a frequência máxima do sinal é igual à taxa de dados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.15"
+  },
+  {
+    "question": "Os line coding bifásicos forçam transições de nível em cada símbolo, o que permite ao recetor manter o sincronismo mesmo em sequências longas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.16"
+  },
+  {
+    "question": "Na digital modulation FSK, os símbolos são representados pela fase do sinal sinusoidal.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.18"
+  },
+  {
+    "question": "Num meio passband, os sinais de frequência zero não passam, por isso é necessária digital modulation para transmitir dados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.18"
+  },
+  {
+    "question": "Um código de validação igual no emissor e no recetor garante, de forma absoluta, que o pacote não sofreu erros.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.3"
+  },
+  {
+    "question": "A técnica FEC resolve sozinha qualquer erro de transmissão, por mais extenso que seja.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.4"
+  },
+  {
+    "question": "O atraso de propagação da rede penaliza a eficiência do controlo de fluxo stop and wait.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.8"
+  },
+  {
+    "question": "Uma eficiência de 100% com janela deslizante só é possível numa ligação full-duplex.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.9"
+  },
+  {
+    "question": "O Continuous ARQ dispensa a numeração dos pacotes, porque o recetor pede sempre o último pacote enviado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.10"
+  },
+  {
+    "question": "Numa rede de comutação de pacotes sem circuitos virtuais, os pacotes de uma mesma transação podem chegar ao destino fora de ordem.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.26"
+  },
+  {
+    "question": "Numa rede de meio partilhado, os dados chegam a todos os nós e cada nó verifica se lhe são destinados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L01 p.22"
+  },
+  {
+    "question": "Num diálogo cliente-servidor, o servidor obtém o endereço do cliente a partir do endereço de origem do pedido recebido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L02 p.23"
+  },
+  {
+    "question": "Qual é o tempo de transmissão de um frame Ethernet com o tamanho mínimo de 64 bytes numa ligação a 100 Mbps?",
+    "answers": [
+      "0,64 µs",
+      "5,12 µs",
+      "51,20 µs",
+      "10,24 µs"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP02 p.10"
+  },
+  {
+    "question": "Quanto tempo demora a transmitir um frame Ethernet II com 1518 bytes (preâmbulo excluído) numa ligação a 100 Mbps?",
+    "answers": [
+      "12,14 µs",
+      "120,00 µs",
+      "121,44 µs",
+      "1214,40 µs"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP02 p.12"
+  },
+  {
+    "question": "Um switch Ethernet em modo cut-through começa a retransmitir assim que recebe o endereço de destino do frame (6 bytes, sem contar o preâmbulo). Que tempo demora a receber esse endereço numa porta a 100 Mbps?",
+    "answers": [
+      "0,48 µs",
+      "4,80 µs",
+      "5,12 µs",
+      "0,06 µs"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP02 p.16"
+  },
+  {
+    "question": "Quantas células ATM são necessárias para transportar, através de AAL5, um pacote IP com 1500 bytes?",
+    "answers": [
+      "28",
+      "30",
+      "31",
+      "32"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L04 p.7"
+  },
+  {
+    "question": "Um pacote IP com 1000 bytes é transportado por AAL5 numa ligação ATM. Quantos bytes são efetivamente transmitidos, contando os cabeçalhos das células?",
+    "answers": [
+      "1060",
+      "1113",
+      "1008",
+      "1166"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L04 p.4"
+  },
+  {
+    "question": "Qual é o tempo de transmissão de uma célula ATM completa numa ligação a 100 Mbps?",
+    "answers": [
+      "3,84 µs",
+      "0,42 µs",
+      "4,24 µs",
+      "42,40 µs"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L04 p.4"
+  },
+  {
+    "question": "Considerando 1 MB igual a 8 Mbit, quanto tempo demora, no mínimo, a enviar um ficheiro de 6 MB no sentido ascendente de uma ligação ADSL a 1 Mbps?",
+    "answers": [
+      "6 s",
+      "24 s",
+      "48 s",
+      "384 s"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L04 p.18"
+  },
+  {
+    "question": "Segundo as regras de cablagem estruturada, quantas outlets devem existir numa work area com 26 m2?",
+    "answers": [
+      "4",
+      "5",
+      "6",
+      "8"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.15"
+  },
+  {
+    "question": "Um horizontal cross-connect liga 130 cabos de cobre a outlets. Quantos patch panels de 24 portas são necessários, no mínimo?",
+    "answers": [
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.19"
+  },
+  {
+    "question": "Três switches sem VLANs estão ligados, cada um a uma interface diferente do mesmo router. Quantos domínios de broadcast existem?",
+    "answers": [
+      "1",
+      "2",
+      "3",
+      "6"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP02 p.7"
+  },
+  {
+    "question": "O que faz um hub repetidor quando recebe um sinal numa das suas portas?",
+    "answers": [
+      "Repete-o por todas as restantes portas",
+      "Copia-o apenas para a porta onde se encontra o destino",
+      "Guarda-o em memória até o meio da porta de saída ficar livre",
+      "Descarta-o se o endereço de destino for desconhecido"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP02 p.5"
+  },
+  {
+    "question": "O que faz um switch Ethernet com a tabela MAC vazia ao receber um frame unicast?",
+    "answers": [
+      "Descarta o frame até aprender a porta do destino",
+      "Reenvia o frame apenas pela porta por onde chegou",
+      "Pergunta ao destino qual é o seu endereço MAC",
+      "Regista a origem e reenvia-o por todas as outras portas"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP02 p.14"
+  },
+  {
+    "question": "Que ação toma um nó Ethernet com CSMA/CD ao detetar uma colisão durante a emissão?",
+    "answers": [
+      "Acaba o frame e fica à espera do ACK do destino",
+      "Cessa a emissão, envia um JAM e aguarda para tentar",
+      "Envia um RTS ao destino e aguarda pelo seu CTS",
+      "Retransmite de imediato o frame desde o início"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP02 p.9"
+  },
+  {
+    "question": "Porque razão o Ethernet com CSMA/CD impõe um tamanho mínimo de 64 bytes aos frames?",
+    "answers": [
+      "Para detetar a colisão antes de acabar a emissão",
+      "Para o FCS poder corrigir erros de bit nos dados",
+      "Para o preâmbulo ser sempre reconhecido pelos recetores",
+      "Para o switch conseguir aprender o endereço de origem"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L03 p.3"
+  },
+  {
+    "question": "Quantos pares de cobre usa uma ligação 1000baseT para transmitir em simultâneo nos dois sentidos?",
+    "answers": [
+      "2 pares",
+      "1 par",
+      "8 pares",
+      "4 pares"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP02 p.19"
+  },
+  {
+    "question": "Até que comprimento pode ser usado cabo CAT6 numa ligação 10GbaseT?",
+    "answers": [
+      "55 metros",
+      "30 metros",
+      "90 metros",
+      "100 metros"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP02 p.20"
+  },
+  {
+    "question": "Como sabe um emissor 802.11 com CSMA/CA que o seu frame chegou sem colisão?",
+    "answers": [
+      "Escuta o meio enquanto emite e não deteta sobreposição",
+      "Recebe um ACK enviado pelo nó destinatário",
+      "Recebe um JAM enviado por um nó vizinho",
+      "Recebe um beacon periódico do access point"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L03 p.14"
+  },
+  {
+    "question": "Numa rede 802.11 em modo infraestrutura, o que identifica o BSSID de uma célula?",
+    "answers": [
+      "O nome da rede, com até 32 bytes de texto",
+      "O canal de rádio usado nessa célula",
+      "O endereço IP do access point da célula",
+      "O endereço MAC do access point da célula"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L03 p.17"
+  },
+  {
+    "question": "Quantos canais 802.11g na banda dos 2,4 GHz podem ser usados em células vizinhas sem sobreposição?",
+    "answers": [
+      "3",
+      "1",
+      "5",
+      "11"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP02 p.29"
+  },
+  {
+    "question": "Qual é a função do DSLAM numa rede de acesso ADSL?",
+    "answers": [
+      "Filtrar o sinal DSL antes do telefone analógico do assinante",
+      "Agregar o tráfego dos modems DSL numa infraestrutura ATM ou Ethernet",
+      "Converter canais de televisão por cabo em dados IP",
+      "Atribuir por DHCP os endereços IP aos assinantes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L04 p.17"
+  },
+  {
+    "question": "Qual destes mecanismos é fornecido pelo protocolo PPP numa ligação de local loop?",
+    "answers": [
+      "Deteção de colisões por CSMA/CD",
+      "Comutação por circuitos virtuais",
+      "Reserva do meio por RTS/CTS",
+      "Autenticação do utilizador"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L04 p.24"
+  },
+  {
+    "question": "Porque existem virtual paths nas redes ATM, além dos virtual channels?",
+    "answers": [
+      "Para detetar erros nos dados úteis das células",
+      "Para aumentar o tamanho máximo das células ATM",
+      "Para simplificar o trabalho dos switches ATM",
+      "Para evitar o uso de endereços MAC de 48 bits"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L04 p.3"
+  },
+  {
+    "question": "Qual é o papel do campo de alinhamento (alignment) no PDU AAL5?",
+    "answers": [
+      "Fazer o PDU ter um tamanho múltiplo de 48 bytes",
+      "Guardar o comprimento dos dados úteis do PDU",
+      "Permitir detetar erros em todo o conteúdo do PDU",
+      "Indicar o protocolo transportado dentro do PDU"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L04 p.7"
+  },
+  {
+    "question": "O que acontece, em caso de congestionamento, às células ATM com o bit CLP a um?",
+    "answers": [
+      "São retransmitidas pela rede com recurso a ARQ",
+      "São eliminadas antes das que têm o bit a zero",
+      "São entregues antes das restantes células",
+      "São divididas em células de tamanho menor"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L04 p.5"
+  },
+  {
+    "question": "Qual é o número máximo de cabos de rede que deve entrar numa telecommunications enclosure?",
+    "answers": [
+      "48",
+      "90",
+      "200",
+      "500"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.26"
+  },
+  {
+    "question": "Porque não pode uma empresa ligar dois edifícios, em lados opostos de uma rua pública, com um cabo seu?",
+    "answers": [
+      "Os cabos de cobre não suportam sinais digitais",
+      "O PPP só funciona dentro do mesmo edifício",
+      "A fibra ótica não pode ser usada em exteriores",
+      "Cablagem privada não pode atravessar áreas públicas"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L04 p.10"
+  },
+  {
+    "question": "Quantas VLANs de uma porta de switch associada a várias VLANs podem circular sem etiqueta (untagged)?",
+    "answers": [
+      "Apenas uma",
+      "Todas",
+      "Nenhuma",
+      "Até quatro"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L03 p.11"
+  },
+  {
+    "question": "Um switch em modo store & forward só começa a retransmitir um frame depois de o receber por inteiro, o que lhe permite interligar portas com débitos diferentes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP02 p.15"
+  },
+  {
+    "question": "Um switch em modo cut-through bloqueia os frames com erros de FCS, impedindo que cheguem à porta de saída.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP02 p.16"
+  },
+  {
+    "question": "O mecanismo RTS/CTS é especialmente eficaz no modo infraestrutura, porque todas as comunicações passam pelo access point.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L03 p.16"
+  },
+  {
+    "question": "Interligar access points por ligação sem fios é recomendável porque reduz o domínio de colisão de cada célula.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L03 p.18"
+  },
+  {
+    "question": "A etiqueta 802.1Q acrescenta 4 bytes ao frame Ethernet II e inclui um identificador de VLAN com 12 bits.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L03 p.10"
+  },
+  {
+    "question": "Cada célula ATM transporta 53 bytes de dados úteis, a que se juntam 5 bytes de controlo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L04 p.4"
+  },
+  {
+    "question": "Nas células ATM só o cabeçalho é protegido, pelo campo HEC, que permite corrigir erros de um só bit.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L04 p.5"
+  },
+  {
+    "question": "Numa ligação ADSL o DSLAM fica sempre em casa do assinante, junto do modem.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L04 p.17"
+  },
+  {
+    "question": "Numa ligação ADSL circulam sinais analógicos no par de cobre, sendo os dados digitais modulados pelos modems de cada extremo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L04 p.16"
+  },
+  {
+    "question": "A cablagem horizontal de um sistema de cablagem estruturada liga o main cross-connect aos intermediate cross-connects.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.12"
+  },
+  {
+    "question": "Um consolidation point faz parte da cablagem horizontal e pode ser útil em zonas com elevada densidade de outlets.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.13"
+  },
+  {
+    "question": "Os patch cords de cobre usados pelos utilizadores para ligar o equipamento à outlet podem ter até 15 metros.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.15"
+  },
+  {
+    "question": "Cada VLAN de um switch constitui um domínio de broadcast distinto, como se fosse uma rede física independente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L03 p.10"
+  },
+  {
+    "question": "Qual é o número máximo de nós que podem ser endereçados numa rede IPv4 com prefixo de 19 bits?",
+    "answers": [
+      "8192",
+      "8190",
+      "4094",
+      "16382"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP04 p.10"
+  },
+  {
+    "question": "Qual é o endereço de broadcast da rede a que pertence o nó 172.20.77.130, com a máscara 255.255.255.224?",
+    "answers": [
+      "172.20.77.159",
+      "172.20.77.255",
+      "172.20.77.161",
+      "172.20.77.191"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP04 p.16"
+  },
+  {
+    "question": "Qual é o endereço da rede a que pertence o nó 10.99.173.40, com prefixo de 20 bits?",
+    "answers": [
+      "10.99.168.0",
+      "10.99.173.0",
+      "10.99.128.0",
+      "10.99.160.0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP04 p.12"
+  },
+  {
+    "question": "Qual é a máscara de rede que melhor se ajusta a uma rede IPv4 com 450 nós, desperdiçando o menor número de endereços?",
+    "answers": [
+      "255.255.255.0",
+      "255.255.252.0",
+      "255.255.254.0",
+      "255.255.255.128"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP04 p.14"
+  },
+  {
+    "question": "Quais das seguintes redes, todas com o mesmo next-hop, podem ser agregadas numa única linha da tabela de routing que mantém o comportamento?",
+    "answers": [
+      "192.168.35.0/24 e 192.168.36.0/24",
+      "192.168.34.0/24 e 192.168.35.0/24",
+      "192.168.33.0/24 e 192.168.34.0/24",
+      "192.168.34.0/24 e 192.168.35.0/25"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "Qual é o último endereço de nó válido da rede 10.30.64.0/20?",
+    "answers": [
+      "10.30.79.254",
+      "10.30.64.254",
+      "10.30.80.254",
+      "10.30.79.255"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP04 p.16"
+  },
+  {
+    "question": "Um pacote IPv4 com 5200 bytes no total, cabeçalho de 20 bytes incluído, vai atravessar uma ligação com MTU de 1500 bytes e o bit DF está a zero. Em quantos fragmentos é dividido?",
+    "answers": [
+      "3",
+      "5",
+      "6",
+      "4"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.7"
+  },
+  {
+    "question": "Um pacote IPv4 com 5200 bytes no total, cabeçalho de 20 bytes incluído, é fragmentado para uma ligação com MTU de 1500 bytes. Qual é o valor do campo fragment offset do último fragmento, em unidades de 8 bytes?",
+    "answers": [
+      "740",
+      "4440",
+      "555",
+      "520"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.7"
+  },
+  {
+    "question": "No bloco 172.18.0.0/20 vão ser criadas redes para 900, 400 e 60 nós, atribuindo endereços sequencialmente, das redes maiores para as menores. Qual é o endereço da rede de 400 nós?",
+    "answers": [
+      "172.18.2.0/23",
+      "172.18.4.0/23",
+      "172.18.4.0/24",
+      "172.18.1.0/23"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP04 p.22"
+  },
+  {
+    "question": "Qual é o prefixo mais longo (o bloco mais pequeno) que permite um bloco com espaço para três redes /26 e uma rede /25, sem sobreposição?",
+    "answers": [
+      "/23",
+      "/24",
+      "/22",
+      "/25"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP04 p.21"
+  },
+  {
+    "question": "Qual é o endereço da rede /19 imediatamente a seguir à rede 10.77.96.0/19?",
+    "answers": [
+      "10.77.97.0",
+      "10.77.116.0",
+      "10.77.192.0",
+      "10.77.128.0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP04 p.17"
+  },
+  {
+    "question": "Um router tem a tabela 10.1.0.0/16 via R1, 172.16.32.0/21 via R2, 172.16.40.0/21 via R3 e 0.0.0.0/0 via R4. Para que next-hop é enviado um pacote com destino 172.16.45.9?",
+    "answers": [
+      "R1",
+      "R2",
+      "R3",
+      "R4"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.3"
+  },
+  {
+    "question": "Um pacote IPv4 é emitido com TTL igual a 32 e atravessa 7 routers até chegar ao destino. Qual é o valor do TTL quando o destino o recebe?",
+    "answers": [
+      "24",
+      "25",
+      "26",
+      "39"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.4"
+  },
+  {
+    "question": "Como é que o comando traceroute descobre o endereço de cada router ao longo do caminho?",
+    "answers": [
+      "Envia pacotes com TTL crescente a partir de 1 e lê as mensagens ICMP Time Exceeded recebidas",
+      "Envia pacotes com o bit DF ativo e lê as mensagens ICMP Destination Unreachable recebidas",
+      "Envia pedidos ARP para cada router e lê as respostas com o endereço MAC de cada um",
+      "Envia IGMP Membership Query ao grupo 224.0.0.2 e lê os reports de cada router"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.21"
+  },
+  {
+    "question": "Um pacote IPv4 tem o campo IHL com o valor 8 e o campo de comprimento total com 1500 bytes. Quantos bytes de payload transporta?",
+    "answers": [
+      "1480",
+      "1492",
+      "1500",
+      "1468"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.3"
+  },
+  {
+    "question": "Um pacote IPv4 com destino 239.130.5.17 é enviado numa rede Ethernet. Qual é o endereço MAC de destino da frame?",
+    "answers": [
+      "01:00:5E:82:05:11",
+      "01:00:5E:7F:05:11",
+      "01:00:5E:02:05:11",
+      "FF:FF:FF:FF:FF:FF"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.30"
+  },
+  {
+    "question": "Qual dos seguintes endereços multicast IPv4 é mapeado no mesmo endereço MAC Ethernet que 230.5.9.3?",
+    "answers": [
+      "230.5.9.4",
+      "231.133.9.3",
+      "230.6.9.3",
+      "230.5.10.3"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.30"
+  },
+  {
+    "question": "Qual dos seguintes endereços IPv4 é um endereço privado?",
+    "answers": [
+      "172.31.200.5",
+      "172.32.0.9",
+      "192.169.1.1",
+      "11.0.0.1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP04 p.25"
+  },
+  {
+    "question": "Um nó configurado para obter o endereço automaticamente não recebe resposta de nenhum servidor DHCP. De que rede pode o nó escolher um endereço para si próprio (APIPA)?",
+    "answers": [
+      "192.168.0.0/16",
+      "127.0.0.0/8",
+      "224.0.0.0/4",
+      "169.254.0.0/16"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP04 p.27"
+  },
+  {
+    "question": "Porque é que um cliente DHCP só consegue obter configuração se existir um servidor DHCP na sua rede local?",
+    "answers": [
+      "Porque o Discover é enviado em TCP e os routers bloqueiam sempre ligações TCP",
+      "Porque o Discover contém o endereço MAC do router e só este o pode ler",
+      "Porque o Discover é enviado em broadcast e os routers não reencaminham esse broadcast",
+      "Porque o servidor identifica os clientes pelo endereço IPv4 anterior de cada um"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.17"
+  },
+  {
+    "question": "Um pacote UDP chega a um nó cujo endereço IPv4 existe, mas nenhuma aplicação está a usar o porto de destino. Que mensagem ICMP é devolvida ao emissor?",
+    "answers": [
+      "Destination Unreachable, código 2 (Protocol Unreachable)",
+      "Destination Unreachable, código 3 (Port Unreachable)",
+      "Destination Unreachable, código 1 (Host Unreachable)",
+      "Time Exceeded, código 0 (TTL a zero)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.20"
+  },
+  {
+    "question": "Um router recebe um pacote de 1500 bytes com o bit DF ativo e a ligação seguinte tem um MTU de 1400 bytes. O que faz o router?",
+    "answers": [
+      "Descarta o pacote e devolve ao emissor um ICMP Destination Unreachable com código 4",
+      "Fragmenta o pacote em dois fragmentos e ativa o bit MF no primeiro deles",
+      "Põe o TTL a zero e envia um ICMP Time Exceeded ao destino final do pacote",
+      "Encaminha o pacote sem alterações e deixa a fragmentação a cargo do destino"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.8"
+  },
+  {
+    "question": "Qual é a finalidade de uma mensagem ICMP Redirect (tipo 5)?",
+    "answers": [
+      "Avisar o emissor de que o TTL do pacote chegou a zero num router do caminho",
+      "Pedir ao nó de destino que responda, para testar a conectividade IPv4",
+      "Avisar o emissor de que o MTU do caminho é menor do que o tamanho do pacote",
+      "Indicar a um nó o endereço de um router melhor para chegar a esse destino"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.21"
+  },
+  {
+    "question": "Um nó com o endereço 192.168.5.20/24 e default gateway 192.168.5.1 vai enviar um pacote para 151.10.4.7. Que endereço IPv4 procura no pedido ARP que envia?",
+    "answers": [
+      "151.10.4.7",
+      "255.255.255.255",
+      "192.168.5.1",
+      "192.168.5.255"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.13"
+  },
+  {
+    "question": "Que fraqueza do ARP torna possível o ataque de ARP spoofing?",
+    "answers": [
+      "As linhas da tabela ARP nunca expiram e ficam guardadas para sempre em cada nó",
+      "Os nós aceitam respostas ARP sem autenticação, mesmo que não tenham enviado o pedido",
+      "As respostas ARP são enviadas em broadcast e saturam sempre toda a rede local",
+      "O ARP só funciona entre nós que pertencem a redes IPv4 diferentes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.14"
+  },
+  {
+    "question": "Para que endereço envia o router, periodicamente, a mensagem IGMP Membership Query em cada rede a que está ligado?",
+    "answers": [
+      "224.0.0.1",
+      "224.0.0.2",
+      "224.0.0.9",
+      "255.255.255.255"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.31"
+  },
+  {
+    "question": "Qual é o maior valor de métrica com que uma rede é ainda considerada alcançável pelo RIP?",
+    "answers": [
+      "16",
+      "30",
+      "255",
+      "15"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.17"
+  },
+  {
+    "question": "Qual é a principal diferença do RIPv2 relativamente ao RIPv1 quanto à informação enviada nas atualizações?",
+    "answers": [
+      "Inclui o número do sistema autónomo, o que permite ligar dois sistemas RIP",
+      "Inclui o estado de cada ligação, o que dispensa os envios periódicos",
+      "Inclui a máscara de rede de cada destino, o que permite usar endereçamento CIDR",
+      "Inclui o MTU de cada ligação, o que dispensa a fragmentação de pacotes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.18"
+  },
+  {
+    "question": "Qual é a função de um Area Border Router (ABR) no OSPF?",
+    "answers": [
+      "Interligar o domínio OSPF a outros sistemas autónomos, como EIGRP ou RIPv2",
+      "Interligar áreas OSPF, ligando a área zero (backbone) às restantes áreas do domínio",
+      "Eleger a área de backbone entre todas as áreas existentes no domínio OSPF",
+      "Gerar o endereço multicast usado nas mensagens de descoberta de vizinhos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.20"
+  },
+  {
+    "question": "Qual das afirmações sobre protocolos de routing do tipo link-state está correta?",
+    "answers": [
+      "Cada router conhece a topologia completa e calcula sozinho o caminho de menor custo",
+      "Cada router envia a sua tabela de routing completa aos vizinhos em intervalos fixos",
+      "Cada router recebe a métrica já calculada do vizinho e soma-lhe o custo da interface",
+      "Cada router depende de um router central que calcula as tabelas de todos os outros"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.13"
+  },
+  {
+    "question": "Qual é uma vantagem de dividir a infraestrutura em sistemas autónomos?",
+    "answers": [
+      "Todos os routers passam a conhecer todas as redes da internet, sem precisarem de rotas por omissão",
+      "Os pacotes de dados deixam de ter de ser encaminhados entre sistemas autónomos diferentes",
+      "A redistribuição de rotas entre sistemas torna-se desnecessária em qualquer cenário",
+      "As tabelas de routing ficam mais pequenas e o tráfego dos protocolos de routing fica confinado a cada sistema"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.23"
+  },
+  {
+    "question": "Um router com um protocolo distance-vector recebe de um vizinho uma linha para a rede X com custo 6, por uma interface de custo 2. Que linha fica na sua tabela?",
+    "answers": [
+      "Custo 6, com next-hop igual ao endereço de origem da mensagem recebida",
+      "Custo 8, com next-hop igual ao endereço da rede X anunciada",
+      "Custo 8, com next-hop igual ao endereço de origem da mensagem recebida",
+      "Custo 12, com next-hop igual ao endereço de origem da mensagem recebida"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.12"
+  },
+  {
+    "question": "Num nó, a tabela de routing tem as linhas A 10.8.4.0/24 via 172.30.0.2, B 10.8.0.0/16 via 172.30.0.9, C 20.1.0.0/16 via 172.30.0.2, D 30.2.0.0/16 via 172.30.0.9 e a rota por omissão via 172.30.0.2. Que linha pode ser eliminada sem alterar o comportamento?",
+    "answers": [
+      "A linha A",
+      "A linha C",
+      "A linha B",
+      "A linha D"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.8"
+  },
+  {
+    "question": "Um nó tem o endereço 192.168.7.130, a máscara 255.255.255.192 e o default gateway 192.168.7.129. Que linhas tem a sua tabela de routing?",
+    "answers": [
+      "192.168.7.128/26 por interface direta e 0.0.0.0/0 via 192.168.7.129",
+      "192.168.7.0/26 por interface direta e 0.0.0.0/0 via 192.168.7.129",
+      "192.168.7.128/26 por interface direta e 0.0.0.0/0 via 192.168.7.130",
+      "192.168.7.128/26 via 192.168.7.129 e 0.0.0.0/0 por interface direta"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.7"
+  },
+  {
+    "question": "No cabeçalho de um pacote IPv4, o valor 17 no campo Protocol indica que o payload pertence ao UDP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.19"
+  },
+  {
+    "question": "Um router que descarta um pacote IPv4 com o bit DF ativo, por exceder o MTU da ligação seguinte, devolve ao emissor um ICMP Destination Unreachable com o código 4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.8"
+  },
+  {
+    "question": "Quando o lease time de um endereço atribuído por DHCP expira sem que o cliente o renove, o servidor pode atribuir esse endereço a outro cliente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.18"
+  },
+  {
+    "question": "Uma rede IPv4 com o endereço 172.16.8.0/21 suporta no máximo 2046 endereços de nó válidos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP04 p.10"
+  },
+  {
+    "question": "As redes 10.5.6.0/24 e 10.5.7.0/24, com o mesmo next-hop, podem ser agregadas na rede 10.5.6.0/23.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.9"
+  },
+  {
+    "question": "A rota por omissão 0.0.0.0/0 coincide com qualquer endereço de destino, porque a sua máscara não tem nenhum bit de rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.6"
+  },
+  {
+    "question": "O RIPv1 não transmite máscaras de rede nas atualizações, pelo que não pode ser usado com endereçamento CIDR.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.17"
+  },
+  {
+    "question": "O OSPF coloca a sua informação diretamente em pacotes IPv4, sem usar UDP nem TCP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.19"
+  },
+  {
+    "question": "O Header Checksum de um pacote IPv4 é calculado sobre o pacote inteiro, payload incluído.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.5"
+  },
+  {
+    "question": "Um router que encaminha um pacote IPv4 e decrementa o TTL não precisa de recalcular o header checksum.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.5"
+  },
+  {
+    "question": "Um DHCP Discover enviado para 255.255.255.255 é reencaminhado pelos routers para as outras redes, o que permite usar um único servidor DHCP em toda uma organização.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.17"
+  },
+  {
+    "question": "O endereço 192.168.40.255 é o endereço de broadcast da rede 192.168.40.0/23.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP04 p.16"
+  },
+  {
+    "question": "O next-hop de uma linha da tabela de routing pode ser o endereço de um router que não pertença a nenhuma das redes diretamente ligadas ao nó.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP05 p.5"
+  },
+  {
+    "question": "O EIGRP envia a sua tabela de routing completa de 30 em 30 segundos, por broadcast, mesmo que não tenha havido alterações.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L06 p.21"
+  },
+  {
+    "question": "Todos os membros de um grupo multicast respondem de imediato a uma IGMP Membership Query, mesmo que outro nó já tenha enviado um report para esse grupo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.31"
+  },
+  {
+    "question": "O endereço multicast 224.0.0.1 identifica todos os routers da rede local.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.29"
+  },
+  {
+    "question": "Qual é a forma condensada, segundo as regras de representação, do endereço IPv6 2001:0db8:0000:0000:0000:00ab:0000:0001?",
+    "answers": [
+      "2001:db8::ab::1",
+      "2001:db8::ab:1",
+      "2001:db8::ab:0:1",
+      "2001:db8:ab::1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.4"
+  },
+  {
+    "question": "Qual é o último endereço de nó da rede IPv6 2001:db8:1a::/48?",
+    "answers": [
+      "2001:db8:1a:ffff:ffff:ffff:ffff:ffff",
+      "2001:db8:1a:ffff:ffff:ffff:ffff:fffe",
+      "2001:db8:ffff:ffff:ffff:ffff:ffff:ffff",
+      "2001:db8:1a:0:ffff:ffff:ffff:ffff"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.5"
+  },
+  {
+    "question": "Quantos bits identificam o nó dentro de uma rede IPv6 com prefixo de 56 bits?",
+    "answers": [
+      "56",
+      "64",
+      "80",
+      "72"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.5"
+  },
+  {
+    "question": "Que endereço de destino Ethernet usa uma frame que transporta um pacote IPv6 enviado para ff0e::7:c0a8:17?",
+    "answers": [
+      "33:33:FF:02:00:05",
+      "33:33:C0:A8:00:17",
+      "01:00:5E:A8:00:17",
+      "33:33:00:05:C0:A8"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.7"
+  },
+  {
+    "question": "Com que prefixo começa o endereço unicast que um nó IPv6 atribui a si próprio ao arrancar, válido apenas na rede local?",
+    "answers": [
+      "fe80::/10",
+      "ff02::/16",
+      "fd00::/8",
+      "2001::/16"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.8"
+  },
+  {
+    "question": "Que par de mensagens ICMPv6 é usado para verificar se um endereço link-local já está a ser usado por outro nó?",
+    "answers": [
+      "Router Solicitation e Router Advertisement",
+      "Echo request e Echo reply",
+      "Group Membership Query e Report",
+      "Neighbor Solicitation e Neighbor Advertisement"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.8"
+  },
+  {
+    "question": "Qual é a mensagem ICMPv6 que informa um nó dos prefixos de rede a usar e se deve configurar-se por SLAAC ou por DHCPv6?",
+    "answers": [
+      "Router Solicitation, de tipo 133",
+      "Neighbor Advertisement, de tipo 136",
+      "Router Advertisement, de tipo 134",
+      "Packet Too Big, de tipo 2"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.8"
+  },
+  {
+    "question": "Num nó configurado por SLAAC, de onde provém o prefixo de rede do seu endereço global?",
+    "answers": [
+      "De um Router Advertisement de um router",
+      "De uma resposta do servidor DNS do domínio",
+      "Do endereço MAC da interface de rede",
+      "De um servidor DHCPv6 obrigatório na rede"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.9"
+  },
+  {
+    "question": "Qual é o valor do campo next-header que identifica o extension header com opções a processar por todos os routers do caminho?",
+    "answers": [
+      "43",
+      "0",
+      "44",
+      "60"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.12"
+  },
+  {
+    "question": "Um segmento UDP com 512 bytes é transportado num pacote IPv6 sem extension headers. Qual é o tamanho total do pacote, em bytes?",
+    "answers": [
+      "532",
+      "540",
+      "572",
+      "552"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.11"
+  },
+  {
+    "question": "Num pacote enviado para um endereço anycast IPv6, a entrega é feita a que nós?",
+    "answers": [
+      "A todos os nós que têm esse endereço em conjunto",
+      "A todos os nós da rede do emissor",
+      "Só ao nó mais próximo com esse endereço",
+      "A um nó escolhido ao acaso entre eles"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.10"
+  },
+  {
+    "question": "Qual é o conteúdo do campo de dados (RDATA) de um registo DNS do tipo NS?",
+    "answers": [
+      "O endereço IPv4 de um name server do domínio",
+      "O nome qualificado de um name server do domínio",
+      "O nome do servidor de e-mail do domínio",
+      "O nome canónico associado ao domínio"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.25"
+  },
+  {
+    "question": "Para que servem os glue records numa delegação de um subdomínio?",
+    "answers": [
+      "Indicar a prioridade dos servidores de e-mail do domínio",
+      "Sincronizar a base de dados entre master e slave",
+      "Associar um alias ao respetivo nome canónico",
+      "Fornecer o endereço de um name server do próprio subdomínio"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.27"
+  },
+  {
+    "question": "Uma zona contém os registos \"web CNAME srv9\" e \"srv9 A 198.51.100.9\". Que endereço obtém um cliente que resolve o nome web?",
+    "answers": [
+      "198.51.100.9",
+      "198.51.100.1",
+      "O nome srv9, sem qualquer endereço",
+      "Um erro, porque um CNAME não é resolúvel"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.26"
+  },
+  {
+    "question": "Qual é o nome do registo PTR usado para obter o nome associado ao endereço IPv4 203.0.113.45?",
+    "answers": [
+      "203.0.113.45.in-addr.arpa",
+      "203.0.113.in-addr.arpa.45",
+      "45.113.0.203.in-addr.arpa",
+      "45.113.0.203.arpa.in-addr"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.28"
+  },
+  {
+    "question": "Um domínio tem os registos MX 30 mx3.exemplo.pt, MX 10 mx1.exemplo.pt e MX 20 mx2.exemplo.pt. Que servidor é tentado em primeiro lugar?",
+    "answers": [
+      "mx1.exemplo.pt",
+      "mx2.exemplo.pt",
+      "mx3.exemplo.pt",
+      "O primeiro registo listado na zona"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.30"
+  },
+  {
+    "question": "O que devolve a um cliente um name server local que recusa consultas recursivas?",
+    "answers": [
+      "O endereço final do nome pedido, sem consultar outros",
+      "Um erro, sem qualquer informação adicional",
+      "Apenas o endereço de um root name server",
+      "O name server mais próximo do domínio pedido que conhece"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.23"
+  },
+  {
+    "question": "Qual deve ser o valor de TTL dos registos de um nome cujo endereço muda com frequência?",
+    "answers": [
+      "Alto, para reduzir as consultas aos root name servers",
+      "Baixo, para que as cópias em cache expirem depressa",
+      "Zero, para que o registo nunca seja guardado",
+      "Igual ao número de série do registo SOA"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.34"
+  },
+  {
+    "question": "Qual é o tipo de pedido DNS (QTYPE) que solicita todos os registos de um domínio, usado na sincronização entre master e slave?",
+    "answers": [
+      "MX",
+      "PTR",
+      "AXFR",
+      "SOA"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.24"
+  },
+  {
+    "question": "Qual é a principal diferença do WINS em relação à resolução de nomes NetBIOS por broadcast?",
+    "answers": [
+      "Nomes com uma estrutura hierárquica por domínios",
+      "Nomes que deixam de precisar de ser únicos",
+      "Pedidos que usam o porto TCP 53 e não UDP",
+      "Pedidos enviados em unicast a um servidor dedicado"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.18"
+  },
+  {
+    "question": "O que identifica o sufixo hexadecimal 20 num nome NetBIOS como SERVP1#20?",
+    "answers": [
+      "Um serviço de servidor de ficheiros",
+      "Um controlador de domínio principal",
+      "Um grupo de trabalho da rede",
+      "O nome do utilizador com sessão iniciada"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.17"
+  },
+  {
+    "question": "Que registo DNS é consultado em primeiro lugar por um MTA para enviar uma mensagem para ana@exemplo.pt?",
+    "answers": [
+      "O registo PTR do endereço do remetente",
+      "O registo MX do domínio exemplo.pt",
+      "O registo A do domínio exemplo.pt",
+      "O registo SOA do domínio exemplo.pt"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.8"
+  },
+  {
+    "question": "Um anexo com 900 bytes é codificado em base64, sem contar quebras de linha. Quantos carateres tem o texto codificado?",
+    "answers": [
+      "900",
+      "1125",
+      "1200",
+      "1350"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.23"
+  },
+  {
+    "question": "Como é representado o caráter = (código ASCII 61) numa mensagem codificada em quoted-printable?",
+    "answers": [
+      "=3D",
+      "=61",
+      "==",
+      "=0D"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.22"
+  },
+  {
+    "question": "Qual das seguintes funcionalidades é suportada pelo IMAP4 mas não pelo POP3?",
+    "answers": [
+      "Obter a lista das mensagens da caixa",
+      "Descarregar uma mensagem específica",
+      "Autenticar o utilizador com nome e password",
+      "Organizar as mensagens em pastas no servidor"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.16"
+  },
+  {
+    "question": "Qual é o OID da primeira instância do objeto ifNumber, que contém o número de interfaces de rede de um dispositivo?",
+    "answers": [
+      "1.3.6.1.2.1.2.2.0",
+      "1.3.6.1.2.1.2.1.0",
+      "1.3.6.1.2.1.1.1.0",
+      "1.3.6.1.4.1.2.1.0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.11"
+  },
+  {
+    "question": "Qual é o OID que identifica a descrição (ifDescr) da sexta interface de um dispositivo?",
+    "answers": [
+      "1.3.6.1.2.1.2.2.1.6.2",
+      "1.3.6.1.2.1.2.1.2.6",
+      "1.3.6.1.2.1.2.2.1.2.6",
+      "1.3.6.1.2.1.2.2.2.6"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.11"
+  },
+  {
+    "question": "Em que ramo da árvore de OIDs os fabricantes registam as suas MIBs privadas?",
+    "answers": [
+      "1.3.6.1.4.1",
+      "1.3.6.1.2.1",
+      "1.3.6.1.2.1.1",
+      "1.3.6.1.4.2"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.15"
+  },
+  {
+    "question": "O contador ifInOctets de uma interface passa de 12000000 para 21000000 num intervalo de 90 segundos. Qual é o débito médio de entrada nesse intervalo?",
+    "answers": [
+      "100 kbit/s",
+      "8 Mbit/s",
+      "100 Mbit/s",
+      "800 kbit/s"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.14"
+  },
+  {
+    "question": "Qual é a vantagem da mensagem InformRequest do SNMPv2 em relação à mensagem Trap?",
+    "answers": [
+      "Usa o protocolo TCP em vez do UDP",
+      "Gera uma resposta que confirma a receção",
+      "É enviada pela estação de gestão ao agente",
+      "Dispensa a configuração da estação de gestão"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.14"
+  },
+  {
+    "question": "Em IPv6 não existe endereço de broadcast, sendo usados endereços multicast, como o ff02::1 para todos os nós da rede local.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.5"
+  },
+  {
+    "question": "Em IPv6, os routers intermédios fragmentam os pacotes que excedem o MTU da ligação seguinte.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.3"
+  },
+  {
+    "question": "Em IPv6, o Path MTU Discovery recorre à mensagem ICMPv6 Packet Too Big.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.13"
+  },
+  {
+    "question": "Para configurar endereços globais por SLAAC, é necessário um router IPv6 que envie Router Advertisements.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.9"
+  },
+  {
+    "question": "Mesmo quando usa SLAAC, um nó pode ser instruído por um Router Advertisement a obter configurações adicionais de um servidor DHCPv6.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.9"
+  },
+  {
+    "question": "O endereço IPv6 :: é o endereço de loopback de um nó.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.10"
+  },
+  {
+    "question": "Um endereço link-local só tem de ser único dentro da rede de nível dois a que o nó está ligado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.8"
+  },
+  {
+    "question": "Os registos NS de um subdomínio são guardados apenas nos name servers desse subdomínio e nunca no domínio pai.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.27"
+  },
+  {
+    "question": "Num registo MX, um valor numérico de prioridade mais baixo corresponde a uma preferência mais alta.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.30"
+  },
+  {
+    "question": "Numa consulta DNS recursiva, é o cliente que contacta sucessivamente os name servers, começando num root name server.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.23"
+  },
+  {
+    "question": "No SMTP clássico, o cabeçalho e o corpo das mensagens podem conter carateres de 8 bits sem qualquer codificação.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.9"
+  },
+  {
+    "question": "Num servidor IMAP4, a ligação TCP é normalmente fechada logo após o descarregamento de toda a caixa de correio.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.16"
+  },
+  {
+    "question": "Um trap SNMP é uma notificação enviada por iniciativa do agente para a estação de gestão.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.6"
+  },
+  {
+    "question": "No SNMPv1, os pedidos GetRequest são enviados ao porto UDP 162 do agente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.8"
+  },
+  {
+    "question": "Numa rede local sem servidores, a resolução de nomes NetBIOS por broadcast só alcança os nós do mesmo domínio de broadcast de nível dois.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.18"
+  },
+  {
+    "question": "Numa aplicação servidora TCP, o que devolve a chamada accept() quando um cliente estabelece ligação?",
+    "answers": [
+      "O socket de escuta, que passa a ficar ligado ao cliente",
+      "Apenas o endereço IP e o porto do cliente remoto",
+      "Um novo socket, associado à ligação com esse cliente",
+      "Um socket UDP para trocar datagramas com o cliente"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L08 p.6"
+  },
+  {
+    "question": "Um cliente UDP envia um pedido e fica bloqueado para sempre à espera de uma resposta que se perdeu. Que solução evita este bloqueio?",
+    "answers": [
+      "Definir um timeout no socket e repetir o pedido algumas vezes",
+      "Aumentar o tamanho do datagrama até ser entregue com certeza",
+      "Associar o socket ao porto zero antes de cada novo envio",
+      "Enviar o pedido para o endereço de broadcast da rede local"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L08 p.10"
+  },
+  {
+    "question": "Que resposta recebe o emissor de um datagrama UDP quando o nó de destino está ativo mas nenhuma aplicação usa o porto de destino?",
+    "answers": [
+      "Um segmento TCP com a flag RST ativa",
+      "Um ICMP de time exceeded em trânsito",
+      "Um datagrama UDP de confirmação de erro",
+      "Um ICMP de destination port unreachable"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L08 p.4"
+  },
+  {
+    "question": "Um datagrama IPv4 com cabeçalho de 20 bytes transporta um datagrama UDP. Qual é o número máximo teórico de bytes de dados da aplicação nesse datagrama?",
+    "answers": [
+      "65507",
+      "65515",
+      "65527",
+      "65535"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L08 p.14"
+  },
+  {
+    "question": "Uma aplicação UDP tem de enviar 3300 bytes de dados úteis, com um máximo de 512 bytes de dados por datagrama. Quantos datagramas são necessários?",
+    "answers": [
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L08 p.15"
+  },
+  {
+    "question": "Qual das técnicas de delimitação de mensagens num fluxo de bytes TCP obriga a garantir que a sequência de fim não ocorre dentro da própria mensagem?",
+    "answers": [
+      "Blocos de tamanho fixo definido pelo protocolo",
+      "Um marcador de fim de mensagem",
+      "Indicação prévia do tamanho da mensagem",
+      "Numeração dos segmentos pelo emissor"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L08 p.18"
+  },
+  {
+    "question": "No three-way handshake, o nó A envia um SYN com Sequence Number 7400. Que valor de ACK Sequence Number leva o SYN-ACK enviado por B?",
+    "answers": [
+      "7399",
+      "7400",
+      "7401",
+      "7402"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.25"
+  },
+  {
+    "question": "Como determina o TCP o valor do RTO de uma ligação ao longo do tempo?",
+    "answers": [
+      "Mantém sempre o valor inicial definido no handshake",
+      "Usa o valor indicado pela aplicação em cada envio",
+      "Ajusta-o dinamicamente a partir dos RTT medidos na ligação",
+      "Deriva-o do tamanho da janela de receção anunciada"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.27"
+  },
+  {
+    "question": "Um recetor TCP anuncia uma janela de 4000 bytes e o emissor usa segmentos com 800 bytes de dados. Quantos segmentos completos pode enviar antes de esperar nova indicação de janela?",
+    "answers": [
+      "4",
+      "5",
+      "6",
+      "8"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.28"
+  },
+  {
+    "question": "O campo HLEN de um segmento TCP tem o valor 9. Quantos bytes de opções contém o cabeçalho?",
+    "answers": [
+      "4",
+      "9",
+      "16",
+      "36"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.23"
+  },
+  {
+    "question": "Como é assinalado o fim do cabeçalho de uma mensagem HTTP?",
+    "answers": [
+      "Por uma linha vazia, após o CR+LF da última linha",
+      "Pelo campo Content-Length com o valor zero",
+      "Pelo fecho da ligação TCP por parte do emissor",
+      "Por uma linha com um único ponto final"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.4"
+  },
+  {
+    "question": "Que campo de cabeçalho acompanha uma resposta 401 Unauthorized para indicar o mecanismo de autenticação esperado?",
+    "answers": [
+      "Authorization",
+      "Set-Cookie",
+      "Retry-After",
+      "WWW-Authenticate"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.11"
+  },
+  {
+    "question": "Qual é o método HTTP cuja resposta é igual à de um GET para o mesmo URI, mas sem corpo?",
+    "answers": [
+      "OPTIONS",
+      "HEAD",
+      "TRACE",
+      "CONNECT"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.13"
+  },
+  {
+    "question": "Numa resposta com o campo Keep-Alive: timeout=15, max=100, qual é o significado de max=100?",
+    "answers": [
+      "A ligação é fechada após 100 segundos de inatividade",
+      "O corpo de cada resposta não pode exceder 100 bytes",
+      "A ligação suporta no máximo 100 pares pedido/resposta",
+      "Podem existir até 100 ligações TCP em paralelo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.17"
+  },
+  {
+    "question": "Num serviço RESTful, que método HTTP cria um novo item numa coleção, ficando o URI do item atribuído automaticamente pelo servidor?",
+    "answers": [
+      "POST",
+      "PUT",
+      "GET",
+      "DELETE"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.25"
+  },
+  {
+    "question": "Qual dos seguintes URI viola as boas práticas de nomeação de recursos REST por conter um nome de operação CRUD?",
+    "answers": [
+      "/accounts/17",
+      "/accounts/17/transactions",
+      "/accounts",
+      "/accounts/delete/17"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.26"
+  },
+  {
+    "question": "Um script numa página faz um pedido cross-origin com o método DELETE. O que faz o browser antes de enviar o pedido real?",
+    "answers": [
+      "Envia primeiro um pedido HEAD para testar o recurso",
+      "Envia um pedido OPTIONS de pre-flight ao servidor de destino",
+      "Abre uma ligação HTTPS adicional com certificado de cliente",
+      "Pede ao utilizador autorização através de uma janela"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.31"
+  },
+  {
+    "question": "Ao abrir o URL https://app.empresa.pt:8443/painel, a que número de porto TCP liga o browser?",
+    "answers": [
+      "80",
+      "443",
+      "8080",
+      "8443"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.18"
+  },
+  {
+    "question": "Qual é a principal dificuldade de uma cifra de chave simétrica entre duas aplicações que nunca comunicaram antes?",
+    "answers": [
+      "A cifra só consegue proteger dados enviados num sentido",
+      "Cada mensagem exige uma chave de tamanho diferente",
+      "Estabelecer a chave secreta comum sem que terceiros a conheçam",
+      "A cifra é demasiado lenta para fluxos de dados longos"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.6"
+  },
+  {
+    "question": "Para enviar dados confidenciais a B usando RSA, com que chave os cifra A?",
+    "answers": [
+      "Com a chave pública de B",
+      "Com a chave privada de B",
+      "Com a chave privada de A",
+      "Com a chave pública de A"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.7"
+  },
+  {
+    "question": "Como é produzida uma assinatura digital com RSA?",
+    "answers": [
+      "Cifram-se os dados completos com a chave pública do par",
+      "Cifra-se o hash dos dados com a chave pública do autor",
+      "Cifra-se uma chave simétrica com a chave privada do par",
+      "Cifra-se com a chave privada o hash dos dados a assinar"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.8"
+  },
+  {
+    "question": "Que elementos fundamentais contém um certificado de chave pública?",
+    "answers": [
+      "A chave privada do sujeito, o seu endereço IP e uma assinatura",
+      "Uma chave pública, a identificação do sujeito e a assinatura da CA",
+      "Uma chave simétrica, o nome do sujeito e o número de porto",
+      "Duas chaves públicas, a data de emissão e um número aleatório"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.9"
+  },
+  {
+    "question": "Ao validar o certificado de um servidor, que atributo do subject deve coincidir com o nome DNS do servidor contactado?",
+    "answers": [
+      "O country code (C)",
+      "A organizational unit (OU)",
+      "O common name (CN)",
+      "O número de série do certificado"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.14"
+  },
+  {
+    "question": "Que informação indica o servidor na mensagem Server Hello do handshake SSL/TLS?",
+    "answers": [
+      "A versão a usar e a cipher suite escolhida entre as propostas",
+      "A chave simétrica cifrada com a chave privada do servidor",
+      "A lista completa de CA em que o servidor confia",
+      "A assinatura digital do último pedido do cliente"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.13"
+  },
+  {
+    "question": "Porque é desaconselhado cifrar um fluxo de dados bloco a bloco em modo ECB?",
+    "answers": [
+      "A chave tem de ser trocada a cada bloco enviado",
+      "Cada bloco cifrado revela a chave usada para o cifrar",
+      "O modo exige uma cifra de fluxo e não de blocos",
+      "Blocos de dados iguais originam blocos cifrados iguais"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.4"
+  },
+  {
+    "question": "No contexto da segurança em redes, em que consiste um replay attack?",
+    "answers": [
+      "Testar todas as chaves possíveis sobre os dados capturados",
+      "Reenviar dados cifrados capturados antes, sem conhecer a chave",
+      "Fazer-se passar pelo servidor para obter a password",
+      "Alterar o conteúdo de pacotes cifrados em trânsito"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.3"
+  },
+  {
+    "question": "Numa VPN Host-LAN, que configuração recebe a estação do utilizador depois de o túnel ser criado e o utilizador autenticado?",
+    "answers": [
+      "O endereço IP do servidor VPN, como seu endereço permanente",
+      "Uma rota para a Internet, mas sem endereço IP próprio",
+      "Um endereço IP da rede remota, atribuído por DHCP ou equivalente",
+      "Um endereço MAC virtual atribuído pelo switch remoto"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.18"
+  },
+  {
+    "question": "Duas LAN são interligadas por uma VPN de camada três. Quantos endereços de rede IP distintos são necessários, contando a própria ligação VPN?",
+    "answers": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.20"
+  },
+  {
+    "question": "Que protocolo de transporte e que número de porto usa o L2TP para o seu túnel?",
+    "answers": [
+      "UDP, porto 1701",
+      "TCP, porto 1723",
+      "UDP, porto 1194",
+      "TCP, porto 443"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.28"
+  },
+  {
+    "question": "Qual dos protocolos do IPsec garante autenticação e integridade dos dados, mas não privacidade?",
+    "answers": [
+      "ESP (Encapsulating Security Payload)",
+      "IKE (Internet Key Exchange)",
+      "GRE (Generic Routing Encapsulation)",
+      "AH (Authentication Header)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.25"
+  },
+  {
+    "question": "Qual é a origem do problema conhecido como TCP meltdown nas VPN com túneis TCP?",
+    "answers": [
+      "O túnel TCP fecha a ligação sempre que a janela chega a zero",
+      "O túnel TCP retransmite dados que as camadas superiores já esqueceram",
+      "O NAT descarta os pacotes por o túnel não usar números de porto",
+      "O túnel limita a 1500 bytes o tamanho dos pacotes transportados"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.31"
+  },
+  {
+    "question": "Qual é a wildcard que corresponde exatamente a todos os endereços da rede 172.20.16.0/21?",
+    "answers": [
+      "0.0.3.255",
+      "0.0.7.255",
+      "0.0.8.255",
+      "0.0.15.255"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.8"
+  },
+  {
+    "question": "Quantos endereços IPv4 são correspondidos pelo critério 10.4.0.9 0.16.0.6?",
+    "answers": [
+      "3",
+      "6",
+      "8",
+      "22"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.9"
+  },
+  {
+    "question": "O que acontece a um pacote que não corresponde a nenhuma regra de uma ACL aplicada a uma interface Cisco IOS?",
+    "answers": [
+      "É aceite, por existir um permit any implícito no fim",
+      "É enviado para a regra com o número de sequência mais baixo",
+      "É descartado, por existir um deny any implícito no fim",
+      "É reencaminhado para a interface seguinte do router"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.5"
+  },
+  {
+    "question": "O que faz corresponder a palavra established numa regra de ACL para TCP?",
+    "answers": [
+      "Segmentos com a flag ACK ou RST ativa, excluindo o SYN inicial",
+      "Apenas segmentos com a flag SYN ativa no pedido de ligação",
+      "Segmentos de qualquer ligação, incluindo o primeiro SYN",
+      "Apenas segmentos com a flag FIN ativa no fecho da ligação"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.17"
+  },
+  {
+    "question": "Que vantagem têm as ACL com nome sobre as numeradas?",
+    "answers": [
+      "Dispensam o deny any implícito no final da lista",
+      "Permitem filtrar por porto, o que as numeradas não fazem",
+      "Não precisam de ser aplicadas a uma interface",
+      "Permitem editar regras individuais por número de sequência"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.19"
+  },
+  {
+    "question": "Qual destes ataques só pode ser travado por uma firewall dinâmica (stateful) e não por uma estática?",
+    "answers": [
+      "IP spoofing com endereços da rede local vindos da Internet",
+      "Um ataque DoS por inundação de pedidos a um serviço público",
+      "Acesso de fora a um porto TCP bloqueado no router",
+      "Envio de ICMP echo request a partir de uma rede externa"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.4"
+  },
+  {
+    "question": "Num servidor TCP, o socket devolvido por accept() fica associado ao endereço IP e ao porto do cliente remoto.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L08 p.7"
+  },
+  {
+    "question": "O fast retransmit do TCP é acionado apenas quando o RTO do segmento em falta expira.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L05 p.27"
+  },
+  {
+    "question": "Num socket UDP, a chamada connect() estabelece uma ligação fiável com o par, tal como acontece no TCP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L08 p.16"
+  },
+  {
+    "question": "Um cliente UDP pode pedir ao sistema operativo um porto local livre ao associar o socket ao porto zero.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L08 p.3"
+  },
+  {
+    "question": "Quando os dados de um formulário seguem na query-string de um pedido GET, ficam visíveis no URL.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.12"
+  },
+  {
+    "question": "Em HTTP 1.1, uma resposta 201 Created indica que o pedido foi aceite mas ainda não foi executado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.14"
+  },
+  {
+    "question": "Num serviço RESTful, os métodos PUT, GET e DELETE são considerados idempotentes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.25"
+  },
+  {
+    "question": "A same-origin policy impede sempre o carregamento de imagens de outra origem numa página.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.28"
+  },
+  {
+    "question": "A cifra RSA é bastante mais lenta do que as cifras simétricas, por isso não é usada para cifrar grandes volumes de dados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.8"
+  },
+  {
+    "question": "O certificado de uma Root CA é assinado por uma CA de nível superior que o valida.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.10"
+  },
+  {
+    "question": "O Diffie-Hellman permite a duas partes sem conhecimento prévio gerar uma chave secreta comum sem a enviar pela rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.6"
+  },
+  {
+    "question": "No handshake TLS de um servidor web público, o servidor tem sempre de exigir ao cliente um certificado de chave pública.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.14"
+  },
+  {
+    "question": "No PPTP, a ligação de controlo do túnel é uma ligação TCP para o porto 1723.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.29"
+  },
+  {
+    "question": "O protocolo AH do IPsec garante a privacidade dos dados através de cifra.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.25"
+  },
+  {
+    "question": "Numa VPN de camada dois, protocolos como o ARP e o DHCP funcionam entre as duas redes ligadas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.19"
+  },
+  {
+    "question": "Uma ACL standard do Cisco IOS analisa apenas o endereço de origem dos pacotes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.6"
+  },
+  {
+    "question": "Depois de criada uma ACL numerada, o router passa a aplicá-la ao tráfego de todas as suas interfaces.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.10"
+  },
+  {
+    "question": "Um critério de ACL com uma wildcard de cinco bits a 1 corresponde a dez endereços.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.9"
+  }
+]
