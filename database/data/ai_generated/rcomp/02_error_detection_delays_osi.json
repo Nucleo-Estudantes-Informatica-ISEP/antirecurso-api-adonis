@@ -44,7 +44,7 @@
     "ref": "L02 p.2"
   },
   {
-    "question": "Se o código calculado pelo recetor for igual ao código recebido, existe certeza absoluta de que não ocorreu nenhum erro.",
+    "question": "Quando o código calculado pelo recetor coincide com o recebido, o pacote não tem seguramente nenhum erro.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -392,8 +392,8 @@
   {
     "question": "Qual é o principal problema de eficiência do stop and wait?",
     "answers": [
-      "O emissor fica parado à espera do ACK, mesmo com a rede livre, por causa dos atrasos de propagação",
-      "O recetor fica sobrecarregado porque recebe vários pacotes antes do primeiro ACK",
+      "O emissor fica parado à espera do ACK, mesmo com a rede livre, devido aos atrasos",
+      "O recetor fica sobrecarregado porque recebe vários pacotes antes de enviar o primeiro ACK",
       "Os pacotes têm de ser numerados, o que aumenta muito o tamanho do cabeçalho",
       "O emissor envia sempre uma rajada de W pacotes que esgota a janela do recetor"
     ],
@@ -643,9 +643,9 @@
   {
     "question": "Como se define o packet delivery time?",
     "answers": [
-      "O tempo decorrido desde que o emissor emite o primeiro bit do pacote até o último bit chegar ao recetor",
+      "O tempo desde a emissão do primeiro bit do pacote até à chegada do último bit ao recetor",
       "O tempo que o primeiro bit demora a chegar ao recetor, sem contar com o resto do pacote",
-      "O tempo que o pacote passa nas filas dos nós intermédios antes de ser emitido",
+      "O tempo total que o pacote passa nas filas dos nós intermédios antes de ser emitido",
       "O tempo que o recetor demora a enviar o ACK depois de receber o último bit do pacote"
     ],
     "correct_index": 0,
@@ -708,9 +708,9 @@
   {
     "question": "Para que servem as filas (FIFO) dos nós intermédios?",
     "answers": [
-      "Para calcular o código de validação de cada pacote antes de o emitir",
-      "Para guardar os pacotes recebidos quando o nó não consegue emiti-los à mesma taxa a que os recebe",
-      "Para guardar cópias dos pacotes enquanto aguardam o ACK do recetor final",
+      "Para calcular o código de validação de cada pacote antes de o emitir para o meio",
+      "Para guardar os pacotes que o nó não consegue emitir à mesma taxa a que os recebe",
+      "Para guardar cópias dos pacotes já emitidos enquanto aguardam o ACK do recetor final",
       "Para ordenar os pacotes pelo número de sequência antes de os entregar à aplicação"
     ],
     "correct_index": 1,
@@ -758,7 +758,7 @@
     "ref": "L02 p.5"
   },
   {
-    "question": "Um sinal propaga-se a 200 000 km/s num cabo com 2 km. Qual é o atraso de propagação?",
+    "question": "Um sinal propaga-se a 200000 km/s num cabo com 2 km. Qual é o atraso de propagação?",
     "answers": [
       "10 ms",
       "1 μs",
@@ -826,7 +826,7 @@
     "question": "Um pacote demora 500 μs a ser transmitido a 20 Mbps. Qual é o tamanho do pacote?",
     "answers": [
       "2500 bytes",
-      "10 000 bytes",
+      "10000 bytes",
       "625 bytes",
       "1250 bytes"
     ],
@@ -1089,17 +1089,6 @@
     "ref": "L02 p.17"
   },
   {
-    "question": "As redes Ethernet a 100 Mbps estão definidas na norma 802.3z e as redes Ethernet a 1 Gbps na norma 802.3u.",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "L02 p.17"
-  },
-  {
     "question": "Na maioria das implementações reais da arquitetura IEEE 802 não se usa a camada LLC, interagindo-se diretamente com a camada MAC.",
     "answers": [
       "FALSO",
@@ -1287,17 +1276,6 @@
     "ref": "L02 p.21"
   },
   {
-    "question": "O IPv6 já substituiu totalmente o IPv4 na Internet.",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "L02 p.21"
-  },
-  {
     "question": "O multiplexing, baseado em etiquetas (tags), garante que os dados de uma implementação X de uma camada, num nó, são entregues à mesma implementação X da camada no nó de destino.",
     "answers": [
       "FALSO",
@@ -1376,7 +1354,7 @@
     "answers": [
       "Pacotes locais e endereços locais",
       "Controlo do diálogo entre aplicações",
-      "Transporte fiável",
+      "Transporte fiável de dados entre nós terminais",
       "Pacotes universais e endereços universais"
     ],
     "correct_index": 2,
@@ -1426,7 +1404,7 @@
   {
     "question": "O que significa a sigla PCI no modelo OSI?",
     "answers": [
-      "Protocol Control Information, a informação de controlo acrescentada por cada camada",
+      "Protocol Control Information, a informação de controlo de cada camada",
       "Protocol Control Interface, a interface entre camadas vizinhas da pilha",
       "Packet Control Identifier, o identificador do pacote ao longo da rede",
       "Physical Connection Interface, a ligação ao meio físico de transmissão"
@@ -1440,7 +1418,7 @@
     "question": "O que designa a sigla SDU (Service Data Unit)?",
     "answers": [
       "Os dados (payload) que uma camada recebe da camada superior",
-      "O ponto de acesso através do qual a camada usa os serviços da inferior",
+      "O access point através do qual a camada usa os serviços da inferior",
       "O pacote completo que a camada entrega à camada inferior",
       "A informação de controlo que a camada acrescenta aos dados recebidos"
     ],
@@ -1455,7 +1433,7 @@
       "Apenas os dados recebidos da camada imediatamente superior",
       "O conjunto da PCI e da SDU, ou seja, o pacote dessa camada",
       "Apenas a informação de controlo acrescentada pela própria camada",
-      "O ponto de acesso entre duas camadas consecutivas da pilha"
+      "O access point entre duas camadas consecutivas da pilha"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1468,7 +1446,7 @@
       "As portas físicas dos equipamentos de rede onde se ligam os cabos",
       "Os endereços dos nós intermédios da rede por onde passa o pacote",
       "Os campos do cabeçalho que identificam o protocolo da camada superior",
-      "Os pontos através dos quais uma camada usa os serviços da camada imediatamente abaixo"
+      "Os pontos onde uma camada usa os serviços da camada imediatamente abaixo"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1493,7 +1471,7 @@
     "answers": [
       "Porque o OSI não definia camadas suficientes para descrever as redes locais da época",
       "Porque a ISO proibiu a sua utilização em redes comerciais de grande dimensão",
-      "Porque os fabricantes não queriam abandonar as suas arquiteturas proprietárias e recomeçar do zero",
+      "Porque os fabricantes não queriam abandonar as suas arquiteturas proprietárias",
       "Porque o OSI exigia o uso exclusivo de fibra ótica em toda a camada física"
     ],
     "correct_index": 2,
@@ -1506,7 +1484,7 @@
     "answers": [
       "Impôs o uso do IP como protocolo de camada 3 em todas as redes de computadores existentes",
       "É um ponto de referência (conceitos, normas e nomenclatura) em qualquer discussão sobre redes de computadores",
-      "Definiu o formato das tramas Ethernet que continuam a ser usadas nas redes locais atuais",
+      "Definiu o formato das frames Ethernet que continuam a ser usadas nas redes locais atuais",
       "Foi o modelo efetivamente implementado na Internet, que substituiu as arquiteturas proprietárias"
     ],
     "correct_index": 1,
@@ -1622,7 +1600,7 @@
     "question": "Que característica distingue o UDP do TCP?",
     "answers": [
       "O UDP é orientado à ligação e fiável, enquanto o TCP não tem ligação nem fiabilidade",
-      "O UDP não tem ligação nem fiabilidade, só deteção simples de erros; o TCP é orientado à ligação e fiável",
+      "O UDP não tem ligação nem fiabilidade; o TCP é orientado à ligação e fiável",
       "O UDP funciona na camada de rede e o TCP na camada de ligação lógica",
       "O UDP usa sliding window no controlo de fluxo e o TCP não tem controlo de fluxo"
     ],
@@ -1647,10 +1625,10 @@
   {
     "question": "Qual é a função de um router numa rede IP?",
     "answers": [
-      "Atribuir números de porta às aplicações dos nós da rede local",
-      "Transferir pacotes IP entre redes de camada 2, mesmo que estas usem tecnologias diferentes",
-      "Garantir a entrega fiável dos pacotes através de ACK e NACK",
-      "Converter pacotes IP em tramas Ethernet sem os reencaminhar para outras redes"
+      "Atribuir números de porta às aplicações em execução nos nós da rede local",
+      "Transferir pacotes IP entre redes de camada 2 de tecnologias diferentes",
+      "Garantir a entrega fiável dos pacotes entre nós através de ACK e NACK",
+      "Converter pacotes IP em frames Ethernet sem os reencaminhar para outras redes"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1727,7 +1705,7 @@
     "answers": [
       "Identificadores dos circuitos virtuais estabelecidos pelo protocolo TCP entre dois nós",
       "Endereços de 32 bits que identificam o nó de destino dentro da rede de camada 3",
-      "Etiquetas de 16 bits que identificam a aplicação de destino dentro do nó, como endereços internos ao nó",
+      "Etiquetas de 16 bits que identificam a aplicação que recebe os dados dentro do nó",
       "Números de sequência usados pelo sliding window protocol para identificar pacotes"
     ],
     "correct_index": 2,
@@ -1736,46 +1714,7 @@
     "ref": "L02 p.20"
   },
   {
-    "question": "Que valor do campo de protocolo do cabeçalho IP identifica o TCP?",
-    "answers": [
-      "17",
-      "6",
-      "80",
-      "1"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "L02 p.22"
-  },
-  {
-    "question": "Que valor do campo de protocolo do cabeçalho IP identifica o UDP?",
-    "answers": [
-      "6",
-      "23",
-      "1",
-      "17"
-    ],
-    "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "L02 p.22"
-  },
-  {
-    "question": "Que valor do campo de protocolo do cabeçalho IP identifica o ICMP?",
-    "answers": [
-      "1",
-      "17",
-      "80",
-      "6"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "L02 p.22"
-  },
-  {
-    "question": "Que valor do campo E-TYPE de uma trama Ethernet identifica o IPv4?",
+    "question": "Que valor do campo E-TYPE de uma frame Ethernet identifica o IPv4?",
     "answers": [
       "0x0806",
       "0x8137",
@@ -1788,7 +1727,7 @@
     "ref": "L02 p.22"
   },
   {
-    "question": "Que valor do campo E-TYPE de uma trama Ethernet identifica o IPv6?",
+    "question": "Que valor do campo E-TYPE de uma frame Ethernet identifica o IPv6?",
     "answers": [
       "0x86DD",
       "0x0800",
@@ -1801,7 +1740,7 @@
     "ref": "L02 p.22"
   },
   {
-    "question": "Que valor do campo E-TYPE de uma trama Ethernet identifica o ARP?",
+    "question": "Que valor do campo E-TYPE de uma frame Ethernet identifica o ARP?",
     "answers": [
       "0x86DD",
       "0x8137",
@@ -1888,17 +1827,6 @@
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "L02 p.3"
-  },
-  {
-    "question": "O código de deteção de erros é sempre colocado no tail, nunca no cabeçalho do pacote.",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "L02 p.2"
   },
   {
     "question": "Na FEC, o recetor tem de pedir sempre ao emissor a retransmissão do pacote que contém erros.",

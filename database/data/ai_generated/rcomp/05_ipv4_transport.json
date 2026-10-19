@@ -11,7 +11,7 @@
     "ref": "L05 p.2"
   },
   {
-    "question": "O IPv4 define a deteção de erros tanto no cabeçalho como nos dados transportados (payload).",
+    "question": "No IPv4, o cabeçalho e os dados transportados (payload) têm ambos um campo de verificação de erros.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -121,7 +121,7 @@
     "ref": "L05 p.5"
   },
   {
-    "question": "O IPv4 é transportado numa trama de camada 2 com valor 0x0800 no campo E-TYPE.",
+    "question": "O IPv4 é transportado numa frame de camada 2 com valor 0x0800 no campo E-TYPE.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -132,7 +132,7 @@
     "ref": "L05 p.12"
   },
   {
-    "question": "A MTU de uma trama Ethernet II é de 64 Kbytes, tal como a de um PDU AAL5.",
+    "question": "A MTU de uma frame Ethernet II é de 64 Kbytes, tal como a de um PDU AAL5.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -242,7 +242,7 @@
     "ref": "L05 p.12"
   },
   {
-    "question": "Quando o destino IPv4 pertence à mesma rede, o endereço MAC de destino da trama tem de corresponder ao nó de destino; caso contrário, corresponde ao router a usar.",
+    "question": "Quando o destino IPv4 pertence à mesma rede, o endereço MAC de destino da frame tem de corresponder ao nó de destino; caso contrário, corresponde ao router a usar.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -605,7 +605,7 @@
     "ref": "L05 p.24"
   },
   {
-    "question": "Os segmentos de uma ligação TCP devem ter todos a flag SYN ativa, caso contrário são ignorados.",
+    "question": "Um segmento TCP só é aceite se tiver a flag SYN ativa, qualquer que seja o estado da ligação.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -781,7 +781,7 @@
     "ref": "L05 p.31"
   },
   {
-    "question": "Qualquer trama Ethernet com o bit menos significativo do primeiro byte do endereço de destino a um é retransmitida para todas as portas pelos switches e bridges.",
+    "question": "Qualquer frame Ethernet com o bit menos significativo do primeiro byte do endereço de destino a um é retransmitida para todas as portas pelos switches e bridges.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -963,10 +963,10 @@
   {
     "question": "Sobre que parte do pacote IPv4 incide o cálculo do checksum do cabeçalho?",
     "answers": [
-      "Sobre o cabeçalho e sobre a trama Ethernet",
+      "Sobre o cabeçalho e sobre o trailer da frame Ethernet",
       "Sobre o cabeçalho e sobre os dados transportados",
-      "Apenas sobre o cabeçalho, sem incluir os dados transportados",
-      "Apenas sobre os dados transportados"
+      "Apenas sobre o cabeçalho, sem os dados transportados",
+      "Apenas sobre os dados transportados pelo pacote"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -987,7 +987,7 @@
     "ref": "L05 p.5"
   },
   {
-    "question": "Qual é a MTU de uma trama Ethernet II?",
+    "question": "Qual é a MTU de uma frame Ethernet II?",
     "answers": [
       "1518 bytes",
       "576 bytes",
@@ -1067,7 +1067,7 @@
   {
     "question": "Qual é a principal desvantagem prática da fragmentação IPv4?",
     "answers": [
-      "Provoca atrasos nos routers, que têm de esperar pelos fragmentos e reconstruir os pacotes",
+      "Obriga a fragmentar e a reconstruir os pacotes, o que introduz atraso e carga de processamento",
       "Impede o uso de toda a MTU disponível em cada rede ao longo do caminho do datagrama",
       "Obriga o emissor a conhecer a MTU de todas as redes do caminho antes de enviar",
       "Impossibilita o uso de pacotes com mais de 1500 bytes em redes Ethernet"
@@ -1169,7 +1169,7 @@
     "ref": "L05 p.11"
   },
   {
-    "question": "Que endereço MAC de destino tem a trama que transporta um pacote IPv4 destinado a uma rede remota?",
+    "question": "Que endereço MAC de destino tem a frame que transporta um pacote IPv4 destinado a uma rede remota?",
     "answers": [
       "O endereço MAC do nó de destino final do pacote",
       "Uma cópia do endereço IPv4 de destino do pacote",
@@ -1184,8 +1184,8 @@
   {
     "question": "Qual é a função do protocolo ARP?",
     "answers": [
-      "Obter o endereço MAC correspondente a um endereço IPv4 da rede local",
-      "Obter o endereço MAC do servidor DNS da rede",
+      "Obter o endereço MAC de um endereço IPv4 da rede local",
+      "Obter o endereço MAC do servidor DNS da rede local",
       "Atribuir dinamicamente um endereço IPv4 aos nós da rede",
       "Obter o endereço IPv4 correspondente a um nome de domínio"
     ],
@@ -1197,10 +1197,10 @@
   {
     "question": "Como é enviado um ARP request?",
     "answers": [
-      "Em multicast, para o endereço 224.0.0.1",
+      "Em multicast IPv4, para o endereço 224.0.0.1",
       "Em broadcast IPv4, para o endereço 255.255.255.255",
       "Em unicast, para o endereço MAC do nó de destino",
-      "Em broadcast de camada 2, para o endereço FF:FF:FF:FF:FF:FF"
+      "Em broadcast de camada 2, para FF:FF:FF:FF:FF:FF"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1291,7 +1291,7 @@
       "Porta de origem, porta de destino, número de sequência e janela",
       "Endereço de origem, endereço de destino, TTL e checksum",
       "Porta de origem, porta de destino, comprimento e checksum",
-      "Porta de origem, porta de destino, flags e ponteiro urgente"
+      "Porta de origem, porta de destino, flags e apontador urgente"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1366,10 +1366,10 @@
   {
     "question": "Porque é que o servidor DHCP tem de estar na mesma rede do cliente, sem outros mecanismos adicionais?",
     "answers": [
-      "Porque o servidor DHCP precisa de usar o mesmo TTL do cliente",
+      "Porque o servidor DHCP precisa de usar o mesmo valor de TTL que o cliente",
       "Porque o DHCP só funciona com endereços MAC de fabricantes conhecidos",
-      "Porque o DHCP Discover é enviado com a flag DF ativa",
-      "Porque os routers não reencaminham os pacotes enviados para o endereço de broadcast"
+      "Porque o DHCP Discover é enviado com a flag DF ativa no cabeçalho IP",
+      "Porque os routers não reencaminham pacotes enviados para broadcast"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1392,7 +1392,7 @@
   {
     "question": "Qual é a vantagem do DHCP sobre o BOOTP na gestão de uma gama de endereços?",
     "answers": [
-      "A possibilidade de atribuir endereços estáticos associados ao endereço MAC",
+      "A obrigatoriedade de configurar manualmente cada endereço no servidor antes do primeiro pedido",
       "O uso do TCP em vez do UDP para trocar as mensagens com os clientes",
       "A atribuição de endereços IPv6 em vez de endereços IPv4 aos nós da rede",
       "O lease time: os endereços são atribuídos só por um período e podem ser reutilizados"
@@ -1405,10 +1405,10 @@
   {
     "question": "O que tem de fazer um cliente DHCP que continua a usar o endereço quando o lease está a expirar?",
     "answers": [
-      "Enviar um ARP reply com o seu endereço IPv4",
-      "Enviar um pedido de renovação (refresh request) ao servidor",
+      "Enviar um ARP reply com o seu endereço IPv4 para o servidor",
+      "Enviar ao servidor um pedido de renovação do lease",
       "Esperar que o servidor lhe envie um novo DHCP Offer",
-      "Enviar um novo DHCP Discover em broadcast"
+      "Enviar um novo DHCP Discover em broadcast à rede"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1743,7 +1743,7 @@
   {
     "question": "O que significa o estado half-open numa ligação TCP?",
     "answers": [
-      "Um lado respondeu ao FIN só com ACK, e a ligação fecha totalmente quando esse lado enviar o seu FIN",
+      "Um lado respondeu ao FIN só com ACK e ainda não enviou o seu próprio FIN",
       "A ligação só permite enviar dados num sentido desde o momento em que foi aberta",
       "A ligação perdeu o último segmento e aguarda a retransmissão do mesmo pelo emissor",
       "A ligação foi aberta apenas com um SYN e ainda não recebeu o SYN-ACK do outro nó"
@@ -1821,10 +1821,10 @@
   {
     "question": "No controlo de fluxo do TCP, o recetor anuncia ACK=1200 e WINDOW=0. O que deve fazer o emissor?",
     "answers": [
-      "Parar de enviar dados até receber uma janela maior",
-      "Enviar dados com a flag URG ativa",
-      "Retransmitir os últimos 1200 bytes enviados",
-      "Fechar a ligação com um FIN"
+      "Parar de enviar dados até a janela voltar a abrir",
+      "Enviar dados com a flag URG ativa para passar a janela fechada",
+      "Retransmitir os últimos 1200 bytes que já tinha enviado antes",
+      "Fechar a ligação com um FIN por o recetor não ter espaço"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1884,7 +1884,7 @@
     "ref": "L05 p.29"
   },
   {
-    "question": "Que endereço Ethernet de destino tem a trama que transporta um pacote IPv4 enviado para 224.0.0.7?",
+    "question": "Que endereço Ethernet de destino tem a frame que transporta um pacote IPv4 enviado para 224.0.0.7?",
     "answers": [
       "FF:FF:FF:FF:FF:FF",
       "01:00:5E:7F:FF:FF",
@@ -1954,7 +1954,7 @@
       "Para renovar o lease time do endereço multicast atribuído ao grupo pelo router",
       "Para dar tempo ao router de calcular o checksum do relatório que vai receber",
       "Para evitar colisões entre o relatório e o ARP reply enviado pelo router da rede",
-      "Para evitar tráfego redundante: se ouvirem o relatório de outro nó para o grupo, não enviam o seu"
+      "Para evitar relatórios redundantes: quem ouve o de outro nó do grupo não envia o seu"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -2146,10 +2146,10 @@
   {
     "question": "Numa tabela de encaminhamento, o que acontece a um pacote cujo destino não corresponde a nenhuma entrada, nem sequer a uma rota por omissão?",
     "answers": [
-      "É guardado até a rede de destino ser aprendida",
-      "É enviado em broadcast para todas as interfaces",
+      "É guardado em buffer até a rede de destino ser aprendida por um protocolo",
+      "É enviado em broadcast para todas as interfaces, exceto a de entrada",
       "É descartado, porque o router desconhece a rede de destino",
-      "É devolvido ao emissor com o TTL decrementado"
+      "É devolvido ao emissor com o TTL decrementado em uma unidade"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -3038,7 +3038,7 @@
     "ref": "L05 p.8"
   },
   {
-    "question": "O endereço MAC de destino da trama que transporta um pacote IPv4 é uma cópia exata do endereço IPv4 de destino.",
+    "question": "O endereço MAC de destino da frame que transporta um pacote IPv4 é uma cópia exata do endereço IPv4 de destino.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -3049,7 +3049,7 @@
     "ref": "L05 p.12"
   },
   {
-    "question": "O endereço MAC de destino da trama que transporta um pacote para uma rede remota é sempre FF:FF:FF:FF:FF:FF.",
+    "question": "O endereço MAC de destino da frame que transporta um pacote para uma rede remota é sempre FF:FF:FF:FF:FF:FF.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -3115,7 +3115,7 @@
     "ref": "L05 p.17"
   },
   {
-    "question": "As mensagens ICMP são transportadas diretamente em tramas de camada 2, sem pacote IPv4.",
+    "question": "As mensagens ICMP são transportadas diretamente em frames de camada 2, sem pacote IPv4.",
     "answers": [
       "FALSO",
       "VERDADEIRO"

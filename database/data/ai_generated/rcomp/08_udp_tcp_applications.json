@@ -561,12 +561,12 @@
     "ref": "L08 p.22"
   },
   {
-    "question": "Numa ligação TCP, ler o byte zero indica que não existem mais dados para ler.",
+    "question": "Numa ligação TCP, uma leitura que devolve zero bytes indica que o outro extremo terminou a ligação e que não existem mais dados para ler.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
     ],
-    "correct_index": 0,
+    "correct_index": 1,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "L08 p.17"
@@ -651,10 +651,10 @@
   {
     "question": "Como se identifica universalmente uma aplicação de rede UDP?",
     "answers": [
-      "Pelo endereço IP público do nó em conjunto com o número de porto local da aplicação",
-      "Pelo endereço MAC do nó em conjunto com o número do processo",
-      "Apenas pelo endereço IP público do nó onde a aplicação corre",
-      "Apenas pelo número de porto local da aplicação, que é único na Internet"
+      "Pelo endereço IP público do nó e pelo número de porto local da aplicação",
+      "Pelo endereço MAC do nó em conjunto com o número do processo da aplicação",
+      "Apenas pelo endereço IP público do nó onde a aplicação está a correr",
+      "Apenas pelo número de porto local, que é único em toda a Internet"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -664,10 +664,10 @@
   {
     "question": "O que é o bind de um socket?",
     "answers": [
-      "A criação de um novo socket quando um servidor aceita uma ligação",
-      "O envio do primeiro datagrama de um cliente para o servidor",
-      "A associação de um número de porto local ao socket, pedida ao sistema operativo",
-      "O pedido de ligação feito por um cliente ao endereço de um servidor"
+      "A criação de um novo socket quando um servidor aceita uma ligação de cliente",
+      "O envio do primeiro datagrama de um cliente para o endereço do servidor",
+      "A associação de um porto local ao socket, pedida ao sistema operativo",
+      "O pedido de ligação feito por um cliente ao endereço e porto de um servidor"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -729,7 +729,7 @@
   {
     "question": "O que acontece ao emissor de um datagrama UDP quando o nó de destino está operacional mas o porto de destino não está em uso?",
     "answers": [
-      "Recebe um ICMP Destination port unreachable, que lhe permite gerar um erro no socket",
+      "Recebe um ICMP Destination port unreachable, que pode gerar um erro no socket",
       "Recebe um NACK enviado pelo protocolo UDP do nó de destino do datagrama",
       "Não recebe qualquer indicação, tal como em todos os outros casos de falha",
       "Recebe um RST do nó de destino, que fecha de imediato a ligação com ele"
@@ -836,7 +836,7 @@
       "O pedido foi fragmentado, o servidor respondeu em TCP ou a resposta foi duplicada",
       "O servidor fez bind ao porto zero, o cliente fez connect ou o TTL chegou a zero",
       "O cliente usou o porto zero, o servidor usou um porto dinâmico ou o ARP falhou",
-      "O pedido perdeu-se, o servidor não respondeu (falhou ou está desligado) ou a resposta perdeu-se"
+      "O pedido perdeu-se, o servidor não respondeu (está desligado) ou a resposta perdeu-se"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -848,7 +848,7 @@
     "answers": [
       "Porque o UDP usa um canal dedicado para cada cliente que se liga ao servidor",
       "Porque o UDP mantém uma sessão permanente com cada um dos clientes ligados",
-      "Porque o UDP é sem ligação e não fiável, e a perda de pedidos ou respostas não deve ter impacto",
+      "Porque o UDP é sem ligação e não fiável, e perder mensagens não deve ter impacto",
       "Porque o UDP garante a ordem dos pedidos, tornando desnecessário guardar estado"
     ],
     "correct_index": 2,
@@ -1094,8 +1094,8 @@
     "question": "Qual é a principal diferença do connect num socket UDP e num socket TCP?",
     "answers": [
       "No TCP o socket pode ser associado a vários endereços remotos em simultâneo",
-      "No UDP não existem ligações e o socket pode ser associado a outro endereço remoto mais tarde",
-      "No UDP o connect estabelece a ligação e no TCP apenas associa o endereço",
+      "No UDP não há ligações e o socket pode ser associado a outro endereço remoto depois",
+      "No UDP o connect estabelece a ligação e no TCP apenas associa o endereço remoto",
       "No UDP o connect só pode ser chamado pelo servidor, e no TCP só pelo cliente"
     ],
     "correct_index": 1,
@@ -1147,7 +1147,7 @@
     "answers": [
       "Janela deslizante, stop and wait e retransmissão automática dos segmentos",
       "Three-way handshake, FIN e RST aplicados a cada mensagem da aplicação",
-      "Blocos de tamanho fixo, indicação explícita do tamanho do bloco e marca de fim de bloco",
+      "Blocos de tamanho fixo, tamanho indicado explicitamente e marca de fim de bloco",
       "Bind, accept e connect aplicados por cada cliente e por cada servidor"
     ],
     "correct_index": 2,
@@ -1159,7 +1159,7 @@
     "question": "Como é que o HTTP usa a indicação explícita do tamanho do bloco?",
     "answers": [
       "Com o número de sequência TCP do último segmento da resposta recebida",
-      "Com o cabeçalho Content-Length, que informa o tamanho do corpo da mensagem em bytes",
+      "Com o cabeçalho Content-Length, que indica o tamanho do corpo em bytes",
       "Com o cabeçalho Host, que indica o tamanho do corpo da mensagem em bytes",
       "Com a sequência CR/LF no fim de cada linha do cabeçalho da mensagem HTTP"
     ],
@@ -1210,10 +1210,10 @@
   {
     "question": "Qual é a principal vantagem de uma ligação TCP face a um cliente-servidor UDP típico, no tipo de interação?",
     "answers": [
-      "Dispensa um protocolo aplicacional, porque o TCP define as mensagens",
-      "Permite enviar o mesmo pedido para vários servidores em broadcast",
-      "Permite uma sessão de interações sucessivas, e não apenas um pedido e uma resposta",
-      "Permite que qualquer aplicação use o mesmo canal dedicado"
+      "Dispensa um protocolo aplicacional, porque o TCP define o formato das mensagens",
+      "Permite enviar o mesmo pedido a vários servidores em broadcast, num só envio",
+      "Permite uma sessão de interações sucessivas, e não só um pedido e uma resposta",
+      "Permite que qualquer aplicação use o mesmo canal dedicado, sem número de porto"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1303,7 +1303,7 @@
     "answers": [
       "Apenas o formato dos cabeçalhos TCP e UDP usados pela aplicação nos seus pacotes",
       "Apenas o tamanho máximo dos datagramas e dos segmentos usados pela aplicação",
-      "As fases do diálogo, o conteúdo das mensagens, os diálogos possíveis e a recuperação de erros",
+      "As fases do diálogo, o conteúdo das mensagens, os diálogos possíveis e os erros",
       "Apenas o número de porto e o endereço IP dos servidores da aplicação em causa"
     ],
     "correct_index": 2,
@@ -1487,10 +1487,10 @@
   {
     "question": "O que guarda um servidor UDP simples entre receber um pedido e enviar a resposta?",
     "answers": [
-      "O número de sequência do último datagrama enviado ao cliente",
-      "O estado da ligação UDP com o cliente, tal como no TCP",
+      "O número de sequência do último datagrama enviado ao cliente em questão",
+      "O estado da ligação UDP com o cliente, tal como acontece no TCP",
       "O contexto da sessão com o cliente, incluindo os pedidos anteriores",
-      "O endereço de origem do pedido (IP e porto do cliente), para enviar a resposta"
+      "O endereço de origem do pedido (IP e porto), para enviar a resposta"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1539,10 +1539,10 @@
   {
     "question": "O emissor escreve 100 bytes numa ligação TCP e o recetor pede a leitura de 60 bytes. O que acontece?",
     "answers": [
-      "A leitura devolve 60 bytes e descarta os 40 restantes",
-      "A leitura devolve um erro, por terem sido escritos mais bytes",
-      "A leitura bloqueia até serem escritos os 60 bytes seguintes",
-      "A leitura devolve 60 bytes e os 40 restantes surgem na leitura seguinte"
+      "A leitura devolve 60 bytes e descarta os 40 restantes da escrita",
+      "A leitura devolve um erro, por terem sido escritos mais bytes do que os pedidos",
+      "A leitura bloqueia até serem escritos os 60 bytes seguintes pelo emissor",
+      "A leitura devolve 60 bytes; os outros 40 ficam para a leitura seguinte"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1633,7 +1633,7 @@
       "Connect ao cliente, bind a um porto e espera por ligações",
       "Accept do pedido, bind a um porto e connect ao cliente",
       "Bind a um porto dinâmico, connect e accept do cliente",
-      "Bind a um porto fixo, espera por ligações e accept do pedido de ligação"
+      "Bind a um porto fixo, espera por ligações e accept do pedido"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",

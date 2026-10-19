@@ -190,10 +190,10 @@
   {
     "question": "Que meio de transmissão é usado para conduzir a luz através de percursos sinuosos?",
     "answers": [
-      "Pares de condutores de cobre entrelaçados",
-      "Ondas de rádio no espaço livre",
-      "Cabos coaxiais de cobre",
-      "Fibras óticas, que são fibras de vidro muito finas"
+      "Pares de condutores de cobre entrelaçados e isolados",
+      "Ondas de rádio propagadas no espaço livre",
+      "Cabos coaxiais com condutor central de cobre",
+      "Fibras óticas, fibras de vidro muito finas"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -486,7 +486,7 @@
     "question": "Num meio de transmissão passband...",
     "answers": [
       "a atenuação é igual para todas as frequências do sinal, desde zero até ao máximo",
-      "só passam com baixa atenuação as frequências entre um valor mínimo, superior a zero, e um valor máximo",
+      "só passam com baixa atenuação as frequências entre um mínimo superior a zero e um máximo",
       "os sinais de frequência zero passam com baixa atenuação, tal como num meio baseband",
       "só se podem usar sinais digitais obtidos por line coding, sem qualquer modulação"
     ],
@@ -510,7 +510,7 @@
     "question": "Qual das seguintes características é típica de um meio de transmissão baseband?",
     "answers": [
       "A atenuação é nula para todas as frequências, pelo que o sinal chega sempre intacto",
-      "Tem baixa atenuação desde a frequência zero até um valor máximo, como acontece com a maioria dos meios de cobre",
+      "Tem baixa atenuação desde a frequência zero até um máximo, como os meios de cobre",
       "Só deixa passar com baixa atenuação frequências acima de um valor mínimo superior a zero",
       "Só consegue transportar sinais analógicos obtidos por digital modulation, nunca sinais digitais"
     ],
@@ -522,10 +522,10 @@
   {
     "question": "Qual é a causa da interferência entre símbolos (ISI, Inter Symbol Interference)?",
     "answers": [
-      "Frequências diferentes propagam-se a velocidades ligeiramente diferentes, e parte de um símbolo sobrepõe-se ao seguinte",
-      "Dois nós emitem em simultâneo no mesmo meio partilhado, e os sinais sobrepõem-se no recetor",
+      "Frequências diferentes propagam-se a velocidades diferentes, e um símbolo sobrepõe-se ao seguinte",
+      "Dois nós emitem ao mesmo tempo no meio partilhado, e os sinais sobrepõem-se no recetor após a colisão",
       "O endereço de destino não consta do cabeçalho, pelo que o pacote é reencaminhado para todos os nós",
-      "A atenuação é exatamente igual para todas as frequências, o que deforma o sinal digital"
+      "A atenuação é exatamente igual para todas as frequências, o que deforma o sinal digital recebido"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -714,8 +714,8 @@
     "answers": [
       "Porque o sinal tem de ser lido sempre no fim do símbolo, quando já está distorcido pela ISI",
       "Porque só permite transmitir símbolos de um bit, o que exige relógios de frequência muito elevada",
-      "Porque algumas sequências de símbolos mantêm o sinal no mesmo nível, sem transições para o recetor se sincronizar",
-      "Porque produz sempre sinais analógicos, que só podem ser transmitidos em meios passband"
+      "Porque algumas sequências de símbolos mantêm o sinal no mesmo nível, sem transições para sincronizar",
+      "Porque produz sempre sinais analógicos, que só podem ser transmitidos em meios do tipo passband"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -991,7 +991,7 @@
   {
     "question": "Qual é um dos problemas das redes de meio partilhado?",
     "answers": [
-      "Os dados chegam a todos os nós, que verificam se lhes são dirigidos, o que prejudica privacidade e desempenho",
+      "Os dados chegam a todos os nós, o que prejudica a privacidade e o desempenho",
       "Só permitem ligar dois nós de cada vez, pelo que não servem para redes com muitos nós",
       "Exigem sempre a criação prévia de um circuito virtual antes de cada transmissão de dados",
       "Os nós intermédios têm de decidir o caminho de cada pacote, o que atrasa o envio dos dados"
@@ -1278,7 +1278,7 @@
     "ref": "L01 p.26"
   },
   {
-    "question": "Em qualquer rede de comutação de pacotes, o cabeçalho de todos os pacotes inclui sempre o endereço do nó de destino.",
+    "question": "Nas redes de comutação de pacotes com circuitos virtuais, o cabeçalho de cada pacote contém sempre o endereço do nó de destino.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1376,7 +1376,7 @@
   {
     "question": "Qual das seguintes é uma vantagem dos cabos de fibra ótica relativamente aos de cobre?",
     "answers": [
-      "Maior facilidade de montagem e de ligação às tomadas dos utilizadores",
+      "Maior facilidade de montagem e de ligação aos outlets dos utilizadores",
       "Menor atenuação, imunidade ao ruído externo e não geram ruído externo",
       "Maior atenuação, mas menor custo de instalação e menor dispersão",
       "Aceitam apenas sinais elétricos, o que simplifica o equipamento terminal"
@@ -1566,9 +1566,9 @@
   {
     "question": "O que são backbones num sistema de cablagem?",
     "answers": [
-      "Partes do sistema com grandes fluxos de dados, que não estão diretamente ligadas às tomadas dos utilizadores",
+      "Partes do sistema com grandes fluxos de dados, sem ligação direta aos outlets",
       "Os equipamentos ativos de uma rede, como switches e routers, instalados nos distribuidores",
-      "Os cabos que ligam cada tomada ao computador ou ao telefone do utilizador no posto de trabalho",
+      "Os cabos que ligam cada outlet ao computador ou ao telefone do utilizador no posto de trabalho",
       "Os cabos de cobre usados exclusivamente na cablagem horizontal de cada piso do edifício"
     ],
     "correct_index": 0,
@@ -1662,7 +1662,7 @@
     "answers": [
       "Main cross-connect (MC), também chamado Campus Distributor (CD)",
       "Horizontal cross-connect (HC), também chamado Floor Distributor (FD)",
-      "Work area outlet (WAO), também chamado tomada do posto de trabalho",
+      "Work area outlet (WAO), também chamado outlet do posto de trabalho",
       "Intermediate cross-connect (IC), também chamado Building Distributor (BD)"
     ],
     "correct_index": 0,
@@ -1673,7 +1673,7 @@
   {
     "question": "Na cablagem estruturada, qual é o ponto de distribuição de segundo nível, habitualmente um por edifício?",
     "answers": [
-      "Work area outlet (WAO), também chamado tomada do posto de trabalho",
+      "Work area outlet (WAO), também chamado outlet do posto de trabalho",
       "Main cross-connect (MC), também chamado Campus Distributor (CD)",
       "Horizontal cross-connect (HC), também chamado Floor Distributor (FD)",
       "Intermediate cross-connect (IC), também chamado Building Distributor (BD)"
@@ -1686,7 +1686,7 @@
   {
     "question": "Na cablagem estruturada, qual é o ponto de distribuição de nível mais baixo, a partir do qual deixam de existir backbones?",
     "answers": [
-      "Work area outlet (WAO), também chamado tomada do posto de trabalho",
+      "Work area outlet (WAO), também chamado outlet do posto de trabalho",
       "Intermediate cross-connect (IC), também chamado Building Distributor (BD)",
       "Main cross-connect (MC), também chamado Campus Distributor (CD)",
       "Horizontal cross-connect (HC), também chamado Floor Distributor (FD)"
@@ -1697,7 +1697,7 @@
     "ref": "TP01 p.12"
   },
   {
-    "question": "Como se designam os cabos que, partindo do horizontal cross-connect, ligam às tomadas dos utilizadores no piso?",
+    "question": "Como se designam os cabos que, partindo do horizontal cross-connect, ligam aos outlets dos utilizadores no piso?",
     "answers": [
       "Backbone vertical",
       "Cabling Subsystem 1, ou cablagem horizontal",
@@ -1721,17 +1721,6 @@
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "TP01 p.12"
-  },
-  {
-    "question": "Em NRZ-L, o bit zero é representado por um nível alto e o bit um por um nível baixo.",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "L01 p.15"
   },
   {
     "question": "As micro-ondas propagam-se, tal como os sinais de baixa frequência, melhor em condutores de cobre do que no ar.",
@@ -2066,7 +2055,7 @@
       "Um meio em que um sinal elétrico estático tem baixa atenuação",
       "Um cabo de cobre onde passam sinais de frequência zero",
       "Um meio com a mesma atenuação para todas as frequências",
-      "A rede telefónica pública (PSTN), concebida para transportar voz humana"
+      "A rede telefónica pública (PSTN), feita para voz"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -2077,9 +2066,9 @@
     "question": "Porque é que a transmissão assíncrona não sofre uma dessincronização significativa?",
     "answers": [
       "Porque usa line coding bifásico com transições em todos os símbolos",
-      "Porque o recetor lê o sinal no início de cada símbolo",
-      "Porque o tempo necessário para transmitir tão poucos bits de dados é muito curto",
-      "Porque usa digital modulation em vez de line coding"
+      "Porque o recetor lê o sinal sempre no início de cada símbolo",
+      "Porque transmite tão poucos bits de cada vez que o tempo é curto",
+      "Porque usa digital modulation com portadora em vez de line coding"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -2128,10 +2117,10 @@
   {
     "question": "O que acontece ao overhead de um pacote quando o payload aumenta e o cabeçalho se mantém igual?",
     "answers": [
-      "Mantém-se constante, porque só depende do cabeçalho",
-      "Diminui, porque o cabeçalho passa a representar uma fração menor do pacote",
+      "Mantém-se constante, porque só depende do tamanho do cabeçalho",
+      "Diminui, porque o cabeçalho pesa menos no total do pacote",
       "Aumenta, porque o pacote passa a ter mais informação de controlo",
-      "Passa a ser sempre igual a 100 %"
+      "Passa a ser sempre igual a 100 % do tamanho do pacote"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",

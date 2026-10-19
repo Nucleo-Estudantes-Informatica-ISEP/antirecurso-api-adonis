@@ -66,7 +66,7 @@
     "ref": "L11 p.2"
   },
   {
-    "question": "O Telnet cifra a ligação, pelo que as palavras-passe de autenticação não ficam visíveis para quem escutar a rede.",
+    "question": "O Telnet cifra a ligação, pelo que as passwords de autenticação não ficam visíveis para quem escutar a rede.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -341,7 +341,7 @@
     "ref": "L11 p.11"
   },
   {
-    "question": "Segurança foi pouco considerada no SNMP v1 e v2c: as communities não têm palavra-passe e o nome da community é muitas vezes usado como palavra-passe secreta, sem cifra.",
+    "question": "Segurança foi pouco considerada no SNMP v1 e v2c: as communities não têm password e o nome da community é muitas vezes usado como password secreta, sem cifra.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -585,10 +585,10 @@
   {
     "question": "Qual é a principal diferença entre SSH e Telnet na gestão remota?",
     "answers": [
-      "O SSH não cifra a ligação TCP, expondo as palavras-passe; o Telnet cifra a comunicação",
+      "O SSH não cifra a ligação TCP, expondo as passwords; o Telnet cifra a comunicação",
       "O Telnet só funciona na consola local; o SSH só funciona em equipamentos baratos",
       "O SSH usa o protocolo UDP e o Telnet usa o protocolo TCP",
-      "O Telnet não cifra a ligação TCP, expondo as palavras-passe; o SSH cifra a comunicação"
+      "O Telnet não cifra a ligação TCP, expondo as passwords; o SSH cifra a comunicação"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -599,7 +599,7 @@
     "question": "Para que serve uma VLAN dedicada à gestão de rede?",
     "answers": [
       "Para substituir o protocolo SNMP por um protocolo de camada 2",
-      "Para isolar o tráfego de gestão dos utilizadores, funcionando como uma DMZ",
+      "Para isolar o tráfego de gestão do dos utilizadores, como uma DMZ",
       "Para dar acesso à gestão a todos os utilizadores da rede local",
       "Para aumentar a taxa de transmissão dos equipamentos de rede"
     ],
@@ -689,10 +689,10 @@
   {
     "question": "Que mensagem SNMPv1 serve para consultar a MIB sequencialmente?",
     "answers": [
-      "Trap (alarme enviado pelo agente)",
+      "Trap (alarme enviado pelo agente ao gestor)",
       "GetNextRequest (leitura da variável seguinte)",
-      "GetRequest (leitura de uma variável)",
-      "SetRequest (alteração de uma variável)"
+      "GetRequest (leitura de uma só variável indicada)",
+      "SetRequest (alteração do valor de uma variável)"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -728,10 +728,10 @@
   {
     "question": "Como se obtém um dump completo da MIB de um agente SNMPv1?",
     "answers": [
-      "Com um SetRequest ao OID zero",
-      "Com um único GetRequest ao OID 1.3.6.1",
-      "Com GetNextRequest sucessivos, a partir do OID zero",
-      "Com um Trap enviado pelo agente ao gestor"
+      "Com um SetRequest enviado ao OID zero do agente",
+      "Com um único GetRequest ao OID 1.3.6.1 do agente",
+      "Com GetNextRequest sucessivos, desde o OID zero",
+      "Com um Trap enviado pelo agente a todos os gestores"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -754,9 +754,9 @@
   {
     "question": "Para que serve o campo Community das mensagens SNMPv1?",
     "answers": [
-      "Para indicar o resultado da operação pedida",
-      "Para indicar qual o objeto associado a um erro",
-      "Para identificar o pedido, copiado para a resposta",
+      "Para indicar o resultado da operação pedida ao agente",
+      "Para indicar qual o objeto associado a um erro ocorrido",
+      "Para identificar o pedido, copiado para a resposta do agente",
       "Para guardar uma cadeia usada como controlo de acesso simples"
     ],
     "correct_index": 3,
@@ -1038,7 +1038,7 @@
     "ref": "L11 p.15"
   },
   {
-    "question": "Que nível de segurança do SNMPv3 não tem autenticação por palavra-passe nem cifra de dados?",
+    "question": "Que nível de segurança do SNMPv3 não tem autenticação por password nem cifra de dados?",
     "answers": [
       "noAuthPriv",
       "authNoPriv",
@@ -1105,10 +1105,10 @@
   {
     "question": "Qual é a melhor forma de melhorar a segurança do SNMP, segundo a aula?",
     "answers": [
-      "Usar uma rede independente dedicada à gestão, física ou VLAN, mantendo nela todo o tráfego SNMP",
-      "Passar todo o tráfego SNMP para o porto TCP 443",
+      "Usar uma rede independente para a gestão, física ou VLAN, com todo o tráfego SNMP",
+      "Mover o tráfego SNMP para o porto TCP 443 e manter as communities por omissão",
       "Usar sempre communities de leitura e escrita com nomes difíceis de adivinhar",
-      "Desativar a autenticação para reduzir a carga nos agentes"
+      "Desativar a autenticação por community para reduzir a carga nos agentes de rede"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1120,8 +1120,8 @@
     "answers": [
       "A community é cifrada com MD5, mas os restantes dados da mensagem seguem em claro",
       "Há cifra DES de todos os dados, mas sem qualquer tipo de autenticação prévia",
-      "Não há palavra-passe nem cifra, e o nome da community serve muitas vezes de palavra-passe",
-      "Há autenticação por utilizador e palavra-passe, mas as mensagens seguem sem cifra"
+      "Não há password nem cifra, e o nome da community serve muitas vezes de password",
+      "Há autenticação por utilizador e password, mas as mensagens seguem sem cifra"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1183,10 +1183,10 @@
   {
     "question": "Qual é a principal missão de um sistema de monitorização de rede?",
     "answers": [
-      "Configurar automaticamente os equipamentos de rede",
-      "Cifrar o tráfego de gestão entre os equipamentos",
+      "Configurar automaticamente os equipamentos de rede quando falham",
+      "Cifrar o tráfego de gestão entre os equipamentos e os gestores",
       "Detetar componentes com falhas e notificar os administradores",
-      "Substituir os administradores na gestão da rede"
+      "Substituir os administradores na gestão diária da rede"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1856,9 +1856,9 @@
   {
     "question": "Qual é o objetivo da gestão remota por emulação de terminal?",
     "answers": [
-      "Recolher o estado do equipamento por pedidos SNMP periódicos",
-      "Notificar automaticamente os administradores de falhas",
-      "Realizar, a partir de outro local, as operações disponíveis na consola do equipamento",
+      "Recolher o estado do equipamento através de pedidos SNMP periódicos ao agente",
+      "Notificar automaticamente os administradores de falhas detetadas nos equipamentos",
+      "Realizar, a partir de outro local, as operações da consola do equipamento",
       "Aceder a um subconjunto de opções do equipamento através de um navegador"
     ],
     "correct_index": 2,

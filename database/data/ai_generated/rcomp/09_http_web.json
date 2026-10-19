@@ -636,9 +636,9 @@
     "question": "Que métodos acrescenta o HTTP 1.1 aos do HTTP 1.0?",
     "answers": [
       "OPTIONS, PUT, DELETE, TRACE e CONNECT",
-      "PUT, POST, PATCH e TRACE",
-      "OPTIONS, GET, DELETE e CONNECT",
-      "OPTIONS, HEAD, PUT e PATCH"
+      "PUT, POST, PATCH, TRACE e CONNECT",
+      "OPTIONS, GET, DELETE, HEAD e CONNECT",
+      "OPTIONS, HEAD, PUT, PATCH e TRACE"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -687,10 +687,10 @@
   {
     "question": "Qual é o formato da status line de uma resposta HTTP?",
     "answers": [
-      "Versão do HTTP, espaço, código de estado, espaço, descrição do código, CR+LF",
+      "Versão do HTTP, espaço, código de estado, espaço, descrição, CR+LF",
       "Versão do HTTP, espaço, método, espaço, código de estado, CR+LF",
       "Código de estado, espaço, versão do HTTP, espaço, descrição, CR+LF",
-      "Método, espaço, URI, espaço, versão do HTTP, CR+LF"
+      "Método, espaço, URI do recurso, espaço, versão do HTTP, CR+LF"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -791,10 +791,10 @@
   {
     "question": "Para que serve o campo Transfer-Encoding?",
     "answers": [
-      "Para indicar o tipo de media do conteúdo transportado",
-      "Para informar sobre uma transformação aplicada ao corpo da mensagem",
-      "Para indicar a data de última modificação do conteúdo",
-      "Para informar o tamanho do corpo da mensagem em octetos"
+      "Para indicar o tipo de media do conteúdo transportado no corpo",
+      "Para informar a transformação aplicada ao corpo da mensagem",
+      "Para indicar a data de última modificação do conteúdo pedido",
+      "Para informar o tamanho total do corpo da mensagem em octetos"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -856,10 +856,10 @@
   {
     "question": "Qual é o conteúdo do campo User-Agent?",
     "answers": [
-      "O nome do servidor que vai tratar o pedido",
+      "O nome do servidor web que vai tratar o pedido do cliente",
       "O URL do documento a partir do qual se seguiu o pedido",
       "O endereço de correio eletrónico do utilizador do cliente",
-      "Uma cadeia que identifica a aplicação cliente, normalmente um navegador"
+      "Uma cadeia que identifica o cliente, como um navegador web"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -973,10 +973,10 @@
   {
     "question": "Para que serve o método POST?",
     "answers": [
-      "Obter a lista de métodos suportados pelo servidor, quando o URI é um asterisco",
-      "Enviar dados, no corpo da mensagem, para um URI que normalmente é código executado no servidor",
-      "Obter o conteúdo apontado pelo URI, que pode ser estático ou gerado dinamicamente",
-      "Pedir a remoção do recurso no servidor, identificado pelo URI do pedido"
+      "Obter a lista de métodos suportados pelo servidor, se o URI do pedido for um asterisco",
+      "Enviar dados no corpo da mensagem para um URI, normalmente código executado no servidor",
+      "Obter o conteúdo apontado pelo URI, que pode ser um ficheiro estático ou gerado dinamicamente",
+      "Pedir a remoção do recurso no servidor, identificado pelo URI, sem enviar dados no corpo"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1012,9 +1012,9 @@
   {
     "question": "Qual é o significado da sigla CGI (Common Gateway Interface)?",
     "answers": [
-      "A técnica que permite a um servidor executar programas externos e devolver o resultado como conteúdo",
-      "O mecanismo de cache de conteúdos usado pelos proxies e pelos navegadores",
-      "O protocolo que protege a ligação HTTP com TLS e certificados de chave pública",
+      "A técnica que permite a um servidor executar programas externos e devolver o resultado",
+      "O mecanismo de cache usado pelos proxies e pelos navegadores para guardar conteúdos",
+      "O protocolo que protege a ligação HTTP com TLS e certificados de chave pública do servidor",
       "O formato de representação de dados em XML usado nos web services entre aplicações"
     ],
     "correct_index": 0,
@@ -1091,7 +1091,7 @@
     "question": "O que significa o código de estado 304 Not Modified?",
     "answers": [
       "O servidor não implementa o método usado no pedido enviado pelo cliente",
-      "Resposta a um GET condicional cujas condições não se verificam: o recurso não mudou",
+      "Resposta a um GET condicional: o recurso não mudou desde a data indicada",
       "O servidor não encontrou o recurso pedido pelo cliente no seu sistema",
       "O recurso foi movido para outro local, indicado no campo Location"
     ],
@@ -1168,10 +1168,10 @@
   {
     "question": "O que significa o código de estado 406 Not Acceptable?",
     "answers": [
-      "Uma pré-condição de um campo If do pedido não pôde ser satisfeita",
-      "A versão do HTTP do pedido não é suportada",
-      "O servidor recusa o pedido por não ter Content-Length",
-      "Uma restrição de um campo Accept do pedido não pôde ser satisfeita pelo servidor"
+      "A pré-condição de um campo If do pedido não pôde ser satisfeita",
+      "A versão do HTTP indicada na linha do pedido não é suportada",
+      "O servidor recusa o pedido por este não incluir o campo Content-Length",
+      "Uma restrição de um campo Accept do pedido não pôde ser satisfeita"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1195,9 +1195,9 @@
     "question": "O que significa o código de estado 412 Precondition Failed?",
     "answers": [
       "Uma pré-condição de um campo If do pedido não pôde ser satisfeita",
-      "Uma restrição de um campo Accept não pôde ser satisfeita",
-      "O servidor exige autenticação do utilizador",
-      "O servidor não implementa o método do pedido"
+      "Uma restrição de um campo Accept do pedido não pôde ser satisfeita",
+      "O servidor exige autenticação do utilizador para aceder ao recurso",
+      "O servidor não implementa o método indicado no pedido do cliente"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1311,9 +1311,9 @@
   {
     "question": "Como se obtém uma ligação persistente no HTTP 1.0?",
     "answers": [
-      "O cliente inclui o campo Connection: close e o servidor mantém a ligação",
-      "O cliente envia o método CONNECT antes do primeiro pedido",
-      "O cliente inclui o campo Connection: keep-alive e o servidor responde com o mesmo campo",
+      "O cliente envia Connection: close e o servidor mantém a ligação aberta após a resposta",
+      "O cliente envia o método CONNECT ao servidor antes de enviar o primeiro pedido",
+      "O cliente envia Connection: keep-alive e o servidor responde com o mesmo campo",
       "O cliente não precisa de fazer nada, porque é o comportamento por omissão"
     ],
     "correct_index": 2,
@@ -1366,7 +1366,7 @@
       "TLS (Transport Layer Security), sucessor do SSL, sobre TCP",
       "IPSEC, aplicado em todos os pacotes IP da ligação",
       "UDP, com cifragem aplicada em cada datagrama",
-      "SSH, com autenticação dos utilizadores por palavra-passe"
+      "SSH, com autenticação dos utilizadores por password"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1390,7 +1390,7 @@
     "question": "O que garante ao cliente que está a falar com o servidor autêntico num pedido HTTPS?",
     "answers": [
       "A utilização do porto 443, que é reservado a servidores autênticos",
-      "A utilização de uma palavra-passe fornecida em cada pedido HTTP",
+      "A utilização de uma password fornecida em cada pedido HTTP",
       "O endereço IP do servidor, que é validado pelo DNS",
       "Um certificado de chave pública válido apresentado pelo servidor"
     ],
@@ -1415,10 +1415,10 @@
   {
     "question": "Quais são os papéis das aplicações num web service?",
     "answers": [
-      "O consumidor (requestor) é o cliente HTTP e o publicador (provider) é o servidor HTTP",
-      "O consumidor é o servidor HTTP e o publicador é o cliente HTTP",
-      "O consumidor usa o FTP e o publicador usa o HTTP",
-      "Ambas as aplicações são servidores HTTP que trocam mensagens entre si"
+      "O consumidor (requestor) é o cliente HTTP e o publicador (provider) é o servidor",
+      "O consumidor (requestor) é o servidor HTTP e o publicador (provider) é o cliente",
+      "O consumidor (requestor) usa o protocolo FTP e o publicador (provider) usa o HTTP",
+      "Ambas as aplicações são servidores HTTP e trocam mensagens entre si, sem cliente"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1597,10 +1597,10 @@
   {
     "question": "O que significa um método ser idempotente no REST?",
     "answers": [
-      "Que pedidos idênticos repetidos sobre o mesmo URI não têm efeitos além do primeiro",
-      "Que o método exige sempre um corpo na mensagem de pedido enviada",
+      "Que repetir o mesmo pedido sobre o mesmo URI não tem efeitos além do primeiro",
+      "Que o método exige sempre um corpo na mensagem de pedido e na de resposta",
       "Que o método não altera o recurso nem o estado do servidor que o recebe",
-      "Que o método só pode ser usado uma vez por cada cliente que o invoca"
+      "Que o método só pode ser invocado uma vez por cada cliente em cada servidor"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1688,8 +1688,8 @@
   {
     "question": "O que é o HATEOAS?",
     "answers": [
-      "Um método HTTP para listar todos os recursos disponíveis num servidor REST",
-      "Uma restrição REST: com cada recurso, o cliente recebe ligações para as ações seguintes possíveis",
+      "Um método HTTP novo para listar todos os recursos disponíveis num servidor REST",
+      "Uma restrição REST: cada recurso traz ligações para as ações seguintes possíveis",
       "Um formato de dados alternativo ao JSON para representar os recursos de um serviço",
       "Um mecanismo de autenticação baseado em certificados TLS de cliente e servidor"
     ],
@@ -1701,9 +1701,9 @@
   {
     "question": "Que três elementos definem a origem (origin) para a same-origin policy?",
     "answers": [
-      "Protocolo, caminho e query-string",
-      "Porto, método e tipo de conteúdo",
-      "Nome do nó, endereço IP e método",
+      "Protocolo, caminho e query-string do URL",
+      "Porto, método e tipo de conteúdo do pedido",
+      "Nome do nó, endereço IP e método do pedido",
       "Protocolo, nome do nó e número de porto"
     ],
     "correct_index": 3,
@@ -1715,7 +1715,7 @@
     "question": "Que acessos entre origens diferentes são normalmente permitidos pela same-origin policy?",
     "answers": [
       "Todas as leituras feitas por scripts a outras origens, mas não as operações de escrita",
-      "Embeber recursos estáticos (imagens, scripts) e fazer operações de escrita, como submeter formulários",
+      "Embeber recursos estáticos (imagens, scripts) e fazer escritas, como submeter formulários",
       "Apenas as leituras de recursos estáticos embebidos, mas nunca as operações de escrita",
       "Todos os acessos feitos por scripts a APIs REST de origens diferentes da página"
     ],
@@ -1844,10 +1844,10 @@
   {
     "question": "Para que serve o cabeçalho Access-Control-Expose-Headers?",
     "answers": [
-      "Para listar campos de cabeçalho adicionais da resposta que ficam acessíveis ao cliente",
-      "Para indicar se podem ser usadas credenciais nos pedidos",
-      "Para indicar durante quanto tempo a resposta pode ser guardada em cache",
-      "Para listar os métodos que o servidor aceita no pedido real"
+      "Para listar campos de cabeçalho da resposta que ficam acessíveis ao cliente",
+      "Para indicar se podem ser usadas credenciais (cookies) nos pedidos entre origens",
+      "Para indicar durante quanto tempo a resposta pode ser guardada em cache pelo cliente",
+      "Para listar os métodos que o servidor aceita no pedido real, após o preflight"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",

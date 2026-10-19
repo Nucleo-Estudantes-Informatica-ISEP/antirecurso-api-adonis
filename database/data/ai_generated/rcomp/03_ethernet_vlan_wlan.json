@@ -77,7 +77,7 @@
     "ref": "L03 p.2"
   },
   {
-    "question": "Para o CSMA/CD funcionar, as colisões têm de ser detetadas por todos os nós antes de terminar a emissão da trama.",
+    "question": "Para o CSMA/CD funcionar, as colisões têm de ser detetadas por todos os nós antes de terminar a emissão da frame.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -121,7 +121,7 @@
     "ref": "TP02 p.11"
   },
   {
-    "question": "O campo FCS de uma trama Ethernet garante que as tramas são recebidas pela mesma ordem em que foram emitidas.",
+    "question": "O campo FCS de uma frame Ethernet garante que as frames são recebidas pela mesma ordem em que foram emitidas.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -132,7 +132,7 @@
     "ref": "L03 p.5"
   },
   {
-    "question": "O campo E-TYPE de uma trama Ethernet II identifica o tipo de rede Ethernet utilizado.",
+    "question": "O campo E-TYPE de uma frame Ethernet II identifica o tipo de rede Ethernet utilizado.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -143,7 +143,7 @@
     "ref": "L03 p.5"
   },
   {
-    "question": "O campo de dados de uma trama Ethernet II pode ter entre 46 e 1500 bytes, e o valor máximo designa-se MTU (Maximum Transmission Unit).",
+    "question": "O campo de dados de uma frame Ethernet II pode ter entre 46 e 1500 bytes, e o valor máximo designa-se MTU (Maximum Transmission Unit).",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -154,7 +154,7 @@
     "ref": "L03 p.5"
   },
   {
-    "question": "O campo de dados de uma trama Ethernet II pode ter qualquer comprimento entre 0 e 2000 bytes.",
+    "question": "O campo de dados de uma frame Ethernet II pode ter qualquer comprimento entre 0 e 2000 bytes.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -165,7 +165,7 @@
     "ref": "L03 p.5"
   },
   {
-    "question": "Os pontos de acesso 802.11 suportam o formato de trama Ethernet para permitir a interligação direta entre redes Ethernet com fios e redes sem fios.",
+    "question": "Os access points 802.11 suportam o formato de frame Ethernet para permitir a interligação direta entre redes Ethernet com fios e redes sem fios.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -220,7 +220,7 @@
     "ref": "L03 p.7"
   },
   {
-    "question": "Um switch regista o endereço de origem de cada trama recebida numa porta e constrói assim a sua MAC table.",
+    "question": "Um switch regista o endereço de origem de cada frame recebida numa porta e constrói assim a sua MAC table.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -264,7 +264,7 @@
     "ref": "L03 p.8"
   },
   {
-    "question": "Um hub repetidor reencaminha cada trama apenas para a porta onde se encontra o nó de destino.",
+    "question": "Um hub repetidor reencaminha cada frame apenas para a porta onde se encontra o nó de destino.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -407,7 +407,7 @@
     "ref": "TP02 p.7"
   },
   {
-    "question": "Os dispositivos de camada 1, como os repetidores e os hubs, tomam decisões com base nos endereços MAC de destino das tramas.",
+    "question": "Os dispositivos de camada 1, como os repetidores e os hubs, tomam decisões com base nos endereços MAC de destino das frames.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -495,7 +495,7 @@
     "ref": "L03 p.10"
   },
   {
-    "question": "Numa trama com etiqueta 802.1Q, o valor original do campo E-TYPE é deslocado 4 bytes.",
+    "question": "Numa frame com etiqueta 802.1Q, o valor original do campo E-TYPE é deslocado 4 bytes.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -528,7 +528,7 @@
     "ref": "L03 p.10"
   },
   {
-    "question": "Numa trama com etiqueta 802.1Q, o campo de dados pode ter entre 46 e 1500 bytes.",
+    "question": "Numa frame com etiqueta 802.1Q, o campo de dados pode ter entre 46 e 1500 bytes.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -539,7 +539,7 @@
     "ref": "L03 p.10"
   },
   {
-    "question": "Os switches podem definir VLANs sem etiquetar tramas, atribuindo a cada VLAN um subconjunto das suas portas.",
+    "question": "Os switches podem definir VLANs sem etiquetar frames, atribuindo a cada VLAN um subconjunto das suas portas.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -550,7 +550,7 @@
     "ref": "L03 p.11"
   },
   {
-    "question": "Os switches só conseguem definir VLANs se as tramas forem etiquetadas.",
+    "question": "Os switches só conseguem definir VLANs se as frames forem etiquetadas.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -583,7 +583,7 @@
     "ref": "L03 p.11"
   },
   {
-    "question": "Os nós sem suporte de VLAN só tratam tramas sem etiqueta (untagged).",
+    "question": "Os nós sem suporte de VLAN só tratam frames sem etiqueta (untagged).",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -605,7 +605,7 @@
     "ref": "L03 p.11"
   },
   {
-    "question": "Uma porta de switch associada a uma única VLAN tem obrigatoriamente de enviar as tramas com etiqueta.",
+    "question": "Uma porta de switch associada a uma única VLAN tem obrigatoriamente de enviar as frames com etiqueta.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -748,7 +748,7 @@
     "ref": "L03 p.14"
   },
   {
-    "question": "No 802.11, as colisões não podem ser detetadas diretamente: o nó recetor envia um ACK quando recebe a trama com sucesso.",
+    "question": "No 802.11, as colisões não podem ser detetadas diretamente: o nó recetor envia um ACK quando recebe a frame com sucesso.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -759,7 +759,7 @@
     "ref": "L03 p.14"
   },
   {
-    "question": "No 802.11, se o emissor não receber o ACK, assume que a trama se perdeu e volta a enviá-la, o que corresponde a um controlo de erros stop and wait.",
+    "question": "No 802.11, se o emissor não receber o ACK, assume que a frame se perdeu e volta a enviá-la, o que corresponde a um controlo de erros stop and wait.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -770,7 +770,7 @@
     "ref": "L03 p.14"
   },
   {
-    "question": "A técnica RTS/CTS só é usada se o tamanho da trama for superior ao valor RTSThreshold; caso contrário, é desvantajosa.",
+    "question": "A técnica RTS/CTS só é usada se o tamanho da frame for superior ao valor RTSThreshold; caso contrário, é desvantajosa.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -781,7 +781,7 @@
     "ref": "L03 p.15"
   },
   {
-    "question": "A técnica RTS/CTS é especialmente eficaz para tramas de reduzida dimensão.",
+    "question": "A técnica RTS/CTS é especialmente eficaz para frames de reduzida dimensão.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -814,7 +814,7 @@
     "ref": "L03 p.15"
   },
   {
-    "question": "No modo ad-hoc não há access point: qualquer nó pode enviar diretamente a qualquer outro e também retransmitir tramas.",
+    "question": "No modo ad-hoc não há access point: qualquer nó pode enviar diretamente a qualquer outro e também retransmitir frames.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -847,7 +847,7 @@
     "ref": "L03 p.15"
   },
   {
-    "question": "No modo infraestrutura, o AP participa em todos os diálogos RTS/CTS e consegue por isso evitar a maior parte das colisões.",
+    "question": "O RTS/CTS é especialmente eficaz no modo infraestrutura, porque todas as comunicações passam pelo AP.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -946,7 +946,7 @@
     "ref": "L03 p.18"
   },
   {
-    "question": "Os nós 802.11 conseguem fragmentar tramas 802.3 em segmentos mais pequenos e reconstruí-las depois.",
+    "question": "Os nós 802.11 conseguem fragmentar frames 802.3 em segmentos mais pequenos e reconstruí-las depois.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -979,7 +979,7 @@
     "ref": "L03 p.20"
   },
   {
-    "question": "Como as tramas Wi-Fi são publicamente acessíveis, a privacidade exige encriptação.",
+    "question": "Como as frames Wi-Fi são publicamente acessíveis, a privacidade exige encriptação.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1078,7 +1078,7 @@
     "ref": "TP02 p.29"
   },
   {
-    "question": "Ao ligar, a MAC table de um switch está vazia, pelo que o switch retransmite em todas as portas, exceto na de entrada, as tramas que recebe.",
+    "question": "Ao ligar, a MAC table de um switch está vazia, pelo que o switch retransmite em todas as portas, exceto na de entrada, as frames que recebe.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1089,7 +1089,7 @@
     "ref": "TP02 p.14"
   },
   {
-    "question": "Quando o endereço de destino de uma trama não consta da MAC table, o switch descarta a trama.",
+    "question": "Quando o endereço de destino de uma frame não consta da MAC table, o switch descarta a frame.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1100,7 +1100,7 @@
     "ref": "TP02 p.14"
   },
   {
-    "question": "Um switch regista na MAC table o endereço de destino de cada trama que recebe.",
+    "question": "Um switch regista na MAC table o endereço de destino de cada frame que recebe.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1133,7 +1133,7 @@
     "ref": "TP02 p.14"
   },
   {
-    "question": "No modo store & forward, o switch recebe a trama por inteiro antes de a retransmitir, o que lhe permite verificar o FCS e bloquear erros de transmissão.",
+    "question": "No modo store & forward, o switch recebe a frame por inteiro antes de a retransmitir, o que lhe permite verificar o FCS e bloquear erros de transmissão.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1144,7 +1144,7 @@
     "ref": "TP02 p.15"
   },
   {
-    "question": "O modo store & forward tem como desvantagem a latência, correspondente ao tempo de transmissão da trama.",
+    "question": "O modo store & forward tem como desvantagem a latência, correspondente ao tempo de transmissão da frame.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1177,7 +1177,7 @@
     "ref": "TP02 p.15"
   },
   {
-    "question": "No modo cut-through, o switch bloqueia as tramas com erros de FCS.",
+    "question": "No modo cut-through, o switch bloqueia as frames com erros de FCS.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1199,7 +1199,7 @@
     "ref": "TP02 p.16"
   },
   {
-    "question": "No modo fragment free, o switch começa a retransmitir depois de receber apenas os primeiros 6 bytes da trama.",
+    "question": "No modo fragment free, o switch começa a retransmitir depois de receber apenas os primeiros 6 bytes da frame.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1210,7 +1210,7 @@
     "ref": "TP02 p.16"
   },
   {
-    "question": "No modo fragment free as colisões não são propagadas, porque todas as colisões ocorrem dentro dos primeiros 64 bytes da trama.",
+    "question": "No modo fragment free as colisões não são propagadas, porque todas as colisões ocorrem dentro dos primeiros 64 bytes da frame.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1306,7 +1306,7 @@
     "ref": "L03 p.2"
   },
   {
-    "question": "Qual é a dimensão mínima de uma trama Ethernet, imposta para garantir a deteção de colisões?",
+    "question": "Qual é a dimensão mínima de uma frame Ethernet, imposta para garantir a deteção de colisões?",
     "answers": [
       "46 bytes",
       "128 bytes",
@@ -1319,11 +1319,11 @@
     "ref": "L03 p.3"
   },
   {
-    "question": "Porque existe um tamanho mínimo de trama nas redes Ethernet com CSMA/CD?",
+    "question": "Porque existe um tamanho mínimo de frame nas redes Ethernet com CSMA/CD?",
     "answers": [
-      "Para garantir que o recetor tem tempo suficiente para calcular o FCS antes de receber a trama seguinte",
-      "Para que o preâmbulo ocupe sempre menos de metade da trama e permita a sincronização do recetor",
-      "Para garantir que uma colisão é detetada pelo nó mais distante antes de a emissão da trama terminar",
+      "Para garantir que o recetor tem tempo suficiente para calcular o FCS antes de receber a frame seguinte",
+      "Para que o preâmbulo ocupe sempre menos de metade da frame e permita a sincronização do recetor",
+      "Para garantir que uma colisão é detetada pelo nó mais distante antes de a emissão da frame terminar",
       "Para impedir que dois nós diferentes usem o mesmo endereço MAC dentro da mesma rede Ethernet"
     ],
     "correct_index": 2,
@@ -1334,9 +1334,9 @@
   {
     "question": "O que acontece ao domínio de colisão quando a taxa de transmissão aumenta?",
     "answers": [
-      "Diminui, porque a trama mínima de 64 bytes demora menos tempo a ser emitida",
+      "Diminui, porque a frame mínima de 64 bytes demora menos tempo a ser emitida",
       "Mantém-se, porque só depende do número de nós ligados",
-      "Aumenta, porque a trama mínima de 64 bytes demora mais tempo a ser emitida",
+      "Aumenta, porque a frame mínima de 64 bytes demora mais tempo a ser emitida",
       "Passa a abranger todos os switches da rede"
     ],
     "correct_index": 0,
@@ -1374,7 +1374,7 @@
     "question": "Como se representa habitualmente um endereço MAC?",
     "answers": [
       "Oito grupos de 16 bits em hexadecimal, separados por dois pontos",
-      "Seis bytes em hexadecimal, separados por dois pontos, por exemplo 00:60:B0:3C:93:DB",
+      "Seis bytes em hexadecimal, separados por dois pontos, como 00:60:B0:3C:93:DB",
       "Quatro bytes em decimal, separados por pontos, por exemplo 192.168.1.10",
       "Doze dígitos decimais seguidos, sem qualquer separador entre eles"
     ],
@@ -1423,12 +1423,12 @@
     "ref": "TP02 p.11"
   },
   {
-    "question": "Qual é o formato de trama usado nas redes Ethernet atuais?",
+    "question": "Qual é o formato de frame usado nas redes Ethernet atuais?",
     "answers": [
       "LLC, também chamado 802.2, sem camada MAC",
       "Ethernet III, também chamado IEEE 802.5 (Token-Ring)",
       "Ethernet II, também chamado DIX (Digital, Intel, Xerox)",
-      "IEEE 802.11, com quatro endereços MAC por trama"
+      "IEEE 802.11, com quatro endereços MAC por frame"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1436,12 +1436,12 @@
     "ref": "L03 p.5"
   },
   {
-    "question": "Para que serve o campo E-TYPE de uma trama Ethernet II?",
+    "question": "Para que serve o campo E-TYPE de uma frame Ethernet II?",
     "answers": [
-      "Para identificar a tecnologia de camada física que a rede utiliza",
-      "Para identificar o tipo de rede Ethernet a que o nó pertence",
-      "Para indicar a taxa de transmissão a que a trama foi emitida",
-      "Para identificar o protocolo transportado no campo de dados (multiplexagem)"
+      "Para identificar a tecnologia de camada física que a rede Ethernet utiliza",
+      "Para identificar o tipo de rede Ethernet a que pertence o nó emissor",
+      "Para indicar a taxa de transmissão a que a frame foi emitida no meio",
+      "Para identificar o protocolo transportado no campo de dados"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1449,12 +1449,12 @@
     "ref": "L03 p.5"
   },
   {
-    "question": "Para que serve o campo FCS (Frame Check Sequence) de uma trama Ethernet?",
+    "question": "Para que serve o campo FCS (Frame Check Sequence) de uma frame Ethernet?",
     "answers": [
       "Para sincronizar o relógio do recetor com o do emissor",
-      "Para garantir a ordem de entrega das tramas",
-      "Para identificar a VLAN a que a trama pertence",
-      "Para detetar erros de transmissão na trama"
+      "Para garantir a ordem de entrega das frames",
+      "Para identificar a VLAN a que a frame pertence",
+      "Para detetar erros de transmissão na frame"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1464,10 +1464,10 @@
   {
     "question": "O que é a MTU (Maximum Transmission Unit) de uma rede Ethernet II?",
     "answers": [
-      "A quantidade máxima de dados (payload) que a trama transporta, 1500 bytes",
+      "A quantidade máxima de dados (payload) que a frame transporta, 1500 bytes",
       "O tamanho do preâmbulo seguido do byte SFD, que é de 8 bytes",
-      "O tamanho máximo da trama completa, incluindo cabeçalho e FCS, que é de 1518 bytes",
-      "O tamanho mínimo do campo de dados da trama, que é de 46 bytes"
+      "O tamanho máximo da frame completa, incluindo cabeçalho e FCS, que é de 1518 bytes",
+      "O tamanho mínimo do campo de dados da frame, que é de 46 bytes"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1475,7 +1475,7 @@
     "ref": "L03 p.5"
   },
   {
-    "question": "Entre que valores varia o comprimento total de uma trama Ethernet II?",
+    "question": "Entre que valores varia o comprimento total de uma frame Ethernet II?",
     "answers": [
       "46 e 1518 bytes",
       "64 e 1518 bytes",
@@ -1488,7 +1488,7 @@
     "ref": "TP02 p.12"
   },
   {
-    "question": "Quantos bytes tem o campo FCS de uma trama Ethernet II?",
+    "question": "Quantos bytes tem o campo FCS de uma frame Ethernet II?",
     "answers": [
       "2 bytes",
       "8 bytes",
@@ -1501,7 +1501,7 @@
     "ref": "TP02 p.12"
   },
   {
-    "question": "Quantos bytes tem o campo E-TYPE de uma trama Ethernet II?",
+    "question": "Quantos bytes tem o campo E-TYPE de uma frame Ethernet II?",
     "answers": [
       "8 bytes",
       "4 bytes",
@@ -1516,7 +1516,7 @@
   {
     "question": "Em que consiste o preâmbulo Ethernet?",
     "answers": [
-      "Em 4 bytes de FCS, seguidos do endereço MAC de destino da trama a emitir a seguir",
+      "Em 4 bytes de FCS, seguidos do endereço MAC de destino da frame a emitir a seguir",
       "Em 7 bytes com zeros e uns alternados, seguidos de um byte SFD que termina com dois uns",
       "Em 96 bits a um, seguidos do endereço de broadcast da rede em que o nó se encontra",
       "Em 7 bytes todos a zero, seguidos de um byte SFD também todo ele constituído por zeros"
@@ -1532,7 +1532,7 @@
       "Ao tempo de transmissão de 64 bits",
       "Ao tempo de transmissão de 7 bytes",
       "Ao tempo de transmissão de 96 bits",
-      "Ao tempo de propagação de uma trama de 1518 bytes"
+      "Ao tempo de propagação de uma frame de 1518 bytes"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1542,10 +1542,10 @@
   {
     "question": "Qual era a topologia das primeiras redes Ethernet 10base5 e 10base2?",
     "answers": [
-      "Estrela, com um hub no centro da rede",
-      "Malha completa, com ligações ponto a ponto entre nós",
+      "Estrela, com um hub central que liga todos os nós da rede",
+      "Malha completa, com ligações ponto a ponto entre todos os nós",
       "Barramento (bus), com um cabo coaxial partilhado por todos os nós",
-      "Anel, com passagem de testemunho entre os nós"
+      "Anel, com passagem de testemunho (token) entre os nós da rede"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1568,7 +1568,7 @@
   {
     "question": "Que meios de transmissão usam as variantes Ethernet em estrela 10baseT, 10baseFL e 10baseFB?",
     "answers": [
-      "Dois pares de cobre (10baseT) ou duas fibras óticas (10baseFL e 10baseFB), ligados a um hub",
+      "Dois pares de cobre (10baseT) ou duas fibras óticas (10baseFL e 10baseFB) por nó",
       "Um cabo coaxial grosso, ao qual todos os nós se ligam diretamente por derivação",
       "Um único par de cobre partilhado por todos os nós para emissão e para receção",
       "Quatro pares de cobre CAT6A, ligados a um access point sem fios central"
@@ -1608,9 +1608,9 @@
     "question": "Qual das seguintes funcionalidades caracteriza um switch Ethernet?",
     "answers": [
       "Amplificar o sinal recebido, ruído incluído, e reenviá-lo para todas as portas",
-      "Registar o endereço de origem das tramas e retransmitir cada trama só na porta do nó de destino",
+      "Aprender os endereços de origem e retransmitir cada frame só na porta do destino",
       "Escolher o caminho dos pacotes IP com base no endereço de rede de destino",
-      "Copiar cada trama recebida para todas as portas, incluindo a de entrada"
+      "Copiar cada frame recebida para todas as portas, incluindo a de entrada"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1620,10 +1620,10 @@
   {
     "question": "Qual foi o principal progresso trazido pelos switches ao Ethernet?",
     "answers": [
-      "Passaram a exigir uma trama mínima de 128 bytes para detetar colisões",
+      "Passaram a exigir uma frame mínima de 128 bytes para detetar colisões",
       "Eliminaram as colisões e o CSMA/CD, permitindo full-duplex e comutação por endereço do nó",
       "Aumentaram a taxa de transmissão nominal sem alterar a forma como as colisões ocorrem",
-      "Substituíram os endereços MAC por endereços de rede nas tramas de camada 2"
+      "Substituíram os endereços MAC por endereços de rede nas frames de camada 2"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1712,7 +1712,7 @@
     "question": "Que cabo e comprimento máximo caracterizam a tecnologia 25GbaseT?",
     "answers": [
       "2 fibras óticas monomode, até 10 km",
-      "4 pares de cobre CAT8 (ou superior), até 30 metros",
+      "4 pares de cobre CAT8, até 30 metros",
       "4 pares de cobre CAT5E, até 100 metros",
       "2 fibras óticas multimode, até 400 metros"
     ],
@@ -1787,7 +1787,7 @@
     "ref": "TP02 p.17"
   },
   {
-    "question": "Qual é o valor do campo E-TYPE que identifica uma trama com etiqueta 802.1Q?",
+    "question": "Qual é o valor do campo E-TYPE que identifica uma frame com etiqueta 802.1Q?",
     "answers": [
       "0x8100",
       "0x0806",
@@ -1800,7 +1800,7 @@
     "ref": "L03 p.10"
   },
   {
-    "question": "Quantos bytes acrescenta a etiqueta 802.1Q a uma trama Ethernet II?",
+    "question": "Quantos bytes acrescenta a etiqueta 802.1Q a uma frame Ethernet II?",
     "answers": [
       "6 bytes",
       "2 bytes",
@@ -1828,8 +1828,8 @@
   {
     "question": "Para que servem os 3 bits de prioridade da etiqueta 802.1Q?",
     "answers": [
-      "Para indicar o nível de prioridade da trama",
-      "Para identificar a VLAN a que a trama pertence",
+      "Para indicar o nível de prioridade da frame",
+      "Para identificar a VLAN a que a frame pertence",
       "Para detetar erros na etiqueta da VLAN",
       "Para indicar o tipo de protocolo transportado"
     ],
@@ -1839,7 +1839,7 @@
     "ref": "L03 p.10"
   },
   {
-    "question": "Qual é o intervalo do comprimento do campo de dados de uma trama Ethernet com etiqueta 802.1Q?",
+    "question": "Qual é o intervalo do comprimento do campo de dados de uma frame Ethernet com etiqueta 802.1Q?",
     "answers": [
       "46 a 1500 bytes",
       "42 a 1496 bytes",
@@ -1852,12 +1852,12 @@
     "ref": "L03 p.10"
   },
   {
-    "question": "Como pode um switch definir VLANs sem etiquetar as tramas?",
+    "question": "Como pode um switch definir VLANs sem etiquetar as frames?",
     "answers": [
-      "Colocando o identificador da VLAN no campo FCS de cada trama que atravessa o switch",
-      "Atribuindo a cada VLAN um subconjunto das suas portas, como se fossem vários switches virtuais independentes",
+      "Colocando o identificador da VLAN no campo FCS de cada frame que atravessa o switch",
+      "Atribuindo a cada VLAN um subconjunto das suas portas, como switches virtuais independentes",
       "Usando um endereço de broadcast diferente para cada VLAN configurada no switch",
-      "Alterando o endereço MAC de origem de cada trama que recebe, de acordo com a VLAN da porta"
+      "Alterando o endereço MAC de origem de cada frame que recebe, de acordo com a VLAN da porta"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1956,7 +1956,7 @@
     "ref": "L03 p.13"
   },
   {
-    "question": "Qual é, aproximadamente, o alcance efetivo máximo do sinal de um access point Wi-Fi, segundo o TP02?",
+    "question": "Qual é, tipicamente, o alcance efetivo máximo do sinal de um access point Wi-Fi, segundo o TP02?",
     "answers": [
       "Cerca de 500 metros",
       "Cerca de 1 km",
@@ -1972,7 +1972,7 @@
     "question": "Porque é que o CSMA/CD não pode ser usado nas redes 802.11?",
     "answers": [
       "Porque um nó não emite e recebe ao mesmo tempo, logo não pode escutar o meio enquanto emite",
-      "Porque as tramas 802.11 são demasiado pequenas para que ocorram colisões entre nós",
+      "Porque as frames 802.11 são demasiado pequenas para que ocorram colisões entre nós",
       "Porque o 802.11 usa fibra ótica nas ligações sem fios, onde não existem colisões de sinal",
       "Porque o 802.11 é sempre full-duplex, o que dispensa qualquer controlo de acesso ao meio"
     ],
@@ -1982,12 +1982,12 @@
     "ref": "L03 p.14"
   },
   {
-    "question": "Como procede um nó 802.11 que usa CSMA/CA antes de emitir uma trama?",
+    "question": "Como procede um nó 802.11 que usa CSMA/CA antes de emitir uma frame?",
     "answers": [
-      "Envia primeiro um NACK ao nó de destino e só depois emite a trama pretendida",
+      "Envia primeiro um NACK ao nó de destino e só depois emite a frame pretendida",
       "Emite de imediato e escuta o meio durante a emissão, para detetar eventuais colisões",
-      "Verifica se o meio está livre; se estiver ocupado, espera um período aleatório antes de tentar de novo",
-      "Aguarda sempre pelo SSID do access point antes de emitir qualquer trama no meio"
+      "Verifica se o meio está livre; se estiver ocupado, espera um tempo aleatório",
+      "Aguarda sempre pelo SSID do access point antes de emitir qualquer frame no meio"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1995,12 +1995,12 @@
     "ref": "L03 p.14"
   },
   {
-    "question": "Como fica o emissor 802.11 a saber que a trama não sofreu colisão?",
+    "question": "Como fica o emissor 802.11 a saber que a frame não sofreu colisão?",
     "answers": [
       "Recebendo um RTS do access point",
       "Verificando o FCS que ele próprio calculou",
       "Recebendo o ACK enviado pelo nó recetor",
-      "Detetando a colisão enquanto emite a trama"
+      "Detetando a colisão enquanto emite a frame"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -2008,7 +2008,7 @@
     "ref": "L03 p.14"
   },
   {
-    "question": "Que tipo de controlo de erros corresponde ao envio de um ACK por cada trama recebida no 802.11?",
+    "question": "Que tipo de controlo de erros corresponde ao envio de um ACK por cada frame recebida no 802.11?",
     "answers": [
       "Stop and wait",
       "Continuous ARQ",
@@ -2023,10 +2023,10 @@
   {
     "question": "Como funciona a técnica RTS/CTS?",
     "answers": [
-      "O destino envia um RTS ao emissor, que responde com um CTS e depois com os dados da trama",
+      "O destino envia um RTS ao emissor, que responde com um CTS e depois com os dados da frame",
       "O emissor envia um RTS ao destino, que pode responder com um CTS; os nós que ouvem um deles esperam",
-      "O access point envia um RTS a todos os nós da célula antes de cada trama que cada um emite",
-      "O emissor envia um CTS ao destino e, se não receber um RTS, repete a emissão da trama"
+      "O access point envia um RTS a todos os nós da célula antes de cada frame que cada um emite",
+      "O emissor envia um CTS ao destino e, se não receber um RTS, repete a emissão da frame"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -2036,10 +2036,10 @@
   {
     "question": "Quando é vantajoso usar RTS/CTS?",
     "answers": [
-      "Apenas para tramas de reduzida dimensão",
+      "Apenas para frames de reduzida dimensão",
       "Apenas no modo ad-hoc, sem access point",
-      "Apenas se a trama for maior do que o valor RTSThreshold",
-      "Sempre, qualquer que seja o tamanho da trama"
+      "Apenas se a frame exceder o RTSThreshold",
+      "Sempre, qualquer que seja o tamanho da frame"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -2076,7 +2076,7 @@
     "question": "Qual é a vantagem do modo infraestrutura em conjunto com RTS/CTS?",
     "answers": [
       "Os nós da célula passam a poder emitir e receber ao mesmo tempo, em full-duplex",
-      "O AP dispensa o envio de ACK por parte dos nós que recebem as tramas na célula",
+      "O AP dispensa o envio de ACK por parte dos nós que recebem as frames na célula",
       "O AP participa em todos os diálogos RTS/CTS e evita assim a maior parte das colisões",
       "O AP passa a ser o único nó da célula que está autorizado a escutar o meio"
     ],
@@ -2141,9 +2141,9 @@
     "question": "O que é o roaming no 802.11?",
     "answers": [
       "A mudança de canal efetuada pelo access point quando há interferência",
-      "A renovação da chave pré-partilhada entre nó e access point",
-      "A passagem do modo infraestrutura para o modo ad-hoc",
-      "A transferência transparente de um nó sem fios de uma célula para outra do mesmo ESS"
+      "A renovação periódica da chave pré-partilhada entre nó e access point",
+      "A passagem de um nó do modo infraestrutura para o modo ad-hoc",
+      "A passagem transparente de um nó sem fios de uma célula para outra do ESS"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -2177,7 +2177,7 @@
     "ref": "L03 p.18"
   },
   {
-    "question": "Quantos endereços MAC pode conter, no máximo, uma trama 802.11?",
+    "question": "Quantos endereços MAC pode conter, no máximo, uma frame 802.11?",
     "answers": [
       "6 endereços",
       "3 endereços",
@@ -2203,12 +2203,12 @@
     "ref": "L03 p.19"
   },
   {
-    "question": "Porque é que os nós 802.11 sabem fragmentar tramas 802.3?",
+    "question": "Porque é que os nós 802.11 sabem fragmentar frames 802.3?",
     "answers": [
-      "Porque as tramas 802.3 têm sempre mais de 1518 bytes e não cabem numa trama 802.11",
-      "Porque, com muitos erros, convém usar tramas 802.11 pequenas, e as tramas 802.3 podem ter até 1518 octetos",
-      "Porque o FCS das tramas 802.11 só funciona corretamente em segmentos de pequena dimensão",
-      "Porque o access point não tem memória para guardar uma trama 802.3 completa"
+      "Porque as frames 802.3 têm sempre mais de 1518 bytes e não cabem numa frame 802.11",
+      "Porque, com muitos erros, convém frames 802.11 pequenas, e as 802.3 chegam a 1518 octetos",
+      "Porque o FCS das frames 802.11 só funciona corretamente em segmentos de pequena dimensão",
+      "Porque o access point não tem memória para guardar uma frame 802.3 completa"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -2229,9 +2229,9 @@
     "ref": "L03 p.20"
   },
   {
-    "question": "O que é necessário para a privacidade das tramas 802.11, dado que são publicamente acessíveis?",
+    "question": "O que é necessário para a privacidade das frames 802.11, dado que são publicamente acessíveis?",
     "answers": [
-      "A encriptação das tramas, por exemplo por chave simétrica partilhada entre nó e AP",
+      "A encriptação das frames, por exemplo por chave simétrica partilhada entre nó e AP",
       "A utilização exclusiva da banda de 5 GHz, onde o sinal é mais difícil de captar",
       "A redução da potência de emissão para menos de 100 mW, que limita o alcance",
       "A autenticação baseada no endereço MAC de cada nó, que identifica quem emite"
@@ -2363,7 +2363,7 @@
     "answers": [
       "O router (dispositivo que encaminha pacotes IP)",
       "O hub (repetidor com mais de duas portas)",
-      "O switch (dispositivo que retransmite tramas)",
+      "O switch (dispositivo que retransmite frames)",
       "O access point (dispositivo de rede sem fios)"
     ],
     "correct_index": 1,
@@ -2387,10 +2387,10 @@
   {
     "question": "No modo cut-through, a latência do switch corresponde ao tempo necessário para receber...",
     "answers": [
-      "os 6 primeiros bytes da trama (endereço MAC de destino)",
-      "os 64 primeiros bytes da trama, onde ocorrem as colisões",
-      "a trama completa, incluindo o FCS final da trama",
-      "o preâmbulo e o byte SFD que antecedem a trama"
+      "os 6 primeiros bytes da frame (endereço MAC de destino)",
+      "os 64 primeiros bytes da frame, onde ocorrem as colisões",
+      "a frame completa, incluindo o FCS final da frame",
+      "o preâmbulo e o byte SFD que antecedem a frame"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -2400,10 +2400,10 @@
   {
     "question": "No modo fragment free, a latência do switch corresponde ao tempo necessário para receber...",
     "answers": [
-      "os 6 primeiros bytes da trama",
-      "o endereço MAC de origem da trama",
-      "os 64 primeiros bytes da trama",
-      "a trama completa, incluindo o FCS"
+      "os 6 primeiros bytes da frame",
+      "o endereço MAC de origem da frame",
+      "os 64 primeiros bytes da frame",
+      "a frame completa, incluindo o FCS"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -2413,10 +2413,10 @@
   {
     "question": "Qual é a vantagem do modo store & forward relativamente aos restantes modos?",
     "answers": [
-      "Bloqueia tramas com erros de FCS e permite taxas diferentes nas portas de entrada e de saída",
+      "Bloqueia frames com erros de FCS e permite taxas diferentes nas portas de entrada e de saída",
       "Propaga as colisões para as outras portas, o que facilita a sua deteção pelos nós",
-      "Dispensa a MAC table, porque retransmite cada trama em todas as portas do switch",
-      "Tem a menor latência de todos os modos de funcionamento do switch, pois não espera pela trama"
+      "Dispensa a MAC table, porque retransmite cada frame em todas as portas do switch",
+      "Tem a menor latência de todos os modos de funcionamento do switch, pois não espera pela frame"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -2424,7 +2424,7 @@
     "ref": "TP02 p.15"
   },
   {
-    "question": "Um switch de 4 portas acaba de ser ligado e a sua MAC table está vazia. O nó A, na porta 1, envia uma trama para o nó B, na porta 2. Em que portas retransmite o switch a trama?",
+    "question": "Um switch de 4 portas acaba de ser ligado e a sua MAC table está vazia. O nó A, na porta 1, envia uma frame para o nó B, na porta 2. Em que portas retransmite o switch a frame?",
     "answers": [
       "Nas portas 2, 3 e 4",
       "Apenas na porta 2",
@@ -2437,12 +2437,12 @@
     "ref": "TP02 p.14"
   },
   {
-    "question": "Depois de A (porta 1) ter enviado uma trama a B (porta 2), B responde a A. O que faz o switch?",
+    "question": "Depois de A (porta 1) ter enviado uma frame a B (porta 2), B responde a A. O que faz o switch?",
     "answers": [
-      "Regista B associado à porta 2 e retransmite a trama apenas na porta 1",
-      "Retransmite a trama apenas na porta 2, onde B está ligado",
-      "Retransmite a trama nas portas 1, 3 e 4, porque ainda não conhece B",
-      "Descarta a trama, porque o endereço de B já era conhecido"
+      "Regista B associado à porta 2 e retransmite a frame apenas na porta 1",
+      "Retransmite a frame apenas na porta 2, onde B está ligado",
+      "Retransmite a frame nas portas 1, 3 e 4, porque ainda não conhece B",
+      "Descarta a frame, porque o endereço de B já era conhecido"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -2452,8 +2452,8 @@
   {
     "question": "Porque têm as entradas da MAC table um tempo de vida de apenas alguns segundos?",
     "answers": [
-      "Para libertar memória sempre que a trama é de broadcast",
-      "Para que o switch volte a calcular o FCS das tramas guardadas",
+      "Para libertar memória sempre que a frame é de broadcast",
+      "Para que o switch volte a calcular o FCS das frames guardadas",
       "Para o switch se adaptar quando um nó é mudado de uma porta para outra",
       "Para impedir que dois nós usem o mesmo endereço MAC"
     ],
@@ -2463,7 +2463,7 @@
     "ref": "TP02 p.14"
   },
   {
-    "question": "Qual é o tempo de transmissão da trama Ethernet mínima (64 bytes) a 10 Mbps?",
+    "question": "Qual é o tempo de transmissão da frame Ethernet mínima (64 bytes) a 10 Mbps?",
     "answers": [
       "64 μs",
       "51,2 μs",
@@ -2476,7 +2476,7 @@
     "ref": "L03 p.3"
   },
   {
-    "question": "Qual é o tempo de transmissão da trama Ethernet mínima (64 bytes) a 100 Mbps?",
+    "question": "Qual é o tempo de transmissão da frame Ethernet mínima (64 bytes) a 100 Mbps?",
     "answers": [
       "64 μs",
       "51,2 μs",
@@ -2489,7 +2489,7 @@
     "ref": "L03 p.3"
   },
   {
-    "question": "Qual é o tempo de transmissão da trama Ethernet mínima (64 bytes) a 1 Gbps?",
+    "question": "Qual é o tempo de transmissão da frame Ethernet mínima (64 bytes) a 1 Gbps?",
     "answers": [
       "0,512 μs",
       "5,12 μs",
@@ -2502,7 +2502,7 @@
     "ref": "L03 p.3"
   },
   {
-    "question": "Qual é o tempo de transmissão da trama Ethernet máxima (1518 bytes) a 100 Mbps?",
+    "question": "Qual é o tempo de transmissão da frame Ethernet máxima (1518 bytes) a 100 Mbps?",
     "answers": [
       "12,144 μs",
       "151,8 μs",
@@ -2515,7 +2515,7 @@
     "ref": "TP02 p.12"
   },
   {
-    "question": "Qual é o comprimento total de uma trama Ethernet II cujo campo de dados tem 100 bytes?",
+    "question": "Qual é o comprimento total de uma frame Ethernet II cujo campo de dados tem 100 bytes?",
     "answers": [
       "114 bytes",
       "100 bytes",
@@ -2528,7 +2528,7 @@
     "ref": "TP02 p.12"
   },
   {
-    "question": "Qual é o comprimento total de uma trama Ethernet II cujo campo de dados tem o valor mínimo de 46 bytes?",
+    "question": "Qual é o comprimento total de uma frame Ethernet II cujo campo de dados tem o valor mínimo de 46 bytes?",
     "answers": [
       "64 bytes",
       "46 bytes",
@@ -2554,7 +2554,7 @@
     "ref": "TP02 p.16"
   },
   {
-    "question": "Qual é o endereço de destino que uma trama Ethernet usa para chegar a todos os nós do domínio de broadcast?",
+    "question": "Qual é o endereço de destino que uma frame Ethernet usa para chegar a todos os nós do domínio de broadcast?",
     "answers": [
       "01:80:C2:00:00:00",
       "FF:FF:FF:FF:FF:FF",
@@ -2572,7 +2572,7 @@
       "O conjunto de nós que usam o mesmo SSID para se associarem à infraestrutura",
       "O conjunto de nós que estão ligados à mesma porta de um switch Ethernet de acesso",
       "O conjunto de nós que partilham o mesmo domínio de colisão no meio partilhado",
-      "O conjunto de nós que recebem uma cópia de uma trama enviada para o endereço de broadcast"
+      "O conjunto de nós que recebem uma cópia de uma frame enviada para o endereço de broadcast"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -2591,7 +2591,7 @@
     "ref": "L03 p.7"
   },
   {
-    "question": "A trama Ethernet II tem um campo de endereço de origem de 32 bits e um campo de endereço de destino de 32 bits.",
+    "question": "A frame Ethernet II tem um campo de endereço de origem de 32 bits e um campo de endereço de destino de 32 bits.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -2602,7 +2602,7 @@
     "ref": "L03 p.5"
   },
   {
-    "question": "As tramas 802.11 usam sempre apenas dois endereços MAC, tal como as tramas Ethernet.",
+    "question": "As frames 802.11 usam sempre apenas dois endereços MAC, tal como as frames Ethernet.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -2646,7 +2646,7 @@
     "ref": "L03 p.4"
   },
   {
-    "question": "O campo de dados de uma trama Ethernet II tem um mínimo de 64 bytes.",
+    "question": "O campo de dados de uma frame Ethernet II tem um mínimo de 64 bytes.",
     "answers": [
       "FALSO",
       "VERDADEIRO"

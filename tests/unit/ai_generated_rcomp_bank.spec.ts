@@ -7,12 +7,12 @@ const rcompDirectory = fileURLToPath(
 )
 
 test.group('AI-generated RCOMP question bank', () => {
-  test('loads without problems and keeps its 2499 questions', async ({ assert }) => {
+  test('loads without problems and keeps its 2481 questions', async ({ assert }) => {
     const questions = await loadAiGeneratedSubjectQuestions(rcompDirectory)
 
-    assert.lengthOf(questions, 2499)
-    assert.equal(questions.filter((entry) => entry.answers.length === 2).length, 1276)
-    assert.equal(questions.filter((entry) => entry.answers.length === 4).length, 1223)
+    assert.lengthOf(questions, 2481)
+    assert.equal(questions.filter((entry) => entry.answers.length === 2).length, 1264)
+    assert.equal(questions.filter((entry) => entry.answers.length === 4).length, 1217)
   })
 
   test('only uses true/false and four-option formats', async ({ assert }) => {

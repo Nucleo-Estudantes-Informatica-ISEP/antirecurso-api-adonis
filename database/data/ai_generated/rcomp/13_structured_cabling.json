@@ -99,7 +99,7 @@
     "ref": "TP01 p.13"
   },
   {
-    "question": "Os pontos de consolidação (CP), também chamados pontos de transição (TP), fazem parte da cablagem horizontal e podem convir em zonas com elevada densidade de tomadas.",
+    "question": "Os pontos de consolidação (CP), também chamados pontos de transição (TP), fazem parte da cablagem horizontal e podem convir em zonas com elevada densidade de outlets.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -110,7 +110,7 @@
     "ref": "TP01 p.13"
   },
   {
-    "question": "Uma área de trabalho tem no mínimo duas tomadas e o rácio recomendado é de duas tomadas por cada 10 m² de área.",
+    "question": "Uma área de trabalho tem no mínimo dois outlets e o rácio recomendado é de dois outlets por cada 10 m² de área.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -121,7 +121,7 @@
     "ref": "TP01 p.15"
   },
   {
-    "question": "Uma área de trabalho entre 10 m² e 20 m² deve ter seis tomadas, e uma área entre 20 m² e 30 m² deve ter oito tomadas.",
+    "question": "Uma área de trabalho entre 10 m² e 20 m² deve ter seis outlets, e uma área entre 20 m² e 30 m² deve ter oito outlets.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -132,7 +132,7 @@
     "ref": "TP01 p.15"
   },
   {
-    "question": "Os patch cords fornecidos aos utilizadores para ligar o equipamento às tomadas da área de trabalho têm até cinco metros.",
+    "question": "Os patch cords fornecidos aos utilizadores para ligar o equipamento aos outlets da área de trabalho têm até cinco metros.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -143,7 +143,7 @@
     "ref": "TP01 p.15"
   },
   {
-    "question": "Os patch cords fornecidos aos utilizadores para ligar o equipamento às tomadas da área de trabalho podem ter até quinze metros.",
+    "question": "Os patch cords fornecidos aos utilizadores para ligar o equipamento aos outlets da área de trabalho podem ter até quinze metros.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -154,7 +154,7 @@
     "ref": "TP01 p.15"
   },
   {
-    "question": "Onde quer que esteja o equipamento do utilizador numa área de trabalho, deve existir sempre uma tomada a menos de três metros.",
+    "question": "Onde quer que esteja o equipamento do utilizador numa área de trabalho, deve existir sempre um outlet a menos de três metros.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -165,7 +165,7 @@
     "ref": "TP01 p.15"
   },
   {
-    "question": "Numa área de trabalho basta que exista uma tomada a menos de dez metros de qualquer equipamento do utilizador.",
+    "question": "Numa área de trabalho basta que exista um outlet a menos de dez metros de qualquer equipamento do utilizador.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -176,7 +176,7 @@
     "ref": "TP01 p.15"
   },
   {
-    "question": "As tomadas das áreas de trabalho comuns são de cobre, porque o equipamento comum dos utilizadores não suporta ligações em fibra.",
+    "question": "Os outlets das áreas de trabalho comuns são de cobre, porque o equipamento comum dos utilizadores não suporta ligações em fibra.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -297,17 +297,6 @@
     "ref": "TP01 p.22"
   },
   {
-    "question": "Na cablagem estruturada e nas redes locais, como a Ethernet, usa-se o polimento APC; o polimento UPC só se usa em casos mais sensíveis às perdas de retorno.",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "TP01 p.22"
-  },
-  {
     "question": "Os conectores com polimento APC são normalmente verdes e os conectores com polimento UPC são normalmente azuis.",
     "answers": [
       "FALSO",
@@ -319,18 +308,7 @@
     "ref": "TP01 p.22"
   },
   {
-    "question": "Os conectores com polimento APC são normalmente azuis e os conectores com polimento UPC são normalmente verdes.",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "TP01 p.22"
-  },
-  {
-    "question": "Cada ponto de acesso 802.11 garante uma cobertura de aproximadamente um círculo com 50 metros de diâmetro.",
+    "question": "Cada access point 802.11 garante uma cobertura de aproximadamente um círculo com 50 metros de diâmetro.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -341,7 +319,7 @@
     "ref": "TP01 p.24"
   },
   {
-    "question": "Cada ponto de acesso 802.11 garante uma cobertura de aproximadamente um círculo com 500 metros de diâmetro.",
+    "question": "Cada access point 802.11 garante uma cobertura de aproximadamente um círculo com 500 metros de diâmetro.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -385,7 +363,7 @@
     "ref": "TP01 p.25"
   },
   {
-    "question": "Na cablagem horizontal, cada cabo, seja de que tipo for, deve ter menos de 90 metros e a distância em linha reta entre o HC e a tomada deve ser inferior a 80 metros.",
+    "question": "Na cablagem horizontal, cada cabo, seja de que tipo for, deve ter menos de 90 metros e a distância em linha reta entre o HC e o outlet deve ser inferior a 80 metros.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -396,7 +374,7 @@
     "ref": "TP01 p.25"
   },
   {
-    "question": "Na cablagem horizontal, a distância em linha reta entre o HC e a tomada deve ser inferior a 90 metros, o mesmo limite do comprimento do cabo.",
+    "question": "Na cablagem horizontal, a distância em linha reta entre o HC e o outlet deve ser inferior a 90 metros, o mesmo limite do comprimento do cabo.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -413,17 +391,6 @@
       "VERDADEIRO"
     ],
     "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "TP01 p.25"
-  },
-  {
-    "question": "Os cabos que ligam um IC a um HC estão limitados a 1500 metros, e os que ligam o MC a um IC estão limitados a 500 metros.",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "TP01 p.25"
@@ -484,7 +451,7 @@
     "ref": "TP01 p.26"
   },
   {
-    "question": "O desenvolvimento de um projeto de cablagem estruturada segue uma sequência de passos interdependentes: requisitos, tomadas, cross-connects e percursos, tipos de cabo e inventário de hardware.",
+    "question": "O desenvolvimento de um projeto de cablagem estruturada segue uma sequência de passos interdependentes: requisitos, outlets, cross-connects e percursos, tipos de cabo e inventário de hardware.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -495,7 +462,7 @@
     "ref": "TP01 p.27"
   },
   {
-    "question": "No desenvolvimento de um projeto de cablagem estruturada, os tipos de cabo são definidos antes de colocar as tomadas nas plantas e de definir os requisitos.",
+    "question": "No desenvolvimento de um projeto de cablagem estruturada, os tipos de cabo são definidos antes de colocar os outlets nas plantas e de definir os requisitos.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -506,7 +473,7 @@
     "ref": "TP01 p.27"
   },
   {
-    "question": "Espaços comuns como átrios e corredores podem dispensar tomadas, e as casas de banho normalmente não têm tomadas.",
+    "question": "Espaços comuns como átrios e corredores podem dispensar outlets, e as casas de banho normalmente não têm outlets.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -517,7 +484,7 @@
     "ref": "TP01 p.28"
   },
   {
-    "question": "Em todas as divisões do edifício, incluindo corredores e casas de banho, devem existir no mínimo duas tomadas.",
+    "question": "Em todas as divisões do edifício, incluindo corredores e casas de banho, devem existir no mínimo dois outlets.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -561,17 +528,6 @@
     "ref": "TP01 p.30"
   },
   {
-    "question": "As tecnologias de camada 2 sobre cobre CAT6 estão limitadas a 1 Gbps; para 10 Gbps é necessário CAT7 e, para débitos superiores, é necessária fibra.",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "TP01 p.30"
-  },
-  {
     "question": "O backbone deve usar sempre fibra ótica, com pelo menos 8 fibras, o que permite 4 ligações paralelas full-duplex.",
     "answers": [
       "FALSO",
@@ -594,7 +550,7 @@
     "ref": "TP01 p.30"
   },
   {
-    "question": "Na cablagem horizontal, o cobre CAT6A ou CAT7 é normalmente a opção mais sensata, porque o equipamento dos utilizadores não está habitualmente preparado para tomadas de fibra.",
+    "question": "Na cablagem horizontal, o cobre CAT6A ou CAT7 é normalmente a opção mais sensata, porque o equipamento dos utilizadores não está habitualmente preparado para outlets de fibra.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -767,7 +723,7 @@
     "answers": [
       "O subsistema 2, que liga o IC aos HC",
       "O subsistema 2, que liga o MC aos IC",
-      "O subsistema 1, que liga o HC às tomadas",
+      "O subsistema 1, que liga o HC aos outlets",
       "O subsistema 3, que liga o MC aos IC"
     ],
     "correct_index": 0,
@@ -781,7 +737,7 @@
       "O subsistema 2, que liga o IC aos HC",
       "O subsistema 3, que liga o MC aos IC",
       "O subsistema 1, que liga o MC aos IC",
-      "O subsistema 1, que liga o HC às tomadas"
+      "O subsistema 1, que liga o HC aos outlets"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -789,12 +745,12 @@
     "ref": "TP01 p.13"
   },
   {
-    "question": "Quantas tomadas devem existir numa área de trabalho com 14 m²?",
+    "question": "Quantos outlets devem existir numa área de trabalho com 14 m²?",
     "answers": [
-      "2 tomadas",
-      "4 tomadas",
-      "6 tomadas",
-      "3 tomadas"
+      "2 outlets",
+      "4 outlets",
+      "6 outlets",
+      "3 outlets"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -802,12 +758,12 @@
     "ref": "TP01 p.15"
   },
   {
-    "question": "Quantas tomadas devem existir numa área de trabalho com 25 m²?",
+    "question": "Quantos outlets devem existir numa área de trabalho com 25 m²?",
     "answers": [
-      "8 tomadas",
-      "4 tomadas",
-      "6 tomadas",
-      "5 tomadas"
+      "8 outlets",
+      "4 outlets",
+      "6 outlets",
+      "5 outlets"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -815,12 +771,12 @@
     "ref": "TP01 p.15"
   },
   {
-    "question": "Quantas tomadas devem existir numa área de trabalho com 32 m²?",
+    "question": "Quantos outlets devem existir numa área de trabalho com 32 m²?",
     "answers": [
-      "6 tomadas",
-      "10 tomadas",
-      "7 tomadas",
-      "8 tomadas"
+      "6 outlets",
+      "10 outlets",
+      "7 outlets",
+      "8 outlets"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -828,12 +784,12 @@
     "ref": "TP01 p.15"
   },
   {
-    "question": "Quantas tomadas devem existir numa área de trabalho com 8 m², sabendo que o mínimo por área de trabalho é de duas tomadas?",
+    "question": "Quantos outlets devem existir numa área de trabalho com 8 m², sabendo que o mínimo por área de trabalho é de dois outlets?",
     "answers": [
-      "4 tomadas",
-      "2 tomadas",
-      "3 tomadas",
-      "1 tomada"
+      "4 outlets",
+      "2 outlets",
+      "3 outlets",
+      "1 outlet"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -997,19 +953,6 @@
     "ref": "TP01 p.22"
   },
   {
-    "question": "Qual é a cor habitual dos conectores de fibra com polimento UPC?",
-    "answers": [
-      "Preto",
-      "Verde",
-      "Branco",
-      "Azul"
-    ],
-    "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "TP01 p.22"
-  },
-  {
     "question": "Quantas fibras são necessárias, no mínimo, para uma ligação de fibra bidirecional entre duas extremidades?",
     "answers": [
       "4 fibras, duas para cada sentido",
@@ -1023,7 +966,7 @@
     "ref": "TP01 p.23"
   },
   {
-    "question": "Qual é a cobertura aproximada garantida por cada ponto de acesso 802.11?",
+    "question": "Qual é a cobertura aproximada garantida por cada access point 802.11?",
     "answers": [
       "Um círculo com cerca de 50 metros de diâmetro",
       "Um círculo com cerca de 50 metros de raio",
@@ -1040,7 +983,7 @@
     "answers": [
       "Menos de 1000 m²",
       "Menos de 100 m²",
-      "Menos de 10 000 m²",
+      "Menos de 10000 m²",
       "Menos de 500 m²"
     ],
     "correct_index": 0,
@@ -1049,7 +992,7 @@
     "ref": "TP01 p.25"
   },
   {
-    "question": "Qual é o limite da distância em linha reta entre o horizontal cross-connect (HC) e uma tomada?",
+    "question": "Qual é o limite da distância em linha reta entre o horizontal cross-connect (HC) e um outlet?",
     "answers": [
       "Menos de 80 metros",
       "Menos de 100 metros",
@@ -1132,7 +1075,7 @@
       "A colocação dos cross-connects e dos percursos de cabos",
       "O inventário do hardware da cablagem estruturada",
       "A definição de requisitos com o dono do projeto",
-      "A colocação das tomadas nas plantas do edifício"
+      "A colocação dos outlets nas plantas do edifício"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1144,7 +1087,7 @@
     "answers": [
       "O inventário do hardware da cablagem estruturada",
       "A colocação dos cross-connects e dos percursos de cabos",
-      "A colocação das tomadas nas plantas do edifício",
+      "A colocação dos outlets nas plantas do edifício",
       "A definição dos tipos de cabo a usar na instalação"
     ],
     "correct_index": 2,
@@ -1158,7 +1101,7 @@
       "A definição dos tipos de cabo a usar na instalação",
       "A certificação do sistema por uma entidade terceira",
       "A definição de requisitos com o dono do projeto",
-      "A colocação das tomadas nas plantas do edifício"
+      "A colocação dos outlets nas plantas do edifício"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1200,19 +1143,6 @@
       "Fibra multimodo"
     ],
     "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "TP01 p.30"
-  },
-  {
-    "question": "Que categoria de cabo de cobre é necessária para suportar 10 Gbps na cablagem horizontal?",
-    "answers": [
-      "CAT5",
-      "CAT3",
-      "CAT7",
-      "CAT6"
-    ],
-    "correct_index": 2,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "TP01 p.30"
@@ -1309,7 +1239,7 @@
     "ref": "TP01 p.32"
   },
   {
-    "question": "Um armário de telecomunicações recebe 100 cabos horizontais, ligados a patch panels de 24 portas e 1U. Que tamanho deve ter o armário, aplicando a regra de 4×S?",
+    "question": "Um armário de telecomunicações recebe 100 cabos horizontais, ligados a patch panels de 24 portas e 1U (arredondando por excesso o número de patch panels). Que tamanho deve ter o armário, aplicando a regra de 4×S?",
     "answers": [
       "12U",
       "20U",
@@ -1322,7 +1252,7 @@
     "ref": "TP01 p.32"
   },
   {
-    "question": "Um armário de telecomunicações recebe 150 cabos horizontais, ligados a patch panels de 24 portas e 1U. Que tamanho deve ter o armário, aplicando a regra de 4×S?",
+    "question": "Um armário de telecomunicações recebe 150 cabos horizontais, ligados a patch panels de 24 portas e 1U (arredondando por excesso o número de patch panels). Que tamanho deve ter o armário, aplicando a regra de 4×S?",
     "answers": [
       "25U",
       "32U",
@@ -1441,10 +1371,10 @@
   {
     "question": "O que significa a sigla MUTOA na cablagem estruturada?",
     "answers": [
-      "Conjunto de tomadas multiutilizador, cujo cabo interno se desconta do limite de 5 m do patch cord",
-      "Tomada individual de telecomunicações, que serve apenas um utilizador da área de trabalho",
+      "Conjunto de outlets multiutilizador, cujo cabo interno se desconta do limite de 5 m do patch cord",
+      "Outlet individual de telecomunicações, que serve apenas um utilizador da área de trabalho",
       "Armário de telecomunicações multiutilizador, que aloja os cross-connects de vários pisos",
-      "Ponto de consolidação de cabos, que agrupa as tomadas de várias áreas de trabalho"
+      "Ponto de consolidação de cabos, que agrupa os outlets de várias áreas de trabalho"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1465,7 +1395,7 @@
     "ref": "TP01 p.31"
   },
   {
-    "question": "Os equipamentos ativos, como os switches e os pontos de acesso, fazem parte do sistema de cablagem estruturada, ao contrário das tomadas que os ligam.",
+    "question": "Os equipamentos ativos, como os switches e os access points, fazem parte do sistema de cablagem estruturada, ao contrário dos outlets que os ligam.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1476,7 +1406,7 @@
     "ref": "TP01 p.24"
   },
   {
-    "question": "Os cabos de cobre CAT7 são rotulados apenas na extremidade do armário de telecomunicações, porque a tomada da área de trabalho já está identificada.",
+    "question": "Os cabos de cobre CAT7 são rotulados apenas na extremidade do armário de telecomunicações, porque o outlet da área de trabalho já está identificado.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1531,7 +1461,7 @@
     "ref": "TP01 p.20"
   },
   {
-    "question": "Uma sala de telecomunicações só pode alojar o cross-connect de um piso, e nunca o de vários pisos, mesmo que o número de tomadas por piso seja muito baixo.",
+    "question": "Uma sala de telecomunicações só pode alojar o cross-connect de um piso, e nunca o de vários pisos, mesmo que o número de outlets por piso seja muito baixo.",
     "answers": [
       "FALSO",
       "VERDADEIRO"

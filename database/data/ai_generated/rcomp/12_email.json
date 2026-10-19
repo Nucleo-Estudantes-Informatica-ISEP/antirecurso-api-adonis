@@ -110,7 +110,7 @@
     "ref": "L12 p.7"
   },
   {
-    "question": "Os MTA atuais pedem primeiro os registos MX do domínio e só se isso falhar tentam os registos A e AAAA, a estratégia mais antiga.",
+    "question": "Os MTA atuais pedem primeiro os registos MX do domínio e só se isso falhar tentam os registos A e AAAA, que correspondiam à estratégia original.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -242,7 +242,7 @@
     "ref": "L12 p.13"
   },
   {
-    "question": "O SPF é uma extensão do protocolo SMTP, que autentica o remetente através de uma palavra-passe.",
+    "question": "O SPF é uma extensão do protocolo SMTP, que autentica o remetente através de uma password.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -429,17 +429,6 @@
     "ref": "L12 p.21"
   },
   {
-    "question": "Se o campo Content-Transfer-Encoding não existir, o SMTP assume por omissão a codificação base64.",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "L12 p.21"
-  },
-  {
     "question": "A codificação quoted-printable é usada para texto de 8 bits, por exemplo com caracteres nacionais, e a base64 para dados binários em bruto.",
     "answers": [
       "FALSO",
@@ -546,7 +535,7 @@
       "Servidor que recebe as mensagens dos MTA remotos e as entrega nas mailboxes locais dos utilizadores",
       "Protocolo aplicacional que transfere as mensagens de correio entre dois servidores de correio",
       "Registo DNS que identifica os servidores de correio responsáveis por receber o correio de um domínio",
-      "Software que permite a um utilizador remoto enviar mensagens usando o protocolo de envio de correio"
+      "Aplicação cliente com que o utilizador escreve, envia e lê o seu correio eletrónico"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -751,7 +740,7 @@
   {
     "question": "O que é um open mail relay?",
     "answers": [
-      "Um servidor POP3 que permite o acesso às mailboxes sem palavra-passe, a partir de qualquer endereço IP",
+      "Um servidor POP3 que permite o acesso às mailboxes sem password, a partir de qualquer endereço IP",
       "Um servidor SMTP que só aceita mensagens de utilizadores autenticados localmente e dos MTA remotos conhecidos",
       "Um servidor de correio que guarda uma cópia de todas as mensagens que atravessam o servidor, para auditoria",
       "Um servidor SMTP que aceita mensagens de remotos para destinatários externos, podendo ser usado para forjar remetentes"
@@ -827,7 +816,7 @@
     "ref": "L12 p.15"
   },
   {
-    "question": "Que comando do POP3 envia a palavra-passe na autenticação simples?",
+    "question": "Que comando do POP3 envia a password na autenticação simples?",
     "answers": [
       "PASS",
       "RETR",
@@ -933,9 +922,9 @@
   {
     "question": "Para que serve o campo Content-Transfer-Encoding?",
     "answers": [
-      "Para indicar o tamanho do conteúdo em octetos",
-      "Para indicar a codificação aplicada ao conteúdo, para o poder transportar em caracteres de 7 bits",
-      "Para indicar o servidor de correio que enviou a mensagem",
+      "Para indicar o tamanho do conteúdo da mensagem em octetos, antes de ser codificado",
+      "Para indicar a codificação aplicada ao conteúdo, para ser transportado em 7 bits",
+      "Para indicar o servidor de correio que enviou a mensagem e a respetiva data",
       "Para indicar como o conteúdo deve ser interpretado e apresentado ao utilizador"
     ],
     "correct_index": 1,
@@ -959,10 +948,10 @@
   {
     "question": "Qual é a forma geral do campo Content-Type?",
     "answers": [
-      "tipo:subtipo, seguido de um tamanho em octetos",
-      "tipo/subtipo/atributo, sem separadores entre atributos",
+      "tipo:subtipo, seguido de um tamanho em octetos e do charset",
+      "tipo/subtipo/atributo, sem separadores entre os vários atributos",
       "tipo/subtipo, seguido de atributos opcionais da forma nome=valor",
-      "subtipo/tipo, seguido de atributos obrigatórios"
+      "subtipo/tipo, seguido de atributos obrigatórios da forma nome=valor"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",

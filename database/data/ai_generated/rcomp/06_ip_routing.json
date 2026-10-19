@@ -532,9 +532,9 @@
   {
     "question": "Qual é a decisão essencial que um router tem de tomar para cada pacote que recebe?",
     "answers": [
-      "Escolher o protocolo de transporte do pacote",
-      "Escolher o endereço MAC do nó de destino final",
-      "Escolher a camada 2 mais rápida disponível",
+      "Escolher o protocolo de transporte a usar para o pacote",
+      "Escolher o endereço MAC do nó de destino final do pacote",
+      "Escolher a camada 2 mais rápida disponível para o pacote",
       "Escolher o next-hop correto para onde enviar o pacote"
     ],
     "correct_index": 3,
@@ -662,9 +662,9 @@
   {
     "question": "Qual é a diferença essencial entre distance-vector e link-state?",
     "answers": [
-      "O distance-vector usa métricas de custo e o link-state não usa qualquer métrica",
-      "No distance-vector cada router envia a sua tabela aos vizinhos; no link-state cada router envia a lista de vizinhos e constrói sozinho a tabela",
-      "O distance-vector só funciona em sistemas autónomos e o link-state só em redes locais",
+      "O distance-vector usa métricas de custo para escolher rotas e o link-state não usa qualquer métrica",
+      "No distance-vector cada router envia a tabela aos vizinhos; no link-state envia a lista de vizinhos e calcula a tabela",
+      "O distance-vector só funciona dentro de sistemas autónomos e o link-state só dentro de redes locais",
       "No distance-vector cada router constrói sozinho a tabela; no link-state cada router envia a sua tabela aos vizinhos"
     ],
     "correct_index": 1,
@@ -740,10 +740,10 @@
   {
     "question": "Quem atribui os números de sistema autónomo (ASN) usados no BGP?",
     "answers": [
-      "A ISO (International Organization for Standardization)",
-      "O IEEE (Institute of Electrical and Electronics Engineers)",
-      "A IANA (Internet Assigned Numbers Authority) ou uma entidade delegada",
-      "Cada operador, de forma livre e sem coordenação"
+      "A ISO (International Organization for Standardization) através dos seus comités",
+      "O IEEE (Institute of Electrical and Electronics Engineers) através dos seus standards",
+      "A IANA (Internet Assigned Numbers Authority) ou quem ela delegar",
+      "Cada operador, de forma livre e sem coordenação com qualquer entidade"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -870,10 +870,10 @@
   {
     "question": "Que melhorias traz o RIPv2 relativamente ao RIPv1?",
     "answers": [
-      "Usa TCP em vez de UDP e passa a ser do tipo link-state",
+      "Usa TCP em vez de UDP e passa a ser um protocolo do tipo link-state",
       "Elimina o limite de 15 saltos e usa a taxa de transmissão como métrica",
       "Passa a suportar vários sistemas autónomos RIP ligados ao mesmo router",
-      "Envia as máscaras de rede (suporta CIDR), usa multicast e suporta autenticação MD5"
+      "Envia máscaras de rede (CIDR), usa multicast e suporta autenticação MD5"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -909,10 +909,10 @@
   {
     "question": "Como é transportada a informação do OSPF?",
     "answers": [
-      "Em segmentos TCP, tal como no BGP",
+      "Em segmentos TCP, tal como acontece no BGP",
       "Diretamente em pacotes IP, sem UDP nem TCP",
-      "Em mensagens ICMP",
-      "Em datagramas UDP, tal como no RIP"
+      "Em mensagens ICMP, tal como no ping e no traceroute",
+      "Em datagramas UDP, tal como acontece no RIP"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1065,7 +1065,7 @@
   {
     "question": "O que é a redistribuição de rotas (route redistribution)?",
     "answers": [
-      "Inserir num sistema autónomo informação sobre redes exteriores, como rotas estáticas ou de outro AS",
+      "Inserir num AS informação sobre redes exteriores, como rotas estáticas ou de outro AS",
       "Dividir uma área OSPF em duas áreas independentes para reduzir o tráfego do protocolo",
       "Remover da tabela as linhas com o mesmo next-hop que a rota por omissão da rede",
       "Reenviar a mesma tabela de encaminhamento a todos os vizinhos do router sem a alterar"
@@ -1104,10 +1104,10 @@
   {
     "question": "Segundo a TP05, porque não pode ser removida a segunda linha desta tabela? 193.100.10.0/24 direta; 120.5.10.0/24 via 193.100.10.1; 120.5.0.0/16 via 193.100.10.5; 0.0.0.0/0 via 193.100.10.1.",
     "answers": [
-      "Porque as linhas de redes /24 nunca podem ser removidas de uma tabela",
-      "Porque a rota por omissão só funciona com redes locais",
+      "Porque as linhas de redes /24 nunca podem ser removidas de uma tabela de encaminhamento",
+      "Porque a rota por omissão só funciona com redes ligadas diretamente ao router",
       "Porque o next-hop de uma linha tem de ser diferente do next-hop da rota por omissão",
-      "Porque a linha seguinte contém essa rede e os pacotes passariam a ser enviados para 193.100.10.5"
+      "Porque a linha seguinte contém essa rede e os pacotes iriam para 193.100.10.5"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1814,7 +1814,7 @@
     "question": "Qual dos seguintes protocolos coloca a sua informação diretamente em pacotes IP, sem UDP nem TCP?",
     "answers": [
       "OSPF",
-      "EIGRP",
+      "BGP",
       "RIPv2",
       "RIP"
     ],
@@ -1867,7 +1867,7 @@
     "answers": [
       "RIPv1",
       "BGP",
-      "RIPv2",
+      "ICMP",
       "OSPF"
     ],
     "correct_index": 3,

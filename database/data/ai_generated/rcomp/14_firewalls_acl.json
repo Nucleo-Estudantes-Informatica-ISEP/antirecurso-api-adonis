@@ -88,7 +88,7 @@
     "ref": "TP06 p.4"
   },
   {
-    "question": "Um ataque de negação de serviço (DoS) só pode ser prevenido por firewalls dinâmicas, porque uma firewall estática tem de permitir o acesso ao serviço para o uso normal.",
+    "question": "Uma firewall estática tem de permitir o acesso ao serviço para o uso normal, por isso previne mal um ataque de negação de serviço (DoS).",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -121,34 +121,12 @@
     "ref": "TP06 p.5"
   },
   {
-    "question": "Numa ACL do Cisco IOS, um pacote que não corresponde a nenhuma regra é, no final, aceite.",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "TP06 p.5"
-  },
-  {
     "question": "Nas ACL numeradas do Cisco IOS, os números de 1 a 99 identificam ACL standard e os números de 100 a 199 identificam ACL extended.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
     ],
     "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "TP06 p.5"
-  },
-  {
-    "question": "Nas ACL numeradas do Cisco IOS, os números de 1 a 99 identificam ACL extended e os números de 100 a 199 identificam ACL standard.",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 0,
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "TP06 p.5"
@@ -1286,9 +1264,9 @@
   {
     "question": "Porque razão a DMZ é uma rede isolada da dos utilizadores?",
     "answers": [
-      "Porque contém os servidores e os utilizadores, que são protegidos por firewalls locais em cada nó",
-      "Porque contém o tráfego vindo da Internet, que é filtrado antes de ser encaminhado para os servidores",
-      "Porque contém apenas servidores de confiança, protegidos pela firewall do router, o que dispensa firewalls locais em cada servidor",
+      "Porque contém os servidores e os utilizadores, que são protegidos por firewalls locais em cada nó da rede",
+      "Porque contém os routers de acesso à Internet, que não podem partilhar a mesma rede com servidores",
+      "Porque contém só servidores de confiança, protegidos pela firewall do router, sem firewalls locais",
       "Porque contém apenas as estações de trabalho dos utilizadores, que não são de confiança e ficam isoladas"
     ],
     "correct_index": 2,
@@ -1297,12 +1275,12 @@
     "ref": "TP06 p.2"
   },
   {
-    "question": "Qual é o ataque que só uma firewall dinâmica consegue prevenir?",
+    "question": "Segundo o TP06, qual é o ataque que só uma firewall dinâmica consegue prevenir?",
     "answers": [
-      "Um acesso a um endereço IP que não pertence a nenhuma rede local",
-      "Um ataque DoS (negação de serviço), que inunda de pedidos um serviço aberto a todos",
+      "Um acesso a um endereço IP que não pertence a nenhuma rede local do router",
+      "Um ataque DoS (negação de serviço), que inunda um serviço aberto a todos",
       "Um ataque de IP spoofing, que forja o endereço de origem de pacotes",
-      "Um acesso a um porto TCP que não está aberto no servidor"
+      "Um acesso a um porto TCP que não está aberto no servidor de destino"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1338,10 +1316,10 @@
   {
     "question": "Porque é que o anti-spoofing numa rede de trânsito não é perfeito?",
     "answers": [
-      "Porque os routers de trânsito não suportam ACL standard nem extended",
-      "Porque as redes de trânsito não têm endereços IPv4 de rede atribuídos",
-      "Porque parte do tráfego que a atravessa não é originado por ela nem destinado a ela",
-      "Porque o tráfego de trânsito é sempre cifrado e as ACL não o analisam"
+      "Porque os routers de trânsito não suportam ACL standard nem extended em IPv4",
+      "Porque as redes de trânsito não têm endereços IPv4 de rede atribuídos pelo ISP",
+      "Porque parte do tráfego que a atravessa não é originado nem destinado a ela",
+      "Porque o tráfego de trânsito é sempre cifrado e as ACL não o conseguem analisar"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",

@@ -55,7 +55,7 @@
     "ref": "L07 p.12"
   },
   {
-    "question": "O IPv6 permite a auto-configuração dos nós, evitando o uso do DHCP.",
+    "question": "O IPv6 permite a auto-configuração dos nós sem necessidade de DHCP.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -506,7 +506,7 @@
     "ref": "L07 p.20"
   },
   {
-    "question": "Um mesmo servidor de nomes pode manter as bases de dados de vários domínios.",
+    "question": "Um mesmo name server pode manter as bases de dados de vários domínios.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -517,7 +517,7 @@
     "ref": "L07 p.21"
   },
   {
-    "question": "Para um cliente, basta conhecer o endereço de um servidor de nomes para conseguir resolver qualquer nome qualificado.",
+    "question": "Para um cliente, basta conhecer o endereço de um name server que aceite consultas recursivas para conseguir resolver qualquer nome qualificado.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -528,7 +528,7 @@
     "ref": "L07 p.21"
   },
   {
-    "question": "Cada servidor de nomes DNS tem de conhecer os endereços dos servidores de nomes de todos os domínios existentes.",
+    "question": "Cada name server DNS tem de conhecer os endereços dos name servers de todos os domínios existentes.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -550,7 +550,7 @@
     "ref": "L07 p.23"
   },
   {
-    "question": "Um servidor de nomes pode recusar a consulta recursiva e exigir que seja o cliente a fazer o trabalho, fornecendo-lhe os endereços dos servidores de nomes.",
+    "question": "Um name server pode recusar a consulta recursiva e exigir que seja o cliente a fazer o trabalho, fornecendo-lhe os endereços dos name servers.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -561,7 +561,7 @@
     "ref": "L07 p.23"
   },
   {
-    "question": "Quanto maior for o TTL de um registo DNS, menor será o número de consultas que o servidor de nomes terá de tratar.",
+    "question": "Quanto maior for o TTL de um registo DNS, menor será o número de consultas que o name server terá de tratar.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -572,7 +572,7 @@
     "ref": "L07 p.23"
   },
   {
-    "question": "A cache do DNS reduz de forma significativa o número de consultas diretas aos servidores de nomes, sobretudo aos de topo e aos root.",
+    "question": "A cache do DNS reduz de forma significativa o número de consultas diretas aos name servers, sobretudo aos de topo e aos root.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -669,17 +669,6 @@
     "source": "AI_GENERATED",
     "in_plan": true,
     "ref": "L07 p.26"
-  },
-  {
-    "question": "Para o IPv6, os registos PTR usam o domínio ipv6.arpa., em que cada subdomínio corresponde a um único dígito hexadecimal.",
-    "answers": [
-      "FALSO",
-      "VERDADEIRO"
-    ],
-    "correct_index": 1,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "L07 p.28"
   },
   {
     "question": "O registo PTR do endereço 193.136.62.2 é definido em 193.136.62.2.in-addr.arpa.",
@@ -803,7 +792,7 @@
     "ref": "L07 p.34"
   },
   {
-    "question": "Para maior disponibilidade, cada domínio DNS deve ter pelo menos dois servidores de nomes, um primário (master) e os outros secundários (slaves).",
+    "question": "Para maior disponibilidade, cada domínio DNS deve ter pelo menos dois name servers, um primário (master) e os outros secundários (slaves).",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -847,7 +836,7 @@
     "ref": "DNS extras p.7"
   },
   {
-    "question": "A consulta recursiva tira o maior partido da cache dos servidores de nomes, mas tende a sobrecarregá-los, por isso é frequentemente desativada.",
+    "question": "A consulta recursiva tira o maior partido da cache dos name servers, mas tende a sobrecarregá-los, por isso é frequentemente desativada.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -858,7 +847,7 @@
     "ref": "DNS extras p.8"
   },
   {
-    "question": "Numa resposta não recursiva, o servidor local fornece ao cliente o servidor de nomes mais próximo do domínio pedido, e o cliente continua a resolução por si.",
+    "question": "Numa resposta não recursiva, o servidor local fornece ao cliente o name server mais próximo do domínio pedido, e o cliente continua a resolução por si.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -880,7 +869,7 @@
     "ref": "DNS extras p.8"
   },
   {
-    "question": "Cada servidor de nomes DNS tem de conhecer os servidores de nomes do domínio hierarquicamente superior imediatamente acima dele.",
+    "question": "Cada name server DNS tem de conhecer os name servers do domínio hierarquicamente superior imediatamente acima dele.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -891,7 +880,7 @@
     "ref": "L07 p.22"
   },
   {
-    "question": "Os registos TXT não podem ser usados para implementar políticas de correio eletrónico, apenas para comentários.",
+    "question": "O registo TXT só serve para guardar comentários e nunca para definir políticas de correio eletrónico, como o SPF.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -902,7 +891,7 @@
     "ref": "L07 p.32"
   },
   {
-    "question": "O registo SOA guarda a lista completa de servidores de nomes de um domínio, sendo desnecessários os registos NS.",
+    "question": "O registo SOA guarda a lista completa de name servers de um domínio, sendo desnecessários os registos NS.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
@@ -1016,10 +1005,10 @@
   {
     "question": "Qual das seguintes é uma diferença do IPv6 relativamente ao IPv4?",
     "answers": [
-      "O cabeçalho passou a ter comprimento variável, com opções no cabeçalho",
-      "O ARP passou a ser obrigatório para resolver endereços de camada 2",
+      "O cabeçalho passou a ter comprimento variável, com opções dentro do cabeçalho",
+      "O ARP passou a ser obrigatório para resolver endereços de camada 2 em IPv6",
       "O checksum do cabeçalho passou a cobrir também os dados transportados",
-      "A fragmentação nos nós intermédios foi abandonada, mantendo-se o Path MTU Discovery"
+      "A fragmentação nos nós intermédios foi abandonada (mantém-se Path MTU Discovery)"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1393,10 +1382,10 @@
   {
     "question": "Que bloco de endereços IPv6 é de uso privado, segundo a aula?",
     "answers": [
-      "Endereços que começam por fd (1111 1110 …)",
-      "Endereços que começam por fe80 (1111 1110 10)",
-      "Endereços que começam por 2001 (0010 0000 …)",
-      "Endereços que começam por ff00 (1111 1111 …)"
+      "Endereços que começam por fd (ULA, Unique Local Address)",
+      "Endereços que começam por fe80 (1111 1110 10), de link-local",
+      "Endereços que começam por 2001 (0010 0000 0000 0001 …)",
+      "Endereços que começam por ff00 (1111 1111 0000 0000 …)"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1497,10 +1486,10 @@
   {
     "question": "Para que serve o campo Flow label do cabeçalho IPv6?",
     "answers": [
-      "Para identificar um fluxo de datagramas com parâmetros de QoS comuns",
-      "Para limitar o número de routers que o datagrama atravessa",
-      "Para identificar o protocolo de nível superior transportado",
-      "Para identificar o fragmento a que o datagrama pertence"
+      "Para identificar um fluxo de datagramas com requisitos de QoS comuns",
+      "Para limitar o número de routers que o datagrama pode atravessar",
+      "Para identificar o protocolo de nível superior transportado no payload",
+      "Para identificar o fragmento a que o datagrama pertence no original"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1666,10 +1655,10 @@
   {
     "question": "Que mensagens ICMPv6 substituem, no IPv6, as mensagens do IGMP?",
     "answers": [
-      "Neighbor solicitation e advertisement (tipos 135 e 136)",
-      "Router solicitation e advertisement (tipos 133 e 134)",
-      "Echo request e echo reply (tipos 128 e 129)",
-      "Group membership query, report e reduction (tipos 130, 131 e 132)"
+      "Neighbor solicitation e advertisement (tipos 135 e 136) do ICMPv6",
+      "Router solicitation e advertisement (tipos 133 e 134) do ICMPv6",
+      "Echo request e echo reply (tipos 128 e 129) do ICMPv6",
+      "Group membership query, report e reduction (tipos 130 a 132)"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1679,9 +1668,9 @@
   {
     "question": "Qual é o objetivo da resolução de nomes (name resolution)?",
     "answers": [
-      "Traduzir endereços privados em endereços públicos únicos através de NAT",
+      "Traduzir endereços privados em endereços públicos únicos através de NAT na rede",
       "Obter o endereço MAC correspondente a um endereço IPv4 existente na rede local",
-      "Obter o endereço do nó correspondente ao seu nome, poupando o utilizador de lidar com endereços",
+      "Obter o endereço de um nó a partir do seu nome, sem o utilizador lidar com endereços",
       "Atribuir dinamicamente um endereço IP a cada nó que arranca numa rede local"
     ],
     "correct_index": 2,
@@ -1731,7 +1720,7 @@
   {
     "question": "Qual é o comprimento máximo de um nome NetBIOS nas redes Microsoft?",
     "answers": [
-      "16 caracteres, incluindo o caracter que identifica o tipo",
+      "16 caracteres, todos eles usados para o nome do nó",
       "15 caracteres, porque o 16.º identifica o tipo do nome",
       "255 caracteres, tal como acontece nos nomes qualificados do DNS",
       "32 caracteres, divididos em nome do nó e nome do domínio"
@@ -1768,25 +1757,12 @@
     "ref": "L07 p.17"
   },
   {
-    "question": "O que identifica o tipo 1B associado a um nome de domínio NetBIOS?",
-    "answers": [
-      "Um servidor de ficheiros",
-      "O representante local do domínio",
-      "Todos os membros do domínio ou grupo de trabalho",
-      "O Primary Domain Controller (PDC)"
-    ],
-    "correct_index": 3,
-    "source": "AI_GENERATED",
-    "in_plan": true,
-    "ref": "L07 p.17"
-  },
-  {
     "question": "O que identifica o tipo 1C associado a um nome de domínio NetBIOS?",
     "answers": [
-      "Um servidor de ficheiros",
-      "O coletor da lista de navegação local",
+      "Um servidor de ficheiros e impressão do domínio",
+      "O coletor da lista de navegação (browse list) local",
       "Um servidor de autenticação (login) do domínio",
-      "O Primary Domain Controller (PDC)"
+      "O Primary Domain Controller (PDC), navegador mestre do domínio"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1796,9 +1772,9 @@
   {
     "question": "Qual é a diferença entre nomes únicos e nomes de grupo no NetBIOS?",
     "answers": [
-      "Os nomes de grupo só existem em redes com servidor WINS",
-      "Os nomes únicos têm até 255 caracteres e os de grupo até 15",
-      "Um nome de grupo pode ser registado por vários nós sem conflito; um nome único não",
+      "Os nomes de grupo só existem em redes que tenham um servidor WINS",
+      "Os nomes únicos têm até 255 caracteres e os nomes de grupo até 15",
+      "Um nome de grupo pode ser registado por vários nós; um nome único não",
       "Um nome único pode ser registado por vários nós; um nome de grupo não"
     ],
     "correct_index": 2,
@@ -1823,9 +1799,9 @@
     "question": "Qual é a principal diferença do WINS relativamente ao NetBIOS original?",
     "answers": [
       "Os pedidos passam a ser enviados em multicast para o endereço ff02::1",
-      "Os pedidos são enviados em unicast para um servidor dedicado, e não em broadcast",
+      "Os pedidos vão em unicast para um servidor dedicado, e não em broadcast",
       "Os nomes passam a ter estrutura hierárquica, tal como acontece no DNS",
-      "O WINS dispensa o registo dos nomes dos nós que entram na rede"
+      "O WINS dispensa o registo dos nomes dos nós que entram na rede local"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1835,9 +1811,9 @@
   {
     "question": "Que limitação mantém o WINS, tal como o NetBIOS, que o DNS resolve?",
     "answers": [
-      "A estrutura de nomes sem hierarquia, que impede uma gestão distribuída e escalável",
-      "A necessidade de usar sempre broadcast de camada 2 para registar nomes",
-      "A obrigação de usar o porto UDP 137 em todas as comunicações",
+      "A estrutura de nomes sem hierarquia, que impede gestão distribuída e escalável",
+      "A necessidade de usar sempre broadcast de camada 2 para registar os nomes",
+      "A obrigação de usar o porto UDP 137 em todas as comunicações de nomes",
       "A impossibilidade de registar mais de 15 nomes por cada rede local"
     ],
     "correct_index": 0,
@@ -1848,9 +1824,9 @@
   {
     "question": "Qual é a principal vantagem do DNS sobre o NetBIOS?",
     "answers": [
-      "A ausência de servidores de nomes dedicados na infraestrutura de rede",
+      "A ausência de name servers dedicados na infraestrutura de rede",
       "O uso de broadcast, que permite descobrir os nós sem qualquer servidor",
-      "A estrutura hierárquica com autonomia administrativa por domínio, que permite escalar",
+      "A estrutura hierárquica com autonomia administrativa por domínio",
       "A utilização de nomes planos e globalmente únicos em toda a rede"
     ],
     "correct_index": 2,
@@ -1872,12 +1848,12 @@
     "ref": "L07 p.20"
   },
   {
-    "question": "O que é um servidor de nomes autoritativo para um domínio?",
+    "question": "O que é um name server autoritativo para um domínio?",
     "answers": [
       "Um servidor que faz sempre consultas recursivas em nome dos clientes",
       "Um servidor que conhece apenas os endereços dos root name servers da Internet",
       "Um servidor que guarda em cache as respostas de todos os domínios consultados",
-      "Um servidor com cópia local da base de dados do domínio, sem depender de outros para o resolver"
+      "Um servidor com cópia local da base de dados do domínio, sem depender de outros"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1885,12 +1861,12 @@
     "ref": "L07 p.21"
   },
   {
-    "question": "O que tem de conhecer cada servidor de nomes DNS para o sistema funcionar?",
+    "question": "O que tem de conhecer cada name server DNS para o sistema funcionar?",
     "answers": [
-      "Apenas o endereço do servidor de nomes do domínio imediatamente acima do seu",
-      "Os endereços dos servidores de nomes de todos os domínios existentes na Internet",
-      "Os registos do seu domínio, os endereços dos root name servers e os dos subdomínios imediatos",
-      "Apenas os endereços dos servidores de nomes dos domínios de topo da Internet"
+      "Apenas o endereço do name server do domínio imediatamente acima do seu",
+      "Os endereços dos name servers de todos os domínios existentes na Internet",
+      "Os registos do seu domínio, os root name servers e os subdomínios imediatos",
+      "Apenas os endereços dos name servers dos domínios de topo da Internet"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1900,8 +1876,8 @@
   {
     "question": "Porque são os root name servers um ponto de partida garantido para resolver qualquer nome?",
     "answers": [
-      "Porque conhecem os servidores de nomes dos domínios de topo, e estes os dos seus subdomínios",
-      "Porque são os únicos servidores de nomes com o porto 53 aberto na Internet",
+      "Porque conhecem os name servers dos domínios de topo, e estes os dos seus subdomínios",
+      "Porque são os únicos name servers com o porto 53 aberto na Internet",
       "Porque aceitam sempre consultas recursivas feitas diretamente pelos clientes",
       "Porque guardam uma cópia de todos os registos de todos os domínios da Internet"
     ],
@@ -1911,12 +1887,12 @@
     "ref": "L07 p.22"
   },
   {
-    "question": "Na resolução de www.dei.isep.ipp.pt por um servidor local, a quem pergunta o servidor local pelo servidor de nomes do domínio pt?",
+    "question": "Na resolução de www.dei.isep.ipp.pt por um servidor local, a quem pergunta o servidor local pelo name server do domínio pt?",
     "answers": [
-      "A um servidor de nomes do domínio isep.ipp.pt",
+      "A um name server do domínio isep.ipp.pt",
       "A um root name server",
       "Ao próprio cliente que fez a consulta",
-      "A um servidor de nomes do domínio ipp.pt"
+      "A um name server do domínio ipp.pt"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1926,9 +1902,9 @@
   {
     "question": "Qual é o problema que os glue records resolvem?",
     "answers": [
-      "A dependência circular quando o servidor de nomes de um domínio tem o nome nesse mesmo domínio",
+      "A dependência circular quando o name server de um domínio tem o nome nesse mesmo domínio",
       "A resolução inversa de endereços IPv6 no domínio ipv6.arpa. feita por um cliente",
-      "A impossibilidade de um domínio ter mais de um servidor de nomes registado no domínio pai",
+      "A impossibilidade de um domínio ter mais de um name server registado no domínio pai",
       "A falta de registos MX para os servidores de correio eletrónico do domínio pedido"
     ],
     "correct_index": 0,
@@ -1940,9 +1916,9 @@
     "question": "Onde são colocados os glue records?",
     "answers": [
       "No root name server, com o endereço de todos os servidores",
-      "No cliente, junto à lista de servidores de nomes configurados",
-      "No domínio pai, com o endereço do servidor de nomes do subdomínio",
-      "No próprio subdomínio, com o endereço do servidor de nomes do pai"
+      "No cliente, junto à lista de name servers configurados",
+      "No domínio pai, com o endereço do name server do subdomínio",
+      "No próprio subdomínio, com o endereço do name server do pai"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1952,10 +1928,10 @@
   {
     "question": "O que é uma consulta recursiva?",
     "answers": [
-      "Aquela em que o servidor devolve ao cliente o servidor de nomes mais próximo",
+      "Aquela em que o servidor devolve ao cliente o name server mais próximo",
       "Aquela em que o servidor responde apenas com dados da sua cache",
       "Aquela em que o cliente consulta diretamente os root name servers",
-      "Aquela em que o servidor de nomes local faz todo o trabalho em nome do cliente"
+      "Aquela em que o name server local faz todo o trabalho em nome do cliente"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1965,10 +1941,10 @@
   {
     "question": "Para que serve o TTL de um registo DNS?",
     "answers": [
-      "Define durante quanto tempo servidores e clientes podem guardar o registo em cache",
+      "Define durante quanto tempo o registo pode ser guardado em cache",
       "Para indicar a prioridade do servidor de correio eletrónico do domínio",
-      "Para indicar o número de saltos entre o cliente e o servidor de nomes",
-      "Para limitar o número de servidores de nomes que a consulta pode atravessar"
+      "Para indicar o número de saltos entre o cliente e o name server do domínio",
+      "Para limitar o número de name servers que a consulta pode atravessar"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1980,7 +1956,7 @@
     "answers": [
       "O root name server",
       "O administrador do domínio",
-      "O servidor de nomes local do cliente",
+      "O name server local do cliente",
       "O cliente que faz a consulta"
     ],
     "correct_index": 1,
@@ -1989,7 +1965,7 @@
     "ref": "L07 p.23"
   },
   {
-    "question": "Que porto usam os servidores de nomes DNS?",
+    "question": "Que porto usam os name servers DNS?",
     "answers": [
       "80",
       "53",
@@ -2145,7 +2121,7 @@
     "ref": "L07 p.25"
   },
   {
-    "question": "Que registo DNS identifica o servidor de nomes de um domínio?",
+    "question": "Que registo DNS identifica o name server de um domínio?",
     "answers": [
       "Registo A",
       "Registo SOA",
@@ -2332,7 +2308,7 @@
       "O fuso horário e o idioma principal usados pelos utilizadores do domínio",
       "A localização geográfica: latitude, longitude, altitude, dimensão e precisão",
       "A posição do servidor de correio eletrónico do domínio na topologia da rede",
-      "O endereço IP do servidor de nomes geograficamente mais próximo do cliente"
+      "O endereço IP do name server geograficamente mais próximo do cliente"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -2357,8 +2333,8 @@
     "answers": [
       "Fazer com que o servidor DNS atribua endereços IP aos clientes que o consultam",
       "Substituir os registos NS por registos A nas consultas feitas pelos clientes",
-      "Permitir que um nó com endereço IP variável mantenha um nome DNS fixo, atualizando os registos",
-      "Evitar o uso de cache nos servidores de nomes, para os registos serem sempre atuais"
+      "Permitir que um nó com IP variável mantenha um nome DNS fixo, atualizando os registos",
+      "Evitar o uso de cache nos name servers, para os registos serem sempre atuais"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -2487,7 +2463,7 @@
     "answers": [
       "33:33:FF:00:00:05",
       "33:33:05:00:00:00",
-      "01:00:5E:00:00:00:05",
+      "01:00:5E:00:00:05",
       "33:33:00:00:00:05"
     ],
     "correct_index": 3,
@@ -2498,7 +2474,7 @@
   {
     "question": "Qual é o endereço Ethernet multicast correspondente ao endereço IPv6 multicast ff02::a?",
     "answers": [
-      "01:00:5E:00:00:00:0A",
+      "01:00:5E:00:00:0A",
       "33:33:00:00:00:0A",
       "33:33:FF:00:00:0A",
       "33:33:0A:00:00:00"
@@ -2513,7 +2489,7 @@
     "answers": [
       "33:33:03:00:01:00",
       "33:33:FF:01:00:03",
-      "01:00:5E:00:01:00:03",
+      "01:00:5E:00:01:03",
       "33:33:00:01:00:03"
     ],
     "correct_index": 3,
@@ -2766,7 +2742,7 @@
     "ref": "L07 p.24"
   },
   {
-    "question": "Um servidor de nomes DNS não pode manter as bases de dados de mais de um domínio.",
+    "question": "Um name server DNS não pode manter as bases de dados de mais de um domínio.",
     "answers": [
       "FALSO",
       "VERDADEIRO"
