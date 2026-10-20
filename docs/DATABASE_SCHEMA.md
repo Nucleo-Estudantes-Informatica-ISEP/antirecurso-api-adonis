@@ -405,6 +405,22 @@ This migration preserves owned snapshots and state associations. It intentionall
 
 ### Migration deployment constraints
 
+Keep the existing migration filenames when deploying #167 before #158. Lucid 22.4.2
+selects migrations by names absent from `adonis_schema`, not by a timestamp greater
+than the last recorded migration. An isolated PostgreSQL 16 rehearsal at `f6416cc`
+first applied the 24 migrations excluding the three exam-attempt migrations, through
+`1792000000000_add_reviewed_question_imports`. After restoring the three unchanged
+files, `node ace migration:run --force` applied `1791590400000`, `1791792000000` and
+`1791936000000` in that order as the next batch (27 recorded migrations total).
+An existing import-batch record survived; the recovery indexes, non-null owner,
+owner/UUID uniqueness and composite state FK were verified. A third run was a no-op.
+This verifies the #167-first schema sequence on a disposable database, not production
+row counts or lock timing. Repeat the rehearsal against staging data before rollout.
+Rollback follows recorded batches: rolling back this later exam batch removes exam
+recovery even though the higher-timestamp import migration remains applied. Disable
+stored-attempt/CAS clients and back up retained history before any authorized schema
+rollback; do not infer rollback order from filenames.
+
 The index migrations and owner-scope migration use transactional, non-concurrent index/constraint creation. Owner-scope preflight takes `ACCESS EXCLUSIVE` locks on `exam_attempts` and `exam_states` so diagnostics and key changes see the same rows. Preflight names up to 20 anonymous attempt IDs, mismatched/missing-owner state references, or duplicate rollback UUIDs and owners; it rejects the migration before key changes. No rows are deleted or assigned invented owners.
 
 These migrations are suitable for empty/small tables during initial rollout, with API writes drained and a maintenance window. Rehearse timing/lock impact against staging row counts and take a backup before authorized production migration. They are not an online migration plan for large/live tables: use a separate reviewed deployment with concurrent indexes outside a transaction and staged constraint validation in that case. Committed Japa tests cover index apply/rollback/reapply, populated upgrades (including legacy null attempt references), preflight rejections and transactional data preservation.
@@ -444,6 +460,56 @@ performs the same cleanup for its own owner before the 20-row cap, so missing cl
 discard calls cannot cause a permanent lockout. Unsynced local progress cannot extend
 server retention; expired recovery returns 404 and verification returns 409. Scheduler
 installation and production cleanup are deployment actions, not performed by this PR.
+
+### Completed-attempt storage budget
+
+Completed snapshots deliberately remain available for exact replay and historical
+review; the 20-row cap and 30-day cleanup apply only to unfinished attempts. There is
+no completed-attempt TTL or archive reader. Dropping just the snapshot would lose
+historical review, and deleting the attempt would also lose UUID replay protection.
+Any future archive must preserve both contracts and account/subject erasure.
+
+For capacity planning, assume 1,000 active owners, two completed stored exams per
+owner per study day, and 200 study days per year: **400,000 new rows/year**. Budget
+2 KiB per question for original text/options, IDs, correct choice and committed
+grading. Images are URL strings, not embedded image files. At that allowance:
+
+| Questions per exam | Snapshot/grading per exam | Payload growth/year | Planning allocation/year (2x) | Five-year allocation (2x) |
+| --- | --- | --- | --- | --- |
+| 10 (default) | 20 KiB | 7.6 GiB | 15.3 GiB | 76.3 GiB |
+| 50 (largest current mode/custom count) | 100 KiB | 38.1 GiB | 76.3 GiB | 381.5 GiB |
+
+Thus an 80 GiB five-year allocation for typical default exams, or 400 GiB for the
+all-50-question scenario, accommodates this assumed cohort at the planning allowance.
+The extra 1x allows for result JSON, row/index/TOAST overhead and operating headroom;
+it is an estimate, not a measured upper bound. Backups, replicas, WAL, unfinished
+attempts and existing answer/history tables need separate capacity. Growth scales
+linearly with owners, frequency, question count and text size. Question/option text
+has no small fixed limit, so neither 2 KiB nor the 2x multiplier is a storage bound.
+These are workload assumptions, not verified production traffic or free disk space.
+
+At rollout and monthly afterward, record actual relation size (including indexes
+and TOAST), completed-row count, recent completion volume and payload size using the
+deployment schema. Run aggregate sizing off peak or on a representative staging copy:
+
+```sql
+SELECT pg_total_relation_size('exam_attempts') AS relation_bytes;
+SELECT count(*) AS completed_rows,
+       count(*) FILTER (WHERE updated_at >= now() - interval '30 days') AS completed_last_30_days,
+       avg(pg_column_size(snapshot) + pg_column_size(result)) AS avg_payload_bytes,
+       max(pg_column_size(snapshot) + pg_column_size(result)) AS max_payload_bytes
+FROM exam_attempts
+WHERE result IS NOT NULL;
+```
+
+Use observed relation growth and available disk to forecast at least 12 months of
+headroom, accounting separately for backups/replicas. Expand capacity or design a
+reviewed archive before that forecast exceeds the allocation; do not silently purge
+completed history to meet this estimate. The assumed small-cohort workload is
+manageable with the allocations above, while indefinite growth still requires this
+operational monitoring and future capacity planning.
+
+### Pre-start ownership inventory
 
 Before enabling `RUN_MIGRATIONS=true` on an existing deployment, inspect
 `node ace migration:status`. If `exam_attempts` already exists, run these read-only
