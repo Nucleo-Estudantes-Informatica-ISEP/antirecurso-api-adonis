@@ -90,23 +90,23 @@ export type ImportReport = {
 
 const normalizedText = (text: string) => text.trim().replace(/\s+/g, ' ').toLowerCase()
 
-async function snapshot(trx: TransactionClientContract, id: number): Promise<Snapshot> {
+async function snapshots(trx: TransactionClientContract, ids: number[]) {
+  const result = new Map<number, Snapshot>()
+  if (!ids.length) return result
   // PostgreSQL JSON preserves timestamp microseconds that JavaScript Date discards.
-  const row = await trx
+  const rows = await trx
     .from('questions')
-    .where('id', id)
+    .whereIn('id', ids)
     .select(trx.raw('to_jsonb(questions) AS record'))
-    .firstOrFail()
   const options = await trx
     .from('options')
-    .where('question_id', id)
+    .whereIn('question_id', ids)
     .select(trx.raw('to_jsonb(options) AS record'))
     .orderBy('order')
     .orderBy('id')
-  return {
-    question: row.record,
-    options: options.map((option) => option.record),
-  }
+  for (const row of rows) result.set(row.record.id, { question: row.record, options: [] })
+  for (const option of options) result.get(option.record.question_id)!.options.push(option.record)
+  return result
 }
 
 /** Dry-run is the default. Review fields are unauthenticated operator-supplied notes. */
@@ -142,187 +142,252 @@ export async function importReviewedQuestions(
   const digest = createHash('sha256').update(JSON.stringify(data)).digest('hex')
 
   return db.transaction(async (trx) => {
-    // Serialize imports with all question/option writers, including admin edits.
-    if (apply) {
-      await trx.rawQuery(
-        'LOCK TABLE questions, options, question_import_batches IN SHARE ROW EXCLUSIVE MODE'
-      )
-    }
-    const previousBatch = await trx
-      .from('question_import_batches')
-      .where('batch_id', data.batch_id)
-      .first()
-    if (previousBatch && previousBatch.digest !== digest) {
-      throw new Error('batch_id already applied with different content; use a new batch_id')
-    }
-    const report: ImportReport = {
-      batch_id: data.batch_id,
-      digest,
-      status: 'ready',
-      counts: { insert: 0, update: 0, unchanged: 0, conflict: 0 },
-      changes: [],
-    }
-    const seenKeys = new Set<string>()
-    const seenIds = new Set<number>()
-    const seenTexts = new Set<string>()
-    const storedTexts = new Map<string, number[]>()
-    const rows = await trx
-      .from('questions')
-      .whereIn('subject_id', [...new Set(data.questions.map((entry) => entry.subject_id))])
-      .select('id', 'subject_id', 'exam', 'question')
-    for (const row of rows) {
-      const textKey = JSON.stringify([row.subject_id, row.exam, normalizedText(row.question)])
-      storedTexts.set(textKey, [...(storedTexts.get(textKey) ?? []), row.id])
-    }
-
-    for (const entry of data.questions) {
-      const problems: string[] = []
-      const byKey: QuestionRow | undefined = await trx
+    const keys = data.questions.map((entry) => entry.import_key)
+    const ids = data.questions.flatMap((entry) => (entry.question_id ? [entry.question_id] : []))
+    const subjects = [...new Set(data.questions.map((entry) => entry.subject_id))]
+    const load = async () => {
+      const identities: QuestionRow[] = await trx
         .from('questions')
-        .where('import_key', entry.import_key)
-        .first()
-      const existing: QuestionRow | undefined = entry.question_id
-        ? await trx.from('questions').where('id', entry.question_id).first()
-        : byKey
-      if (entry.question_id && !existing)
-        problems.push('question_id does not exist; cannot insert as fallback')
-      if (byKey && existing?.id !== byKey.id)
-        problems.push('import_key belongs to another question')
-      if (existing?.import_key && existing.import_key !== entry.import_key)
-        problems.push('question already has a different import_key')
-      if (existing && existing.subject_id !== entry.subject_id)
-        problems.push('question belongs to another subject')
-      const type = await trx
-        .from('question_types')
-        .where('id', entry.question_type_id)
-        .where('subject_id', entry.subject_id)
-        .first()
-      if (!type) problems.push('question_type_id does not belong to subject_id')
-      if (seenKeys.has(entry.import_key)) problems.push('duplicate import_key in batch')
-      seenKeys.add(entry.import_key)
-      if (existing && seenIds.has(existing.id)) problems.push('question appears twice in batch')
-      if (existing) seenIds.add(existing.id)
-      const textKey = JSON.stringify([entry.subject_id, entry.exam, normalizedText(entry.question)])
-      if (seenTexts.has(textKey)) problems.push('duplicate question text in batch')
-      seenTexts.add(textKey)
-      const duplicateId = storedTexts.get(textKey)?.find((id) => id !== existing?.id)
-      if (duplicateId)
-        problems.push(
-          `duplicate question text matches question_id ${duplicateId}; map/review existing records first`
-        )
-
-      const before = existing ? await snapshot(trx, existing.id) : null
-      const attributes = {
-        import_key: entry.import_key,
-        subject_id: entry.subject_id,
-        question_type_id: entry.question_type_id,
-        question: entry.question,
-        exam: entry.exam,
-        source: entry.source,
-        correct_option: entry.correct_option,
-        image: entry.image ?? existing?.image ?? '',
-        review: entry.review,
-        repeated: entry.repeated === undefined ? (existing?.repeated ?? null) : entry.repeated,
-        in_plan: entry.in_plan === undefined ? (existing?.in_plan ?? null) : entry.in_plan,
-        ref: entry.ref === undefined ? (existing?.ref ?? null) : entry.ref,
+        .whereIn('import_key', keys)
+        .orWhereIn('id', ids)
+      return {
+        identities,
+        snapshots: await snapshots(
+          trx,
+          identities.map((row) => row.id)
+        ),
+        types: await trx.from('question_types').whereIn(
+          'id',
+          data.questions.map((entry) => entry.question_type_id)
+        ),
+        texts: await trx
+          .from('questions')
+          .whereIn('subject_id', subjects)
+          .select('id', 'subject_id', 'exam', 'question'),
+        previousBatch: await trx
+          .from('question_import_batches')
+          .where('batch_id', data.batch_id)
+          .first(),
       }
-      const after: Snapshot = {
-        question: { ...before?.question, ...attributes },
-        options: [...entry.options]
-          .sort((a, b) => a.order.localeCompare(b.order))
-          .map((option) => ({
-            ...before?.options.find((stored) => stored.order === option.order),
-            ...option,
-          })),
-      }
-      if (
-        before &&
-        !isDeepStrictEqual(
-          before.options.map((option) => option.order).sort(),
-          entry.options.map((option) => option.order).sort()
-        )
-      ) {
-        problems.push(
-          'existing option orders/count cannot change; preserve option IDs and exam history'
-        )
-      }
-      const changed =
-        !existing ||
-        Object.entries(attributes).some(
-          ([field, value]) => !isDeepStrictEqual(existing[field as keyof QuestionRow], value)
-        ) ||
-        after.options.some(
-          (option) =>
-            option.name !== before?.options.find((stored) => stored.order === option.order)?.name
-        )
-      const action: Action = problems.length
-        ? 'conflict'
-        : !existing
-          ? 'insert'
-          : changed
-            ? 'update'
-            : 'unchanged'
-      report.changes.push({
-        import_key: entry.import_key,
-        question_id: existing?.id,
-        action,
-        problems,
-        before,
-        after,
-      })
-      report.counts[action]++
     }
+    const plan = (state: Awaited<ReturnType<typeof load>>): ImportReport => {
+      const byKeys = new Map(state.identities.map((row) => [row.import_key, row]))
+      const byIds = new Map(state.identities.map((row) => [row.id, row]))
+      const types = new Map(state.types.map((row) => [row.id, row.subject_id]))
+      const report: ImportReport = {
+        batch_id: data.batch_id,
+        digest,
+        status: 'ready',
+        counts: { insert: 0, update: 0, unchanged: 0, conflict: 0 },
+        changes: [],
+      }
+      const seenKeys = new Set<string>()
+      const seenIds = new Set<number>()
+      const seenTexts = new Set<string>()
+      const storedTexts = new Map<string, number[]>()
+      for (const row of state.texts) {
+        const textKey = JSON.stringify([row.subject_id, row.exam, normalizedText(row.question)])
+        storedTexts.set(textKey, [...(storedTexts.get(textKey) ?? []), row.id])
+      }
 
-    if (report.counts.conflict) {
-      report.status = 'blocked'
+      for (const entry of data.questions) {
+        const problems: string[] = []
+        const byKey = byKeys.get(entry.import_key)
+        const existing = entry.question_id ? byIds.get(entry.question_id) : byKey
+        if (entry.question_id && !existing)
+          problems.push('question_id does not exist; cannot insert as fallback')
+        if (byKey && existing?.id !== byKey.id)
+          problems.push('import_key belongs to another question')
+        if (existing?.import_key && existing.import_key !== entry.import_key)
+          problems.push('question already has a different import_key')
+        if (existing && existing.subject_id !== entry.subject_id)
+          problems.push('question belongs to another subject')
+        if (types.get(entry.question_type_id) !== entry.subject_id)
+          problems.push('question_type_id does not belong to subject_id')
+        if (seenKeys.has(entry.import_key)) problems.push('duplicate import_key in batch')
+        seenKeys.add(entry.import_key)
+        if (existing && seenIds.has(existing.id)) problems.push('question appears twice in batch')
+        if (existing) seenIds.add(existing.id)
+        const textKey = JSON.stringify([
+          entry.subject_id,
+          entry.exam,
+          normalizedText(entry.question),
+        ])
+        if (seenTexts.has(textKey)) problems.push('duplicate question text in batch')
+        seenTexts.add(textKey)
+        const duplicateId = storedTexts.get(textKey)?.find((id) => id !== existing?.id)
+        if (duplicateId)
+          problems.push(
+            `duplicate question text matches question_id ${duplicateId}; map/review existing records first`
+          )
+
+        const before = existing ? state.snapshots.get(existing.id)! : null
+        const attributes = {
+          import_key: entry.import_key,
+          subject_id: entry.subject_id,
+          question_type_id: entry.question_type_id,
+          question: entry.question,
+          exam: entry.exam,
+          source: entry.source,
+          correct_option: entry.correct_option,
+          image: entry.image ?? existing?.image ?? '',
+          review: entry.review,
+          repeated: entry.repeated === undefined ? (existing?.repeated ?? null) : entry.repeated,
+          in_plan: entry.in_plan === undefined ? (existing?.in_plan ?? null) : entry.in_plan,
+          ref: entry.ref === undefined ? (existing?.ref ?? null) : entry.ref,
+        }
+        const after: Snapshot = {
+          question: { ...before?.question, ...attributes },
+          options: [...entry.options]
+            .sort((a, b) => a.order.localeCompare(b.order))
+            .map((option) => ({
+              ...before?.options.find((stored) => stored.order === option.order),
+              ...option,
+            })),
+        }
+        if (
+          before &&
+          !isDeepStrictEqual(
+            before.options.map((option) => option.order).sort(),
+            entry.options.map((option) => option.order).sort()
+          )
+        ) {
+          problems.push(
+            'existing option orders/count cannot change; preserve option IDs and exam history'
+          )
+        }
+        const changed =
+          !existing ||
+          Object.entries(attributes).some(
+            ([field, value]) => !isDeepStrictEqual(existing[field as keyof QuestionRow], value)
+          ) ||
+          after.options.some(
+            (option) =>
+              option.name !== before?.options.find((stored) => stored.order === option.order)?.name
+          )
+        const action: Action = problems.length
+          ? 'conflict'
+          : !existing
+            ? 'insert'
+            : changed
+              ? 'update'
+              : 'unchanged'
+        report.changes.push({
+          import_key: entry.import_key,
+          question_id: existing?.id,
+          action,
+          problems,
+          before,
+          after,
+        })
+        report.counts[action]++
+      }
+
+      if (report.counts.conflict) {
+        report.status = 'blocked'
+        return report
+      }
       return report
     }
-    // Reusing a committed batch is only a no-op. Never replay it over later corrections.
-    if (previousBatch && (report.counts.insert || report.counts.update)) {
-      throw new Error(
-        'batch_id already applied; stored records changed since then; review a new batch'
-      )
-    }
-
-    if (!apply) return report
-
-    for (const change of report.changes) {
-      if (change.action === 'unchanged') continue
-      const now = new Date()
-      if (change.action === 'insert') {
-        const [row] = await trx
-          .table('questions')
-          .insert({ ...change.after.question, created_at: now, updated_at: now })
-          .returning('id')
-        change.question_id = row.id
-        await trx.table('options').insert(
-          change.after.options.map((option) => ({
-            ...option,
-            question_id: row.id,
-            created_at: now,
-            updated_at: now,
-          }))
-        )
-      } else {
-        const attributes = { ...change.after.question }
-        delete attributes.id
-        delete attributes.created_at
-        delete attributes.updated_at
-        await trx
-          .from('questions')
-          .where('id', change.question_id!)
-          .update({ ...attributes, updated_at: now })
-        for (const option of change.after.options) {
-          await trx
-            .from('options')
-            .where('id', option.id!)
-            .update({ name: option.name, updated_at: now })
-        }
+    const validateReplay = (state: Awaited<ReturnType<typeof load>>, report: ImportReport) => {
+      if (state.previousBatch && state.previousBatch.digest !== digest) {
+        throw new Error('batch_id already applied with different content; use a new batch_id')
       }
-      change.after = await snapshot(trx, change.question_id!)
+      // Reusing a committed batch is only a no-op. Never replay it over later corrections.
+      if (
+        state.previousBatch &&
+        report.status !== 'blocked' &&
+        (report.counts.insert || report.counts.update)
+      ) {
+        throw new Error(
+          'batch_id already applied; stored records changed since then; review a new batch'
+        )
+      }
     }
+    // Plan without blocking admin writers, then bulk re-check under the lock.
+    let state = await load()
+    let report = plan(state)
+    if (!apply) {
+      validateReplay(state, report)
+      return report
+    }
+    await trx.rawQuery(
+      'LOCK TABLE questions, options, question_import_batches, question_types IN SHARE ROW EXCLUSIVE MODE'
+    )
+    const current = await load()
+    if (!isDeepStrictEqual(state, current)) report = plan(current)
+    state = current
+    validateReplay(state, report)
+    if (report.status === 'blocked') return report
+
+    const changed = report.changes.filter((change) => change.action !== 'unchanged')
+    // Bounded bulk writes avoid one round trip per question/option while writers wait.
+    for (let offset = 0; offset < changed.length; offset += 500) {
+      const chunk = changed.slice(offset, offset + 500)
+      const now = new Date()
+      const inserts = chunk.filter((change) => change.action === 'insert')
+      if (inserts.length) {
+        const rows = await trx
+          .table('questions')
+          .insert(
+            inserts.map((change) => ({
+              ...change.after.question,
+              created_at: now,
+              updated_at: now,
+            }))
+          )
+          .returning(['id', 'import_key'])
+        const insertedIds = new Map(rows.map((row) => [row.import_key, row.id]))
+        for (const change of inserts) change.question_id = insertedIds.get(change.import_key)!
+        await trx.table('options').insert(
+          inserts.flatMap((change) =>
+            change.after.options.map((option) => ({
+              ...option,
+              question_id: change.question_id,
+              created_at: now,
+              updated_at: now,
+            }))
+          )
+        )
+      }
+      const updates = chunk.filter((change) => change.action === 'update')
+      if (updates.length) {
+        await trx.rawQuery(
+          `
+          UPDATE questions AS q SET
+            import_key = v.import_key, subject_id = v.subject_id,
+            question_type_id = v.question_type_id, question = v.question, exam = v.exam,
+            source = v.source, correct_option = v.correct_option, image = v.image,
+            review = v.review, repeated = v.repeated, in_plan = v.in_plan, ref = v.ref,
+            updated_at = v.updated_at
+          FROM jsonb_populate_recordset(NULL::questions, ?::jsonb) AS v
+          WHERE q.id = v.id
+        `,
+          [JSON.stringify(updates.map((change) => ({ ...change.after.question, updated_at: now })))]
+        )
+        await trx.rawQuery(
+          `
+          UPDATE options AS o SET name = v.name, updated_at = v.updated_at
+          FROM jsonb_populate_recordset(NULL::options, ?::jsonb) AS v
+          WHERE o.id = v.id
+        `,
+          [
+            JSON.stringify(
+              updates.flatMap((change) =>
+                change.after.options.map((option) => ({ ...option, updated_at: now }))
+              )
+            ),
+          ]
+        )
+      }
+    }
+    const after = await snapshots(
+      trx,
+      changed.map((change) => change.question_id!)
+    )
+    for (const change of changed) change.after = after.get(change.question_id!)!
     report.status = 'applied'
-    if (!previousBatch) {
+    if (!state.previousBatch) {
       await trx.table('question_import_batches').insert({
         batch_id: data.batch_id,
         digest,

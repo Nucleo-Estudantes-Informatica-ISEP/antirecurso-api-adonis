@@ -156,8 +156,13 @@ Default dry-run writes no questions/options/audit and takes no table write lock.
 before/after snapshots including metadata. Validation/conflicts exit nonzero; blocked
 batches write nothing. Inspect the concrete report before deliberate application.
 
-Apply locks question/option/audit tables, then commits all changes and the audit in
-one transaction. Schedule imports to avoid delaying admin writes. Every new applied
+Apply prefetches identities, question types, duplicate texts and full snapshots in bulk
+and plans before taking a write lock. Under the question/option/audit/type table lock,
+it re-checks current state in bulk and replans if a writer committed in the meantime.
+Question and option writes use chunks of at most 500 questions; final audit snapshots
+are fetched in bulk, preserving PostgreSQL timestamp precision. All changes and the
+audit commit in one transaction. Admin writes still wait during the re-check and
+writes, so schedule large imports appropriately. Every new applied
 batch stores its SHA-256 digest and report in `question_import_batches`; `after`
 contains actual resulting IDs. DB audit remains authoritative if output saving fails.
 Dry-run is not a reservation: apply replans against current DB state.

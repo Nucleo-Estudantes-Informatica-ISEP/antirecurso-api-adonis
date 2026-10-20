@@ -16,6 +16,35 @@ advisory is ignored or suppressed.
   The exact override `npm:@bleedingdev/braces@3.0.4` replaces the affected
   package used by `micromatch`, and consequently the Adonis build/lint/HMR chains.
 
+## Production exposure and ownership decision
+
+`npm ls braces --omit=dev` on the frozen lockfile resolves this production chain:
+
+```text
+@adonisjs/auth@10.1.0
+└── @adonisjs/assembler@8.5.2
+    └── fast-glob@3.3.3
+        └── micromatch@4.0.8
+            └── braces@npm:@bleedingdev/braces@3.0.4
+```
+
+The Docker runtime stage runs `npm ci --omit=dev` with this same manifest and
+lockfile. The derivative therefore reaches the production image; its exposure is
+not limited to development/build tools. The direct auth dependency brings the
+assembler into the production tree even though assembler is also a dev dependency.
+
+Before merge/release, maintainers must explicitly designate an owner for monitoring
+and reviewing this single-maintainer derivative, accept its production supply-chain
+exposure, and obtain the outstanding independent artifact comparison/acceptance.
+These human decisions remain pending; automated audit, provenance and compatibility
+checks do not substitute for acceptance. The proposed maintenance rules below retain
+the exact pin, require artifact review on updates, and define upstream removal criteria.
+
+The existing full-tree PR audit gate remains enabled without advisory exclusions.
+Maintainers still need to decide audit-policy ownership and exception handling;
+changing to a production-only gate or adding scheduled issue publication requires
+that separate policy decision.
+
 ## Guarded braces derivative
 
 [Source and maintenance pipeline](https://github.com/ultramodernjs/ultramodern.js/tree/main-ultramodern/scripts/ultramodern-supply)
