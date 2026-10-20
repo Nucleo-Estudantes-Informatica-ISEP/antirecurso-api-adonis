@@ -1083,7 +1083,7 @@
   {
     "question": "Qual é o último nó da rede IPv6 2001:0db8:2b00::/40?",
     "answers": [
-      "2001:0db8:2b00:ffff:ffff:ffff:ffff:ffff",
+      "2001:0db8:2b00:ffff:ffff:ffff:ffff:ffff (/48)",
       "2001:0db8:2b00::ffff",
       "2001:0db8:2bff:ffff:ffff:ffff:ffff:ffff",
       "2001:0db8:2bff:ffff:ffff:ffff:ffff:fffe"
@@ -1112,7 +1112,7 @@
       "É entregue a apenas um dos nós que têm esse endereço, o mais próximo",
       "É entregue a todos os nós da rede de camada 2 local",
       "É descartado pelos routers, que não encaminham endereços anycast",
-      "É entregue a todos os nós que têm esse endereço"
+      "É entregue a todos os nós que têm esse endereço, em todas as redes onde existam"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1162,7 +1162,7 @@
     "question": "Que valor de scope indica âmbito global (toda a Internet) num endereço IPv6 multicast?",
     "answers": [
       "0xe",
-      "0xf",
+      "0x5, âmbito site-local",
       "0x1",
       "0x2"
     ],
@@ -1174,7 +1174,7 @@
   {
     "question": "Que valor de scope indica âmbito de nó local (interface-local) num endereço IPv6 multicast?",
     "answers": [
-      "0xe",
+      "0xe (âmbito global)",
       "0x1",
       "0x2",
       "0x5"
@@ -1241,7 +1241,7 @@
     "answers": [
       "33:33:FF:B1:20:A3",
       "33:33:00:00:2A:B1",
-      "01:00:5E:B1:20:A3",
+      "01:00:5E:B1:20:A3 (v4)",
       "33:33:2A:B1:20:A3"
     ],
     "correct_index": 3,
@@ -1253,7 +1253,7 @@
     "question": "Qual é o endereço Ethernet multicast correspondente ao endereço IPv6 ff02::1:2?",
     "answers": [
       "33:33:00:01:00:02",
-      "01:00:5E:01:00:02",
+      "01:00:5E:01:00:02, o prefixo do multicast IPv4",
       "33:33:00:02:00:01",
       "33:33:00:00:00:02"
     ],
@@ -1265,7 +1265,7 @@
   {
     "question": "Quantos bits do endereço IPv6 multicast são copiados para o endereço Ethernet multicast 33:33:xx:xx:xx:xx?",
     "answers": [
-      "Os 48 bits menos significativos",
+      "Os 48 bits menos significativos do endereço",
       "Os 32 bits menos significativos",
       "Os 16 bits menos significativos",
       "Os 23 bits menos significativos"
@@ -1278,7 +1278,7 @@
   {
     "question": "Qual é o prefixo reservado aos endereços IPv6 unicast link-local?",
     "answers": [
-      "fd00::/8",
+      "fd00::/8, reservado aos endereços locais únicos",
       "fe80::/10",
       "::1/128",
       "ff02::/16"
@@ -1345,7 +1345,7 @@
     "answers": [
       "No SLAAC um servidor atribui o endereço; no DHCPv6 o nó gera os bits de nó sozinho",
       "O SLAAC usa IPv4 e o DHCPv6 usa IPv6 para atribuir os endereços aos nós da rede",
-      "O SLAAC só atribui endereços link-local, ao passo que o DHCPv6 só atribui endereços globais",
+      "O SLAAC só atribui endereços link-local, ao passo que o DHCPv6 só atribui endereços globais, nunca link-local",
       "No SLAAC o nó gera os bits de nó a partir do prefixo; no DHCPv6 um servidor atribui o endereço"
     ],
     "correct_index": 3,
@@ -1359,7 +1359,7 @@
       "Link-local: só permite comunicar na rede local",
       "Node-local: só permite comunicar dentro do próprio nó",
       "Global: permite comunicar com nós de outras redes e com a Internet",
-      "Organização: só permite comunicar dentro do sistema autónomo"
+      "Organização: só permite comunicar dentro do sistema autónomo a que o nó pertence"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1449,7 +1449,7 @@
     "answers": [
       "O campo TTL",
       "O campo Protocol",
-      "O endereço de origem",
+      "O endereço de origem do pacote",
       "O checksum do cabeçalho"
     ],
     "correct_index": 3,
@@ -1500,7 +1500,7 @@
     "question": "Como são suportadas as funcionalidades adicionais no IPv6, que no IPv4 eram opções do cabeçalho?",
     "answers": [
       "Através de um cabeçalho IPv4 interno ao datagrama IPv6",
-      "Através de um campo de opções de tamanho variável no cabeçalho",
+      "Através de um campo de opções de tamanho variável no final do cabeçalho base",
       "Através de cabeçalhos de extensão, identificados no campo next-header",
       "Através de mensagens ICMPv6 enviadas pelos routers"
     ],
@@ -1528,7 +1528,7 @@
       "43",
       "50",
       "0",
-      "44"
+      "44 (fragmentação)"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1564,7 +1564,7 @@
   {
     "question": "Que valores do campo next-header identificam o IPSEC?",
     "answers": [
-      "58 e 59",
+      "58 e 59, usados pelo ICMPv6",
       "0 e 60",
       "43 e 44",
       "50 e 51"
@@ -1577,7 +1577,7 @@
   {
     "question": "Que valor do campo next-header identifica o ICMPv6?",
     "answers": [
-      "17",
+      "17, o valor do UDP",
       "6",
       "1",
       "58"
@@ -1591,7 +1591,7 @@
     "question": "Que tipo de mensagem ICMPv6 corresponde ao echo request?",
     "answers": [
       "Tipo 133",
-      "Tipo 129",
+      "Tipo 129 (echo reply)",
       "Tipo 128",
       "Tipo 8"
     ],
@@ -1606,7 +1606,7 @@
       "Tipo 129",
       "Tipo 0",
       "Tipo 128",
-      "Tipo 134"
+      "Tipo 134 (router advertisement)"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1682,7 +1682,7 @@
     "question": "Como faz o NetBIOS original a resolução de um nome?",
     "answers": [
       "Consulta o ficheiro de hosts do controlador de domínio da rede local",
-      "Envia um NAME QUERY em unicast para o servidor WINS configurado na rede",
+      "Envia um NAME QUERY em unicast para o servidor WINS configurado na rede e aguarda a resposta",
       "Envia um NAME QUERY em broadcast; o nó que possui o nome responde com o seu endereço",
       "Consulta um servidor DNS através de uma consulta recursiva ao servidor local"
     ],
@@ -1708,7 +1708,7 @@
     "question": "Como verifica um nó NetBIOS que o nome que pretende registar ainda não está em uso?",
     "answers": [
       "Pergunta ao router por omissão se o nome pretendido está disponível",
-      "Envia um NAME RELEASE ao servidor WINS antes de qualquer pedido de registo",
+      "Envia um NAME RELEASE ao servidor WINS antes de qualquer pedido de registo de nome no domínio",
       "Consulta um servidor DNS para ver se o nome já existe no domínio global",
       "Envia pedidos de registo em broadcast e aguarda eventuais erros de nome duplicado"
     ],
@@ -1746,7 +1746,7 @@
   {
     "question": "Qual é o tipo de nome NetBIOS (hexadecimal) de uso geral, único, de cada nó?",
     "answers": [
-      "20",
+      "20, o serviço de ficheiros do nó",
       "1D",
       "00",
       "1B"
@@ -1785,7 +1785,7 @@
   {
     "question": "Que problemas do NetBIOS por broadcast procurou resolver o WINS?",
     "answers": [
-      "Falta de tipos de nome, nomes demasiado longos e uso de UDP em vez de TCP",
+      "Falta de tipos de nome, nomes demasiado longos e uso de UDP em vez de TCP, nas redes locais Microsoft",
       "Insegurança, propagação limitada ao domínio de broadcast e má utilização da rede",
       "Falta de suporte para endereços multicast nas redes locais Microsoft",
       "Falta de endereços IPv4 e necessidade de NAT nas redes locais Microsoft"
@@ -1798,7 +1798,7 @@
   {
     "question": "Qual é a principal diferença do WINS relativamente ao NetBIOS original?",
     "answers": [
-      "Os pedidos passam a ser enviados em multicast para o endereço ff02::1",
+      "Os pedidos passam a ser enviados em multicast para o endereço ff02::1 de todos os nós",
       "Os pedidos vão em unicast para um servidor dedicado, e não em broadcast",
       "Os nomes passam a ter estrutura hierárquica, tal como acontece no DNS",
       "O WINS dispensa o registo dos nomes dos nós que entram na rede local"
@@ -1839,7 +1839,7 @@
     "answers": [
       "O nome do domínio, sem o nome do nó, terminado por um ponto final",
       "O nome do nó com um máximo de 15 caracteres e um tipo hexadecimal",
-      "O endereço IP do nó escrito em notação hexadecimal com dois pontos",
+      "O endereço IP do nó escrito em notação hexadecimal, com os grupos separados por dois pontos",
       "O nome do nó seguido da lista de domínios até à raiz, separados por pontos"
     ],
     "correct_index": 3,
@@ -1864,7 +1864,7 @@
     "question": "O que tem de conhecer cada name server DNS para o sistema funcionar?",
     "answers": [
       "Apenas o endereço do name server do domínio imediatamente acima do seu",
-      "Os endereços dos name servers de todos os domínios existentes na Internet",
+      "Os endereços dos name servers de todos os domínios existentes na Internet e as suas réplicas",
       "Os registos do seu domínio, os root name servers e os subdomínios imediatos",
       "Apenas os endereços dos name servers dos domínios de topo da Internet"
     ],
@@ -1879,7 +1879,7 @@
       "Porque conhecem os name servers dos domínios de topo, e estes os dos seus subdomínios",
       "Porque são os únicos name servers com o porto 53 aberto na Internet",
       "Porque aceitam sempre consultas recursivas feitas diretamente pelos clientes",
-      "Porque guardam uma cópia de todos os registos de todos os domínios da Internet"
+      "Porque guardam uma cópia de todos os registos de todos os domínios da Internet, replicada diariamente"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1918,7 +1918,7 @@
       "No root name server, com o endereço de todos os servidores",
       "No cliente, junto à lista de name servers configurados",
       "No domínio pai, com o endereço do name server do subdomínio",
-      "No próprio subdomínio, com o endereço do name server do pai"
+      "No próprio subdomínio, com o endereço do name server do domínio pai"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1930,7 +1930,7 @@
     "answers": [
       "Aquela em que o servidor devolve ao cliente o name server mais próximo",
       "Aquela em que o servidor responde apenas com dados da sua cache",
-      "Aquela em que o cliente consulta diretamente os root name servers",
+      "Aquela em que o cliente consulta diretamente os root name servers, um a seguir ao outro",
       "Aquela em que o name server local faz todo o trabalho em nome do cliente"
     ],
     "correct_index": 3,
@@ -2020,7 +2020,7 @@
     "question": "Qual é o valor do tipo (RR TYPE) do registo MX?",
     "answers": [
       "15",
-      "16",
+      "16 (TXT)",
       "12",
       "28"
     ],
@@ -2032,7 +2032,7 @@
   {
     "question": "Qual é o valor do tipo (RR TYPE) do registo AAAA?",
     "answers": [
-      "33",
+      "33 (SRV)",
       "16",
       "28",
       "1"
@@ -2045,7 +2045,7 @@
   {
     "question": "Qual é o valor do tipo (RR TYPE) do registo SRV?",
     "answers": [
-      "29",
+      "29, atribuído ao registo SRV",
       "33",
       "28",
       "16"
@@ -2098,7 +2098,7 @@
     "question": "Que registo DNS guarda o endereço IPv6 de um nó?",
     "answers": [
       "Registo AAAA",
-      "Registo PTR",
+      "Registo PTR inverso",
       "Registo A",
       "Registo SRV"
     ],
@@ -2176,7 +2176,7 @@
     "question": "Qual é o domínio usado para a resolução inversa de endereços IPv4?",
     "answers": [
       "in-addr.arpa.",
-      "ipv6.arpa.",
+      "ip6.arpa., usado para endereços IPv6",
       "ip4.int.",
       "reverse.pt."
     ],
@@ -2188,7 +2188,7 @@
   {
     "question": "Em que nome é definido o registo PTR do endereço IPv4 193.136.62.3?",
     "answers": [
-      "193.136.62.3.in-addr.arpa.",
+      "193.136.62.3.in-addr.arpa. (direta)",
       "3.62.136.193.in-addr.arpa.",
       "3.62.136.193.ipv6.arpa.",
       "193.62.136.3.in-addr.arpa."
@@ -2201,7 +2201,7 @@
   {
     "question": "Em que nome é definido o registo PTR do endereço IPv4 10.20.30.40?",
     "answers": [
-      "40.30.20.10.ipv6.arpa.",
+      "40.30.20.10.ipv4.in-addr.arpa.",
       "10.20.30.40.ipv4.arpa.",
       "40.30.20.10.in-addr.arpa.",
       "10.20.30.40.in-addr.arpa."
@@ -2294,7 +2294,7 @@
     "answers": [
       "RFC 7208",
       "RFC 2136",
-      "RFC 4408",
+      "RFC 4408 (de 2006)",
       "RFC 1035"
     ],
     "correct_index": 0,
@@ -2331,7 +2331,7 @@
   {
     "question": "Para que serve o DNS dinâmico?",
     "answers": [
-      "Fazer com que o servidor DNS atribua endereços IP aos clientes que o consultam",
+      "Fazer com que o servidor DNS atribua dinamicamente endereços IP aos clientes que o consultam, como o DHCP",
       "Substituir os registos NS por registos A nas consultas feitas pelos clientes",
       "Permitir que um nó com IP variável mantenha um nome DNS fixo, atualizando os registos",
       "Evitar o uso de cache nos name servers, para os registos serem sempre atuais"
@@ -2461,7 +2461,7 @@
   {
     "question": "Qual é o endereço Ethernet multicast correspondente ao endereço IPv6 multicast ff02::5?",
     "answers": [
-      "33:33:FF:00:00:05",
+      "33:33:FF:00:00:05 (solicited-node)",
       "33:33:05:00:00:00",
       "01:00:5E:00:00:05",
       "33:33:00:00:00:05"
@@ -2476,7 +2476,7 @@
     "answers": [
       "01:00:5E:00:00:0A",
       "33:33:00:00:00:0A",
-      "33:33:FF:00:00:0A",
+      "33:33:FF:00:00:0A (solicited-node)",
       "33:33:0A:00:00:00"
     ],
     "correct_index": 1,

@@ -678,7 +678,7 @@
       "Copia a linha sem alterar o custo nem o next-hop",
       "Descarta a linha e pede a lista completa de vizinhos",
       "Soma um valor ao custo e define o next-hop como o endereço de origem da informação",
-      "Subtrai um valor ao custo e define o next-hop como o seu próprio endereço"
+      "Subtrai um valor ao custo e define o next-hop como o seu próprio endereço de interface local"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -717,7 +717,7 @@
       "Routers que substituem o protocolo BGP em redes pequenas sem ligação à Internet",
       "Routers que usam apenas rotas estáticas e que não participam em protocolos dinâmicos",
       "Routers configurados para não reencaminhar informação do protocolo de encaminhamento para fora do AS",
-      "Routers que fazem a ligação entre áreas OSPF diferentes dentro de um mesmo sistema autónomo"
+      "Routers que fazem a ligação entre áreas OSPF diferentes dentro de um mesmo sistema autónomo, a área 0 do OSPF, o backbone"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -754,7 +754,7 @@
     "question": "Qual é a gama de ASN privados, para uso interno do BGP?",
     "answers": [
       "De 64512 a 65534",
-      "De 1 a 65535",
+      "De 1 a 64511, atribuídos pela IANA",
       "De 1024 a 49151",
       "De 0 a 1023"
     ],
@@ -769,7 +769,7 @@
       "O RIP é distance-vector e o OSPF é link-state",
       "O RIP e o OSPF são ambos link-state",
       "O RIP e o OSPF são ambos distance-vector",
-      "O RIP é link-state e o OSPF é distance-vector"
+      "O RIP é link-state e o OSPF é distance-vector, por omissão"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -871,7 +871,7 @@
     "question": "Que melhorias traz o RIPv2 relativamente ao RIPv1?",
     "answers": [
       "Usa TCP em vez de UDP e passa a ser um protocolo do tipo link-state",
-      "Elimina o limite de 15 saltos e usa a taxa de transmissão como métrica",
+      "Elimina o limite de 15 saltos e usa a taxa de transmissão como métrica em cada rota anunciada",
       "Passa a suportar vários sistemas autónomos RIP ligados ao mesmo router",
       "Envia máscaras de rede (CIDR), usa multicast e suporta autenticação MD5"
     ],
@@ -976,7 +976,7 @@
     "answers": [
       "Routers internos da área 0 do OSPF",
       "ASBR (Autonomous System Boundary Router)",
-      "ABR (Area Border Router) da área zero",
+      "ABR (Area Border Router) entre áreas diferentes do OSPF",
       "DR (Designated Router) da área zero"
     ],
     "correct_index": 1,
@@ -990,7 +990,7 @@
       "8 bits",
       "48 bits",
       "32 bits",
-      "16 bits"
+      "16 bits, como o número de AS"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1026,7 +1026,7 @@
   {
     "question": "Qual é o limite de saltos por omissão do EIGRP, para um destino ser considerado alcançável?",
     "answers": [
-      "255 saltos",
+      "255 saltos no total",
       "100 saltos",
       "224 saltos",
       "15 saltos"
@@ -1065,8 +1065,8 @@
   {
     "question": "O que é a redistribuição de rotas (route redistribution)?",
     "answers": [
-      "Inserir num AS informação sobre redes exteriores, como rotas estáticas ou de outro AS",
-      "Dividir uma área OSPF em duas áreas independentes para reduzir o tráfego do protocolo",
+      "Inserir num AS rotas de redes exteriores, como rotas estáticas ou de outro AS",
+      "Dividir uma área OSPF em duas áreas independentes para reduzir o tráfego do protocolo entre routers",
       "Remover da tabela as linhas com o mesmo next-hop que a rota por omissão da rede",
       "Reenviar a mesma tabela de encaminhamento a todos os vizinhos do router sem a alterar"
     ],
@@ -1115,7 +1115,7 @@
     "ref": "TP05 p.8"
   },
   {
-    "question": "Para a tabela do slide (192.168.10.0/24 direta pela interface Ethernet 1; 172.14.0.0/16 direta pela interface Ethernet 2; 194.121.12.0/24 via 172.14.5.100; 0.0.0.0/0 via 192.168.10.200), para onde é enviado um pacote destinado a 194.121.12.77?",
+    "question": "Numa tabela de encaminhamento com 192.168.10.0/24 (interface Ethernet 1), 172.14.0.0/16 (interface Ethernet 2), 194.121.12.0/24 (via 172.14.5.100) e 0.0.0.0/0 (via 192.168.10.200), para onde é enviado um pacote destinado a 194.121.12.77?",
     "answers": [
       "Para o router 192.168.10.200",
       "Para o router 172.14.5.100",
@@ -1128,11 +1128,11 @@
     "ref": "L06 p.7"
   },
   {
-    "question": "Na mesma tabela, para onde é enviado um pacote destinado a 8.8.8.8?",
+    "question": "Numa tabela de encaminhamento com 192.168.10.0/24 (interface Ethernet 1), 172.14.0.0/16 (interface Ethernet 2), 194.121.12.0/24 (via 172.14.5.100) e 0.0.0.0/0 (via 192.168.10.200), para onde é enviado um pacote destinado a 8.8.8.8?",
     "answers": [
       "Para o default gateway 192.168.10.200",
       "É descartado",
-      "Para o router 172.14.5.100",
+      "Para o router 172.14.5.100, que é o next-hop",
       "Diretamente pela interface Ethernet 1"
     ],
     "correct_index": 0,
@@ -1141,12 +1141,12 @@
     "ref": "L06 p.7"
   },
   {
-    "question": "Na mesma tabela, como é entregue um pacote destinado a 172.14.200.1?",
+    "question": "Numa tabela de encaminhamento com 192.168.10.0/24 (interface Ethernet 1), 172.14.0.0/16 (interface Ethernet 2), 194.121.12.0/24 (via 172.14.5.100) e 0.0.0.0/0 (via 192.168.10.200), como é entregue um pacote destinado a 172.14.200.1?",
     "answers": [
       "Diretamente, pela interface Ethernet 1",
       "Pelo router 172.14.5.100",
       "Diretamente, pela interface Ethernet 2",
-      "Pelo default gateway 192.168.10.200"
+      "Pelo default gateway 192.168.10.200 (rota por omissão)"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1233,7 +1233,7 @@
     "question": "Qual é a rede resultante da agregação de 192.168.4.0/24 com 192.168.5.0/24, ambas com o mesmo next-hop?",
     "answers": [
       "192.168.4.0/25",
-      "192.168.4.0/22",
+      "192.168.4.0/22 (4 redes)",
       "192.168.4.0/24",
       "192.168.4.0/23"
     ],
@@ -1398,7 +1398,7 @@
     "answers": [
       "200.1.1.128/25",
       "200.1.1.128/26",
-      "200.1.1.0/24",
+      "200.1.1.0/24, incluindo o bloco 200.1.1.0/25",
       "200.1.1.128/27"
     ],
     "correct_index": 0,
@@ -1827,7 +1827,7 @@
     "question": "Qual dos seguintes protocolos de encaminhamento não suporta CIDR, por não transmitir máscaras de rede?",
     "answers": [
       "RIPv1",
-      "OSPF",
+      "OSPF (link-state)",
       "EIGRP",
       "RIPv2"
     ],
@@ -1839,7 +1839,7 @@
   {
     "question": "Qual dos seguintes protocolos de encaminhamento é proprietário da Cisco?",
     "answers": [
-      "IS-IS",
+      "IS-IS (norma ISO)",
       "OSPF",
       "EIGRP",
       "RIP"
@@ -1889,7 +1889,7 @@
     "ref": "L06 p.6"
   },
   {
-    "question": "Na mesma tabela, para onde vai um pacote destinado a 172.18.200.1?",
+    "question": "Numa tabela de encaminhamento com 172.16.0.0/16 (interface Ethernet 1), 172.17.0.0/16 (interface Ethernet 2), 172.18.0.0/16 (via 172.16.0.5), 172.19.0.0/16 (via 172.17.0.9) e 0.0.0.0/0 (via 172.16.0.1), para onde vai um pacote destinado a 172.18.200.1?",
     "answers": [
       "Para o default gateway 172.16.0.1",
       "Para o router 172.16.0.5",
@@ -1902,7 +1902,7 @@
     "ref": "L06 p.6"
   },
   {
-    "question": "Na mesma tabela, para onde vai um pacote destinado a 200.1.1.1?",
+    "question": "Numa tabela de encaminhamento com 172.16.0.0/16 (interface Ethernet 1), 172.17.0.0/16 (interface Ethernet 2), 172.18.0.0/16 (via 172.16.0.5), 172.19.0.0/16 (via 172.17.0.9) e 0.0.0.0/0 (via 172.16.0.1), para onde vai um pacote destinado a 200.1.1.1?",
     "answers": [
       "Para o default gateway 172.16.0.1, por corresponder a 0.0.0.0/0",
       "Para o router 172.16.0.5, associado à rede 172.18.0.0/16",
@@ -1915,7 +1915,7 @@
     "ref": "L06 p.6"
   },
   {
-    "question": "Na mesma tabela, como é entregue um pacote destinado a 172.17.9.9?",
+    "question": "Numa tabela de encaminhamento com 172.16.0.0/16 (interface Ethernet 1), 172.17.0.0/16 (interface Ethernet 2), 172.18.0.0/16 (via 172.16.0.5), 172.19.0.0/16 (via 172.17.0.9) e 0.0.0.0/0 (via 172.16.0.1), como é entregue um pacote destinado a 172.17.9.9?",
     "answers": [
       "Pelo router 172.17.0.9",
       "Diretamente, pela interface Ethernet 2",
@@ -1941,7 +1941,7 @@
     "ref": "TP05 p.8"
   },
   {
-    "question": "Na mesma tabela, para onde vai um pacote destinado a 120.5.99.20?",
+    "question": "Numa tabela de encaminhamento com 193.100.10.0/24 (direta), 120.5.10.0/24 (via 193.100.10.1), 120.5.0.0/16 (via 193.100.10.5) e 0.0.0.0/0 (via 193.100.10.1), para onde vai um pacote destinado a 120.5.99.20?",
     "answers": [
       "É descartado",
       "Para o router 193.100.10.5",

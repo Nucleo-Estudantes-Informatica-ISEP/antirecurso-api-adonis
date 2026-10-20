@@ -689,7 +689,7 @@
     "answers": [
       "Versão do HTTP, espaço, código de estado, espaço, descrição, CR+LF",
       "Versão do HTTP, espaço, método, espaço, código de estado, CR+LF",
-      "Código de estado, espaço, versão do HTTP, espaço, descrição, CR+LF",
+      "Código de estado, espaço, versão do HTTP, espaço, descrição, CR+LF e linha em branco",
       "Método, espaço, URI do recurso, espaço, versão do HTTP, CR+LF"
     ],
     "correct_index": 0,
@@ -766,7 +766,7 @@
     "question": "Para que serve o campo Cache-Control?",
     "answers": [
       "Indicar o idioma preferido do utilizador para o conteúdo da resposta",
-      "Definir quanto tempo a ligação TCP fica aberta sem tráfego entre cliente e servidor",
+      "Definir quanto tempo a ligação TCP fica aberta sem tráfego entre cliente e servidor antes de fechar",
       "Identificar o servidor que gerou a resposta e a sua versão de software",
       "Definir como os dados podem ser guardados em cache por clientes, servidores e proxies"
     ],
@@ -817,7 +817,7 @@
   {
     "question": "Que campo de cabeçalho informa sobre a codificação aplicada ao conteúdo, por exemplo gzip?",
     "answers": [
-      "Content-Language",
+      "Content-Disposition",
       "Accept-Encoding",
       "Content-Encoding",
       "Content-Type"
@@ -843,7 +843,7 @@
   {
     "question": "Para que serve o campo Content-Range?",
     "answers": [
-      "Indicar o intervalo de datas em que o conteúdo da mensagem continua a ser válido",
+      "Indicar o intervalo de datas em que o conteúdo da mensagem continua a ser válido para o cliente",
       "Limitar o intervalo de portos TCP que o servidor aceita para este pedido",
       "Indicar a posição do corpo no conteúdo original e o seu tamanho total (conteúdo parcial)",
       "Indicar o intervalo de bytes que o cliente já guardou em cache da resposta"
@@ -856,7 +856,7 @@
   {
     "question": "Qual é o conteúdo do campo User-Agent?",
     "answers": [
-      "O nome do servidor web que vai tratar o pedido do cliente",
+      "O nome do servidor web que vai tratar o pedido do cliente, indicado no cabeçalho",
       "O URL do documento a partir do qual se seguiu o pedido",
       "O endereço de correio eletrónico do utilizador do cliente",
       "Uma cadeia que identifica o cliente, como um navegador web"
@@ -896,7 +896,7 @@
     "question": "Que campo de cabeçalho de resposta é usado com a resposta 401 Unauthorized?",
     "answers": [
       "WWW-Authenticate",
-      "Authorization",
+      "Proxy-Authorization",
       "Location",
       "Retry-After"
     ],
@@ -986,7 +986,7 @@
   {
     "question": "Qual é a principal diferença entre GET e POST na forma de enviar dados?",
     "answers": [
-      "No GET os dados vão no corpo da mensagem; no POST vão na query-string do URI",
+      "No GET os dados vão no corpo da mensagem HTTP; no POST vão na query-string do URI do pedido",
       "No GET os dados vão na query-string do URI; no POST vão no corpo da mensagem",
       "Os dois enviam sempre os dados no corpo, mas o GET exige HTTPS",
       "No GET os dados vão num cabeçalho Cookie; no POST vão no cabeçalho Host"
@@ -1040,8 +1040,8 @@
     "answers": [
       "O conteúdo da resposta é apenas parcial, relativamente ao recurso pedido",
       "O pedido foi aceite mas ainda pode não ter sido executado pelo servidor",
-      "O recurso não foi modificado desde o último pedido condicional do cliente",
-      "Foi criado um novo recurso em resultado do pedido, normalmente após um PUT"
+      "O recurso não foi modificado desde o último pedido condicional feito pelo cliente",
+      "Foi criado um novo recurso em resultado do pedido (normalmente PUT)"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1118,7 +1118,7 @@
     "answers": [
       "O servidor exige autenticação do utilizador para realizar a operação",
       "O recurso existe mas o acesso está proibido por falta de permissão",
-      "O servidor tem um problema grave e não conseguiu processar o pedido",
+      "O servidor tem um problema grave e inesperado e não conseguiu processar o pedido",
       "O servidor não percebeu o pedido"
     ],
     "correct_index": 0,
@@ -1132,7 +1132,7 @@
       "O servidor está temporariamente sobrecarregado",
       "O recurso existe, mas não é acessível por falta de permissão",
       "O recurso pedido não foi encontrado no servidor",
-      "O servidor exige autenticação para realizar a operação"
+      "O servidor exige autenticação do utilizador para realizar a operação pedida"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1145,7 +1145,7 @@
       "O recurso pedido não foi encontrado no servidor",
       "O servidor não percebeu o pedido",
       "O método não é suportado pelo servidor",
-      "O recurso existe mas o acesso está proibido"
+      "O recurso existe mas o acesso está proibido ao utilizador"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1182,7 +1182,7 @@
     "question": "O que significa o código de estado 411 Length Required?",
     "answers": [
       "Uma restrição de um campo Accept não pôde ser satisfeita",
-      "O servidor recusa o pedido por ter o corpo demasiado grande",
+      "O servidor recusa o pedido por ter o corpo demasiado grande para o limite definido",
       "O servidor não percebeu o pedido",
       "O servidor recusa o pedido por não ter o campo Content-Length"
     ],
@@ -1236,7 +1236,7 @@
       "O servidor não conseguiu processar o pedido por sobrecarga temporária",
       "A versão do HTTP do pedido não é suportada",
       "O método do pedido não é suportado pelo servidor",
-      "O servidor tem um problema grave e não conseguiu processar o pedido"
+      "O servidor tem um problema grave e inesperado e não conseguiu processar o pedido"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1261,7 +1261,7 @@
     "answers": [
       "3xx",
       "4xx",
-      "5xx",
+      "5xx (cliente)",
       "2xx"
     ],
     "correct_index": 1,
@@ -1272,7 +1272,7 @@
   {
     "question": "Que categoria de códigos de estado HTTP indica erros do lado do servidor?",
     "answers": [
-      "4xx",
+      "4xx, erros do lado do cliente",
       "1xx",
       "3xx",
       "5xx"
@@ -1300,7 +1300,7 @@
     "answers": [
       "3xx",
       "1xx",
-      "5xx",
+      "5xx (erro do servidor)",
       "2xx"
     ],
     "correct_index": 0,
@@ -1352,7 +1352,7 @@
     "answers": [
       "O número de segundos que a ligação se mantém aberta sem tráfego",
       "O número de tentativas de retransmissão de um pedido",
-      "O número máximo de segundos que o servidor demora a responder",
+      "O número máximo de segundos que o servidor demora a responder a cada pedido",
       "O número máximo de sequências pedido/resposta da ligação"
     ],
     "correct_index": 0,
@@ -1364,7 +1364,7 @@
     "question": "Sobre que protocolo corre o HTTPS?",
     "answers": [
       "TLS (Transport Layer Security), sucessor do SSL, sobre TCP",
-      "IPSEC, aplicado em todos os pacotes IP da ligação",
+      "IPSEC, aplicado em todos os pacotes IP da ligação entre cliente e servidor",
       "UDP, com cifragem aplicada em cada datagrama",
       "SSH, com autenticação dos utilizadores por password"
     ],
@@ -1429,7 +1429,7 @@
     "question": "Que content-types são usados para XML e JSON em web services?",
     "answers": [
       "text/xml e text/json apenas",
-      "application/html e application/js",
+      "application/html e application/js sem charset",
       "text/plain para ambos os formatos",
       "application/xml e application/json"
     ],
@@ -1584,7 +1584,7 @@
   {
     "question": "O que significa o método GET ser seguro (safe) no REST?",
     "answers": [
-      "Que os dados são cifrados antes de serem enviados",
+      "Que os dados são cifrados antes de serem enviados para o servidor",
       "Que o servidor autentica sempre o cliente",
       "Que não altera o recurso nem o estado do servidor",
       "Que só pode ser usado sobre HTTPS"
@@ -1599,7 +1599,7 @@
     "answers": [
       "Que repetir o mesmo pedido sobre o mesmo URI não tem efeitos além do primeiro",
       "Que o método exige sempre um corpo na mensagem de pedido e na de resposta",
-      "Que o método não altera o recurso nem o estado do servidor que o recebe",
+      "Que o método não altera o recurso nem o estado do servidor que o recebe, mesmo em pedidos repetidos",
       "Que o método só pode ser invocado uma vez por cada cliente em cada servidor"
     ],
     "correct_index": 0,
@@ -1676,7 +1676,7 @@
     "question": "Qual das seguintes é uma boa prática de nomes de URI REST?",
     "answers": [
       "Maiúsculas e underscores para separar as palavras dos URI dos recursos",
-      "Verbos CRUD nos URI, como /createUser e /deleteUser, para clarificar a operação",
+      "Verbos CRUD nos URI, como /createUser e /deleteUser, para clarificar a operação a executar sobre o recurso",
       "Nomes no singular para coleções e no plural para os itens que a compõem",
       "Nomes no plural para coleções, no singular para itens, e hífenes em vez de underscores"
     ],
@@ -1714,7 +1714,7 @@
   {
     "question": "Que acessos entre origens diferentes são normalmente permitidos pela same-origin policy?",
     "answers": [
-      "Todas as leituras feitas por scripts a outras origens, mas não as operações de escrita",
+      "Todas as leituras feitas por scripts a outras origens, incluindo APIs REST, mas não as operações de escrita",
       "Embeber recursos estáticos (imagens, scripts) e fazer escritas, como submeter formulários",
       "Apenas as leituras de recursos estáticos embebidos, mas nunca as operações de escrita",
       "Todos os acessos feitos por scripts a APIs REST de origens diferentes da página"
@@ -1727,7 +1727,7 @@
   {
     "question": "O que acontece quando um script, numa página, acede a uma API REST noutra origem?",
     "answers": [
-      "O navegador pede autenticação ao utilizador antes de permitir",
+      "O navegador pede autenticação ao utilizador antes de permitir o acesso à API",
       "O navegador permite o acesso se o pedido for feito por HTTPS",
       "O navegador permite o acesso, mas só para o método GET",
       "O navegador bloqueia o acesso por violação da same-origin policy"
@@ -1740,7 +1740,7 @@
   {
     "question": "Como pode um script ultrapassar a same-origin policy ao aceder a um web service num super-domínio?",
     "answers": [
-      "Alterando o número de porto da página para o número de porto do web service",
+      "Alterando o número de porto da página para o número de porto do web service, com document.port",
       "Incluindo o cabeçalho Origin no pedido feito pelo script ao web service",
       "Alterando o nome do nó da origem da página para o super-domínio, com document.domain",
       "Alterando o protocolo da página de http para https antes de fazer o pedido"
@@ -1818,7 +1818,7 @@
   {
     "question": "Que cabeçalho de pedido declara, no pre-flight, os campos de cabeçalho que serão incluídos no pedido real?",
     "answers": [
-      "Access-Control-Allow-Headers",
+      "Access-Control-Allow-Headers, na resposta",
       "Access-Control-Request-Headers",
       "Access-Control-Request-Method",
       "Access-Control-Expose-Headers"

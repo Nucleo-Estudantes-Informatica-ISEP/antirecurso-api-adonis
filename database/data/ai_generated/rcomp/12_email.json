@@ -548,7 +548,7 @@
       "DNS-NAME/USER, em que DNS-NAME é o nome do domínio de topo",
       "USER:PORT, em que PORT é o número de porto do servidor SMTP",
       "USER@DNS-NAME, em que DNS-NAME é o nome DNS do servidor de correio que a aloja",
-      "USER#DNS-NAME, em que DNS-NAME é o endereço IP do servidor de correio"
+      "USER#DNS-NAME, em que DNS-NAME é o endereço IP do servidor de correio de destino que a aloja"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -652,7 +652,7 @@
       "221",
       "220",
       "354",
-      "250"
+      "250 OK"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -730,7 +730,7 @@
       "O cabeçalho da mensagem é limitado a 7 bits, o que impede a transmissão de nomes com acentos",
       "A ausência de autenticação do remetente: não há garantia de que o From: corresponde a quem criou a mensagem",
       "A mensagem é sempre enviada cifrada com uma chave pública que qualquer pessoa na rede pode obter",
-      "O servidor fecha a ligação TCP ao porto 25 depois de cada comando, impedindo o envio de mensagens"
+      "O servidor fecha a ligação TCP ao porto 25 depois de cada comando, impedindo o envio de mensagens com vários destinatários"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -741,7 +741,7 @@
     "question": "O que é um open mail relay?",
     "answers": [
       "Um servidor POP3 que permite o acesso às mailboxes sem password, a partir de qualquer endereço IP",
-      "Um servidor SMTP que só aceita mensagens de utilizadores autenticados localmente e dos MTA remotos conhecidos",
+      "Um servidor SMTP que só aceita mensagens de utilizadores autenticados localmente e dos MTA remotos conhecidos, rejeitando todo o restante correio",
       "Um servidor de correio que guarda uma cópia de todas as mensagens que atravessam o servidor, para auditoria",
       "Um servidor SMTP que aceita mensagens de remotos para destinatários externos, podendo ser usado para forjar remetentes"
     ],
@@ -766,7 +766,7 @@
   {
     "question": "Para que serve o registo SPF de um domínio?",
     "answers": [
-      "Para declarar os servidores POP3 e IMAP autorizados a ler as mailboxes do domínio",
+      "Para declarar os servidores POP3 e IMAP autorizados a ler as mailboxes do domínio, impedindo outros acessos",
       "Para indicar a prioridade de cada servidor de correio do domínio",
       "Para cifrar o conteúdo das mensagens enviadas pelo domínio",
       "Para declarar os servidores SMTP autorizados a enviar mensagens com remetentes do domínio"
@@ -805,7 +805,7 @@
   {
     "question": "Que comando do POP3 indica o nome do utilizador na autenticação?",
     "answers": [
-      "PASS",
+      "PASS (password)",
       "LIST",
       "STAT",
       "USER"
@@ -819,7 +819,7 @@
     "question": "Que comando do POP3 envia a password na autenticação simples?",
     "answers": [
       "PASS",
-      "RETR",
+      "RETR <número da mensagem>",
       "USER",
       "APOP"
     ],
@@ -911,7 +911,7 @@
     "answers": [
       "1.0",
       "3.1",
-      "2.0",
+      "2.0, introduzida em 2005",
       "0.9"
     ],
     "correct_index": 0,
@@ -961,7 +961,7 @@
   {
     "question": "Que tipo de conteúdo MIME permite que uma mensagem tenha várias partes de tipos diferentes, por exemplo anexos?",
     "answers": [
-      "image",
+      "image/jpeg, png",
       "audio",
       "multipart",
       "text"
@@ -1054,7 +1054,7 @@
     "answers": [
       "=E7",
       "=E9",
-      "=C7",
+      "=C7 (letra Ç maiúscula)",
       "=7E"
     ],
     "correct_index": 0,
@@ -1118,7 +1118,7 @@
     "question": "Quantos caracteres base64 resultam de cada três bytes do original?",
     "answers": [
       "Seis",
-      "Cinco",
+      "Cinco caracteres",
       "Três",
       "Quatro"
     ],
@@ -1195,7 +1195,7 @@
   {
     "question": "Qual é o resultado da codificação base64 do texto \"ISEP\"?",
     "answers": [
-      "SVNFUAA=",
+      "SVNFUAA= (com padding)",
       "SVNFUA=",
       "SVNFUA",
       "SVNFUA=="
@@ -1208,7 +1208,7 @@
   {
     "question": "Quantos caracteres tem a codificação base64 de 30 bytes de dados?",
     "answers": [
-      "41 caracteres",
+      "41 caracteres, incluindo o padding =",
       "40 caracteres",
       "45 caracteres",
       "30 caracteres"

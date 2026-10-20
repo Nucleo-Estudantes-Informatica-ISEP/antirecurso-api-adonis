@@ -796,7 +796,7 @@
     "answers": [
       "4 (bits 0100)",
       "1 (bits 0001)",
-      "6 (bits 0110)",
+      "6 (bits 0110, versão do IPv6)",
       "5 (bits 0101)"
     ],
     "correct_index": 0,
@@ -846,7 +846,7 @@
   {
     "question": "Um datagrama IPv4 tem Total length = 1500 bytes e IHL = 5. Quantos bytes de dados (payload) transporta?",
     "answers": [
-      "1500 bytes",
+      "1500 bytes (com header)",
       "1480 bytes",
       "1496 bytes",
       "1460 bytes"
@@ -950,7 +950,7 @@
   {
     "question": "Qual é a função do campo Protocol do cabeçalho IPv4?",
     "answers": [
-      "Identificar o protocolo a que pertencem os dados transportados, permitindo a multiplexagem",
+      "Identificar o protocolo a que pertencem os dados transportados (multiplexagem)",
       "Indicar a aplicação de destino dentro do nó que recebe o pacote, através de um porto",
       "Identificar a tecnologia de camada 2 usada na ligação seguinte do caminho do pacote",
       "Indicar a versão do protocolo IP usada pelo emissor do pacote no cabeçalho"
@@ -977,7 +977,7 @@
     "question": "Porque é que um router tem de recalcular o checksum do cabeçalho IPv4 antes de retransmitir o pacote?",
     "answers": [
       "Porque altera o cabeçalho, por exemplo decrementando o TTL",
-      "Porque o checksum também protege os dados do pacote",
+      "Porque o checksum também protege os dados do pacote transportados no payload",
       "Porque fragmenta sempre os pacotes que recebe",
       "Porque muda o endereço IPv4 de origem do pacote"
     ],
@@ -989,7 +989,7 @@
   {
     "question": "Qual é a MTU de uma frame Ethernet II?",
     "answers": [
-      "1518 bytes",
+      "1518 com o FCS",
       "576 bytes",
       "64 Kbytes",
       "1500 bytes"
@@ -1044,7 +1044,7 @@
       "Para indicar se existem mais fragmentos a seguir",
       "Para indicar a MTU máxima do caminho",
       "Para identificar os fragmentos que pertencem ao mesmo datagrama",
-      "Para indicar a posição do fragmento no datagrama original"
+      "Para indicar a posição do fragmento no datagrama original, em múltiplos de 8 bytes"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1106,7 +1106,7 @@
   {
     "question": "Que mensagem recebe o emissor quando um router descarta um pacote com DF ativa por exceder a MTU?",
     "answers": [
-      "ICMP Time Exceeded com o código 0, a informar que o TTL chegou a zero no router",
+      "ICMP Time Exceeded com o código 0, a informar que o TTL chegou a zero no router que descartou o pacote",
       "ICMP Redirect com o endereço do melhor router a usar para chegar ao destino",
       "ICMP Echo Reply com o valor da MTU do router que descartou o pacote",
       "ICMP Destination Unreachable com o código Fragmentation needed and DF set e a MTU em causa"
@@ -1265,7 +1265,7 @@
       "O protocolo de camada 3 transportado dentro do datagrama UDP",
       "O nó de origem ou de destino do datagrama, dentro da rede",
       "A aplicação, dentro do nó, de origem ou de destino do datagrama",
-      "A tecnologia de camada 2 usada na ligação seguinte do datagrama"
+      "A tecnologia de camada 2 usada na ligação seguinte do caminho do datagrama"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1433,7 +1433,7 @@
     "answers": [
       "Tipo 5",
       "Tipo 0",
-      "Tipo 8",
+      "Tipo 8, com código 0",
       "Tipo 3"
     ],
     "correct_index": 1,
@@ -1460,7 +1460,7 @@
       "O comando ping",
       "O comando traceroute",
       "O comando arp",
-      "O comando netstat"
+      "O comando netstat -r -n"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1601,7 +1601,7 @@
     "question": "Que mecanismo usa o TCP para garantir a entrega fiável dos dados?",
     "answers": [
       "Retransmissão automática feita pelo IPv4 quando o checksum falha",
-      "Código de correção de erros FEC incluído em todos os segmentos enviados",
+      "Código de correção de erros FEC incluído em todos os segmentos enviados, sem retransmissões",
       "Controlo de erros baseado num protocolo de janela deslizante orientado ao byte",
       "Circuitos virtuais estabelecidos pelos routers antes do envio dos segmentos"
     ],
@@ -1614,7 +1614,7 @@
     "question": "Quantos bits tem o campo Sequence Number do cabeçalho TCP?",
     "answers": [
       "32 bits",
-      "48 bits",
+      "48 bits, tal como o endereço MAC",
       "8 bits",
       "16 bits"
     ],
@@ -1655,7 +1655,7 @@
       "O número de sequência do próximo byte que o emissor do segmento espera receber",
       "O número de bytes que o recetor ainda consegue guardar no seu buffer",
       "O número do último segmento recebido corretamente pelo emissor do segmento",
-      "O número de sequência do último byte recebido corretamente pelo emissor"
+      "O número de sequência do último byte que o emissor do segmento recebeu corretamente"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1783,7 +1783,7 @@
     "question": "Para o primeiro ACK recebido numa ligação TCP, com um RTT medido de 600 ms, que valor passa o RTO a ter?",
     "answers": [
       "1,8 s",
-      "0,6 s",
+      "0,6 s (o RTT)",
       "0,2 s",
       "3 s"
     ],
@@ -1836,7 +1836,7 @@
     "answers": [
       "128.0.0.0/2 (começam pelos bits 10)",
       "224.0.0.0/4 (começam pelos bits 1110)",
-      "240.0.0.0/4 (começam pelos bits 1111)",
+      "240.0.0.0/4 (começam pelos bits 1111, experimental)",
       "192.0.0.0/3 (começam pelos bits 110)"
     ],
     "correct_index": 1,
@@ -1886,7 +1886,7 @@
   {
     "question": "Que endereço Ethernet de destino tem a frame que transporta um pacote IPv4 enviado para 224.0.0.7?",
     "answers": [
-      "FF:FF:FF:FF:FF:FF",
+      "FF:FF:FF:FF:FF:FF (broadcast)",
       "01:00:5E:7F:FF:FF",
       "00:00:5E:00:00:07",
       "01:00:5E:00:00:07"
@@ -1913,7 +1913,7 @@
     "question": "Para que serve o IGMP?",
     "answers": [
       "Gerir os grupos multicast IPv4, permitindo aos routers saber que redes têm membros de cada grupo",
-      "Atribuir endereços multicast aos nós, com um lease time, a partir de um servidor central",
+      "Atribuir endereços multicast aos nós, com um lease time, a partir de um servidor central, tal como faz o DHCP para endereços unicast",
       "Reencaminhar pacotes multicast entre sistemas autónomos diferentes da Internet",
       "Converter endereços multicast IPv4 em endereços MAC de multicast de camada 2"
     ],
@@ -1951,7 +1951,7 @@
   {
     "question": "Porque esperam os nós um período aleatório antes de enviar o IGMP Membership Report?",
     "answers": [
-      "Para renovar o lease time do endereço multicast atribuído ao grupo pelo router",
+      "Para renovar o lease time do endereço multicast atribuído ao grupo pelo router, antes de ele expirar",
       "Para dar tempo ao router de calcular o checksum do relatório que vai receber",
       "Para evitar colisões entre o relatório e o ARP reply enviado pelo router da rede",
       "Para evitar relatórios redundantes: quem ouve o de outro nó do grupo não envia o seu"
@@ -1992,7 +1992,7 @@
     "answers": [
       "Classe A",
       "Classe D",
-      "Classe C",
+      "Classe C (192 a 223)",
       "Classe B"
     ],
     "correct_index": 3,
@@ -2005,7 +2005,7 @@
     "answers": [
       "Classe B",
       "Classe D",
-      "Classe A",
+      "Classe A (/8)",
       "Classe C"
     ],
     "correct_index": 3,
@@ -2018,7 +2018,7 @@
     "answers": [
       "Classe C",
       "Classe A",
-      "Classe B",
+      "Classe B (/16)",
       "Classe D"
     ],
     "correct_index": 1,
@@ -2055,7 +2055,7 @@
   {
     "question": "Qual é o número máximo de nós válidos numa rede IPv4 de classe A?",
     "answers": [
-      "16777216",
+      "16777216 (incluindo rede e broadcast)",
       "16777214",
       "65534",
       "16777215"
@@ -2211,7 +2211,7 @@
   {
     "question": "Qual é o endereço de broadcast da rede 172.16.32.0/20?",
     "answers": [
-      "172.16.47.254",
+      "172.16.47.254/20",
       "172.16.32.0",
       "172.16.48.0",
       "172.16.47.255"
@@ -2240,7 +2240,7 @@
       "10.200.0.0",
       "10.208.0.0",
       "10.207.255.255",
-      "10.207.255.254"
+      "10.207.255.254 (último nó)"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -2305,7 +2305,7 @@
       "192.168.1.128",
       "192.168.2.0",
       "192.168.1.255",
-      "192.168.1.0"
+      "192.168.1.0 (/24)"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -2315,7 +2315,7 @@
   {
     "question": "Qual é o endereço de broadcast da rede 192.168.1.128/25?",
     "answers": [
-      "192.168.2.0",
+      "192.168.2.0, o endereço seguinte ao broadcast",
       "192.168.1.128",
       "192.168.1.254",
       "192.168.1.255"
@@ -2344,7 +2344,7 @@
       "10.0.0.0",
       "10.127.255.255",
       "10.128.0.0",
-      "10.127.255.254"
+      "10.127.255.254 (último nó)"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -2370,7 +2370,7 @@
       "172.20.192.0",
       "172.20.191.255",
       "172.20.128.0",
-      "172.20.191.254"
+      "172.20.191.254 (último nó)"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -2395,7 +2395,7 @@
     "answers": [
       "192.168.100.222",
       "192.168.100.192",
-      "192.168.100.224",
+      "192.168.100.224, o início da rede seguinte",
       "192.168.100.223"
     ],
     "correct_index": 3,
@@ -2408,7 +2408,7 @@
     "answers": [
       "203.0.114.0",
       "203.0.113.255",
-      "203.0.113.240",
+      "203.0.113.240 (/28)",
       "203.0.113.248"
     ],
     "correct_index": 3,
@@ -2422,7 +2422,7 @@
       "203.0.113.248",
       "203.0.113.255",
       "203.0.113.254",
-      "203.0.114.0"
+      "203.0.114.0, o endereço da rede seguinte"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -2474,7 +2474,7 @@
       "6",
       "14",
       "15",
-      "16"
+      "16 endereços válidos"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -2500,7 +2500,7 @@
       "510",
       "1022",
       "1023",
-      "1024"
+      "1024, contando rede e broadcast"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -2537,7 +2537,7 @@
     "question": "Qual é a máscara de rede equivalente ao prefixo /12?",
     "answers": [
       "255.240.0.0",
-      "255.248.0.0",
+      "255.248.0.0 (/13)",
       "255.252.0.0",
       "255.224.0.0"
     ],
@@ -2575,7 +2575,7 @@
   {
     "question": "Qual é a máscara de rede equivalente ao prefixo /20?",
     "answers": [
-      "255.255.224.0",
+      "255.255.224.0 (/19)",
       "255.255.248.0",
       "255.255.240.0",
       "255.255.252.0"
@@ -2588,7 +2588,7 @@
   {
     "question": "Qual é a máscara de rede equivalente ao prefixo /21?",
     "answers": [
-      "255.255.254.0",
+      "255.255.254.0 (/23)",
       "255.255.248.0",
       "255.255.252.0",
       "255.255.240.0"
@@ -2603,7 +2603,7 @@
     "answers": [
       "255.255.255.0",
       "255.255.252.0",
-      "255.255.254.0",
+      "255.255.254.0/22",
       "255.255.248.0"
     ],
     "correct_index": 1,
@@ -2616,7 +2616,7 @@
     "answers": [
       "255.255.255.0",
       "255.255.255.224",
-      "255.255.255.192",
+      "255.255.255.192 (/26)",
       "255.255.255.128"
     ],
     "correct_index": 3,
@@ -2627,7 +2627,7 @@
   {
     "question": "Qual é a máscara de rede equivalente ao prefixo /26?",
     "answers": [
-      "255.255.255.224",
+      "255.255.255.224 (/27)",
       "255.255.255.240",
       "255.255.255.128",
       "255.255.255.192"
@@ -2643,7 +2643,7 @@
       "255.255.255.192",
       "255.255.255.248",
       "255.255.255.224",
-      "255.255.255.240"
+      "255.255.255.240, com 16 endereços por rede"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -2706,7 +2706,7 @@
     "question": "Qual é o prefixo de rede mais longo que permite endereçar pelo menos 500 nós em um piso, sem desperdiçar espaço de endereçamento?",
     "answers": [
       "/23",
-      "/22",
+      "/22 (1022 nós)",
       "/25",
       "/24"
     ],

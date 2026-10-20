@@ -1256,7 +1256,7 @@
   {
     "question": "Qual é a técnica de controlo de acesso ao meio usada nas redes Ethernet originais, de meio partilhado?",
     "answers": [
-      "RTS/CTS (Request to Send / Clear to Send) entre os nós",
+      "RTS/CTS (Request to Send / Clear to Send) trocados entre os nós antes de cada frame",
       "CSMA/CD (Carrier Sense Multiple Access with Collision Detection)",
       "Token passing, tal como nas redes Token-Ring (IEEE 802.5)",
       "CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance)"
@@ -1348,7 +1348,7 @@
     "question": "Que equipamentos isolam domínios de colisão?",
     "answers": [
       "Os repetidores de duas portas, que regeneram os símbolos recebidos",
-      "Os hubs repetidores, que amplificam os sinais para todas as portas",
+      "Os hubs repetidores, que amplificam e regeneram os sinais para todas as portas",
       "Os dispositivos store & forward, como os switches, e também os routers",
       "Os cabos coaxiais blindados que ligam os segmentos da rede"
     ],
@@ -1477,7 +1477,7 @@
   {
     "question": "Entre que valores varia o comprimento total de uma frame Ethernet II?",
     "answers": [
-      "46 e 1518 bytes",
+      "46 e 1518 bytes, sem contar o FCS",
       "64 e 1518 bytes",
       "64 e 1500 bytes",
       "46 e 1500 bytes"
@@ -1491,7 +1491,7 @@
     "question": "Quantos bytes tem o campo FCS de uma frame Ethernet II?",
     "answers": [
       "2 bytes",
-      "8 bytes",
+      "8 bytes (CRC-64)",
       "4 bytes",
       "6 bytes"
     ],
@@ -1519,7 +1519,7 @@
       "Em 4 bytes de FCS, seguidos do endereço MAC de destino da frame a emitir a seguir",
       "Em 7 bytes com zeros e uns alternados, seguidos de um byte SFD que termina com dois uns",
       "Em 96 bits a um, seguidos do endereço de broadcast da rede em que o nó se encontra",
-      "Em 7 bytes todos a zero, seguidos de um byte SFD também todo ele constituído por zeros"
+      "Em 7 bytes todos a zero, seguidos de um byte SFD também todo ele constituído por zeros, para sincronizar o recetor"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1569,7 +1569,7 @@
     "question": "Que meios de transmissão usam as variantes Ethernet em estrela 10baseT, 10baseFL e 10baseFB?",
     "answers": [
       "Dois pares de cobre (10baseT) ou duas fibras óticas (10baseFL e 10baseFB) por nó",
-      "Um cabo coaxial grosso, ao qual todos os nós se ligam diretamente por derivação",
+      "Um cabo coaxial grosso, ao qual todos os nós se ligam diretamente por derivação (vampire tap)",
       "Um único par de cobre partilhado por todos os nós para emissão e para receção",
       "Quatro pares de cobre CAT6A, ligados a um access point sem fios central"
     ],
@@ -1607,7 +1607,7 @@
   {
     "question": "Qual das seguintes funcionalidades caracteriza um switch Ethernet?",
     "answers": [
-      "Amplificar o sinal recebido, ruído incluído, e reenviá-lo para todas as portas",
+      "Amplificar o sinal recebido, ruído incluído, e reenviá-lo para todas as portas menos a de entrada",
       "Aprender os endereços de origem e retransmitir cada frame só na porta do destino",
       "Escolher o caminho dos pacotes IP com base no endereço de rede de destino",
       "Copiar cada frame recebida para todas as portas, incluindo a de entrada"
@@ -1633,7 +1633,7 @@
   {
     "question": "O que acontece, numa rede que mistura hubs e switches, às zonas cobertas por hubs?",
     "answers": [
-      "Formam um único domínio de colisão que abrange a rede inteira, incluindo os switches",
+      "Formam um único domínio de colisão que abrange a rede inteira, incluindo todos os portos dos switches",
       "Continuam a usar CSMA/CD e formam domínios de colisão locais, confinados pelos switches",
       "Passam a usar full-duplex sem necessidade de CSMA/CD, tal como os restantes segmentos",
       "Deixam de poder comunicar com os nós ligados aos switches, por usarem CSMA/CD"
@@ -1662,7 +1662,7 @@
       "10GbaseLR",
       "1000baseSX",
       "1000baseT",
-      "1000baseLX"
+      "1000baseLX-SMF"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1675,7 +1675,7 @@
       "1000baseLX",
       "1000baseT",
       "1000baseSX",
-      "10GbaseSR"
+      "10GbaseSR, em fibra multimode"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1791,7 +1791,7 @@
     "answers": [
       "0x8100",
       "0x0806",
-      "0x86DD",
+      "0x86DD (IPv6)",
       "0x0800"
     ],
     "correct_index": 0,
@@ -1802,7 +1802,7 @@
   {
     "question": "Quantos bytes acrescenta a etiqueta 802.1Q a uma frame Ethernet II?",
     "answers": [
-      "6 bytes",
+      "6 bytes (um endereço MAC)",
       "2 bytes",
       "8 bytes",
       "4 bytes"
@@ -1857,7 +1857,7 @@
       "Colocando o identificador da VLAN no campo FCS de cada frame que atravessa o switch",
       "Atribuindo a cada VLAN um subconjunto das suas portas, como switches virtuais independentes",
       "Usando um endereço de broadcast diferente para cada VLAN configurada no switch",
-      "Alterando o endereço MAC de origem de cada frame que recebe, de acordo com a VLAN da porta"
+      "Alterando o endereço MAC de origem de cada frame que recebe, de acordo com a VLAN da porta de entrada"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1919,7 +1919,7 @@
   {
     "question": "Qual é a taxa de transmissão máxima que o 802.11n consegue atingir, segundo a aula?",
     "answers": [
-      "1 Gbps",
+      "1 Gbps, com canais de 80 MHz",
       "100 Mbps",
       "54 Mbps",
       "600 Mbps"
@@ -1945,7 +1945,7 @@
   {
     "question": "Qual é a restrição legal da potência de emissão no Wi-Fi, que limita o seu alcance?",
     "answers": [
-      "10 mW",
+      "10 mW, em todas as bandas",
       "1 W",
       "1 mW",
       "100 mW"
@@ -2025,7 +2025,7 @@
     "answers": [
       "O destino envia um RTS ao emissor, que responde com um CTS e depois com os dados da frame",
       "O emissor envia um RTS ao destino, que pode responder com um CTS; os nós que ouvem um deles esperam",
-      "O access point envia um RTS a todos os nós da célula antes de cada frame que cada um emite",
+      "O access point envia um RTS a todos os nós da célula antes de cada frame que cada um emite, e aguarda um CTS",
       "O emissor envia um CTS ao destino e, se não receber um RTS, repete a emissão da frame"
     ],
     "correct_index": 1,
@@ -2075,7 +2075,7 @@
   {
     "question": "Qual é a vantagem do modo infraestrutura em conjunto com RTS/CTS?",
     "answers": [
-      "Os nós da célula passam a poder emitir e receber ao mesmo tempo, em full-duplex",
+      "Os nós da célula passam a poder emitir e receber ao mesmo tempo, em full-duplex, no mesmo canal",
       "O AP dispensa o envio de ACK por parte dos nós que recebem as frames na célula",
       "O AP participa em todos os diálogos RTS/CTS e evita assim a maior parte das colisões",
       "O AP passa a ser o único nó da célula que está autorizado a escutar o meio"
@@ -2104,7 +2104,7 @@
       "O endereço MAC de 48 bits do access point",
       "A chave secreta partilhada com os nós",
       "O canal de rádio usado pela célula",
-      "O nome da rede, com 0 a 32 bytes"
+      "O nome da rede (SSID), com 0 a 32 bytes de texto"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -2155,7 +2155,7 @@
     "answers": [
       "O SSID de cada célula tem de passar a ser diferente",
       "Os domínios de colisão aumentam, abrangendo mais nós",
-      "A taxa de transmissão de cada nó diminui em todas as células",
+      "A taxa de transmissão de cada nó diminui em todas as células da rede sem fios",
       "Cada célula passa a ter menos nós e domínios de colisão mais pequenos"
     ],
     "correct_index": 3,
@@ -2232,7 +2232,7 @@
     "question": "O que é necessário para a privacidade das frames 802.11, dado que são publicamente acessíveis?",
     "answers": [
       "A encriptação das frames, por exemplo por chave simétrica partilhada entre nó e AP",
-      "A utilização exclusiva da banda de 5 GHz, onde o sinal é mais difícil de captar",
+      "A utilização exclusiva da banda de 5 GHz, onde o sinal é mais difícil de captar por terceiros",
       "A redução da potência de emissão para menos de 100 mW, que limita o alcance",
       "A autenticação baseada no endereço MAC de cada nó, que identifica quem emite"
     ],
@@ -2257,7 +2257,7 @@
   {
     "question": "Que largura de banda exige o 802.11g quando o sinal é modulado?",
     "answers": [
-      "54 MHz",
+      "54 MHz, igual ao débito",
       "5 MHz",
       "22 MHz",
       "11 MHz"
@@ -2284,7 +2284,7 @@
     "question": "Qual das seguintes afirmações sobre a banda de 5 GHz é verdadeira?",
     "answers": [
       "Há muitos mais canais, e os access points escolhem-nos automaticamente através de DFS",
-      "Existem apenas três canais sem sobreposição, tal como acontece na banda de 2,4 GHz",
+      "Existem apenas três canais sem sobreposição (1, 6 e 11), tal como acontece na banda de 2,4 GHz",
       "O planeamento manual dos canais é obrigatório, tal como nos 2,4 GHz",
       "O sinal atravessa as lajes entre pisos com mais facilidade do que nos 2,4 GHz"
     ],
@@ -2348,7 +2348,7 @@
   {
     "question": "Quantas fibras óticas pode ligar, no máximo, um conector MPO (Multi-fibre Push On)?",
     "answers": [
-      "Até 24 fibras",
+      "Até 24 fibras no total",
       "Até 8 fibras",
       "Até 2 fibras",
       "Até 72 fibras"
@@ -2441,7 +2441,7 @@
     "answers": [
       "Regista B associado à porta 2 e retransmite a frame apenas na porta 1",
       "Retransmite a frame apenas na porta 2, onde B está ligado",
-      "Retransmite a frame nas portas 1, 3 e 4, porque ainda não conhece B",
+      "Retransmite a frame nas portas 1, 3 e 4, porque ainda não conhece B, fazendo flooding",
       "Descarta a frame, porque o endereço de B já era conhecido"
     ],
     "correct_index": 0,
@@ -2455,7 +2455,7 @@
       "Para libertar memória sempre que a frame é de broadcast",
       "Para que o switch volte a calcular o FCS das frames guardadas",
       "Para o switch se adaptar quando um nó é mudado de uma porta para outra",
-      "Para impedir que dois nós usem o mesmo endereço MAC"
+      "Para impedir que dois nós ligados ao mesmo switch usem o mesmo endereço MAC"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -2468,7 +2468,7 @@
       "64 μs",
       "51,2 μs",
       "5,12 μs",
-      "512 μs"
+      "512 μs, que é o valor a 1 Mbps"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -2492,7 +2492,7 @@
     "question": "Qual é o tempo de transmissão da frame Ethernet mínima (64 bytes) a 1 Gbps?",
     "answers": [
       "0,512 μs",
-      "5,12 μs",
+      "5,12 μs/frame",
       "51,2 μs",
       "8 μs"
     ],
@@ -2531,7 +2531,7 @@
     "question": "Qual é o comprimento total de uma frame Ethernet II cujo campo de dados tem o valor mínimo de 46 bytes?",
     "answers": [
       "64 bytes",
-      "46 bytes",
+      "46 bytes, igual ao campo de dados mínimo",
       "72 bytes",
       "60 bytes"
     ],
@@ -2556,7 +2556,7 @@
   {
     "question": "Qual é o endereço de destino que uma frame Ethernet usa para chegar a todos os nós do domínio de broadcast?",
     "answers": [
-      "01:80:C2:00:00:00",
+      "01:80:C2:00:00:00, usado pelo spanning tree",
       "FF:FF:FF:FF:FF:FF",
       "00:00:00:00:00:00",
       "FF:FF:FF:00:00:00"

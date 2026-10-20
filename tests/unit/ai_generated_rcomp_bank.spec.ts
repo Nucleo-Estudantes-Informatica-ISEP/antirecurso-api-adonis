@@ -7,12 +7,12 @@ const rcompDirectory = fileURLToPath(
 )
 
 test.group('AI-generated RCOMP question bank', () => {
-  test('loads without problems and keeps its 2716 questions', async ({ assert }) => {
+  test('loads without problems and keeps its 2715 questions', async ({ assert }) => {
     const questions = await loadAiGeneratedSubjectQuestions(rcompDirectory)
 
-    assert.lengthOf(questions, 2716)
+    assert.lengthOf(questions, 2715)
     assert.equal(questions.filter((entry) => entry.answers.length === 2).length, 1341)
-    assert.equal(questions.filter((entry) => entry.answers.length === 4).length, 1375)
+    assert.equal(questions.filter((entry) => entry.answers.length === 4).length, 1374)
   })
 
   test('only uses true/false and four-option formats', async ({ assert }) => {
@@ -49,6 +49,24 @@ test.group('AI-generated RCOMP question bank', () => {
       assert.isAbove(count / fourOptions.length, 0.2)
       assert.isBelow(count / fourOptions.length, 0.3)
     }
+  })
+
+  test('the correct answer is not systematically the longest option', async ({ assert }) => {
+    const questions = await loadAiGeneratedSubjectQuestions(rcompDirectory)
+    const fourOptions = questions.filter((entry) => entry.answers.length === 4)
+    const lengths = (entry: (typeof fourOptions)[number]) => entry.answers.map((a) => a.length)
+
+    const longestOrTied = fourOptions.filter((entry) => {
+      const sizes = lengths(entry)
+      return sizes[entry.correct_index] === Math.max(...sizes)
+    })
+    const firstLongest = fourOptions.filter((entry) => {
+      const sizes = lengths(entry)
+      return sizes.indexOf(Math.max(...sizes)) === entry.correct_index
+    })
+
+    assert.isBelow(longestOrTied.length / fourOptions.length, 0.3)
+    assert.isBelow(firstLongest.length / fourOptions.length, 0.25)
   })
 
   test('true/false questions are roughly balanced between true and false', async ({ assert }) => {

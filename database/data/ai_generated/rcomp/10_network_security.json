@@ -883,7 +883,7 @@
     "question": "Qual é o papel da chave pública e da chave privada nas cifras assimétricas?",
     "answers": [
       "A chave privada cifra e a pública decifra; ambas são mantidas secretas",
-      "A chave pública cifra e a privada decifra; só a privada é mantida secreta, por um único dono",
+      "A chave pública cifra e a privada decifra; só a privada é mantida secreta",
       "A chave pública e a privada cifram e decifram, e ambas são partilhadas",
       "A chave pública cifra e a privada decifra; ambas são conhecidas pelas duas partes"
     ],
@@ -896,9 +896,9 @@
     "question": "Qual é a grande vantagem da criptografia de chave pública?",
     "answers": [
       "Dispensa o uso de qualquer chave privada em ambas as partes",
-      "A chave de cifra é pública, pelo que pode ser enviada pela rede sem problemas de segurança",
+      "A chave de cifra é pública, pelo que pode ser enviada pela rede sem riscos",
       "Garante, por si só, a autenticação do interlocutor",
-      "É mais rápida do que as cifras simétricas e serve para grandes volumes de dados"
+      "É mais rápida do que as cifras simétricas e serve para cifrar grandes volumes de dados"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -910,7 +910,7 @@
     "answers": [
       "Porque qualquer pessoa pode usar a chave pública, logo os dados cifrados não revelam o emissor",
       "Porque o algoritmo RSA não consegue cifrar dados com a chave pública de outra aplicação",
-      "Porque a chave privada é divulgada a todas as aplicações da rede durante o diálogo seguro",
+      "Porque a chave privada é divulgada a todas as aplicações da rede durante o diálogo seguro de autenticação",
       "Porque a chave pública é secreta e conhecida apenas pelo servidor com que se comunica"
     ],
     "correct_index": 0,
@@ -1002,7 +1002,7 @@
       "A chave pública, a identificação de uma entidade (subject) e a assinatura da CA",
       "A chave simétrica, o nome do utilizador e o vetor de inicialização da sessão",
       "O hash da password, o porto TCP do servidor e o número de sequência",
-      "A chave privada, o endereço IP do servidor e a assinatura digital do cliente"
+      "A chave privada do servidor, o endereço IP da entidade e a assinatura digital do cliente final"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1040,7 +1040,7 @@
     "answers": [
       "A CA que assina todos os certificados com a mesma chave simétrica da sessão",
       "A CA na base da árvore, cujo certificado é auto-assinado (issuer igual a subject)",
-      "A CA que emite certificados apenas para servidores web, de acordo com o seu tipo",
+      "A CA que emite certificados apenas para servidores web, de acordo com o seu tipo e domínio",
       "A CA que só emite certificados para outras ROOT CA de nível equivalente"
     ],
     "correct_index": 1,
@@ -1105,7 +1105,7 @@
     "answers": [
       "Ao nome da CA que emitiu o certificado",
       "Ao endereço IP do cliente de correio",
-      "Ao nome DNS do servidor de correio do domínio",
+      "Ao nome DNS do servidor de correio do domínio do destinatário",
       "Ao endereço de correio eletrónico da outra parte"
     ],
     "correct_index": 3,
@@ -1195,7 +1195,7 @@
     "question": "Depois de autenticado o servidor, como é estabelecida a chave simétrica de sessão no TLS?",
     "answers": [
       "Usando as chaves públicas autenticadas (ou Diffie–Hellman) para a estabelecer em segurança",
-      "O cliente gera-a e envia-a ao servidor sem qualquer proteção criptográfica pelo caminho",
+      "O cliente gera-a e envia-a ao servidor sem qualquer proteção criptográfica pelo caminho da ligação",
       "É derivada do endereço IP do cliente e do endereço IP do servidor com que comunica",
       "O servidor envia-a em claro, no interior da mensagem Server Hello enviada ao cliente"
     ],
@@ -1207,7 +1207,7 @@
   {
     "question": "Porque é que o servidor TLS, em regra, não exige certificado ao cliente?",
     "answers": [
-      "Porque a autenticação do cliente é feita pela CA durante o handshake, e não pelo servidor",
+      "Porque a autenticação do cliente é feita pela CA durante o handshake, e não pelo servidor, que nunca valida identidades",
       "Porque o TLS não permite, em nenhuma situação, a autenticação do cliente pelo servidor",
       "Porque os clientes não têm capacidade para cifrar dados com RSA nem para os decifrar",
       "Porque os clientes são muitos e anónimos; o que é vital é o cliente autenticar o servidor"
@@ -1222,7 +1222,7 @@
     "answers": [
       "Apenas se o certificado foi emitido para um subdomínio da CA que o assinou",
       "Apenas se a chave pública do certificado tem 2048 bits ou mais de comprimento",
-      "Apenas se o certificado está auto-assinado e se o CN é um endereço IP numérico",
+      "Apenas se o certificado está auto-assinado e se o CN é um endereço IP numérico do servidor",
       "Prazo de validade, cadeia até um certificado de confiança local e CN igual ao nome DNS"
     ],
     "correct_index": 3,
@@ -1248,8 +1248,8 @@
     "answers": [
       "Uma rede física dedicada e separada da Internet, com cabos próprios entre as redes",
       "Um mecanismo de tradução de endereços privados em endereços públicos nas redes",
-      "Um protocolo de camada de aplicação para trocar ficheiros de forma segura entre redes",
-      "Uma ligação de camada 2 simulada, um túnel ponto a ponto cifrado, criada sobre uma rede existente"
+      "Um protocolo de camada de aplicação para trocar ficheiros de forma segura entre duas redes remotas",
+      "Uma ligação de camada 2 simulada (túnel ponto a ponto cifrado) sobre uma rede existente"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1260,8 +1260,8 @@
     "question": "Porque se diz que uma VPN é virtual?",
     "answers": [
       "Porque usa certificados virtuais assinados por uma CA de nível intermédio",
-      "Porque usa endereços IP virtuais atribuídos dinamicamente por um servidor DHCP",
-      "Porque não é uma infraestrutura física real, mas um túnel criado sobre uma rede existente",
+      "Porque usa endereços IP virtuais atribuídos dinamicamente por um servidor DHCP a cada utilizador",
+      "Porque não é uma infraestrutura física real, mas um túnel sobre uma rede existente",
       "Porque os dados são enviados em broadcast e não em unicast entre as duas redes"
     ],
     "correct_index": 2,
@@ -1311,7 +1311,7 @@
   {
     "question": "Qual é a utilização típica de uma VPN LAN-to-LAN (site-to-site)?",
     "answers": [
-      "Cifrar apenas o tráfego de correio eletrónico entre duas redes de uma organização",
+      "Cifrar apenas o tráfego de correio eletrónico entre duas redes de uma organização, deixando o restante em claro",
       "Substituir o servidor DNS de cada uma das redes por um servidor comum",
       "Criar uma ligação permanente entre duas redes remotas, transparente para os utilizadores",
       "Dar a um utilizador remoto acesso à rede da organização, criando a ligação a pedido"
@@ -1377,7 +1377,7 @@
     "question": "Como se comporta uma VPN de camada 2?",
     "answers": [
       "Como uma bridge: reencaminha todas as frames, incluindo o broadcast, e as redes ficam uma só",
-      "Como um hub: repete todos os sinais recebidos sem interpretar as frames recebidas",
+      "Como um hub: repete todos os sinais recebidos sem interpretar as frames, ao nível da camada 1 do modelo OSI",
       "Como uma firewall: filtra o tráfego pelas portas TCP e UDP dos pacotes recebidos",
       "Como um router: reencaminha pacotes de camada 3 e bloqueia o tráfego de broadcast"
     ],
@@ -1416,7 +1416,7 @@
     "question": "Porque é geralmente mais complexa de configurar uma VPN de camada 3?",
     "answers": [
       "Porque são necessárias redes distintas, com endereços de rede válidos, e encaminhamento",
-      "Porque exige a mesma tecnologia de camada 2 nos dois lados do túnel e nas redes ligadas",
+      "Porque exige a mesma tecnologia de camada 2 nos dois lados do túnel e em todas as redes ligadas",
       "Porque exige que o broadcast seja reencaminhado entre as duas redes que o túnel liga",
       "Porque exige cifras assimétricas em todos os pacotes que atravessam o túnel VPN"
     ],
@@ -1456,7 +1456,7 @@
     "answers": [
       "Porque a password é cifrada com a chave pública do utilizador antes do envio",
       "Porque a password é guardada apenas na CA e nunca no servidor VPN de destino",
-      "Porque a password é substituída por uma marca temporal em cada nova sessão VPN",
+      "Porque a password é substituída por uma marca temporal em cada nova sessão VPN estabelecida",
       "Porque cliente e servidor a conhecem e geram cada um a mesma chave com o desafio"
     ],
     "correct_index": 3,
@@ -1506,7 +1506,7 @@
   {
     "question": "O que são as SA (Security Associations) do IPsec?",
     "answers": [
-      "Listas de endereços IP autorizados a usar o IPsec nos nós de uma organização",
+      "Listas de endereços IP autorizados a usar o IPsec nos nós de uma organização, geridas pelo administrador de rede",
       "Chaves públicas partilhadas por todos os nós que comunicam com o IPsec ativo",
       "Registos, unidirecionais, que guardam as cifras e as chaves a usar com cada parte",
       "Certificados emitidos pela CA para cada um dos nós que usam o IPsec na rede"
@@ -1561,7 +1561,7 @@
       "Para identificar o protocolo de camada 3 transportado",
       "Para garantir que a flag 0x7E não aparece noutro ponto da frame",
       "Para detetar erros de transmissão nos dados da frame",
-      "Para aumentar o tamanho do campo de dados para 1500 bytes"
+      "Para aumentar o tamanho do campo de dados até ao MTU de 1500 bytes da ligação"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1574,7 +1574,7 @@
       "0xC021",
       "0xC223",
       "0x8021",
-      "0xC023"
+      "0xC023 (PAP)"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1623,7 +1623,7 @@
   {
     "question": "Qual é o número do protocolo IPv4 no PPP e do NCP correspondente (IPCP)?",
     "answers": [
-      "0xC021 e 0xC023",
+      "0xC021 e 0xC023 (LCP e PAP)",
       "0x0021 e 0x8021",
       "0x0057 e 0x8057",
       "0x8021 e 0x0021"
@@ -1638,7 +1638,7 @@
     "answers": [
       "CHAP",
       "IPCP",
-      "PAP",
+      "PAP, que envia a password em claro",
       "LCP"
     ],
     "correct_index": 0,
@@ -1767,7 +1767,7 @@
     "question": "Que protocolo de autenticação de utilizadores usa o PPTP da Microsoft?",
     "answers": [
       "MSCHAPv2",
-      "OCSP",
+      "OCSP, com certificados X.509",
       "IKE",
       "PAP"
     ],
@@ -1781,7 +1781,7 @@
     "answers": [
       "1194",
       "500",
-      "1723",
+      "1723 (PPTP)",
       "1701"
     ],
     "correct_index": 0,

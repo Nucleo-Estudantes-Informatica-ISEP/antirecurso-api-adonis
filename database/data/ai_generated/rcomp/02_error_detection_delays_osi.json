@@ -288,9 +288,9 @@
   {
     "question": "Como se faz a deteção de erros através de um código de validação?",
     "answers": [
-      "O recetor calcula o código a partir dos dados e envia-o ao emissor, que o compara com o que guardou",
+      "O recetor calcula o código a partir dos dados e envia-o ao emissor, que o compara com o que guardou antes",
       "O emissor envia cada pacote duas vezes e o recetor compara entre si as duas cópias recebidas",
-      "O emissor calcula o código e junta-o ao pacote; o recetor repete o cálculo e compara os dois códigos",
+      "O emissor calcula o código e junta-o ao pacote; o recetor repete o cálculo e compara os códigos",
       "O recetor soma todos os bits do pacote e compara o resultado com o tamanho do pacote em bytes"
     ],
     "correct_index": 2,
@@ -329,7 +329,7 @@
     "answers": [
       "Porque o código viaja sempre num canal separado do pacote, sujeito a muito mais ruído do que os dados",
       "Porque o recetor só verifica uma parte dos bits do pacote, ignorando os restantes bits de cada símbolo",
-      "Porque o emissor e o recetor calculam o código com funções diferentes entre si, o que impede uma comparação exata",
+      "Porque o emissor e o recetor calculam o código com funções diferentes entre si, o que impede uma comparação exata mesmo sem erros",
       "Porque uma alteração aleatória pode, com probabilidade muito baixa, resultar num pacote e num código que coincidem"
     ],
     "correct_index": 3,
@@ -341,7 +341,7 @@
     "question": "Qual é a diferença entre FEC e BEC?",
     "answers": [
       "Na FEC o recetor corrige sozinho erros de extensão limitada; na BEC pede ao emissor que retransmita o pacote",
-      "Na FEC o recetor pede ao emissor que retransmita o pacote; na BEC corrige os erros sozinho",
+      "Na FEC o recetor pede ao emissor que retransmita o pacote; na BEC corrige sozinho, sem retransmissão, erros de extensão limitada",
       "A FEC deteta erros através de um código e a BEC corrige-os com o mesmo código, sem retransmissão",
       "A FEC só se aplica a erros muito extensos e a BEC apenas a erros de poucos bits"
     ],
@@ -354,7 +354,7 @@
     "question": "Como se designa o controlo de erros baseado em pedidos de retransmissão feitos ao emissor?",
     "answers": [
       "ARQ (Automatic Repeat Request), do tipo BEC",
-      "FEC (Forward Error Correction), do tipo ARQ",
+      "FEC (Forward Error Correction), do tipo ARQ ou BEC",
       "ACK (Acknowledgement), do tipo FEC",
       "MAC (Media Access Control), do tipo BEC"
     ],
@@ -369,7 +369,7 @@
       "Porque a BEC é necessária para calcular o código de validação que a FEC utiliza na correção dos erros",
       "Porque a FEC só funciona em meios de transmissão simplex, enquanto a BEC apenas funciona em meios full-duplex",
       "Porque a FEC não consegue corrigir erros, apenas detetá-los, e é a BEC que depois os corrige por retransmissão",
-      "Porque a FEC só corrige erros limitados a poucos bits; os mais extensos têm de ser resolvidos por retransmissão"
+      "Porque a FEC só corrige erros de poucos bits; os mais extensos têm de ser resolvidos por retransmissão"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -434,7 +434,7 @@
       "Numa ligação full-duplex, com transmissão simultânea nos dois sentidos",
       "Numa ligação simplex, com transmissão apenas num sentido",
       "Em qualquer ligação, desde que o tamanho da janela W seja igual a um",
-      "Numa ligação half-duplex, com transmissão alternada nos dois sentidos"
+      "Numa ligação half-duplex, com transmissão alternada nos dois sentidos, sem confirmações"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -471,9 +471,9 @@
     "question": "O que é o continuous ARQ?",
     "answers": [
       "Uma técnica de FEC em que o recetor corrige erros continuamente",
-      "O mecanismo de pedido de retransmissão (ARQ) quando combinado com o stop and wait",
+      "O mecanismo de pedido de retransmissão (ARQ) quando combinado com o protocolo stop and wait",
       "O envio contínuo de ACK pelo recetor mesmo quando não recebe pacotes",
-      "O mecanismo de pedido de retransmissão (ARQ) quando combinado com o sliding window protocol"
+      "O mecanismo de retransmissão (ARQ) quando combinado com o sliding window protocol"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -486,7 +486,7 @@
       "Porque o recetor tem de saber a que porta da aplicação deve entregar o pacote",
       "Porque o número de sequência substitui o código de validação do pacote",
       "Porque, em caso de erro, o recetor tem de indicar ao emissor qual o pacote a retransmitir",
-      "Porque os nós intermédios precisam do número para calcular o caminho do pacote"
+      "Porque os nós intermédios precisam do número para calcular o caminho do pacote até ao destino"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -496,10 +496,10 @@
   {
     "question": "Qual é o objetivo do controlo de fluxo?",
     "answers": [
-      "Corrigir os erros detetados nos pacotes através da retransmissão dos pacotes afetados pelo erro",
+      "Corrigir os erros detetados nos pacotes através da retransmissão dos pacotes afetados pelo erro, a pedido do recetor",
       "Garantir que dois nós não emitem em simultâneo no mesmo meio de transmissão partilhado",
       "Escolher o caminho mais curto entre emissor e recetor, através dos nós intermédios da rede",
-      "Regular o fluxo entre emissor e recetor, evitando que este receba mais pacotes do que consegue tratar"
+      "Regular o fluxo entre emissor e recetor, evitando que este receba mais do que consegue tratar"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -509,7 +509,7 @@
   {
     "question": "Qual é o objetivo do controlo de erros (error control)?",
     "answers": [
-      "Impedir que o recetor receba mais pacotes do que consegue tratar",
+      "Impedir que o recetor receba mais pacotes do que consegue tratar, através de uma janela de emissão",
       "Atribuir um endereço único a cada um dos nós da rede",
       "Corrigir os erros que foram detetados pelo mecanismo de deteção de erros",
       "Detetar se um pacote foi alterado durante a sua transmissão"
@@ -695,7 +695,7 @@
   {
     "question": "Que latência acrescenta um nó intermédio store & forward ao percurso de um pacote, mesmo com a fila vazia?",
     "answers": [
-      "O dobro do atraso de propagação do pacote entre os dois nós vizinhos",
+      "O dobro do atraso de propagação do pacote entre os dois nós vizinhos e o tempo de espera na fila",
       "O tempo de transmissão do pacote, porque o recebe totalmente e só depois o emite",
       "O tempo de espera por um ACK enviado pelo nó de destino do pacote",
       "Nenhuma, porque o pacote é emitido assim que o primeiro bit é recebido"
@@ -721,7 +721,7 @@
   {
     "question": "Qual é a diferença entre os modos store & forward e cut-through num nó intermédio?",
     "answers": [
-      "No store & forward o pacote começa a ser emitido antes de ser totalmente recebido; no cut-through só depois",
+      "No store & forward o pacote começa a ser emitido antes de ser totalmente recebido; no cut-through só depois de o receber por completo",
       "No store & forward o pacote é totalmente recebido antes de ser emitido; no cut-through começa a ser emitido antes disso",
       "No store & forward os pacotes ficam numa fila FIFO; no cut-through ficam numa fila de prioridades",
       "No store & forward o nó descarta os pacotes com erros; no cut-through reencaminha todos os pacotes"
@@ -734,7 +734,7 @@
   {
     "question": "Um pacote de 1500 bytes é emitido a 100 Mbps. Qual é o tempo de transmissão?",
     "answers": [
-      "1,2 ms",
+      "1,2 ms/pacote",
       "15 μs",
       "12 μs",
       "120 μs"
@@ -748,7 +748,7 @@
     "question": "Um pacote de 1000 bytes é emitido a 10 Mbps. Qual é o tempo de transmissão?",
     "answers": [
       "800 μs",
-      "100 μs",
+      "100 μs por pacote",
       "80 μs",
       "8 ms"
     ],
@@ -1353,7 +1353,7 @@
     "question": "Que funcionalidade caracteriza a camada 4 (transport) do modelo OSI?",
     "answers": [
       "Pacotes locais e endereços locais",
-      "Controlo do diálogo entre aplicações",
+      "Controlo do diálogo entre aplicações, com sincronização",
       "Transporte fiável de dados entre nós terminais",
       "Pacotes universais e endereços universais"
     ],
@@ -1392,7 +1392,7 @@
     "question": "Que camada do modelo OSI trata do line coding, da modulação e dos meios físicos (cabos e conectores)?",
     "answers": [
       "A camada 1 (physical link)",
-      "A camada 2 (logical link)",
+      "A camada 2 (logical link), com as frames",
       "A camada 4 (transport)",
       "A camada 3 (network)"
     ],
@@ -1445,7 +1445,7 @@
     "answers": [
       "As portas físicas dos equipamentos de rede onde se ligam os cabos",
       "Os endereços dos nós intermédios da rede por onde passa o pacote",
-      "Os campos do cabeçalho que identificam o protocolo da camada superior",
+      "Os campos do cabeçalho que identificam o protocolo da camada superior que recebe os dados",
       "Os pontos onde uma camada usa os serviços da camada imediatamente abaixo"
     ],
     "correct_index": 3,
@@ -1485,7 +1485,7 @@
       "Impôs o uso do IP como protocolo de camada 3 em todas as redes de computadores existentes",
       "É um ponto de referência (conceitos, normas e nomenclatura) em qualquer discussão sobre redes de computadores",
       "Definiu o formato das frames Ethernet que continuam a ser usadas nas redes locais atuais",
-      "Foi o modelo efetivamente implementado na Internet, que substituiu as arquiteturas proprietárias"
+      "Foi o modelo efetivamente implementado na Internet, o que levou à substituição das arquiteturas proprietárias dos fabricantes"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1548,7 +1548,7 @@
     "question": "Porque é que a camada MAC permite, na maioria das implementações IEEE 802, dispensar a camada LLC?",
     "answers": [
       "Porque implementa, além do controlo de acesso ao meio, o endereçamento de nós e a deteção de erros",
-      "Porque a camada LLC só é necessária nas redes sem fios IEEE 802.11, e não nas cablagens",
+      "Porque a camada LLC só é necessária nas redes sem fios IEEE 802.11, e não nas redes de cablagem estruturada Ethernet",
       "Porque a camada física já garante a entrega dos pacotes sem erros, dispensando a camada LLC",
       "Porque a camada LLC foi substituída pelo protocolo IP em todas as redes locais atuais"
     ],
@@ -1589,7 +1589,7 @@
       "ARP e UDP",
       "IP e TCP",
       "UDP e TCP",
-      "ICMP e IP"
+      "ICMP e IP, da camada de rede"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1638,7 +1638,7 @@
   {
     "question": "Em que se baseia o encaminhamento IP?",
     "answers": [
-      "No número de porta da aplicação de destino indicado no cabeçalho UDP ou TCP",
+      "No número de porta da aplicação de destino indicado no cabeçalho UDP ou TCP de cada segmento recebido",
       "No endereço de camada 2 do nó de origem de cada pacote que o router recebe",
       "Numa tabela de circuitos virtuais configurada previamente entre os dois nós",
       "No endereço de rede do endereço IP de destino, e não em endereços de nós individuais"
@@ -1679,7 +1679,7 @@
     "answers": [
       "32 bits",
       "128 bits",
-      "64 bits",
+      "64 bits no total",
       "48 bits"
     ],
     "correct_index": 1,
@@ -1716,7 +1716,7 @@
   {
     "question": "Que valor do campo E-TYPE de uma frame Ethernet identifica o IPv4?",
     "answers": [
-      "0x0806",
+      "0x0806 (ARP)",
       "0x8137",
       "0x86DD",
       "0x0800"
@@ -1744,7 +1744,7 @@
     "answers": [
       "0x86DD",
       "0x8137",
-      "0x0800",
+      "0x0800, que identifica o IPv4",
       "0x0806"
     ],
     "correct_index": 3,

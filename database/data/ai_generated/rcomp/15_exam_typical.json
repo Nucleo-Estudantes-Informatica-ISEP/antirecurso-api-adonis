@@ -16,7 +16,7 @@
     "question": "Entre os meios de transmissão seguintes, qual é o menos exposto à interferência eletromagnética (EMI) externa?",
     "answers": [
       "A fibra ótica, que conduz o sinal sob a forma de luz",
-      "O cabo de cobre, que conduz corrente elétrica",
+      "O cabo de cobre, que conduz corrente elétrica sob a forma de tensão",
       "O cabo coaxial, que conduz corrente elétrica",
       "O par entrançado, que conduz corrente elétrica"
     ],
@@ -70,7 +70,7 @@
       "600 Mbps",
       "200 Mbps",
       "400 Mbps",
-      "800 Mbps"
+      "800 Mbps, com 4 bits por símbolo"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -80,7 +80,7 @@
   {
     "question": "Num sinal NRZ-L em que o bit 0 é o nível baixo (L) e o bit 1 o nível alto (H), que sequência de níveis representa os bits 1 1 0 1 0 0?",
     "answers": [
-      "L L H L H H",
+      "L L H L H H (código invertido)",
       "H L L H H L",
       "H H L L H L",
       "H H L H L L"
@@ -120,7 +120,7 @@
     "question": "Um sistema usa a codificação de bloco 4B5B e tem de transportar 80 Mbps de dados úteis. Qual é a taxa de bits na linha?",
     "answers": [
       "100 Mbps",
-      "64 Mbps",
+      "64 Mbps, porque 4B5B reduz a taxa em 20%",
       "80 Mbps",
       "125 Mbps"
     ],
@@ -225,7 +225,7 @@
     "answers": [
       "960 microssegundos",
       "120 microssegundos",
-      "9,6 milissegundos",
+      "9,6 milissegundos no total",
       "96 microssegundos"
     ],
     "correct_index": 0,
@@ -264,7 +264,7 @@
     "answers": [
       "2 ms",
       "4 ms",
-      "8 ms",
+      "8 ms, contando 4 ms em cada ligação",
       "5 ms"
     ],
     "correct_index": 1,
@@ -353,7 +353,7 @@
   {
     "question": "Qual das camadas seguintes a arquitetura TCP/IP deixa deliberadamente por definir?",
     "answers": [
-      "A camada de transporte, usando só o protocolo UDP",
+      "A camada de transporte, usando apenas o protocolo UDP sem controlo",
       "A camada de rede, usando endereços locais",
       "As camadas 1 e 2, usando as tecnologias existentes",
       "A camada de aplicação, usando só o modelo OSI"
@@ -369,7 +369,7 @@
       "O endereço do nó de destino",
       "O identificador do circuito virtual (VCI)",
       "A rota completa até ao destino",
-      "O número de nós intermédios do caminho"
+      "O número de nós intermédios do caminho até ao destino"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -612,7 +612,7 @@
       "1060",
       "1113",
       "1008",
-      "1166"
+      "1166 (22 células)"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -700,7 +700,7 @@
   {
     "question": "O que faz um switch Ethernet com a tabela MAC vazia ao receber um frame unicast?",
     "answers": [
-      "Descarta o frame até aprender a porta do destino",
+      "Descarta o frame até aprender a porta do destino e informa a origem do erro",
       "Reenvia o frame apenas pela porta por onde chegou",
       "Pergunta ao destino qual é o seu endereço MAC",
       "Regista a origem e reenvia-o por todas as outras portas"
@@ -713,7 +713,7 @@
   {
     "question": "Que ação toma um nó Ethernet com CSMA/CD ao detetar uma colisão durante a emissão?",
     "answers": [
-      "Acaba o frame e fica à espera do ACK do destino",
+      "Acaba o frame e fica à espera do ACK do destino antes de retransmitir",
       "Cessa a emissão, envia um JAM e aguarda para tentar",
       "Envia um RTS ao destino e aguarda pelo seu CTS",
       "Retransmite de imediato o frame desde o início"
@@ -872,7 +872,7 @@
       "48",
       "90",
       "200",
-      "500"
+      "500 cabos"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1106,7 +1106,7 @@
       "192.168.35.0/24 e 192.168.36.0/24",
       "192.168.34.0/24 e 192.168.35.0/24",
       "192.168.33.0/24 e 192.168.34.0/24",
-      "192.168.34.0/24 e 192.168.35.0/25"
+      "192.168.34.0/24 e 192.168.35.128/25"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1119,7 +1119,7 @@
       "10.30.79.254",
       "10.30.64.254",
       "10.30.80.254",
-      "10.30.79.255"
+      "10.30.79.255 (broadcast)"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1129,10 +1129,10 @@
   {
     "question": "Um pacote IPv4 com 5200 bytes no total, cabeçalho de 20 bytes incluído, vai atravessar uma ligação com MTU de 1500 bytes e o bit DF está a zero. Em quantos fragmentos é dividido?",
     "answers": [
-      "3",
-      "5",
-      "6",
-      "4"
+      "3 fragmentos",
+      "5 fragmentos de 1500 bytes cada",
+      "6 fragmentos",
+      "4 fragmentos"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",
@@ -1183,7 +1183,7 @@
     "answers": [
       "10.77.97.0",
       "10.77.116.0",
-      "10.77.192.0",
+      "10.77.192.0 (prefixo /18)",
       "10.77.128.0"
     ],
     "correct_index": 3,
@@ -1197,7 +1197,7 @@
       "R1",
       "R2",
       "R3",
-      "R4"
+      "R4, a rota por omissão da tabela"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1207,7 +1207,7 @@
   {
     "question": "Um pacote IPv4 é emitido com TTL igual a 32 e atravessa 7 routers até chegar ao destino. Qual é o valor do TTL quando o destino o recebe?",
     "answers": [
-      "24",
+      "24, pois o destino também decrementa o TTL",
       "25",
       "26",
       "39"
@@ -1233,7 +1233,7 @@
   {
     "question": "Um pacote IPv4 tem o campo IHL com o valor 8 e o campo de comprimento total com 1500 bytes. Quantos bytes de payload transporta?",
     "answers": [
-      "1480",
+      "1480 (IHL = 5)",
       "1492",
       "1500",
       "1468"
@@ -1285,7 +1285,7 @@
   {
     "question": "Um nó configurado para obter o endereço automaticamente não recebe resposta de nenhum servidor DHCP. De que rede pode o nó escolher um endereço para si próprio (APIPA)?",
     "answers": [
-      "192.168.0.0/16",
+      "192.168.0.0/16 (privada)",
       "127.0.0.0/8",
       "224.0.0.0/4",
       "169.254.0.0/16"
@@ -1301,7 +1301,7 @@
       "Porque o Discover é enviado em TCP e os routers bloqueiam sempre ligações TCP",
       "Porque o Discover contém o endereço MAC do router e só este o pode ler",
       "Porque o Discover é enviado em broadcast e os routers não reencaminham esse broadcast",
-      "Porque o servidor identifica os clientes pelo endereço IPv4 anterior de cada um"
+      "Porque o servidor identifica os clientes pelo endereço IPv4 anterior de cada um, guardado na cache"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1324,10 +1324,10 @@
   {
     "question": "Um router recebe um pacote de 1500 bytes com o bit DF ativo e a ligação seguinte tem um MTU de 1400 bytes. O que faz o router?",
     "answers": [
-      "Descarta o pacote e devolve ao emissor um ICMP Destination Unreachable com código 4",
+      "Descarta o pacote e devolve ao emissor um ICMP Destination Unreachable (código 4)",
       "Fragmenta o pacote em dois fragmentos e ativa o bit MF no primeiro deles",
       "Põe o TTL a zero e envia um ICMP Time Exceeded ao destino final do pacote",
-      "Encaminha o pacote sem alterações e deixa a fragmentação a cargo do destino"
+      "Encaminha o pacote sem alterações e deixa a fragmentação a cargo do destino, que o reagrupa"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -1363,8 +1363,8 @@
   {
     "question": "Que fraqueza do ARP torna possível o ataque de ARP spoofing?",
     "answers": [
-      "As linhas da tabela ARP nunca expiram e ficam guardadas para sempre em cada nó",
-      "Os nós aceitam respostas ARP sem autenticação, mesmo que não tenham enviado o pedido",
+      "As linhas da tabela ARP nunca expiram e ficam guardadas para sempre em cada nó da rede local",
+      "Os nós aceitam respostas ARP sem autenticação, mesmo sem terem enviado o pedido",
       "As respostas ARP são enviadas em broadcast e saturam sempre toda a rede local",
       "O ARP só funciona entre nós que pertencem a redes IPv4 diferentes"
     ],
@@ -1402,7 +1402,7 @@
   {
     "question": "Qual é a principal diferença do RIPv2 relativamente ao RIPv1 quanto à informação enviada nas atualizações?",
     "answers": [
-      "Inclui o número do sistema autónomo, o que permite ligar dois sistemas RIP",
+      "Inclui o número do sistema autónomo, o que permite ligar dois sistemas RIP distintos",
       "Inclui o estado de cada ligação, o que dispensa os envios periódicos",
       "Inclui a máscara de rede de cada destino, o que permite usar endereçamento CIDR",
       "Inclui o MTU de cada ligação, o que dispensa a fragmentação de pacotes"
@@ -1415,7 +1415,7 @@
   {
     "question": "Qual é a função de um Area Border Router (ABR) no OSPF?",
     "answers": [
-      "Interligar o domínio OSPF a outros sistemas autónomos, como EIGRP ou RIPv2",
+      "Interligar o domínio OSPF a outros sistemas autónomos, como EIGRP ou RIPv2, redistribuindo as rotas",
       "Interligar áreas OSPF, ligando a área zero (backbone) às restantes áreas do domínio",
       "Eleger a área de backbone entre todas as áreas existentes no domínio OSPF",
       "Gerar o endereço multicast usado nas mensagens de descoberta de vizinhos"
@@ -1441,7 +1441,7 @@
   {
     "question": "Qual é uma vantagem de dividir a infraestrutura em sistemas autónomos?",
     "answers": [
-      "Todos os routers passam a conhecer todas as redes da internet, sem precisarem de rotas por omissão",
+      "Todos os routers passam a conhecer todas as redes da internet, sem precisarem de rotas por omissão nem de agregação",
       "Os pacotes de dados deixam de ter de ser encaminhados entre sistemas autónomos diferentes",
       "A redistribuição de rotas entre sistemas torna-se desnecessária em qualquer cenário",
       "As tabelas de routing ficam mais pequenas e o tráfego dos protocolos de routing fica confinado a cada sistema"
@@ -1482,7 +1482,7 @@
     "answers": [
       "192.168.7.128/26 por interface direta e 0.0.0.0/0 via 192.168.7.129",
       "192.168.7.0/26 por interface direta e 0.0.0.0/0 via 192.168.7.129",
-      "192.168.7.128/26 por interface direta e 0.0.0.0/0 via 192.168.7.130",
+      "192.168.7.128/26 por interface direta e 0.0.0.0/0 via 192.168.7.130 (o próprio nó)",
       "192.168.7.128/26 via 192.168.7.129 e 0.0.0.0/0 por interface direta"
     ],
     "correct_index": 0,
@@ -1722,7 +1722,7 @@
     "question": "Com que prefixo começa o endereço unicast que um nó IPv6 atribui a si próprio ao arrancar, válido apenas na rede local?",
     "answers": [
       "fe80::/10",
-      "ff02::/16",
+      "ff02::/16 (multicast)",
       "fd00::/8",
       "2001::/16"
     ],
@@ -1825,7 +1825,7 @@
   {
     "question": "Para que servem os glue records numa delegação de um subdomínio?",
     "answers": [
-      "Indicar a prioridade dos servidores de e-mail do domínio",
+      "Indicar a prioridade dos servidores de e-mail do domínio e o respetivo endereço",
       "Sincronizar a base de dados entre master e slave",
       "Associar um alias ao respetivo nome canónico",
       "Fornecer o endereço de um name server do próprio subdomínio"
@@ -1958,7 +1958,7 @@
       "900",
       "1125",
       "1200",
-      "1350"
+      "1350, se cada 3 bytes originarem 5 carateres"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -2007,7 +2007,7 @@
   {
     "question": "Qual é o OID que identifica a descrição (ifDescr) da sexta interface de um dispositivo?",
     "answers": [
-      "1.3.6.1.2.1.2.2.1.6.2",
+      ".1.3.6.1.2.1.2.2.1.6.2.0",
       "1.3.6.1.2.1.2.1.2.6",
       "1.3.6.1.2.1.2.2.1.2.6",
       "1.3.6.1.2.1.2.2.2.6"
@@ -2250,7 +2250,7 @@
   {
     "question": "Que resposta recebe o emissor de um datagrama UDP quando o nó de destino está ativo mas nenhuma aplicação usa o porto de destino?",
     "answers": [
-      "Um segmento TCP com a flag RST ativa",
+      "Um segmento TCP com a flag RST ativa, como no TCP",
       "Um ICMP de time exceeded em trânsito",
       "Um datagrama UDP de confirmação de erro",
       "Um ICMP de destination port unreachable"
@@ -2305,7 +2305,7 @@
       "7399",
       "7400",
       "7401",
-      "7402"
+      "7402, o valor do SYN mais dois"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -2330,7 +2330,7 @@
     "answers": [
       "4",
       "5",
-      "6",
+      "6, por incluir um segmento de controlo",
       "8"
     ],
     "correct_index": 1,
@@ -2432,7 +2432,7 @@
   {
     "question": "Um script numa página faz um pedido cross-origin com o método DELETE. O que faz o browser antes de enviar o pedido real?",
     "answers": [
-      "Envia primeiro um pedido HEAD para testar o recurso",
+      "Envia primeiro um pedido HEAD para testar o recurso e a sua existência",
       "Envia um pedido OPTIONS de pre-flight ao servidor de destino",
       "Abre uma ligação HTTPS adicional com certificado de cliente",
       "Pede ao utilizador autorização através de uma janela"
@@ -2447,7 +2447,7 @@
     "answers": [
       "80",
       "443",
-      "8080",
+      "8080 (porto alternativo)",
       "8443"
     ],
     "correct_index": 3,
@@ -2485,7 +2485,7 @@
     "question": "Como é produzida uma assinatura digital com RSA?",
     "answers": [
       "Cifram-se os dados completos com a chave pública do par",
-      "Cifra-se o hash dos dados com a chave pública do autor",
+      "Cifra-se o hash dos dados com a chave pública do autor da mensagem",
       "Cifra-se uma chave simétrica com a chave privada do par",
       "Cifra-se com a chave privada o hash dos dados a assinar"
     ],
@@ -2538,7 +2538,7 @@
     "answers": [
       "A chave tem de ser trocada a cada bloco enviado",
       "Cada bloco cifrado revela a chave usada para o cifrar",
-      "O modo exige uma cifra de fluxo e não de blocos",
+      "O modo exige uma cifra de fluxo e não uma cifra de blocos",
       "Blocos de dados iguais originam blocos cifrados iguais"
     ],
     "correct_index": 3,
@@ -2552,7 +2552,7 @@
       "Testar todas as chaves possíveis sobre os dados capturados",
       "Reenviar dados cifrados capturados antes, sem conhecer a chave",
       "Fazer-se passar pelo servidor para obter a password",
-      "Alterar o conteúdo de pacotes cifrados em trânsito"
+      "Alterar o conteúdo de pacotes cifrados em trânsito, para que o recetor os aceite"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -2562,7 +2562,7 @@
   {
     "question": "Numa VPN Host-LAN, que configuração recebe a estação do utilizador depois de o túnel ser criado e o utilizador autenticado?",
     "answers": [
-      "O endereço IP do servidor VPN, como seu endereço permanente",
+      "O endereço IP do servidor VPN, como seu endereço permanente na rede local do utilizador",
       "Uma rota para a Internet, mas sem endereço IP próprio",
       "Um endereço IP da rede remota, atribuído por DHCP ou equivalente",
       "Um endereço MAC virtual atribuído pelo switch remoto"
@@ -2614,7 +2614,7 @@
   {
     "question": "Qual é a origem do problema conhecido como TCP meltdown nas VPN com túneis TCP?",
     "answers": [
-      "O túnel TCP fecha a ligação sempre que a janela chega a zero",
+      "O túnel TCP fecha a ligação sempre que a janela de receção chega a zero bytes",
       "O túnel TCP retransmite dados que as camadas superiores já esqueceram",
       "O NAT descarta os pacotes por o túnel não usar números de porto",
       "O túnel limita a 1500 bytes o tamanho dos pacotes transportados"
@@ -2667,7 +2667,7 @@
     "question": "O que faz corresponder a palavra established numa regra de ACL para TCP?",
     "answers": [
       "Segmentos com a flag ACK ou RST ativa, excluindo o SYN inicial",
-      "Apenas segmentos com a flag SYN ativa no pedido de ligação",
+      "Apenas segmentos com a flag SYN ativa no pedido de ligação inicial do cliente",
       "Segmentos de qualquer ligação, incluindo o primeiro SYN",
       "Apenas segmentos com a flag FIN ativa no fecho da ligação"
     ],
@@ -2680,7 +2680,7 @@
     "question": "Que vantagem têm as ACL com nome sobre as numeradas?",
     "answers": [
       "Dispensam o deny any implícito no final da lista",
-      "Permitem filtrar por porto, o que as numeradas não fazem",
+      "Permitem filtrar por porto de origem e de destino, o que as numeradas não fazem",
       "Não precisam de ser aplicadas a uma interface",
       "Permitem editar regras individuais por número de sequência"
     ],

@@ -736,7 +736,7 @@
     "answers": [
       "O subsistema 2, que liga o IC aos HC",
       "O subsistema 3, que liga o MC aos IC",
-      "O subsistema 1, que liga o MC aos IC",
+      "O subsistema 1, que liga o MC aos IC dos vários pisos",
       "O subsistema 1, que liga o HC aos outlets"
     ],
     "correct_index": 3,
@@ -786,7 +786,7 @@
   {
     "question": "Quantos outlets devem existir numa área de trabalho com 8 m², sabendo que o mínimo por área de trabalho é de dois outlets?",
     "answers": [
-      "4 outlets",
+      "4 outlets, um por cada 2 m²",
       "2 outlets",
       "3 outlets",
       "1 outlet"
@@ -826,7 +826,7 @@
     "question": "Que tipo de cabo de cobre especificam os padrões de cablagem estruturada?",
     "answers": [
       "Cabo coaxial de 75 ohm, com blindagem, de categoria RG6 ou RG11",
-      "Cabo de 4 pares de 100 ohm, sem blindagem, de categoria CAT3 ou CAT4",
+      "Cabo de 4 pares de 100 ohm, sem blindagem, de categoria CAT3 ou CAT4, instalado em backbones",
       "Cabo de 4 pares de 100 ohm, UTP ou blindado, de categoria CAT6A ou CAT7",
       "Cabo de 2 pares de 50 ohm, UTP ou blindado, de categoria CAT5 ou CAT6"
     ],
@@ -916,7 +916,7 @@
   {
     "question": "Que nome tem o cilindro branco, com um orifício axial, onde a fibra é fixada num conector de fibra?",
     "answers": [
-      "Pigtail",
+      "Pigtail (cabo curto)",
       "Ferrite",
       "Patch",
       "Ferrule"
@@ -1033,7 +1033,7 @@
   {
     "question": "Quantos cabos de rede podem, no máximo, entrar num armário de telecomunicações?",
     "answers": [
-      "500 cabos",
+      "500 cabos no máximo",
       "200 cabos",
       "24 cabos",
       "100 cabos"
@@ -1164,7 +1164,7 @@
     "question": "Qual é, em milímetros, a altura de uma unidade de rack (1U)?",
     "answers": [
       "50 mm",
-      "25,4 mm",
+      "25,4 mm (1 in)",
       "44,45 mm",
       "19 mm"
     ],
@@ -1190,7 +1190,7 @@
     "question": "Quantas unidades de rack ocupam os patch panels de um armário com 96 cabos horizontais, usando patch panels de 24 portas e 1U?",
     "answers": [
       "2U",
-      "8U",
+      "8U no total",
       "5U",
       "4U"
     ],
@@ -1205,7 +1205,7 @@
       "8U",
       "16U",
       "4U",
-      "12U"
+      "12U (3 × 4U)"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",
@@ -1216,7 +1216,7 @@
     "question": "Um armário de telecomunicações recebe 120 cabos horizontais, ligados a patch panels de 24 portas e 1U. Que tamanho deve ter o armário, aplicando a regra de 4×S?",
     "answers": [
       "20U",
-      "24U",
+      "24U, porque S = 6 patch panels",
       "10U",
       "15U"
     ],
@@ -1228,7 +1228,7 @@
   {
     "question": "Um armário de telecomunicações recebe 72 cabos horizontais, ligados a patch panels de 24 portas e 1U. Que tamanho deve ter o armário, aplicando a regra de 4×S?",
     "answers": [
-      "18U",
+      "18U (3 painéis × 6U)",
       "6U",
       "12U",
       "9U"
@@ -1243,7 +1243,7 @@
     "answers": [
       "12U",
       "20U",
-      "16U",
+      "16U no total",
       "25U"
     ],
     "correct_index": 1,
@@ -1268,7 +1268,7 @@
     "question": "Quantos patch panels de 48 portas são precisos para 96 cabos horizontais?",
     "answers": [
       "2 patch panels",
-      "3 patch panels",
+      "3 patch panels, porque 96 / 48 = 3",
       "1 patch panel",
       "4 patch panels"
     ],
@@ -1306,7 +1306,7 @@
   {
     "question": "Qual é o comprimento habitual dos patch cords usados dentro de um armário de telecomunicações?",
     "answers": [
-      "10 metros",
+      "10 metros, igual ao dos cabos horizontais",
       "5 metros",
       "3 metros",
       "0,5 metros"

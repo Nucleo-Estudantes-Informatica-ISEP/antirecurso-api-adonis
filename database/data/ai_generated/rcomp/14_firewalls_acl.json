@@ -825,7 +825,7 @@
       "0.0.3.255",
       "0.0.1.255",
       "0.0.252.0",
-      "0.0.7.255"
+      "0.0.7.255, para a máscara /22"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -864,7 +864,7 @@
       "0.15.255.255",
       "0.240.0.0",
       "0.7.255.255",
-      "0.31.255.255"
+      "0.31.255.255 (máscara /12)"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -991,7 +991,7 @@
   {
     "question": "Que endereços são abrangidos pelo critério 10.0.0.1 0.0.0.4?",
     "answers": [
-      "10.0.0.1 a 10.0.0.4",
+      "10.0.0.1 a 10.0.0.4, inclusive",
       "10.0.0.1 e 10.0.0.5",
       "10.0.0.1 e 10.0.0.4",
       "10.0.0.1 e 10.0.0.2"
@@ -1069,7 +1069,7 @@
   {
     "question": "O endereço 203.0.113.100 é abrangido pelo critério 203.0.113.64 0.0.0.31?",
     "answers": [
-      "Sim, porque o quarto octeto 100 está no intervalo 64 a 127",
+      "Sim, porque o quarto octeto 100 está no intervalo 64 a 127 abrangido pela máscara",
       "Não, porque o terceiro octeto 113 é diferente do quarto octeto",
       "Sim, porque o quarto octeto 100 está no intervalo 64 a 100",
       "Não, porque o quarto octeto 100 está fora do intervalo 64 a 95"
@@ -1084,7 +1084,7 @@
     "answers": [
       "170.0.0.0/16 e 170.32.0.0/16",
       "170.0.0.0/8",
-      "170.0.0.0/16 e 170.16.0.0/16",
+      "170.0.0.0/16, 170.16.0.0/16, 170.32.0.0/16",
       "170.0.0.0/15"
     ],
     "correct_index": 0,
@@ -1110,7 +1110,7 @@
     "answers": [
       "access-list 20 permit 194.20.30.0 0.0.0.255, que só deixa passar a origem da rede local",
       "access-list 20 permit any, que deixa passar todo o tráfego",
-      "access-list 20 deny 194.20.30.0 0.0.0.255, que bloqueia a origem da rede local",
+      "access-list 20 deny 194.20.30.0 0.0.0.255, que bloqueia a origem da rede local e deixa passar as restantes",
       "access-list 20 deny any, que bloqueia todo o tráfego"
     ],
     "correct_index": 0,
@@ -1137,7 +1137,7 @@
       "O router recusa o comando, porque a regra permit any tem de ser a última",
       "Todos os pacotes são bloqueados, porque as duas regras se anulam mutuamente",
       "Os pacotes com origem na rede local passam, porque a primeira regra que corresponde é a permit any",
-      "Os pacotes com origem na rede local são bloqueados, porque a regra deny tem prioridade"
+      "Os pacotes com origem na rede local são bloqueados, porque a regra deny tem prioridade sobre a regra permit any"
     ],
     "correct_index": 2,
     "source": "AI_GENERATED",
@@ -1252,7 +1252,7 @@
     "question": "Porque são os critérios de porto de destino mais úteis do que os de porto de origem nas ACL?",
     "answers": [
       "Porque o porto de destino só consta do cabeçalho de segmentos UDP",
-      "Porque os servidores usam portos dinâmicos e os clientes usam portos fixos conhecidos",
+      "Porque os servidores usam portos dinâmicos e os clientes usam portos fixos conhecidos de todos",
       "Porque o porto de origem não consta do cabeçalho de segmentos TCP e UDP",
       "Porque os servidores usam portos fixos e os clientes usam portos atribuídos dinamicamente"
     ],
@@ -1421,7 +1421,7 @@
     "question": "ACL na entrada da Internet: (1) deny ip 10.1.0.0 0.0.15.255 any; (2) permit tcp any host 10.1.8.10 eq 80; (3) deny ip any 10.1.8.0 0.0.0.255; (4) permit ip any any. O que acontece a um segmento TCP de 10.1.3.3 (origem forjada) para 10.1.8.10, porto 80?",
     "answers": [
       "Aceite pela regra 1",
-      "Recusado pela regra 2",
+      "Recusado pela regra 2, por ser porto 80",
       "Recusado pela regra 1",
       "Aceite pela regra 2"
     ],
@@ -1433,7 +1433,7 @@
   {
     "question": "ACL na entrada da Internet: (1) deny ip 10.1.0.0 0.0.15.255 any; (2) permit tcp any host 10.1.8.10 eq 80; (3) deny ip any 10.1.8.0 0.0.0.255; (4) permit ip any any. O que acontece a um segmento TCP de 203.0.113.5 para 10.1.8.20, porto 53?",
     "answers": [
-      "Aceite pela regra 1",
+      "Aceite pela regra 2, por ser um segmento TCP",
       "Recusado pela regra 1",
       "Aceite pela regra 3",
       "Recusado pela regra 3"
@@ -1631,7 +1631,7 @@
       "É aceite pela regra permit, porque 110 é diferente de 25",
       "É recusado pela regra implícita deny any, porque a regra só se aplica a TCP",
       "É aceite pela regra permit, porque o UDP é transportado sobre IP",
-      "É recusado pela regra permit, porque o operador neq nega os portos"
+      "É recusado pela regra permit, porque o operador neq nega os portos e bloqueia todo o tráfego UDP"
     ],
     "correct_index": 1,
     "source": "AI_GENERATED",

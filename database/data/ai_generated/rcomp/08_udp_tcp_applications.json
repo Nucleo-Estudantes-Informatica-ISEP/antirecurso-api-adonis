@@ -690,7 +690,7 @@
   {
     "question": "Que número de porto usam, em geral, os clientes no modelo cliente-servidor?",
     "answers": [
-      "Um número de porto fixo, previamente combinado com o servidor",
+      "Um número de porto fixo, previamente combinado com o servidor e registado na IANA",
       "Qualquer número de porto local livre, atribuído dinamicamente",
       "O número de porto zero, que fica sempre reservado ao cliente",
       "O mesmo número de porto usado pelo servidor"
@@ -731,7 +731,7 @@
     "answers": [
       "Recebe um ICMP Destination port unreachable, que pode gerar um erro no socket",
       "Recebe um NACK enviado pelo protocolo UDP do nó de destino do datagrama",
-      "Não recebe qualquer indicação, tal como em todos os outros casos de falha",
+      "Não recebe qualquer indicação, tal como em todos os outros casos de falha de entrega",
       "Recebe um RST do nó de destino, que fecha de imediato a ligação com ele"
     ],
     "correct_index": 0,
@@ -808,7 +808,7 @@
     "question": "Como funciona a receção de datagramas num socket UDP?",
     "answers": [
       "Os datagramas ficam numa fila FIFO do socket desde o bind, e a receção lê dessa fila",
-      "Os datagramas são guardados numa pilha (LIFO), lendo-se primeiro o mais recente",
+      "Os datagramas são guardados numa pilha (LIFO), lendo-se primeiro o mais recente e só depois os anteriores",
       "Os datagramas só são guardados se a aplicação estiver a executar a receção",
       "Os datagramas são entregues diretamente à aplicação, sem fila no socket"
     ],
@@ -833,7 +833,7 @@
   {
     "question": "Quais são as três causas possíveis para um cliente UDP não receber a resposta?",
     "answers": [
-      "O pedido foi fragmentado, o servidor respondeu em TCP ou a resposta foi duplicada",
+      "O pedido foi fragmentado, o servidor respondeu em TCP ou a resposta foi duplicada pela rede",
       "O servidor fez bind ao porto zero, o cliente fez connect ou o TTL chegou a zero",
       "O cliente usou o porto zero, o servidor usou um porto dinâmico ou o ARP falhou",
       "O pedido perdeu-se, o servidor não respondeu (está desligado) ou a resposta perdeu-se"
@@ -888,7 +888,7 @@
       "2500 ms",
       "500 ms",
       "250 ms",
-      "5000 ms"
+      "5000 ms no total"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -925,7 +925,7 @@
     "question": "Porque é má ideia usar o endereço de broadcast específico de uma rede no código fonte de uma aplicação?",
     "answers": [
       "Porque esse endereço é reservado ao protocolo ARP",
-      "Porque os routers descartam esse endereço de broadcast",
+      "Porque os routers descartam sempre os pacotes enviados para esse endereço",
       "Porque esse endereço só pode ser usado com TCP",
       "Porque a aplicação só funcionaria nessa rede específica"
     ],
@@ -937,7 +937,7 @@
   {
     "question": "Em que consiste a abordagem Server announcement na descoberta de servidores por UDP?",
     "answers": [
-      "O servidor responde apenas aos clientes que já conhece de comunicações anteriores",
+      "O servidor responde apenas aos clientes que já conhece de comunicações anteriores da rede",
       "O cliente envia um datagrama em unicast a cada um dos nós da rede local",
       "O cliente envia um datagrama em broadcast a pedir que os servidores respondam",
       "O servidor envia periodicamente um datagrama em broadcast a anunciar a sua presença"
@@ -966,7 +966,7 @@
       "65507 bytes",
       "65527 bytes",
       "65515 bytes",
-      "65535 bytes"
+      "65535 bytes, o tamanho total do pacote"
     ],
     "correct_index": 0,
     "source": "AI_GENERATED",
@@ -978,7 +978,7 @@
     "answers": [
       "65527 bytes",
       "65467 bytes",
-      "65475 bytes",
+      "65475 bytes, já descontado o cabeçalho UDP",
       "65507 bytes"
     ],
     "correct_index": 1,
@@ -1029,7 +1029,7 @@
     "question": "Uma transação UDP tem de enviar 2000 bytes de dados, respeitando o limite seguro de 512 bytes por datagrama. Quantos datagramas são necessários, no mínimo?",
     "answers": [
       "5 datagramas",
-      "3 datagramas",
+      "3 datagramas UDP",
       "2 datagramas",
       "4 datagramas"
     ],
@@ -1080,7 +1080,7 @@
   {
     "question": "Que efeito tem o connect aplicado a um socket UDP?",
     "answers": [
-      "Estabelece uma ligação fiável com o destino, tal como acontece com o connect do TCP",
+      "Estabelece uma ligação fiável com o destino, tal como acontece com o connect do TCP, garantindo a entrega",
       "Impede que o socket seja associado a outro endereço remoto numa chamada seguinte",
       "Envia um pedido de ligação ao destino e fica à espera de que este faça o accept",
       "Associa o socket a um endereço remoto: dispensa o destino em cada envio e filtra a receção"
@@ -1173,7 +1173,7 @@
     "answers": [
       "A flag FIN do TCP marca o fim de cada mensagem HTTP",
       "CR/LF marca o fim de cada linha do cabeçalho e CR/LF/CR/LF (linha vazia) marca o fim do cabeçalho",
-      "Um byte a zero marca o fim de cada linha e dois bytes a zero marcam o fim do cabeçalho",
+      "Um byte a zero marca o fim de cada linha do cabeçalho e dois bytes a zero consecutivos marcam o fim do cabeçalho inteiro",
       "O campo Content-Length marca o fim de cada linha do cabeçalho"
     ],
     "correct_index": 1,
@@ -1186,7 +1186,7 @@
     "answers": [
       "A marca de fim de bloco pode ocorrer dentro da própria mensagem enviada",
       "Pode haver muito overhead se os dados úteis forem bem inferiores ao tamanho fixo",
-      "O recetor tem de conhecer o tamanho de cada bloco antes de o conseguir ler",
+      "O recetor tem de conhecer o tamanho de cada bloco antes de o conseguir ler, o que obriga a um canal auxiliar de controlo",
       "O recetor tem de ler um byte de cada vez até encontrar uma marca no fim"
     ],
     "correct_index": 1,
@@ -1223,7 +1223,7 @@
   {
     "question": "Como pode um servidor TCP atender vários clientes em simultâneo em C/Unix?",
     "answers": [
-      "Usando o mesmo socket de ligação para todos os clientes",
+      "Usando o mesmo socket de ligação para todos os clientes, sem criar processos filhos",
       "Criando um processo filho (fork) para tratar cada cliente ligado",
       "Fechando o socket original depois do primeiro accept",
       "Usando o endereço de broadcast para falar com todos os clientes"
@@ -1276,7 +1276,7 @@
     "question": "Em que situação não é aceitável a receção síncrona?",
     "answers": [
       "Quando a aplicação tem vários sockets e não sabe em qual deles chegarão primeiro os dados",
-      "Quando a aplicação usa apenas um socket UDP numa rede local de pequena dimensão",
+      "Quando a aplicação usa apenas um socket UDP e não tem mais nada para fazer enquanto espera, numa rede local de pequena dimensão",
       "Quando os dados são recebidos exatamente pela mesma ordem em que foram enviados",
       "Quando a aplicação usa TCP em vez de UDP para comunicar com o servidor central"
     ],
@@ -1316,7 +1316,7 @@
     "answers": [
       "O endereço IP do emissor da mensagem",
       "O número de porto de destino da mensagem",
-      "O código de deteção de erros de toda a mensagem",
+      "O código de deteção de erros calculado sobre toda a mensagem",
       "A versão do protocolo, seguida do tipo de mensagem"
     ],
     "correct_index": 3,
@@ -1618,7 +1618,7 @@
     "question": "Qual das seguintes é uma vantagem do TCP em relação ao UDP, na entrega de dados?",
     "answers": [
       "Permite enviar para endereços de broadcast e multicast",
-      "Trata cada bloco de dados enviado como independente dos outros",
+      "Trata cada bloco de dados enviado como independente dos outros, sem ordem nem confirmação",
       "Garante a entrega fiável dos dados pela ordem em que foram enviados",
       "Dispensa o estabelecimento de ligação antes do envio"
     ],
