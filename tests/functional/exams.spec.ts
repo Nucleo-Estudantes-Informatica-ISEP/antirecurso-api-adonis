@@ -1,7 +1,8 @@
 import { test } from '@japa/runner'
 import limiter from '@adonisjs/limiter/services/main'
 import { createHash, randomUUID } from 'node:crypto'
-import { DateTime } from 'luxon'
+import { DateTime, Settings } from 'luxon'
+import { lockExamOwner, pruneUnfinishedAttempts } from '#services/exams/exam_attempt_lifecycle'
 import ZitadelAuthService from '#services/auth/zitadel_auth_service'
 import Subject from '#models/subject'
 import QuestionType from '#models/question_type'
@@ -829,29 +830,35 @@ test.group('Exams', (group) => {
     assert.isTrue(completedState.isCompleted)
   })
 
-  test('incomplete-attempt cap is atomic, per owner, and completion frees a slot', async ({
+  test('generation atomically evicts least-active unfinished attempts without locking out owners', async ({
     client,
     assert,
   }) => {
+    await resetState()
     const user = await User.findByOrFail('authSubject', USER_SUB)
-    const original = await ExamAttempt.query().where('user_id', user.id).whereNull('result')
-    // Remove only this test group's unfinished fixtures to make the cap boundary deterministic.
-    await ExamState.query().where('user_id', user.id).delete()
-    await ExamAttempt.query()
-      .whereIn(
-        'id',
-        original.map((a) => a.id)
-      )
-      .where('user_id', user.id)
-      .delete()
+    await ExamAttempt.query().where('user_id', user.id).whereNull('result').delete()
+    const completed = await mobileAttempt(client)
+    const graded = await client
+      .post('/exams/verify')
+      .header('authorization', `Bearer ${userToken}`)
+      .json(completed.verify)
+    graded.assertStatus(200)
     const first = await mobileAttempt(client)
+    const saved = await client
+      .post('/exams/state')
+      .header('authorization', `Bearer ${userToken}`)
+      .json({ subject_id: subject.id, mode: 'default', attempt_id: first.id, state: first.state })
+    saved.assertStatus(200)
     const source = await ExamAttempt.query()
       .where('user_id', user.id)
       .where('id', first.id)
       .firstOrFail()
+    const old = DateTime.local().minus({ days: 1 })
+    await source.merge({ updatedAt: old }).save()
+    const fixtures = Array.from({ length: 19 }, () => randomUUID())
     await db.table('exam_attempts').insert(
-      Array.from({ length: 18 }, () => ({
-        id: randomUUID(),
+      fixtures.map((id) => ({
+        id,
         user_id: user.id,
         subject_id: subject.id,
         mode: 'default',
@@ -860,44 +867,112 @@ test.group('Exams', (group) => {
         updated_at: new Date(),
       }))
     )
+    const other = await client
+      .get(`/exams/generate/${subject.id}?attempt_id=${first.id}`)
+      .header('authorization', `Bearer ${adminToken}`)
+    other.assertStatus(200)
+    // A duplicate must never evict its own stored identity or any other draft.
+    const duplicate = await client
+      .get(`/exams/generate/${subject.id}?attempt_id=${first.id}`)
+      .header('authorization', `Bearer ${userToken}`)
+    duplicate.assertStatus(409)
+    assert.exists(await ExamAttempt.find(source.rowId))
+    assert.exists(await ExamState.find(saved.body().id))
+    const broken = new ExamGenerationService()
+    ;(broken as any).serializeQuestions = () => [
+      {
+        id: questions[0].id,
+        options: [{ name: 'Unavailable', order: 'Z' }],
+      },
+    ]
+    await assert.rejects(
+      () =>
+        broken.generate({
+          subject,
+          mode: 'default',
+          userId: user.id,
+          nOfQuestions: null,
+          filter: null,
+          attemptId: randomUUID(),
+        }),
+      /Snapshot option Z is unavailable/
+    )
+    // Snapshot failure happens after eviction; the transaction must restore the attempt and draft.
+    assert.exists(await ExamAttempt.find(source.rowId))
+    assert.exists(await ExamState.find(saved.body().id))
+    assert.lengthOf(await ExamAttempt.query().where('user_id', user.id).whereNull('result'), 20)
+    const ids = [randomUUID(), randomUUID()]
     const responses = await Promise.all(
-      [0, 1].map(() =>
+      ids.map((id) =>
         client
-          .get(`/exams/generate/${subject.id}?attempt_id=${randomUUID()}`)
+          .get(`/exams/generate/${subject.id}?attempt_id=${id}`)
           .header('authorization', `Bearer ${userToken}`)
       )
     )
-    assert.sameMembers(
-      responses.map((r) => r.status()),
-      [200, 409]
+    responses.forEach((response) => response.assertStatus(200))
+    const pending = await ExamAttempt.query().where('user_id', user.id).whereNull('result')
+    assert.lengthOf(pending, 20)
+    ids.forEach((id) =>
+      assert.include(
+        pending.map((attempt) => attempt.id),
+        id
+      )
     )
-    const full = await client
-      .get(`/exams/generate/${subject.id}?attempt_id=${randomUUID()}`)
-      .header('authorization', `Bearer ${userToken}`)
-    full.assertStatus(409)
-    assert.equal(
-      full.body().message,
-      'Too many unfinished attempts; complete or discard an existing attempt before generating another'
-    )
-    const anotherOwner = await client
-      .get(`/exams/generate/${subject.id}?attempt_id=${randomUUID()}`)
-      .header('authorization', `Bearer ${adminToken}`)
-    anotherOwner.assertStatus(200)
-    const graded = await client
+    assert.isNull(await ExamAttempt.find(source.rowId))
+    assert.isNull(await ExamState.find(saved.body().id))
+    const evicted = await client
       .post('/exams/verify')
       .header('authorization', `Bearer ${userToken}`)
       .json(first.verify)
-    graded.assertStatus(200)
-    const released = await client
-      .get(`/exams/generate/${subject.id}?attempt_id=${randomUUID()}`)
+    evicted.assertStatus(409)
+    const otherRetained = await client
+      .get(`/exams/attempts/${first.id}`)
+      .header('authorization', `Bearer ${adminToken}`)
+    otherRetained.assertStatus(200)
+    const replay = await client
+      .post('/exams/verify')
       .header('authorization', `Bearer ${userToken}`)
-    released.assertStatus(200)
-    const count = await ExamAttempt.query()
-      .where('user_id', user.id)
-      .whereNull('result')
-      .count('* as total')
-      .firstOrFail()
-    assert.equal(Number(count.$extras.total), 20)
+      .json(completed.verify)
+    replay.assertStatus(200)
+    assert.deepEqual(replay.body(), graded.body())
+  })
+
+  test('unfinished cleanup compares the same local wall time as Lucid timestamp writes', async ({
+    assert,
+  }) => {
+    const previousZone = Settings.defaultZone
+    try {
+      // Both positive and negative offsets expose a UTC cutoff against timezone-less columns.
+      for (const zone of ['Asia/Kolkata', 'America/New_York']) {
+        Settings.defaultZone = zone
+        const user = await User.findByOrFail('authSubject', USER_SUB)
+        const common = {
+          userId: user.id,
+          subjectId: subject.id,
+          mode: 'default',
+          snapshot: { questions: [], nOfQuestions: null, penalizingFactor: null },
+        }
+        const stale = await ExamAttempt.create({
+          ...common,
+          id: randomUUID(),
+          updatedAt: DateTime.local().minus({ days: 30, minutes: 1 }),
+        })
+        const recent = await ExamAttempt.create({
+          ...common,
+          id: randomUUID(),
+          updatedAt: DateTime.local().minus({ days: 30 }).plus({ minutes: 1 }),
+        })
+        await db.transaction(async (trx) => {
+          await lockExamOwner(trx, user.id)
+          await pruneUnfinishedAttempts(trx, user.id)
+        })
+        assert.isNull(await ExamAttempt.find(stale.rowId))
+        assert.exists(await ExamAttempt.find(recent.rowId))
+        await recent.delete()
+      }
+    } finally {
+      Settings.defaultZone = previousZone
+    }
   })
 
   test('generation prunes stale unfinished attempts before enforcing the cap', async ({
@@ -944,7 +1019,7 @@ test.group('Exams', (group) => {
     const full = await client
       .get(`/exams/generate/${subject.id}?attempt_id=${randomUUID()}`)
       .header('authorization', `Bearer ${userToken}`)
-    full.assertStatus(409)
+    full.assertStatus(200)
     await ExamAttempt.query().where('user_id', user.id).whereNull('result').delete()
   })
 
@@ -1148,6 +1223,11 @@ test.group('Exams', (group) => {
       .header('authorization', `Bearer ${userToken}`)
       .json(legacy)
     blocked.assertStatus(409)
+    assert.include(blocked.body().message, `GET /exams/attempts/${attempt.id}`)
+    assert.include(
+      blocked.body().message,
+      `DELETE /exams/state?subject_id=${subject.id}&mode=default`
+    )
     const stillPending = await ExamAttempt.query()
       .where('user_id', user.id)
       .where('id', attemptId)
@@ -1201,7 +1281,10 @@ test.group('Exams', (group) => {
       Number(answersAfter.$extras.total),
       Number(answersBefore.$extras.total) + scoredExams
     )
-    await resetState()
+    const clear = await client
+      .delete(`/exams/state?subject_id=${subject.id}&mode=default`)
+      .header('authorization', `Bearer ${userToken}`)
+    clear.assertStatus(204)
     const legacyState = await client
       .post('/exams/state')
       .header('authorization', `Bearer ${userToken}`)
@@ -1449,10 +1532,6 @@ test.group('Exams', (group) => {
     assert.isNotNull(
       await ExamAttempt.query().where('id', attempt.id).where('user_id', user.id).first()
     )
-    const rejected = await client
-      .get(`/exams/generate/${subject.id}?attempt_id=${randomUUID()}`)
-      .header('authorization', `Bearer ${userToken}`)
-    rejected.assertStatus(409)
     const sameId = await client
       .get(`/exams/generate/${subject.id}?attempt_id=${attempt.id}`)
       .header('authorization', `Bearer ${adminToken}`)

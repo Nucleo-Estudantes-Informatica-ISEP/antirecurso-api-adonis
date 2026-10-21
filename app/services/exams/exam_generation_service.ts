@@ -80,16 +80,36 @@ export default class ExamGenerationService {
       try {
         await db.transaction(async (trx) => {
           await lockExamOwner(trx, params.userId!)
+          const existing = await ExamAttempt.query({ client: trx })
+            .where('user_id', params.userId!)
+            .where('id', params.attemptId!)
+            .first()
+          if (existing)
+            throw new AttemptConflictError('Attempt ID already exists; recover it or use a new ID')
           await pruneUnfinishedAttempts(trx, params.userId!)
           const pending = await ExamAttempt.query({ client: trx })
             .where('user_id', params.userId!)
             .whereNull('result')
             .count('* as total')
             .firstOrFail()
-          if (Number(pending.$extras.total) >= MAX_UNFINISHED_ATTEMPTS)
-            throw new AttemptConflictError(
-              'Too many unfinished attempts; complete or discard an existing attempt before generating another'
-            )
+          const slotsNeeded = Number(pending.$extras.total) - MAX_UNFINISHED_ATTEMPTS + 1
+          if (slotsNeeded > 0) {
+            // The owner lock serializes eviction with grading, saves and account deletion.
+            const oldest = await ExamAttempt.query({ client: trx })
+              .where('user_id', params.userId!)
+              .whereNull('result')
+              .orderBy('updated_at')
+              .orderBy('row_id')
+              .limit(slotsNeeded)
+            await ExamAttempt.query({ client: trx })
+              .where('user_id', params.userId!)
+              .whereNull('result')
+              .whereIn(
+                'row_id',
+                oldest.map((attempt) => attempt.rowId)
+              )
+              .delete()
+          }
           await ExamAttempt.create(
             {
               id: params.attemptId,

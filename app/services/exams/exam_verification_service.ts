@@ -71,7 +71,9 @@ export default class ExamVerificationService {
           .forUpdate()
           .first()
         if (state?.attemptId)
-          throw new AttemptConflictError('Stored exam state requires attempt_id')
+          throw new AttemptConflictError(
+            `Stored exam state requires attempt_id; recover it with GET /exams/attempts/${state.attemptId}, or clear the draft with DELETE /exams/state?subject_id=${input.subject.id}&mode=${input.mode} before verifying a new legacy exam`
+          )
       }
       const attempt = input.attemptId
         ? await ExamAttempt.query({ client: trx })
