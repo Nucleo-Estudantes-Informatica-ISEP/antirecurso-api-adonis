@@ -38,7 +38,7 @@ expansion cardinality or malformed cyclic object.
 The registry advisory [GHSA-vfj7-8cjw-p6xm](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm)
 still identifies upstream 3.0.3 as affected: npm cannot recognize a local patch.
 Audits therefore report this high-severity advisory and its dependent packages
-(currently 20 high findings, zero critical); do not claim a clean audit or suppress
+(currently 20 full-tree / 17 production high findings, zero critical); do not claim a clean audit or suppress
 the report. Patch regression results establish the tested mitigation separately.
 
 ## Audit policy and maintenance

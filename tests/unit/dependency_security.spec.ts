@@ -18,16 +18,26 @@ const braces = matcherRequire('braces') as {
 }
 
 test.group('Dependency security', () => {
-  test('local patch is idempotent and rejects unexpected source or package versions', ({ assert }) => {
+  test('local patch is idempotent and rejects unexpected source or package versions', ({
+    assert,
+  }) => {
     const root = mkdtempSync(join(tmpdir(), 'braces-patch-'))
     try {
       mkdirSync(join(root, 'scripts'))
       mkdirSync(join(root, 'node_modules/micromatch'), { recursive: true })
       writeFileSync(join(root, 'node_modules/micromatch/index.js'), '')
-      cpSync(new URL('../../scripts/patch_braces.mjs', import.meta.url), join(root, 'scripts/patch_braces.mjs'))
+      cpSync(
+        new URL('../../scripts/patch_braces.mjs', import.meta.url),
+        join(root, 'scripts/patch_braces.mjs')
+      )
       cpSync(new URL('../../patches', import.meta.url), join(root, 'patches'), { recursive: true })
-      cpSync(dirname(matcherRequire.resolve('braces/package.json')), join(root, 'node_modules/braces'), { recursive: true })
-      const run = () => execFileSync(process.execPath, [join(root, 'scripts/patch_braces.mjs')], { stdio: 'pipe' })
+      cpSync(
+        dirname(matcherRequire.resolve('braces/package.json')),
+        join(root, 'node_modules/braces'),
+        { recursive: true }
+      )
+      const run = () =>
+        execFileSync(process.execPath, [join(root, 'scripts/patch_braces.mjs')], { stdio: 'pipe' })
       run()
       run()
       const source = join(root, 'node_modules/braces/lib/compile.js')

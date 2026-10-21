@@ -13,8 +13,12 @@
   {
     "file": "lib/parse.js",
     "before_sha256": "e572166565f15fa6ad9865ae49d678218e32aabfd1b3720f6d0d43d39800d310",
-    "after_sha256": "d3863652ea1f0e130a71be86cc0e4b08932a1b8b0d0cfacd3e86395ce0b864e0",
+    "after_sha256": "adf3c108a16afaabe5379298d2227881e88f536cc7345b7df780a80d38dd01f9",
     "replacements": [
+      {
+        "before": "const stringify = require('./stringify');",
+        "after": "const stringify = require('./stringify');\nconst utils = require('./utils');"
+      },
       {
         "before": "    if (value === CHAR_LEFT_PARENTHESES) {\n",
         "after": "    if (value === CHAR_LEFT_PARENTHESES) {\n      utils.assertDepth(stack.length);\n"
