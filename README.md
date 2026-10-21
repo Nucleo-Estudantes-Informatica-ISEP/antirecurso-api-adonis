@@ -115,6 +115,10 @@ for separate academic sign-off, manual bootstrap, identity mapping, format, dupl
 Review fields are unauthenticated operator notes; the importer does not verify approval. Never
 apply production changes without explicit authorization and a verified backup.
 
+#### RCOMP candidate question bank
+
+`database/data/ai_generated/rcomp` contains 2,715 AI-generated RCOMP candidates. `rcomp` is excluded from raw-bank discovery, so generic seeding cannot publish it. Academic review and the reviewed-import handoff remain tracked in [#171](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso-api-adonis/issues/171), under [#123](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso-api-adonis/issues/123).
+
 ### 5. Start Development Server
 
 Run the AdonisJS development server with Hot Module Replacement (HMR) enabled:

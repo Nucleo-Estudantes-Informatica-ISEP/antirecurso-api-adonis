@@ -1364,12 +1364,12 @@
     "ref": "L05 p.17"
   },
   {
-    "question": "Porque é que o servidor DHCP tem de estar na mesma rede do cliente, sem outros mecanismos adicionais?",
+    "question": "Porque é que, sem DHCP relay, o servidor DHCP tem de estar na mesma rede do cliente durante a configuração inicial?",
     "answers": [
       "Porque o servidor DHCP precisa de usar o mesmo valor de TTL que o cliente",
       "Porque o DHCP só funciona com endereços MAC de fabricantes conhecidos",
       "Porque o DHCP Discover é enviado com a flag DF ativa no cabeçalho IP",
-      "Porque os routers não reencaminham pacotes enviados para broadcast"
+      "Porque os routers não reencaminham o broadcast limitado do DHCP Discover"
     ],
     "correct_index": 3,
     "source": "AI_GENERATED",

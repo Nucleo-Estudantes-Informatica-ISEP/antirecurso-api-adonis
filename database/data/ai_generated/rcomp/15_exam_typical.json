@@ -1296,11 +1296,11 @@
     "ref": "TP04 p.27"
   },
   {
-    "question": "Porque é que um cliente DHCP só consegue obter configuração se existir um servidor DHCP na sua rede local?",
+    "question": "Porque é que, sem DHCP relay, um cliente DHCP só consegue obter a configuração inicial de um servidor na sua rede local?",
     "answers": [
       "Porque o Discover é enviado em TCP e os routers bloqueiam sempre ligações TCP",
       "Porque o Discover contém o endereço MAC do router e só este o pode ler",
-      "Porque o Discover é enviado em broadcast e os routers não reencaminham esse broadcast",
+      "Porque o DHCP Discover usa broadcast limitado, que os routers não reencaminham diretamente",
       "Porque o servidor identifica os clientes pelo endereço IPv4 anterior de cada um, guardado na cache"
     ],
     "correct_index": 2,
@@ -1667,7 +1667,7 @@
     "ref": "L05 p.29"
   },
   {
-    "question": "Qual é a forma condensada, segundo as regras de representação, do endereço IPv6 2001:0db8:0000:0000:0000:00ab:0000:0001?",
+    "question": "Qual é a forma condensada canónica, segundo o RFC 5952, do endereço IPv6 2001:0db8:0000:0000:0000:00ab:0000:0001?",
     "answers": [
       "2001:db8::ab::1",
       "2001:db8::ab:1",

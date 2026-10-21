@@ -78,4 +78,36 @@ test.group('AI-generated RCOMP question bank', () => {
     assert.isAbove(trueShare, 0.4)
     assert.isBelow(trueShare, 0.65)
   })
+
+  test('DHCP server locality only applies to initial configuration without a relay', async ({
+    assert,
+  }) => {
+    const questions = await loadAiGeneratedSubjectQuestions(rcompDirectory)
+    const locality = questions.filter(
+      (entry) => entry.question.startsWith('Porque é que') && entry.question.includes('DHCP')
+    )
+
+    assert.lengthOf(locality, 2)
+    for (const entry of locality) {
+      assert.match(entry.question, /sem DHCP relay/i)
+      assert.include(entry.question, 'configuração inicial')
+    }
+  })
+
+  test('IPv6 compression questions ask for the unique canonical representation', async ({
+    assert,
+  }) => {
+    const questions = await loadAiGeneratedSubjectQuestions(rcompDirectory)
+    const compression = questions.filter((entry) =>
+      entry.question.startsWith('Qual é a forma condensada')
+    )
+
+    assert.lengthOf(compression, 8)
+    for (const entry of compression) {
+      assert.match(entry.question, /canónica.*RFC 5952/)
+      const address = entry.question.match(/endereço IPv6 ([\da-f:]+)\?$/i)![1]
+      const canonical = new URL(`http://[${address}]/`).hostname.slice(1, -1)
+      assert.equal(entry.answers[entry.correct_index], canonical, entry.question)
+    }
+  })
 })
