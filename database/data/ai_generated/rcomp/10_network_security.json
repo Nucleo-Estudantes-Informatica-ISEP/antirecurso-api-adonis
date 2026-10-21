@@ -1,0 +1,2152 @@
+[
+  {
+    "question": "Para proteger uma transação através de uma rede basta cifrar os dados, sendo dispensável autenticar o interlocutor.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.2"
+  },
+  {
+    "question": "Garantir a privacidade sem autenticação prévia é inútil: se o interlocutor for um intruso (MITM), o esquema de cifra é estabelecido com o intruso, que decifra tudo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.2"
+  },
+  {
+    "question": "Os algoritmos de cifra (cyphers) são públicos; o que se mantém secreto é a chave.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.2"
+  },
+  {
+    "question": "Os algoritmos de cifra só são seguros se o próprio algoritmo for mantido secreto.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.2"
+  },
+  {
+    "question": "Quanto maior é a dimensão da chave de uma cifra, mais tempo demora um ataque de força bruta.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.3"
+  },
+  {
+    "question": "No ataque de repetição (replay attack), o atacante regista os dados cifrados enviados a uma aplicação e volta a enviá-los mais tarde, sem saber o que significam.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.3"
+  },
+  {
+    "question": "Uma forma simples de evitar ataques de repetição é incluir marcas temporais (timestamps) em todas as transações.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.3"
+  },
+  {
+    "question": "O vetor de inicialização (IV) tem de ser o mesmo na cifragem e na decifragem, e as duas aplicações devem acordar um IV aleatório, único, para essa sessão.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.3"
+  },
+  {
+    "question": "As cifras de bloco (por exemplo DES, IDEA, RC5, Blowfish e AES) operam bloco a bloco, com blocos de tamanho fixo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.4"
+  },
+  {
+    "question": "No modo ECB, dois blocos iguais de dados em claro produzem sempre blocos cifrados diferentes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.4"
+  },
+  {
+    "question": "Os modos de operação CBC, CFB, OFB e GCM transformam uma cifra de bloco numa cifra de fluxo, realimentando a entrada com a saída cifrada do bloco anterior.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.4"
+  },
+  {
+    "question": "Nos modos de operação de cifras de bloco como o CBC, o IV é usado na cifragem do primeiro bloco, porque ainda não existe saída cifrada anterior.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.4"
+  },
+  {
+    "question": "Nas cifras simétricas existe uma única chave secreta, conhecida apenas pelas duas partes, usada para cifrar nos dois sentidos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.5"
+  },
+  {
+    "question": "Nas cifras assimétricas, a chave pública decifra e a chave privada cifra, e ambas têm de ser mantidas secretas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.5"
+  },
+  {
+    "question": "Numa cifra assimétrica, as chaves públicas não têm de ser secretas e podem ser enviadas diretamente à outra parte.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.5"
+  },
+  {
+    "question": "Com uma cifra simétrica, a autenticação fica garantida desde o início, porque só as duas aplicações legítimas conhecem a chave secreta.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.6"
+  },
+  {
+    "question": "Com uma cifra simétrica, o problema da autenticação fica delegado ao processo pelo qual a chave secreta foi fornecida às duas aplicações.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.6"
+  },
+  {
+    "question": "Uma chave pré-partilhada (PSK) é uma chave secreta fornecida manualmente, pelo administrador, às duas aplicações.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.6"
+  },
+  {
+    "question": "O mecanismo Diffie–Hellman (DH) permite que duas aplicações gerem a mesma chave secreta sem que um atacante que escute a comunicação a consiga adivinhar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.6"
+  },
+  {
+    "question": "A password de um utilizador, conhecida pelo cliente e pelo servidor, pode ser usada, com um desafio aleatório, para gerar a mesma chave secreta nos dois lados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.6"
+  },
+  {
+    "question": "Receber dados cifrados com a chave pública de uma aplicação permite saber quem os enviou, porque a chave pública só é conhecida pelo emissor legítimo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.7"
+  },
+  {
+    "question": "Na criptografia de chave pública, receber dados cifrados com uma chave pública não revela nada sobre a identidade do interlocutor, porque qualquer pessoa pode usar essa chave.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.7"
+  },
+  {
+    "question": "O RSA assenta em números primos muito grandes, o que o torna muito seguro, mas também computacionalmente pesado e bastante mais lento do que as cifras simétricas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.8"
+  },
+  {
+    "question": "As funções de hash, como o MD5 e o SHA, produzem um código de tamanho fixo que depende de todo o conteúdo de entrada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.8"
+  },
+  {
+    "question": "Uma função de hash é resistente a ataques: é quase impossível alterar o conteúdo de entrada e obter o mesmo código de hash.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.8"
+  },
+  {
+    "question": "Autenticar os interlocutores na criptografia de chave pública reduz-se a autenticar as chaves públicas de cada um.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.9"
+  },
+  {
+    "question": "Um certificado inclui ainda o emissor (issuer) e as datas entre as quais é válido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.9"
+  },
+  {
+    "question": "Se uma aplicação confia numa CA, confia nos certificados de chave pública assinados por essa CA.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.9"
+  },
+  {
+    "question": "A confiança é transitiva ao longo de uma cadeia de certificação, em que cada CA pode ser certificada por outra, formando uma árvore (PKI).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.10"
+  },
+  {
+    "question": "Os certificados auto-assinados são de confiança em qualquer cenário, mesmo sem intervenção do administrador.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.10"
+  },
+  {
+    "question": "O campo subject de um certificado é formatado como um objeto de diretório X.500, com pares atributo-valor (RDN), como país (C), unidade organizacional (OU) e nome comum (CN).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.11"
+  },
+  {
+    "question": "Na autenticação de nós de rede, o CN do subject do certificado tem de coincidir com o nome DNS do nó com que se comunica.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.11"
+  },
+  {
+    "question": "O SSL/TLS foi concebido como um complemento que protege protocolos aplicacionais existentes, sem exigir que estes sejam modificados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.12"
+  },
+  {
+    "question": "Os protocolos aplicacionais protegidos por SSL/TLS costumam usar o sufixo S (HTTPS, SMTPS) e, em geral, portos por omissão diferentes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.12"
+  },
+  {
+    "question": "No Opportunistic TLS, as versões seguras e não seguras do serviço usam o mesmo porto; o TLS só é aplicado se o cliente enviar a mensagem STARTTLS.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.12"
+  },
+  {
+    "question": "Na negociação TLS com autenticação por chaves públicas, o servidor envia logo o seu certificado de chave pública e, opcionalmente, pede o certificado do cliente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.13"
+  },
+  {
+    "question": "O OCSP (Online Certificate Status Protocol) permite verificar junto da CA emissora se um certificado foi revogado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.14"
+  },
+  {
+    "question": "Na validação do certificado do servidor, basta verificar que está dentro do prazo de validade, sendo irrelevante o CN ou a cadeia de certificados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.14"
+  },
+  {
+    "question": "Os túneis de rede baseiam-se em encapsulamento: pacotes transportados como payload de outros pacotes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.16"
+  },
+  {
+    "question": "Uma simples ligação TCP pode ser usada como túnel, se, em vez de dados aplicacionais, transportar frames Ethernet ou datagramas IP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.16"
+  },
+  {
+    "question": "Os dois extremos de um túnel funcionam como switches ou routers, consoante reencaminhem frames de camada 2 ou pacotes de camada 3.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.16"
+  },
+  {
+    "question": "Numa VPN Host-LAN, o servidor VPN faz a autenticação e o controlo de acesso dos utilizadores, e a estação recebe um endereço IP da rede remota.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.18"
+  },
+  {
+    "question": "Numa VPN Host-LAN, cada utilizador usa o endereço IP da sua rede local e não recebe qualquer endereço da rede remota.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.18"
+  },
+  {
+    "question": "Numa VPN de camada 2, as duas extremidades têm de usar a mesma tecnologia de camada 2, senão os formatos de frame seriam incompatíveis.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.19"
+  },
+  {
+    "question": "Numa VPN de camada 3, os extremos funcionam como routers, e o tráfego de broadcast não é reencaminhado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.20"
+  },
+  {
+    "question": "Uma VPN de camada 3 é mais simples de configurar do que uma de camada 2, porque não requer endereços de rede nem encaminhamento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.20"
+  },
+  {
+    "question": "Numa VPN LAN-to-LAN sob o controlo do mesmo administrador, pode usar-se a mesma chave pré-partilhada (PSK) nos dois lados, ou certificados de chave pública, que podem ser auto-assinados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.21"
+  },
+  {
+    "question": "Numa VPN Host-LAN, usar uma cifra simétrica com chave pré-partilhada não é realista, porque seria necessária uma chave diferente por cada utilizador.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.22"
+  },
+  {
+    "question": "O grande inconveniente de gerar a chave secreta a partir da password é a dependência da qualidade da password, sujeita a ataques de dicionário, porque o desafio é público.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.23"
+  },
+  {
+    "question": "Na autenticação com chaves públicas numa VPN Host-LAN, o cliente envia o nome de utilizador e a password cifrados com a chave pública do servidor, depois de validar o certificado deste.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.24"
+  },
+  {
+    "question": "O IPsec usa associações de segurança (SA), unidirecionais, que guardam as cifras e as chaves; para receber dados seguros do mesmo nó é preciso outra SA.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.25"
+  },
+  {
+    "question": "O AH (Authentication Header) do IPsec fornece autenticação e privacidade, e o ESP só fornece integridade.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.25"
+  },
+  {
+    "question": "No IPv6, o IPsec está incluído como cabeçalho de extensão; no IPv4 é um protocolo adicional.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.25"
+  },
+  {
+    "question": "Numa frame PPP, as frames começam e terminam com uma flag de 8 bits (0x7E), e usa-se bit stuffing para garantir que a flag não aparece noutro ponto da frame.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.26"
+  },
+  {
+    "question": "O L2TP é apenas um protocolo de tunelamento: encapsula dados em pacotes UDP e não oferece, por si só, garantias de autenticação nem de privacidade.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.28"
+  },
+  {
+    "question": "Numa VPN L2TP, a autenticação do utilizador pode ser feita pelo PPP que corre sobre a sessão L2TP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.28"
+  },
+  {
+    "question": "O PPTP e o GRE não têm funcionalidades de segurança; a autenticação e a privacidade têm de ser garantidas pelo PPP, por exemplo com MSCHAPv2 e MPPE (baseado no RC4).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.29"
+  },
+  {
+    "question": "O TCP meltdown afeta túneis baseados em TCP: o túnel TCP continua a retransmitir bytes que o protocolo superior já esqueceu, o que acaba por sobrecarregar e bloquear o túnel.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.31"
+  },
+  {
+    "question": "O TCP meltdown afeta sobretudo os túneis baseados em UDP, por estes não serem fiáveis.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.31"
+  },
+  {
+    "question": "O L2TP, por si só, garante autenticação e privacidade dos dados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.28"
+  },
+  {
+    "question": "O PPTP usa o porto UDP 1701 para a ligação de controlo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.29"
+  },
+  {
+    "question": "O OpenVPN usa o PPP para a autenticação dos utilizadores.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.30"
+  },
+  {
+    "question": "O SSTP usa o porto UDP 1194.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.30"
+  },
+  {
+    "question": "O IKE usa o porto UDP 1701.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.28"
+  },
+  {
+    "question": "O PAP é identificado pelo número 0xC223 e o CHAP pelo número 0xC023.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.26"
+  },
+  {
+    "question": "O NCP do IPv4 é o LCP, identificado pelo número 0xC021.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.27"
+  },
+  {
+    "question": "Numa frame PPP, o campo de endereço é essencial porque a ligação ponto a ponto tem de identificar o destino.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.26"
+  },
+  {
+    "question": "Que dois aspetos têm de ser garantidos para proteger uma transação através de uma rede?",
+    "answers": [
+      "Autenticação, para evitar ataques MITM, e fragmentação, para evitar pacotes grandes",
+      "Autenticação, para evitar ataques MITM, e privacidade, para evitar a leitura dos pacotes",
+      "Fiabilidade, para evitar perda de pacotes, e privacidade, para evitar a leitura dos pacotes",
+      "Integridade dos cabeçalhos e compressão dos dados transportados"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.2"
+  },
+  {
+    "question": "Como se designa o ataque em que o atacante regista dados cifrados e os volta a enviar mais tarde à mesma aplicação?",
+    "answers": [
+      "Brute force attack (ataque de força bruta)",
+      "Man-in-the-middle (MITM)",
+      "Sniffing attack",
+      "Replay attack (ataque de repetição)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.3"
+  },
+  {
+    "question": "Como se designa o ataque que consiste em tentar todas as chaves possíveis até obter algo com sentido?",
+    "answers": [
+      "Brute force attack (força bruta)",
+      "Man-in-the-middle (ataque MITM)",
+      "Dictionary attack (ataque de dicionário)",
+      "Replay attack (ataque de repetição)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.3"
+  },
+  {
+    "question": "Como se designa o ataque em que um intruso se faz passar pelo interlocutor legítimo, estabelecendo o esquema de cifra com o intruso?",
+    "answers": [
+      "Dictionary attack (dicionário)",
+      "Brute force attack (força bruta)",
+      "Replay attack (repetição)",
+      "Man-in-the-middle (MITM)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.2"
+  },
+  {
+    "question": "Qual é a dimensão de chave abaixo da qual as cifras são hoje consideradas inseguras?",
+    "answers": [
+      "128 bits",
+      "64 bits",
+      "256 bits",
+      "512 bits"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.3"
+  },
+  {
+    "question": "Para que serve o vetor de inicialização (IV) de uma cifra?",
+    "answers": [
+      "Para identificar a cifra e a versão do TLS escolhidas pelas duas aplicações na sessão",
+      "Para que a mesma entrada não produza sempre a mesma saída, com um valor aleatório único",
+      "Para autenticar o servidor perante o cliente durante o handshake da sessão segura",
+      "Para guardar a chave secreta que as duas aplicações partilham durante a sessão segura"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.3"
+  },
+  {
+    "question": "Qual dos seguintes é um exemplo de cifra de bloco?",
+    "answers": [
+      "Diffie–Hellman",
+      "RC4",
+      "AES (Rijndael)",
+      "ChaCha"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.4"
+  },
+  {
+    "question": "Qual dos seguintes é um exemplo de cifra de fluxo (stream cypher)?",
+    "answers": [
+      "RC4",
+      "DES",
+      "AES (Rijndael)",
+      "Blowfish"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.4"
+  },
+  {
+    "question": "Porque é má ideia cifrar um fluxo de dados bloco a bloco com o modo ECB?",
+    "answers": [
+      "Porque o modo ECB não usa nenhuma chave secreta para cifrar cada um dos blocos",
+      "Porque blocos iguais em claro produzem blocos iguais cifrados, o que revela informação",
+      "Porque o modo ECB exige que os blocos de dados tenham dimensão variável em cada envio",
+      "Porque o modo ECB só funciona com chaves de dimensão inferior a 128 bits de comprimento"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.4"
+  },
+  {
+    "question": "Qual dos seguintes é um modo de operação de cifras de bloco que usa um IV?",
+    "answers": [
+      "CBC (Cipher Block Chaining)",
+      "RSA (Rivest–Shamir–Adleman)",
+      "ECB (Electronic Codebook)",
+      "OCSP (Online Certificate Status Protocol)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.4"
+  },
+  {
+    "question": "Quantas chaves usa uma cifra simétrica entre duas partes?",
+    "answers": [
+      "Um par de chaves (pública e privada) por cada parte",
+      "Duas chaves secretas, uma por cada sentido da comunicação",
+      "Uma chave pública por cada parte e uma chave privada partilhada",
+      "Uma única chave secreta, conhecida pelas duas partes"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.5"
+  },
+  {
+    "question": "Qual é o papel da chave pública e da chave privada nas cifras assimétricas?",
+    "answers": [
+      "A chave privada cifra e a pública decifra; ambas são mantidas secretas",
+      "A chave pública cifra e a privada decifra; só a privada é mantida secreta",
+      "A chave pública e a privada cifram e decifram, e ambas são partilhadas",
+      "A chave pública cifra e a privada decifra; ambas são conhecidas pelas duas partes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.5"
+  },
+  {
+    "question": "Qual é a grande vantagem da criptografia de chave pública?",
+    "answers": [
+      "Dispensa o uso de qualquer chave privada em ambas as partes",
+      "A chave de cifra é pública, pelo que pode ser enviada pela rede sem riscos",
+      "Garante, por si só, a autenticação do interlocutor",
+      "É mais rápida do que as cifras simétricas e serve para cifrar grandes volumes de dados"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.7"
+  },
+  {
+    "question": "Porque é que a criptografia de chave pública, só por si, não garante autenticação?",
+    "answers": [
+      "Porque qualquer pessoa pode usar a chave pública, logo os dados cifrados não revelam o emissor",
+      "Porque o algoritmo RSA não consegue cifrar dados com a chave pública de outra aplicação",
+      "Porque a chave privada é divulgada a todas as aplicações da rede durante o diálogo seguro de autenticação",
+      "Porque a chave pública é secreta e conhecida apenas pelo servidor com que se comunica"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.7"
+  },
+  {
+    "question": "Qual é o principal inconveniente do RSA face às cifras simétricas?",
+    "answers": [
+      "É pesado em termos de computação e bastante mais lento",
+      "Exige que a chave seja mantida secreta pelas duas partes",
+      "Só funciona com blocos de dimensão fixa e pequena",
+      "Não permite a troca segura de chaves pela rede"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.8"
+  },
+  {
+    "question": "Para que se usa o RSA na prática, dado ser lento?",
+    "answers": [
+      "Na transferência de todos os dados trocados entre cliente e servidor na sessão",
+      "Apenas para calcular os códigos de hash dos dados que são enviados na sessão",
+      "Em fases estratégicas do diálogo: autenticação e troca de chaves simétricas",
+      "Na compressão dos dados antes de serem enviados pela rede para o destinatário"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.8"
+  },
+  {
+    "question": "O que é uma assinatura digital?",
+    "answers": [
+      "Um valor obtido cifrando os dados com a chave pública do destinatário da mensagem",
+      "Um valor obtido cifrando o hash dos dados com a chave privada, que autentica o autor",
+      "Uma chave simétrica gerada a partir da password do autor dos dados enviados",
+      "Um certificado emitido pela CA com a chave privada do destinatário dos dados"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.8"
+  },
+  {
+    "question": "O que garante o não repúdio de uma assinatura digital?",
+    "answers": [
+      "O facto de os dados assinados estarem também cifrados com uma chave simétrica secreta",
+      "O facto de a chave pública ser conhecida por todas as aplicações da rede de comunicação",
+      "O facto de o código de hash ter tamanho fixo, qualquer que seja o conteúdo assinado",
+      "Só o dono da chave privada pode ter criado a assinatura, logo não pode negar a autoria"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.8"
+  },
+  {
+    "question": "Qual dos seguintes é um exemplo de função de hash?",
+    "answers": [
+      "RSA",
+      "SHA",
+      "AES",
+      "RC4"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.8"
+  },
+  {
+    "question": "O que é um certificado de chave pública?",
+    "answers": [
+      "Uma chave simétrica partilhada entre o servidor e a CA durante a negociação",
+      "Uma lista de cipher suites suportadas pelo servidor, assinada pela própria CA",
+      "Uma declaração, assinada por uma CA, de que uma chave pública pertence a uma entidade",
+      "Uma password cifrada com a chave privada do cliente e guardada pela CA"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.9"
+  },
+  {
+    "question": "Quais são alguns elementos principais de um certificado de chave pública?",
+    "answers": [
+      "A chave pública, a identificação de uma entidade (subject) e a assinatura da CA",
+      "A chave simétrica, o nome do utilizador e o vetor de inicialização da sessão",
+      "O hash da password, o porto TCP do servidor e o número de sequência",
+      "A chave privada do servidor, o endereço IP da entidade e a assinatura digital do cliente final"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.9"
+  },
+  {
+    "question": "O que é o subject de um certificado de chave pública?",
+    "answers": [
+      "O período de validade do certificado, entre a data de início e a data de fim",
+      "O algoritmo usado na assinatura digital do certificado pela autoridade de certificação",
+      "A entidade a quem pertence a chave pública, muitas vezes o nome DNS de um nó de rede",
+      "A CA que emitiu e assinou o certificado de chave pública apresentado ao cliente"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.9"
+  },
+  {
+    "question": "O que é o issuer de um certificado de chave pública?",
+    "answers": [
+      "O algoritmo de cifra associado à chave pública",
+      "O nome DNS do servidor onde o certificado está instalado",
+      "A CA que emitiu e assinou o certificado",
+      "A entidade a quem pertence a chave pública"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.9"
+  },
+  {
+    "question": "O que é a ROOT CA?",
+    "answers": [
+      "A CA que assina todos os certificados com a mesma chave simétrica da sessão",
+      "A CA na base da árvore, cujo certificado é auto-assinado (issuer igual a subject)",
+      "A CA que emite certificados apenas para servidores web, de acordo com o seu tipo e domínio",
+      "A CA que só emite certificados para outras ROOT CA de nível equivalente"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.10"
+  },
+  {
+    "question": "Onde guardam as aplicações os certificados das CA em que confiam?",
+    "answers": [
+      "Na chave pré-partilhada configurada no servidor com que se comunica",
+      "No cabeçalho de cada pacote enviado pela rede para o destinatário",
+      "No registo DNS do domínio do servidor a que a aplicação se liga",
+      "No repositório de verificação de certificados (trust store)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.10"
+  },
+  {
+    "question": "Porque é que o servidor TLS envia a cadeia completa de certificados e não apenas o seu?",
+    "answers": [
+      "Para o servidor provar que conhece a chave privada de todas as CA da cadeia de certificados",
+      "Para evitar que o cliente tenha de validar o prazo de validade de cada certificado",
+      "Para o cliente poder percorrer a cadeia até um certificado de confiança que tenha localmente",
+      "Para o cliente poder decifrar os dados com a chave pública de cada uma das CA da cadeia"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.10"
+  },
+  {
+    "question": "Quando são seguros os certificados auto-assinados?",
+    "answers": [
+      "Quando o certificado é assinado por uma ROOT CA pública conhecida de todos os clientes",
+      "Sempre, sem qualquer intervenção do administrador, por serem assinados pelo próprio dono",
+      "Quando o mesmo administrador controla as aplicações e adiciona o certificado da outra parte",
+      "Quando o subject do certificado é o endereço IP do servidor com que se comunica"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.10"
+  },
+  {
+    "question": "Que atributo do subject de um certificado deve coincidir com o nome DNS do nó com que se comunica?",
+    "answers": [
+      "O C (Country)",
+      "O OU (Organizational Unit)",
+      "O O (Organization)",
+      "O CN (Common Name)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.11"
+  },
+  {
+    "question": "A que valor deve coincidir o CN do subject de um certificado usado para cifrar um e-mail?",
+    "answers": [
+      "Ao nome da CA que emitiu o certificado",
+      "Ao endereço IP do cliente de correio",
+      "Ao nome DNS do servidor de correio do domínio do destinatário",
+      "Ao endereço de correio eletrónico da outra parte"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.11"
+  },
+  {
+    "question": "Em que camada atua o SSL/TLS?",
+    "answers": [
+      "Na camada de ligação lógica, sobre as frames Ethernet",
+      "Na camada de transporte, diretamente sobre o TCP ou UDP",
+      "Na camada de rede, diretamente sobre o IP",
+      "Na camada física, antes do line coding"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.12"
+  },
+  {
+    "question": "O que é o Opportunistic TLS?",
+    "answers": [
+      "Usar sempre portos diferentes para a versão segura e para a versão não segura do serviço",
+      "Substituir o certificado do servidor por uma chave pré-partilhada em todas as sessões",
+      "Servir a versão segura e a não segura no mesmo porto; o TLS aplica-se com STARTTLS",
+      "Aplicar o TLS apenas aos pacotes que contêm passwords ou outros dados sensíveis"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.12"
+  },
+  {
+    "question": "Qual dos seguintes protocolos pode usar a mensagem STARTTLS?",
+    "answers": [
+      "SMTP",
+      "ARP",
+      "DHCP",
+      "ICMP"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.12"
+  },
+  {
+    "question": "O que contém a mensagem Client Hello do TLS?",
+    "answers": [
+      "O nome de utilizador e a password do utilizador final que usa o cliente TLS",
+      "A cipher suite escolhida para a sessão e o certificado de chave pública do servidor",
+      "O certificado de chave pública do cliente e a chave simétrica escolhida para a sessão",
+      "A versão de TLS do cliente e a lista de cipher suites suportadas, por ordem de preferência"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.12"
+  },
+  {
+    "question": "O que contém a mensagem Server Hello do TLS?",
+    "answers": [
+      "A lista completa de cipher suites suportadas pelo servidor, por ordem de preferência",
+      "A versão de TLS a usar, a cipher suite escolhida entre as do cliente e um número aleatório",
+      "O nome de utilizador e a password usados pelo servidor para autenticar o cliente",
+      "A chave privada do servidor, cifrada com a chave pública do cliente para a sessão"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.13"
+  },
+  {
+    "question": "Qual é o objetivo dos números aleatórios no Client Hello e no Server Hello?",
+    "answers": [
+      "Indicar o porto TCP a usar depois do handshake",
+      "Identificar a versão do TLS escolhida pelo servidor",
+      "Evitar alguns ataques, como os ataques de repetição",
+      "Servir como chave simétrica da sessão entre cliente e servidor"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.13"
+  },
+  {
+    "question": "Depois de autenticado o servidor, como é estabelecida a chave simétrica de sessão no TLS?",
+    "answers": [
+      "Usando as chaves públicas autenticadas (ou Diffie–Hellman) para a estabelecer em segurança",
+      "O cliente gera-a e envia-a ao servidor sem qualquer proteção criptográfica pelo caminho da ligação",
+      "É derivada do endereço IP do cliente e do endereço IP do servidor com que comunica",
+      "O servidor envia-a em claro, no interior da mensagem Server Hello enviada ao cliente"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.13"
+  },
+  {
+    "question": "Porque é que o servidor TLS, em regra, não exige certificado ao cliente?",
+    "answers": [
+      "Porque a autenticação do cliente é feita pela CA durante o handshake, e não pelo servidor, que nunca valida identidades",
+      "Porque o TLS não permite, em nenhuma situação, a autenticação do cliente pelo servidor",
+      "Porque os clientes não têm capacidade para cifrar dados com RSA nem para os decifrar",
+      "Porque os clientes são muitos e anónimos; o que é vital é o cliente autenticar o servidor"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.14"
+  },
+  {
+    "question": "Que verificações faz o cliente ao certificado do servidor?",
+    "answers": [
+      "Apenas se o certificado foi emitido para um subdomínio da CA que o assinou",
+      "Apenas se a chave pública do certificado tem 2048 bits ou mais de comprimento",
+      "Apenas se o certificado está auto-assinado e se o CN é um endereço IP numérico do servidor",
+      "Prazo de validade, cadeia até um certificado de confiança local e CN igual ao nome DNS"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.14"
+  },
+  {
+    "question": "Para que serve o OCSP (Online Certificate Status Protocol)?",
+    "answers": [
+      "Para estabelecer a chave simétrica de sessão entre cliente e servidor",
+      "Para verificar, junto da CA emissora, se um certificado foi revogado",
+      "Para renovar automaticamente o certificado antes de expirar",
+      "Para negociar a versão do TLS entre cliente e servidor"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.14"
+  },
+  {
+    "question": "O que é uma VPN?",
+    "answers": [
+      "Uma rede física dedicada e separada da Internet, com cabos próprios entre as redes",
+      "Um mecanismo de tradução de endereços privados em endereços públicos nas redes",
+      "Um protocolo de camada de aplicação para trocar ficheiros de forma segura entre duas redes remotas",
+      "Uma ligação de camada 2 simulada (túnel ponto a ponto cifrado) sobre uma rede existente"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.15"
+  },
+  {
+    "question": "Porque se diz que uma VPN é virtual?",
+    "answers": [
+      "Porque usa certificados virtuais assinados por uma CA de nível intermédio",
+      "Porque usa endereços IP virtuais atribuídos dinamicamente por um servidor DHCP a cada utilizador",
+      "Porque não é uma infraestrutura física real, mas um túnel sobre uma rede existente",
+      "Porque os dados são enviados em broadcast e não em unicast entre as duas redes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.15"
+  },
+  {
+    "question": "Porque se diz que uma VPN é privada?",
+    "answers": [
+      "Porque o túnel é propriedade de um único operador",
+      "Porque só usa endereços IP privados em todas as ligações",
+      "Porque só pode ser usada dentro de redes privadas",
+      "Porque a informação enviada através do túnel é cifrada"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.15"
+  },
+  {
+    "question": "Em que se baseiam os túneis de rede?",
+    "answers": [
+      "Em fragmentação: pacotes divididos em partes mais pequenas e remontadas no destino",
+      "Em multiplexagem: vários protocolos partilham o mesmo porto de transporte",
+      "Em encapsulamento: pacotes transportados como payload de outros pacotes",
+      "Em compressão: pacotes reduzidos antes de serem enviados pela rede"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.16"
+  },
+  {
+    "question": "Como funciona um extremo de um túnel que reencaminha frames de camada 2?",
+    "answers": [
+      "Como um hub de camada 1",
+      "Como um repetidor de camada 1",
+      "Como um router de camada 3",
+      "Como um switch ou bridge"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.16"
+  },
+  {
+    "question": "Qual é a utilização típica de uma VPN LAN-to-LAN (site-to-site)?",
+    "answers": [
+      "Cifrar apenas o tráfego de correio eletrónico entre duas redes de uma organização, deixando o restante em claro",
+      "Substituir o servidor DNS de cada uma das redes por um servidor comum",
+      "Criar uma ligação permanente entre duas redes remotas, transparente para os utilizadores",
+      "Dar a um utilizador remoto acesso à rede da organização, criando a ligação a pedido"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.17"
+  },
+  {
+    "question": "Qual das seguintes é uma razão para criar uma VPN LAN-to-LAN?",
+    "answers": [
+      "Os utilizadores querem ligar-se à rede da empresa a partir de casa, quando precisam",
+      "Os clientes querem autenticar-se com nome de utilizador e password individuais",
+      "A rede tem poucos endereços IP públicos disponíveis para os seus utilizadores",
+      "As redes usam um protocolo não suportado pela Internet, como IPv6 sobre uma rede só IPv4"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.17"
+  },
+  {
+    "question": "Qual é a utilização típica de uma VPN Host-LAN (remote-access)?",
+    "answers": [
+      "Substituir o router por omissão da rede local por um servidor VPN",
+      "Permitir que utilizadores criem a pedido uma ligação VPN pessoal à rede",
+      "Criar uma ligação permanente entre duas redes remotas de uma organização",
+      "Interligar dois servidores VPN através de um túnel L2TP permanente"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.18"
+  },
+  {
+    "question": "Numa VPN Host-LAN, quem autentica o utilizador e controla o acesso?",
+    "answers": [
+      "A CA que emitiu o certificado do cliente",
+      "O servidor VPN",
+      "O servidor DNS da rede de suporte",
+      "O cliente VPN, no posto do utilizador"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.18"
+  },
+  {
+    "question": "O que recebe a estação do utilizador, depois de aceite numa VPN Host-LAN?",
+    "answers": [
+      "Um endereço IP público fixo da sua rede local",
+      "Um endereço MAC novo atribuído pelo servidor VPN",
+      "Um endereço IP pertencente à rede remota",
+      "Um certificado de chave pública temporário"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.18"
+  },
+  {
+    "question": "Como se comporta uma VPN de camada 2?",
+    "answers": [
+      "Como uma bridge: reencaminha todas as frames, incluindo o broadcast, e as redes ficam uma só",
+      "Como um hub: repete todos os sinais recebidos sem interpretar as frames, ao nível da camada 1 do modelo OSI",
+      "Como uma firewall: filtra o tráfego pelas portas TCP e UDP dos pacotes recebidos",
+      "Como um router: reencaminha pacotes de camada 3 e bloqueia o tráfego de broadcast"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.19"
+  },
+  {
+    "question": "Qual é uma desvantagem de uma VPN de camada 2?",
+    "answers": [
+      "O tráfego de broadcast reencaminhado pode ser uma carga significativa na ligação",
+      "Não permite o funcionamento de protocolos de broadcast, como o ARP e o DHCP",
+      "Exige três endereços de rede distintos e encaminhamento configurado entre as redes",
+      "Não funciona com protocolos de camada 3 que não sejam o IPv4 usado na Internet"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.19"
+  },
+  {
+    "question": "Como se comporta uma VPN de camada 3?",
+    "answers": [
+      "Como uma bridge: reencaminha todas as frames, incluindo o broadcast",
+      "Como um hub: repete todos os sinais recebidos para todas as portas",
+      "Como um router: reencaminha pacotes e não reencaminha o broadcast",
+      "Como uma firewall: bloqueia todo o tráfego que não esteja autenticado"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.20"
+  },
+  {
+    "question": "Porque é geralmente mais complexa de configurar uma VPN de camada 3?",
+    "answers": [
+      "Porque são necessárias redes distintas, com endereços de rede válidos, e encaminhamento",
+      "Porque exige a mesma tecnologia de camada 2 nos dois lados do túnel e em todas as redes ligadas",
+      "Porque exige que o broadcast seja reencaminhado entre as duas redes que o túnel liga",
+      "Porque exige cifras assimétricas em todos os pacotes que atravessam o túnel VPN"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.20"
+  },
+  {
+    "question": "Quantos endereços de rede distintos são necessários para duas redes ligadas por uma VPN de camada 3?",
+    "answers": [
+      "Três: a rede A, a rede B e a ligação VPN",
+      "Dois: a rede A e a rede B",
+      "Quatro: duas redes e duas ligações VPN, uma por sentido",
+      "Um: a ligação VPN partilhada pelas duas redes"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.20"
+  },
+  {
+    "question": "Qual é um problema de gerar a chave secreta a partir da password do utilizador numa VPN?",
+    "answers": [
+      "Exige um certificado de chave pública para cada um dos utilizadores",
+      "Obriga a enviar a password em claro pela rede até ao servidor VPN",
+      "Depende da qualidade da password e fica exposto a ataques de dicionário",
+      "Exige um vetor de inicialização diferente para cada pacote enviado pelo cliente"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.23"
+  },
+  {
+    "question": "Porque é que a password não viaja na rede quando é usada para gerar a chave secreta de uma VPN?",
+    "answers": [
+      "Porque a password é cifrada com a chave pública do utilizador antes do envio",
+      "Porque a password é guardada apenas na CA e nunca no servidor VPN de destino",
+      "Porque a password é substituída por uma marca temporal em cada nova sessão VPN estabelecida",
+      "Porque cliente e servidor a conhecem e geram cada um a mesma chave com o desafio"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.23"
+  },
+  {
+    "question": "Qual é o objetivo de incluir uma marca temporal no desafio usado para gerar a chave secreta?",
+    "answers": [
+      "Impedir ataques de dicionário à password escolhida pelo utilizador",
+      "Evitar ataques de repetição, tornando a chave única por sessão",
+      "Indicar ao cliente o prazo de validade do certificado do servidor",
+      "Provar a identidade do servidor perante o cliente que o contacta"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.23"
+  },
+  {
+    "question": "Porque se passa de cifra assimétrica para simétrica depois de estabelecido o transporte seguro numa VPN Host-LAN?",
+    "answers": [
+      "Porque a cifra simétrica autentica melhor o servidor",
+      "Porque a cifra assimétrica deixa de ser segura após o handshake",
+      "Porque a cifra simétrica é muito mais rápida",
+      "Porque a cifra assimétrica não permite enviar a password"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.24"
+  },
+  {
+    "question": "A que camada atua o IPsec?",
+    "answers": [
+      "À camada de transporte, sobre o TCP e o UDP",
+      "À camada de rede, sobre o IPv4 e o IPv6",
+      "À camada de aplicação, sobre o HTTP",
+      "À camada de ligação lógica, sobre o Ethernet"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.25"
+  },
+  {
+    "question": "O que são as SA (Security Associations) do IPsec?",
+    "answers": [
+      "Listas de endereços IP autorizados a usar o IPsec nos nós de uma organização, geridas pelo administrador de rede",
+      "Chaves públicas partilhadas por todos os nós que comunicam com o IPsec ativo",
+      "Registos, unidirecionais, que guardam as cifras e as chaves a usar com cada parte",
+      "Certificados emitidos pela CA para cada um dos nós que usam o IPsec na rede"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.25"
+  },
+  {
+    "question": "Qual é o protocolo mais usado para criar a primeira SA do IPsec?",
+    "answers": [
+      "IKE (Internet Key Exchange)",
+      "PPP (Point-to-Point Protocol)",
+      "OCSP (Online Certificate Status Protocol)",
+      "CHAP (Challenge Handshake Authentication Protocol)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.25"
+  },
+  {
+    "question": "Qual é a diferença entre o AH e o ESP do IPsec?",
+    "answers": [
+      "O AH dá privacidade e o ESP dá apenas integridade dos dados do pacote IP original",
+      "O AH funciona só com pacotes IPv4 e o ESP funciona só com pacotes IPv6 na rede",
+      "O AH dá autenticação e privacidade; o ESP não dá nenhuma delas ao pacote IP",
+      "O AH dá autenticação e integridade, sem privacidade; o ESP dá também privacidade"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.25"
+  },
+  {
+    "question": "Quais são os valores fixos dos campos Flag, Address e Control de uma frame PPP?",
+    "answers": [
+      "0xFF, 0x7E e 0x03",
+      "0x7E, 0xFF e 0x03",
+      "0x03, 0xFF e 0x7E",
+      "0x7E, 0x03 e 0xFF"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.26"
+  },
+  {
+    "question": "Para que serve o bit stuffing numa frame PPP?",
+    "answers": [
+      "Para identificar o protocolo de camada 3 transportado",
+      "Para garantir que a flag 0x7E não aparece noutro ponto da frame",
+      "Para detetar erros de transmissão nos dados da frame",
+      "Para aumentar o tamanho do campo de dados até ao MTU de 1500 bytes da ligação"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.26"
+  },
+  {
+    "question": "Qual é o número do protocolo LCP no campo de protocolo do PPP?",
+    "answers": [
+      "0xC021",
+      "0xC223",
+      "0x8021",
+      "0xC023 (PAP)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.26"
+  },
+  {
+    "question": "Qual é o número do protocolo PAP no PPP?",
+    "answers": [
+      "0xC021",
+      "0xC023",
+      "0xC223",
+      "0x8021"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.26"
+  },
+  {
+    "question": "Qual é o número do protocolo CHAP no PPP?",
+    "answers": [
+      "0xC021",
+      "0xC223",
+      "0xC023",
+      "0x8021"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.26"
+  },
+  {
+    "question": "Para que serve o LCP (Link Control Protocol)?",
+    "answers": [
+      "Para identificar o protocolo de camada 3 transportado em cada uma das frames",
+      "Para atribuir um endereço IPv4 a cada um dos extremos da ligação ponto a ponto",
+      "Para negociar a configuração da ligação PPP, incluindo o protocolo de autenticação",
+      "Para cifrar os dados transportados nas frames PPP trocadas entre os extremos"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.26"
+  },
+  {
+    "question": "Qual é o número do protocolo IPv4 no PPP e do NCP correspondente (IPCP)?",
+    "answers": [
+      "0xC021 e 0xC023 (LCP e PAP)",
+      "0x0021 e 0x8021",
+      "0x0057 e 0x8057",
+      "0x8021 e 0x0021"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.27"
+  },
+  {
+    "question": "Que protocolo de autenticação do PPP usa um desafio (challenge)?",
+    "answers": [
+      "CHAP",
+      "IPCP",
+      "PAP, que envia a password em claro",
+      "LCP"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.26"
+  },
+  {
+    "question": "Sobre que protocolo de transporte corre o L2TP e em que porto?",
+    "answers": [
+      "TCP, no porto 1723",
+      "UDP, no porto 500",
+      "UDP, no porto 1701",
+      "TCP, no porto 1701"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.28"
+  },
+  {
+    "question": "Como se designam os extremos de um túnel L2TP?",
+    "answers": [
+      "LAC (L2TP Access Concentrator) e LNS (L2TP Network Server)",
+      "CA (Certification Authority) e RA (Registration Authority)",
+      "LCP (Link Control Protocol) e NCP (Network Control Protocol)",
+      "AH (Authentication Header) e ESP (Encapsulating Security Payload)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.28"
+  },
+  {
+    "question": "O que transporta cada sessão L2TP?",
+    "answers": [
+      "Segmentos TCP de uma ligação TLS",
+      "Datagramas ESP de uma associação IPsec",
+      "Frames PPP de uma sessão PPP",
+      "Pacotes GRE de uma ligação PPTP"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.28"
+  },
+  {
+    "question": "Como se obtêm autenticação e privacidade numa VPN L2TP?",
+    "answers": [
+      "Correndo o L2TP sobre TLS, com a ligação de controlo no porto TCP 443",
+      "Correndo o L2TP sobre GRE, com a ligação de controlo no porto TCP 1723",
+      "O L2TP já fornece autenticação e privacidade, sem protocolos adicionais",
+      "Correndo o L2TP sobre IPsec, com IKE a negociar a cifra no porto UDP 500"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.28"
+  },
+  {
+    "question": "Que porto UDP usa o IKE?",
+    "answers": [
+      "500",
+      "1701",
+      "443",
+      "1194"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.28"
+  },
+  {
+    "question": "Que porto TCP é usado pela ligação de controlo do PPTP?",
+    "answers": [
+      "1701",
+      "1194",
+      "443",
+      "1723"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.29"
+  },
+  {
+    "question": "Que protocolo encapsula os pacotes PPP no PPTP?",
+    "answers": [
+      "TLS (Transport Layer Security), sobre TCP no porto 443",
+      "L2TP (Layer 2 Tunneling Protocol), sobre UDP no porto 1701",
+      "GRE (Generic Routing Encapsulation), protocolo IP número 47",
+      "ESP (Encapsulating Security Payload), protocolo IP número 50"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.29"
+  },
+  {
+    "question": "Porque é que o GRE levanta dificuldades aos dispositivos NAPT?",
+    "answers": [
+      "Porque cifra todo o cabeçalho IP dos pacotes encapsulados, incluindo os endereços",
+      "Porque não tem números de porto, e muitos routers NAT precisam da opção PPTP pass-through",
+      "Porque usa endereços IPv6 que o NAT não consegue traduzir para endereços IPv4 públicos",
+      "Porque usa o UDP em vez do TCP para fazer o encapsulamento dos pacotes PPP no túnel"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.29"
+  },
+  {
+    "question": "Que cifra usa o MPPE do PPTP da Microsoft?",
+    "answers": [
+      "RC4",
+      "ChaCha",
+      "DES",
+      "AES"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.29"
+  },
+  {
+    "question": "Que protocolo de autenticação de utilizadores usa o PPTP da Microsoft?",
+    "answers": [
+      "MSCHAPv2",
+      "OCSP, com certificados X.509",
+      "IKE",
+      "PAP"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.29"
+  },
+  {
+    "question": "Que porto escuta o servidor OpenVPN, sobre UDP ou TCP?",
+    "answers": [
+      "1194",
+      "500",
+      "1723 (PPTP)",
+      "1701"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.30"
+  },
+  {
+    "question": "Que protocolo usa uma ligação TCP protegida por TLS para o porto 443, parecendo tráfego HTTPS para as firewalls?",
+    "answers": [
+      "SSTP (Secure Socket Tunneling Protocol)",
+      "L2TP (Layer 2 Tunneling Protocol)",
+      "PPTP (Point-to-Point Tunneling Protocol)",
+      "IKE (Internet Key Exchange)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.30"
+  },
+  {
+    "question": "Qual das seguintes VPN não usa o PPP?",
+    "answers": [
+      "PPTP",
+      "L2TP",
+      "SSTP",
+      "OpenVPN"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.30"
+  },
+  {
+    "question": "Que problema afeta túneis baseados em TCP, como o SSTP e possivelmente o OpenVPN?",
+    "answers": [
+      "Esgotamento de endereços IP: cada túnel consome um endereço público diferente",
+      "Fragmentação excessiva: o túnel divide os pacotes em fragmentos muito pequenos",
+      "Perda de autenticação: o túnel deixa de validar os certificados dos extremos",
+      "TCP meltdown: o túnel insiste em retransmitir bytes que o protocolo superior já esqueceu"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.31"
+  },
+  {
+    "question": "Em que condições se manifesta o problema do TCP meltdown?",
+    "answers": [
+      "Quando o túnel usa UDP em vez de TCP",
+      "Quando os certificados do túnel expiram",
+      "Quando a rede física não tem congestionamento nem erros",
+      "Quando a rede física apresenta atrasos e perdas significativos"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.31"
+  },
+  {
+    "question": "Uma chave de 64 bits é hoje considerada suficientemente segura para cifrar dados sensíveis.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.3"
+  },
+  {
+    "question": "Para realizar um replay attack, o atacante tem de descobrir primeiro a chave de cifra.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.3"
+  },
+  {
+    "question": "O vetor de inicialização (IV) deve ser reutilizado em todas as sessões entre as mesmas duas aplicações.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.3"
+  },
+  {
+    "question": "O RC4 e o AES são ambos cifras de fluxo (stream cyphers).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.4"
+  },
+  {
+    "question": "O modo CBC cifra cada bloco de forma independente dos blocos anteriores, tal como o ECB.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.4"
+  },
+  {
+    "question": "Numa cifra simétrica, cada sentido da comunicação usa uma chave secreta diferente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.5"
+  },
+  {
+    "question": "A chave pública de uma aplicação deve ser mantida secreta pelo seu dono.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.5"
+  },
+  {
+    "question": "O RSA é mais rápido do que as cifras simétricas, por isso é usado para cifrar grandes volumes de dados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.8"
+  },
+  {
+    "question": "Uma assinatura digital RSA é calculada sobre os próprios dados e nunca sobre o seu hash.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.8"
+  },
+  {
+    "question": "Uma função de hash produz um código cujo tamanho aumenta com o tamanho do conteúdo de entrada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.8"
+  },
+  {
+    "question": "O certificado de uma ROOT CA é assinado por outra CA de nível superior.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.10"
+  },
+  {
+    "question": "Um certificado só tem prazo de validade se for auto-assinado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.9"
+  },
+  {
+    "question": "Para validar um certificado, a aplicação deve aceitar qualquer emissor, desde que o CN coincida com o nome DNS do nó.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.10"
+  },
+  {
+    "question": "O SSL/TLS atua ao nível da camada de rede, diretamente sobre o IP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.12"
+  },
+  {
+    "question": "Num protocolo protegido por SSL/TLS, a negociação é feita depois de os dados aplicacionais serem enviados em claro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.12"
+  },
+  {
+    "question": "No Server Hello, a cipher suite é escolhida pelo cliente, e o servidor limita-se a aceitá-la.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.13"
+  },
+  {
+    "question": "No TLS, o servidor tem sempre de exigir um certificado de chave pública ao cliente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.13"
+  },
+  {
+    "question": "Os túneis de rede só podem transportar frames de camada 2, nunca pacotes de camada 3.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.16"
+  },
+  {
+    "question": "Numa VPN LAN-to-LAN, cada utilizador tem de se autenticar individualmente no servidor VPN.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.17"
+  },
+  {
+    "question": "Uma VPN Host-LAN é criada de forma permanente pelo administrador, sem intervenção dos utilizadores.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.18"
+  },
+  {
+    "question": "Numa VPN de camada 2, o tráfego de broadcast não é reencaminhado pelo túnel.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.19"
+  },
+  {
+    "question": "Numa VPN de camada 3, as duas redes passam a ser uma única rede de camada 3.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.20"
+  },
+  {
+    "question": "O IPsec interage diretamente com as aplicações, tal como o TLS.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.25"
+  },
+  {
+    "question": "O IPsec usa uma única SA para os dois sentidos de comunicação entre dois nós.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.25"
+  },
+  {
+    "question": "O IKE funciona sobre TCP, no porto 500.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.28"
+  },
+  {
+    "question": "O PPP é um protocolo recente, concebido de raiz para as VPN.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.26"
+  },
+  {
+    "question": "Por omissão, o PPP exige sempre autenticação CHAP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.26"
+  },
+  {
+    "question": "O OpenVPN só funciona sobre UDP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L10 p.30"
+  }
+]

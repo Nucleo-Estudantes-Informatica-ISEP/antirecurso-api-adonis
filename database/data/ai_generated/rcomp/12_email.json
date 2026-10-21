@@ -1,0 +1,1491 @@
+[
+  {
+    "question": "O correio eletrónico imita o correio postal tradicional: entrega mensagens entre utilizadores em modo off-line e não interativo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.2"
+  },
+  {
+    "question": "O correio eletrónico exige que o utilizador de destino esteja presente quando a mensagem chega, para a poder receber de imediato.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.2"
+  },
+  {
+    "question": "Um sistema de correio baseado num sistema de ficheiros partilhado fica confinado a esse sistema de ficheiros, e as mailboxes podem ser identificadas apenas pelo nome de utilizador.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.4"
+  },
+  {
+    "question": "Um sistema de correio baseado num sistema de ficheiros partilhado permite comunicar diretamente com utilizadores de outros sistemas de correio.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.4"
+  },
+  {
+    "question": "O sistema de processamento de correio com capacidade de interagir com sistemas remotos chama-se MTA (Mail Transport Agent ou Message Transfer Agent).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.6"
+  },
+  {
+    "question": "O MUA (Mail User Agent) é o software que permite a um utilizador remoto enviar mensagens usando o mesmo protocolo que os MTA usam entre si.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.6"
+  },
+  {
+    "question": "O MUA (Mail User Agent) é o servidor que recebe correio dos MTA remotos e o entrega nas mailboxes locais.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.6"
+  },
+  {
+    "question": "Na Internet, o protocolo aplicacional mais usado para enviar mensagens de correio eletrónico é o SMTP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.7"
+  },
+  {
+    "question": "Em SMTP, as mailboxes são identificadas na forma USER@DNS-NAME, em que DNS-NAME é o nome DNS qualificado do servidor de correio que aloja a mailbox.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.7"
+  },
+  {
+    "question": "Quando um MTA examina uma mensagem e o DNS-NAME é o seu, deposita-a na mailbox local; se for de outro servidor, contacta esse servidor por SMTP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.7"
+  },
+  {
+    "question": "Os MTA atuais pedem primeiro os registos MX do domínio e só se isso falhar tentam os registos A e AAAA, que correspondiam à estratégia original.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.8"
+  },
+  {
+    "question": "Os MTA atuais pedem primeiro os registos A e AAAA do domínio e só depois os registos MX.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.8"
+  },
+  {
+    "question": "O SMTP só permite caracteres de 7 bits, tanto no cabeçalho como no corpo da mensagem.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.9"
+  },
+  {
+    "question": "O SMTP permite caracteres de 8 bits no corpo da mensagem, mas apenas 7 bits no cabeçalho.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.9"
+  },
+  {
+    "question": "Em SMTP, depois do comando DATA, o servidor responde com 354 e o cliente envia a mensagem, terminada por uma linha com apenas um ponto.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.10"
+  },
+  {
+    "question": "O ESMTP (RFC 1869) permite um conjunto de comandos mais alargado do que o SMTP, e o cliente deve usar o comando EHLO em vez de HELO.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.11"
+  },
+  {
+    "question": "O principal problema de segurança do SMTP é a ausência de autenticação do remetente: não há garantia de que o campo From: corresponde a quem criou a mensagem.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.12"
+  },
+  {
+    "question": "A extensão ESMTP AUTH permite impor autenticação de utilizadores, mas só é possível quando o MTA tem acesso direto a uma base de dados de credenciais.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.12"
+  },
+  {
+    "question": "As mensagens de utilizadores autenticados localmente, com o campo From: correto, são sempre aceites pelo servidor SMTP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.13"
+  },
+  {
+    "question": "As mensagens vindas de MTA remotos só são aceites se forem destinadas a destinatários locais; de outro modo o servidor poderia ser usado para forjar mensagens (open mail relay).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.13"
+  },
+  {
+    "question": "Cada domínio DNS deve definir um registo TXT SPF a declarar os servidores SMTP autorizados a enviar mensagens com o campo From: de destinatários do domínio.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.13"
+  },
+  {
+    "question": "Um registo SPF habitual, \"v=spf1 +mx –all\", indica que só os servidores definidos como MX do domínio estão autorizados a enviar mensagens em nome do domínio.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.13"
+  },
+  {
+    "question": "O SPF é uma extensão do protocolo SMTP, que autentica o remetente através de uma password.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.13"
+  },
+  {
+    "question": "O SMTP serve apenas para enviar mensagens; para ler as mensagens das suas mailboxes, os utilizadores precisam de estar em sessão local no servidor ou de usar outro protocolo aplicacional.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.14"
+  },
+  {
+    "question": "O SMTP permite aos utilizadores ler e apagar as mensagens das suas mailboxes remotamente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.14"
+  },
+  {
+    "question": "O POP3 (RFC 1939) usa uma ligação TCP ao porto 110 do servidor e um diálogo baseado em comandos de texto terminados em CR+LF.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.15"
+  },
+  {
+    "question": "No POP3, a autenticação com USER/PASS só deve ser usada sobre uma ligação segura (POP3S); a autenticação CHAP é suportada através do comando APOP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.15"
+  },
+  {
+    "question": "O POP3 permite listar, descarregar e apagar mensagens, mas não vai mais além; é normalmente usado para descarregar toda a mailbox e depois fechar a ligação.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.16"
+  },
+  {
+    "question": "O IMAP4 destina-se a sessões interativas mais longas: usa uma ligação TCP ao porto 143, que se mantém aberta enquanto o cliente está a correr.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.16"
+  },
+  {
+    "question": "O IMAP4 permite, entre outras funcionalidades, descarregar apenas parte de uma mensagem, marcar mensagens com estados, organizar a mailbox em pastas e pesquisar mensagens, tudo do lado do servidor.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.16"
+  },
+  {
+    "question": "O IMAP4 usa o porto TCP 110 e o POP3 usa o porto TCP 143.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.16"
+  },
+  {
+    "question": "O webmail é uma aplicação de servidor web, executada no servidor de correio, que dá acesso às mailboxes através de um navegador e dispensa o SMTP e outros protocolos na estação do utilizador.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.17"
+  },
+  {
+    "question": "No SMTP, o MIME é opcional: uma mensagem tem de declarar explicitamente o formato MIME com o campo MIME-Version: 1.0.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.18"
+  },
+  {
+    "question": "No HTTP, a codificação de conteúdo por omissão é a base64, porque o HTTP não suporta dados binários.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.18"
+  },
+  {
+    "question": "No HTTP, a codificação por omissão é binary, ou seja, nenhuma codificação, porque o HTTP suporta corpos de mensagem binários em bruto.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.18"
+  },
+  {
+    "question": "No tipo text, o subtipo plain indica texto que não deve ser interpretado, sendo mostrado tal como está; o subtipo html é dos mais usados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.19"
+  },
+  {
+    "question": "O tipo multipart indica que a mensagem se divide em várias partes, cada uma com o seu cabeçalho e possivelmente de tipos diferentes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.19"
+  },
+  {
+    "question": "O SMTP suporta apenas caracteres de 7 bits (o ESMTP pode suportar 8 bits ou binário), por isso o conteúdo que não esteja limitado a 7 bits tem de ser codificado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.21"
+  },
+  {
+    "question": "Se o campo Content-Transfer-Encoding não existir, o SMTP assume por omissão a codificação 7bit.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.21"
+  },
+  {
+    "question": "A codificação quoted-printable é usada para texto de 8 bits, por exemplo com caracteres nacionais, e a base64 para dados binários em bruto.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.21"
+  },
+  {
+    "question": "Na codificação quoted-printable, um caracter de 8 bits (exceto CR e LF) pode ser representado por =XX, em que XX é o valor hexadecimal do código ASCII.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.22"
+  },
+  {
+    "question": "Na codificação quoted-printable, as linhas codificadas não podem ter mais de 76 caracteres, e um símbolo igual no fim da linha é uma quebra de linha suave (soft break).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.22"
+  },
+  {
+    "question": "Na codificação quoted-printable, o símbolo igual não precisa de conversão, porque tem código ASCII decimal 61.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.22"
+  },
+  {
+    "question": "A codificação base64 permite representar qualquer dado binário com caracteres de 7 bits e aumenta o tamanho dos dados em cerca de 33 %.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.23"
+  },
+  {
+    "question": "Na codificação base64, cada três bytes (24 bits) originam quatro caracteres.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.23"
+  },
+  {
+    "question": "Quando o tamanho da mensagem não é múltiplo de três, acrescentam-se um ou dois bytes a zero antes da codificação, e para cada byte acrescentado junta-se um símbolo igual ao texto codificado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.23"
+  },
+  {
+    "question": "A codificação base64 reduz o tamanho dos dados em cerca de 33 %, por usar apenas 64 caracteres.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.23"
+  },
+  {
+    "question": "Qual é o papel de um MTA (Mail Transport Agent)?",
+    "answers": [
+      "Processar o correio de um sistema local e interagir com sistemas de correio remotos através da rede",
+      "Codificar o conteúdo das mensagens em base64 antes do envio e descodificá-lo à chegada ao destino",
+      "Manter uma lista negra de servidores de correio que enviam spam e bloquear as suas ligações",
+      "Permitir a um utilizador remoto ler e apagar as mensagens guardadas na sua mailbox através da rede"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.6"
+  },
+  {
+    "question": "Qual é o papel de um MUA (Mail User Agent)?",
+    "answers": [
+      "Servidor que recebe as mensagens dos MTA remotos e as entrega nas mailboxes locais dos utilizadores",
+      "Protocolo aplicacional que transfere as mensagens de correio entre dois servidores de correio",
+      "Registo DNS que identifica os servidores de correio responsáveis por receber o correio de um domínio",
+      "Aplicação cliente com que o utilizador escreve, envia e lê o seu correio eletrónico"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.6"
+  },
+  {
+    "question": "Qual é a forma de identificar uma mailbox em SMTP?",
+    "answers": [
+      "DNS-NAME/USER, em que DNS-NAME é o nome do domínio de topo",
+      "USER:PORT, em que PORT é o número de porto do servidor SMTP",
+      "USER@DNS-NAME, em que DNS-NAME é o nome DNS do servidor de correio que a aloja",
+      "USER#DNS-NAME, em que DNS-NAME é o endereço IP do servidor de correio de destino que a aloja"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.7"
+  },
+  {
+    "question": "Em que ordem pedem os MTA atuais os registos DNS para encontrar o servidor de correio de um domínio?",
+    "answers": [
+      "Primeiro os registos MX e, se falhar, os registos A e AAAA",
+      "Apenas os registos A, porque os registos MX estão obsoletos",
+      "Primeiro os registos A e AAAA e, se falhar, os registos MX",
+      "Primeiro os registos NS e, se falhar, os registos SOA"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.8"
+  },
+  {
+    "question": "Que restrição impõe o SMTP ao conjunto de caracteres do cabeçalho e do corpo das mensagens?",
+    "answers": [
+      "Apenas são permitidos caracteres de 7 bits",
+      "Apenas são permitidos caracteres de 8 bits",
+      "Apenas são permitidos caracteres alfanuméricos",
+      "Apenas são permitidos caracteres de 16 bits"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.9"
+  },
+  {
+    "question": "Em que porto TCP escutam os servidores SMTP?",
+    "answers": [
+      "587",
+      "143",
+      "25",
+      "110"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.10"
+  },
+  {
+    "question": "Que comando SMTP indica o endereço do remetente da mensagem?",
+    "answers": [
+      "HELO",
+      "RCPT TO",
+      "DATA",
+      "MAIL FROM"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.10"
+  },
+  {
+    "question": "Que comando SMTP indica o endereço do destinatário da mensagem?",
+    "answers": [
+      "QUIT",
+      "RCPT TO",
+      "DATA",
+      "MAIL FROM"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.10"
+  },
+  {
+    "question": "Que comando SMTP anuncia o início do conteúdo da mensagem?",
+    "answers": [
+      "EHLO",
+      "DATA",
+      "RCPT TO",
+      "MAIL FROM"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.10"
+  },
+  {
+    "question": "Como termina o conteúdo de uma mensagem enviada com o comando DATA do SMTP?",
+    "answers": [
+      "Com a linha QUIT enviada pelo cliente",
+      "Com uma linha que contém apenas um ponto",
+      "Com uma linha vazia seguida de CR+LF",
+      "Com o fecho da ligação TCP pelo cliente"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.10"
+  },
+  {
+    "question": "Que código de resposta SMTP indica que o servidor aceitou o comando DATA e espera o conteúdo da mensagem?",
+    "answers": [
+      "221",
+      "220",
+      "354",
+      "250 OK"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.10"
+  },
+  {
+    "question": "Que código SMTP indica que o servidor está pronto, na mensagem de abertura da sessão?",
+    "answers": [
+      "220",
+      "221",
+      "354",
+      "250"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.10"
+  },
+  {
+    "question": "Que código SMTP indica sucesso (\"ok\") na resposta a comandos como MAIL FROM e RCPT TO?",
+    "answers": [
+      "221",
+      "250",
+      "354",
+      "220"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.10"
+  },
+  {
+    "question": "Que código SMTP indica que o servidor está a fechar a ligação, em resposta a QUIT?",
+    "answers": [
+      "220",
+      "250",
+      "354",
+      "221"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.10"
+  },
+  {
+    "question": "Que comando deve usar um cliente que queira usar o ESMTP?",
+    "answers": [
+      "EHELO, seguido de DATA",
+      "HELO, seguido de AUTH",
+      "EHLO, em vez de HELO",
+      "HELP, seguido de MAIL FROM"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.11"
+  },
+  {
+    "question": "O que acontece quando um servidor que não suporta ESMTP recebe o comando EHLO?",
+    "answers": [
+      "Responde com 354 e aguarda que o cliente envie o conteúdo da mensagem terminado por um ponto",
+      "Responde com 250 e ignora as extensões pedidas, continuando a sessão em SMTP normal",
+      "Responde com um código de erro 5xx, e o cliente tem de usar HELO e o SMTP normal",
+      "Fecha de imediato a ligação TCP, e o cliente tem de abrir nova ligação e repetir o EHLO"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.11"
+  },
+  {
+    "question": "Qual é o principal problema de segurança do SMTP?",
+    "answers": [
+      "O cabeçalho da mensagem é limitado a 7 bits, o que impede a transmissão de nomes com acentos",
+      "A ausência de autenticação do remetente: não há garantia de que o From: corresponde a quem criou a mensagem",
+      "A mensagem é sempre enviada cifrada com uma chave pública que qualquer pessoa na rede pode obter",
+      "O servidor fecha a ligação TCP ao porto 25 depois de cada comando, impedindo o envio de mensagens com vários destinatários"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.12"
+  },
+  {
+    "question": "O que é um open mail relay?",
+    "answers": [
+      "Um servidor POP3 que permite o acesso às mailboxes sem password, a partir de qualquer endereço IP",
+      "Um servidor SMTP que só aceita mensagens de utilizadores autenticados localmente e dos MTA remotos conhecidos, rejeitando todo o restante correio",
+      "Um servidor de correio que guarda uma cópia de todas as mensagens que atravessam o servidor, para auditoria",
+      "Um servidor SMTP que aceita mensagens de remotos para destinatários externos, podendo ser usado para forjar remetentes"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.13"
+  },
+  {
+    "question": "Que medida adotam os servidores SMTP contra os open mail relays conhecidos?",
+    "answers": [
+      "Bloqueiam as mensagens vindas de MTA que constem de listas negras públicas",
+      "Aceitam as mensagens vindas deles mas marcam-nas como spam",
+      "Obrigam-nos a usar o POP3S em vez do SMTP",
+      "Enviam-lhes uma mensagem de erro e continuam a aceitar as mensagens"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.13"
+  },
+  {
+    "question": "Para que serve o registo SPF de um domínio?",
+    "answers": [
+      "Para declarar os servidores POP3 e IMAP autorizados a ler as mailboxes do domínio, impedindo outros acessos",
+      "Para indicar a prioridade de cada servidor de correio do domínio",
+      "Para cifrar o conteúdo das mensagens enviadas pelo domínio",
+      "Para declarar os servidores SMTP autorizados a enviar mensagens com remetentes do domínio"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.13"
+  },
+  {
+    "question": "Em que porto TCP escutam os servidores POP3?",
+    "answers": [
+      "995",
+      "110",
+      "25",
+      "143"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.15"
+  },
+  {
+    "question": "Em que porto TCP escutam os servidores IMAP4?",
+    "answers": [
+      "110",
+      "25",
+      "143",
+      "993"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.16"
+  },
+  {
+    "question": "Que comando do POP3 indica o nome do utilizador na autenticação?",
+    "answers": [
+      "PASS (password)",
+      "LIST",
+      "STAT",
+      "USER"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.15"
+  },
+  {
+    "question": "Que comando do POP3 envia a password na autenticação simples?",
+    "answers": [
+      "PASS",
+      "RETR <número da mensagem>",
+      "USER",
+      "APOP"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.15"
+  },
+  {
+    "question": "Que comando do POP3 permite a autenticação do tipo CHAP?",
+    "answers": [
+      "PASS",
+      "STAT",
+      "USER",
+      "APOP"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.15"
+  },
+  {
+    "question": "Como começam as respostas positivas do servidor POP3?",
+    "answers": [
+      "Por 250",
+      "Por +OK",
+      "Por OK:",
+      "Por 200 OK"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.15"
+  },
+  {
+    "question": "Qual é a principal diferença entre POP3 e IMAP4?",
+    "answers": [
+      "O IMAP4 serve para descarregar a mailbox e fechar a ligação; o POP3 mantém sessões longas, com gestão da mailbox no servidor",
+      "O POP3 serve para enviar as mensagens para o servidor e o IMAP4 serve para as receber, ambos em ligações curtas",
+      "O POP3 serve para descarregar a mailbox e fechar a ligação; o IMAP4 mantém sessões longas, com gestão da mailbox no servidor",
+      "O POP3 usa o porto TCP 143 e o IMAP4 usa o porto TCP 110, mas ambos mantêm a ligação aberta durante a sessão"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.16"
+  },
+  {
+    "question": "Qual das seguintes funcionalidades é do IMAP4 e não do POP3?",
+    "answers": [
+      "Organizar a mailbox em pastas e pesquisar mensagens, do lado do servidor",
+      "Descarregar uma mensagem específica da mailbox, identificada pelo seu número de ordem",
+      "Apagar mensagens da mailbox depois de estas terem sido descarregadas pelo cliente",
+      "Listar as mensagens existentes na mailbox e obter o tamanho de cada uma delas"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.16"
+  },
+  {
+    "question": "Qual é a vantagem do webmail relativamente ao acesso por IMAP?",
+    "answers": [
+      "O webmail dispensa o servidor de correio e o MTA, porque as mensagens ficam apenas no navegador",
+      "A estação do utilizador passa a poder guardar localmente todas as mailboxes sem usar o servidor",
+      "A estação do utilizador não precisa de mais nada além de um navegador e do protocolo HTTP",
+      "O webmail permite enviar mensagens sem passar pelo SMTP, nem sequer entre servidores de correio"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.17"
+  },
+  {
+    "question": "Que campo de cabeçalho declara que uma mensagem está em formato MIME?",
+    "answers": [
+      "X-Mailer: MIME",
+      "MIME-Version: 1.0",
+      "Content-Type: mime/1.0",
+      "Content-Transfer-Encoding: mime"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.18"
+  },
+  {
+    "question": "Qual é a versão atual do MIME referida na aula?",
+    "answers": [
+      "1.0",
+      "3.1",
+      "2.0, introduzida em 2005",
+      "0.9"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.18"
+  },
+  {
+    "question": "Para que serve o campo Content-Transfer-Encoding?",
+    "answers": [
+      "Para indicar o tamanho do conteúdo da mensagem em octetos, antes de ser codificado",
+      "Para indicar a codificação aplicada ao conteúdo, para ser transportado em 7 bits",
+      "Para indicar o servidor de correio que enviou a mensagem e a respetiva data",
+      "Para indicar como o conteúdo deve ser interpretado e apresentado ao utilizador"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.18"
+  },
+  {
+    "question": "Para que serve o campo Content-Type no MIME?",
+    "answers": [
+      "Para declarar que a mensagem está em formato MIME e indicar a versão do protocolo usada",
+      "Para informar como o conteúdo deve ser interpretado e apresentado, depois de decodificado",
+      "Para indicar o tamanho em octetos do conteúdo e o número de partes em que a mensagem se divide",
+      "Para indicar a codificação usada para transportar o conteúdo apenas com caracteres de 7 bits"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.19"
+  },
+  {
+    "question": "Qual é a forma geral do campo Content-Type?",
+    "answers": [
+      "tipo:subtipo, seguido de um tamanho em octetos e do charset",
+      "tipo/subtipo/atributo, sem separadores entre os vários atributos",
+      "tipo/subtipo, seguido de atributos opcionais da forma nome=valor",
+      "subtipo/tipo, seguido de atributos obrigatórios da forma nome=valor"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.19"
+  },
+  {
+    "question": "Que tipo de conteúdo MIME permite que uma mensagem tenha várias partes de tipos diferentes, por exemplo anexos?",
+    "answers": [
+      "image/jpeg, png",
+      "audio",
+      "multipart",
+      "text"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.19"
+  },
+  {
+    "question": "Para que serve o atributo boundary num Content-Type multipart?",
+    "answers": [
+      "Para definir a cadeia que separa as partes da mensagem",
+      "Para definir a codificação de cada parte da mensagem",
+      "Para definir o tamanho máximo de cada parte da mensagem",
+      "Para definir o tipo de cada parte da mensagem"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.20"
+  },
+  {
+    "question": "Que codificação MIME deve ser usada para transportar em SMTP dados binários em bruto, como um ficheiro .doc?",
+    "answers": [
+      "base64",
+      "7bit",
+      "quoted-printable",
+      "8bit"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.21"
+  },
+  {
+    "question": "Que codificação MIME deve ser usada para transportar em SMTP texto de 8 bits, por exemplo com letras acentuadas?",
+    "answers": [
+      "quoted-printable",
+      "base64 (6 bits por caracter)",
+      "binary (representação direta)",
+      "8bit (representação direta)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.21"
+  },
+  {
+    "question": "Qual é a codificação de conteúdo que o SMTP assume por omissão?",
+    "answers": [
+      "base64",
+      "8bit",
+      "7bit",
+      "quoted-printable"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.21"
+  },
+  {
+    "question": "Na codificação quoted-printable, como se representa o símbolo igual (=)?",
+    "answers": [
+      "=61",
+      "=3E",
+      "=3D",
+      "=="
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.22"
+  },
+  {
+    "question": "Na codificação quoted-printable, como se representa a letra \"é\", cujo código é E9 em hexadecimal (ISO-8859-1)?",
+    "answers": [
+      "=E",
+      "=E9",
+      "=3D9",
+      "=%E9"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.22"
+  },
+  {
+    "question": "Na codificação quoted-printable, como se representa a letra \"ç\", cujo código é E7 em hexadecimal (ISO-8859-1)?",
+    "answers": [
+      "=E7",
+      "=E9",
+      "=C7 (letra Ç maiúscula)",
+      "=7E"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.22"
+  },
+  {
+    "question": "Qual é o comprimento máximo das linhas codificadas em quoted-printable?",
+    "answers": [
+      "64 caracteres",
+      "72 caracteres",
+      "80 caracteres",
+      "76 caracteres"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.22"
+  },
+  {
+    "question": "O que significa um símbolo igual no fim de uma linha quoted-printable?",
+    "answers": [
+      "Um caracter igual que faz parte do texto original e é mantido na decodificação",
+      "O fim da mensagem codificada, a partir do qual o recetor ignora o que se segue",
+      "Uma quebra de linha suave: não existe na mensagem decodificada",
+      "Um erro de codificação que o recetor deve corrigir pedindo o reenvio da mensagem"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.22"
+  },
+  {
+    "question": "Quantos caracteres diferentes usa a codificação base64?",
+    "answers": [
+      "256",
+      "64",
+      "32",
+      "128"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.23"
+  },
+  {
+    "question": "Quantos bits do original representa cada caracter da codificação base64?",
+    "answers": [
+      "8 bits",
+      "7 bits",
+      "4 bits",
+      "6 bits"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.23"
+  },
+  {
+    "question": "Quantos caracteres base64 resultam de cada três bytes do original?",
+    "answers": [
+      "Seis",
+      "Cinco caracteres",
+      "Três",
+      "Quatro"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.23"
+  },
+  {
+    "question": "Em quanto, aproximadamente, aumenta o tamanho dos dados com a codificação base64?",
+    "answers": [
+      "10 %",
+      "50 %",
+      "100 %",
+      "33 %"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.23"
+  },
+  {
+    "question": "Qual é o resultado da codificação base64 do texto \"Man\"?",
+    "answers": [
+      "TQ==",
+      "TWFu",
+      "TWE=",
+      "TWFuA"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.23"
+  },
+  {
+    "question": "Qual é o resultado da codificação base64 do texto \"Ma\"?",
+    "answers": [
+      "TWE=",
+      "TWFu",
+      "TQ==",
+      "TWE"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.23"
+  },
+  {
+    "question": "Qual é o resultado da codificação base64 do texto \"M\"?",
+    "answers": [
+      "TQ=",
+      "TQ==",
+      "TWE=",
+      "TWFu"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.23"
+  },
+  {
+    "question": "Qual é o resultado da codificação base64 do texto \"RCOMP\"?",
+    "answers": [
+      "UkNPTVA=",
+      "UkNPTQ==",
+      "UkNPTVA==",
+      "UkNPTVAA"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.23"
+  },
+  {
+    "question": "Qual é o resultado da codificação base64 do texto \"ISEP\"?",
+    "answers": [
+      "SVNFUAA= (com padding)",
+      "SVNFUA=",
+      "SVNFUA",
+      "SVNFUA=="
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.23"
+  },
+  {
+    "question": "Quantos caracteres tem a codificação base64 de 30 bytes de dados?",
+    "answers": [
+      "41 caracteres, incluindo o padding =",
+      "40 caracteres",
+      "45 caracteres",
+      "30 caracteres"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.23"
+  },
+  {
+    "question": "Quantos caracteres tem a codificação base64 de 1000 bytes de dados, sem contar quebras de linha?",
+    "answers": [
+      "1333 caracteres",
+      "1334 caracteres",
+      "1000 caracteres",
+      "1336 caracteres"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.23"
+  },
+  {
+    "question": "Quantos bytes de dados originais correspondem a 60 caracteres base64 (sem padding)?",
+    "answers": [
+      "40 bytes",
+      "48 bytes",
+      "45 bytes",
+      "60 bytes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.23"
+  },
+  {
+    "question": "Para que serve o símbolo \"=\" no fim de um texto codificado em base64?",
+    "answers": [
+      "Para separar as linhas da mensagem codificada quando passam do limite de 76 caracteres",
+      "Para indicar que a mensagem original tinha um número par de bytes antes de ser codificada",
+      "Para marcar o fim da mensagem codificada, a partir do qual o descodificador ignora o resto",
+      "Para indicar ao descodificador quantos bytes acrescentados deve descartar no fim"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.23"
+  },
+  {
+    "question": "O SMTP usa por omissão o porto TCP 110 para a transferência de mensagens entre servidores de correio.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.10"
+  },
+  {
+    "question": "Numa sessão SMTP, o cliente indica o destinatário da mensagem com o comando MAIL FROM e o remetente com o comando RCPT TO.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.10"
+  },
+  {
+    "question": "Em SMTP, depois do comando DATA, o servidor responde com 250 e o cliente envia de seguida o conteúdo da mensagem.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.10"
+  },
+  {
+    "question": "O comando EHLO é usado pelo cliente que só suporta o SMTP normal, e o comando HELO pelo cliente que suporta o ESMTP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.11"
+  },
+  {
+    "question": "Se o servidor responde ao EHLO com um código de erro 5xx, o cliente deve fechar a ligação, porque o servidor não suporta correio eletrónico.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.11"
+  },
+  {
+    "question": "No SMTP entre MTA, o servidor do destinatário consegue sempre validar que o campo From: foi escrito pelo verdadeiro autor da mensagem.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.12"
+  },
+  {
+    "question": "Os servidores SMTP aceitam mensagens de qualquer MTA remoto para qualquer destinatário, mesmo externo, para facilitar o reencaminhamento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.13"
+  },
+  {
+    "question": "O registo SPF \"v=spf1 +mx –all\" autoriza qualquer servidor SMTP da Internet a enviar mensagens em nome do domínio.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.13"
+  },
+  {
+    "question": "O POP3 usa uma ligação UDP ao porto 110 do servidor, com comandos de texto terminados em CR+LF.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.15"
+  },
+  {
+    "question": "Em caso de sucesso, as respostas do servidor POP3 começam por 250, tal como as respostas do servidor SMTP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.15"
+  },
+  {
+    "question": "O comando APOP do POP3 serve para apagar mensagens da mailbox depois de descarregadas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.15"
+  },
+  {
+    "question": "O IMAP4 é indicado para descarregar toda a mailbox e fechar logo a ligação, enquanto o POP3 mantém sessões longas e interativas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.16"
+  },
+  {
+    "question": "O IMAP4 só permite um cliente ligado à mesma mailbox de cada vez.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.16"
+  },
+  {
+    "question": "No webmail, a estação do utilizador precisa de ter instalados um cliente SMTP e um cliente IMAP para aceder à mailbox.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.17"
+  },
+  {
+    "question": "O MIME só pode ser usado em mensagens HTTP, porque o SMTP não suporta conteúdo MIME.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.18"
+  },
+  {
+    "question": "No tipo text, o subtipo plain indica HTML, que deve ser interpretado pelo navegador antes de ser apresentado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.19"
+  },
+  {
+    "question": "O atributo boundary de um Content-Type multipart indica a codificação aplicada a cada uma das partes da mensagem.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.20"
+  },
+  {
+    "question": "A codificação quoted-printable é a indicada para ficheiros binários em bruto, como imagens, e a base64 para texto com letras acentuadas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.21"
+  },
+  {
+    "question": "Na codificação quoted-printable, as linhas codificadas podem ter qualquer comprimento, pois o símbolo igual nunca é usado como quebra de linha.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.22"
+  },
+  {
+    "question": "Na codificação base64, cada três bytes originam três caracteres, pelo que o tamanho dos dados não aumenta.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.23"
+  },
+  {
+    "question": "Um texto de dois bytes codificado em base64 termina com dois símbolos igual.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L12 p.23"
+  }
+]

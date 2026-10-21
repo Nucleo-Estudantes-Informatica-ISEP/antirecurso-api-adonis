@@ -1,0 +1,2788 @@
+[
+  {
+    "question": "Para melhorar o aproveitamento do espaço de endereçamento IPv4 de 32 bits recorreu-se, entre outras medidas, a prefixos classful, a endereçamento classless e a endereços privados com tradução de endereços (NAT).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.2"
+  },
+  {
+    "question": "O IPv6, inicialmente conhecido por IP-NG (IP Next Generation), foi desenvolvido para resolver definitivamente o problema do espaço de endereçamento do IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.2"
+  },
+  {
+    "question": "O IPv6 já substituiu totalmente o IPv4 na Internet, que hoje usa apenas o IPv6.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.2"
+  },
+  {
+    "question": "O espaço de endereçamento do IPv6 é de 2^64 endereços, contra 2^32 no IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.3"
+  },
+  {
+    "question": "No IPv6, os routers continuam a fragmentar os datagramas que excedem a MTU da ligação seguinte.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.12"
+  },
+  {
+    "question": "O IPv6 permite a auto-configuração dos nós sem necessidade de DHCP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.3"
+  },
+  {
+    "question": "No IPv6, o suporte de autenticação e confidencialidade exige sempre o IPSEC como protocolo separado, tal como no IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.3"
+  },
+  {
+    "question": "Um endereço IPv6 representa-se por oito grupos de 16 bits em hexadecimal, separados por dois pontos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.4"
+  },
+  {
+    "question": "Um endereço IPv6 representa-se por quatro grupos de 32 bits em hexadecimal, separados por pontos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.4"
+  },
+  {
+    "question": "O bloco ::ffff:0:0/96 é reservado para endereços IPv6 multicast.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.4"
+  },
+  {
+    "question": "Em IPv6 não existe broadcast; usa-se multicast em seu lugar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.5"
+  },
+  {
+    "question": "Tal como no IPv4, o último endereço de uma rede IPv6 está reservado para broadcast.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.5"
+  },
+  {
+    "question": "Um endereço IPv6 anycast representa um conjunto de nós, e os dados são entregues a todos eles.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.5"
+  },
+  {
+    "question": "Um endereço IPv6 multicast representa um conjunto de nós, e uma cópia dos dados é entregue a cada um deles.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.5"
+  },
+  {
+    "question": "Nos endereços IPv6 multicast bem conhecidos (well-known), o bit X é zero.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.6"
+  },
+  {
+    "question": "No endereço ff0e::43, o valor e indica o âmbito de nó local (node-local).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.6"
+  },
+  {
+    "question": "O endereço ff02::2 representa todos os nós da rede local.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.6"
+  },
+  {
+    "question": "Os endereços IPv6 multicast são mapeados para endereços Ethernet multicast 01:00:5E:xx:xx:xx.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.7"
+  },
+  {
+    "question": "As redes IEEE 802.11 também tratam como multicast de camada 2 os endereços MAC que começam por 33:33.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.7"
+  },
+  {
+    "question": "Os endereços link-local só permitem comunicar com nós da mesma rede de camada 2, e não com nós de outras redes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.8"
+  },
+  {
+    "question": "O endereço link-local gerado por um nó é testado com mensagens ICMPv6 Neighbour Solicitation e Neighbour Advertisement, para confirmar que é único.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.8"
+  },
+  {
+    "question": "No SLAAC, o router fornece o prefixo de rede e o nó gera os bits do nó de forma semelhante à do endereço link-local.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.9"
+  },
+  {
+    "question": "O endereço unicast definido por SLAAC tem âmbito link-local e só permite comunicar na rede local.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.9"
+  },
+  {
+    "question": "Na configuração stateful, existe um servidor DHCPv6 a gerir um conjunto de endereços IPv6, de forma semelhante ao DHCP no IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.9"
+  },
+  {
+    "question": "Mesmo usando SLAAC, o Router Advertisement pode instruir o nó a obter definições adicionais do serviço DHCPv6.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.9"
+  },
+  {
+    "question": "Os endereços anycast IPv6 são retirados do espaço de endereços unicast, mas atribuídos a vários nós em simultâneo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.10"
+  },
+  {
+    "question": "O endereço ::1 representa um endereço de origem desconhecido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.10"
+  },
+  {
+    "question": "O cabeçalho IPv6 tem comprimento variável, dependendo das opções usadas, tal como o IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.12"
+  },
+  {
+    "question": "O IPv6 suporta fragmentação, mas apenas entre nós terminais, através de um cabeçalho de extensão.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.11"
+  },
+  {
+    "question": "Em IPv6, o campo next-header pode identificar um protocolo de nível superior (TCP, UDP, ICMP) ou um cabeçalho de extensão.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.12"
+  },
+  {
+    "question": "Todos os cabeçalhos de extensão IPv6 têm um campo next-header e um campo com o seu comprimento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.12"
+  },
+  {
+    "question": "O valor 58 no campo next-header identifica o protocolo TCP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.13"
+  },
+  {
+    "question": "O ICMPv6 tem formato de mensagem muito semelhante ao do ICMPv4: Type, Code, Checksum e Data.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.13"
+  },
+  {
+    "question": "A mensagem ICMPv6 Neighbor Advertisement é o equivalente ao ARP request.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.13"
+  },
+  {
+    "question": "A resolução de nomes (name resolution) recebe o nome de um nó e devolve o endereço de nó correspondente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.14"
+  },
+  {
+    "question": "No NetBIOS, a resolução de nomes é feita por um servidor central dedicado, existente em todas as redes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.16"
+  },
+  {
+    "question": "O registo de nomes NetBIOS por ausência de erros de nome duplicado é frágil: um nó que perca temporariamente a ligação à rede não consegue indicar que já usa o nome.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.16"
+  },
+  {
+    "question": "Antes de se desligar, um nó NetBIOS deve anunciar em broadcast que o seu nome está a ser libertado (NAME RELEASE).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.16"
+  },
+  {
+    "question": "O NetBIOS baseado em broadcast tem graves falhas de segurança, porque assenta no bom comportamento esperado de todos os nós.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.16"
+  },
+  {
+    "question": "No nome NetBIOS SERVP1#20, o valor 20 indica que o nome tem 20 caracteres.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.17"
+  },
+  {
+    "question": "Com o WINS, o servidor pode estar numa rede remota e servir clientes de várias redes diferentes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.18"
+  },
+  {
+    "question": "No WINS, o registo de nomes tem um tempo de vida associado (lease time): se não for renovado, o registo é removido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.18"
+  },
+  {
+    "question": "O WINS elimina o problema da estrutura de nomes NetBIOS sem hierarquia.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.19"
+  },
+  {
+    "question": "O NetBIOS é limitado a ambientes locais, porque os nomes teriam de ser globalmente únicos, o que exigiria um único ponto de administração.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.19"
+  },
+  {
+    "question": "O DNS baseia-se numa estrutura hierárquica em árvore, em que cada ramo (domínio) é administrativamente independente dos outros.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.20"
+  },
+  {
+    "question": "Um nome DNS só é significativo dentro do seu domínio; para identificar globalmente um nó é preciso o nome qualificado, que inclui a lista de domínios até à raiz.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.20"
+  },
+  {
+    "question": "Um mesmo name server pode manter as bases de dados de vários domínios.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.21"
+  },
+  {
+    "question": "Para um cliente, basta conhecer o endereço de um name server que aceite consultas recursivas para conseguir resolver qualquer nome qualificado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.21"
+  },
+  {
+    "question": "Cada name server DNS tem de conhecer os endereços dos name servers de todos os domínios existentes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.22"
+  },
+  {
+    "question": "Os registos NS contêm nomes de nós e não endereços; se o nome do servidor pertencer ao próprio domínio, surge uma dependência circular.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.23"
+  },
+  {
+    "question": "Um name server pode recusar a consulta recursiva e exigir que seja o cliente a fazer o trabalho, fornecendo-lhe os endereços dos name servers.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.23"
+  },
+  {
+    "question": "Quanto maior for o TTL de um registo DNS, menor será o número de consultas que o name server terá de tratar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.23"
+  },
+  {
+    "question": "A cache do DNS reduz de forma significativa o número de consultas diretas aos name servers, sobretudo aos de topo e aos root.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.23"
+  },
+  {
+    "question": "Um registo DNS (resource record) tem os campos NAME, TYPE, CLASS, TTL, RDLENGTH e RDATA.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.24"
+  },
+  {
+    "question": "Para o IP, a classe de um registo DNS é 1 (classe IN).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.24"
+  },
+  {
+    "question": "O tipo de consulta 252 (AXFR) devolve todos os registos do domínio e é usado sobretudo para sincronizar as bases de dados entre master e slaves.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.24"
+  },
+  {
+    "question": "Nas consultas AXFR, por causa do grande volume de dados, pode ser usada uma ligação TCP, embora o porto do serviço continue a ser o 53.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.24"
+  },
+  {
+    "question": "O registo AAAA guarda um endereço IPv4 e o registo A guarda um endereço IPv6.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.25"
+  },
+  {
+    "question": "O registo TXT guarda texto livre, e pode ser usado, por exemplo, para implementar políticas de correio eletrónico como o SPF.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.25"
+  },
+  {
+    "question": "Os registos MX, NS, CNAME e SRV contêm sempre endereços IPv4 ou IPv6 no seu RDATA.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.25"
+  },
+  {
+    "question": "Num registo CNAME, nomes não terminados por ponto são implicitamente qualificados com o domínio de origem ($ORIGIN) do ficheiro de zona.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.26"
+  },
+  {
+    "question": "O registo PTR do endereço 193.136.62.2 é definido em 193.136.62.2.in-addr.arpa.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.28"
+  },
+  {
+    "question": "Num registo MX, um valor de prioridade mais baixo significa maior preferência.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.30"
+  },
+  {
+    "question": "Num registo MX, um valor de prioridade mais alto significa maior preferência.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.30"
+  },
+  {
+    "question": "Um domínio pode ter vários registos MX, com níveis de prioridade diferentes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.30"
+  },
+  {
+    "question": "Os registos MX podem ser definidos no próprio domínio, sem envolver o domínio pai.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.30"
+  },
+  {
+    "question": "Se vários servidores de correio tiverem o mesmo nível de prioridade, o BIND usa round-robin para ordenar a lista e distribuir os clientes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.30"
+  },
+  {
+    "question": "Os registos SRV são, em certa medida, uma generalização dos registos MX: permitem identificar que nós fornecem um dado serviço num domínio.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.31"
+  },
+  {
+    "question": "O RDATA de um registo SRV contém prioridade, peso (weight), número de porto e o nome qualificado do nó que fornece o serviço.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.31"
+  },
+  {
+    "question": "O sinal + numa cadeia SPF indica nós autorizados a enviar correio em nome do domínio, e o sinal - indica nós não autorizados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.32"
+  },
+  {
+    "question": "O protocolo DNS original (RFC 1035) não define operação de atualização; a RFC 2136 acrescentou o pedido de atualização, que permite o DNS dinâmico.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.34"
+  },
+  {
+    "question": "Com DNS dinâmico, os registos que mudam com frequência devem ter valores de TTL baixos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.34"
+  },
+  {
+    "question": "Para maior disponibilidade, cada domínio DNS deve ter pelo menos dois name servers, um primário (master) e os outros secundários (slaves).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "DNS extras p.4"
+  },
+  {
+    "question": "O servidor master guarda a cópia original dos registos e os slaves sincronizam as suas bases de dados copiando-as do master.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "DNS extras p.4"
+  },
+  {
+    "question": "Os registos NS de um domínio têm de existir no domínio pai, e é isso que liga os domínios em árvore.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "DNS extras p.5"
+  },
+  {
+    "question": "Os nós terminais devem usar servidores DNS locais, cujos endereços são normalmente fornecidos por DHCP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "DNS extras p.7"
+  },
+  {
+    "question": "A consulta recursiva tira o maior partido da cache dos name servers, mas tende a sobrecarregá-los, por isso é frequentemente desativada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "DNS extras p.8"
+  },
+  {
+    "question": "Numa resposta não recursiva, o servidor local fornece ao cliente o name server mais próximo do domínio pedido, e o cliente continua a resolução por si.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "DNS extras p.8"
+  },
+  {
+    "question": "Numa consulta não recursiva, o servidor local resolve o nome completo e devolve diretamente o endereço ao cliente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "DNS extras p.8"
+  },
+  {
+    "question": "Cada name server DNS tem de conhecer os name servers do domínio hierarquicamente superior imediatamente acima dele.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.22"
+  },
+  {
+    "question": "O registo TXT só serve para guardar comentários e nunca para definir políticas de correio eletrónico, como o SPF.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.32"
+  },
+  {
+    "question": "O registo SOA guarda a lista completa de name servers de um domínio, sendo desnecessários os registos NS.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.25"
+  },
+  {
+    "question": "Um domínio só pode ter um registo MX.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.30"
+  },
+  {
+    "question": "O DNS usa por omissão o protocolo TCP no porto 80 para todas as consultas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.24"
+  },
+  {
+    "question": "O WINS usa broadcast para os pedidos de resolução de nomes, tal como o NetBIOS original.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.18"
+  },
+  {
+    "question": "Os nomes NetBIOS têm uma estrutura hierárquica, tal como os nomes DNS.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.19"
+  },
+  {
+    "question": "Num registo SRV, o peso (weight) serve para escolher o servidor com maior prioridade.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.31"
+  },
+  {
+    "question": "O TTL de um registo DNS é definido pelo cliente que faz a consulta.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.23"
+  },
+  {
+    "question": "Um servidor autoritativo para um domínio precisa de consultar outros servidores para resolver os nomes desse mesmo domínio.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.21"
+  },
+  {
+    "question": "Os glue records são registos CNAME que apontam para o servidor de correio do domínio.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.23"
+  },
+  {
+    "question": "Quantas vezes mais bits tem um endereço IPv6 do que um endereço IPv4?",
+    "answers": [
+      "2 vezes",
+      "16 vezes",
+      "8 vezes",
+      "4 vezes"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.3"
+  },
+  {
+    "question": "Qual das seguintes é uma diferença do IPv6 relativamente ao IPv4?",
+    "answers": [
+      "O cabeçalho passou a ter comprimento variável, com opções dentro do cabeçalho",
+      "O ARP passou a ser obrigatório para resolver endereços de camada 2 em IPv6",
+      "O checksum do cabeçalho passou a cobrir também os dados transportados",
+      "A fragmentação nos nós intermédios foi abandonada (mantém-se Path MTU Discovery)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.3"
+  },
+  {
+    "question": "Que protocolo trata, no IPv6, da resolução de endereços de camada 2 que no IPv4 é feita pelo ARP?",
+    "answers": [
+      "O DHCPv6",
+      "O ICMPv6",
+      "O PPP",
+      "O IGMP"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.3"
+  },
+  {
+    "question": "Que protocolo trata, no IPv6, da gestão de grupos multicast que no IPv4 é feita pelo IGMP?",
+    "answers": [
+      "O ARP",
+      "O DHCPv6",
+      "O IPSEC",
+      "O ICMPv6"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.3"
+  },
+  {
+    "question": "Qual é a forma condensada canónica, segundo o RFC 5952, do endereço IPv6 0000:3278:0a04:0005:0000:0000:0000:0034?",
+    "answers": [
+      "::3278:a04:5:0:0:0:34",
+      "0:3278:a04:5:0:0:0:34",
+      "0:3278:0a04:0005::0034",
+      "0:3278:a04:5::34"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.4"
+  },
+  {
+    "question": "Como se representa o endereço IPv4 192.0.2.10 no bloco IPv4-mapped do IPv6?",
+    "answers": [
+      "::ffff:0:192.0.2.10",
+      "::192.0.2.10",
+      "ffff::192.0.2.10",
+      "::ffff:192.0.2.10"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.4"
+  },
+  {
+    "question": "Qual é o primeiro nó da rede IPv6 2001:0db8:2b00::/40?",
+    "answers": [
+      "2001:0db8:2b01::1",
+      "2001:0db8:2b00::",
+      "2001:0db8:2b00::1",
+      "2001:0db8:2b00:0000:0000:0000:0000:0002"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.5"
+  },
+  {
+    "question": "Qual é o último nó da rede IPv6 2001:0db8:2b00::/40?",
+    "answers": [
+      "2001:0db8:2b00:ffff:ffff:ffff:ffff:ffff (/48)",
+      "2001:0db8:2b00::ffff",
+      "2001:0db8:2bff:ffff:ffff:ffff:ffff:ffff",
+      "2001:0db8:2bff:ffff:ffff:ffff:ffff:fffe"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.5"
+  },
+  {
+    "question": "Quantos tipos de endereços suporta o IPv6?",
+    "answers": [
+      "Três: unicast, multicast e anycast",
+      "Dois: unicast e multicast",
+      "Quatro: unicast, multicast, anycast e broadcast",
+      "Três: unicast, multicast e broadcast"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.5"
+  },
+  {
+    "question": "O que acontece a um pacote enviado para um endereço anycast?",
+    "answers": [
+      "É entregue a apenas um dos nós que têm esse endereço, o mais próximo",
+      "É entregue a todos os nós da rede de camada 2 local",
+      "É descartado pelos routers, que não encaminham endereços anycast",
+      "É entregue a todos os nós que têm esse endereço, em todas as redes onde existam"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.10"
+  },
+  {
+    "question": "Que prefixo têm os endereços IPv6 multicast?",
+    "answers": [
+      "fe80::/10",
+      "::ffff:0:0/96",
+      "ff00::/8",
+      "fd00::/8"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.6"
+  },
+  {
+    "question": "Nos endereços IPv6 multicast, para que serve o campo scope de 4 bits?",
+    "answers": [
+      "Para indicar o protocolo de transporte usado pelos nós do grupo multicast",
+      "Para indicar se o endereço é bem conhecido ou foi atribuído dinamicamente",
+      "Para indicar até onde o endereço é válido, ou seja, até onde chega o tráfego",
+      "Para identificar o grupo multicast dentro do âmbito escolhido pelo emissor"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.6"
+  },
+  {
+    "question": "Que valor de scope indica âmbito link-local num endereço IPv6 multicast?",
+    "answers": [
+      "0xe",
+      "0x2",
+      "0x0",
+      "0x1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.6"
+  },
+  {
+    "question": "Que valor de scope indica âmbito global (toda a Internet) num endereço IPv6 multicast?",
+    "answers": [
+      "0xe",
+      "0x5, âmbito site-local",
+      "0x1",
+      "0x2"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.6"
+  },
+  {
+    "question": "Que valor de scope indica âmbito de nó local (interface-local) num endereço IPv6 multicast?",
+    "answers": [
+      "0xe (âmbito global)",
+      "0x1",
+      "0x2",
+      "0x5"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.6"
+  },
+  {
+    "question": "Que endereço IPv6 representa todos os nós da rede local, de forma semelhante ao broadcast IPv4?",
+    "answers": [
+      "ff0e::43",
+      "ff02::1",
+      "ff02::2",
+      "ff02::1:2"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.6"
+  },
+  {
+    "question": "Que endereço IPv6 representa todos os routers da rede local?",
+    "answers": [
+      "ff02::1",
+      "ff02::43",
+      "ff02::2",
+      "ff02::1:2"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.6"
+  },
+  {
+    "question": "Que endereço IPv6 representa todos os agentes DHCP da rede local?",
+    "answers": [
+      "ff02::1",
+      "ff02::1:2",
+      "ff02::43",
+      "ff02::2"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.6"
+  },
+  {
+    "question": "Que endereço IPv6 representa todos os servidores NTP da Internet (âmbito global)?",
+    "answers": [
+      "ff02::43",
+      "ff01::43",
+      "ff0e::43",
+      "ff02::1:2"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.6"
+  },
+  {
+    "question": "Qual é o endereço Ethernet multicast correspondente ao endereço IPv6 multicast FF00::2AB1:20A3?",
+    "answers": [
+      "33:33:FF:B1:20:A3",
+      "33:33:00:00:2A:B1",
+      "01:00:5E:B1:20:A3 (v4)",
+      "33:33:2A:B1:20:A3"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.7"
+  },
+  {
+    "question": "Qual é o endereço Ethernet multicast correspondente ao endereço IPv6 ff02::1:2?",
+    "answers": [
+      "33:33:00:01:00:02",
+      "01:00:5E:01:00:02, o prefixo do multicast IPv4",
+      "33:33:00:02:00:01",
+      "33:33:00:00:00:02"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.7"
+  },
+  {
+    "question": "Quantos bits do endereço IPv6 multicast são copiados para o endereço Ethernet multicast 33:33:xx:xx:xx:xx?",
+    "answers": [
+      "Os 48 bits menos significativos do endereço",
+      "Os 32 bits menos significativos",
+      "Os 16 bits menos significativos",
+      "Os 23 bits menos significativos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.7"
+  },
+  {
+    "question": "Qual é o prefixo reservado aos endereços IPv6 unicast link-local?",
+    "answers": [
+      "fd00::/8, reservado aos endereços locais únicos",
+      "fe80::/10",
+      "::1/128",
+      "ff02::/16"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.8"
+  },
+  {
+    "question": "Como obtém um nó IPv6 o seu endereço link-local?",
+    "answers": [
+      "Pede-o a um servidor DHCPv6 através de um pedido enviado em broadcast de camada 2",
+      "Gera-o a partir de fe80::/10 e do seu MAC, e testa a unicidade com NS/NA do ICMPv6",
+      "Recebe-o de um router, numa mensagem Router Advertisement enviada em resposta",
+      "Copia o endereço IPv4 do nó para os 32 bits menos significativos do endereço"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.8"
+  },
+  {
+    "question": "Que mensagem ICMPv6 envia um nó IPv6 para descobrir os routers da rede?",
+    "answers": [
+      "Neighbor Solicitation (tipo 135), para ff02::1",
+      "Router Advertisement (tipo 134), para ff02::1",
+      "Router Solicitation (tipo 133), para ff02::2",
+      "Group Membership Query (tipo 130), para ff02::2"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.8"
+  },
+  {
+    "question": "Que mensagem ICMPv6 enviam os routers em resposta a um Router Solicitation?",
+    "answers": [
+      "Packet too big (tipo 2)",
+      "Router Advertisement (tipo 134)",
+      "Router Solicitation (tipo 133)",
+      "Neighbor Advertisement (tipo 136)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.8"
+  },
+  {
+    "question": "O que significa a sigla SLAAC?",
+    "answers": [
+      "Stateless Address Auto Configuration",
+      "Stateless Link-local Address Allocation Control",
+      "Stateful Link Address Auto Configuration",
+      "Secure Local Area Address Control"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.8"
+  },
+  {
+    "question": "Qual é a diferença entre configuração stateless (SLAAC) e stateful (DHCPv6)?",
+    "answers": [
+      "No SLAAC um servidor atribui o endereço; no DHCPv6 o nó gera os bits de nó sozinho",
+      "O SLAAC usa IPv4 e o DHCPv6 usa IPv6 para atribuir os endereços aos nós da rede",
+      "O SLAAC só atribui endereços link-local, ao passo que o DHCPv6 só atribui endereços globais, nunca link-local",
+      "No SLAAC o nó gera os bits de nó a partir do prefixo; no DHCPv6 um servidor atribui o endereço"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.9"
+  },
+  {
+    "question": "Que âmbito tem o endereço unicast definido por SLAAC?",
+    "answers": [
+      "Link-local: só permite comunicar na rede local",
+      "Node-local: só permite comunicar dentro do próprio nó",
+      "Global: permite comunicar com nós de outras redes e com a Internet",
+      "Organização: só permite comunicar dentro do sistema autónomo a que o nó pertence"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.9"
+  },
+  {
+    "question": "Qual é o endereço de rede de um endereço anycast subnet-router?",
+    "answers": [
+      "O endereço da rede, com os bits de nó a zero",
+      "O endereço ff02::2",
+      "O endereço da rede, com os bits de nó a um",
+      "O primeiro endereço de nó da rede"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.10"
+  },
+  {
+    "question": "Que bloco de endereços IPv6 é de uso privado, segundo a aula?",
+    "answers": [
+      "Endereços que começam por fd (ULA, Unique Local Address)",
+      "Endereços que começam por fe80 (1111 1110 10), de link-local",
+      "Endereços que começam por 2001 (0010 0000 0000 0001 …)",
+      "Endereços que começam por ff00 (1111 1111 0000 0000 …)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.10"
+  },
+  {
+    "question": "O que representa o endereço IPv6 ::1?",
+    "answers": [
+      "O endereço do primeiro router da rede, tal como o default gateway",
+      "O endereço de loopback, equivalente a 127.0.0.1 no IPv4",
+      "O endereço de todos os nós da rede local, tal como o broadcast",
+      "Um endereço de origem desconhecido, equivalente a 0.0.0.0 no IPv4"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.10"
+  },
+  {
+    "question": "O que representa o endereço IPv6 :: (todos os bits a zero)?",
+    "answers": [
+      "O endereço de loopback",
+      "Um endereço de origem desconhecido",
+      "O endereço de todos os routers",
+      "O endereço de broadcast da rede"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.10"
+  },
+  {
+    "question": "Qual é o comprimento fixo do cabeçalho IPv6?",
+    "answers": [
+      "40 bytes",
+      "60 bytes",
+      "128 bytes",
+      "20 bytes"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.11"
+  },
+  {
+    "question": "Quantos bytes do cabeçalho IPv6 são ocupados pelos endereços de origem e de destino?",
+    "answers": [
+      "32 bytes",
+      "16 bytes",
+      "40 bytes",
+      "8 bytes"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.11"
+  },
+  {
+    "question": "Que campo do cabeçalho IPv4 foi eliminado do cabeçalho IPv6?",
+    "answers": [
+      "O campo TTL",
+      "O campo Protocol",
+      "O endereço de origem do pacote",
+      "O checksum do cabeçalho"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.11"
+  },
+  {
+    "question": "Como se chama, no IPv6, o campo equivalente ao campo Protocol do IPv4?",
+    "answers": [
+      "Traffic class",
+      "Flow label",
+      "Hop limit",
+      "Next-header"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.11"
+  },
+  {
+    "question": "Como se chama, no IPv6, o campo equivalente ao campo TTL do IPv4?",
+    "answers": [
+      "Next-header",
+      "Flow label",
+      "Hop limit",
+      "Payload length"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.11"
+  },
+  {
+    "question": "Para que serve o campo Flow label do cabeçalho IPv6?",
+    "answers": [
+      "Para identificar um fluxo de datagramas com requisitos de QoS comuns",
+      "Para limitar o número de routers que o datagrama pode atravessar",
+      "Para identificar o protocolo de nível superior transportado no payload",
+      "Para identificar o fragmento a que o datagrama pertence no original"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.11"
+  },
+  {
+    "question": "Como são suportadas as funcionalidades adicionais no IPv6, que no IPv4 eram opções do cabeçalho?",
+    "answers": [
+      "Através de um cabeçalho IPv4 interno ao datagrama IPv6",
+      "Através de um campo de opções de tamanho variável no final do cabeçalho base",
+      "Através de cabeçalhos de extensão, identificados no campo next-header",
+      "Através de mensagens ICMPv6 enviadas pelos routers"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.12"
+  },
+  {
+    "question": "Que valor do campo next-header identifica o cabeçalho de extensão de fragmentação?",
+    "answers": [
+      "43",
+      "60",
+      "50",
+      "44"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.12"
+  },
+  {
+    "question": "Que valor do campo next-header identifica o cabeçalho de extensão de encaminhamento (routing)?",
+    "answers": [
+      "43",
+      "50",
+      "0",
+      "44 (fragmentação)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.12"
+  },
+  {
+    "question": "Que valor do campo next-header identifica as opções hop-by-hop, a tratar pelos routers?",
+    "answers": [
+      "43",
+      "0",
+      "44",
+      "60"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.12"
+  },
+  {
+    "question": "Que valor do campo next-header identifica as opções de destino (destination options), a tratar só no nó final?",
+    "answers": [
+      "51",
+      "0",
+      "60",
+      "43"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.12"
+  },
+  {
+    "question": "Que valores do campo next-header identificam o IPSEC?",
+    "answers": [
+      "58 e 59, usados pelo ICMPv6",
+      "0 e 60",
+      "43 e 44",
+      "50 e 51"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.12"
+  },
+  {
+    "question": "Que valor do campo next-header identifica o ICMPv6?",
+    "answers": [
+      "17, o valor do UDP",
+      "6",
+      "1",
+      "58"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.13"
+  },
+  {
+    "question": "Que tipo de mensagem ICMPv6 corresponde ao echo request?",
+    "answers": [
+      "Tipo 133",
+      "Tipo 129 (echo reply)",
+      "Tipo 128",
+      "Tipo 8"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.13"
+  },
+  {
+    "question": "Que tipo de mensagem ICMPv6 corresponde ao echo reply?",
+    "answers": [
+      "Tipo 129",
+      "Tipo 0",
+      "Tipo 128",
+      "Tipo 134 (router advertisement)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.13"
+  },
+  {
+    "question": "Que mensagem ICMPv6 é usada pelo Path MTU Discovery?",
+    "answers": [
+      "Destination unreachable (tipo 1)",
+      "Router advertisement (tipo 134)",
+      "Packet too big (tipo 2)",
+      "Time exceeded (tipo 3)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.13"
+  },
+  {
+    "question": "Que mensagem ICMPv6 é equivalente ao ARP request do IPv4?",
+    "answers": [
+      "Group membership query (tipo 130)",
+      "Router solicitation (tipo 133)",
+      "Neighbor solicitation (tipo 135)",
+      "Neighbor advertisement (tipo 136)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.13"
+  },
+  {
+    "question": "Que mensagem ICMPv6 é equivalente ao ARP reply do IPv4?",
+    "answers": [
+      "Neighbor solicitation (tipo 135)",
+      "Neighbor advertisement (tipo 136)",
+      "Router advertisement (tipo 134)",
+      "Group membership report (tipo 131)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.13"
+  },
+  {
+    "question": "Que mensagens ICMPv6 substituem, no IPv6, as mensagens do IGMP?",
+    "answers": [
+      "Neighbor solicitation e advertisement (tipos 135 e 136) do ICMPv6",
+      "Router solicitation e advertisement (tipos 133 e 134) do ICMPv6",
+      "Echo request e echo reply (tipos 128 e 129) do ICMPv6",
+      "Group membership query, report e reduction (tipos 130 a 132)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.13"
+  },
+  {
+    "question": "Qual é o objetivo da resolução de nomes (name resolution)?",
+    "answers": [
+      "Traduzir endereços privados em endereços públicos únicos através de NAT na rede",
+      "Obter o endereço MAC correspondente a um endereço IPv4 existente na rede local",
+      "Obter o endereço de um nó a partir do seu nome, sem o utilizador lidar com endereços",
+      "Atribuir dinamicamente um endereço IP a cada nó que arranca numa rede local"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.14"
+  },
+  {
+    "question": "Como faz o NetBIOS original a resolução de um nome?",
+    "answers": [
+      "Consulta o ficheiro de hosts do controlador de domínio da rede local",
+      "Envia um NAME QUERY em unicast para o servidor WINS configurado na rede e aguarda a resposta",
+      "Envia um NAME QUERY em broadcast; o nó que possui o nome responde com o seu endereço",
+      "Consulta um servidor DNS através de uma consulta recursiva ao servidor local"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.15"
+  },
+  {
+    "question": "Que porto UDP usa o NetBIOS sobre TCP/IP para a resolução de nomes?",
+    "answers": [
+      "53",
+      "67",
+      "161",
+      "137"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.15"
+  },
+  {
+    "question": "Como verifica um nó NetBIOS que o nome que pretende registar ainda não está em uso?",
+    "answers": [
+      "Pergunta ao router por omissão se o nome pretendido está disponível",
+      "Envia um NAME RELEASE ao servidor WINS antes de qualquer pedido de registo de nome no domínio",
+      "Consulta um servidor DNS para ver se o nome já existe no domínio global",
+      "Envia pedidos de registo em broadcast e aguarda eventuais erros de nome duplicado"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.16"
+  },
+  {
+    "question": "Qual é o comprimento máximo de um nome NetBIOS nas redes Microsoft?",
+    "answers": [
+      "16 caracteres, todos eles usados para o nome do nó",
+      "15 caracteres, porque o 16.º identifica o tipo do nome",
+      "255 caracteres, tal como acontece nos nomes qualificados do DNS",
+      "32 caracteres, divididos em nome do nó e nome do domínio"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.17"
+  },
+  {
+    "question": "Qual é o tipo de nome NetBIOS (hexadecimal) que identifica um File Server?",
+    "answers": [
+      "00",
+      "1B",
+      "1E",
+      "20"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.17"
+  },
+  {
+    "question": "Qual é o tipo de nome NetBIOS (hexadecimal) de uso geral, único, de cada nó?",
+    "answers": [
+      "20, o serviço de ficheiros do nó",
+      "1D",
+      "00",
+      "1B"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.17"
+  },
+  {
+    "question": "O que identifica o tipo 1C associado a um nome de domínio NetBIOS?",
+    "answers": [
+      "Um servidor de ficheiros e impressão do domínio",
+      "O coletor da lista de navegação (browse list) local",
+      "Um servidor de autenticação (login) do domínio",
+      "O Primary Domain Controller (PDC), navegador mestre do domínio"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.17"
+  },
+  {
+    "question": "Qual é a diferença entre nomes únicos e nomes de grupo no NetBIOS?",
+    "answers": [
+      "Os nomes de grupo só existem em redes que tenham um servidor WINS",
+      "Os nomes únicos têm até 255 caracteres e os nomes de grupo até 15",
+      "Um nome de grupo pode ser registado por vários nós; um nome único não",
+      "Um nome único pode ser registado por vários nós; um nome de grupo não"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.17"
+  },
+  {
+    "question": "Que problemas do NetBIOS por broadcast procurou resolver o WINS?",
+    "answers": [
+      "Falta de tipos de nome, nomes demasiado longos e uso de UDP em vez de TCP, nas redes locais Microsoft",
+      "Insegurança, propagação limitada ao domínio de broadcast e má utilização da rede",
+      "Falta de suporte para endereços multicast nas redes locais Microsoft",
+      "Falta de endereços IPv4 e necessidade de NAT nas redes locais Microsoft"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.18"
+  },
+  {
+    "question": "Qual é a principal diferença do WINS relativamente ao NetBIOS original?",
+    "answers": [
+      "Os pedidos passam a ser enviados em multicast para o endereço ff02::1 de todos os nós",
+      "Os pedidos vão em unicast para um servidor dedicado, e não em broadcast",
+      "Os nomes passam a ter estrutura hierárquica, tal como acontece no DNS",
+      "O WINS dispensa o registo dos nomes dos nós que entram na rede local"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.18"
+  },
+  {
+    "question": "Que limitação mantém o WINS, tal como o NetBIOS, que o DNS resolve?",
+    "answers": [
+      "A estrutura de nomes sem hierarquia, que impede gestão distribuída e escalável",
+      "A necessidade de usar sempre broadcast de camada 2 para registar os nomes",
+      "A obrigação de usar o porto UDP 137 em todas as comunicações de nomes",
+      "A impossibilidade de registar mais de 15 nomes por cada rede local"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.19"
+  },
+  {
+    "question": "Qual é a principal vantagem do DNS sobre o NetBIOS?",
+    "answers": [
+      "A ausência de name servers dedicados na infraestrutura de rede",
+      "O uso de broadcast, que permite descobrir os nós sem qualquer servidor",
+      "A estrutura hierárquica com autonomia administrativa por domínio",
+      "A utilização de nomes planos e globalmente únicos em toda a rede"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.19"
+  },
+  {
+    "question": "O que é um nome qualificado (FQDN) no DNS?",
+    "answers": [
+      "O nome do domínio, sem o nome do nó, terminado por um ponto final",
+      "O nome do nó com um máximo de 15 caracteres e um tipo hexadecimal",
+      "O endereço IP do nó escrito em notação hexadecimal, com os grupos separados por dois pontos",
+      "O nome do nó seguido da lista de domínios até à raiz, separados por pontos"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.20"
+  },
+  {
+    "question": "O que é um name server autoritativo para um domínio?",
+    "answers": [
+      "Um servidor que faz sempre consultas recursivas em nome dos clientes",
+      "Um servidor que conhece apenas os endereços dos root name servers da Internet",
+      "Um servidor que guarda em cache as respostas de todos os domínios consultados",
+      "Um servidor com cópia local da base de dados do domínio, sem depender de outros"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.21"
+  },
+  {
+    "question": "O que tem de conhecer cada name server DNS para o sistema funcionar?",
+    "answers": [
+      "Apenas o endereço do name server do domínio imediatamente acima do seu",
+      "Os endereços dos name servers de todos os domínios existentes na Internet e as suas réplicas",
+      "Os registos do seu domínio, os root name servers e os subdomínios imediatos",
+      "Apenas os endereços dos name servers dos domínios de topo da Internet"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.22"
+  },
+  {
+    "question": "Porque são os root name servers um ponto de partida garantido para resolver qualquer nome?",
+    "answers": [
+      "Porque conhecem os name servers dos domínios de topo, e estes os dos seus subdomínios",
+      "Porque são os únicos name servers com o porto 53 aberto na Internet",
+      "Porque aceitam sempre consultas recursivas feitas diretamente pelos clientes",
+      "Porque guardam uma cópia de todos os registos de todos os domínios da Internet, replicada diariamente"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.22"
+  },
+  {
+    "question": "Na resolução de www.dei.isep.ipp.pt por um servidor local, a quem pergunta o servidor local pelo name server do domínio pt?",
+    "answers": [
+      "A um name server do domínio isep.ipp.pt",
+      "A um root name server",
+      "Ao próprio cliente que fez a consulta",
+      "A um name server do domínio ipp.pt"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.23"
+  },
+  {
+    "question": "Qual é o problema que os glue records resolvem?",
+    "answers": [
+      "A dependência circular quando o name server de um domínio tem o nome nesse mesmo domínio",
+      "A resolução inversa de endereços IPv6 no domínio ipv6.arpa. feita por um cliente",
+      "A impossibilidade de um domínio ter mais de um name server registado no domínio pai",
+      "A falta de registos MX para os servidores de correio eletrónico do domínio pedido"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.23"
+  },
+  {
+    "question": "Onde são colocados os glue records?",
+    "answers": [
+      "No root name server, com o endereço de todos os servidores",
+      "No cliente, junto à lista de name servers configurados",
+      "No domínio pai, com o endereço do name server do subdomínio",
+      "No próprio subdomínio, com o endereço do name server do domínio pai"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.27"
+  },
+  {
+    "question": "O que é uma consulta recursiva?",
+    "answers": [
+      "Aquela em que o servidor devolve ao cliente o name server mais próximo",
+      "Aquela em que o servidor responde apenas com dados da sua cache",
+      "Aquela em que o cliente consulta diretamente os root name servers, um a seguir ao outro",
+      "Aquela em que o name server local faz todo o trabalho em nome do cliente"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.23"
+  },
+  {
+    "question": "Para que serve o TTL de um registo DNS?",
+    "answers": [
+      "Define durante quanto tempo o registo pode ser guardado em cache",
+      "Para indicar a prioridade do servidor de correio eletrónico do domínio",
+      "Para indicar o número de saltos entre o cliente e o name server do domínio",
+      "Para limitar o número de name servers que a consulta pode atravessar"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.23"
+  },
+  {
+    "question": "Quem define o TTL de cada registo DNS?",
+    "answers": [
+      "O root name server",
+      "O administrador do domínio",
+      "O name server local do cliente",
+      "O cliente que faz a consulta"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.23"
+  },
+  {
+    "question": "Que porto usam os name servers DNS?",
+    "answers": [
+      "80",
+      "53",
+      "137",
+      "67"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.24"
+  },
+  {
+    "question": "Qual é o valor do tipo (RR TYPE) do registo A?",
+    "answers": [
+      "1",
+      "2",
+      "5",
+      "28"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.25"
+  },
+  {
+    "question": "Qual é o valor do tipo (RR TYPE) do registo NS?",
+    "answers": [
+      "1",
+      "2",
+      "15",
+      "5"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.25"
+  },
+  {
+    "question": "Qual é o valor do tipo (RR TYPE) do registo CNAME?",
+    "answers": [
+      "5",
+      "2",
+      "6",
+      "12"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.25"
+  },
+  {
+    "question": "Qual é o valor do tipo (RR TYPE) do registo MX?",
+    "answers": [
+      "15",
+      "16 (TXT)",
+      "12",
+      "28"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.25"
+  },
+  {
+    "question": "Qual é o valor do tipo (RR TYPE) do registo AAAA?",
+    "answers": [
+      "33 (SRV)",
+      "16",
+      "28",
+      "1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.25"
+  },
+  {
+    "question": "Qual é o valor do tipo (RR TYPE) do registo SRV?",
+    "answers": [
+      "29, atribuído ao registo SRV",
+      "33",
+      "28",
+      "16"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.25"
+  },
+  {
+    "question": "Qual é o valor do tipo (RR TYPE) do registo PTR?",
+    "answers": [
+      "12",
+      "6",
+      "16",
+      "15"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.25"
+  },
+  {
+    "question": "Qual é o valor do tipo (RR TYPE) do registo SOA?",
+    "answers": [
+      "5",
+      "6",
+      "2",
+      "12"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.25"
+  },
+  {
+    "question": "Que registo DNS guarda o endereço IPv4 de um nó?",
+    "answers": [
+      "Registo NS",
+      "Registo AAAA",
+      "Registo PTR",
+      "Registo A"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.25"
+  },
+  {
+    "question": "Que registo DNS guarda o endereço IPv6 de um nó?",
+    "answers": [
+      "Registo AAAA",
+      "Registo PTR inverso",
+      "Registo A",
+      "Registo SRV"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.25"
+  },
+  {
+    "question": "Que registo DNS define um nome alternativo (alias) para outro nome?",
+    "answers": [
+      "Registo CNAME",
+      "Registo SOA",
+      "Registo MX",
+      "Registo PTR"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.25"
+  },
+  {
+    "question": "Que registo DNS identifica o name server de um domínio?",
+    "answers": [
+      "Registo A",
+      "Registo SOA",
+      "Registo NS",
+      "Registo MX"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.25"
+  },
+  {
+    "question": "Que registo DNS permite a resolução inversa (de endereço IP para nome)?",
+    "answers": [
+      "Registo CNAME",
+      "Registo SRV",
+      "Registo PTR",
+      "Registo AAAA"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.25"
+  },
+  {
+    "question": "Que registo DNS identifica os servidores de correio de um domínio?",
+    "answers": [
+      "Registo TXT",
+      "Registo NS",
+      "Registo MX",
+      "Registo SRV"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.25"
+  },
+  {
+    "question": "Que informação contém o número de série (serial) de um registo SOA?",
+    "answers": [
+      "O número de segundos de validade em cache dos registos do domínio para os clientes",
+      "A data e um número dentro do dia, usado na sincronização dos slaves com o master",
+      "O número de registos existentes na base de dados do domínio no master",
+      "A prioridade do servidor de correio eletrónico do domínio na lista de MX"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.25"
+  },
+  {
+    "question": "Qual é o domínio usado para a resolução inversa de endereços IPv4?",
+    "answers": [
+      "in-addr.arpa.",
+      "ip6.arpa., usado para endereços IPv6",
+      "ip4.int.",
+      "reverse.pt."
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.28"
+  },
+  {
+    "question": "Em que nome é definido o registo PTR do endereço IPv4 193.136.62.3?",
+    "answers": [
+      "193.136.62.3.in-addr.arpa. (direta)",
+      "3.62.136.193.in-addr.arpa.",
+      "3.62.136.193.ipv6.arpa.",
+      "193.62.136.3.in-addr.arpa."
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.28"
+  },
+  {
+    "question": "Em que nome é definido o registo PTR do endereço IPv4 10.20.30.40?",
+    "answers": [
+      "40.30.20.10.ipv4.in-addr.arpa.",
+      "10.20.30.40.ipv4.arpa.",
+      "40.30.20.10.in-addr.arpa.",
+      "10.20.30.40.in-addr.arpa."
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.28"
+  },
+  {
+    "question": "Num registo MX, que valor de prioridade indica o servidor preferido?",
+    "answers": [
+      "O valor mais alto",
+      "O valor mais baixo",
+      "O valor 16",
+      "O valor zero, sempre"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.30"
+  },
+  {
+    "question": "Num domínio com MX 10 frodo e MX 20 picasso, que servidor é tentado primeiro pelo cliente SMTP?",
+    "answers": [
+      "frodo, por ter menor valor de prioridade",
+      "O que tiver o endereço IP mais baixo",
+      "picasso, por ter maior valor de prioridade",
+      "Ambos em simultâneo, por round-robin"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.30"
+  },
+  {
+    "question": "Qual é a forma do nome de um registo SRV para o serviço LDAP sobre TCP no domínio dei.isep.ipp.pt?",
+    "answers": [
+      "_ldap.dei.isep.ipp.pt.",
+      "ldap.tcp.dei.isep.ipp.pt.",
+      "_tcp._ldap.dei.isep.ipp.pt.",
+      "_ldap._tcp.dei.isep.ipp.pt."
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.31"
+  },
+  {
+    "question": "Num exemplo de registos SRV com prioridade 5 (pesos 4 e 6) e prioridade 20, qual é a probabilidade de ser escolhido o servidor com peso 6?",
+    "answers": [
+      "20 %",
+      "60 %",
+      "40 %",
+      "100 %"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.31"
+  },
+  {
+    "question": "Num registo SRV, para que serve o campo weight (peso)?",
+    "answers": [
+      "Para indicar o tempo de vida do registo em cache nos clientes",
+      "Para escolher o servidor com menor prioridade entre os registos",
+      "Para indicar o número do porto em que o serviço está disponível",
+      "Para repartir os clientes entre servidores com a mesma prioridade"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.31"
+  },
+  {
+    "question": "O que significa a cadeia SPF \"v=spf1 +mx -all\" num registo TXT de um domínio?",
+    "answers": [
+      "Só os servidores MX do domínio estão autorizados a enviar correio em nome do domínio",
+      "Nenhum nó está autorizado a enviar correio em nome do domínio",
+      "Todos os nós da Internet estão autorizados a enviar correio em nome do domínio",
+      "Só os nós com registo A no domínio estão autorizados a receber correio"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.32"
+  },
+  {
+    "question": "Que RFC descontinuou os registos SPF, mantendo apenas o uso de registos TXT?",
+    "answers": [
+      "RFC 7208",
+      "RFC 2136",
+      "RFC 4408 (de 2006)",
+      "RFC 1035"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.32"
+  },
+  {
+    "question": "Que informação contém o registo LOC?",
+    "answers": [
+      "O fuso horário e o idioma principal usados pelos utilizadores do domínio",
+      "A localização geográfica: latitude, longitude, altitude, dimensão e precisão",
+      "A posição do servidor de correio eletrónico do domínio na topologia da rede",
+      "O endereço IP do name server geograficamente mais próximo do cliente"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.33"
+  },
+  {
+    "question": "Que RFC acrescentou o pedido de atualização ao protocolo DNS, permitindo o DNS dinâmico?",
+    "answers": [
+      "RFC 7208",
+      "RFC 2136",
+      "RFC 1035",
+      "RFC 4408"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.34"
+  },
+  {
+    "question": "Para que serve o DNS dinâmico?",
+    "answers": [
+      "Fazer com que o servidor DNS atribua dinamicamente endereços IP aos clientes que o consultam, como o DHCP",
+      "Substituir os registos NS por registos A nas consultas feitas pelos clientes",
+      "Permitir que um nó com IP variável mantenha um nome DNS fixo, atualizando os registos",
+      "Evitar o uso de cache nos name servers, para os registos serem sempre atuais"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.34"
+  },
+  {
+    "question": "Como é normalmente escrito, na forma condensada, o endereço da rede fd00:abcd:0012:0007:0000:0000:0000:0000/64?",
+    "answers": [
+      "fd00:abcd:12:7::0/64",
+      "fd00:abcd:0012:0007::/64",
+      "fd00:abcd:12:7:0:0:0:0/64",
+      "fd00:abcd:12:7::/64"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.4"
+  },
+  {
+    "question": "Qual é o último endereço de nó da rede fd00:abcd:12:7::/64?",
+    "answers": [
+      "fd00:abcd:12:7::ffff",
+      "fd00:abcd:12:7:ffff:ffff:ffff:fffe",
+      "fd00:abcd:12:7:ffff:ffff:ffff:ffff",
+      "fd00:abcd:12:ffff:ffff:ffff:ffff:ffff"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.5"
+  },
+  {
+    "question": "Em IPv6, o último endereço de uma rede /64 é um endereço de nó válido?",
+    "answers": [
+      "Sim, mas apenas se for anycast",
+      "Não, porque está reservado para broadcast",
+      "Não, porque está reservado para o router por omissão",
+      "Sim, porque não existe broadcast em IPv6"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.5"
+  },
+  {
+    "question": "Qual é a forma condensada canónica, segundo o RFC 5952, do endereço IPv6 2001:0db8:0000:0000:0000:0000:0000:0001?",
+    "answers": [
+      "2001:db8::1",
+      "2001:db8:0:0:0:0:0:1",
+      "2001:db8:0:1",
+      "2001:db8:::1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.4"
+  },
+  {
+    "question": "Qual é a forma condensada canónica, segundo o RFC 5952, do endereço IPv6 fe80:0000:0000:0000:02a0:c9ff:fe12:3456?",
+    "answers": [
+      "fe80::2a0:c9ff:fe12:3456",
+      "fe80:::2a0:c9ff:fe12:3456",
+      "fe80:0:2a0:c9ff:fe12:3456",
+      "fe80:0:0:0:2a0:c9ff:fe12:3456"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.4"
+  },
+  {
+    "question": "Qual é a forma condensada canónica, segundo o RFC 5952, do endereço IPv6 2001:0db8:0a00:0000:0000:0000:0000:0000?",
+    "answers": [
+      "2001:db8:a00::",
+      "2001:db8:a00:0:0:0:0:0",
+      "2001:db8:a00:0:",
+      "2001:db8:a00::0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.4"
+  },
+  {
+    "question": "Qual é a forma condensada canónica, segundo o RFC 5952, do endereço IPv6 0000:0000:0000:0000:0000:0000:0000:0001?",
+    "answers": [
+      "0:0:0:0:0:0:0:1",
+      "::1",
+      ":::1",
+      ":0:1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.4"
+  },
+  {
+    "question": "Qual é a forma condensada canónica, segundo o RFC 5952, do endereço IPv6 fd00:0000:0000:0001:0000:0000:0000:0010?",
+    "answers": [
+      "fd00:::1:0:0:0:10",
+      "fd00:0:0:1:0:0:0:10",
+      "fd00:0:0:1:0:10",
+      "fd00:0:0:1::10"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.4"
+  },
+  {
+    "question": "Qual é a forma condensada canónica, segundo o RFC 5952, do endereço IPv6 2a01:04f8:0000:0000:0000:0000:0000:0002?",
+    "answers": [
+      "2a01:4f8:0:0:0:0:0:2",
+      "2a01:4f8:0:2",
+      "2a01:4f8:::2",
+      "2a01:4f8::2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.4"
+  },
+  {
+    "question": "Qual é o endereço Ethernet multicast correspondente ao endereço IPv6 multicast ff02::5?",
+    "answers": [
+      "33:33:FF:00:00:05 (solicited-node)",
+      "33:33:05:00:00:00",
+      "01:00:5E:00:00:05",
+      "33:33:00:00:00:05"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.7"
+  },
+  {
+    "question": "Qual é o endereço Ethernet multicast correspondente ao endereço IPv6 multicast ff02::a?",
+    "answers": [
+      "01:00:5E:00:00:0A",
+      "33:33:00:00:00:0A",
+      "33:33:FF:00:00:0A (solicited-node)",
+      "33:33:0A:00:00:00"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.7"
+  },
+  {
+    "question": "Qual é o endereço Ethernet multicast correspondente ao endereço IPv6 multicast ff05::1:3?",
+    "answers": [
+      "33:33:03:00:01:00",
+      "33:33:FF:01:00:03",
+      "01:00:5E:00:01:03",
+      "33:33:00:01:00:03"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.7"
+  },
+  {
+    "question": "Qual é o endereço Ethernet multicast correspondente ao endereço IPv6 multicast ff02::1:ff00:1?",
+    "answers": [
+      "33:33:FF:00:00:01",
+      "33:33:FF:00:00:99",
+      "33:33:01:00:00:FF",
+      "01:00:5E:FF:00:00:01"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.7"
+  },
+  {
+    "question": "O IPv6 abandonou o Path MTU Discovery e voltou a usar fragmentação nos routers.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.3"
+  },
+  {
+    "question": "O IPv6 exige o uso do DHCP para a configuração de todos os nós.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.3"
+  },
+  {
+    "question": "Os datagramas IPv6 estão limitados a 64 Kbytes, tal como os do IPv4, sem qualquer exceção.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.3"
+  },
+  {
+    "question": "Os endereços IPv6 devem ser representados preferencialmente com símbolos hexadecimais em maiúsculas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.4"
+  },
+  {
+    "question": "O endereço ff02::1 representa todos os routers da rede local.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.6"
+  },
+  {
+    "question": "Nos endereços IPv6 multicast bem conhecidos, o bit X é igual a um.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.6"
+  },
+  {
+    "question": "O endereço link-local de um nó IPv6 é atribuído obrigatoriamente por um router.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.8"
+  },
+  {
+    "question": "O SLAAC exige sempre um servidor DHCPv6 para atribuir o endereço ao nó.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.9"
+  },
+  {
+    "question": "Um endereço anycast é um endereço novo, retirado do espaço de endereços multicast.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.10"
+  },
+  {
+    "question": "O endereço :: (todos os bits a zero) é o endereço de loopback do IPv6.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.10"
+  },
+  {
+    "question": "O cabeçalho IPv6 tem 20 bytes, dos quais 16 bytes são usados pelos endereços.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.11"
+  },
+  {
+    "question": "O ICMPv6 é identificado pelo valor 1 no campo next-header.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.13"
+  },
+  {
+    "question": "O NetBIOS usa o porto UDP 53 para a resolução de nomes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.15"
+  },
+  {
+    "question": "O WINS não permite que os clientes estejam em redes diferentes da do servidor.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.18"
+  },
+  {
+    "question": "Os nomes NetBIOS podem ter até 255 caracteres, tal como os nomes DNS.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.17"
+  },
+  {
+    "question": "Num domínio DNS, os nomes têm de ser únicos em toda a Internet, independentemente do domínio a que pertencem.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "DNS extras p.4"
+  },
+  {
+    "question": "Num registo MX com prioridade 5 e outro com prioridade 20, o cliente tenta primeiro o de prioridade 20.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.30"
+  },
+  {
+    "question": "Os registos SRV têm a forma _PROTOCOL._SERVICE.DOMAIN-NAME.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.31"
+  },
+  {
+    "question": "O registo SOA contém o endereço IPv4 do servidor de correio do domínio.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.25"
+  },
+  {
+    "question": "Os registos PTR para IPv6 usam o domínio in-addr.arpa.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.28"
+  },
+  {
+    "question": "Em DNS, a classe de um registo para o IP é 0.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.24"
+  },
+  {
+    "question": "Um name server DNS não pode manter as bases de dados de mais de um domínio.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.21"
+  },
+  {
+    "question": "Os registos NS de um domínio são guardados apenas no próprio domínio, e nunca no domínio pai.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "DNS extras p.5"
+  },
+  {
+    "question": "Os nós terminais devem consultar diretamente os root name servers, sem recorrer a um servidor DNS local.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "DNS extras p.7"
+  },
+  {
+    "question": "O IPv6 usa o IGMP para gerir os grupos multicast.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L07 p.3"
+  }
+]
