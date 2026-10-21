@@ -937,12 +937,12 @@ test.group('Exams', (group) => {
     assert.deepEqual(replay.body(), graded.body())
   })
 
-  test('unfinished cleanup compares the same local wall time as Lucid timestamp writes', async ({
+  test('unfinished cleanup preserves the cutoff instant across timezone offsets', async ({
     assert,
   }) => {
     const previousZone = Settings.defaultZone
     try {
-      // Both positive and negative offsets expose a UTC cutoff against timezone-less columns.
+      // Both positive and negative offsets must preserve the 30-day instant.
       for (const zone of ['Asia/Kolkata', 'America/New_York']) {
         Settings.defaultZone = zone
         const user = await User.findByOrFail('authSubject', USER_SUB)
@@ -1410,6 +1410,194 @@ test.group('Exams', (group) => {
         })
       changed.assertStatus(409)
     }
+  })
+
+  test('custom default penalty survives cloud resume and historical null replay', async ({
+    client,
+    assert,
+  }) => {
+    const user = await User.findByOrFail('authSubject', USER_SUB)
+    const before = await Answer.query()
+      .where('user_id', user.id)
+      .where('subject_id', subject.id)
+      .where('mode', 'custom')
+      .count('* as total')
+      .firstOrFail()
+    for (const historical of [false, true]) {
+      await resetState()
+      const id = randomUUID()
+      const generated = await client
+        .get(`/exams/generate/${subject.id}?mode=custom&n_of_questions=5&attempt_id=${id}`)
+        .header('authorization', `Bearer ${userToken}`)
+      generated.assertStatus(200)
+      const stored = await ExamAttempt.findByOrFail('id', id)
+      if (historical) {
+        stored.snapshot = { ...stored.snapshot, penalizingFactor: null }
+        await stored.save()
+      }
+      const saved = await client
+        .post('/exams/state')
+        .header('authorization', `Bearer ${userToken}`)
+        .json({
+          subject_id: subject.id,
+          mode: 'custom',
+          attempt_id: id,
+          state: {
+            version: 2,
+            subjectId: subject.id,
+            mode: 'custom',
+            questionIds: generated.body().map((q: any) => q.id),
+            answers: generated.body().map((q: any, i: number) => [q.id, i === 0 ? 'B' : 'A']),
+            time: 5,
+            currentQuestionIndex: 0,
+            n_of_questions: 5,
+            penalizing_factor: 0,
+          },
+        })
+      saved.assertStatus(200)
+      const resumed = await client
+        .get(`/exams/state?subject_id=${subject.id}&mode=custom`)
+        .header('authorization', `Bearer ${userToken}`)
+      resumed.assertStatus(200)
+      const state = resumed.body().state
+      const body = {
+        subject_id: subject.id,
+        mode: state.mode,
+        attempt_id: resumed.body().attempt_id,
+        n_of_questions: state.n_of_questions,
+        penalizing_factor: state.penalizing_factor,
+        answers: state.answers.map(([questionId, option]: [number, string]) => ({
+          question_id: questionId,
+          selected_option: option,
+        })),
+      }
+      const completed = await client
+        .post('/exams/verify')
+        .header('authorization', `Bearer ${userToken}`)
+        .json(body)
+      completed.assertStatus(200)
+      assert.equal(completed.body().score, 80)
+      if (historical) {
+        await stored.refresh()
+        stored.requestHash = createHash('sha256')
+          .update(
+            JSON.stringify({
+              subject: subject.id,
+              mode: 'custom',
+              count: 5,
+              penalty: null,
+              answers: body.answers
+                .map((item: any) => ({ id: item.question_id, order: item.selected_option }))
+                .sort((a: any, b: any) => a.id - b.id),
+            })
+          )
+          .digest('hex')
+        await stored.save()
+      } else {
+        assert.equal(stored.snapshot.penalizingFactor, 0)
+      }
+      for (const penalty of [undefined, 0]) {
+        const retry = await client
+          .post('/exams/verify')
+          .header('authorization', `Bearer ${userToken}`)
+          .json({ ...body, penalizing_factor: penalty })
+        retry.assertStatus(200)
+        assert.deepEqual(retry.body(), completed.body())
+      }
+      const changed = await client
+        .post('/exams/verify')
+        .header('authorization', `Bearer ${userToken}`)
+        .json({ ...body, penalizing_factor: 0.5 })
+      changed.assertStatus(409)
+      const changedAnswers = await client
+        .post('/exams/verify')
+        .header('authorization', `Bearer ${userToken}`)
+        .json({
+          ...body,
+          answers: body.answers.map((item: any) => ({ ...item, selected_option: 'A' })),
+        })
+      changedAnswers.assertStatus(409)
+      const count = await Answer.query()
+        .where('user_id', stored.userId)
+        .where('subject_id', subject.id)
+        .where('mode', 'custom')
+        .count('* as total')
+        .firstOrFail()
+      assert.equal(Number(count.$extras.total), Number(before.$extras.total) + (historical ? 2 : 1))
+    }
+  })
+
+  test('bound cloud saves reject custom configuration changes without replacing progress', async ({
+    client,
+    assert,
+  }) => {
+    await resetState()
+    const id = randomUUID()
+    const generated = await client
+      .get(
+        `/exams/generate/${subject.id}?mode=custom&n_of_questions=5&penalizing_factor=0.5&attempt_id=${id}`
+      )
+      .header('authorization', `Bearer ${userToken}`)
+    generated.assertStatus(200)
+    const body = {
+      subject_id: subject.id,
+      mode: 'custom',
+      attempt_id: id,
+      state: {
+        version: 2,
+        subjectId: subject.id,
+        mode: 'custom',
+        questionIds: generated.body().map((q: any) => q.id),
+        answers: [[generated.body()[0].id, 'B']],
+        time: 5,
+        currentQuestionIndex: 0,
+        n_of_questions: 5,
+        penalizing_factor: 0.5,
+      },
+    }
+    const saved = await client
+      .post('/exams/state')
+      .header('authorization', `Bearer ${userToken}`)
+      .json(body)
+    saved.assertStatus(200)
+    const stored = await ExamAttempt.findByOrFail('id', id)
+    const activity = stored.updatedAt.toMillis()
+    for (const explicit of [true, false]) {
+      for (const change of [{ penalizing_factor: 0 }, { n_of_questions: 6 }]) {
+        const invalid = await client
+          .post('/exams/state')
+          .header('authorization', `Bearer ${userToken}`)
+          .json({
+            ...body,
+            attempt_id: explicit ? id : undefined,
+            state: { ...body.state, ...change, time: 99 },
+          })
+        invalid.assertStatus(409)
+        const retained = await client
+          .get(`/exams/state?subject_id=${subject.id}&mode=custom`)
+          .header('authorization', `Bearer ${userToken}`)
+        retained.assertStatus(200)
+        assert.deepEqual(retained.body(), saved.body())
+        await stored.refresh()
+        assert.equal(stored.updatedAt.toMillis(), activity)
+      }
+    }
+    const completed = await client
+      .post('/exams/verify')
+      .header('authorization', `Bearer ${userToken}`)
+      .json({
+        subject_id: subject.id,
+        mode: 'custom',
+        attempt_id: id,
+        n_of_questions: 5,
+        penalizing_factor: 0.5,
+        answers: body.state.questionIds.map((questionId: number, i: number) => ({
+          question_id: questionId,
+          selected_option: i === 0 ? 'B' : 'A',
+        })),
+      })
+    completed.assertStatus(200)
+    assert.equal(completed.body().score, 70)
   })
 
   test('custom count and penalty remain immutable', async ({ client, assert }) => {

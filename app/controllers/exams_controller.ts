@@ -370,9 +370,14 @@ export default class ExamsController {
       if (state?.isCompleted && !data.restart_completed) {
         return response.conflict({ message: 'Completed exam state cannot be modified' })
       }
-      if (data.attempt_id) {
+      const attemptId =
+        data.attempt_id ??
+        (active && sameQuestionIds(payload.questionIds, active.state.questionIds)
+          ? active.attemptId
+          : null)
+      if (attemptId) {
         const attempt = await ExamAttempt.query({ client: trx })
-          .where('id', data.attempt_id)
+          .where('id', attemptId)
           .where('user_id', authUser.id)
           .where('subject_id', data.subject_id)
           .where('mode', data.mode)
@@ -389,6 +394,13 @@ export default class ExamsController {
             message: 'Attempt is unavailable, completed or has different questions',
           })
         }
+        if (
+          data.mode === 'custom' &&
+          (payload.n_of_questions !== attempt.snapshot.questions.length ||
+            payload.penalizing_factor !== (attempt.snapshot.penalizingFactor ?? 0))
+        ) {
+          return response.conflict({ message: 'Attempt scoring configuration changed' })
+        }
       }
       const saved = state ?? new ExamState()
       saved.useTransaction(trx)
@@ -399,11 +411,7 @@ export default class ExamsController {
         state: payload,
         isCompleted: false,
         revision: (state?.revision ?? 0) + 1,
-        attemptId:
-          data.attempt_id ??
-          (active && sameQuestionIds(payload.questionIds, active.state.questionIds)
-            ? active.attemptId
-            : null),
+        attemptId,
       })
       await saved.save()
       if (saved.attemptId) {

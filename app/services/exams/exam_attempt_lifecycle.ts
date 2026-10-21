@@ -12,7 +12,7 @@ export async function lockExamOwner(trx: TransactionClientContract, userId: numb
 }
 
 export function unfinishedAttemptCutoff() {
-  // Match Lucid autoCreate/autoUpdate wall time in PostgreSQL timestamp-without-zone columns.
+  // Preserve the offset when comparing instants in PostgreSQL timestamptz columns.
   return DateTime.local().minus({ days: UNFINISHED_ATTEMPT_RETENTION_DAYS }).toSQL()!
 }
 

@@ -330,7 +330,7 @@ Immutable stored generation and committed grading/replay data. Client UUIDs are 
 | `created_at` | timestamp | no | |
 | `updated_at` | timestamp | no | |
 
-Unique `(user_id, id)`; owner/result expression index `(user_id, (result->>'id'))`; partial owner index where `result IS NULL`. Generation caps unfinished rows at 20 per owner by atomically evicting the least recently active unfinished rows when needed; explicit owned discard removes unfinished rows, while completed history/replay is retained.
+Unique `(user_id, id)`; owner/result expression index `(user_id, (result->>'id'))`; partial owner index where `result IS NULL`. Generation caps unfinished rows at 20 per owner by atomically evicting the least recently active unfinished rows when needed; explicit owned discard removes unfinished rows, while completed history/replay is retained. New custom snapshots store omitted penalties as `0`; older `null` penalties mean the same effective zero for bound state validation, grading and replay. Bound custom cloud state must match the snapshot count and effective penalty.
 
 ### `exam_states`
 
@@ -452,9 +452,9 @@ would add a second protocol while deletion and FK protection still need the user
 Schedule `node ace exams:prune-attempts` daily in the deployment scheduler, using the
 normal runtime DB role/environment. It visits stale owners in batches of 100 and
 locks one owner per transaction before deleting only unfinished rows whose `updated_at`
-is older than 30 days. The cutoff uses the same process-local wall time as Lucid
-auto timestamps, matching the existing PostgreSQL timestamp-without-time-zone columns
-even outside UTC. Successful bound cloud saves refresh this timestamp. Completed
+is older than 30 days. PostgreSQL stores these timestamps as `timestamp with time zone`
+(`timestamptz`); the cutoff retains its offset, so local and UTC timestamps compare
+as instants even outside UTC. Successful bound cloud saves refresh this timestamp. Completed
 results and their grading are never purged. Cascades remove only drafts bound to deleted
 attempts; other drafts remain. Run once after migrations during rollout, then verify
 that stale unfinished counts fall and completed counts remain unchanged. Generation

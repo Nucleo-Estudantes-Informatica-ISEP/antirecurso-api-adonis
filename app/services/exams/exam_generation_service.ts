@@ -118,7 +118,7 @@ export default class ExamGenerationService {
               mode: params.mode,
               snapshot: {
                 nOfQuestions: params.nOfQuestions,
-                penalizingFactor: params.penalizingFactor ?? null,
+                penalizingFactor: params.penalizingFactor ?? (params.mode === 'custom' ? 0 : null),
                 questions: result.map((item) => {
                   const source = selected.find((question) => question.id === item.id)
                   if (!source) throw new Error(`Snapshot question ${item.id} is unavailable`)

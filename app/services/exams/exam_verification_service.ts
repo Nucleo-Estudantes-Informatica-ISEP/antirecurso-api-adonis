@@ -86,7 +86,7 @@ export default class ExamVerificationService {
         subject: input.subject.id,
         mode: input.mode,
         count: nOfQuestions,
-        penalty: input.mode === 'custom' ? input.penalizingFactor : null,
+        penalty: input.mode === 'custom' ? (input.penalizingFactor ?? 0) : null,
         answers: input.answers
           .map((item) => ({
             id: item.question_id,
@@ -106,8 +106,7 @@ export default class ExamVerificationService {
           throw new AttemptConflictError('Attempt unavailable for this identity')
         }
         if (attempt.result) {
-          // Earlier versions hashed raw count/penalty values. Use the stored configuration
-          // for compatibility, so ignored retry fields cannot change the original answers.
+          // Earlier hashes used raw counts/penalties, including null for custom zero penalty.
           const previousHashes = [nOfQuestions, attempt.snapshot.nOfQuestions].map((count) =>
             createHash('sha256')
               .update(
@@ -115,9 +114,11 @@ export default class ExamVerificationService {
                   ...requestPayload,
                   count,
                   penalty:
-                    input.mode === 'custom'
-                      ? input.penalizingFactor
-                      : attempt.snapshot.penalizingFactor,
+                    input.mode !== 'custom'
+                      ? attempt.snapshot.penalizingFactor
+                      : requestPayload.penalty === 0
+                        ? null
+                        : requestPayload.penalty,
                 })
               )
               .digest('hex')
@@ -133,7 +134,7 @@ export default class ExamVerificationService {
         if (
           attempt.snapshot.questions.length !== nOfQuestions ||
           (input.mode === 'custom' &&
-            attempt.snapshot.penalizingFactor !== input.penalizingFactor) ||
+            (attempt.snapshot.penalizingFactor ?? 0) !== (input.penalizingFactor ?? 0)) ||
           JSON.stringify(
             [...attempt.snapshot.questions.map((item) => item.id)].sort((a, b) => a - b)
           ) !== JSON.stringify(input.answers.map((item) => item.question_id).sort((a, b) => a - b))
