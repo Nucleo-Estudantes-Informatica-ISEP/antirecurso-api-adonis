@@ -1,7 +1,11 @@
+import { DateTime } from 'luxon'
+import { UnauthorizedError } from '#services/auth/zitadel_auth_service'
+import { lockExamOwner } from '#services/exams/exam_attempt_lifecycle'
 import type { HttpContext } from '@adonisjs/core/http'
 import { visibleComments } from '#services/comment_visibility'
 import db from '@adonisjs/lucid/services/db'
 import Answer from '#models/answer'
+import ExamAttempt from '#models/exam_attempt'
 import ExamState from '#models/exam_state'
 import Question from '#models/question'
 import Subject from '#models/subject'
@@ -14,17 +18,24 @@ import {
   modeRequiresUser,
 } from '#services/exams/exam_config'
 import ExamVerificationService from '#services/exams/exam_verification_service'
+import { AttemptConflictError } from '#services/exams/attempt_conflict_error'
 import {
+  clearExamStateValidator,
   examHistoryValidator,
   examStateIdentifierValidator,
   generateExamValidator,
+  recoverExamAttemptValidator,
   saveExamStateValidator,
   verifyExamValidator,
 } from '#validators/exam'
 import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
 import { hasAuthNeiRole } from '#services/auth/auth_nei_roles'
 import { canViewExamAttempt } from '#services/exams/exam_access_policy'
-import { InvalidExamStateError, normalizeSavedExamState } from '#services/exams/exam_state_policy'
+import {
+  InvalidExamStateError,
+  normalizeSavedExamState,
+  sameQuestionIds,
+} from '#services/exams/exam_state_policy'
 import { getUserAvatar } from '#services/auth/user_identity'
 
 export default class ExamsController {
@@ -43,6 +54,8 @@ export default class ExamsController {
 
     const data = await request.validateUsing(generateExamValidator, {
       data: {
+        attempt_id: request.input('attempt_id'),
+        penalizing_factor: this.parseNumericInput(request.input('penalizing_factor')) ?? undefined,
         mode: request.input('mode'),
         filter: request.input('filter'),
         n_of_questions: this.parseNumericInput(request.input('n_of_questions')) ?? undefined,
@@ -56,6 +69,8 @@ export default class ExamsController {
     }
 
     const userId = authUser?.id ?? null
+    if (data.attempt_id && userId === null)
+      return response.unauthorized({ message: 'Authentication required for stored attempts' })
 
     if (modeRequiresUser(mode) && userId === null) {
       return response.unauthorized({ message: 'You must be logged in to generate this exam mode' })
@@ -74,10 +89,16 @@ export default class ExamsController {
         userId,
         nOfQuestions: data.n_of_questions ?? null,
         filter: data.filter ?? null,
+        attemptId: data.attempt_id,
+        penalizingFactor: data.penalizing_factor ?? null,
       })
 
       return response.ok(questions)
     } catch (error) {
+      if (error instanceof UnauthorizedError)
+        return response.unauthorized({ message: error.message })
+      if (error instanceof AttemptConflictError)
+        return response.conflict({ message: error.message })
       const message = error instanceof Error ? error.message : 'Unable to generate exam'
       return response.badRequest({ message })
     }
@@ -97,6 +118,8 @@ export default class ExamsController {
     }
 
     const userId = authUser?.id ?? null
+    if (data.attempt_id && userId === null)
+      return response.unauthorized({ message: 'Authentication required for stored attempts' })
 
     if (mode === 'custom' && data.n_of_questions === undefined) {
       return response.badRequest({
@@ -113,10 +136,15 @@ export default class ExamsController {
         time: data.time ?? null,
         nOfQuestions: data.n_of_questions ?? null,
         penalizingFactor: data.penalizing_factor ?? null,
+        attemptId: data.attempt_id,
       })
 
       return response.ok(result)
     } catch (error) {
+      if (error instanceof UnauthorizedError)
+        return response.unauthorized({ message: error.message })
+      if (error instanceof AttemptConflictError)
+        return response.conflict({ message: error.message })
       const message = error instanceof Error ? error.message : 'Invalid exam payload'
       return response.badRequest({ message })
     }
@@ -199,26 +227,42 @@ export default class ExamsController {
       return response.notFound({ message: 'Invalid answer' })
     }
 
-    const questions = exam.questions.map((answerQuestion) => {
-      const question = answerQuestion.question
+    const immutable =
+      exam.userId === null
+        ? null
+        : await ExamAttempt.query()
+            .where('user_id', exam.userId)
+            .whereRaw("result->>'id' = ?", [String(exam.id)])
+            .first()
+    const questionIds = immutable?.snapshot.grading
+      ? immutable.snapshot.questions.map((question) => question.id)
+      : exam.questions.map((answerQuestion) => answerQuestion.questionId)
+    const questions = questionIds.map((id) => {
+      const answerQuestion = exam.questions.find((item) => item.questionId === id)
+      const question = answerQuestion?.question
+      const snapshot = immutable?.snapshot.questions.find((item) => item.id === id)
+      const grading = immutable?.snapshot.grading?.find((item) => item.questionId === id)
+      const content = snapshot ?? question
+      if (!content || (!grading && (!answerQuestion || immutable?.snapshot.grading))) return null
 
       return {
         question: {
-          id: question.id,
-          question: question.question,
-          correct_option: question.correctOption,
-          question_type: question.questionType?.name ?? 'Multiple Choice',
-          image: question.image ?? '',
+          id,
+          question: content.question,
+          correct_option: content.correctOption,
+          question_type:
+            snapshot?.question_type ?? question?.questionType?.name ?? 'Multiple Choice',
+          image: snapshot?.image ?? question?.image ?? '',
         },
-        selected_option_id: answerQuestion.optionId,
-        options: question.options.map((option) => ({
+        selected_option_id: grading ? grading.optionId : (answerQuestion?.optionId ?? null),
+        options: content.options.map((option) => ({
           id: option.id,
           name: option.name,
           order: option.order,
         })),
-        is_wrong: answerQuestion.isWrong,
-        correct_option: question.correctOption,
-        comments: question.comments.map((comment) => ({
+        is_wrong: grading?.isWrong ?? answerQuestion?.isWrong,
+        correct_option: content.correctOption,
+        comments: (question?.comments ?? []).map((comment) => ({
           id: comment.id,
           comment: comment.comment,
           user: comment.user.name,
@@ -229,6 +273,9 @@ export default class ExamsController {
         })),
       }
     })
+
+    if (questions.some((question) => question === null))
+      return response.conflict({ message: 'Exam review details are unavailable' })
 
     return response.ok({
       id: exam.id,
@@ -303,29 +350,84 @@ export default class ExamsController {
       return response.badRequest({ message: 'Exam state contains questions from another subject' })
     }
 
-    const state = await ExamState.query()
-      .where('user_id', authUser.id)
-      .where('subject_id', data.subject_id)
-      .where('mode', data.mode)
-      .first()
-
-    if (state) {
-      if (state.isCompleted) {
+    return db.transaction(async (trx) => {
+      // Lock the owner even when no state exists, so competing initial saves cannot both win.
+      await lockExamOwner(trx, authUser.id)
+      const state = await ExamState.query({ client: trx })
+        .where('user_id', authUser.id)
+        .where('subject_id', data.subject_id)
+        .where('mode', data.mode)
+        .forUpdate()
+        .first()
+      const active = state && !state.isCompleted ? state : null
+      if (
+        data.expected_revision !== undefined &&
+        (data.expected_revision !== (active?.revision ?? 0) ||
+          (active && data.expected_state_id !== active.id))
+      ) {
+        return response.conflict({ message: 'Exam state revision changed' })
+      }
+      if (state?.isCompleted && !data.restart_completed) {
         return response.conflict({ message: 'Completed exam state cannot be modified' })
       }
-      await state.merge({ state: payload }).save()
-      return response.ok({ id: state.id, state: state.state })
-    }
-
-    const newState = await ExamState.create({
-      userId: authUser.id,
-      subjectId: data.subject_id,
-      mode: data.mode,
-      state: payload,
-      isCompleted: false,
+      const attemptId =
+        data.attempt_id ??
+        (active && sameQuestionIds(payload.questionIds, active.state.questionIds)
+          ? active.attemptId
+          : null)
+      if (attemptId) {
+        const attempt = await ExamAttempt.query({ client: trx })
+          .where('id', attemptId)
+          .where('user_id', authUser.id)
+          .where('subject_id', data.subject_id)
+          .where('mode', data.mode)
+          .first()
+        if (
+          !attempt ||
+          attempt.result ||
+          !sameQuestionIds(
+            attempt.snapshot.questions.map((item) => item.id),
+            payload.questionIds
+          )
+        ) {
+          return response.conflict({
+            message: 'Attempt is unavailable, completed or has different questions',
+          })
+        }
+        if (
+          data.mode === 'custom' &&
+          (payload.n_of_questions !== attempt.snapshot.questions.length ||
+            payload.penalizing_factor !== (attempt.snapshot.penalizingFactor ?? 0))
+        ) {
+          return response.conflict({ message: 'Attempt scoring configuration changed' })
+        }
+      }
+      const saved = state ?? new ExamState()
+      saved.useTransaction(trx)
+      saved.merge({
+        userId: authUser.id,
+        subjectId: data.subject_id,
+        mode: data.mode,
+        state: payload,
+        isCompleted: false,
+        revision: (state?.revision ?? 0) + 1,
+        attemptId,
+      })
+      await saved.save()
+      if (saved.attemptId) {
+        await ExamAttempt.query({ client: trx })
+          .where('user_id', authUser.id)
+          .where('id', saved.attemptId)
+          .whereNull('result')
+          .update({ updatedAt: DateTime.utc() })
+      }
+      return response.ok({
+        id: saved.id,
+        revision: saved.revision,
+        attempt_id: saved.attemptId,
+        state: { ...saved.state, savedAt: saved.updatedAt.toMillis() },
+      })
     })
-
-    return response.ok({ id: newState.id, state: newState.state })
   }
 
   /**
@@ -356,6 +458,8 @@ export default class ExamsController {
       return response.ok({
         state: { ...normalizedState, savedAt: state.updatedAt.toMillis() },
         id: state.id,
+        revision: state.revision,
+        attempt_id: state.attemptId,
       })
     } catch (error) {
       if (error instanceof InvalidExamStateError) {
@@ -370,20 +474,36 @@ export default class ExamsController {
    * DELETE /exams/state?subject_id=1&mode=default
    */
   async clearState({ authUser, request, response }: AuthenticatedHttpContext) {
-    const data = await request.validateUsing(examStateIdentifierValidator, {
+    const data = await request.validateUsing(clearExamStateValidator, {
       data: {
         subject_id: this.parseNumericInput(request.input('subject_id')) ?? undefined,
         mode: request.input('mode', 'default'),
+        expected_revision: request.input('expected_revision'),
+        expected_state_id: request.input('expected_state_id'),
       },
     })
-
-    await ExamState.query()
-      .where('user_id', authUser.id)
-      .where('subject_id', data.subject_id)
-      .where('mode', data.mode)
-      .delete()
-
-    return response.noContent()
+    const revision = data.expected_revision
+    const stateId = data.expected_state_id
+    if (revision !== undefined && revision > 0 && stateId === undefined)
+      return response.badRequest({ message: 'Expected state ID required with revision' })
+    return db.transaction(async (trx) => {
+      await lockExamOwner(trx, authUser.id)
+      const state = await ExamState.query({ client: trx })
+        .where('user_id', authUser.id)
+        .where('subject_id', data.subject_id)
+        .where('mode', data.mode)
+        .forUpdate()
+        .first()
+      const active = state && !state.isCompleted ? state : null
+      if (
+        revision !== undefined &&
+        (revision !== (active?.revision ?? 0) || (active && stateId !== active.id))
+      ) {
+        return response.conflict({ message: 'Exam state revision changed' })
+      }
+      if (state) await state.delete()
+      return response.noContent()
+    })
   }
 
   /**
@@ -408,6 +528,8 @@ export default class ExamsController {
           return [
             {
               id: state.id,
+              revision: state.revision,
+              attempt_id: state.attemptId,
               subject: state.subject.name,
               subject_id: state.subjectId,
               mode: state.mode,
@@ -423,6 +545,43 @@ export default class ExamsController {
       }),
     })
   }
+
+  async recoverAttempt({ authUser, params, request, response }: AuthenticatedHttpContext) {
+    const { id } = await request.validateUsing(recoverExamAttemptValidator, {
+      data: { id: params.id },
+    })
+    const attempt = await ExamAttempt.query().where('id', id).where('user_id', authUser.id).first()
+    if (!attempt) return response.notFound({ message: 'Attempt unavailable' })
+    return response.ok({
+      id: attempt.id,
+      result: attempt.result,
+      questions: attempt.snapshot.questions.map(
+        ({ correctOption: _correct, options, ...question }) => ({
+          ...question,
+          options: options.map(({ id: _id, ...option }) => option),
+        })
+      ),
+    })
+  }
+
+  async discardAttempt({ authUser, params, request, response }: AuthenticatedHttpContext) {
+    const { id } = await request.validateUsing(recoverExamAttemptValidator, {
+      data: { id: params.id },
+    })
+    return db.transaction(async (trx) => {
+      await lockExamOwner(trx, authUser.id)
+      const attempt = await ExamAttempt.query({ client: trx })
+        .where('user_id', authUser.id)
+        .where('id', id)
+        .forUpdate()
+        .first()
+      if (attempt?.result)
+        return response.conflict({ message: 'Completed attempts cannot be discarded' })
+      if (attempt) await attempt.delete()
+      return response.noContent()
+    })
+  }
+
   private parseNumericInput(value: unknown): number | null {
     if (typeof value === 'number' && Number.isFinite(value)) {
       return value

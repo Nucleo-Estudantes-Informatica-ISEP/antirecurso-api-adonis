@@ -104,6 +104,41 @@ test.group('Questions source', (group) => {
     assert.equal(row.source, 'MANUAL')
   })
 
+  test('admin corrections store full statements/options beyond 255 characters and preserve import metadata', async ({
+    client,
+    assert,
+  }) => {
+    await db
+      .from('questions')
+      .where('id', question.id)
+      .update({
+        in_plan: true,
+        repeated: false,
+        ref: 'Reviewed source',
+        import_key: `admin-edit:${question.id}`,
+        review: JSON.stringify({ status: 'approved', reviewer: 'Operator' }),
+      })
+    const longText = 'Full correction ' + 'x'.repeat(300)
+    const res = await client
+      .put(`/questions/${question.id}`)
+      .header('Authorization', `Bearer ${adminToken}`)
+      .json({
+        ...updateBody(),
+        question: longText,
+        options: options.map((option) => ({ id: option.id, name: longText + option.order })),
+      })
+    res.assertStatus(204)
+    const row = await db.from('questions').where('id', question.id).first()
+    assert.equal(row.question, longText)
+    assert.isNull(row.review)
+    assert.equal(row.import_key, `admin-edit:${question.id}`)
+    assert.isTrue(row.in_plan)
+    assert.isFalse(row.repeated)
+    assert.equal(row.ref, 'Reviewed source')
+    const storedOption = await Option.findOrFail(options[0].id)
+    assert.equal(storedOption.name, longText + options[0].order)
+  })
+
   test('PUT /questions/:id with a null source keeps the stored value', async ({
     client,
     assert,

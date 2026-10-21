@@ -1,9 +1,18 @@
+import { lockExamOwner, pruneUnfinishedAttempts } from '#services/exams/exam_attempt_lifecycle'
 import { randomInt } from 'node:crypto'
+import db from '@adonisjs/lucid/services/db'
 import Answer from '#models/answer'
 import AnswerQuestion from '#models/answer_question'
+import ExamAttempt from '#models/exam_attempt'
 import Question from '#models/question'
 import type Subject from '#models/subject'
-import { DEFAULT_EXAM_RULE, type ExamMode, getSubjectExamRule } from '#services/exams/exam_config'
+import { AttemptConflictError } from '#services/exams/attempt_conflict_error'
+import {
+  DEFAULT_EXAM_RULE,
+  MAX_UNFINISHED_ATTEMPTS,
+  type ExamMode,
+  getSubjectExamRule,
+} from '#services/exams/exam_config'
 
 export type GeneratedQuestionOption = {
   name: string
@@ -25,10 +34,14 @@ export type GenerateExamParams = {
   userId: number | null
   nOfQuestions: number | null
   filter: string | null
+  attemptId?: string
+  penalizingFactor?: number | null
 }
 
 export default class ExamGenerationService {
   async generate(params: GenerateExamParams): Promise<GeneratedQuestion[]> {
+    if (params.attemptId && params.userId === null)
+      throw new AttemptConflictError('Authentication required for stored attempts')
     let selectedQuestions: Question[] = []
 
     if (params.mode === 'realistic') {
@@ -61,7 +74,79 @@ export default class ExamGenerationService {
       selectedQuestions = await this.generateDefault(params.subject.id)
     }
 
-    return this.serializeQuestions(this.shuffle(selectedQuestions))
+    const selected = this.shuffle(selectedQuestions)
+    const result = this.serializeQuestions(selected)
+    if (params.attemptId) {
+      try {
+        await db.transaction(async (trx) => {
+          await lockExamOwner(trx, params.userId!)
+          const existing = await ExamAttempt.query({ client: trx })
+            .where('user_id', params.userId!)
+            .where('id', params.attemptId!)
+            .first()
+          if (existing)
+            throw new AttemptConflictError('Attempt ID already exists; recover it or use a new ID')
+          await pruneUnfinishedAttempts(trx, params.userId!)
+          const pending = await ExamAttempt.query({ client: trx })
+            .where('user_id', params.userId!)
+            .whereNull('result')
+            .count('* as total')
+            .firstOrFail()
+          const slotsNeeded = Number(pending.$extras.total) - MAX_UNFINISHED_ATTEMPTS + 1
+          if (slotsNeeded > 0) {
+            // The owner lock serializes eviction with grading, saves and account deletion.
+            const oldest = await ExamAttempt.query({ client: trx })
+              .where('user_id', params.userId!)
+              .whereNull('result')
+              .orderBy('updated_at')
+              .orderBy('row_id')
+              .limit(slotsNeeded)
+            await ExamAttempt.query({ client: trx })
+              .where('user_id', params.userId!)
+              .whereNull('result')
+              .whereIn(
+                'row_id',
+                oldest.map((attempt) => attempt.rowId)
+              )
+              .delete()
+          }
+          await ExamAttempt.create(
+            {
+              id: params.attemptId,
+              userId: params.userId!,
+              subjectId: params.subject.id,
+              mode: params.mode,
+              snapshot: {
+                nOfQuestions: params.nOfQuestions,
+                penalizingFactor: params.penalizingFactor ?? (params.mode === 'custom' ? 0 : null),
+                questions: result.map((item) => {
+                  const source = selected.find((question) => question.id === item.id)
+                  if (!source) throw new Error(`Snapshot question ${item.id} is unavailable`)
+                  return {
+                    ...item,
+                    correctOption: source.correctOption,
+                    options: item.options.map((option) => {
+                      const canonical = source.options.find((value) => value.order === option.order)
+                      if (!canonical)
+                        throw new Error(
+                          `Snapshot option ${option.order} is unavailable for question ${item.id}`
+                        )
+                      return { ...option, id: canonical.id }
+                    }),
+                  }
+                }),
+              },
+            },
+            { client: trx }
+          )
+        })
+      } catch (error) {
+        if (error && typeof error === 'object' && 'code' in error && error.code === '23505')
+          throw new AttemptConflictError('Attempt ID already exists; recover it or use a new ID')
+        throw error
+      }
+    }
+    return result
   }
 
   private async generateDefault(subjectId: number): Promise<Question[]> {
