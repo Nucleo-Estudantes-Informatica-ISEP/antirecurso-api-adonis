@@ -36,10 +36,9 @@ A robust backend API built with AdonisJS 7 for the Antirecurso platform. It prov
 
 ### Node 25 compatibility
 
-Dependency audits cover the full production/development tree. The pinned guarded
-`braces` derivative addresses an advisory with no upstream fixed release; see
-[dependency security and maintenance](docs/DEPENDENCY_SECURITY.md) for remediation,
-compatibility checks and override removal criteria.
+Upstream `braces` receives a hash-checked local depth-limit patch during install;
+see [dependency security](docs/DEPENDENCY_SECURITY.md) for production exposure,
+reported advisories and scheduled audit triage. Keep install scripts enabled.
 
 | Component | Node 24 (previous) | Node 25 (current) |
 | --- | --- | --- |
@@ -93,7 +92,14 @@ node ace migration:status
 
 #### Apply academically reviewed question corrections
 
-Raw question banks are candidates only. The legacy and AI seeders now refuse publication;
+For a fresh local database, run `node ace migration:run` then `node ace db:seed`
+with `NODE_ENV=development` (or `test`). This creates a labelled synthetic subject,
+question type and question with options; no academic approval is claimed. Repeats
+reuse the same fixture identities. Production seeding is refused. See
+[local fixtures](./docs/QUESTION_IMPORT.md)
+for the reviewed-content workflow and fixture limits.
+
+Raw question banks are candidates only. The legacy and AI seeders refuse production publication;
 use the reviewed importer after migrations and manual subject/type bootstrap. Stable identity updates existing records,
 metadata is retained, and full question/option text is stored beyond 255 characters.
 
@@ -155,7 +161,7 @@ The events feature is covered by these admin-only routes:
 ├── database/
 │   ├── data/             # Question banks (questions.json, ai_generated/<subject>/*.json)
 │   ├── migrations/       # Schema definition files
-│   └── seeders/          # Legacy question seeders (publication disabled; use questions:import)
+│   └── seeders/          # Synthetic local fixtures; production uses questions:import
 ├── start/
 │   ├── env.ts            # Environment variable validation
 │   ├── routes.ts         # All application endpoint definitions

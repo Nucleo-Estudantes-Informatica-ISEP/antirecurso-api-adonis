@@ -1,6 +1,7 @@
 import { randomUUID } from 'node:crypto'
 import { test } from '@japa/runner'
 import db from '@adonisjs/lucid/services/db'
+import env from '#start/env'
 import Subject from '#models/subject'
 import QuestionType from '#models/question_type'
 import Question from '#models/question'
@@ -125,6 +126,35 @@ test.group('Reviewed question import', (group) => {
     assert.equal(audit.report.changes[0].after.question.id, question.id)
     const afterHistory = await db.from('answer_questions').where('id', history.id).first()
     assert.deepEqual(afterHistory, beforeHistory)
+  })
+
+  test('unchanged options retain exact timestamps in updates and audit snapshots', async ({
+    assert,
+  }) => {
+    await db.from('options').where('question_id', question.id).update({
+      updated_at: '2026-10-11 10:00:00.123456+00:00',
+    })
+    for (const metadataOnly of [false, true]) {
+      const input = {
+        ...entry(),
+        ref: metadataOnly ? 'Metadata correction' : 'Initial correction',
+        options: [
+          { order: 'A', name: 'Before A' },
+          { order: 'B', name: 'Changed B' },
+        ],
+      }
+      const report = await importReviewedQuestions(batch([input]), true)
+      const change = report.changes[0]
+      assert.equal(change.action, 'update')
+      assert.deepEqual(change.after.options[0], change.before!.options[0])
+      if (metadataOnly) assert.deepEqual(change.after.options, change.before!.options)
+      else assert.notEqual(change.after.options[1].updated_at, change.before!.options[1].updated_at)
+      const audit = await db
+        .from('question_import_batches')
+        .where('batch_id', report.batch_id)
+        .first()
+      assert.deepEqual(audit.report.changes[0].after.options[0], change.before!.options[0])
+    }
   })
 
   test('repeat import is unchanged, including metadata; stable key works after further text edits', async ({
@@ -372,6 +402,145 @@ test.group('Reviewed question import', (group) => {
     assert.lengthOf(await Question.query().where('subjectId', subject.id), 2)
   })
 
+  test('large mixed batches use bulk reads/writes across chunk boundaries and repeat unchanged', async ({
+    assert,
+  }) => {
+    const entries = [
+      entry(),
+      ...Array.from({ length: 500 }, (_, index) => ({
+        ...entry(),
+        question_id: undefined,
+        import_key: `${key}:bulk:${index}`,
+        question: `Bulk question ${index}`,
+      })),
+    ]
+    const queries: string[] = []
+    const knex = db.connection().getWriteClient()
+    const onQuery = (query: { sql: string }) => queries.push(query.sql)
+    knex.on('query', onQuery)
+    try {
+      const input = batch(entries)
+      const report = await importReviewedQuestions(input, true)
+      assert.equal(report.counts.insert, 500)
+      assert.equal(report.counts.update, 1)
+      assert.isBelow(queries.length, 40)
+      const lock = queries.findIndex((sql) => sql.startsWith('LOCK TABLE'))
+      for (const table of ['questions', 'options', 'question_types', 'question_import_batches']) {
+        assert.isTrue(queries.slice(0, lock).some((sql) => sql.includes(`"${table}"`)))
+      }
+      assert.equal(new Set(report.changes.map((change) => change.question_id)).size, 501)
+      for (const change of report.changes) {
+        assert.equal(change.after.question.id, change.question_id)
+        assert.isTrue(
+          change.after.options.every((option) => option.question_id === change.question_id)
+        )
+      }
+      const repeat = await importReviewedQuestions(input, true)
+      assert.equal(repeat.counts.unchanged, 501)
+      queries.length = 0
+      const corrected = await importReviewedQuestions(
+        batch(
+          entries.map((item) => ({
+            ...item,
+            ref: 'Bulk corrected reference',
+            options: item.options.map((option) => ({ ...option, name: `${option.name} updated` })),
+          }))
+        ),
+        true
+      )
+      assert.equal(corrected.counts.update, 501)
+      assert.isBelow(queries.length, 40)
+      assert.isTrue(
+        corrected.changes.every(
+          (change) =>
+            change.after.question.ref === 'Bulk corrected reference' &&
+            change.after.options.every((option) => option.name!.endsWith(' updated'))
+        )
+      )
+    } finally {
+      knex.off('query', onQuery)
+    }
+  })
+
+  test('apply rechecks admin changes and new duplicates committed after prefetch', async ({
+    assert,
+  }) => {
+    for (const duplicate of [false, true]) {
+      const writer = await db.transaction()
+      await writer.rawQuery('LOCK TABLE questions IN ROW EXCLUSIVE MODE')
+      const knex = db.connection().getWriteClient()
+      let requested!: () => void
+      const lockRequested = new Promise<void>((resolve) => {
+        requested = resolve
+      })
+      const onQuery = (query: { sql: string }) => {
+        if (query.sql.startsWith('LOCK TABLE questions, options')) requested()
+      }
+      knex.on('query', onQuery)
+      const input = batch([{ ...entry(), image: undefined, ref: undefined }])
+      const pending = importReviewedQuestions(input, true)
+      // Attach rejection handling while waiting for the lock-request event.
+      const finishedEarly = pending.then(() => {
+        throw new Error('import did not wait for writer')
+      })
+      let timer: ReturnType<typeof setTimeout> | undefined
+      let committed = false
+      try {
+        await Promise.race([
+          lockRequested,
+          finishedEarly,
+          new Promise<never>((_, reject) => {
+            timer = setTimeout(() => reject(new Error('import did not reach lock')), 5000)
+          }),
+        ])
+        await writer.from('questions').where('id', question.id).update({
+          image: 'latest-admin.png',
+          ref: 'Latest admin reference',
+        })
+        await writer
+          .from('options')
+          .where('id', options[0].id)
+          .update({ name: 'Latest admin option' })
+        if (duplicate) {
+          await writer.table('questions').insert({
+            question: entry().question,
+            image: '',
+            exam: entry().exam,
+            correct_option: 'A',
+            source: 'REAL_EXAM',
+            subject_id: subject.id,
+            question_type_id: type.id,
+            created_at: new Date(),
+            updated_at: new Date(),
+          })
+        }
+        await writer.commit()
+        committed = true
+        const report = await pending
+        assert.equal(report.status, duplicate ? 'blocked' : 'applied')
+        if (duplicate) {
+          assert.isTrue(
+            report.changes[0].problems.some((problem) =>
+              problem.includes('duplicate question text')
+            )
+          )
+          assert.isNull(
+            await db.from('question_import_batches').where('batch_id', input.batch_id).first()
+          )
+        } else {
+          assert.equal(report.changes[0].before?.options[0].name, 'Latest admin option')
+          assert.equal(report.changes[0].after.question.image, 'latest-admin.png')
+          assert.equal(report.changes[0].after.question.ref, 'Latest admin reference')
+        }
+      } finally {
+        clearTimeout(timer)
+        knex.off('query', onQuery)
+        if (!committed) await writer.rollback()
+        await pending.catch(() => {})
+      }
+    }
+  })
+
   test('audit failure rolls back all question and option changes', async ({ assert }) => {
     await db.rawQuery(
       "ALTER TABLE question_import_batches ADD CONSTRAINT test_no_inserts CHECK ((report->'counts'->>'insert')::integer = 0) NOT VALID"
@@ -411,11 +580,56 @@ test.group('Reviewed question import', (group) => {
     assert.equal(current.question, 'Later admin correction')
   })
 
-  test('legacy seeders cannot publish banks without explicit academic approval', async ({
+  test('legacy seeders cannot publish banks in production', async ({ assert }) => {
+    const previous = env.get('NODE_ENV')
+    env.set('NODE_ENV', 'production')
+    try {
+      await assert.rejects(() => new QuestionsSeeder(db.connection()).run(), /questions:import/)
+      await assert.rejects(() => new AiQuestionsSeeder(db.connection()).run(), /questions:import/)
+      assert.isNull(await Subject.findBy('slug', 'dev-fixtures'))
+      assert.lengthOf(await Question.query().where('subjectId', subject.id), 1)
+    } finally {
+      env.set('NODE_ENV', previous)
+    }
+  })
+
+  test('local db:seed bootstraps synthetic data idempotently without approval or bank imports', async ({
     assert,
   }) => {
-    await assert.rejects(() => new QuestionsSeeder(db.connection()).run(), /questions:import/)
-    await assert.rejects(() => new AiQuestionsSeeder(db.connection()).run(), /questions:import/)
-    assert.lengthOf(await Question.query().where('subjectId', subject.id), 1)
+    try {
+      for (let repeat = 0; repeat < 2; repeat++) {
+        await new AiQuestionsSeeder(db.connection()).run()
+        await new QuestionsSeeder(db.connection()).run()
+      }
+      const fixtureSubject = await Subject.findByOrFail('slug', 'dev-fixtures')
+      const fixtures = await Question.query().where('subjectId', fixtureSubject.id)
+      assert.lengthOf(fixtures, 1)
+      assert.equal(fixtures[0].source, 'MANUAL')
+      assert.isNull(fixtures[0].review)
+      assert.include(fixtures[0].question, '[DEV FIXTURE]')
+      const fixtureType = await QuestionType.findOrFail(fixtures[0].questionTypeId)
+      assert.equal(fixtureType.subjectId, fixtureSubject.id)
+      const fixtureOptions = await Option.query()
+        .where('questionId', fixtures[0].id)
+        .orderBy('order')
+      assert.deepEqual(
+        fixtureOptions.map((option) => [option.order, option.name]),
+        [
+          ['A', '1'],
+          ['B', '2'],
+        ]
+      )
+      assert.equal(fixtures[0].correctOption, 'B')
+      assert.lengthOf(await Question.query().where('subjectId', subject.id), 1)
+      assert.isNull(
+        await db
+          .from('question_import_batches')
+          .whereRaw('report::text LIKE ?', ['%dev-fixture:arithmetic:v1%'])
+          .first()
+      )
+    } finally {
+      const fixtureSubject = await Subject.findBy('slug', 'dev-fixtures')
+      if (fixtureSubject) await fixtureSubject.delete()
+    }
   })
 })

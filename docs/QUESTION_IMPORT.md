@@ -2,7 +2,8 @@
 
 `questions:import` is the supported publication path for corrections and expansion.
 Raw banks in `database/data/` are candidates, not evidence of academic approval.
-Both former question seeders fail before writing and point to this command. Existing
+Both former question seeders refuse production writes and point to this command.
+Local `db:seed` creates only the synthetic fixtures described below. Existing
 published records remain intact. This implementation neither approves candidates
 nor applies the outstanding subject reviews from #119.
 
@@ -94,8 +95,23 @@ correction policy](DATABASE_SCHEMA.md#attempt-lifecycle-and-correction-policy).
 
 ## Manual bootstrap and legacy identity mapping
 
-On a fresh development/staging database, run migrations first. The disabled bank
-seeders do not create subjects or question types. An authorized operator can create
+For a fresh local development/test database, run:
+
+```bash
+node ace migration:run
+node ace db:seed
+```
+
+With `NODE_ENV=development` or `test`, this creates a `dev-fixtures` subject, a
+synthetic question type and one labelled arithmetic example with two options.
+Repeated runs reuse the fixture identities. No candidate bank is read; `review`
+remains null and no academic approval or reviewed-import audit is fabricated.
+This deliberately separate fixture path does not relax `questions:import` approval
+validation. The AI seeder does nothing locally. Both seeders reject production
+execution before writing. Never copy the fixture database into production.
+
+For real reviewed content on a staging/production database, run migrations first.
+An authorized operator can create
 these explicitly using SQL in an isolated database (replace the illustrative values):
 
 ```sql
@@ -164,8 +180,13 @@ Default dry-run writes no questions/options/audit and takes no table write lock.
 before/after snapshots including metadata. Validation/conflicts exit nonzero; blocked
 batches write nothing. Inspect the concrete report before deliberate application.
 
-Apply locks question/option/audit tables, then commits all changes and the audit in
-one transaction. Schedule imports to avoid delaying admin writes. Every new applied
+Apply prefetches identities, question types, duplicate texts and full snapshots in bulk
+and plans before taking a write lock. Under the question/option/audit/type table lock,
+it re-checks current state in bulk and replans if a writer committed in the meantime.
+Question and option writes use chunks of at most 500 questions; final audit snapshots
+are fetched in bulk, preserving PostgreSQL timestamp precision. All changes and the
+audit commit in one transaction. Admin writes still wait during the re-check and
+writes, so schedule large imports appropriately. Every new applied
 batch stores its SHA-256 digest and report in `question_import_batches`; `after`
 contains actual resulting IDs. DB audit remains authoritative if output saving fails.
 Dry-run is not a reservation: apply replans against current DB state.
