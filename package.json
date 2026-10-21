@@ -11,7 +11,8 @@
     "test": "node ace test --no-assets",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "postinstall": "node scripts/patch_braces.mjs"
   },
   "imports": {
     "#controllers/*": "./app/controllers/*.js",
@@ -68,8 +69,7 @@
     "reflect-metadata": "^0.2.2"
   },
   "overrides": {
-    "edge-lexer": "6.0.4",
-    "braces": "npm:@bleedingdev/braces@3.0.4"
+    "edge-lexer": "6.0.4"
   },
   "hotHook": {
     "boundaries": [

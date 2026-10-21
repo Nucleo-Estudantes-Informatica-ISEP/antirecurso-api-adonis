@@ -1,4 +1,8 @@
 import { createRequire } from 'node:module'
+import { execFileSync } from 'node:child_process'
+import { cpSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { test } from '@japa/runner'
 
@@ -14,6 +18,31 @@ const braces = matcherRequire('braces') as {
 }
 
 test.group('Dependency security', () => {
+  test('local patch is idempotent and rejects unexpected source or package versions', ({ assert }) => {
+    const root = mkdtempSync(join(tmpdir(), 'braces-patch-'))
+    try {
+      mkdirSync(join(root, 'scripts'))
+      mkdirSync(join(root, 'node_modules/micromatch'), { recursive: true })
+      writeFileSync(join(root, 'node_modules/micromatch/index.js'), '')
+      cpSync(new URL('../../scripts/patch_braces.mjs', import.meta.url), join(root, 'scripts/patch_braces.mjs'))
+      cpSync(new URL('../../patches', import.meta.url), join(root, 'patches'), { recursive: true })
+      cpSync(dirname(matcherRequire.resolve('braces/package.json')), join(root, 'node_modules/braces'), { recursive: true })
+      const run = () => execFileSync(process.execPath, [join(root, 'scripts/patch_braces.mjs')], { stdio: 'pipe' })
+      run()
+      run()
+      const source = join(root, 'node_modules/braces/lib/compile.js')
+      const original = readFileSync(source, 'utf8')
+      writeFileSync(source, original + '\n// unexpected source\n')
+      assert.throws(run, /Unexpected braces source: lib\/compile.js/)
+      writeFileSync(source, original)
+      const metadata = join(root, 'node_modules/braces/package.json')
+      writeFileSync(metadata, JSON.stringify({ name: 'braces', version: '3.0.4' }))
+      assert.throws(run, /Review the braces patch before upgrading/)
+    } finally {
+      rmSync(root, { recursive: true, force: true })
+    }
+  })
+
   test('braces rejects deeply nested strings before recursive traversal', ({ assert }) => {
     for (const [open, close] of [
       ['{', '}'],
@@ -56,12 +85,14 @@ test.group('Dependency security', () => {
     assert.equal(braces.stringify(braces.parse('a/{b,c}/d')), 'a/{b,c}/d')
   })
 
-  test('Adonis glob consumers resolve the guarded package and retain file matching', async ({
+  test('Adonis glob consumers resolve patched upstream braces and retain file matching', async ({
     assert,
   }) => {
     const globRequire = createRequire(require.resolve('fast-glob'))
     const globMatcherRequire = createRequire(globRequire.resolve('micromatch'))
     assert.equal(globMatcherRequire.resolve('braces'), matcherRequire.resolve('braces'))
+    assert.equal(matcherRequire('braces/package.json').name, 'braces')
+    assert.equal(matcherRequire('braces/package.json').version, '3.0.3')
     const micromatch = require('micromatch') as (files: string[], pattern: string) => string[]
     assert.deepEqual(
       micromatch(['app/models/question.ts', 'README.md'], 'app/{models,controllers}/*.ts'),

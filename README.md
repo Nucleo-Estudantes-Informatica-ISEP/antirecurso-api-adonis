@@ -36,10 +36,9 @@ A robust backend API built with AdonisJS 7 for the Antirecurso platform. It prov
 
 ### Node 25 compatibility
 
-Dependency audits cover the full production/development tree. The pinned guarded
-`braces` derivative addresses an advisory with no upstream fixed release; see
-[dependency security and maintenance](docs/DEPENDENCY_SECURITY.md) for remediation,
-compatibility checks and override removal criteria.
+Upstream `braces` receives a hash-checked local depth-limit patch during install;
+see [dependency security](docs/DEPENDENCY_SECURITY.md) for production exposure,
+reported advisories and scheduled audit triage. Keep install scripts enabled.
 
 | Component | Node 24 (previous) | Node 25 (current) |
 | --- | --- | --- |

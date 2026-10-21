@@ -1,0 +1,73 @@
+[
+  {
+    "file": "lib/utils.js",
+    "before_sha256": "b5a7596aa67730412b3c029ef09e84e6b67b8e445cffd35d1d295549c89066c7",
+    "after_sha256": "8b9f9eff3b12dadf945abd9d3e1a2ee5f9a56d31b3b0e29481429414544ac910",
+    "replacements": [
+      {
+        "before": "'use strict';\n",
+        "after": "'use strict';\n\nexports.assertDepth = depth => {\n  if (depth > 100) throw new RangeError('AST nesting depth exceeds the maximum of 100');\n};\n"
+      }
+    ]
+  },
+  {
+    "file": "lib/parse.js",
+    "before_sha256": "e572166565f15fa6ad9865ae49d678218e32aabfd1b3720f6d0d43d39800d310",
+    "after_sha256": "d3863652ea1f0e130a71be86cc0e4b08932a1b8b0d0cfacd3e86395ce0b864e0",
+    "replacements": [
+      {
+        "before": "    if (value === CHAR_LEFT_PARENTHESES) {\n",
+        "after": "    if (value === CHAR_LEFT_PARENTHESES) {\n      utils.assertDepth(stack.length);\n"
+      },
+      {
+        "before": "    if (value === CHAR_LEFT_CURLY_BRACE) {\n",
+        "after": "    if (value === CHAR_LEFT_CURLY_BRACE) {\n      utils.assertDepth(stack.length);\n"
+      }
+    ]
+  },
+  {
+    "file": "lib/compile.js",
+    "before_sha256": "dc98f22eee3d511785d92a00758d5f0d48efed5f5813bdecc2de430c529b5c9f",
+    "after_sha256": "88cf20f18b59c9b2741c2d9b0f0ac6b2967d8e174667edf817133ca57d76809e",
+    "replacements": [
+      {
+        "before": "const walk = (node, parent = {}) => {",
+        "after": "const walk = (node, parent = {}, depth = 0) => {\n    utils.assertDepth(depth);"
+      },
+      {
+        "before": "walk(child, node)",
+        "after": "walk(child, node, depth + 1)"
+      }
+    ]
+  },
+  {
+    "file": "lib/expand.js",
+    "before_sha256": "41ccc196ebfa7b7781a634e721eb744e4e7bcb54cba427a7e3d6806a1b9e58f7",
+    "after_sha256": "46a259d3f23c0cd441fa370f16d5d48fa71060dfe918eeba84f6e95d3a94d368",
+    "replacements": [
+      {
+        "before": "const walk = (node, parent = {}) => {",
+        "after": "const walk = (node, parent = {}, depth = 0) => {\n    utils.assertDepth(depth);"
+      },
+      {
+        "before": "walk(child, node)",
+        "after": "walk(child, node, depth + 1)"
+      }
+    ]
+  },
+  {
+    "file": "lib/stringify.js",
+    "before_sha256": "379f22d77bfa1478341ccd49c5e4267464aabcbba03558bab332aac23fc6f23a",
+    "after_sha256": "a3b8b5e7567ff9bfdbe155479fbdd92d5a924c3919adf05316f8f0c4f6330332",
+    "replacements": [
+      {
+        "before": "const stringify = (node, parent = {}) => {",
+        "after": "const stringify = (node, parent = {}, depth = 0) => {\n    utils.assertDepth(depth);"
+      },
+      {
+        "before": "stringify(child)",
+        "after": "stringify(child, {}, depth + 1)"
+      }
+    ]
+  }
+]

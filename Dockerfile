@@ -4,6 +4,8 @@ WORKDIR /app
 ENV NODE_ENV=development
 
 COPY package*.json ./
+COPY scripts/patch_braces.mjs ./scripts/patch_braces.mjs
+COPY patches/braces-3.0.3.json ./patches/braces-3.0.3.json
 RUN npm ci --include=dev
 
 COPY . .

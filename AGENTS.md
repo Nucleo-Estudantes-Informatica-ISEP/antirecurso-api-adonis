@@ -45,9 +45,10 @@ Production must configure exact `CORS_ALLOWED_ORIGINS`, issuer/audiences, the sh
 
 Dependabot routine groups are patch/minor only. Adonis 7, Node Current, TypeScript 7, ESLint 10, or other majors require a dedicated migration PR and compatibility matrix.
 
-CI audits development and production dependencies without advisory exclusions.
-Keep the guarded `braces` override exact until a reviewed upstream fix is available;
-see `docs/DEPENDENCY_SECURITY.md` and its security/compatibility regression tests.
+PR audit policy remains `npm audit --omit=dev --audit-level=critical`; weekly full-tree
+audits open/update a security issue for repository CODEOWNERS to triage. Keep install
+scripts enabled for the hash-checked upstream `braces` patch; review/removal criteria
+and the review deadline are in `docs/DEPENDENCY_SECURITY.md`.
 
 ## Documentation
 
