@@ -369,7 +369,7 @@ export async function importReviewedQuestions(
           `
           UPDATE options AS o SET name = v.name, updated_at = v.updated_at
           FROM jsonb_populate_recordset(NULL::options, ?::jsonb) AS v
-          WHERE o.id = v.id
+          WHERE o.id = v.id AND o.name IS DISTINCT FROM v.name
         `,
           [
             JSON.stringify(

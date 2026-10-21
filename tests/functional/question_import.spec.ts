@@ -1,6 +1,7 @@
 import { randomUUID } from 'node:crypto'
 import { test } from '@japa/runner'
 import db from '@adonisjs/lucid/services/db'
+import env from '#start/env'
 import Subject from '#models/subject'
 import QuestionType from '#models/question_type'
 import Question from '#models/question'
@@ -125,6 +126,35 @@ test.group('Reviewed question import', (group) => {
     assert.equal(audit.report.changes[0].after.question.id, question.id)
     const afterHistory = await db.from('answer_questions').where('id', history.id).first()
     assert.deepEqual(afterHistory, beforeHistory)
+  })
+
+  test('unchanged options retain exact timestamps in updates and audit snapshots', async ({
+    assert,
+  }) => {
+    await db.from('options').where('question_id', question.id).update({
+      updated_at: '2026-10-11 10:00:00.123456+00:00',
+    })
+    for (const metadataOnly of [false, true]) {
+      const input = {
+        ...entry(),
+        ref: metadataOnly ? 'Metadata correction' : 'Initial correction',
+        options: [
+          { order: 'A', name: 'Before A' },
+          { order: 'B', name: 'Changed B' },
+        ],
+      }
+      const report = await importReviewedQuestions(batch([input]), true)
+      const change = report.changes[0]
+      assert.equal(change.action, 'update')
+      assert.deepEqual(change.after.options[0], change.before!.options[0])
+      if (metadataOnly) assert.deepEqual(change.after.options, change.before!.options)
+      else assert.notEqual(change.after.options[1].updated_at, change.before!.options[1].updated_at)
+      const audit = await db
+        .from('question_import_batches')
+        .where('batch_id', report.batch_id)
+        .first()
+      assert.deepEqual(audit.report.changes[0].after.options[0], change.before!.options[0])
+    }
   })
 
   test('repeat import is unchanged, including metadata; stable key works after further text edits', async ({
@@ -550,11 +580,56 @@ test.group('Reviewed question import', (group) => {
     assert.equal(current.question, 'Later admin correction')
   })
 
-  test('legacy seeders cannot publish banks without explicit academic approval', async ({
+  test('legacy seeders cannot publish banks in production', async ({ assert }) => {
+    const previous = env.get('NODE_ENV')
+    env.set('NODE_ENV', 'production')
+    try {
+      await assert.rejects(() => new QuestionsSeeder(db.connection()).run(), /questions:import/)
+      await assert.rejects(() => new AiQuestionsSeeder(db.connection()).run(), /questions:import/)
+      assert.isNull(await Subject.findBy('slug', 'dev-fixtures'))
+      assert.lengthOf(await Question.query().where('subjectId', subject.id), 1)
+    } finally {
+      env.set('NODE_ENV', previous)
+    }
+  })
+
+  test('local db:seed bootstraps synthetic data idempotently without approval or bank imports', async ({
     assert,
   }) => {
-    await assert.rejects(() => new QuestionsSeeder(db.connection()).run(), /questions:import/)
-    await assert.rejects(() => new AiQuestionsSeeder(db.connection()).run(), /questions:import/)
-    assert.lengthOf(await Question.query().where('subjectId', subject.id), 1)
+    try {
+      for (let repeat = 0; repeat < 2; repeat++) {
+        await new AiQuestionsSeeder(db.connection()).run()
+        await new QuestionsSeeder(db.connection()).run()
+      }
+      const fixtureSubject = await Subject.findByOrFail('slug', 'dev-fixtures')
+      const fixtures = await Question.query().where('subjectId', fixtureSubject.id)
+      assert.lengthOf(fixtures, 1)
+      assert.equal(fixtures[0].source, 'MANUAL')
+      assert.isNull(fixtures[0].review)
+      assert.include(fixtures[0].question, '[DEV FIXTURE]')
+      const fixtureType = await QuestionType.findOrFail(fixtures[0].questionTypeId)
+      assert.equal(fixtureType.subjectId, fixtureSubject.id)
+      const fixtureOptions = await Option.query()
+        .where('questionId', fixtures[0].id)
+        .orderBy('order')
+      assert.deepEqual(
+        fixtureOptions.map((option) => [option.order, option.name]),
+        [
+          ['A', '1'],
+          ['B', '2'],
+        ]
+      )
+      assert.equal(fixtures[0].correctOption, 'B')
+      assert.lengthOf(await Question.query().where('subjectId', subject.id), 1)
+      assert.isNull(
+        await db
+          .from('question_import_batches')
+          .whereRaw('report::text LIKE ?', ['%dev-fixture:arithmetic:v1%'])
+          .first()
+      )
+    } finally {
+      const fixtureSubject = await Subject.findBy('slug', 'dev-fixtures')
+      if (fixtureSubject) await fixtureSubject.delete()
+    }
   })
 })

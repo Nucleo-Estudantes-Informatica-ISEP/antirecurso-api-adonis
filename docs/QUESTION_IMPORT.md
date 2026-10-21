@@ -2,7 +2,8 @@
 
 `questions:import` is the supported publication path for corrections and expansion.
 Raw banks in `database/data/` are candidates, not evidence of academic approval.
-Both former question seeders fail before writing and point to this command. Existing
+Both former question seeders refuse production writes and point to this command.
+Local `db:seed` creates only the synthetic fixtures described below. Existing
 published records remain intact. This implementation neither approves candidates
 nor applies the outstanding subject reviews from #119.
 
@@ -86,8 +87,23 @@ never deletes/recreates options. Notes and subjects are untouched.
 
 ## Manual bootstrap and legacy identity mapping
 
-On a fresh development/staging database, run migrations first. The disabled bank
-seeders do not create subjects or question types. An authorized operator can create
+For a fresh local development/test database, run:
+
+```bash
+node ace migration:run
+node ace db:seed
+```
+
+With `NODE_ENV=development` or `test`, this creates a `dev-fixtures` subject, a
+synthetic question type and one labelled arithmetic example with two options.
+Repeated runs reuse the fixture identities. No candidate bank is read; `review`
+remains null and no academic approval or reviewed-import audit is fabricated.
+This deliberately separate fixture path does not relax `questions:import` approval
+validation. The AI seeder does nothing locally. Both seeders reject production
+execution before writing. Never copy the fixture database into production.
+
+For real reviewed content on a staging/production database, run migrations first.
+An authorized operator can create
 these explicitly using SQL in an isolated database (replace the illustrative values):
 
 ```sql
