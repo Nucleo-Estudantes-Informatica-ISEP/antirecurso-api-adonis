@@ -1,0 +1,1164 @@
+[
+  {
+    "question": "int fd=shm_open(\"/s\",O_CREAT|O_RDWR,0600); ftruncate(fd,4); int *p=mmap(NULL,4,PROT_READ|PROT_WRITE,MAP_SHARED,fd,0); *p=1; if(fork()==0){*p+=6; exit(0);} wait(NULL); printf(\"%d\",*p); O que imprime o pai?",
+    "answers": [
+      "7",
+      "1",
+      "6",
+      "Nada, porque o filho remove o objeto ao terminar"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.22"
+  },
+  {
+    "question": "int h=shm_open(\"/m\",O_CREAT|O_RDWR,0600); ftruncate(h,4); int *v=mmap(NULL,4,PROT_READ|PROT_WRITE,MAP_PRIVATE,h,0); *v=1; if(fork()==0){*v+=6; exit(0);} wait(NULL); printf(\"%d\",*v); Qual o valor impresso?",
+    "answers": [
+      "7",
+      "1",
+      "0",
+      "6, porque o filho escreve no objeto e o pai lê a mesma página"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.21"
+  },
+  {
+    "question": "int *p=malloc(4); *p=1; if(fork()==0){*p+=6; exit(0);} wait(NULL); printf(\"%d\",*p); Porque é que o pai imprime 1 e não 7?",
+    "answers": [
+      "Porque o wait() repõe o valor original que a heap do pai tinha antes do fork",
+      "Porque malloc devolve memória só de leitura depois de um fork bem-sucedido",
+      "Cada processo tem a sua cópia da heap, pelo que a escrita do filho não é vista pelo pai",
+      "Porque o filho termina antes de o pai ler e a escrita feita perde-se"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.2"
+  },
+  {
+    "question": "Um processo chama duas vezes seguidas shm_open(\"/s\",O_CREAT|O_EXCL|O_RDWR,0600), sem shm_unlink pelo meio, e a primeira chamada teve sucesso. O que acontece na segunda chamada?",
+    "answers": [
+      "Devolve o mesmo descritor da primeira chamada",
+      "Devolve um novo descritor e repõe o objeto com zero bytes",
+      "Devolve um novo descritor para um segundo objeto com o mesmo nome",
+      "Devolve -1 e errno fica EEXIST"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.14"
+  },
+  {
+    "question": "O que devolve shm_open(\"/nada\",O_RDWR,0) quando nenhum processo criou antes o objeto /nada?",
+    "answers": [
+      "Um descritor válido de um novo objeto com zero bytes",
+      "0, indicando que o objeto existe mas está vazio",
+      "-1, com errno igual a ENOENT",
+      "-1, com errno igual a EEXIST, porque falta O_CREAT"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.12"
+  },
+  {
+    "question": "p mapeia com MAP_SHARED os 4 bytes (a zero) do objeto \"/s\", aberto para leitura e escrita. *p=42; shm_unlink(\"/s\"); int g=shm_open(\"/s\",O_RDWR,0); printf(\"%d %d\",*p,g); O que imprime?",
+    "answers": [
+      "0 -1",
+      "42 -1",
+      "42 3",
+      "Nada, pois *p causa SIGSEGV depois do shm_unlink"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.7"
+  },
+  {
+    "question": "Um filho faz shm_open(\"/s\",O_CREAT|O_RDWR,0600), ftruncate(fd,4), mmap com MAP_SHARED, *p=9, munmap(p,4), close(fd) e termina. Depois do wait(), o pai abre \"/s\" com O_RDWR e mapeia 4 bytes. Que valor lê?",
+    "answers": [
+      "0",
+      "Nenhum, porque shm_open devolve -1 com ENOENT",
+      "Um valor indeterminado, porque o munmap libertou a memória",
+      "9"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.7"
+  },
+  {
+    "question": "int fd=shm_open(\"/s\",O_CREAT|O_RDWR,0600); ftruncate(fd,16); int *p=mmap(NULL,16,PROT_READ|PROT_WRITE,MAP_SHARED,fd,0); p[1]=5; p[3]=9; ftruncate(fd,8); ftruncate(fd,16); printf(\"%d %d\",p[1],p[3]); O que imprime?",
+    "answers": [
+      "5 0",
+      "5 9",
+      "0 0",
+      "0 9, porque o ftruncate recria o objeto"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.16"
+  },
+  {
+    "question": "Após fd=shm_open(\"/s\",O_CREAT|O_RDWR,0600) num objeto novo, qual o st_size devolvido por fstat(fd,&s) e qual o st_size depois de ftruncate(fd,100)?",
+    "answers": [
+      "4096 e 100",
+      "0 e 4096, porque o tamanho é arredondado à página",
+      "0 e 100",
+      "100 e 100"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.16"
+  },
+  {
+    "question": "Um processo cria o objeto \"/s\" com shm_open(\"/s\",O_CREAT|O_RDWR,0600). Depois, outro chama shm_open(\"/s\",O_CREAT|O_RDWR,0666). Que permissões (st_mode & 0777) tem o objeto?",
+    "answers": [
+      "0666, pois o mode da última chamada prevalece",
+      "0600, pois o mode é ignorado se o objeto já existe",
+      "0644, após aplicar a umask ao mode pedido",
+      "0000, pois o segundo shm_open repõe as permissões"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.15"
+  },
+  {
+    "question": "int a=shm_open(\"/s\",O_CREAT|O_RDWR,0600); ftruncate(a,4); int fd=shm_open(\"/s\",O_RDONLY,0); void *p=mmap(NULL,4,PROT_READ|PROT_WRITE,MAP_SHARED,fd,0); Qual o resultado de mmap?",
+    "answers": [
+      "MAP_FAILED, com errno igual a EACCES",
+      "Um apontador válido, mas as escritas geram SIGSEGV",
+      "Um apontador válido, e as escritas funcionam normalmente",
+      "NULL, com errno igual a ENOMEM, por o objeto ser pequeno"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.20"
+  },
+  {
+    "question": "Um filho faz int *p=mmap(NULL,4,PROT_READ,MAP_SHARED,fd,0); *p=1; sendo fd de um objeto de 4 bytes aberto com O_RDWR. Como termina o filho?",
+    "answers": [
+      "Normalmente, pois O_RDWR autoriza a escrita",
+      "Por SIGBUS, pois o objeto não tem bytes suficientes",
+      "Por SIGKILL, enviado pelo kernel ao detetar o MAP_SHARED",
+      "Por SIGSEGV, pois a página está mapeada só para leitura"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.20"
+  },
+  {
+    "question": "Num objeto com 8192 bytes, o que acontece com mmap(NULL,100,PROT_READ|PROT_WRITE,MAP_SHARED,fd,100)?",
+    "answers": [
+      "Mapeia 100 bytes a partir do byte 100 do objeto, sem qualquer restrição",
+      "Devolve MAP_FAILED, com errno EINVAL, por o offset não ser múltiplo da página",
+      "Mapeia uma página inteira a partir do início, ignorando o offset pedido",
+      "Devolve MAP_FAILED com ENOMEM, por length ser inferior ao tamanho de uma página"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.21"
+  },
+  {
+    "question": "fd refere um objeto de 4 bytes. Depois de int *p=mmap(NULL,4,PROT_READ|PROT_WRITE,MAP_SHARED,fd,0), *q=mmap(NULL,4,PROT_READ|PROT_WRITE,MAP_SHARED,fd,0); *p=5; printf(\"%d %d\",*q,p==q); o que imprime?",
+    "answers": [
+      "5 1",
+      "0 0",
+      "5 0",
+      "0 1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.21"
+  },
+  {
+    "question": "int fd=shm_open(\"/s\",O_CREAT|O_RDWR,0600); ftruncate(fd,4); int *p=mmap(NULL,4,PROT_READ|PROT_WRITE,MAP_SHARED,fd,0); Com *p=0, executa for(i=0;i<3;i++){ if(fork()==0){*p+=10; exit(0);} wait(NULL); } printf(\"%d\",*p); Qual o valor impresso?",
+    "answers": [
+      "10",
+      "0",
+      "Indeterminado, por haver condição de corrida entre os filhos",
+      "30"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.24"
+  },
+  {
+    "question": "int fd=shm_open(\"/s\",O_CREAT|O_RDWR,0600); ftruncate(fd,4); int *p=mmap(NULL,4,PROT_READ|PROT_WRITE,MAP_SHARED,fd,0); *p=8; munmap(p,4); p=mmap(NULL,4,PROT_READ|PROT_WRITE,MAP_SHARED,fd,0); printf(\"%d\",*p); Com fd ainda aberto, o que imprime?",
+    "answers": [
+      "0",
+      "8",
+      "Nada, pois termina com SIGSEGV",
+      "-1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.7"
+  },
+  {
+    "question": "int h=shm_open(\"/k\",O_CREAT|O_RDWR,0600); ftruncate(h,4); int *z=mmap(NULL,4,PROT_READ|PROT_WRITE,MAP_SHARED,h,0); close(h); *z=3; if(fork()==0){*z*=5; exit(0);} wait(NULL); printf(\"%d\",*z); O que imprime?",
+    "answers": [
+      "3",
+      "Nada, pois *p=3 causa SIGSEGV depois do close(fd)",
+      "15",
+      "5"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.23"
+  },
+  {
+    "question": "p mapeia com MAP_SHARED os 4 bytes (a zero) do objeto \"/s\", aberto para leitura e escrita. *p=77; shm_unlink(\"/s\"); depois \"/s\" é criado de novo com 4 bytes e q mapeia-o com MAP_SHARED. printf(\"%d %d\",*p,*q); O que imprime?",
+    "answers": [
+      "77 0",
+      "77 77",
+      "0 0",
+      "0 77"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.7"
+  },
+  {
+    "question": "shm_open(\"/s\",O_CREAT|O_RDWR,0600); int a=shm_unlink(\"/s\"); int b=shm_unlink(\"/s\"); printf(\"%d %d\",a,b); Que valores imprime?",
+    "answers": [
+      "0 0",
+      "-1 -1",
+      "-1 0, porque o primeiro shm_unlink é diferido",
+      "0 -1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.7"
+  },
+  {
+    "question": "p mapeia com MAP_SHARED os 4 bytes (a zero) do objeto \"/s\", aberto para leitura e escrita. *p=5; int g=shm_open(\"/s\",O_CREAT|O_RDWR,0600); int *q=mmap(NULL,4,PROT_READ|PROT_WRITE,MAP_SHARED,g,0); printf(\"%d\",*q); Que valor é impresso?",
+    "answers": [
+      "0",
+      "5",
+      "Nenhum, pois o segundo shm_open falha com EEXIST",
+      "Um valor indeterminado, pois g refere outro objeto"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.14"
+  },
+  {
+    "question": "typedef struct{int a,b; volatile int f;}T; s aponta para sizeof(T) bytes partilhados com f=0. Filho: while(!s->f); printf(\"%d \",s->a+s->b); exit(0). Pai: s->a=100; s->b=200; s->f=1; wait(NULL); printf(\"%d\",(int)sizeof(T)); Que valores imprime, por ordem?",
+    "answers": [
+      "12 e 300",
+      "300 e 24",
+      "300 e 12",
+      "0 e 12, porque o filho lê antes de o pai escrever"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.29"
+  },
+  {
+    "question": "typedef struct{volatile int t; int n;}T; s aponta para T partilhado com t=n=0. Filho, 3 vezes: while(s->t!=1); s->n+=2; s->t=0; Pai, 3 vezes: while(s->t!=0); s->n+=1; s->t=1; e depois wait(NULL). Qual o valor final de s->n?",
+    "answers": [
+      "9",
+      "3",
+      "6",
+      "Indeterminado, por o campo t não ser protegido por semáforos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.29"
+  },
+  {
+    "question": "Um int a[4] está em memória partilhada (zeros). O filho faz a[i]=i*i para i de 0 a 3 e termina; o pai espera com wait(NULL) e soma os quatro elementos. Qual a soma?",
+    "answers": [
+      "0",
+      "6",
+      "Indeterminada, pois o pai não tem acesso a a[] após a morte do filho",
+      "14"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.24"
+  },
+  {
+    "question": "Um objeto é criado com shm_open(\"/s\",O_CREAT|O_RDWR,0600) mas sem ftruncate. O mmap(NULL,4,PROT_READ|PROT_WRITE,MAP_SHARED,fd,0) tem sucesso e um filho faz *p=1. O que sucede ao filho?",
+    "answers": [
+      "Escreve normalmente, pois shm_open reserva uma página",
+      "Termina com SIGBUS, pois o objeto ainda tem zero bytes",
+      "Termina com SIGSEGV, pois mmap devolveu MAP_FAILED",
+      "Bloqueia até outro processo chamar ftruncate"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.16"
+  },
+  {
+    "question": "p mapeia com MAP_SHARED os 4 bytes (a zero) do objeto \"/s\", aberto para leitura e escrita. *p=2; if(fork()==0){ abre \"/s\" com shm_open(...,O_RDWR,0), mapeia-o em q com MAP_SHARED e faz *q*=*q+1; exit(0);} wait(NULL); printf(\"%d\",*p); O que imprime?",
+    "answers": [
+      "6",
+      "2",
+      "3",
+      "Nada, pois o filho não herdou o mapeamento do pai e falha"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.25"
+  },
+  {
+    "question": "Um int *q mapeia, com MAP_SHARED, um objeto de 4 bytes. *q=1; if(fork()==0){ munmap(q,4); exit(0);} wait(NULL); printf(\"%d\",*q); O que imprime o pai?",
+    "answers": [
+      "0",
+      "2",
+      "1",
+      "Nada, pois termina com SIGSEGV por o filho ter desfeito o mapeamento"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.7"
+  },
+  {
+    "question": "Um int *p mapeia (MAP_SHARED) o objeto \"/s\" de 4 bytes. *p=4; if(fork()==0){ shm_unlink(\"/s\"); exit(0);} wait(NULL); *p+=1; int g=shm_open(\"/s\",O_RDWR,0); printf(\"%d %d\",*p,g); O que imprime?",
+    "answers": [
+      "5 3",
+      "4 -1",
+      "Nada, pois *p+=1 causa SIGSEGV após o shm_unlink",
+      "5 -1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.7"
+  },
+  {
+    "question": "p mapeia 4 bytes de \"/s\" (fd). *p=1; if(fork()==0){ ftruncate(fd,0); exit(0);} wait(NULL); struct stat s; fstat(fd,&s); printf(\"%ld\",(long)s.st_size); Qual o valor impresso?",
+    "answers": [
+      "4",
+      "0",
+      "1",
+      "Erro, pois só o processo que criou o objeto pode usar ftruncate"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.16"
+  },
+  {
+    "question": "Porque é que a memória partilhada é considerada mais rápida do que os pipes para trocar dados entre processos?",
+    "answers": [
+      "Porque o kernel sincroniza automaticamente os processos que a acedem, evitando esperas",
+      "Porque os dados passam por um buffer do kernel que é copiado só uma vez",
+      "Depois de mapeada, é acedida diretamente, sem uma system call por cada leitura ou escrita",
+      "Porque cada processo recebe uma cópia privada que o kernel funde no fim"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.4"
+  },
+  {
+    "question": "Em Linux, onde ficam os objetos de memória partilhada POSIX e como se podem listar ou remover a partir da shell?",
+    "answers": [
+      "Em /tmp, como ficheiros em disco que só o kernel pode remover, nunca o utilizador",
+      "Num tmpfs montado em /dev/shm, onde se listam com ls e se removem com rm",
+      "Na heap do kernel, sem qualquer nome visível no sistema de ficheiros",
+      "Em /proc/shm, sendo removidos apenas através de shm_unlink no programa"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.8"
+  },
+  {
+    "question": "Quando tem efeito o argumento mode de shm_open (por exemplo S_IRUSR|S_IWUSR)?",
+    "answers": [
+      "Sempre, redefinindo as permissões do objeto em cada abertura, por qualquer processo",
+      "Só com O_RDONLY, para limitar o acesso do processo que abre",
+      "Só com O_EXCL, para impedir a abertura por outros utilizadores",
+      "Só quando O_CREAT cria o objeto; se já existe, é ignorado"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.15"
+  },
+  {
+    "question": "Porque é que se deve indicar MAP_SHARED no mmap ao usar memória partilhada entre processos?",
+    "answers": [
+      "Para as alterações na zona mapeada serem visíveis aos outros processos que mapeiam o objeto",
+      "Para o kernel sincronizar automaticamente os acessos concorrentes de todos os processos ao objeto",
+      "Para o objeto ser removido quando o último processo o desmapear",
+      "Para a zona ficar protegida contra escritas feitas por outros processos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.21"
+  },
+  {
+    "question": "Numa espera ativa sobre um campo volatile int pronto em memória partilhada, o que garante o volatile?",
+    "answers": [
+      "Que as leituras e escritas do campo são atómicas e livres de condição de corrida entre processos",
+      "Que o processo bloqueia sem gastar CPU até o campo mudar",
+      "Que o compilador relê o campo da memória em cada iteração",
+      "Que a CPU não reordena os acessos à memória em torno do campo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.31"
+  },
+  {
+    "question": "Como se deve testar se uma chamada a mmap() falhou?",
+    "answers": [
+      "Comparando o valor devolvido com NULL, como acontece com malloc()",
+      "Comparando o valor devolvido com MAP_FAILED, isto é, (void *) -1",
+      "Comparando o valor devolvido com 0, que indica sempre erro",
+      "Só através de errno, porque o valor devolvido nunca assinala erro"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.18"
+  },
+  {
+    "question": "Todos os processos que usaram o objeto \"/s\" terminaram, sem nunca chamarem shm_unlink(\"/s\"). O que acontece ao objeto?",
+    "answers": [
+      "É removido automaticamente pelo kernel quando termina o último processo que o usou",
+      "Passa a ter tamanho zero e o conteúdo é descartado, mas o nome fica",
+      "Fica no sistema, mas só o kernel o pode remover, nunca um utilizador",
+      "Continua a existir (visível em /dev/shm) com o conteúdo, até shm_unlink ou rm"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.7"
+  },
+  {
+    "question": "O vendedor e os clientes de um simulador de venda de bilhetes são programas distintos, sem relação pai-filho, e precisam de partilhar o número do próximo bilhete. Qual a solução adequada?",
+    "answers": [
+      "O vendedor cria um objeto com shm_open e todos o abrem pelo mesmo nome e o mapeiam",
+      "Uma variável global do vendedor, que os clientes veem ao serem executados depois",
+      "Um bloco criado com malloc() pelo vendedor, cujo apontador é enviado por um pipe",
+      "Um objeto novo criado por cada cliente, com um nome diferente para cada um"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL5"
+  },
+  {
+    "question": "Dois produtores e um consumidor usam um buffer circular de 10 inteiros em memória partilhada, com semáforos de posições livres e ocupadas. Porque é preciso também exclusão mútua entre os produtores?",
+    "answers": [
+      "Porque o consumidor e os produtores não podem partilhar o mesmo índice de acesso",
+      "Porque a memória partilhada só admite um processo mapeado de cada vez em cada instante",
+      "Para dois produtores não atualizarem juntos o índice de escrita e escreverem na mesma posição",
+      "Porque o semáforo de posições livres não chega para bloquear com o buffer cheio"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL5"
+  },
+  {
+    "question": "A função shm_open() devolve um descritor de ficheiro em caso de sucesso e -1 em caso de erro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.12"
+  },
+  {
+    "question": "Um objeto de memória partilhada acabado de criar com shm_open() tem tamanho zero até ser definido o seu tamanho com ftruncate().",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.16"
+  },
+  {
+    "question": "Se um processo já tiver o objeto mapeado quando outro chama shm_unlink() sobre esse nome, o primeiro continua a poder ler e escrever na zona mapeada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.7"
+  },
+  {
+    "question": "Dois mmap(NULL,...) com MAP_SHARED sobre o mesmo objeto, no mesmo processo, devolvem apontadores diferentes, mas uma escrita por um deles é vista através do outro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.21"
+  },
+  {
+    "question": "O argumento offset de mmap() tem de ser um múltiplo do tamanho da página de memória.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.21"
+  },
+  {
+    "question": "Quando ftruncate() aumenta o tamanho de um objeto de memória partilhada, a nova zona fica preenchida com zeros.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.16"
+  },
+  {
+    "question": "Dois processos sem relação hierárquica podem partilhar memória se ambos chamarem shm_open() com o mesmo nome e mapearem o objeto com MAP_SHARED.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.3"
+  },
+  {
+    "question": "Em int *p=malloc(4); *p=1; if(fork()==0){*p=9; exit(0);} wait(NULL); printf(\"%d\",*p); o pai imprime 1.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.2"
+  },
+  {
+    "question": "Numa espera ativa, o processo que espera consome tempo de CPU enquanto a condição não se verificar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.28"
+  },
+  {
+    "question": "Após shm_open() com O_CREAT, o objeto já tem uma página de memória, pelo que ftruncate() é dispensável antes de aceder à zona mapeada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.16"
+  },
+  {
+    "question": "Chamar close() sobre o descritor devolvido por shm_open() remove o objeto de memória partilhada do sistema.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.7"
+  },
+  {
+    "question": "Se um objeto for mapeado com MAP_PRIVATE e se criar um filho com fork(), as escritas do filho nessa zona ficam visíveis para o pai.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.21"
+  },
+  {
+    "question": "Declarar volatile um campo de uma estrutura em memória partilhada torna os seus acessos atómicos e dispensa semáforos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.31"
+  },
+  {
+    "question": "Uma segunda chamada a shm_open() com O_CREAT|O_EXCL sobre um nome já existente devolve o descritor do objeto existente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.14"
+  },
+  {
+    "question": "Se shm_open(\"/s\",O_CREAT|O_RDWR,0600) criou o objeto, duas chamadas seguidas a shm_unlink(\"/s\") devolvem 0 nas duas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.7"
+  },
+  {
+    "question": "Se um filho chamar munmap() sobre uma zona partilhada herdada do pai, o mapeamento do pai fica também removido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.7"
+  },
+  {
+    "question": "Em qualquer versão do glibc, o uso de shm_open() exige sempre a ligação com -lrt, sem a qual o programa não compila.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP7 p.10"
+  },
+  {
+    "question": "Num buffer circular partilhado por vários produtores, basta o semáforo de posições livres para evitar condições de corrida no índice de escrita.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL5"
+  },
+  {
+    "question": "Três filhos executam *p+=10 uma só vez cada, em simultâneo e sem sincronização, sobre um int partilhado que vale 0; o pai faz wait() aos três e imprime *p. Qual dos valores seguintes é impossível de imprimir?",
+    "answers": [
+      "10",
+      "40",
+      "20",
+      "30"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.5"
+  },
+  {
+    "question": "(RW = PROT_READ|PROT_WRITE) p=mmap(NULL,4,RW,MAP_PRIVATE|MAP_ANONYMOUS,-1,0); *p=1; if(fork()==0){*p=5; _exit(0);} wait(NULL); printf(\"%d\",*p); O que imprime o pai?",
+    "answers": [
+      "5, porque o filho herda o mapeamento e escreve na mesma página física que o pai",
+      "0, porque o fork() repõe a zero as páginas anónimas",
+      "Nada, porque o pai recebe SIGSEGV ao ler *p",
+      "1, porque o mapeamento é privado e o filho escreve numa cópia"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.2"
+  },
+  {
+    "question": "fd=shm_open(\"/x\",O_CREAT|O_EXCL|O_RDWR,0600); g=shm_open(\"/x\",O_CREAT|O_EXCL|O_RDWR,0600); sendo que /x não existia antes da primeira chamada. O que faz a segunda chamada a shm_open()?",
+    "answers": [
+      "Devolve -1, com errno igual a EEXIST",
+      "Devolve um segundo descritor para o mesmo objeto",
+      "Devolve um descritor para um novo objeto com o mesmo nome",
+      "Devolve 0 e redefine o tamanho do objeto para zero"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.18"
+  },
+  {
+    "question": "fd=shm_open(\"/x\",O_CREAT|O_RDWR,0600); ftruncate(fd,100); shm_unlink(\"/x\"); g=shm_open(\"/x\",O_CREAT|O_RDWR,0600); fstat(g,&s); printf(\"%ld\",s.st_size); O que imprime?",
+    "answers": [
+      "100, porque o objeto original manteve o tamanho após o shm_unlink()",
+      "-1, porque o nome já não pode ser reutilizado",
+      "0, porque é criado um novo objeto com o mesmo nome",
+      "Um valor indefinido, porque o fstat() falha"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.12"
+  },
+  {
+    "question": "(RW = PROT_READ|PROT_WRITE) fd=shm_open(\"/x\",O_CREAT|O_RDWR,0600); ftruncate(fd,4); p=mmap(0,4,RW,MAP_SHARED,fd,0); close(fd); shm_unlink(\"/x\"); *p=4; if(fork()==0){*p*=2; exit(0);} wait(NULL); printf(\"%d\",*p); Que valor imprime o pai?",
+    "answers": [
+      "4, porque o objeto foi removido e o filho escreve numa cópia privada",
+      "0, porque o shm_unlink() repõe o conteúdo a zero",
+      "8, porque o mapeamento é válido e partilhado com o filho",
+      "Nada, porque o acesso a *p termina o pai com SIGBUS"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.14"
+  },
+  {
+    "question": "(RW = PROT_READ|PROT_WRITE) p=mmap(0,100,RW,MAP_SHARED,fd,0); shm_unlink(n); close(fd); munmap(p,100); if(fork()==0){*p=1; _exit(0);} wait(&st); Como termina o filho?",
+    "answers": [
+      "Por SIGSEGV, porque a região já não está mapeada",
+      "Normalmente, com código 0",
+      "Por SIGBUS, porque o objeto foi removido do sistema por shm_unlink()",
+      "Normalmente, mas o valor escrito é perdido"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.7"
+  },
+  {
+    "question": "(RW = PROT_READ|PROT_WRITE) fd=shm_open(\"/x\",O_CREAT|O_RDWR,0600); p=mmap(0,100,RW,MAP_SHARED,fd,0); if(fork()==0){*p=1; _exit(0);} wait(&st); Sem ftruncate(), que acontece ao filho?",
+    "answers": [
+      "Escreve com sucesso e o objeto passa a ter 100 bytes",
+      "Falha em mmap() e escreve através de MAP_FAILED",
+      "É terminado por SIGSEGV, porque a região é só de leitura",
+      "É terminado por SIGBUS"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.4"
+  },
+  {
+    "question": "Em x86-64 Linux, qual é o valor de sizeof(struct S) para struct S{char c; int n; char s[10];}, que seria o tamanho a passar a ftruncate() para guardar uma struct S num objeto de memória partilhada?",
+    "answers": [
+      "15",
+      "20",
+      "16",
+      "18"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.18"
+  },
+  {
+    "question": "Um objeto de memória partilhada com 4 bytes (valor 1) é mapeado com MAP_PRIVATE; o filho faz *p=9 e termina; o pai faz wait() e imprime *p. Que valor imprime o pai?",
+    "answers": [
+      "9, porque o objeto é partilhado entre o pai e o filho, tal como em MAP_SHARED",
+      "0, porque o mapeamento privado começa sempre a zero",
+      "Nada, porque o pai é terminado por SIGBUS",
+      "1, porque o filho escreveu numa cópia privada da página"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.2"
+  },
+  {
+    "question": "struct S{int *p;}; int x=3; s=mmap(...,MAP_SHARED|MAP_ANONYMOUS,-1,0); s->p=&x; if(fork()==0){*s->p=9; _exit(0);} wait(NULL); printf(\"%d\",x); O que imprime o pai?",
+    "answers": [
+      "9, porque a struct e o apontador são partilhados, logo x também",
+      "3, porque o filho altera a sua própria cópia de x",
+      "0, porque x passa a pertencer à região partilhada",
+      "Nada, porque aceder a x causa SIGSEGV no pai"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.2"
+  },
+  {
+    "question": "struct S{int *p; int a[4];}; s=mmap(...,MAP_SHARED|MAP_ANONYMOUS,-1,0); s->p=s->a; if(fork()==0){s->p[2]=8; _exit(0);} wait(NULL); printf(\"%d\",s->a[2]); O que imprime o pai?",
+    "answers": [
+      "0, porque o filho altera apenas a sua cópia de s->p",
+      "Nada, porque o apontador é inválido no filho, que tem outro espaço de endereçamento",
+      "8, porque o apontador aponta para dentro da região partilhada",
+      "Um valor indefinido, porque o apontador é partilhado"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.2"
+  },
+  {
+    "question": "Dois processos sem parentesco mapeiam o mesmo objeto, e um deles guarda na struct partilhada um apontador absoluto para outro campo da struct. Porque pode isso falhar no outro processo?",
+    "answers": [
+      "O mmap() pode colocar o objeto em endereços virtuais diferentes em cada processo",
+      "O kernel converte o apontador para o espaço do outro processo, mas com atraso",
+      "Os apontadores guardados em memória partilhada são repostos a NULL",
+      "A memória partilhada só aceita guardar tipos inteiros"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.2"
+  },
+  {
+    "question": "Dois processos chamam shm_unlink(\"/x\") sobre o mesmo objeto, um depois do outro, já sem o usarem. O que acontece à segunda chamada?",
+    "answers": [
+      "Devolve -1, com errno ENOENT, porque o nome já foi removido",
+      "Devolve 0 e remove outro objeto qualquer que tenha o mesmo nome entretanto",
+      "Devolve 0 sem qualquer efeito, pois remover duas vezes é válido",
+      "Termina o processo com SIGSEGV"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.10"
+  },
+  {
+    "question": "Um processo abre com shm_open() um objeto já criado por outro, sem saber o seu tamanho. Que função permite obter esse tamanho para o passar a mmap()?",
+    "answers": [
+      "ftruncate(), que devolve o tamanho atual do objeto",
+      "munmap(), que devolve o tamanho da região mapeada",
+      "fstat(), lendo o campo st_size da struct stat",
+      "close(), que devolve o tamanho do ficheiro"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.15"
+  },
+  {
+    "question": "v=mmap(...,MAP_SHARED|MAP_ANONYMOUS,...) com 12 int; v[0..7]={4,9,2,7,1,8,3,5}; o filho i (0..3) grava em v[8+i] o maior de v[2i] e v[2i+1]; o pai faz wait() aos 4. Que valores ficam em v[9] e v[11]?",
+    "answers": [
+      "9 e 8",
+      "7 e 5",
+      "9 e 5",
+      "7 e 8"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.20"
+  },
+  {
+    "question": "int x=3; p=mmap(...,MAP_SHARED|MAP_ANONYMOUS,-1,0); *p=0; if(fork()==0){*p=x+1; x=50; exit(0);} wait(NULL); printf(\"%d %d\",*p,x); O que imprime o pai?",
+    "answers": [
+      "4 50, porque as duas variáveis são partilhadas",
+      "50 3, porque o filho escreve em *p depois do pai",
+      "0 3, porque o filho não chega a escrever",
+      "4 3, porque só *p está na região partilhada"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.2"
+  },
+  {
+    "question": "Um mapeamento tem 2 páginas de 4096 bytes e p aponta para o início. Após munmap(p+4096,4096), como se comportam, no mesmo processo, os acessos a p[0] e a p[4096]?",
+    "answers": [
+      "Ambos continuam válidos até ao fim do processo",
+      "Ambos causam SIGSEGV, pois o mapeamento é desfeito por inteiro",
+      "p[0] é válido e p[4096] causa SIGSEGV",
+      "p[0] causa SIGSEGV e p[4096] continua válido"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.8"
+  },
+  {
+    "question": "p=mmap(0,4,PROT_READ,MAP_SHARED|MAP_ANONYMOUS,-1,0); if(fork()==0){*p=1; exit(0);} wait(&st); Qual é o estado de terminação do filho?",
+    "answers": [
+      "Termina normalmente e o pai lê 1",
+      "Termina com SIGBUS, por a região ser anónima e partilhada com o pai",
+      "Termina normalmente e o pai lê 0",
+      "Termina com SIGSEGV, por escrever numa região só de leitura"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.4"
+  },
+  {
+    "question": "(RW = PROT_READ|PROT_WRITE) fd=shm_open(\"/x\",O_CREAT|O_RDWR,0600); ftruncate(fd,4); p=mmap(0,4,RW,MAP_SHARED,fd,0); *p=6; munmap(p,4); close(fd); g=shm_open(\"/x\",O_RDWR,0600); q=mmap(0,4,RW,MAP_SHARED,g,0); printf(\"%d\",*q); O que imprime?",
+    "answers": [
+      "6, porque o objeto persiste sem shm_unlink()",
+      "0, porque o munmap() repõe o conteúdo a zero",
+      "Nada, porque o shm_open() devolve -1 após o close() do descritor",
+      "Um valor indefinido, porque o conteúdo foi libertado"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.13"
+  },
+  {
+    "question": "(RW = PROT_READ|PROT_WRITE) p=mmap(0,4,RW,MAP_SHARED,fd,0); *p=6; shm_unlink(\"/x\"); g=shm_open(\"/x\",O_CREAT|O_RDWR,0600); ftruncate(g,4); q=mmap(0,4,RW,MAP_SHARED,g,0); printf(\"%d %d\",*q,*p); O que imprime?",
+    "answers": [
+      "6 6, porque o nome aponta sempre para o mesmo objeto",
+      "0 6, porque são dois objetos diferentes",
+      "6 0, porque o novo objeto herda o conteúdo antigo",
+      "0 0, porque o shm_unlink() repõe o objeto a zero"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.12"
+  },
+  {
+    "question": "volatile int *f partilhado (f[0] flag e f[1] dado, ambos a 0); pai: f[0]=1; f[1]=42; filho: while(f[0]==0); printf(\"%d\",f[1]); Que valores pode o filho imprimir?",
+    "answers": [
+      "Apenas 42, porque a flag só muda depois do dado",
+      "Só 0 ou 42, porque o filho pode ver a flag antes de o dado",
+      "Apenas 0, porque o filho lê antes do pai escrever",
+      "Qualquer valor inteiro, pois a memória partilhada não tem valor definido"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.19"
+  },
+  {
+    "question": "O valor 5 está em memória partilhada; A e B executam x=x+1 sem sincronização. A lê 5, depois B lê 5, depois A escreve e por fim B escreve. Qual é o valor final de x?",
+    "answers": [
+      "6",
+      "7",
+      "5",
+      "Indefinido, pois o kernel termina os dois processos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.5"
+  },
+  {
+    "question": "Que limitação tem uma região criada com mmap(MAP_SHARED|MAP_ANONYMOUS) face a uma criada com shm_open() e mmap()?",
+    "answers": [
+      "Não permite escrita por mais do que um processo",
+      "Tem de ser removida com shm_unlink() por todos os processos que a usam",
+      "Só pode guardar tipos inteiros",
+      "Só com descendentes criados por fork(), pois não tem nome"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.3"
+  },
+  {
+    "question": "Vários processos usam o mesmo objeto de memória partilhada. Qual é a boa prática para a remoção do nome do objeto?",
+    "answers": [
+      "Todos os processos chamam shm_unlink() antes de mapear o objeto",
+      "Cada processo chama shm_unlink() ao terminar, em ordem aleatória",
+      "Só um processo designado chama shm_unlink() no fim",
+      "Nenhum, pois o kernel remove o objeto no primeiro munmap()"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.13"
+  },
+  {
+    "question": "Porque pode a memória partilhada ser mais eficiente do que pipes ao trocar grandes volumes de dados entre processos?",
+    "answers": [
+      "Após o mapeamento, a troca faz-se por acessos normais à memória, sem system calls",
+      "Porque dispensa qualquer forma de sincronização entre os processos que a usam",
+      "Porque os dados ficam em registos partilhados do CPU",
+      "Porque o kernel copia sempre os dados duas vezes em cada transferência feita"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.5"
+  },
+  {
+    "question": "Um processo guarda numa struct partilhada um campo char *nome obtido com strdup() no seu heap; um filho criado antes do strdup() lê esse campo. Qual é o problema?",
+    "answers": [
+      "O strdup() não pode ser usado em programas que chamam fork() ou threads",
+      "O campo char * é sempre truncado para um byte",
+      "O leitor recebe sempre a string vazia",
+      "O apontador só é válido no heap do processo que o alocou"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.2"
+  },
+  {
+    "question": "Qual é a sequência de limpeza recomendada para um processo que usou um objeto de memória partilhada?",
+    "answers": [
+      "close() do descritor, que também desmapeia a região e remove o nome do objeto",
+      "munmap() da região, close() do descritor e, num único processo, shm_unlink() do nome",
+      "shm_unlink() em todos os processos, pois remove apenas o mapeamento local",
+      "munmap() do descritor e close() do endereço devolvido por mmap()"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.13"
+  },
+  {
+    "question": "Em caso de erro, mmap() devolve NULL.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.18"
+  },
+  {
+    "question": "munmap() só aceita um length igual ao do mmap() original e, noutro caso, devolve sempre -1.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.8"
+  },
+  {
+    "question": "A sincronização por busy-waiting em flags é eficiente em CPU, porque o processo em espera fica bloqueado pelo kernel.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.19"
+  },
+  {
+    "question": "Para um fd válido, r=close(fd); r=close(fd); o segundo close() devolve 0, porque o descritor já estava fechado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.9"
+  },
+  {
+    "question": "Se o objeto criado com shm_open() nunca for dimensionado com ftruncate(), o seu tamanho continua a zero e aceder à região mapeada é um erro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.4"
+  },
+  {
+    "question": "Com p=mmap(NULL,4,PROT_READ|PROT_WRITE,MAP_SHARED|MAP_ANONYMOUS,-1,0), *p=1; if(fork()==0){*p=5; _exit(0);} wait(NULL); printf(\"%d\",*p); imprime 5.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.2"
+  },
+  {
+    "question": "Com p já mapeado por mmap(), *p=7; close(fd); shm_unlink(\"/x\"); *p+=1; printf(\"%d\",*p); imprime 8.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.14"
+  },
+  {
+    "question": "Depois de um shm_unlink() bem-sucedido, um shm_open() sem O_CREAT com o mesmo nome falha.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.12"
+  },
+  {
+    "question": "Se um processo termina inesperadamente sem chamar shm_unlink(), o objeto de memória partilhada pode permanecer no sistema em /dev/shm.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.14"
+  },
+  {
+    "question": "shm_unlink() remove o nome imediatamente, mas o objeto só é libertado quando todos os processos o tiverem fechado e desmapeado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.14"
+  },
+  {
+    "question": "Vários processos que incrementam, sem exclusão mútua, um contador int na memória partilhada podem perder atualizações.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.5"
+  },
+  {
+    "question": "Um processo sem parentesco pode aceder a uma região criada com mmap(MAP_SHARED|MAP_ANONYMOUS) abrindo-a pelo nome com shm_open().",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP8 p.3"
+  }
+]

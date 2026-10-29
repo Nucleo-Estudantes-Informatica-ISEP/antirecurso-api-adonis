@@ -1,0 +1,666 @@
+[
+  {
+    "question": "Qual é a função do offset de um endereço virtual num sistema com páginas?",
+    "answers": [
+      "Identificar o processo a que pertence a página",
+      "Indicar o frame físico onde a página se encontra",
+      "Selecionar o byte pretendido dentro da página",
+      "Indicar se a página está em RAM ou em swap"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.13"
+  },
+  {
+    "question": "Um sistema tem endereços virtuais de 32 bits, páginas de 4 KB e uma tabela de páginas de um só nível com PTEs de 4 bytes. Qual é o tamanho dessa tabela por processo?",
+    "answers": [
+      "4 MB",
+      "1 MB",
+      "16 MB",
+      "4 KB"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.13-14"
+  },
+  {
+    "question": "Com páginas de 4 KB, o endereço virtual 0x00012A7C pertence à página 0x12, mapeada no frame 0x35. Qual é o endereço físico correspondente?",
+    "answers": [
+      "0x12A7C",
+      "0x35000",
+      "0x1235A7C",
+      "0x35A7C"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.13,33"
+  },
+  {
+    "question": "Num sistema com endereços de 16 bits e páginas de 1 KB, o endereço virtual 11355 está na página 11, mapeada no frame 6. Qual é o endereço físico?",
+    "answers": [
+      "6144",
+      "6235",
+      "11355",
+      "6155"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.13,33"
+  },
+  {
+    "question": "A TLB demora 2 ns e a memória 80 ns. Em caso de TLB miss, faz-se mais um acesso à memória para ler a PTE. Com 90% de TLB hits, qual é o tempo médio de acesso?",
+    "answers": [
+      "82 ns",
+      "90 ns",
+      "98 ns",
+      "162 ns"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.21-22"
+  },
+  {
+    "question": "Num sistema de 48 bits de endereço virtual com páginas de 16 KB, quantos bits tem o número de página virtual?",
+    "answers": [
+      "36 bits, como com páginas de 4 KB",
+      "32 bits",
+      "14 bits, o tamanho do offset",
+      "34 bits"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.13,33"
+  },
+  {
+    "question": "Com endereços virtuais de 39 bits, páginas de 4 KB e PTEs de 8 bytes, qual seria o tamanho de uma tabela de páginas plana (um só nível) por processo?",
+    "answers": [
+      "1 GB",
+      "128 MB",
+      "512 MB",
+      "8 GB"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.13-14"
+  },
+  {
+    "question": "Um computador tem 256 MB de RAM e páginas de 4 KB. Quantos frames físicos existem?",
+    "answers": [
+      "4096",
+      "262144",
+      "65536",
+      "1048576"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.13"
+  },
+  {
+    "question": "Uma região contígua de 10 MB, alinhada ao início de uma página, é mapeada com páginas de 4 KB. Quantas páginas virtuais ocupa?",
+    "answers": [
+      "10240",
+      "2500",
+      "2560",
+      "640"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.13"
+  },
+  {
+    "question": "Dois processos usam o mesmo endereço virtual 0x1000, mas lêem valores diferentes nesse endereço. Porque é que isto é possível?",
+    "answers": [
+      "Cada processo tem a sua tabela de páginas, que mapeia essa página para frames diferentes",
+      "O kernel guarda uma cópia dos valores de cada processo no mesmo frame físico e troca-a em cada acesso",
+      "A MMU atribui endereços físicos diferentes a cada instrução executada, consoante o processo ativo",
+      "O segundo processo escreve primeiro na cache e só depois na RAM, ocultando o valor do primeiro"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.24"
+  },
+  {
+    "question": "O que impede um processo em modo utilizador de ler páginas do kernel que estão mapeadas no seu espaço de endereçamento virtual?",
+    "answers": [
+      "O compilador remove do executável as instruções que acedem a esses endereços do kernel",
+      "O kernel verifica por software cada instrução load do processo antes de a CPU a executar",
+      "Essas páginas estão sempre em swap enquanto o processo corre em modo utilizador, e por isso falham",
+      "As PTEs dessas páginas exigem modo kernel e a MMU gera uma exceção no acesso"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.25,35-36"
+  },
+  {
+    "question": "Ao fazer uma troca de contexto entre dois processos, o que muda principalmente para que o novo processo veja o seu espaço de endereçamento?",
+    "answers": [
+      "O conteúdo de todos os frames de RAM, que é copiado para o disco e recarregado depois",
+      "O valor do registo que aponta para a tabela de páginas (CR3 em x86)",
+      "O tamanho das páginas, que passa a ser o do novo processo",
+      "Os endereços físicos de todas as variáveis do processo anterior"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.32"
+  },
+  {
+    "question": "O que acontece quando um programa acede a uma página cuja PTE tem o bit de validade a 0?",
+    "answers": [
+      "O acesso devolve zeros sem qualquer intervenção do kernel",
+      "A MMU gera uma page fault e o controlo passa para o kernel",
+      "O hardware termina logo o processo sem intervenção do kernel",
+      "A TLB carrega a página sozinha e o acesso prossegue normalmente"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.15,17-18"
+  },
+  {
+    "question": "Em que situação ocorre thrashing?",
+    "answers": [
+      "A TLB tem mais entradas do que o número de páginas do processo em execução",
+      "Dois processos mapeiam a mesma página física com MAP_SHARED",
+      "O kernel aumenta o tamanho das páginas durante a execução do processo",
+      "Os working sets dos processos excedem a RAM e há paginação constante"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.9,20"
+  },
+  {
+    "question": "Que propriedade dos programas permite que a memória virtual tenha bom desempenho, apesar de o disco ser muito mais lento do que a RAM?",
+    "answers": [
+      "A localidade: em cada instante, os acessos concentram-se em poucas páginas",
+      "A uniformidade: todas as páginas são acedidas com igual frequência ao longo do tempo",
+      "A atomicidade: cada acesso à memória é indivisível para a MMU",
+      "A reentrância: o código de um programa não se altera durante a execução"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.19-20"
+  },
+  {
+    "question": "Num sistema com page table de um nível e sem TLB, quantos acessos à memória são necessários para executar um load de uma variável (sem considerar caches)?",
+    "answers": [
+      "1 acesso",
+      "3 acessos",
+      "2 acessos",
+      "4 acessos, um por cada nível de memória"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.21"
+  },
+  {
+    "question": "Após TLB miss, o que precisa a MMU de fazer para completar a tradução de um endereço virtual?",
+    "answers": [
+      "Pedir ao disco a página inteira antes de poder continuar a tradução do endereço",
+      "Gerar sempre uma page fault e esperar pelo escalonador",
+      "Ler a PTE na tabela de páginas, que está em memória principal",
+      "Pedir ao processo que indique o frame físico que pretende usar"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.21-22"
+  },
+  {
+    "question": "Em Linux, o programa faz mmap(0,4096,PROT_READ,MAP_PRIVATE|MAP_ANONYMOUS,-1,0) e guarda o resultado em char *p. Depois executa *p=1. O que acontece, assumindo que o mmap teve sucesso?",
+    "answers": [
+      "O processo recebe SIGSEGV, porque a escrita viola as permissões da página",
+      "O kernel altera a página para leitura e escrita e a escrita é depois concluída com sucesso",
+      "A escrita é ignorada e o programa continua a executar normalmente",
+      "A chamada mmap falha com MAP_FAILED quando a escrita é tentada"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.30,35-36"
+  },
+  {
+    "question": "Com int *p=mmap(0,4096,PROT_READ|PROT_WRITE,MAP_SHARED|MAP_ANONYMOUS,-1,0), *q=mmap(0,4096,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0); *p=*q=1; e fork, o filho faz *p=*q=2 e termina. Que valores de *p e *q vê o pai após wait?",
+    "answers": [
+      "*p e *q valem 2, porque o filho escreveu antes do wait",
+      "*p vale 2 e *q vale 1",
+      "*p vale 1 e *q vale 2",
+      "*p e *q valem 1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.28-30"
+  },
+  {
+    "question": "Depois de fork(), o pai e o filho imprimem o valor de &x, em que x é uma variável local. O que se pode afirmar?",
+    "answers": [
+      "Os endereços são diferentes, porque o filho ocupa outros frames físicos e usa os respetivos endereços",
+      "Os endereços são iguais, pois são endereços virtuais em espaços de endereçamento distintos",
+      "Os endereços são iguais, porque as duas variáveis ocupam o mesmo frame físico",
+      "Os endereços são diferentes, pois o kernel não permite endereços repetidos entre processos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.24"
+  },
+  {
+    "question": "Em Linux, o que acontece tipicamente a um programa que desreferencia um apontador NULL?",
+    "answers": [
+      "O kernel mapeia uma página de zeros e a leitura devolve 0 sem qualquer erro",
+      "O acesso é redirecionado para o início do heap",
+      "O processo fica bloqueado até que a página seja carregada do disco",
+      "A MMU deteta página não mapeada e o kernel envia SIGSEGV ao processo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.17-18"
+  },
+  {
+    "question": "Qual das seguintes page faults é recuperável pelo kernel, permitindo que a instrução seja repetida com sucesso?",
+    "answers": [
+      "Acesso válido a uma página que se encontra em swap",
+      "Escrita numa região mapeada com PROT_READ",
+      "Acesso em modo utilizador a uma página do kernel",
+      "Acesso ao endereço 0 num programa em C"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.18"
+  },
+  {
+    "question": "Uma página tem SUP=Não, READ=Sim, WRITE=Não e EXEC=Sim. O que acontece a uma instrução store nessa página, em modo utilizador?",
+    "answers": [
+      "A escrita é concluída, pois a página é acessível em modo utilizador e tem permissão READ",
+      "A escrita só falha se a página estiver em swap",
+      "A MMU gera uma exceção, porque a página não tem permissão de escrita",
+      "A MMU permite a escrita, mas o resultado não fica guardado na RAM"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.36"
+  },
+  {
+    "question": "Qual a vantagem de cada processo ver o seu espaço de endereçamento a começar no endereço zero?",
+    "answers": [
+      "Todos os processos passam a ter o mesmo tamanho de memória física, seja qual for a RAM instalada",
+      "Os processos podem aceder à memória uns dos outros com mais rapidez",
+      "O mesmo executável pode ocupar frames diferentes sem mudar os endereços do código",
+      "O kernel deixa de precisar de uma tabela de páginas por processo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.4,38"
+  },
+  {
+    "question": "Porque é que um processo pode partilhar com outro o código de uma biblioteca sem duplicar essas páginas em RAM?",
+    "answers": [
+      "As tabelas de páginas dos dois processos mapeiam essas páginas para os mesmos frames",
+      "O kernel copia a biblioteca para o espaço do segundo processo a cada acesso",
+      "A biblioteca é guardada apenas na cache da CPU, que é partilhada por todos os processos em execução",
+      "Cada processo recebe uma parte diferente do código da biblioteca"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.28-29"
+  },
+  {
+    "question": "Qual das seguintes garantias a memória virtual NÃO fornece?",
+    "answers": [
+      "Isolamento entre os espaços de endereçamento de processos distintos",
+      "Verificação de permissões em cada acesso à memória",
+      "Deteção imediata de acessos a endereços não mapeados",
+      "Sincronização e atomicidade nos acessos a páginas partilhadas"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.37"
+  },
+  {
+    "question": "Em termos de hierarquia de memória, que papel desempenha a RAM num sistema com memória virtual?",
+    "answers": [
+      "Armazena todas as PTEs de todos os processos, que nunca vão para o disco",
+      "Funciona como cache das páginas do espaço virtual guardadas em disco",
+      "Substitui a cache da CPU, que deixa de ser necessária",
+      "Guarda apenas o código do kernel, ficando os dados no disco"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.7-9"
+  },
+  {
+    "question": "No ciclo for(i=0;i<n;i++) s+=a[i]; sobre um array grande, que tipo de localidade existe?",
+    "answers": [
+      "Apenas temporal, porque cada elemento é lido uma só vez",
+      "Espacial nos acessos a a[i] e temporal no acesso a s",
+      "Apenas espacial, porque a variável s é escrita sempre no mesmo local",
+      "Nenhuma, porque os acessos a a[i] são todos diferentes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.19"
+  },
+  {
+    "question": "Numa matriz int m[4096][4096] (row-major), somar por colunas (j no ciclo exterior, i no interior) é muito mais lento do que por linhas. Porque é que isto acontece?",
+    "answers": [
+      "As colunas ficam guardadas em swap, enquanto as linhas ficam sempre residentes em RAM",
+      "A MMU só consegue traduzir endereços acedidos em sequência",
+      "O compilador impede a TLB de guardar PTEs de colunas",
+      "Acessos consecutivos distam 16384 bytes, em páginas diferentes, com mais TLB misses"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.19-22"
+  },
+  {
+    "question": "Do endereço mais baixo para o mais alto, qual é a ordem das zonas do espaço de endereçamento de um processo Linux?",
+    "answers": [
+      "Text, data, bss, heap, região de mapeamento de bibliotecas, stack",
+      "Stack, região de mapeamento de bibliotecas, heap, bss, data, text e kernel",
+      "Text, heap, data, bss, stack, região de mapeamento",
+      "Data, text, bss, stack, região de mapeamento, heap"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.25"
+  },
+  {
+    "question": "A memória física é 100 ns por acesso e o serviço de uma page fault demora 8 ms. Com uma page fault em cada 100000 acessos, qual é o tempo médio de acesso, aproximadamente?",
+    "answers": [
+      "100 ns",
+      "8000 ns",
+      "180 ns",
+      "1000 ns"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.17-18"
+  },
+  {
+    "question": "A TLB demora 2 ns e a memória 100 ns. Num TLB miss faz-se mais um acesso de 100 ns à memória para ler a PTE. Qual a taxa mínima de TLB hits para um tempo médio de acesso não superior a 107 ns?",
+    "answers": [
+      "90%",
+      "99%",
+      "95%",
+      "50%"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.21-22"
+  },
+  {
+    "question": "Porque é que trocas de contexto frequentes entre muitos processos podem degradar o desempenho da TLB?",
+    "answers": [
+      "Cada processo tem as suas traduções, e mais PTEs ativas geram mais TLB misses",
+      "A TLB só consegue guardar PTEs de um único processo e fica desligada nos restantes",
+      "Cada troca de contexto obriga a copiar a tabela de páginas para a TLB",
+      "A TLB deixa de traduzir endereços quando há mais de dois processos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.21,32"
+  },
+  {
+    "question": "Num sistema com endereços virtuais de 32 bits e PTEs de 4 bytes, a página passa de 4 KB para 16 KB. Qual é o novo tamanho da tabela plana?",
+    "answers": [
+      "4 MB",
+      "2 MB",
+      "256 KB",
+      "1 MB"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.13-14"
+  },
+  {
+    "question": "Um sistema tem endereços físicos de 30 bits e páginas de 8 KB. Quantos bits tem o número de página física (PPN)?",
+    "answers": [
+      "13",
+      "17",
+      "30",
+      "19"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.33"
+  },
+  {
+    "question": "A MMU é um componente de hardware que traduz os endereços virtuais em físicos e verifica as permissões em cada acesso à memória.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.11-12"
+  },
+  {
+    "question": "Num sistema com memória virtual, os apontadores usados por um programa em C em modo utilizador contêm endereços físicos de RAM.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.10-11"
+  },
+  {
+    "question": "A tabela de páginas de um processo é uma estrutura de dados do kernel residente em memória principal.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.14"
+  },
+  {
+    "question": "Dois processos nunca podem usar o mesmo endereço virtual ao mesmo tempo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.24"
+  },
+  {
+    "question": "Uma page fault é uma exceção síncrona, que ocorre na instrução que originou o acesso inválido ou em falta.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.18"
+  },
+  {
+    "question": "Um TLB miss implica sempre uma page fault.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.21-22"
+  },
+  {
+    "question": "A TLB é uma cache de PTEs que evita consultar a tabela de páginas em memória quando há um TLB hit.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.22"
+  },
+  {
+    "question": "Quanto melhor a localidade temporal de um programa, maior tende a ser o seu working set.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.19"
+  },
+  {
+    "question": "Se o working set dos processos em execução for maior do que a RAM, o sistema pode entrar em thrashing.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.20"
+  },
+  {
+    "question": "Na tradução de endereços, o número de página virtual é copiado sem alteração para o endereço físico.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.33"
+  },
+  {
+    "question": "Duas tabelas de páginas de processos diferentes podem ter PTEs que apontam para o mesmo frame físico.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.28"
+  },
+  {
+    "question": "Numa troca de contexto entre processos, a atualização do registo base da tabela de páginas (CR3 em x86) muda a vista da memória sem copiar dados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.32"
+  },
+  {
+    "question": "O número de bits do offset de um endereço virtual é o logaritmo de base 2 do número de páginas do espaço de endereçamento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.13,33"
+  },
+  {
+    "question": "Com páginas de 4 KB, os 12 bits menos significativos de um endereço virtual coincidem com os do endereço físico.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.13,33"
+  },
+  {
+    "question": "A verificação da permissão de escrita numa página é feita pelo compilador, antes de o programa ser executado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.35"
+  },
+  {
+    "question": "Em caso de erro, mmap devolve MAP_FAILED e não NULL.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.30"
+  },
+  {
+    "question": "As páginas de memória virtual têm tamanho variável, ajustado pelo kernel ao tamanho de cada alocação feita com malloc().",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.13"
+  },
+  {
+    "question": "Dois processos que mapeiam o mesmo objeto partilhado podem ver essa memória em endereços virtuais diferentes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.31"
+  },
+  {
+    "question": "Num sistema de 32 bits, o espaço de endereçamento virtual de um processo nunca pode exceder a quantidade de RAM instalada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T4 p.7"
+  }
+]

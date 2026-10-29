@@ -1,0 +1,1051 @@
+[
+  {
+    "question": "Num sistema com cooperative multitasking, um processo entra num ciclo infinito sem fazer qualquer system call. Qual é a consequência mais provável?",
+    "answers": [
+      "Os outros processos deixam de receber CPU, pois o kernel não recupera o controlo",
+      "O timer de hardware dispara no fim do quantum e o escalonador retira o CPU ao processo em ciclo",
+      "O kernel deteta o ciclo através do bit de modo e termina o processo de forma imediata",
+      "O CPU passa automaticamente a kernel mode ao fim de algumas instruções e escalona outro processo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.28"
+  },
+  {
+    "question": "Porque é que a configuração do timer de hardware tem de exigir kernel mode?",
+    "answers": [
+      "Porque em user mode os processos não conseguem receber qualquer tipo de interrupt de hardware",
+      "Para que um processo não possa impedir o kernel de recuperar o CPU",
+      "Porque o timer só existe no espaço de endereçamento do kernel e não pode ser mapeado por mais ninguém",
+      "Porque o timer pertence ao primeiro processo do sistema, o único autorizado a gerir o tempo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.31"
+  },
+  {
+    "question": "Qual das afirmações distingue corretamente o scheduler do dispatcher?",
+    "answers": [
+      "O dispatcher escolhe o processo da ready queue e o scheduler executa depois a troca de contexto",
+      "O scheduler é um mecanismo de hardware e o dispatcher é uma política implementada em software",
+      "O scheduler escolhe o próximo processo; o dispatcher dá-lhe o CPU",
+      "O scheduler só atua sobre processos em user mode e o dispatcher só sobre processos em kernel mode"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.30"
+  },
+  {
+    "question": "Qual é a natureza de um trap?",
+    "answers": [
+      "Um interrupt assíncrono gerado por um dispositivo externo, em instantes arbitrários",
+      "Um erro de hardware que obriga o processador a reiniciar-se e a repor todos os processos",
+      "Uma notificação enviada pelo kernel a um processo para que este termine a sua execução",
+      "Uma exceção síncrona, gerada intencionalmente pela instrução em execução"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.16"
+  },
+  {
+    "question": "Um processo executa read(fd, buf, 100) num disco magnético que demora cerca de 8 ms a responder. O que faz tipicamente o kernel durante esse tempo?",
+    "answers": [
+      "Mantém o processo a executar em busy waiting até o disco concluir a transferência, para não perder o CPU",
+      "Prepara a transferência, suspende o processo e passa o CPU a outro processo pronto",
+      "Devolve de imediato -1 com errno igual a EAGAIN, obrigando o processo a repetir a chamada mais tarde",
+      "Termina o processo e cria um novo que repete o pedido quando o disco estiver disponível para leitura"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.32"
+  },
+  {
+    "question": "Um processo em user mode tenta executar uma instrução privilegiada, por exemplo alterar entradas da TLB. O que acontece?",
+    "answers": [
+      "A instrução é executada normalmente, mas o seu efeito só se torna visível quando o processo termina",
+      "O CPU passa a kernel mode e executa a instrução em nome do processo, sem que o kernel seja avisado",
+      "O CPU gera uma exceção e o kernel trata-a, tipicamente terminando o processo",
+      "A instrução é ignorada pelo CPU sem qualquer notificação ao kernel e o processo prossegue"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.10"
+  },
+  {
+    "question": "Qual das seguintes operações não pode ser realizada inteiramente em user mode?",
+    "answers": [
+      "Somar dois inteiros guardados em registos do processador",
+      "Ler uma variável local guardada na stack do próprio processo",
+      "Chamar uma função do próprio programa que apenas faz cálculos",
+      "Criar um novo processo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.15"
+  },
+  {
+    "question": "Num processador x86 com quatro níveis de privilégio, que níveis usam tipicamente os sistemas operativos modernos?",
+    "answers": [
+      "O nível 0 para o kernel e o nível 3 para as aplicações",
+      "O nível 3 para o kernel e o nível 0 para as aplicações de utilizador",
+      "Os quatro níveis: kernel no 0, drivers no 1, serviços no 2 e aplicações no 3",
+      "O nível 1 para o kernel e o nível 2 para as aplicações de utilizador"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.13"
+  },
+  {
+    "question": "Porque é que a função open() da glibc é considerada um wrapper?",
+    "answers": [
+      "Porque contém a implementação completa da abertura de ficheiros e nunca entra em kernel mode",
+      "Porque abre o ficheiro em user mode e só avisa o kernel quando o ficheiro é fechado",
+      "Porque prepara os argumentos, executa o trap para o kernel e trata o erro",
+      "Porque converte a chamada numa mensagem enviada ao primeiro processo do sistema, que a executa"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.18"
+  },
+  {
+    "question": "Que relação existe entre fopen() e open() em Linux?",
+    "answers": [
+      "fopen() é uma system call independente que não utiliza descritores de ficheiro",
+      "open() é implementada na biblioteca standard de C com recurso a fopen() e a fdopen()",
+      "fopen() executa diretamente a instrução de trap, sem passar pela função open()",
+      "fopen() chama open() e associa ao descritor obtido uma estrutura FILE"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.21"
+  },
+  {
+    "question": "Uma system call falha e devolve -1. Onde fica indicada a causa do erro?",
+    "answers": [
+      "Na variável errno, que é local a cada thread nos sistemas modernos",
+      "Na variável errno, que é partilhada por todas as threads do mesmo processo",
+      "No próprio valor devolvido, que é um código de erro negativo diferente para cada causa",
+      "Na stack do kernel, de onde só pode ser lida através da função perror()"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.24"
+  },
+  {
+    "question": "Qual é o mecanismo que permite ao comando strace registar as system calls de um processo?",
+    "answers": [
+      "A leitura de um ficheiro de registo mantido pela glibc para cada processo",
+      "A system call ptrace, com suporte do kernel",
+      "A substituição das funções da biblioteca por versões instrumentadas em user space",
+      "A interceção dos interrupts de hardware gerados pelo processo observado"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.23"
+  },
+  {
+    "question": "Porque é que um executável compilado para Linux em x86-64 normalmente não corre em Windows no mesmo computador?",
+    "answers": [
+      "Porque o Windows não suporta processadores x86-64 nem as instruções que o programa utiliza",
+      "Porque as instruções de máquina do Linux são diferentes das instruções de máquina do Windows",
+      "Porque o formato ELF só pode ser interpretado em kernel mode e o Windows não o permite",
+      "Porque cada OS define a sua ABI: formato binário, system calls e convenções"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.25"
+  },
+  {
+    "question": "Dois processos diferentes imprimem o endereço de uma variável global e obtêm o mesmo valor. Isto é possível?",
+    "answers": [
+      "Sim, cada processo tem o seu espaço virtual, mapeado para memória física distinta",
+      "Não, o kernel garante que cada endereço virtual é único em todo o sistema",
+      "Sim, mas apenas se o kernel tiver colocado ambas as variáveis na mesma página física",
+      "Não, a menos que os dois processos tenham sido criados com fork() um do outro"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.36"
+  },
+  {
+    "question": "Qual é o papel da TLB num sistema com memória virtual?",
+    "answers": [
+      "Guardar em disco as páginas dos processos que estão inativos há mais tempo",
+      "Acelerar a tradução de endereços, guardando traduções usadas recentemente",
+      "Verificar se o processo em execução se encontra em kernel mode ou em user mode",
+      "Armazenar as instruções do kernel mais recentemente executadas pelo CPU"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.37"
+  },
+  {
+    "question": "Que componente de hardware faz a tradução de endereços virtuais em físicos e impõe as permissões de acesso à memória?",
+    "answers": [
+      "O controlador de DMA, que gere os acessos à memória feitos pelos dispositivos de I/O",
+      "O timer de hardware, que verifica periodicamente os acessos dos processos à memória",
+      "A MMU (Memory Management Unit)",
+      "A cache de instruções, que valida cada instrução antes de esta ser executada"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.37"
+  },
+  {
+    "question": "Um processo em user mode acede a um endereço pertencente ao kernel. O que sucede?",
+    "answers": [
+      "O CPU gera uma exceção e o kernel trata a falta, em regra terminando o processo",
+      "O acesso é permitido, mas apenas em modo de leitura, para o processo não alterar o kernel",
+      "A MMU traduz o endereço para uma página do próprio processo e o acesso prossegue",
+      "O hardware reinicia a máquina de imediato para repor o estado do kernel"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.37"
+  },
+  {
+    "question": "Qual dos exemplos ilustra que o hardware fornece mecanismos e o OS implementa políticas?",
+    "answers": [
+      "O OS gera os interrupts do timer e é o hardware que decide qual o processo seguinte",
+      "O timer gera interrupts e o OS decide, no handler, que processo corre a seguir",
+      "O hardware escolhe a ordem de escalonamento e o OS limita-se a trocar os registos",
+      "O hardware decide as permissões de cada processo e o OS apenas as aplica por defeito"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.9"
+  },
+  {
+    "question": "Qual das opções descreve corretamente o preemptive multitasking?",
+    "answers": [
+      "O processo só perde o CPU quando chama yield ou quando termina a sua execução",
+      "Cada processo mantém o CPU em exclusivo até concluir todas as operações de I/O",
+      "O OS pode retirar o CPU a um processo sem que este o ceda voluntariamente",
+      "O OS só muda de processo quando o processo atual faz uma system call bloqueante"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.31"
+  },
+  {
+    "question": "Quando o OS decide entre pedidos concorrentes do mesmo recurso, para garantir uma utilização eficiente e justa, que papel desempenha?",
+    "answers": [
+      "O de intérprete de comandos, que traduz os pedidos do utilizador em instruções",
+      "O de compilador, que otimiza os pedidos antes de os entregar ao hardware",
+      "O de controlador de dispositivo, que fica integrado no hardware de cada recurso",
+      "O de gestor de recursos"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.3"
+  },
+  {
+    "question": "Qual destes serviços do OS se destina sobretudo ao funcionamento eficiente do próprio sistema, e não a ser diretamente útil ao utilizador?",
+    "answers": [
+      "A interface com o utilizador, que permite interagir com o sistema",
+      "A alocação de recursos",
+      "A execução de programas, que carrega e inicia as aplicações",
+      "As operações de I/O, que dão acesso aos dispositivos de entrada e saída"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.6"
+  },
+  {
+    "question": "Que abstração do OS dá a cada programa a ilusão de dispor de um espaço de endereçamento só seu?",
+    "answers": [
+      "O ficheiro, que representa de forma uniforme todos os dados do sistema",
+      "O semáforo, que controla o acesso de cada programa aos recursos",
+      "A memória virtual",
+      "O sinal, que informa cada programa dos acontecimentos relevantes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.3"
+  },
+  {
+    "question": "O que distingue o kernel space do user space?",
+    "answers": [
+      "No user space o programa pode aceder diretamente aos dispositivos de I/O, ao contrário do kernel space",
+      "O kernel space é a área de memória onde cada aplicação guarda o seu heap e a sua stack",
+      "O kernel space existe apenas em processadores com quatro níveis de privilégio, como o x86",
+      "No kernel space há acesso total ao hardware; no user space as operações são restritas"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.12"
+  },
+  {
+    "question": "int fd=open(\"a.txt\", O_WRONLY|O_CREAT|O_TRUNC, 0644); write(fd, \"Hi\", 2); close(fd); Se a.txt já existia com 100 bytes e as chamadas têm sucesso, qual é o seu tamanho final em bytes?",
+    "answers": [
+      "2",
+      "100",
+      "102",
+      "0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.20"
+  },
+  {
+    "question": "Como identifica o kernel qual a system call a executar quando ocorre o trap?",
+    "answers": [
+      "Pelo nome da função, comparado em texto com uma lista mantida pelo kernel",
+      "Pelo PID do processo que fez a chamada, associado a uma tabela de handlers",
+      "Pelo número da system call, usado como índice numa tabela de handlers",
+      "Pelo endereço da função wrapper, que o hardware compara com os da glibc"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.17"
+  },
+  {
+    "question": "Porque é que o kernel verifica os argumentos recebidos em cada system call?",
+    "answers": [
+      "Porque os argumentos passados em registos podem perder-se durante o trap",
+      "Porque o compilador não valida os tipos dos argumentos das system calls",
+      "Porque só assim a variável errno pode ser atualizada no regresso ao user mode",
+      "Para que um processo com erros ou malicioso não prejudique o kernel nem os outros"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.17"
+  },
+  {
+    "question": "Num sistema sem proteção de memória, qual seria uma consequência de um bug num programa?",
+    "answers": [
+      "Poderia corromper outros processos ou o kernel e causar uma falha geral do sistema",
+      "Seria sempre detetado em compilação, pelo que não chegaria a afetar o sistema",
+      "Só afetaria o próprio programa, pois cada processo teria a sua memória física",
+      "Obrigaria o OS a passar para cooperative multitasking até o bug ser corrigido"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.34"
+  },
+  {
+    "question": "int x=0; if (fork()==0) { x++; exit(0); } wait(NULL); printf(\"%d\", x); Qual é o valor impresso, supondo que o fork() tem sucesso?",
+    "answers": [
+      "1",
+      "0",
+      "2",
+      "Indeterminado, pois depende do escalonamento dos dois processos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.36"
+  },
+  {
+    "question": "if (open(\"nao_existe\", O_RDONLY) == -1) printf(\"%d\", errno == ENOENT); Qual é o valor impresso, se o ficheiro nao_existe realmente não existir?",
+    "answers": [
+      "0",
+      "-1",
+      "2",
+      "1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.24"
+  },
+  {
+    "question": "Quando o timer de hardware dispara, qual é a sequência típica de ações?",
+    "answers": [
+      "Handler do interrupt, escolha do processo (scheduling), troca de contexto e timer reiniciado",
+      "O processo atual escolhe o seguinte, faz a troca de contexto e só depois o kernel é avisado",
+      "O kernel termina o processo atual, escolhe outro e reinicia o timer após o seu fim",
+      "O dispatcher escolhe o processo seguinte e o scheduler realiza a troca de contexto"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.29"
+  },
+  {
+    "question": "Em Linux, o parâmetro HZ do kernel define a frequência dos interrupts do timer de hardware.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.29"
+  },
+  {
+    "question": "A API define o contrato entre uma aplicação e o OS ao nível do código-fonte, enquanto a ABI define o contrato equivalente ao nível binário.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.25"
+  },
+  {
+    "question": "O requisito mínimo para distinguir a execução de código do OS da de código do utilizador é o CPU suportar um kernel mode e um user mode.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.11"
+  },
+  {
+    "question": "Implementar memória virtual e proteção de memória apenas em software introduziria um custo de desempenho proibitivo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.37"
+  },
+  {
+    "question": "Os interrupts de hardware são assíncronos, pois podem surgir em instantes arbitrários e geralmente nada têm a ver com a instrução em execução.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.27"
+  },
+  {
+    "question": "As system calls open, read, write e close podem ser usadas também para aceder a ficheiros de dispositivos, e não só a ficheiros normais.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.20"
+  },
+  {
+    "question": "Em preemptive multitasking, é o OS, e não o processo, que decide quando ocorre uma troca de contexto.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.31"
+  },
+  {
+    "question": "Em Linux, errno é uma variável global única, partilhada por todas as threads do mesmo processo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.24"
+  },
+  {
+    "question": "Um processo executado pelo utilizador root pode, ainda assim, executar em user mode instruções privilegiadas, como as que manipulam registos de dispositivos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.10"
+  },
+  {
+    "question": "O dispatcher implementa a política de escalonamento, ao decidir qual o próximo processo a executar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.30"
+  },
+  {
+    "question": "Em cooperative multitasking, o kernel retira o CPU a cada processo sempre que o timer de hardware dispara.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.28"
+  },
+  {
+    "question": "Com memória virtual, as race conditions entre dois processos sobre as suas variáveis são possíveis por defeito, mesmo sem memória partilhada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.36"
+  },
+  {
+    "question": "Quando um read() fica à espera do disco, o processo mantém o CPU em busy waiting até a operação terminar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.32"
+  },
+  {
+    "question": "Um interrupt de hardware é gerado pela própria instrução em execução no CPU e, por isso, é um interrupt síncrono.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.27"
+  },
+  {
+    "question": "Um trap, ao contrário de um interrupt de hardware, não obriga o CPU a passar para kernel mode.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2 p.16"
+  },
+  {
+    "question": "Um SO permite escolher entre favorecer tarefas interativas ou o débito global, sem alterar o código que efetua a mudança de contexto. Que princípio de desenho está a ser aplicado?",
+    "answers": [
+      "Separação entre política e mecanismo",
+      "Fusão de política e mecanismo num único módulo do kernel por razões de desempenho",
+      "Execução de todos os serviços do SO em modo utilizador, fora do kernel",
+      "Atribuição de um espaço de endereçamento distinto a cada serviço do SO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.10"
+  },
+  {
+    "question": "Qual dos seguintes exemplos corresponde a um mecanismo, e não a uma política, no desenho de um SO?",
+    "answers": [
+      "Decidir se se favorece a equidade ou o débito do sistema",
+      "Escolher otimizar a latência em detrimento da duração da bateria",
+      "Comutar o CPU de um processo para outro",
+      "Definir que as tarefas interativas têm prioridade sobre as restantes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.11"
+  },
+  {
+    "question": "Qual é a combinação de requisitos, frequentemente em conflito, que caracteriza os SO de dispositivos móveis e tablets?",
+    "answers": [
+      "Máxima utilização do hardware e ausência de interface gráfica para o utilizador",
+      "Boa capacidade de resposta ao utilizador e duração da bateria maximizada",
+      "Execução de um conjunto fixo de tarefas e impossibilidade de instalar programas novos",
+      "Cumprimento de prazos rígidos e ausência de gestão de energia do hardware"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.6"
+  },
+  {
+    "question": "Qual das seguintes é uma característica típica de um SO embebido, como o de um router Wi-Fi ou de uma impressora?",
+    "answers": [
+      "Permite ao utilizador instalar e executar programas arbitrários sem restrições",
+      "Dispensa qualquer gestão de memória e qualquer suporte de threads",
+      "Prioriza a maximização do uso do hardware através do escalonamento de muitos processos",
+      "Suporta um conjunto específico e fixo de tarefas"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.8"
+  },
+  {
+    "question": "Um SO de uso geral reproduz vídeo e, de vez em quando, falha um prazo, o que faz o som ficar entrecortado sem que o sistema falhe. Que tipo de suporte de tempo real é este?",
+    "answers": [
+      "Tempo real hard, em que falhar um prazo é considerado um erro fatal",
+      "Tempo real soft, em que falhar um prazo ocasionalmente não é falha do sistema",
+      "Tempo real hard, desde que o som entrecortado seja corrigido pelo utilizador",
+      "Não é tempo real, porque nenhum SO de uso geral falha prazos, mesmo com muitos processos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.9"
+  },
+  {
+    "question": "Porque é que, em MS-DOS, uma aplicação podia manipular diretamente o hardware e o próprio SO?",
+    "answers": [
+      "O MS-DOS era um microkernel que delegava o acesso ao hardware em processos privilegiados",
+      "O MS-DOS usava memória virtual, mas sem qualquer proteção entre os processos",
+      "O MS-DOS corria cada aplicação numa máquina virtual com acesso total ao hardware",
+      "O processador 8086/8088 não tinha modo protegido, pelo que qualquer código podia aceder a tudo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.15"
+  },
+  {
+    "question": "Qual é um problema típico de um SO com estrutura simples, sem divisão clara em módulos?",
+    "answers": [
+      "Qualquer parte do SO pode aceder a qualquer outra, pelo que os bugs se propagam e estender o SO é difícil",
+      "O desempenho é sempre baixo, devido às trocas de mensagens obrigatórias entre os módulos do SO",
+      "Os serviços correm sempre em modo utilizador, o que os torna lentos e instáveis",
+      "O SO só funciona em computadores com vários processadores e com memória virtual"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.14"
+  },
+  {
+    "question": "Num kernel monolítico, um driver de rede com um bug escreve em memória que não lhe pertence. Qual é a consequência mais provável?",
+    "answers": [
+      "Apenas o driver é terminado e reiniciado, mantendo-se o restante kernel intacto",
+      "O MMU impede sempre a escrita, porque o driver tem o seu espaço de endereçamento isolado e protegido",
+      "Pode corromper o kernel e provocar uma falha de todo o sistema, pois o driver corre em modo kernel",
+      "Apenas o processo que usava a rede é terminado, e o kernel não é afetado de modo algum"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.17"
+  },
+  {
+    "question": "Porque é que um kernel monolítico tende a ser mais rápido do que um microkernel?",
+    "answers": [
+      "Os serviços correm em modo utilizador, evitando as mudanças para modo kernel",
+      "As operações acedem diretamente ao estado e às funções de que precisam, sem trocas de mensagens",
+      "Cada serviço tem o seu espaço de endereçamento próprio, o que dispensa qualquer tipo de sincronização",
+      "O kernel é muito pequeno e contém apenas os serviços estritamente essenciais"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.18"
+  },
+  {
+    "question": "Que problemas de extensibilidade apresenta um kernel monolítico sem módulos?",
+    "answers": [
+      "Não consegue executar aplicações de utilizador que usem dispositivos ou sistemas de ficheiros",
+      "Exige que cada novo driver seja executado como um processo de utilizador à parte",
+      "Não consegue aceder ao hardware sem passar por um serviço intermédio em modo utilizador",
+      "Cresce muito por incluir suporte compilado para tudo, e atualizar um serviço obriga a reconstruir o kernel"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.17"
+  },
+  {
+    "question": "Depois de carregado, em que modo de execução corre o código de um módulo de kernel do Linux?",
+    "answers": [
+      "Em modo kernel, no espaço do próprio kernel",
+      "Em modo utilizador, num processo próprio que comunica com o kernel por IPC",
+      "Em modo utilizador, dentro do espaço de endereçamento do processo que o carregou",
+      "Numa máquina virtual isolada, gerida pelo kernel para limitar os danos de um bug"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.22"
+  },
+  {
+    "question": "Qual dos seguintes componentes é, tipicamente, candidato a módulo carregável de um kernel modular, em vez de fazer parte do kernel sempre residente?",
+    "answers": [
+      "O escalonamento do CPU",
+      "A gestão da memória virtual do sistema, incluindo a paginação",
+      "O driver de um dispositivo opcional",
+      "Os mecanismos de comunicação entre processos"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.21"
+  },
+  {
+    "question": "Qual é uma vantagem dos módulos carregáveis face a um kernel monolítico clássico?",
+    "answers": [
+      "Isolam completamente o código de cada módulo, impedindo que um bug o propague ao restante kernel",
+      "Permitem estender o kernel em execução sem perder muito desempenho, carregando só os módulos necessários",
+      "Passam a executar os drivers em modo utilizador, o que elimina a necessidade de recompilar o kernel",
+      "Evitam que o kernel tenha de definir interfaces para as partes que requerem extensibilidade"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.23"
+  },
+  {
+    "question": "Um módulo de kernel carregado em Linux contém um bug que escreve numa zona de memória do kernel que não lhe pertence. O que pode acontecer?",
+    "answers": [
+      "Só o módulo é terminado, porque o kernel o isola do resto do código",
+      "O módulo é descarregado automaticamente e o SO continua com a sua fiabilidade intacta",
+      "O processo de utilizador que pediu o carregamento do módulo é o único afetado",
+      "O SO pode falhar, pois o módulo corre em modo kernel"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.23"
+  },
+  {
+    "question": "Qual dos seguintes componentes tem de permanecer dentro de um microkernel?",
+    "answers": [
+      "Os mecanismos de comunicação entre processos (IPC)",
+      "O driver do disco rígido",
+      "A implementação do sistema de ficheiros",
+      "O serviço que trata da paginação em disco (pager)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.24"
+  },
+  {
+    "question": "Num microkernel, onde deve ser implementado, em princípio, um componente que define uma política do sistema?",
+    "answers": [
+      "Dentro do kernel, para ser executado em modo privilegiado",
+      "Num processo em modo utilizador",
+      "No código do tratamento de interrupts, para ser executado mais depressa",
+      "Em hardware dedicado, para que não possa ser alterado"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.25"
+  },
+  {
+    "question": "Num sistema com microkernel, como é que um editor de texto consegue que um ficheiro seja criado em disco?",
+    "answers": [
+      "Chama diretamente uma função do sistema de ficheiros que está dentro do kernel, sem passar por mensagens",
+      "Escreve diretamente nos registos do controlador do disco, pois o editor corre em modo kernel",
+      "Envia uma mensagem IPC ao serviço de ficheiros, que fala com o driver por IPC e responde",
+      "Acede à memória do serviço de ficheiros, partilhando o seu espaço de endereçamento"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.27"
+  },
+  {
+    "question": "Num sistema com microkernel, o driver do disco termina com uma falha. Qual é a consequência mais provável?",
+    "answers": [
+      "O kernel é corrompido e todo o sistema tem de ser reiniciado",
+      "Todos os processos que usam sistemas de ficheiros são terminados, mas o kernel e o restante sistema não são afetados",
+      "O SO passa a usar o driver de disco da versão anterior, guardada em memória",
+      "O resto do sistema mantém-se estável e o driver pode ser reiniciado"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.29"
+  },
+  {
+    "question": "Porque é que um microkernel tem, em geral, pior desempenho do que um kernel monolítico?",
+    "answers": [
+      "Interações entre serviços passam pelo kernel por IPC, com mudanças de contexto",
+      "O microkernel executa todos os serviços em modo kernel, o que atrasa a execução dos processos de utilizador",
+      "O microkernel tem demasiadas linhas de código, tornando lenta a sua execução",
+      "O microkernel não permite que os processos utilizem mais do que um processador"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.31"
+  },
+  {
+    "question": "Porque é que um microkernel facilita o suporte a sistemas multiprocessador?",
+    "answers": [
+      "Cada serviço é obrigado a ser reescrito para executar em paralelo em vários processadores em simultâneo",
+      "Basta estender o mecanismo de IPC para que suporte mensagens entre processadores",
+      "O microkernel dispensa o escalonamento, pois cada processador executa um serviço",
+      "Os drivers passam a ser executados em modo kernel em todos os processadores"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.30"
+  },
+  {
+    "question": "Num microkernel, como é possível obter comunicação entre processos que estão em computadores diferentes ligados em rede?",
+    "answers": [
+      "O microkernel inclui obrigatoriamente todo o network stack, tal como num kernel monolítico",
+      "Não é possível, porque o IPC de um microkernel só funciona entre processos do mesmo computador",
+      "Um serviço em modo utilizador implementa o IPC de nível superior sobre o IPC local do kernel",
+      "O kernel copia a memória de um computador para o outro, sem usar mensagens"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.30"
+  },
+  {
+    "question": "Que constatação de Liedtke, ao estudar os microkernels, revitalizou o interesse por esta arquitetura?",
+    "answers": [
+      "O IPC era desnecessário, e retirá-lo dos microkernels melhorava o desempenho numa ordem de grandeza",
+      "Mover os drivers para o kernel tornava os microkernels mais fiáveis do que os monolíticos",
+      "O novo mecanismo de IPC melhorava a fiabilidade, mas piorava o desempenho dos microkernels",
+      "O IPC fazia trabalho desnecessário, e um novo mecanismo (L3 e L4) melhorou o desempenho numa ordem de grandeza"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.28"
+  },
+  {
+    "question": "Em que difere um kernel híbrido de um microkernel puro?",
+    "answers": [
+      "Passa a executar todos os serviços em modo utilizador, ganhando fiabilidade e perdendo desempenho",
+      "Move para o kernel alguns serviços críticos para o desempenho, perdendo fiabilidade",
+      "Elimina o IPC, pois todos os serviços passam a ser módulos carregáveis em modo utilizador",
+      "Abdica de qualquer modularidade para obter o desempenho de um kernel monolítico, como no UNIX"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.33"
+  },
+  {
+    "question": "Porque é que o Windows NT, inicialmente influenciado pelo projeto Mach, acabou por mover muitos serviços para o kernel?",
+    "answers": [
+      "A fiabilidade era excessiva, o que impedia a instalação de drivers de terceiros",
+      "O hardware passou a não suportar processos em modo utilizador",
+      "O desempenho inicial não era satisfatório",
+      "O Mach foi provado formalmente incorreto e foi retirado do sistema"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.35"
+  },
+  {
+    "question": "Qual é a estrutura de SO com desempenho mais baixo, mas fiabilidade e modularidade elevadas, de acordo com uma comparação típica?",
+    "answers": [
+      "Microkernel",
+      "Estrutura simples, como o MS-DOS",
+      "Kernel monolítico, como o UNIX clássico",
+      "Kernel modular, como o Linux"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.36"
+  },
+  {
+    "question": "Uma empresa desenvolve um SO em que a fiabilidade e o isolamento das falhas dos drivers são mais importantes do que o desempenho máximo. Que estrutura é a mais adequada?",
+    "answers": [
+      "Estrutura simples, sem divisão em módulos",
+      "Kernel monolítico, com todos os drivers compilados no kernel",
+      "Kernel modular, com os drivers carregados como módulos em modo kernel",
+      "Microkernel"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.29"
+  },
+  {
+    "question": "Porque é que \"monolítico\" e \"modular\" não são conceitos opostos num kernel?",
+    "answers": [
+      "\"Monolítico\" indica que todo o código está em modo utilizador, e \"modular\" que está em modo kernel",
+      "\"Modular\" indica que os módulos correm em modo utilizador, o que um kernel monolítico não permite fazer",
+      "\"Monolítico\" refere a quantidade de código em modo kernel, e quase todos são também modulares",
+      "\"Monolítico\" indica que não existem interfaces internas, e \"modular\" que cada módulo é um processo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.19"
+  },
+  {
+    "question": "Um mecanismo define como algo é feito, enquanto uma política define o que deve ser feito, escolhendo entre várias possibilidades válidas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.10"
+  },
+  {
+    "question": "As políticas tendem a ser estáveis e fortemente ligadas ao hardware, ao contrário dos mecanismos, que são decisões de alto nível, configuráveis.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.12"
+  },
+  {
+    "question": "Em MS-DOS, uma aplicação podia aceder diretamente ao hardware, porque o processador 8086/8088 não possuía modo protegido de execução.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.15"
+  },
+  {
+    "question": "Num kernel monolítico, um bug num serviço pode comprometer todo o sistema, porque todos os serviços correm em modo kernel.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.17"
+  },
+  {
+    "question": "Num microkernel, os drivers de dispositivos e os sistemas de ficheiros são, tipicamente, implementados como processos em modo utilizador.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.25"
+  },
+  {
+    "question": "Os módulos carregáveis de um kernel modular executam em modo utilizador, e por isso um módulo com bugs não consegue provocar a falha do SO.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.23"
+  },
+  {
+    "question": "O Linux é um kernel monolítico que executa num único espaço de endereçamento em modo kernel, mas suporta módulos carregáveis.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.20"
+  },
+  {
+    "question": "Num microkernel, a falha de um serviço de sistema que corre em modo utilizador obriga sempre a reiniciar todo o sistema.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.29"
+  },
+  {
+    "question": "Num microkernel, um editor de texto pede ao serviço de ficheiros a criação de um ficheiro por chamada direta de função, sem usar IPC.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.26"
+  },
+  {
+    "question": "Ao mover serviços para o kernel, os kernels híbridos ganham desempenho, mas perdem parte dos benefícios de fiabilidade dos microkernels.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.33"
+  },
+  {
+    "question": "Não existe uma estrutura de SO que seja a melhor em todos os contextos, pois cada uma representa um compromisso diferente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.38"
+  },
+  {
+    "question": "Um SO de tempo real hard considera aceitável falhar um prazo de vez em quando, como acontece na reprodução multimédia.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.9"
+  },
+  {
+    "question": "Nos SO de computadores pessoais, maximizar a utilização do hardware é mais importante do que responder rapidamente ao utilizador.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T2b p.6"
+  }
+]

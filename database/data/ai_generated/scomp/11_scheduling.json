@@ -1,0 +1,1356 @@
+[
+  {
+    "question": "Qual das métricas de escalonamento corresponde ao tempo total que um processo passa na ready queue, pronto a executar mas sem estar a usar o CPU?",
+    "answers": [
+      "Turnaround time, porque inclui todo o tempo desde a submissão",
+      "Waiting time",
+      "Response time, porque mede o atraso até à primeira resposta",
+      "Throughput, porque conta os processos que ficam por executar"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.18"
+  },
+  {
+    "question": "Um utilizador submete um comando a um processo e o escalonador só lhe atribui o CPU 40 ms depois, altura em que o processo produz a primeira saída. Que métrica vale 40 ms?",
+    "answers": [
+      "Throughput do sistema",
+      "Turnaround time, mesmo que o processo termine muito mais tarde",
+      "Utilização de CPU durante esse intervalo, que seria nula",
+      "Response time"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.18"
+  },
+  {
+    "question": "Um sistema concluiu 12 processos num intervalo de observação de 48 segundos. Qual é o throughput nesse intervalo?",
+    "answers": [
+      "0,25 processos por segundo",
+      "4 processos por segundo, que resulta de dividir 48 por 12",
+      "12 processos por segundo, pois o número de processos concluídos é o próprio throughput",
+      "36 processos por segundo, a diferença entre o tempo e o número de processos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.17"
+  },
+  {
+    "question": "Durante 60 s de observação, o CPU esteve a executar código de processos durante 54 s e ficou inativo (idle) nos restantes 6 s. Qual foi a utilização de CPU?",
+    "answers": [
+      "10%, que é a fração de tempo em que o CPU esteve inativo",
+      "54%, o número de segundos ocupados lido como percentagem",
+      "90%",
+      "99%, pois o tempo idle é sempre desprezável face ao tempo total"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.17"
+  },
+  {
+    "question": "Qual destas características é típica de um processo I/O-bound?",
+    "answers": [
+      "Rajadas de CPU longas, executando até ser retirado do CPU ou terminar, com raros pedidos de I/O",
+      "Rajadas curtas de CPU alternadas com pedidos de I/O que o bloqueiam",
+      "Ausência total de system calls durante toda a sua execução",
+      "Bloqueio apenas no fim da execução, quando escreve o resultado final"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.5"
+  },
+  {
+    "question": "Chegam ao mesmo tempo (t=0) quatro processos P1, P2, P3 e P4 com tempos de execução 6, 8, 7 e 3, por esta ordem na ready queue. Em FCFS, qual é o tempo médio de espera?",
+    "answers": [
+      "16,25, valor que corresponde ao turnaround médio e não ao tempo de espera",
+      "7,00, valor obtido se o processo mais curto fosse executado primeiro",
+      "6,00, a média aritmética dos tempos de execução dos quatro processos",
+      "10,25"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.28"
+  },
+  {
+    "question": "Quatro processos chegam em t=0 com tempos de execução 6, 8, 7 e 3. Se o escalonador executar sempre primeiro o mais curto (SJF não preemptivo), qual é o tempo médio de turnaround?",
+    "answers": [
+      "13",
+      "16,25, o valor que se obtém executando-os pela ordem de chegada",
+      "10,25, o tempo médio de espera em FCFS",
+      "6, a média dos tempos de execução dos quatro processos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.28"
+  },
+  {
+    "question": "Em FCFS, P1 chega em t=0 e precisa de 5 unidades de CPU, P2 chega em t=1 e precisa de 3, P3 chega em t=2 e precisa de 8 e P4 chega em t=3 e precisa de 2. Qual é o tempo médio de espera?",
+    "answers": [
+      "10,25, que é o tempo médio de turnaround",
+      "4,00, o valor que se obtém com SJF não preemptivo",
+      "5,75",
+      "6,75, que ignora os instantes de chegada dos processos"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.28"
+  },
+  {
+    "question": "Os processos P1 (chega em 0, burst 5), P2 (chega em 1, burst 3), P3 (chega em 2, burst 8) e P4 (chega em 3, burst 2) são servidos por SJF não preemptivo. Qual é o tempo médio de espera?",
+    "answers": [
+      "5,75, que é o valor obtido com FCFS para os mesmos processos",
+      "4,00",
+      "8,50, o tempo médio de turnaround desta política",
+      "3,25, o valor que resulta de P4 interromper P1 em t=3"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.28"
+  },
+  {
+    "question": "Em Round-Robin com quantum 3, os processos P1, P2 e P3 chegam em t=0, por esta ordem, com tempos de execução 7, 4 e 5. Em que instante termina o processo P2?",
+    "answers": [
+      "6, no fim do primeiro quantum de P2",
+      "11, como aconteceria em FCFS",
+      "15, o instante em que termina P3",
+      "13"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.38"
+  },
+  {
+    "question": "Round-Robin com quantum 4, ordem P1, P2, P3, P4, todos a chegar em t=0 com tempos de execução 9, 3, 5 e 4, sem custo de comutação. Qual é o tempo de espera de P1?",
+    "answers": [
+      "12",
+      "0, porque P1 é o primeiro a executar",
+      "15, o tempo de espera de P3",
+      "21, o instante de terminação de P1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.38"
+  },
+  {
+    "question": "Em FCFS, um processo CPU-bound com 20 unidades de execução chega em t=0 e três processos curtos de 2 unidades chegam em t=1, 2 e 3. Qual é o tempo médio de espera dos quatro processos e que efeito ilustra?",
+    "answers": [
+      "5; efeito de comboio",
+      "15; starvation dos processos curtos",
+      "15; efeito de comboio",
+      "5; starvation dos processos curtos"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.33"
+  },
+  {
+    "question": "Em FCFS, P1 chega em t=0 e executa 4 unidades; P2 chega em t=10 e executa 3. Considerando o intervalo entre t=0 e t=13, qual foi a utilização de CPU?",
+    "answers": [
+      "100%, pois nunca houve processos à espera",
+      "7/13, cerca de 54%",
+      "4/13, cerca de 31%, porque só P1 foi executado",
+      "3/13, cerca de 23%, porque só P2 foi executado"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.17"
+  },
+  {
+    "question": "Quatro processos chegam em t=0 com prioridade (menor número = maior prioridade) e execução: P1 (3; 4), P2 (1; 2), P3 (4; 6), P4 (2; 3). Com prioridades não preemptivas, qual é o tempo médio de turnaround?",
+    "answers": [
+      "7,75",
+      "4,00, que é o tempo médio de espera",
+      "9,25, o valor que se obtém executando pela ordem P1, P2, P3, P4",
+      "15,00, o instante em que termina o último processo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.28"
+  },
+  {
+    "question": "Escalonamento por prioridades não preemptivo (menor número = maior prioridade). P1 (chega 0; burst 5; prio 2) está a correr. Chegam P2 (t=1; 3; prio 1), P3 (t=2; 4; prio 3) e P4 (t=3; 2; prio 1). Qual é o terceiro processo a executar?",
+    "answers": [
+      "P3, porque chegou antes de P4",
+      "P2, porque tem prioridade igual à de P4 e chegou antes",
+      "P4",
+      "P1, que só termina depois de todos os outros"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.26"
+  },
+  {
+    "question": "SJF não preemptivo. P1 (chega em 0; burst 7), P2 (2; 4), P3 (4; 1) e P4 (5; 4). Qual é o tempo médio de espera?",
+    "answers": [
+      "4,75, que é o valor obtido com FCFS",
+      "3,00, o valor obtido se P3 interrompesse P1",
+      "8,00, o tempo médio de turnaround desta política",
+      "4,00"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.28"
+  },
+  {
+    "question": "Três processos chegam em t=0 com tempos de execução 10, 5 e 1. Em quantas unidades diminui o tempo médio de espera ao passar de FCFS (ordem 10, 5, 1) para SJF?",
+    "answers": [
+      "2 unidades de tempo, a diferença entre o maior e o menor tempo médio",
+      "6 unidades de tempo",
+      "8 unidades de tempo, a diferença entre os tempos de espera do último processo",
+      "9 unidades de tempo, o tempo de espera do último processo em SJF"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.28"
+  },
+  {
+    "question": "Round-Robin com quantum 5; P1, P2 e P3 chegam em t=0 pela ordem indicada com tempos de execução 12, 5 e 8. Quantas vezes é um processo retirado do CPU por expiração do quantum?",
+    "answers": [
+      "2 vezes",
+      "4 vezes, uma por cada quantum completo consumido",
+      "3 vezes",
+      "5 vezes, uma por cada troca de contexto"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.37"
+  },
+  {
+    "question": "Qual é a função do dispatcher no escalonamento de processos?",
+    "answers": [
+      "Transferir o CPU para o processo escolhido, realizando a mudança de contexto",
+      "Escolher, entre os processos da ready queue, qual deve executar a seguir",
+      "Decidir a duração do quantum de cada processo",
+      "Mover os processos terminados da ready queue para a wait queue"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.7"
+  },
+  {
+    "question": "Num escalonador não preemptivo, qual dos seguintes eventos pode levar à escolha de um novo processo para o CPU?",
+    "answers": [
+      "A expiração do temporizador (timer interrupt) do CPU a meio de um burst longo",
+      "A chegada à ready queue de um processo com burst mais curto",
+      "Um interrupt de um dispositivo que torna ready outro processo",
+      "O processo em execução invoca read() sobre um pipe vazio e bloqueia"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.26"
+  },
+  {
+    "question": "O que carateriza o efeito de comboio (convoy effect)?",
+    "answers": [
+      "Um processo de baixa prioridade nunca chega a executar",
+      "Os processos trocam de CPU com tanta frequência que a comutação domina o tempo",
+      "Processos curtos ficam à espera atrás de um processo longo que ocupa o CPU",
+      "Vários processos esperam um pelo outro e nenhum consegue avançar"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.21"
+  },
+  {
+    "question": "Num escalonador por prioridades, qual é a técnica usada para evitar que processos de baixa prioridade sofram starvation?",
+    "answers": [
+      "Reduzir a prioridade dos processos que usam muito CPU para os penalizar",
+      "Aging, aumentando gradualmente a prioridade de quem espera há muito tempo por CPU",
+      "Aumentar o quantum dos processos de baixa prioridade",
+      "Tornar o escalonador não preemptivo para os processos de prioridade alta"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.22"
+  },
+  {
+    "question": "Num Round-Robin com 6 processos e quantum de 20 ms, qual é o tempo máximo que um processo pode esperar até receber o seu próximo quantum (sem contar novos processos nem bloqueios)?",
+    "answers": [
+      "20 ms, a duração de um único quantum",
+      "120 ms, pois todos os 6 processos executam antes",
+      "140 ms, o dobro de uma volta completa",
+      "100 ms"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.39"
+  },
+  {
+    "question": "O que acontece a um Round-Robin quando o quantum é muito maior do que os tempos de execução de todos os processos?",
+    "answers": [
+      "Comporta-se como FCFS, pois cada processo termina antes de expirar o quantum",
+      "Fica injusto, pois os processos curtos esperam indefinidamente",
+      "A utilização de CPU desce, pois há mais comutações de contexto",
+      "Passa a favorecer os processos I/O-bound, que ficam sempre à frente"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.36"
+  },
+  {
+    "question": "Num Round-Robin com quantum de 4 ms, cada troca de processo demora 1 ms e todos os processos consomem sempre o quantum completo. Que fração do tempo do CPU é gasta em trabalho útil dos processos?",
+    "answers": [
+      "75%, que corresponde a 3 ms úteis em cada 4 ms",
+      "100%, pois a troca de contexto não consome CPU",
+      "80%",
+      "25%, a fração gasta na troca de contexto"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.36"
+  },
+  {
+    "question": "Porque é que, em FCFS, os processos I/O-bound tendem a ter fraca capacidade de resposta quando coexistem com processos CPU-bound?",
+    "answers": [
+      "Perdem o CPU assim que o quantum expira, o que acontece a cada pedido de I/O",
+      "Depois de cada I/O voltam ao fim da ready queue e esperam por todos os processos à frente",
+      "Têm sempre prioridade mais baixa por definição do algoritmo",
+      "Os processos CPU-bound são servidos primeiro devido ao seu tempo de execução maior"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.32"
+  },
+  {
+    "question": "Um processo executa sleep(5) e fica à espera. Em que estrutura do kernel é colocado?",
+    "answers": [
+      "Na ready queue, mas com a prioridade mais baixa",
+      "Numa única wait queue global, partilhada por todos os processos bloqueados e por todos os recursos",
+      "No início da ready queue, para retomar logo que o tempo expire",
+      "Numa wait queue associada ao evento de temporização, fora da ready queue"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.12"
+  },
+  {
+    "question": "Um processo executa for(;;) {n++;} sem qualquer system call. Como é classificado e que comportamento tende a ter num sistema com escalonamento preemptivo?",
+    "answers": [
+      "I/O-bound; bloqueia após cada iteração à espera do CPU",
+      "CPU-bound; nunca é preemptado, pois não bloqueia",
+      "CPU-bound; executa até o quantum expirar e é preemptado",
+      "I/O-bound; é mantido na wait queue enquanto n crescer"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.5"
+  },
+  {
+    "question": "Qual é o escalonador que, em todos os sistemas operativos, seleciona o próximo processo da ready queue a executar no CPU?",
+    "answers": [
+      "O escalonador de longo prazo, que gere a admissão de processos",
+      "O escalonador de curto prazo (short-term, ou CPU scheduler)",
+      "O escalonador de médio prazo, que gere a suspensão de processos",
+      "O dispatcher, que decide qual dos processos prontos deve executar"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.10"
+  },
+  {
+    "question": "Porque é que o overhead de escalonamento em FCFS é mínimo?",
+    "answers": [
+      "Só há trocas de contexto quando um processo termina ou bloqueia, sem reordenar a fila",
+      "Porque nunca é necessário guardar o contexto do processo que sai do CPU",
+      "Porque o escalonador analisa os tempos de execução de cada processo antes de decidir",
+      "Porque o timer interrupt é desativado enquanto houver processos prontos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.27"
+  },
+  {
+    "question": "Em sistemas multicore, porque é que o escalonamento se torna mais complexo do que num único núcleo?",
+    "answers": [
+      "Cada núcleo precisa de um quantum com duração diferente da dos outros",
+      "O dispatcher deixa de ser necessário em cada núcleo",
+      "Há que tratar do balanceamento de carga e da afinidade de cache dos núcleos",
+      "Os processos deixam de poder bloquear em I/O"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.3"
+  },
+  {
+    "question": "Qual é o principal risco da política SCHED_FIFO do Linux?",
+    "answers": [
+      "Tarefas da mesma prioridade são interrompidas a cada quantum",
+      "Tarefas de prioridade mais baixa podem sofrer starvation",
+      "O quantum é demasiado pequeno e a comutação domina o tempo de CPU",
+      "A política não permite que as tarefas bloqueiem em I/O"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.42"
+  },
+  {
+    "question": "Qual é a diferença essencial entre SCHED_RR e SCHED_FIFO no Linux?",
+    "answers": [
+      "SCHED_RR dispensa prioridades, atribuindo o CPU só por quantum",
+      "SCHED_FIFO interrompe a tarefa quando o quantum expira",
+      "SCHED_FIFO permite que uma tarefa de prioridade inferior preempte uma de prioridade superior",
+      "Em SCHED_RR, tarefas com a mesma prioridade partilham o CPU por time slices"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.42"
+  },
+  {
+    "question": "Dois algoritmos têm o mesmo tempo médio de espera, mas com o primeiro o tempo de espera de cada processo varia muito, e com o segundo é quase igual para todos. O que se conclui?",
+    "answers": [
+      "O segundo é mais previsível e justo, pois tem menor variância",
+      "O primeiro é mais justo, pois tem maior variância",
+      "O segundo tem menor throughput, pois tem menor variância",
+      "Não se pode concluir nada, pois a variância não é uma métrica de escalonamento"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.19"
+  },
+  {
+    "question": "Um processo gastou 10 ms a executar no CPU, 15 ms na ready queue e 5 ms bloqueado à espera de I/O, desde a submissão até à terminação. Qual é o seu turnaround time?",
+    "answers": [
+      "10 ms, o tempo de execução",
+      "25 ms, que desconta o tempo de I/O",
+      "30 ms",
+      "15 ms, o tempo de espera na ready queue"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.18"
+  },
+  {
+    "question": "Em FCFS, P1 chega em t=0 e executa 5 unidades, P2 chega em t=1 e executa 3, P3 chega em t=2 e executa 8 e P4 chega em t=3 e executa 2. Qual é o response time de P4?",
+    "answers": [
+      "15, que é o seu turnaround",
+      "13",
+      "18, o instante em que termina",
+      "3, o instante em que chega"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.18"
+  },
+  {
+    "question": "Throughput é o número de processos concluídos por unidade de tempo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.17"
+  },
+  {
+    "question": "Em FCFS, alterar apenas a ordem de chegada de um conjunto de processos pode alterar substancialmente o tempo médio de espera.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.28"
+  },
+  {
+    "question": "Em SJF não preemptivo, um processo longo pode sofrer starvation se continuarem a chegar processos curtos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.21"
+  },
+  {
+    "question": "O aging diminui o risco de starvation porque aumenta gradualmente a prioridade de um processo à medida que este espera.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.22"
+  },
+  {
+    "question": "Em Round-Robin, um processo cujo quantum expira antes de terminar volta ao fim da ready queue.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.37"
+  },
+  {
+    "question": "O escalonador só considera para execução os processos runnable, mesmo que o CPU esteja inativo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.6"
+  },
+  {
+    "question": "Em Round-Robin, o dispatcher realiza uma mudança de contexto quando o quantum do processo em execução expira.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.37"
+  },
+  {
+    "question": "Round-Robin e FCFS são ambos algoritmos de escalonamento não preemptivos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.35"
+  },
+  {
+    "question": "Um processo bloqueado à espera de I/O continua na ready queue, mas não pode ser escolhido pelo escalonador.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.12"
+  },
+  {
+    "question": "O response time é o tempo desde a submissão do processo até à sua terminação.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.18"
+  },
+  {
+    "question": "Com custo de mudança de contexto nulo, o Round-Robin dá sempre um tempo médio de turnaround inferior ao de FCFS.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.40"
+  },
+  {
+    "question": "Com P1, P2 e P3 a chegar em t=0, por esta ordem, com tempos de execução 7, 4 e 5, o Round-Robin com quantum 3 dá um tempo médio de turnaround superior ao de FCFS.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.38"
+  },
+  {
+    "question": "Com P1 (t=0; burst 5), P2 (t=1; 3), P3 (t=2; 8) e P4 (t=3; 2), SJF não preemptivo dá um tempo médio de espera superior ao de FCFS.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.28"
+  },
+  {
+    "question": "Com P1 (t=0; burst 5), P2 (t=1; 3), P3 (t=2; 8) e P4 (t=3; 2), em FCFS o processo P4 termina em t=18 e o seu turnaround é 15.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.28"
+  },
+  {
+    "question": "Em FCFS, os processos I/O-bound ficam favorecidos relativamente aos CPU-bound.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.32"
+  },
+  {
+    "question": "Em Round-Robin, reduzir o quantum diminui sempre o número de mudanças de contexto.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.36"
+  },
+  {
+    "question": "Em escalonamento não preemptivo, a expiração do temporizador do CPU obriga o kernel a retirar o CPU ao processo em execução.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.26"
+  },
+  {
+    "question": "Num sistema em que todos os processos estão bloqueados à espera de I/O, a utilização de CPU é inferior a 100%.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.6"
+  },
+  {
+    "question": "Um escalonador por prioridades fixas, sem aging, garante que nenhum processo sofre starvation.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T11 p.21"
+  },
+  {
+    "question": "Com SRTF, os processos A (chegada 0, burst 7), B (chegada 1, burst 3) e C (chegada 2, burst 2) têm que tempo médio de espera, em unidades de tempo?",
+    "answers": [
+      "2,33",
+      "4,33",
+      "3,00",
+      "5,00"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.14"
+  },
+  {
+    "question": "Com SRTF, A chega em 0 com burst 7, B em 1 com burst 5 e C em 2 com burst 2. Quando C chega, B já executou 1 unidade. O que acontece nesse instante?",
+    "answers": [
+      "B continua a executar até terminar, porque já tinha começado a correr",
+      "C preempta B, porque o tempo restante de C é menor do que o de B",
+      "A retoma a execução, por ter sido o primeiro a chegar ao sistema",
+      "C espera, porque o SRTF só escolhe um novo processo quando o atual termina"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.14"
+  },
+  {
+    "question": "Com SRTF, A chega em 0 com burst 6, B em 1 com burst 2 e C em 4 com burst 2. Quantas vezes o processo A é preemptado antes de terminar?",
+    "answers": [
+      "Nenhuma vez",
+      "Uma única vez",
+      "Duas vezes",
+      "Três vezes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.14"
+  },
+  {
+    "question": "Com SRTF, A (chegada 0, burst 8), B (2, 4), C (3, 1) e D (5, 2). Qual é o tempo médio de turnaround, em unidades de tempo?",
+    "answers": [
+      "8,25",
+      "5,50",
+      "7,00",
+      "6,25"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.14"
+  },
+  {
+    "question": "Com round-robin e quantum 3, A, B e C chegam em 0 (por esta ordem) com bursts 5, 4 e 2. Qual é o tempo médio de espera, em unidades de tempo?",
+    "answers": [
+      "6",
+      "4",
+      "5,33",
+      "3,67"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.16"
+  },
+  {
+    "question": "Round-robin com quantum 2: A, B e C chegam em 0, por esta ordem, com bursts 6, 3 e 5. Sem contar o arranque inicial, quantas trocas de processo em execução ocorrem até todos terminarem?",
+    "answers": [
+      "5 trocas",
+      "7 trocas",
+      "6 trocas",
+      "8 trocas, incluindo o arranque inicial"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.16"
+  },
+  {
+    "question": "Com round-robin e quantum 4, A, B e C chegam em 0 (por esta ordem) com bursts 9, 3 e 6. Em que instante termina o processo C?",
+    "answers": [
+      "No instante 15",
+      "No instante 18",
+      "No instante 17",
+      "No instante 7, quando B termina"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.16"
+  },
+  {
+    "question": "Três processos têm burst 12 e chegam em 0. Com round-robin, quantum 4 e custo de 1 unidade por cada troca entre processos (o arranque inicial é gratuito), em que instante termina o último?",
+    "answers": [
+      "36",
+      "45",
+      "47",
+      "44"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.16"
+  },
+  {
+    "question": "Um sistema usa round-robin com quantum de 15 ms e cada troca de contexto custa 3 ms. Assumindo que os processos usam sempre o quantum completo, que fração do tempo do CPU é gasta em trabalho útil?",
+    "answers": [
+      "83,3 %",
+      "80,0 %",
+      "85,0 %",
+      "88,2 %"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.16"
+  },
+  {
+    "question": "Num sistema com prioridades preemptivas (1 é a mais alta), A (chegada 0, burst 4, prioridade 3), B (1, 2, 1), C (2, 3, 2) e D (3, 1, 4). Qual é o tempo de espera de A?",
+    "answers": [
+      "3",
+      "5",
+      "6",
+      "9 (o seu turnaround)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.13"
+  },
+  {
+    "question": "Num escalonador por prioridades não preemptivo, um processo de baixa prioridade está a executar quando chega um de prioridade mais alta. O que acontece?",
+    "answers": [
+      "O novo processo preempta de imediato o processo em execução",
+      "O processo atual é movido para o fim da fila e o novo executa de imediato, sem esperar",
+      "O novo processo aguarda que o atual termine, bloqueie ou ceda o CPU",
+      "O processo atual vê a sua prioridade aumentada e continua a executar"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.6"
+  },
+  {
+    "question": "No escalonamento SJF não preemptivo, por que razão os processos longos podem sofrer starvation em sistemas muito carregados?",
+    "answers": [
+      "O seu burst é estimado por defeito e o escalonador os ignora enquanto houver outros processos prontos",
+      "Cada preempção penaliza a prioridade do processo que mais executou",
+      "A fila de prontos é percorrida em ordem inversa à da chegada",
+      "Continuam a chegar processos mais curtos, que são escolhidos primeiro"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.10"
+  },
+  {
+    "question": "Em SJF, como se costuma estimar o próximo burst de CPU de um processo, dado que raramente é conhecido de antemão?",
+    "answers": [
+      "Por média exponencial dos bursts anteriores",
+      "Pelo tamanho do ficheiro executável do programa",
+      "Pelo número de page faults ocorridos até então",
+      "Pelo valor da prioridade atribuída na criação"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.10"
+  },
+  {
+    "question": "Num escalonador multilevel feedback queue (MLFQ), o que acontece a um processo que usa todo o seu quantum e é preemptado?",
+    "answers": [
+      "Mantém-se na mesma fila e fica no início dela",
+      "Desce para uma fila de menor prioridade, por ser CPU-bound",
+      "Passa para a fila de maior prioridade, por ter executado mais",
+      "É terminado, por exceder o tempo de CPU permitido"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.27"
+  },
+  {
+    "question": "Num MLFQ, um processo bloqueia num pedido de I/O antes de esgotar o quantum. Qual é o comportamento típico do escalonador?",
+    "answers": [
+      "Move o processo para a fila de menor prioridade, como penalização",
+      "Remove o processo do sistema até o I/O terminar",
+      "Mantém o processo na mesma fila, por ser interativo ou I/O-bound",
+      "Atribui ao processo um quantum duplicado na fila de menor prioridade"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.27"
+  },
+  {
+    "question": "Num MLFQ que usa round-robin em cada fila, como costumam ser as fatias de tempo das filas?",
+    "answers": [
+      "Longas nas filas de maior prioridade e curtas nas de menor prioridade",
+      "Iguais em todas as filas, para garantir a mesma equidade a todos os processos",
+      "Aleatórias, para evitar que os processos prevejam o escalonamento",
+      "Curtas nas filas de maior prioridade e longas nas de menor prioridade"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.26"
+  },
+  {
+    "question": "Num MLFQ típico, em que fila é inserido um processo novo?",
+    "answers": [
+      "No fim da fila de maior prioridade",
+      "No início da fila de menor prioridade",
+      "Numa fila escolhida pela dimensão do seu código",
+      "No início da fila de maior prioridade"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.26"
+  },
+  {
+    "question": "Num MLFQ, que mecanismo evita que um processo fique indefinidamente nas filas de baixa prioridade?",
+    "answers": [
+      "O aumento do quantum a cada demoção sofrida",
+      "A promoção para filas de maior prioridade, por aging",
+      "A proibição de preempção nas filas de menor prioridade",
+      "A transferência definitiva dos processos para a fila FIFO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.28"
+  },
+  {
+    "question": "Qual é a principal diferença entre o multilevel queue e o multilevel feedback queue?",
+    "answers": [
+      "No primeiro, as filas usam sempre o mesmo algoritmo; no segundo, cada fila usa o seu",
+      "O primeiro é preemptivo e o segundo é sempre não preemptivo",
+      "No primeiro, um processo não muda de fila; no segundo, pode mudar",
+      "O primeiro tem uma só fila de prontos e o segundo tem várias"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.18"
+  },
+  {
+    "question": "Num multilevel queue com prioridade fixa entre filas, em que situação executa um processo da fila batch (a de menor prioridade)?",
+    "answers": [
+      "Quando o seu burst é inferior ao dos restantes processos",
+      "Sempre que termina o quantum atribuído à fila interativa mais prioritária",
+      "Quando o processo espera há mais tempo do que os outros",
+      "Apenas quando todas as filas de maior prioridade estão vazias"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.19"
+  },
+  {
+    "question": "Num multilevel queue em que o CPU é repartido por round-robin entre filas, com um quantum por fila, por que razão a fila batch não sofre starvation?",
+    "answers": [
+      "Cada fila recebe periodicamente o seu próprio quantum",
+      "Os processos batch sobem automaticamente para a fila interativa",
+      "A fila batch tem sempre prioridade fixa mais alta",
+      "O escalonador ignora a fila interativa quando existem processos batch"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.19"
+  },
+  {
+    "question": "Num sistema multilevel queue, a fila interativa usa RR com quantum 2 e tem prioridade sobre a fila batch (FIFO). Chegam em 0 P3 (burst 3) e P4 (burst 4) interativos e P5 batch. Em que instante começa P5?",
+    "answers": [
+      "3",
+      "7",
+      "5",
+      "9"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.22"
+  },
+  {
+    "question": "O que caracteriza uma situação de inversão de prioridades?",
+    "answers": [
+      "Um processo de baixa prioridade executa antes por ter chegado primeiro à fila de prontos, apesar da prioridade",
+      "Dois processos de igual prioridade esperam um pelo outro em deadlock",
+      "Um processo de alta prioridade é indiretamente impedido por um de prioridade inferior",
+      "Um processo vê a sua prioridade diminuir por usar demasiado CPU"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.39"
+  },
+  {
+    "question": "Um processo H (prioridade alta) bloqueia num mutex detido por L (baixa). Um processo M (média), sem usar o mutex, está pronto e é CPU-bound. Sem protocolo especial, o que acontece?",
+    "answers": [
+      "H preempta L e continua a executar na secção crítica mesmo sem ter obtido o mutex",
+      "L executa sem ser interrompido por M até libertar o mutex",
+      "M é bloqueado até H terminar",
+      "M executa antes de L, atrasando a libertação do mutex e o desbloqueio de H"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.40"
+  },
+  {
+    "question": "Com o protocolo de herança de prioridade (priority inheritance), H bloqueia no mutex detido por L e M está pronto. Quem executa a seguir e até quando?",
+    "answers": [
+      "L, com a prioridade de H, até libertar o mutex",
+      "M, até terminar o seu burst",
+      "H, que preempta L e executa sem o mutex",
+      "L, com a sua prioridade original, até ser preemptado por M"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.45"
+  },
+  {
+    "question": "No protocolo de ceiling, um mutex é usado por processos com prioridades 2, 5 e 7 (2 é a mais alta). Qual é a prioridade do ceiling do mutex?",
+    "answers": [
+      "5",
+      "2",
+      "7",
+      "A do processo que o detém"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.46"
+  },
+  {
+    "question": "No protocolo de priority ceiling, P3 detém R1, usado também por P1 (prioridade máxima). Que desvantagem ilustra o facto de P2, que não usa R1, ficar bloqueado?",
+    "answers": [
+      "Permite várias inversões de prioridade encadeadas",
+      "Exige que P1 doe a sua prioridade a P2",
+      "Introduz bloqueios desnecessários",
+      "Provoca deadlock entre P3 e P2"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.47"
+  },
+  {
+    "question": "Qual foi a causa dos reinícios do Mars Pathfinder em 1997?",
+    "answers": [
+      "Um deadlock entre dois processos de igual prioridade",
+      "Starvation por o aging estar desativado",
+      "Excesso de trocas de contexto causado por um quantum demasiado curto no escalonador",
+      "Inversão de prioridades, com a herança de prioridade desativada"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.41"
+  },
+  {
+    "question": "Qual é a principal limitação do random boosting, usado para mitigar a inversão de prioridades?",
+    "answers": [
+      "É não determinista e não garante resolver todos os casos",
+      "Exige análise estática dos recursos usados",
+      "Aumenta a prioridade do processo que detém o recurso para sempre",
+      "Só funciona se existir um único processo de alta prioridade"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.42"
+  },
+  {
+    "question": "Qual é a principal vantagem do aging de prioridades relativamente a prioridades estáticas?",
+    "answers": [
+      "Elimina o custo de recalcular prioridades",
+      "Evita starvation, pois a prioridade sobe com o tempo de espera",
+      "Garante que o processo de maior prioridade nunca espera por nenhum outro processo",
+      "Torna desnecessário o uso de preempção"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.33"
+  },
+  {
+    "question": "Qual é o custo das prioridades dinâmicas, face às estáticas?",
+    "answers": [
+      "Os processos de baixa prioridade deixam de executar",
+      "A prioridade passa a ser fixada apenas por critérios externos ao sistema",
+      "Consome ciclos de CPU adicionais a recalcular prioridades",
+      "Não é possível usar preempção"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.5"
+  },
+  {
+    "question": "Que critério usa o Completely Fair Scheduler do Linux para escolher o próximo processo a executar?",
+    "answers": [
+      "O de maior virtual runtime",
+      "O de menor burst total estimado",
+      "O que está há mais tempo no início da fila FIFO",
+      "O de menor virtual runtime"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.35"
+  },
+  {
+    "question": "Como são mantidos os processos prontos no Completely Fair Scheduler do Linux?",
+    "answers": [
+      "Numa árvore red-black ordenada por virtual runtime",
+      "Em filas FIFO, uma por cada nível de prioridade",
+      "Numa lista circular com quantum fixo igual para todos",
+      "Numa heap ordenada pelo burst restante"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.35"
+  },
+  {
+    "question": "O que descreve melhor o fenómeno de lock convoy?",
+    "answers": [
+      "Processos ficam bloqueados para sempre, cada um à espera de um lock detido pelo outro e sem nunca progredir",
+      "Processos de igual prioridade disputam um lock e progridem muito devagar, sem deadlock",
+      "Um processo de baixa prioridade nunca consegue executar",
+      "Um processo de prioridade alta é bloqueado por um de média prioridade"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.34"
+  },
+  {
+    "question": "O que é a starvation no contexto do escalonamento?",
+    "answers": [
+      "Um processo bloqueado à espera de um recurso que outro detém",
+      "Uma troca de contexto cuja duração excede o quantum atribuído ao processo",
+      "Um processo pronto que pode nunca ser escolhido para executar",
+      "Um processo que termina antes de esgotar o seu burst"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.32"
+  },
+  {
+    "question": "Que informação interna do processo pode um escalonador com prioridades dinâmicas usar para recalcular a prioridade?",
+    "answers": [
+      "O nome do utilizador que lançou o processo",
+      "A importância atribuída ao processo pelo administrador do sistema",
+      "O montante pago pelo tempo de computação",
+      "O histórico de bursts de I/O e o tempo na fila de prontos"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.5"
+  },
+  {
+    "question": "Para o mesmo conjunto A (chegada 0, burst 7), B (1, 3), C (2, 2), o tempo médio de espera obtido com SRTF é inferior ao do SJF não preemptivo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.15"
+  },
+  {
+    "question": "Com round-robin de quantum 3 e custo de troca nulo, A, B e C (chegada 0, bursts 5, 4 e 2) têm menor tempo médio de turnaround do que com FIFO na ordem A, B, C.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.16"
+  },
+  {
+    "question": "As frequentes preempções do SRTF levam a mais trocas de contexto do que no SJF não preemptivo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.15"
+  },
+  {
+    "question": "O SJF minimiza o tempo médio de espera em qualquer conjunto de processos, independentemente dos instantes de chegada, pelo que o SRTF nunca o melhora.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.15"
+  },
+  {
+    "question": "O SJF obtém o menor tempo médio de turnaround possível quando todos os processos estão disponíveis em simultâneo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.10"
+  },
+  {
+    "question": "No multilevel queue, cada processo é atribuído estaticamente a uma fila e não se move entre filas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.18"
+  },
+  {
+    "question": "Num MLFQ, um processo que bloqueia antes de esgotar o quantum é movido para uma fila de menor prioridade.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.27"
+  },
+  {
+    "question": "O aging faz com que a prioridade de um processo pronto aumente gradualmente à medida que espera, até lhe ser garantida execução.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.33"
+  },
+  {
+    "question": "Com prioridades estáticas, o risco de starvation desaparece, pois a prioridade dos processos nunca se altera.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.4"
+  },
+  {
+    "question": "Com herança de prioridade, o processo que detém o recurso mantém a prioridade herdada até o libertar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.44"
+  },
+  {
+    "question": "O protocolo de priority ceiling nunca bloqueia processos desnecessariamente, ao contrário da herança de prioridade.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.46"
+  },
+  {
+    "question": "A inversão de prioridades que afetou o Mars Pathfinder foi causada por um deadlock entre processos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.41"
+  },
+  {
+    "question": "O Completely Fair Scheduler do Linux privilegia os processos com menor virtual runtime.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.35"
+  },
+  {
+    "question": "O Completely Fair Scheduler do Linux atribui a cada processo um quantum fixo e igual, por round-robin.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.35"
+  },
+  {
+    "question": "Num lock convoy, os processos progridem, mas a um ritmo muito inferior ao normal, sem existir deadlock.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.34"
+  },
+  {
+    "question": "Num round-robin com quantum muito superior ao burst de todos os processos, o comportamento aproxima-se do FIFO.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.16"
+  },
+  {
+    "question": "Num escalonador por prioridades preemptivo, o CPU é atribuído ao processo pronto de maior prioridade.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.12"
+  },
+  {
+    "question": "A preempção interrompe temporariamente um processo, mas exige a cooperação do processo para ser realizada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.12"
+  },
+  {
+    "question": "O random boosting do Windows resolve de forma determinista todos os casos de inversão de prioridades.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T12 p.42"
+  }
+]
