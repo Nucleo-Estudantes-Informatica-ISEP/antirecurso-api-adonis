@@ -32,8 +32,9 @@ Each request produces one structured log line (`request completed`) with `reques
 share the same `request_id`, so a failed call can be traced from the frontend through the proxy to
 the API. Authorization headers, tokens, passwords, cookies, query strings and request bodies are
 never logged. With `AUTH_DEBUG=true`, authentication diagnostics use the same structured logger. Reported
-errors also carry `method`, `route` and `user_id`, and the PostgreSQL error `detail`/`where` fields
-are masked because they can echo submitted values. The daily `exams:prune-attempts` job logs
+errors also carry `method`, `route` and `user_id`. Failed queries are reported with their `$n`
+placeholders (`compileSqlOnError` is disabled), and the PostgreSQL error `detail`/`where` fields
+are masked, because both can echo submitted values. The daily `exams:prune-attempts` job logs
 `job started`, `job finished` (with `owners_processed` and `duration_ms`) or `job failed` under the
 stable identifier `job: "exams.prune_attempts"`.
 

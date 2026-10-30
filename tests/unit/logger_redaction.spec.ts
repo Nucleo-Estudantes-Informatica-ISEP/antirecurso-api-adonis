@@ -1,20 +1,5 @@
-import { Writable } from 'node:stream'
-import pino from 'pino'
 import { test } from '@japa/runner'
-import loggerConfig from '#config/logger'
-
-function captureLogger() {
-  const lines: string[] = []
-  const stream = new Writable({
-    write(chunk, _encoding, callback) {
-      lines.push(chunk.toString())
-      callback()
-    },
-  })
-  const { redact } = loggerConfig.loggers.app
-  const instance = pino({ redact }, stream)
-  return { instance, lines }
-}
+import { captureLogger } from '#tests/helpers/capture_logger'
 
 test.group('Logger redaction', () => {
   test('masks credentials at the top level and in nested objects', ({ assert }) => {
