@@ -14,6 +14,27 @@ const loggerConfig = defineConfig({
       enabled: true,
       name: env.get('APP_NAME'),
       level: env.get('LOG_LEVEL'),
+      redact: {
+        paths: [
+          'authorization',
+          'password',
+          'token',
+          'access_token',
+          'refresh_token',
+          'id_token',
+          '*.authorization',
+          '*.password',
+          '*.token',
+          '*.access_token',
+          '*.refresh_token',
+          '*.id_token',
+          '*.headers.authorization',
+          '*.headers.cookie',
+          'err.detail',
+          'err.where',
+        ],
+        censor: '[redacted]',
+      },
       transport: {
         targets: targets()
           .pushIf(!app.inProduction, targets.pretty())

@@ -17,7 +17,11 @@ export default class CorsMiddleware {
       response.header('Access-Control-Allow-Origin', allowedOrigin)
     }
     response.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS')
-    response.header('Access-Control-Allow-Headers', 'Origin,Content-Type,Accept,Authorization')
+    response.header(
+      'Access-Control-Allow-Headers',
+      'Origin,Content-Type,Accept,Authorization,X-Request-Id'
+    )
+    response.header('Access-Control-Expose-Headers', 'X-Request-Id')
     response.header('Access-Control-Max-Age', '86400')
     response.header('Vary', 'Origin')
 
