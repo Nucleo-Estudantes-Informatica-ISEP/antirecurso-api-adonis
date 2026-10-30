@@ -19,6 +19,24 @@ changes must update this file in the same pull request.
 - Only `admin` is retained from validated AuthNEI claims under the configured `AUTH_ROLE_CLAIM`.
   Other role names are ignored. Persisted user rows never grant access.
 
+### Request correlation
+
+Every response, including errors and CORS preflights, carries an `X-Request-Id` header. A client
+or proxy may send its own `X-Request-Id` (8 to 128 characters from `A-Z a-z 0-9 . _ -`) and the API
+echoes it back; any missing or malformed value is replaced by a generated UUID. Browsers can send
+and read the header across origins because CORS allows and exposes it.
+
+Each request produces one structured log line (`request completed`) with `request_id`, `method`,
+`route` (the route pattern, `null` when unmatched), `status`, `duration_ms`, `user_id` (local id,
+`null` when anonymous) and `completed` (`false` if the client disconnected early). Server errors
+share the same `request_id`, so a failed call can be traced from the frontend through the proxy to
+the API. Authorization headers, tokens, passwords, cookies, query strings and request bodies are
+never logged. With `AUTH_DEBUG=true`, authentication diagnostics use the same structured logger. Reported
+errors also carry `method`, `route` and `user_id`, and the PostgreSQL error `detail`/`where` fields
+are masked because they can echo submitted values. The daily `exams:prune-attempts` job logs
+`job started`, `job finished` (with `owners_processed` and `duration_ms`) or `job failed` under the
+stable identifier `job: "exams.prune_attempts"`.
+
 Authenticated requests resolve the token subject to one local `users.id`. That local id owns scores,
 answers, comments, notes, likes, reports, and saved exam state. Clients must never send an actor or
 owner id unless a request schema below explicitly includes one.

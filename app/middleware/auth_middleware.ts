@@ -44,13 +44,14 @@ export default class AuthMiddleware {
 
       if (error instanceof UnauthorizedError) {
         if (env.get('AUTH_DEBUG')) {
-          console.warn('[auth][api]', {
-            middleware: 'auth',
-            path: ctx.request.url(),
-            method: ctx.request.method(),
-            message: error.message,
-            hasAuthorizationHeader: Boolean(ctx.request.header('authorization')),
-          })
+          ctx.logger.warn(
+            {
+              middleware: 'auth',
+              reason: error.message,
+              has_authorization_header: Boolean(ctx.request.header('authorization')),
+            },
+            'authentication rejected'
+          )
         }
 
         return ctx.response.unauthorized({ message: error.message })

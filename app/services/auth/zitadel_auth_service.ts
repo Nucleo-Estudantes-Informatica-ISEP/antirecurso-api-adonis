@@ -3,6 +3,7 @@ import { DateTime } from 'luxon'
 import env from '#start/env'
 import User from '#models/user'
 import db from '@adonisjs/lucid/services/db'
+import logger from '@adonisjs/core/services/logger'
 import type { TransactionClientContract } from '@adonisjs/lucid/types/database'
 import { accountSubjectHash } from '#services/auth/user_identity'
 import { getAuthNeiRoles, type AuthNeiRole } from '#services/auth/auth_nei_roles'
@@ -162,16 +163,19 @@ export default class ZitadelAuthService {
     const payload = this.decodeBase64UrlJson<JwtPayload>(encodedPayload)
 
     if (env.get('AUTH_DEBUG')) {
-      console.info('[auth][api-token]', {
-        hasKid: Boolean(header.kid),
-        alg: header.alg ?? null,
-        issuer: payload.iss ?? null,
-        audience: payload.aud ?? null,
-        subject: payload.sub ?? null,
-        hasEmail: typeof payload.email === 'string',
-        hasName: typeof payload.name === 'string',
-        exp: payload.exp ?? null,
-      })
+      logger.info(
+        {
+          has_kid: Boolean(header.kid),
+          alg: header.alg ?? null,
+          issuer: payload.iss ?? null,
+          audience: payload.aud ?? null,
+          subject: payload.sub ?? null,
+          has_email: typeof payload.email === 'string',
+          has_name: typeof payload.name === 'string',
+          exp: payload.exp ?? null,
+        },
+        'access token inspected'
+      )
     }
 
     if (!header.alg || !header.kid || !['RS256', 'RS384', 'RS512'].includes(header.alg)) {
@@ -284,12 +288,15 @@ export default class ZitadelAuthService {
     }
 
     if (env.get('AUTH_DEBUG')) {
-      console.info('[auth][api-claims]', {
-        subject: payload.sub ?? null,
-        hasEmail: Boolean(email),
-        hasName: Boolean(name ?? email.split('@')[0]),
-        emailVerified: mergedClaims.email_verified ?? null,
-      })
+      logger.info(
+        {
+          subject: payload.sub ?? null,
+          has_email: Boolean(email),
+          has_name: Boolean(name ?? email.split('@')[0]),
+          email_verified: mergedClaims.email_verified ?? null,
+        },
+        'identity claims resolved'
+      )
     }
 
     return {
