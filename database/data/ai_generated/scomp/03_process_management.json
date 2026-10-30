@@ -1,0 +1,1928 @@
+[
+  {
+    "question": "Um utilizador executa três vezes em simultâneo, em três terminais, o mesmo ficheiro executável. Quantos processos existem e que PIDs têm?",
+    "answers": [
+      "Um só processo, porque o ficheiro executável é único e partilhado pelas três execuções",
+      "Três processos que partilham o mesmo PID, por executarem exatamente o mesmo programa",
+      "Três processos, cada um com o seu PID",
+      "Um processo com três threads, porque o código do programa só é carregado uma vez"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.4"
+  },
+  {
+    "question": "Qual dos seguintes elementos faz parte do estado de CPU de um processo?",
+    "answers": [
+      "O program counter",
+      "O conteúdo do ficheiro executável guardado em disco",
+      "O número de linhas de código-fonte em C do programa",
+      "A tabela global de processos do kernel, comum a todos os processos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.3"
+  },
+  {
+    "question": "Que mecanismo do kernel dá a cada processo a ilusão de ter uso exclusivo da memória principal?",
+    "answers": [
+      "A mudança de contexto entre processos",
+      "O escalonamento round-robin dos processos",
+      "A exclusão mútua com semáforos",
+      "A memória virtual"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.6"
+  },
+  {
+    "question": "Numa mudança de contexto, o que acontece ao estado de CPU (registos e program counter) do processo que deixa o CPU?",
+    "answers": [
+      "É descartado, e o processo recomeça sempre do início do programa quando voltar",
+      "É guardado, para ser restaurado quando o processo voltar a executar",
+      "É copiado para o processo seguinte, que o usa como estado inicial",
+      "Mantém-se nos registos do CPU até ao fim do programa do outro processo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.6"
+  },
+  {
+    "question": "Um browser usa um processo de interface e vários processos em segundo plano para descarregar páginas. Porque pode isto melhorar a resposta num sistema com um só CPU?",
+    "answers": [
+      "Os processos em segundo plano executam em paralelo real com a interface, o que exige pelo menos dois CPUs",
+      "Vários processos executam mais instruções por segundo do que um só, mesmo com um único CPU",
+      "Cada processo em segundo plano recebe um CPU virtual próprio, criado pelo kernel",
+      "Os processos em segundo plano estão quase sempre bloqueados em E/S e não ocupam o CPU"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.9"
+  },
+  {
+    "question": "Um programa CPU-bound é dividido em quatro processos e executado num sistema com um único CPU. Qual é o resultado mais provável?",
+    "answers": [
+      "Fica cerca de quatro vezes mais rápido, porque cada processo executa só uma quarta parte do trabalho",
+      "Não fica mais rápido, e pode ficar mais lento devido às mudanças de contexto e à sincronização",
+      "Fica mais rápido, porque o kernel cria um CPU virtual por cada processo criado",
+      "O tempo de execução mantém-se igual, pois a mudança de contexto não tem qualquer custo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.10"
+  },
+  {
+    "question": "Um processo executa read() num pipe vazio cujo extremo de escrita continua aberto noutro processo. Em que estado fica o processo?",
+    "answers": [
+      "Ready, pois o read() devolve de imediato 0 e o processo regressa à fila de ready",
+      "Terminated, porque ler de um pipe vazio é um erro irrecuperável do processo",
+      "Blocked, até existirem dados para ler",
+      "Running, a executar uma espera ativa dentro do kernel até chegarem dados"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.11"
+  },
+  {
+    "question": "Um pipe vazio, com o extremo de escrita ainda aberto, é lido por read() num descritor com O_NONBLOCK ativo. O que faz read()?",
+    "answers": [
+      "Devolve -1 e coloca errno a EAGAIN, sem bloquear",
+      "Bloqueia o processo até alguém escrever no pipe, tal como sem O_NONBLOCK",
+      "Devolve 0, indicando fim de ficheiro, e não altera errno",
+      "Termina o processo com o sinal SIGPIPE por ler de um pipe sem dados"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.14"
+  },
+  {
+    "question": "Para que serve select() num servidor de rede?",
+    "answers": [
+      "Criar um processo filho para cada descritor que fique pronto para leitura",
+      "Copiar os dados de todos os descritores para memória partilhada entre os clientes",
+      "Terminar as ligações inativas, libertando os respetivos descritores no kernel",
+      "Suspender o processo até que pelo menos um de vários descritores fique pronto"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.15"
+  },
+  {
+    "question": "Num servidor iterativo, um cliente muito lento está a ser atendido. O que acontece aos pedidos dos outros clientes?",
+    "answers": [
+      "São atendidos em paralelo, porque o kernel cria automaticamente um thread por ligação",
+      "Esperam até o atendimento do cliente lento terminar",
+      "São recusados de imediato pelo kernel, que fecha o socket de escuta do servidor",
+      "São atendidos por um processo filho que o accept() cria automaticamente para cada um"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.13"
+  },
+  {
+    "question": "Qual é uma desvantagem de um servidor orientado a eventos, num só processo com select(), face a um servidor com um processo por cliente?",
+    "answers": [
+      "Fica limitado a atender um cliente de cada vez, tal como um servidor iterativo",
+      "Exige um CPU por cada ligação simultânea, o que impede qualquer escalabilidade",
+      "A aplicação tem de gerir o estado de cada ligação, pois o fluxo de controlo deixa de ser sequencial",
+      "Cada ligação ocupa uma entrada na tabela de processos do kernel, limitando o número de clientes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.18"
+  },
+  {
+    "question": "Num servidor que faz fork() por cada cliente, o pai nunca chama close(connfd) após o fork(). Qual é a consequência?",
+    "answers": [
+      "O pai acumula descritores abertos, esgotando-os ao fim de muitos clientes",
+      "Os filhos deixam de conseguir ler do cliente, pois o pai fica com o descritor em exclusivo",
+      "O accept() seguinte devolve sempre o mesmo descritor, repetindo o cliente anterior",
+      "Cada filho torna-se zombie de imediato, porque o descritor aberto impede o exit()"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.19"
+  },
+  {
+    "question": "No servidor com fork(), o pai executa while(waitpid(-1,NULL,WNOHANG)>0);. Qual é o efeito deste ciclo?",
+    "answers": [
+      "Suspende o pai até todos os filhos terminarem, antes de aceitar novo cliente",
+      "Termina à força todos os filhos que ainda estão a atender clientes",
+      "Impede que o pai receba o sinal SIGCHLD quando um filho termina",
+      "Recolhe os filhos já terminados, sem bloquear quando não há nenhum"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.19"
+  },
+  {
+    "question": "Em if(fork()==0){A}else{B}, supondo que fork() não falha, qual dos processos executa o bloco B?",
+    "answers": [
+      "O filho, a quem fork() devolve o PID do pai",
+      "O pai, a quem fork() devolve o PID do filho",
+      "Ambos, porque os dois recebem o mesmo valor de retorno",
+      "Nenhum, pois fork() devolve -1 ao pai e ao filho"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.24"
+  },
+  {
+    "question": "int x=5; if(fork()==0){x=9; exit(0);} wait(NULL); printf(\"%d\",x); O que imprime o pai?",
+    "answers": [
+      "9, pois pai e filho partilham o mesmo x depois do fork()",
+      "Indeterminado, porque pai e filho escrevem em x sem sincronização",
+      "5, pois o filho alterou apenas a sua cópia de x",
+      "14, porque o valor do filho é somado ao do pai ao terminar"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.23"
+  },
+  {
+    "question": "fork(); if(fork()==0) fork(); Quantos processos existem no total após este código, incluindo o processo inicial, supondo que nenhum fork() falha?",
+    "answers": [
+      "4",
+      "5",
+      "8",
+      "6"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.24"
+  },
+  {
+    "question": "Num sistema com copy-on-write, quando copia o kernel fisicamente uma página de memória após um fork()?",
+    "answers": [
+      "Quando o pai ou o filho tenta escrever nessa página",
+      "Imediatamente no fork(), para todas as páginas do espaço de endereçamento",
+      "Quando qualquer dos processos lê a página pela primeira vez",
+      "Quando o filho chama wait() ou exit() pela primeira vez"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.26"
+  },
+  {
+    "question": "O pai abriu um ficheiro com open() antes do fork(). Depois, o filho lê 10 bytes desse descritor. O que sucede à posição de leitura vista pelo pai?",
+    "answers": [
+      "Mantém-se, pois cada processo tem a sua cópia independente da posição",
+      "Avança também 10 bytes, pois partilham a mesma open file description",
+      "Fica indefinida, pois o fork() fecha os descritores herdados no filho",
+      "Volta a zero, pois o filho reinicia os descritores herdados do pai"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.27"
+  },
+  {
+    "question": "O que é um processo zombie?",
+    "answers": [
+      "Um processo bloqueado indefinidamente numa chamada ao sistema, que nunca chega a terminar",
+      "Um processo cujo pai terminou antes dele e que ainda não foi adotado por nenhum outro",
+      "Um processo terminado cujo estado de saída o pai ainda não recolheu",
+      "Um processo suspenso com SIGSTOP, que continua na fila de ready à espera de ser retomado"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.36"
+  },
+  {
+    "question": "O que mantém o kernel de um processo zombie?",
+    "answers": [
+      "O espaço de endereçamento completo e os descritores abertos, prontos a serem reutilizados",
+      "Apenas o código do programa, para poder reiniciar a execução mais tarde",
+      "Nada: o PID é libertado de imediato e o zombie é só uma linha visual do comando ps",
+      "A entrada na tabela de processos, com o PID e o estado de terminação"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.38"
+  },
+  {
+    "question": "Um processo pai termina enquanto o filho continua a executar. O que sucede ao filho?",
+    "answers": [
+      "É terminado automaticamente pelo kernel com SIGKILL, ao mesmo tempo que o pai",
+      "É adotado, normalmente pelo processo com PID 1, que recolhe o seu estado quando ele terminar",
+      "Passa a zombie de imediato e fica assim até o utilizador o remover manualmente",
+      "Continua sem pai e nunca poderá ser recolhido, ficando sempre na tabela de processos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.36"
+  },
+  {
+    "question": "Um zombie não desaparece com kill -9. Porquê?",
+    "answers": [
+      "Porque já terminou; só sai da tabela de processos quando o pai o recolhe ou o pai termina",
+      "Porque o SIGKILL é bloqueado por processos marcados como defunct pelo kernel",
+      "Porque o zombie ignora todos os sinais, mas continua a consumir tempo de CPU",
+      "Porque o SIGKILL só pode ser enviado a processos que estejam no estado running"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.37"
+  },
+  {
+    "question": "Qual destas situações dá origem a um novo processo?",
+    "answers": [
+      "Um processo bloqueado passa ao estado ready quando a E/S termina",
+      "Um processo chama wait() para aguardar a terminação de um filho",
+      "O escalonador atribui o CPU a um processo que estava em ready",
+      "Um utilizador executa um programa na linha de comandos"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.22"
+  },
+  {
+    "question": "Quando um processo filho termina, que sinal o kernel envia ao seu pai?",
+    "answers": [
+      "SIGTERM, que por omissão termina o pai",
+      "SIGKILL, que obriga o pai a recolher o filho",
+      "SIGCHLD",
+      "SIGSTOP, que suspende o pai até chamar wait()"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.36"
+  },
+  {
+    "question": "Um pai cria três filhos e chama wait() três vezes. Se os três já terminaram, em que ordem os recolhe?",
+    "answers": [
+      "Sempre pela ordem de criação dos filhos, dado que a tabela de processos é ordenada por PID",
+      "Sem ordem garantida; qualquer filho terminado pode ser devolvido primeiro",
+      "Sempre pela ordem de terminação, porque o kernel mantém uma fila FIFO de zombies",
+      "Sempre do filho de maior PID para o de menor, por ser o mais recente"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.39"
+  },
+  {
+    "question": "No ciclo com waitpid(pid[i],&st,0) em vez de wait(&st), que garantia passa a existir?",
+    "answers": [
+      "Os filhos são recolhidos pela ordem de criação, qualquer que seja a ordem de terminação",
+      "O pai nunca bloqueia, mesmo que o filho ainda não tenha terminado",
+      "O pai recolhe também os netos, que wait() não consegue recolher",
+      "O estado de saída é sempre 0, pois waitpid() ignora o valor passado a exit()"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.40"
+  },
+  {
+    "question": "O filho termina por violação de segmento (SIGSEGV). Que valor devolve WIFEXITED(st) no pai, após wait(&st)?",
+    "answers": [
+      "Diferente de zero, pois qualquer terminação de um filho conta como terminação normal",
+      "Diferente de zero, e WEXITSTATUS(st) devolve então o número do sinal recebido",
+      "-1, porque wait() falha sempre quando o filho termina por causa de um sinal",
+      "Zero (falso), pois o filho não terminou com exit nem com return de main"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.39"
+  },
+  {
+    "question": "Qual é a transição de estado provocada pelo fim do quantum de um processo?",
+    "answers": [
+      "De running para blocked, até receber um novo quantum",
+      "De running para terminated, por ter excedido o tempo permitido",
+      "De running para ready",
+      "De ready para running, pois recebe um novo quantum"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.30"
+  },
+  {
+    "question": "Segundo o modelo de estados new, ready, running, blocked e terminated, um processo bloqueado a ler do disco vê a operação concluir-se. Para que estado passa?",
+    "answers": [
+      "Running, ocupando de imediato o CPU sem passar por ready",
+      "Ready, à espera de ser escolhido pelo escalonador",
+      "New, para voltar a ser criado antes de continuar a execução",
+      "Terminated, porque a operação pedida já foi concluída"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.32"
+  },
+  {
+    "question": "Qual das transições seguintes não existe no modelo de estados new, ready, running, blocked e terminated?",
+    "answers": [
+      "De ready para blocked",
+      "De running para blocked",
+      "De blocked para ready",
+      "De running para ready"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.32"
+  },
+  {
+    "question": "Num sistema com um só CPU há cinco processos ativos, nenhum em new ou terminated: um está a executar e dois estão bloqueados em E/S. Quantos estão em ready?",
+    "answers": [
+      "Um",
+      "Três",
+      "Quatro",
+      "Dois"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.29"
+  },
+  {
+    "question": "Qual destas terminações de um processo é involuntária?",
+    "answers": [
+      "Chamar exit(1) após detetar um erro de leitura de um ficheiro",
+      "Desreferenciar um apontador NULL, o que provoca SIGSEGV",
+      "Retornar 0 de main() depois de concluir todo o trabalho",
+      "Chamar exit(0) num handler ao receber um pedido de paragem previsto pelo programa"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.35"
+  },
+  {
+    "question": "No modelo conceptual com estados suspensos, um processo está em blocked_suspended e a operação de E/S termina. Para que estado passa?",
+    "answers": [
+      "Ready, ignorando a suspensão pedida",
+      "Running, pois a E/S concluída tem prioridade sobre a suspensão",
+      "Ready_suspended, só voltando a ready quando for retomado",
+      "Blocked, onde fica até ser retomado"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.42"
+  },
+  {
+    "question": "Um processo é apenas o código do programa carregado em memória, sem estado de CPU nem recursos associados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.3"
+  },
+  {
+    "question": "Num sistema com um só CPU, um processo em estado ready tem tudo o que precisa para executar e aguarda apenas que o escalonador lhe atribua o CPU.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.29"
+  },
+  {
+    "question": "Num sistema com um só CPU, múltiplos processos nunca trazem qualquer benefício, mesmo quando as tarefas são sobretudo de E/S.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.9"
+  },
+  {
+    "question": "Num sistema com um só CPU, dividir uma computação CPU-bound por vários processos pode torná-la mais lenta, por causa das mudanças de contexto e da sincronização.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.10"
+  },
+  {
+    "question": "Um processo zombie está em execução e consome tempo de CPU até o pai chamar wait().",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.36"
+  },
+  {
+    "question": "Se o pai tiver filhos e nenhum tiver ainda terminado, wait() suspende o pai até que um deles termine.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.38"
+  },
+  {
+    "question": "fork() devolve ao processo pai o valor 0 e ao processo filho o PID do pai.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.24"
+  },
+  {
+    "question": "Se um processo terminar antes dos seus filhos, estes ficam órfãos e passam a ser adotados por outro processo, normalmente o de PID 1.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.36"
+  },
+  {
+    "question": "Um processo bloqueado pode ser escolhido pelo escalonador para executar assim que o quantum do processo em execução termina.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.31"
+  },
+  {
+    "question": "Retornar de main() equivale a uma terminação voluntária do processo, com o valor devolvido como estado de saída.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.34"
+  },
+  {
+    "question": "A terminação de um processo por um sinal SIGTERM enviado por outro processo é uma terminação voluntária.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.35"
+  },
+  {
+    "question": "Com select(), um único processo pode aguardar que um de vários descritores fique pronto, sem criar um processo por cliente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.15"
+  },
+  {
+    "question": "Num servidor iterativo, um cliente lento não afeta o atendimento dos restantes pedidos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.13"
+  },
+  {
+    "question": "Um processo suspenso com SIGSTOP não é escalonado enquanto não for retomado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.41"
+  },
+  {
+    "question": "Num sistema com um só CPU podem existir vários processos em estado running em simultâneo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.29"
+  },
+  {
+    "question": "Duas execuções do mesmo programa têm PIDs diferentes, pois cada execução cria um novo processo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.4"
+  },
+  {
+    "question": "Um processo filho criado com fork() tem o mesmo PID do pai, mas um espaço de endereçamento separado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T3 p.23"
+  },
+  {
+    "question": "Num terminal, o programa int i; for(i=0;i<3;i++) fork(); printf(\"A\\n\"); escreve quantas linhas A?",
+    "answers": [
+      "6 linhas, porque cada fork() acrescenta dois processos ao total",
+      "3 linhas, uma por cada iteração do ciclo for executada pelo pai",
+      "8 linhas, uma por cada processo existente no fim",
+      "9 linhas, uma por cada processo novo mais a do pai original"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.6"
+  },
+  {
+    "question": "Quantos processos novos (sem contar com o original) são criados por int i; for(i=0;i<5;i++) fork();?",
+    "answers": [
+      "5",
+      "31",
+      "25, porque cada iteração cria cinco processos novos",
+      "32, que é o total de processos existentes no fim"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL1"
+  },
+  {
+    "question": "Quantos processos existem no fim (incluindo o original) com if(fork()==0) fork(); fork();?",
+    "answers": [
+      "4, porque existem dois fork() e cada um duplica o total",
+      "5, pois o neto não executa o segundo fork() do programa",
+      "8, pois cada um dos três processos faz duas chamadas a fork()",
+      "6, porque o primeiro fork() cria o filho que cria ainda um neto"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL1"
+  },
+  {
+    "question": "Quantas vezes é escrita a letra A (stdout num terminal) por fork() && fork(); printf(\"A\\n\");?",
+    "answers": [
+      "3, pois o filho do primeiro fork() obtém 0 e não executa o segundo",
+      "4, pois todos os processos executam os dois fork() da expressão",
+      "2, pois apenas o pai executa o segundo fork() da expressão e imprime",
+      "1, pois só o processo original chega ao printf()"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.11"
+  },
+  {
+    "question": "Quantos processos escrevem A em fork() || fork() || fork(); printf(\"A\\n\"); (stdout num terminal)?",
+    "answers": [
+      "3, pois o filho de cada fork() obtém 0 e não continua",
+      "4, o pai e os três processos criados em cadeia",
+      "7, pois todos os processos executam os três fork() da expressão",
+      "8, pois cada fork() duplica o número de processos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.11"
+  },
+  {
+    "question": "Qual é a árvore de processos de int i; for(i=0;i<3;i++){ if(fork()==0) break; } printf(\"A\\n\");?",
+    "answers": [
+      "Um pai com três filhos e nenhum neto",
+      "Uma cadeia com quatro processos, cada um filho do anterior",
+      "Um pai com dois filhos, em que um deles tem ainda um filho próprio",
+      "Um pai com três filhos, em que cada filho tem ainda um filho próprio"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.7"
+  },
+  {
+    "question": "Em int i; for(i=0;i<3;i++){ if(fork()>0) break; } printf(\"A\\n\");, quantos processos criam exatamente um filho?",
+    "answers": [
+      "4, todos os processos que executam o printf() no fim do programa",
+      "1, apenas o processo original, porque os filhos obtêm 0 e param",
+      "0, porque o ciclo termina na primeira iteração em todos eles",
+      "3, todos menos o último processo da cadeia"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.7"
+  },
+  {
+    "question": "Qual é a saída de int x=10; if(fork()==0){ x+=5; } else { wait(NULL); } printf(\"%d\\n\", x);?",
+    "answers": [
+      "10 seguido de 15, porque o pai imprime o seu valor antes do filho",
+      "15 seguido de 10",
+      "15 seguido de 15, porque pai e filho partilham a variável x",
+      "10 seguido de 10, porque o filho altera uma cópia que perde ao terminar"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.14"
+  },
+  {
+    "question": "Com stdout redirecionado para um ficheiro, o que contém o ficheiro após printf(\"1\\n\"); if(fork()==0){ puts(\"2\"); exit(0); } wait(NULL); puts(\"3\");?",
+    "answers": [
+      "As linhas 1, 2 e 3, por esta ordem",
+      "As linhas 1, 1, 2 e 3, por esta ordem",
+      "As linhas 1, 2, 1 e 3, por esta ordem",
+      "As linhas 1, 3 e 2, por qualquer ordem entre pai e filho"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.9"
+  },
+  {
+    "question": "Com stdout redirecionado para um ficheiro, quantas linhas A contém o ficheiro após int i; for(i=0;i<2;i++){ fork(); printf(\"A\\n\"); }?",
+    "answers": [
+      "8, porque o buffer ainda por escrever é copiado em cada fork()",
+      "6, uma por cada execução de printf() em todos os processos",
+      "4, uma por cada processo existente no fim do programa",
+      "2, uma por cada iteração do ciclo for"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.9"
+  },
+  {
+    "question": "O que é escrito no ecrã por printf(\"A\"); execlp(\"echo\",\"echo\",\"B\",NULL); printf(\"C\\n\");, se o echo existir?",
+    "answers": [
+      "A, B e C, por esta ordem",
+      "Apenas AB, pois o buffer é escrito antes de executar o echo",
+      "B e C, pois o printf() final é executado depois do echo",
+      "Apenas B, pois o buffer com A é descartado pelo exec"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL1"
+  },
+  {
+    "question": "O que é escrito por printf(\"A\\n\"); execl(\"/bin/nope\",\"nope\",NULL); printf(\"B\\n\");, se /bin/nope não existir?",
+    "answers": [
+      "Apenas A, porque o execl() termina o processo ao falhar",
+      "A e B, porque o execl() falha, devolve -1 e o programa continua",
+      "Apenas B, porque o execl() descarta o buffer ao falhar",
+      "Nada, porque o execl() falha e o processo é terminado pelo kernel por erro"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL1"
+  },
+  {
+    "question": "Quantas vezes é executado o programa echo em int i; for(i=0;i<3;i++){ if(fork()>0) execlp(\"echo\",\"echo\",\"x\",NULL); }?",
+    "answers": [
+      "1, pois o execlp() substitui o programa do processo original",
+      "7, pois todos os processos descendentes executam o echo",
+      "3",
+      "4, pois existem quatro processos no fim"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL1"
+  },
+  {
+    "question": "Que valor imprime o pai em int s; if(fork()==0) exit(300); wait(&s); printf(\"%d\\n\", WEXITSTATUS(s));?",
+    "answers": [
+      "300, que é o valor passado a exit() pelo filho",
+      "255, que é o máximo valor de estado de saída permitido",
+      "0, porque o valor 300 não cabe e o estado fica a zero",
+      "44"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.20"
+  },
+  {
+    "question": "Que valor imprime o pai em int i,s,t=0; for(i=1;i<=3;i++) if(fork()==0) exit(i*10); while(wait(&s)>0) t+=WEXITSTATUS(s); printf(\"%d\\n\",t);?",
+    "answers": [
+      "60",
+      "6, pois cada filho devolve apenas o seu número de ordem",
+      "30, pois o ciclo só recolhe o estado do último filho criado",
+      "0, pois a variável t no pai nunca é alterada pelos filhos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.22"
+  },
+  {
+    "question": "O que imprime um programa que, sem ter criado qualquer filho, executa printf(\"%d\\n\", (int)wait(NULL));?",
+    "answers": [
+      "0, porque não existem filhos para esperar",
+      "1, porque o próprio processo é considerado filho de si",
+      "-1",
+      "Nada, porque o processo fica bloqueado indefinidamente"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.22"
+  },
+  {
+    "question": "Que valor imprime o pai em int a[3]={1,2,3}; if(fork()==0){ a[0]=9; exit(0); } wait(NULL); printf(\"%d\\n\", a[0]);?",
+    "answers": [
+      "9, pois o filho e o pai partilham a mesma stack",
+      "1",
+      "3, pois a escrita do filho desloca os restantes elementos",
+      "2, pois o filho altera o primeiro elemento para o segundo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.14"
+  },
+  {
+    "question": "Qual é o valor de n no fim de int i,n=0; for(i=0;i<3;i++) if(fork()==0) exit(0); for(i=0;i<5;i++) if(wait(NULL)>0) n++;?",
+    "answers": [
+      "3",
+      "5, pois o pai chama wait() cinco vezes",
+      "0, pois os filhos terminam antes do pai chamar wait()",
+      "8, pois somam-se as chamadas bem-sucedidas e as falhadas"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.22"
+  },
+  {
+    "question": "O que imprime int s; pid_t p=fork(); if(p==0) exit(2); waitpid(p,&s,0); printf(\"%d %d\\n\", WIFEXITED(s), WEXITSTATUS(s));?",
+    "answers": [
+      "0 2, porque o filho terminou com um valor não nulo",
+      "1 0, porque o estado de saída fica nos bits mais baixos",
+      "2 1, porque os valores aparecem por ordem trocada",
+      "1 2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.25"
+  },
+  {
+    "question": "Quantas linhas escreve int x=1; fork(); x*=2; fork(); x*=3; printf(\"%d\\n\", x);, e com que valor?",
+    "answers": [
+      "Quatro linhas, com os valores 6, 12, 18 e 36",
+      "Quatro linhas, todas com o valor 6",
+      "Quatro linhas, com os valores 2, 3, 6 e 6",
+      "Duas linhas, ambas com o valor 36"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.14"
+  },
+  {
+    "question": "Qual é o valor impresso por pid_t p=fork(); if(p==0) pause(); printf(\"%d\\n\", (int)waitpid(p,NULL,WNOHANG)); (o filho ainda existe quando waitpid é chamado)?",
+    "answers": [
+      "O PID do filho, porque waitpid() devolve sempre o PID",
+      "-1, porque WNOHANG impede a espera por um filho vivo",
+      "0, porque o filho ainda não terminou",
+      "1, porque o filho foi encontrado ainda em execução"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL1"
+  },
+  {
+    "question": "Que valor imprime o pai em int x=0,i; for(i=0;i<3;i++){ if(fork()==0){ x++; exit(0); } } while(wait(NULL)>0); printf(\"%d\\n\", x);?",
+    "answers": [
+      "0, porque cada filho incrementa a sua própria cópia de x",
+      "3, porque os três filhos incrementam a variável x",
+      "1, porque só o último filho consegue alterar o valor de x",
+      "Indeterminado, porque depende da ordem de terminação"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.14"
+  },
+  {
+    "question": "Qual é a única ordem de saída possível de if(fork()==0){ if(fork()==0){ puts(\"C\"); exit(0); } wait(NULL); puts(\"B\"); exit(0); } wait(NULL); puts(\"A\");?",
+    "answers": [
+      "A, B, C",
+      "B, C, A",
+      "A, C, B",
+      "C, B, A"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.23"
+  },
+  {
+    "question": "Qual das saídas pode ocorrer em if(fork()==0){ puts(\"X\"); exit(0); } if(fork()==0){ puts(\"Y\"); exit(0); } wait(NULL); wait(NULL); puts(\"Z\");?",
+    "answers": [
+      "Z, X, Y",
+      "Y, X, Z",
+      "X, Z, Y",
+      "Y, Z, X"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.10"
+  },
+  {
+    "question": "Com stdout redirecionado para um ficheiro, que conteúdo fica após printf(\"A\"); write(1,\"B\",1); fork(); (ambos os processos terminam normalmente)?",
+    "answers": [
+      "ABA",
+      "AB",
+      "BAA",
+      "ABAB, com os dois caracteres duplicados"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.9"
+  },
+  {
+    "question": "O que é escrito por if(fork()==0){ printf(\"A\"); _exit(0); } wait(NULL); printf(\"B\\n\");?",
+    "answers": [
+      "Apenas B, pois _exit() não escreve o buffer do stdio",
+      "AB, pois o buffer é escrito quando o filho termina",
+      "BA, pois o filho escreve o buffer depois do pai",
+      "Apenas A, pois _exit() termina também o pai antes do wait()"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.20"
+  },
+  {
+    "question": "Quantos processos existem no fim de int i; for(i=0;i<3;i++){ if(fork()==0){ fork(); break; } }?",
+    "answers": [
+      "4, pois o ciclo cria apenas três filhos",
+      "7",
+      "8, pois o ciclo duplica o número de processos em cada iteração",
+      "6, pois cada filho cria um neto mas o pai não conta"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.7"
+  },
+  {
+    "question": "O que imprime o pai em int s; if(fork()==0) kill(getpid(),SIGKILL); wait(&s); printf(\"%d %d %d\\n\", WIFEXITED(s), WIFSIGNALED(s), WTERMSIG(s));?",
+    "answers": [
+      "1 0 0, porque o filho terminou normalmente",
+      "0 1 0, porque o sinal não fica registado no estado",
+      "1 1 9, porque o filho terminou e foi sinalizado",
+      "0 1 9"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.25"
+  },
+  {
+    "question": "Qual é o principal objetivo de fork() devolver valores diferentes ao pai e ao filho?",
+    "answers": [
+      "Indicar qual dos processos tem prioridade de execução no escalonamento",
+      "Distinguir pai e filho no código e dar ao pai o PID do filho",
+      "Informar o pai de que o filho já terminou a sua execução",
+      "Garantir que o filho executa sempre antes do pai"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.11"
+  },
+  {
+    "question": "O que acontece quando, após fork(), um dos processos escreve numa página partilhada com copy-on-write?",
+    "answers": [
+      "O kernel copia a página e o processo que escreve passa a usar a sua cópia",
+      "Ambos os processos passam a ver a alteração, pois a página continua partilhada",
+      "O processo que escreve é terminado pelo kernel por violar a proteção",
+      "O outro processo fica suspenso até a escrita terminar"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.9"
+  },
+  {
+    "question": "Em que situação fork() devolve -1?",
+    "answers": [
+      "Quando o processo filho termina antes de o pai chamar wait() sobre ele",
+      "Quando o processo que chama fork() é o init, que tem PID igual a 1",
+      "Quando o pai e o filho tentam escrever ao mesmo tempo numa página partilhada",
+      "Quando o kernel não consegue criar o processo, por exemplo por limite de processos"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.11"
+  },
+  {
+    "question": "Porque é que um processo filho já terminado pode continuar a existir na tabela de processos?",
+    "answers": [
+      "Porque o filho ainda mantém threads em execução",
+      "Porque o kernel só liberta a memória do filho passado um minuto",
+      "Porque o pai ainda não recolheu o seu estado de terminação com wait()",
+      "Porque o filho foi adotado e não tem pai a esperar por ele"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.24"
+  },
+  {
+    "question": "Porque é que sleep() no filho não garante que o pai executa primeiro uma determinada instrução?",
+    "answers": [
+      "Porque a ordem real depende do escalonador e sleep() não a garante",
+      "Porque sleep() termina sempre o filho ao fim do tempo indicado em segundos",
+      "Porque sleep() só pode ser usado pelo processo pai e nunca pelo filho",
+      "Porque sleep() bloqueia também o pai durante o mesmo tempo que o filho"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.19"
+  },
+  {
+    "question": "Se o processo filho terminar com return 5; na função main(), que valor obtém o pai com WEXITSTATUS(status)?",
+    "answers": [
+      "0, porque return em main() não define o estado de saída do processo",
+      "1, porque o estado só indica se o filho terminou com erro",
+      "5, tal como se o filho tivesse chamado exit(5)",
+      "255, porque o valor é sempre complementado a um byte"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.20"
+  },
+  {
+    "question": "Qual dos seguintes valores é, logo após fork() bem-sucedido, diferente entre o pai e o filho?",
+    "answers": [
+      "O conteúdo da stack no momento do fork()",
+      "O código do programa em execução",
+      "O valor do program counter",
+      "O PID do processo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.13"
+  },
+  {
+    "question": "Num processo acabado de criar com fork(), o que devolve getppid()?",
+    "answers": [
+      "O valor 0, tal como o fork() devolveu ao filho no momento da criação",
+      "O PID do processo que chamou fork()",
+      "O mesmo valor que o próprio getpid() devolve no filho recém-criado",
+      "O PID do processo init, que é 1 em todos os sistemas Linux"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.18"
+  },
+  {
+    "question": "Para além do valor passado a exit(), que informação pode o pai obter do estado devolvido por wait()?",
+    "answers": [
+      "O tempo de CPU consumido pelo filho desde a sua criação até terminar",
+      "O conteúdo da memória do filho no momento da sua terminação",
+      "O sinal que terminou o filho e se houve core dump",
+      "O PID dos processos criados pelo filho antes de terminar"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.24"
+  },
+  {
+    "question": "Depois de fork(), o código de pai e filho começa a executar na instrução imediatamente a seguir à chamada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.10"
+  },
+  {
+    "question": "Após fork() com sucesso, o pai executa sempre primeiro, porque foi o processo que chamou fork().",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.10"
+  },
+  {
+    "question": "Quando o filho executa exit(256), o pai obtém 0 em WEXITSTATUS(status).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.20"
+  },
+  {
+    "question": "A função wait() devolve -1 quando o processo que a chama não tem filhos por esperar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.22"
+  },
+  {
+    "question": "Depois de execlp() ter sucesso, o processo mantém o mesmo PID mas passa a executar outro programa.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL1"
+  },
+  {
+    "question": "Um filho que já terminou e cujo estado o pai ainda não recolheu com wait() fica em estado zombie.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.24"
+  },
+  {
+    "question": "Com stdout redirecionado para um ficheiro, o programa printf(\"A\"); fork(); escreve AA no ficheiro quando os dois processos terminam normalmente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.9"
+  },
+  {
+    "question": "No pai, após pid_t p=fork();, a expressão p == getpid() é sempre falsa.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.18"
+  },
+  {
+    "question": "Todos os processos de utilizador, com exceção do init, foram criados por outro processo e cada um tem exatamente um pai.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.7"
+  },
+  {
+    "question": "Chamar sleep(1) no pai garante que o filho já terminou quando o pai continua.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.19"
+  },
+  {
+    "question": "Após fork(), se o filho alterar memória obtida com malloc(), o pai vê a alteração.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.14"
+  },
+  {
+    "question": "Se o filho for terminado pelo sinal SIGKILL, WIFEXITED(status) devolve verdadeiro no pai.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.25"
+  },
+  {
+    "question": "Depois de um execlp() bem-sucedido, a instrução seguinte do programa original é executada quando o novo programa termina.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL1"
+  },
+  {
+    "question": "O estado de saída passado a exit() pode ter valores entre 0 e 65535.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.20"
+  },
+  {
+    "question": "A função wait(NULL) bloqueia o pai até que todos os seus filhos tenham terminado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.22"
+  },
+  {
+    "question": "Imediatamente após fork(), pai e filho partilham o código do programa porque é só de leitura.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP1 p.9"
+  },
+  {
+    "question": "Um filho termina com exit(-1). Que valor devolve WEXITSTATUS(s) no pai, depois de wait(&s)?",
+    "answers": [
+      "255, só 8 bits de -1",
+      "-1, o valor passado a exit",
+      "65535, o estado ocupa 16 bits",
+      "1, só o sinal é preservado"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.6"
+  },
+  {
+    "question": "O filho executa abort(). O pai faz wait(&s) e imprime WIFEXITED(s), WIFSIGNALED(s) e WTERMSIG(s) separados por espaço. Qual a saída?",
+    "answers": [
+      "1 0 6, saída normal com estado 6",
+      "1 0 0, saída normal com estado 0",
+      "0 1 9, morto por SIGKILL",
+      "0 1 6, morto por SIGABRT"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.4"
+  },
+  {
+    "question": "execl(\"/bin/echo\",\"echo\",\"a\",NULL); printf(\"b\\n\"); Qual a saída, existindo /bin/echo?",
+    "answers": [
+      "a e, de seguida, b",
+      "Apenas a",
+      "Apenas b",
+      "Nada, porque execl devolve -1 e termina o processo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.15"
+  },
+  {
+    "question": "int r=execl(\"/nonexistent\",\"x\",NULL); printf(\"%d %d\", r, errno==ENOENT); Qual a saída, se o ficheiro não existir?",
+    "answers": [
+      "0 1, execl devolve 0 quando falha",
+      "-1 1, falha com errno ENOENT",
+      "127 1, execl devolve o estado do shell",
+      "-1 0, errno não é alterado pelo execl"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.15"
+  },
+  {
+    "question": "if(fork()==0){ execl(\"/nonexistent\",\"x\",NULL); exit(7); } wait(&s); printf(\"%d\", WEXITSTATUS(s)); Qual o valor impresso pelo pai?",
+    "answers": [
+      "0, o exec substitui o filho com sucesso",
+      "127, o comando não foi encontrado",
+      "255, o estado equivalente a -1",
+      "7, vem do exit a seguir ao execl"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.15"
+  },
+  {
+    "question": "int r=waitpid(-1,NULL,0); printf(\"%d %d\", r, errno==ECHILD); Qual a saída num processo que nunca criou filhos?",
+    "answers": [
+      "-1 1, falha com ECHILD",
+      "0 1, devolve 0 sem esperar",
+      "-1 0, falha mas errno fica a zero",
+      "0 0, não há nada a esperar"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.7"
+  },
+  {
+    "question": "pid_t p=fork(); if(p==0) exit(0); a=waitpid(p,NULL,0); b=waitpid(p,NULL,0); printf(\"%d %d\", a==p, b); Qual a saída?",
+    "answers": [
+      "0 -1, o primeiro waitpid falha",
+      "1 0, o segundo waitpid devolve 0",
+      "1 -1, o segundo waitpid falha",
+      "1 1, o segundo waitpid devolve o PID"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.7"
+  },
+  {
+    "question": "if((p=fork())==0){ pause(); exit(0); } r=waitpid(p,&s,WNOHANG); kill(p,SIGKILL); waitpid(p,&s,0); printf(\"%d %d\", r, WTERMSIG(s)); Qual a saída?",
+    "answers": [
+      "0 15, o filho recebe SIGTERM",
+      "-1 9, waitpid falha com WNOHANG",
+      "0 0, o filho terminou normalmente",
+      "0 9, o filho recebe SIGKILL"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.5"
+  },
+  {
+    "question": "char b[9]={0}; pipe(f); if(fork()==0){ dup2(f[1],1); execlp(\"echo\",\"echo\",\"hi\",NULL); exit(1); } close(f[1]); read(f[0],b,8); printf(\"%s\",b); Qual a saída?",
+    "answers": [
+      "Nada, porque exec fecha todos os descritores abertos",
+      "hi",
+      "O pai bloqueia, pois nunca chegam dados ao pipe",
+      "hi, só depois de wait()"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.14"
+  },
+  {
+    "question": "Com fd=open(\"/dev/null\",O_RDONLY|O_CLOEXEC)=3, o filho faz execl(\"/bin/sh\",\"sh\",\"-c\",\"test -e /proc/self/fd/3\",NULL). Que valor tem WEXITSTATUS(s) no pai?",
+    "answers": [
+      "0, o descritor continua aberto no sh",
+      "127, o sh não é encontrado",
+      "1, o descritor não existe no sh",
+      "9, o exec falhou e o filho fez exit(9)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.14"
+  },
+  {
+    "question": "char b[64]; sprintf(b,\"test $$ -eq %d\",getpid()); execl(\"/bin/sh\",\"sh\",\"-c\",b,NULL); return 5; Com que estado termina o processo?",
+    "answers": [
+      "0, o sh mantém o PID e o teste passa",
+      "1, o sh tem outro PID e o teste falha",
+      "5, o return é executado a seguir ao exec",
+      "127, o /bin/sh não é encontrado"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.12"
+  },
+  {
+    "question": "fork(); for(i=0;i<3;i++) execlp(\"echo\",\"echo\",\"x\",NULL); Quantas linhas x são escritas?",
+    "answers": [
+      "Duas, uma por processo",
+      "Uma, só um processo chega ao execlp",
+      "Três, uma por iteração do ciclo",
+      "Seis, três por cada processo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.27"
+  },
+  {
+    "question": "for(i=0;i<2;i++){ p=fork(); x=fork(); if(p>0||x>0) execlp(\"echo\",\"echo\",\"x\",NULL); } Quantas linhas x são escritas?",
+    "answers": [
+      "4, só os processos com p>0 e x>0 fazem exec",
+      "8, quatro execs por iteração",
+      "6, três em cada iteração",
+      "9, três execs por cada processo existente"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.28"
+  },
+  {
+    "question": "fork(); if(execl(\"/nope\",\"n\",NULL)==-1) puts(\"f\"); Se /nope não existir, quantas vezes é impresso f?",
+    "answers": [
+      "Uma, apenas no pai",
+      "Duas, uma em cada processo",
+      "Nenhuma, pois execl substitui o processo",
+      "Uma, apenas no filho"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.15"
+  },
+  {
+    "question": "int s=system(\"exit 3\"); printf(\"%d %d\", WIFEXITED(s), WEXITSTATUS(s)); Qual a saída?",
+    "answers": [
+      "0 3, WIFEXITED é falso",
+      "1 0, o estado de saída é lido como zero",
+      "3 1, os valores vêm trocados",
+      "1 3, saiu normalmente com estado 3"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.6"
+  },
+  {
+    "question": "int s=system(\"cmd_inexistente 2>/dev/null\"); printf(\"%d\", WEXITSTATUS(s)); Qual o valor impresso?",
+    "answers": [
+      "0, o comando é executado com sucesso",
+      "1, erro genérico do shell",
+      "127, comando não encontrado pelo shell",
+      "-1, o system falha sempre"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.6"
+  },
+  {
+    "question": "Os filhos a e b terminam com exit(1) e exit(2). O pai faz waitpid(b,&s1,0); waitpid(a,&s2,0). Quais os valores de WEXITSTATUS(s1) e WEXITSTATUS(s2)?",
+    "answers": [
+      "1 2, pela ordem de criação",
+      "0 0, o pai não recolhe os estados",
+      "1 1, ambos os estados são iguais",
+      "2 1, cada waitpid pede um PID"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.5"
+  },
+  {
+    "question": "int n=0; for(i=0;i<3;i++) if(fork()==0) exit(0); while(wait(NULL)>0) n++; printf(\"%d %d\", n, errno==ECHILD); Qual a saída?",
+    "answers": [
+      "3 0, errno fica a zero ao terminar",
+      "3 1, três filhos e depois ECHILD",
+      "2 1, só dois filhos são contados",
+      "4 1, o pai também é contado pelo wait"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.7"
+  },
+  {
+    "question": "int r=execl(\"echo\",\"echo\",\"x\",NULL); printf(\"%d\", r); Qual a saída, existindo o comando echo mas nenhum ficheiro echo na pasta atual?",
+    "answers": [
+      "-1, execl não pesquisa o PATH",
+      "x, pois execl pesquisa o PATH",
+      "0, execl teve sucesso",
+      "x e depois -1, o exec corre e regressa"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.22"
+  },
+  {
+    "question": "char *e[]={\"A=1\",NULL}; execle(\"/usr/bin/env\",\"env\",NULL,e); Que linhas escreve o programa?",
+    "answers": [
+      "A=1 e as variáveis de ambiente do processo original",
+      "Apenas A=1",
+      "Nenhuma, porque execle falha sem o ambiente atual",
+      "Só as variáveis do processo original"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.20"
+  },
+  {
+    "question": "setenv(\"A\",\"1\",1); char *e[]={NULL}; execle(\"/bin/sh\",\"sh\",\"-c\",\"echo [$A]\",NULL,e); Qual a saída?",
+    "answers": [
+      "[], o ambiente é vazio",
+      "[1], o ambiente é herdado",
+      "[A], mostra o nome da variável",
+      "[$A], o shell não expande"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.20"
+  },
+  {
+    "question": "if(fork()==0) execl(\"/bin/sh\",\"sh\",\"-c\",\"exit 9\",NULL); wait(&s); printf(\"%d\", WEXITSTATUS(s)); Qual o valor impresso pelo pai?",
+    "answers": [
+      "0, o filho foi substituído com sucesso",
+      "1, o execl falhou e o filho terminou",
+      "127, o sh não foi encontrado",
+      "9, o estado do novo programa"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.26"
+  },
+  {
+    "question": "Três filhos terminam com exit(1), exit(2) e exit(3), com PIDs em p[1], p[2] e p[3]. O pai espera p[3], depois p[2], depois p[1], e faz t=t*10+WEXITSTATUS(s). Qual o valor final de t?",
+    "answers": [
+      "6, soma dos três estados",
+      "123, a ordem de criação dos filhos",
+      "321, a ordem inversa de espera",
+      "0, o pai não recolhe valores"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.11"
+  },
+  {
+    "question": "for(i=0;i<2;i++) if(fork()==0) execl(\"/nope\",\"n\",NULL); puts(\"z\"); Se /nope não existir, quantas linhas z são escritas?",
+    "answers": [
+      "Uma, só o pai chega ao puts",
+      "Duas, o pai e um dos filhos",
+      "Três, o pai e dois filhos",
+      "Quatro, um por processo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.15"
+  },
+  {
+    "question": "O filho executa raise(SIGSEGV) e o pai faz wait(&s). Qual a saída de printf(\"%d %d\", WIFEXITED(s), WTERMSIG(s))?",
+    "answers": [
+      "1 6, saída normal com estado 6",
+      "1 11, saída normal com estado 11",
+      "0 11, morto por SIGSEGV",
+      "0 6, morto por SIGABRT"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.4"
+  },
+  {
+    "question": "if(fork()==0); execlp(\"echo\",\"echo\",\"x\",NULL); Quantas linhas x são escritas?",
+    "answers": [
+      "Duas, ambos executam execlp",
+      "Uma, só o filho executa execlp",
+      "Nenhuma, o ponto e vírgula impede o exec",
+      "Quatro, o if duplica os processos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.25"
+  },
+  {
+    "question": "char *a[]={\"y\",\"z\",NULL}; execvp(\"echo\",a); Qual a saída?",
+    "answers": [
+      "y z, ambos os argumentos",
+      "z, argv[0] não é escrito",
+      "Nada, execvp falha sem argv[0]",
+      "y, apenas o primeiro argumento"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.17"
+  },
+  {
+    "question": "Com stdout redirecionado para um ficheiro, printf(\"A\\n\"); if(fork()==0) execlp(\"echo\",\"echo\",\"B\",NULL); wait(NULL); printf(\"C\\n\"); Que linhas contém o ficheiro, por ordem?",
+    "answers": [
+      "B, A, C",
+      "A, B, C",
+      "A, B, A, C",
+      "B, C, A"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.14"
+  },
+  {
+    "question": "for(i=1;i<=3;i++) if(fork()==0) exit(i*2); while(wait(&s)>0) t+=WEXITSTATUS(s); printf(\"%d\", t); Qual o valor impresso?",
+    "answers": [
+      "6, só o último filho recolhido",
+      "3, o número de filhos",
+      "21, a soma de 1 a 6",
+      "12, a soma de 2, 4 e 6"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.7"
+  },
+  {
+    "question": "Qual das funções da família exec é a única que corresponde a uma chamada ao sistema, sendo as restantes funções de biblioteca que a invocam?",
+    "answers": [
+      "execvp, que usa o PATH",
+      "execl, que usa uma lista de argumentos",
+      "execve, a chamada ao sistema",
+      "execlp, que usa o PATH e uma lista"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.16"
+  },
+  {
+    "question": "Qual das funções pesquisa o executável nas pastas de $PATH e recebe os argumentos num vetor de apontadores?",
+    "answers": [
+      "execv, que exige o caminho completo",
+      "execvp, que usa $PATH e um vetor",
+      "execlp, que usa uma lista",
+      "execve, que recebe também o ambiente"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.22"
+  },
+  {
+    "question": "Quando o pai termina antes do filho, qual a consequência para o filho?",
+    "answers": [
+      "É terminado imediatamente pelo kernel, por não ter pai",
+      "Passa a ser adotado pelo init/systemd",
+      "Fica zombie até ao fim do sistema, sem poder ser removido",
+      "Mantém o pai terminado como pai, sem alteração"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.9"
+  },
+  {
+    "question": "Porque é que, após o exec no filho, se coloca habitualmente exit(EXIT_FAILURE)?",
+    "answers": [
+      "Para o filho não continuar o código do pai se o exec falhar",
+      "Para libertar os descritores abertos do filho antes de o exec arrancar",
+      "Para garantir que o filho termina sempre que o exec tem sucesso",
+      "Para o pai receber o SIGCHLD mais cedo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.26"
+  },
+  {
+    "question": "Num processo, qual a transição de estado quando termina uma operação de E/S em que estava bloqueado?",
+    "answers": [
+      "De waiting para running",
+      "De ready para terminated",
+      "De running para ready",
+      "De waiting para ready"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.3"
+  },
+  {
+    "question": "Qual das informações de um processo se mantém após um exec bem-sucedido?",
+    "answers": [
+      "Os valores das variáveis globais e locais",
+      "O conteúdo do heap e da stack do programa",
+      "O PID do processo",
+      "O código do programa anterior e os dados"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.14"
+  },
+  {
+    "question": "A função execvpe faz parte do padrão POSIX e existe em todos os sistemas UNIX.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.22"
+  },
+  {
+    "question": "Depois de um execl bem-sucedido, o processo mantém o mesmo PID.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.12"
+  },
+  {
+    "question": "Em caso de sucesso, a função execv devolve o PID do novo programa.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.15"
+  },
+  {
+    "question": "Um processo zombie já libertou quase todos os recursos, mas a sua entrada na tabela de processos só é removida quando o pai recolhe o estado de saída.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.8"
+  },
+  {
+    "question": "Um processo órfão é um processo que terminou, mas cujo estado de saída ainda não foi recolhido pelo pai.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.9"
+  },
+  {
+    "question": "A chamada waitpid(-1,&s,0) tem um comportamento semelhante a wait(&s).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.5"
+  },
+  {
+    "question": "Por omissão, o pai é terminado pelo sinal SIGCHLD quando um filho termina.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.4"
+  },
+  {
+    "question": "Com a opção WUNTRACED, waitpid devolve também quando um filho passa ao estado parado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.5"
+  },
+  {
+    "question": "Os descritores marcados com FD_CLOEXEC continuam abertos no novo programa depois do exec.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.14"
+  },
+  {
+    "question": "Em execle, o vetor envp é o último argumento, a seguir ao apontador nulo que termina a lista de argumentos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.20"
+  },
+  {
+    "question": "Quando o processo não tem filhos, wait devolve -1 imediatamente em vez de bloquear.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.7"
+  },
+  {
+    "question": "Se o filho for terminado por SIGKILL, WIFEXITED(status) devolve um valor diferente de zero.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.4"
+  },
+  {
+    "question": "Num sistema com um único core, dois processos podem estar em simultâneo no estado running.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.3"
+  },
+  {
+    "question": "Depois de um exec bem-sucedido, as variáveis globais do programa anterior mantêm o valor que tinham.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.12"
+  },
+  {
+    "question": "Depois de setenv(\"A\",\"1\",1), a chamada execl(\"/bin/sh\",\"sh\",\"-c\",\"echo [$A]\",NULL) escreve [1].",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.24"
+  },
+  {
+    "question": "Num ciclo de 2 iterações com if(fork()==0){ execl(\"/nope\",\"n\",NULL); exit(1); } e puts(\"z\") no fim, o pai escreve z uma única vez e os filhos nenhuma.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.26"
+  },
+  {
+    "question": "Se um descritor foi aberto sem O_CLOEXEC, um programa lançado por exec no mesmo processo continua a ter esse descritor aberto.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.14"
+  },
+  {
+    "question": "Se /bin/ls existir, depois de execl(\"/bin/ls\",\"ls\",NULL) bem-sucedido o código seguinte do programa original também é executado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP2 p.15"
+  }
+]

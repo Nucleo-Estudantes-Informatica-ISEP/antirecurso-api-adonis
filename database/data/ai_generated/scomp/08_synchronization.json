@@ -1,0 +1,2209 @@
+[
+  {
+    "question": "Depois de estabelecida uma região de memória partilhada entre processos, porque é que aceder-lhe é mais rápido do que trocar mensagens?",
+    "answers": [
+      "O kernel copia os dados diretamente para o recetor sem recorrer a system calls",
+      "A memória partilhada dispensa qualquer mecanismo de sincronização entre os processos",
+      "Os acessos são acessos normais à memória e dispensam a intervenção do kernel",
+      "Os dados partilhados ficam guardados sempre na cache do processador de cada processo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.5"
+  },
+  {
+    "question": "Qual é uma característica da troca de mensagens (message passing) como modelo de comunicação entre processos?",
+    "answers": [
+      "É tipicamente implementada com system calls, exigindo intervenção do kernel",
+      "Exige que os processos comunicantes partilhem o mesmo espaço de endereçamento virtual",
+      "Dispensa o kernel depois de estabelecido o canal de comunicação entre os processos",
+      "É indicada sobretudo para trocar grandes volumes de dados sem qualquer limitação"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.5"
+  },
+  {
+    "question": "Dois processos partilham c=5. P1 executa c++ e P2 executa c-- uma vez cada, em três passos (ler, alterar em registo, escrever). Qual valor final de c NÃO é possível?",
+    "answers": [
+      "4, quando ambos leem 5 e P2 é o último a escrever o resultado",
+      "5, quando os processos executam um após o outro, sem entrelaçamento",
+      "6, quando ambos leem 5 e P1 é o último a escrever o resultado",
+      "7, pois cada processo só altera c numa unidade, em sentidos opostos"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.16"
+  },
+  {
+    "question": "Um buffer circular tem N=8, com in=6, out=2 e counter=4. Inserem-se 3 itens e depois removem-se 5. Quais os valores finais de in, out e counter?",
+    "answers": [
+      "in=9, out=7, counter=2, pois não há reinício dos índices",
+      "in=1, out=7, counter=2",
+      "in=1, out=3, counter=2, pois out avança apenas 1 posição",
+      "in=3, out=7, counter=4, pois counter não se altera nas remoções"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.13"
+  },
+  {
+    "question": "Num buffer circular com um produtor e um consumidor, porque é que só counter é fonte de race condition e não in nem out?",
+    "answers": [
+      "Porque in e out são variáveis locais de cada processo, fora da memória partilhada",
+      "É o único alterado pelos dois processos, e counter++ e counter-- não são atómicos",
+      "Porque o acesso a inteiros em memória partilhada é sempre atómico, exceto counter",
+      "Porque in e out usam o operador módulo, o que torna cada atualização atómica em hardware"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.16"
+  },
+  {
+    "question": "Qual das afirmações sobre espera passiva está correta?",
+    "answers": [
+      "O processo continua a executar em ciclo a testar a condição até ser sinalizado",
+      "O processo bloqueado continua a gastar o seu quantum a testar a condição",
+      "Só pode ser usada por processos que não partilham dados entre si",
+      "O processo bloqueado fica numa fila de espera e o CPU fica livre para outros processos"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.15"
+  },
+  {
+    "question": "Quais as três propriedades que uma solução para o problema da secção crítica deve satisfazer?",
+    "answers": [
+      "Exclusão mútua, progresso e espera limitada",
+      "Exclusão mútua, prioridade e espera ativa",
+      "Progresso, espera ativa e preempção do CPU",
+      "Exclusão mútua, justiça estrita e escalonamento round-robin"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.20"
+  },
+  {
+    "question": "P0: while(turn!=0); CS; turn=1. P1: while(turn!=1); CS; turn=0. Se P1 nunca mais pedir para entrar, o que sucede a P0 ao tentar entrar duas vezes seguidas?",
+    "answers": [
+      "Entra sempre sem esperar, pois a secção crítica está livre",
+      "Bloqueia na segunda, o que viola a exclusão mútua",
+      "Bloqueia na segunda, sem ninguém na secção crítica: viola o progresso",
+      "Bloqueia na segunda, o que viola apenas a propriedade de espera limitada de P0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.20"
+  },
+  {
+    "question": "Um processo A espera para entrar na secção crítica, enquanto B sai e volta a entrar sucessivamente, sempre antes de A e sem limite. Que propriedade é violada?",
+    "answers": [
+      "A exclusão mútua, pois B entra sempre sozinho na secção crítica",
+      "A exclusão mútua e o progresso em simultâneo",
+      "A espera limitada, ficando A em inanição (starvation)",
+      "Nenhuma, pois a secção crítica nunca é partilhada"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.20"
+  },
+  {
+    "question": "No algoritmo de Peterson (flag[i]=true; turn=j; while(flag[j] && turn==j);), ocorre flag[0]=true, flag[1]=true, turn=1 (P0), turn=0 (P1). O que sucede?",
+    "answers": [
+      "P0 entra na secção crítica e P1 espera até P0 pôr flag[0]=false",
+      "P1 entra na secção crítica e P0 espera até P1 pôr flag[1]=false, pois escreveu em último",
+      "Ambos entram em simultâneo, pois as duas flags são verdadeiras",
+      "Nenhum entra, ficando ambos bloqueados para sempre no ciclo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.22"
+  },
+  {
+    "question": "Se Pi executasse turn=j antes de flag[i]=true no algoritmo de Peterson, o que poderia suceder?",
+    "answers": [
+      "Os dois ficariam presos para sempre no ciclo while, sem nenhum entrar",
+      "Um dos processos ficaria em inanição, mas nunca haveria entrada simultânea",
+      "Nada mudaria, pois a ordem das duas atribuições é indiferente",
+      "Os dois processos poderiam estar em simultâneo na secção crítica"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.22"
+  },
+  {
+    "question": "Porque pode o algoritmo de Peterson, escrito em C sem cuidados adicionais, falhar num CPU moderno com vários núcleos?",
+    "answers": [
+      "Os CPUs modernos não permitem variáveis partilhadas entre dois processos",
+      "O compilador e o CPU podem reordenar acessos, violando a consistência sequencial",
+      "As variáveis flag e turn ficam em registos privados de cada núcleo, por definição",
+      "O quantum dos CPUs modernos é demasiado curto para o algoritmo funcionar"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.23"
+  },
+  {
+    "question": "O que garante uma instrução atómica como cmpxchg do x86 quando usada para sincronização?",
+    "answers": [
+      "Bloqueia o processo numa fila de espera até a palavra ter o valor pretendido",
+      "Testa e modifica o conteúdo de uma palavra como uma unidade indivisível",
+      "Suspende o escalonamento de todos os processos até ao fim da secção crítica",
+      "Copia a palavra para o kernel, evitando assim acessos concorrentes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.24"
+  },
+  {
+    "question": "Um spinlock usa while(tas(&l)); CS; l=0, com l=0 e tas a pôr l a 1 atomicamente, devolvendo o valor anterior. Dois processos executam tas em simultâneo. O que sucede?",
+    "answers": [
+      "Ambos recebem 0 e entram; tas apenas evita a corrupção de l",
+      "Ambos recebem 1 e ficam bloqueados numa fila do kernel",
+      "O primeiro recebe 0 e entra; o outro é bloqueado passivamente pelo kernel",
+      "Só um recebe 0 e entra; o outro recebe 1 e fica em espera ativa"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.24"
+  },
+  {
+    "question": "Um semáforo POSIX tem valor 0. O que sucede quando um processo executa sem_wait() sobre ele?",
+    "answers": [
+      "O processo bloqueia até que outro execute sem_post()",
+      "O valor passa a -1 e o processo prossegue de imediato",
+      "A chamada devolve erro de imediato e o valor mantém-se em 0",
+      "O processo prossegue e o valor mantém-se em 0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.26"
+  },
+  {
+    "question": "Qual a utilização típica de um semáforo inicializado a 0?",
+    "answers": [
+      "Garantir exclusão mútua no acesso a um recurso partilhado por vários processos",
+      "Contar os recursos livres de um conjunto inicialmente cheio",
+      "Notificar outro processo de que uma condição se verificou",
+      "Impedir que o semáforo seja usado por mais de um processo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.27"
+  },
+  {
+    "question": "Um semáforo inicia com valor 2. Três processos executam sem_wait() e nenhum executa sem_post(). Quantos ficam bloqueados?",
+    "answers": [
+      "Nenhum, porque o valor 2 permite qualquer número de chamadas sem bloquear",
+      "Dois, porque só o primeiro processo encontra o semáforo livre",
+      "Um, o que executar sem_wait em último lugar",
+      "Três, porque sem_wait bloqueia sempre na primeira chamada"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.27"
+  },
+  {
+    "question": "Com s=0, P1 executa a ação A e depois sem_post(s), e P2 executa sem_wait(s) e depois a ação B. Que ordem fica garantida?",
+    "answers": [
+      "A termina sempre antes de B começar",
+      "B termina sempre antes de A começar",
+      "Nenhuma, pois P2 pode passar sem_wait antes de P1 chamar sem_post",
+      "A e B correm em simultâneo, pois o semáforo apenas conta chamadas"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.27"
+  },
+  {
+    "question": "Num buffer de 1 elemento com os semáforos full e empty, que valores iniciais são corretos?",
+    "answers": [
+      "full=1 e empty=0, pois o buffer começa cheio",
+      "full=1 e empty=1, pois o buffer aceita as duas operações",
+      "full=0 e empty=0, pois nenhum processo entrou ainda",
+      "full=0 e empty=1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.32"
+  },
+  {
+    "question": "Num buffer de 1 elemento, full e empty são iniciados ambos a 1. Que problema pode ocorrer?",
+    "answers": [
+      "Os produtores bloqueiam sempre na primeira inserção",
+      "Um consumidor pode ler o buffer antes de qualquer item ter sido produzido",
+      "O consumidor fica bloqueado para sempre em sem_wait(full), mesmo havendo itens",
+      "Nenhum, pois empty impede por si só leituras de itens inexistentes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.31"
+  },
+  {
+    "question": "Num buffer de N posições com os semáforos mutex, slots e items, quais os valores iniciais corretos?",
+    "answers": [
+      "mutex=1, slots=0, items=N, pois o buffer começa cheio",
+      "mutex=1, slots=N, items=0",
+      "mutex=0, slots=N, items=0, pois ninguém detém o buffer",
+      "mutex=N, slots=1, items=0, pois há N posições partilhadas"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.35"
+  },
+  {
+    "question": "Em sbuf_insert, a ordem passa a ser sem_wait(mutex); sem_wait(slots); ...; sem_post(mutex); sem_post(items). Com o buffer cheio, o que pode ocorrer?",
+    "answers": [
+      "O produtor ignora slots e sobrescreve itens ainda não consumidos pelos consumidores",
+      "Livelock: produtor e consumidores executam em ciclo sem nunca chegar a bloquear",
+      "Nada, pois a ordem dos sem_wait é indiferente para a correção do programa",
+      "Deadlock: o produtor detém mutex à espera de slots e os consumidores bloqueiam em mutex"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.36"
+  },
+  {
+    "question": "Se sbuf_insert não usar o semáforo mutex, com vários produtores e slots a controlar o espaço, o que pode ocorrer?",
+    "answers": [
+      "Dois produtores leem o mesmo in e um item é sobrescrito pelo outro",
+      "Os produtores bloqueiam para sempre em sem_wait(slots)",
+      "O buffer fica com mais de N itens, apesar de o semáforo slots limitar o espaço",
+      "Os consumidores leem os itens por ordem inversa à da inserção"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.36"
+  },
+  {
+    "question": "Em sbuf_insert esquece-se sem_post(items). O que sucede?",
+    "answers": [
+      "Os consumidores removem itens inexistentes, pois items nunca é decrementado",
+      "O buffer enche e os produtores sobrescrevem os itens mais antigos",
+      "Os consumidores bloqueiam em sem_wait(items) e nunca removem itens",
+      "O mutex fica bloqueado depois da primeira inserção"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.36"
+  },
+  {
+    "question": "Em sbuf_insert esquece-se sem_post(mutex). O que ocorre após a primeira inserção?",
+    "answers": [
+      "O semáforo slots deixa de ser decrementado",
+      "Apenas os produtores bloqueiam, enquanto os consumidores continuam a remover itens do buffer sem problemas",
+      "Qualquer outro acesso ao buffer, de produtor ou de consumidor, bloqueia em sem_wait(mutex)",
+      "O valor de mutex passa a 2 e a exclusão mútua deixa de ser garantida no buffer"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.36"
+  },
+  {
+    "question": "Porque não se deve implementar down(s) como while(s==0); s-- em C sobre memória partilhada?",
+    "answers": [
+      "Dois processos podem ver s==1 e ambos decrementar, deixando s a -1",
+      "O ciclo while nunca termina, mesmo que outro processo faça s++",
+      "O compilador de C proíbe ciclos while sem corpo",
+      "A memória partilhada não permite decrementar inteiros"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.26"
+  },
+  {
+    "question": "Em sem_open(\"/m\", O_CREAT, 0644, 1), o que representa o último argumento?",
+    "answers": [
+      "O número máximo de processos que podem usar o semáforo",
+      "As permissões de acesso ao semáforo, em octal",
+      "O número de processos que ficam à espera no início",
+      "O valor inicial do semáforo, usado quando este é criado"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.29"
+  },
+  {
+    "question": "Quando é que dois processos são considerados cooperantes?",
+    "answers": [
+      "Quando têm o mesmo processo pai e, por isso, partilham o mesmo identificador de processo (PID)",
+      "Quando um pode afetar ou ser afetado pelo outro, por exemplo por dados partilhados",
+      "Quando executam o mesmo programa ao mesmo tempo em CPUs diferentes",
+      "Quando um deles aguarda pelo outro com wait()"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.3"
+  },
+  {
+    "question": "Qual a melhor definição de race condition?",
+    "answers": [
+      "Dois processos bloqueados, cada um à espera de um recurso detido pelo outro",
+      "O comportamento depende da temporização relativa ou do entrelaçamento de vários processos",
+      "Um processo que nunca é escalonado por existirem outros processos com maior prioridade",
+      "Um processo que consome CPU a testar uma condição em ciclo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.18"
+  },
+  {
+    "question": "No algoritmo de Peterson, P1 nunca tenta entrar e P0 entra e sai repetidamente. Como se comporta P0?",
+    "answers": [
+      "Na segunda entrada fica bloqueado, pois turn passa a 1 e P1 não o devolve",
+      "Fica bloqueado até P1 pôr turn=0",
+      "Entra, mas só depois de P1 pôr flag[1]=true",
+      "Entra sempre sem esperar, pois flag[1] é falso"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.22"
+  },
+  {
+    "question": "Tentativa de solução: flag[i]=true; while(flag[j]); CS; flag[i]=false. Se ambos executarem flag=true antes do while, o que ocorre?",
+    "answers": [
+      "Ambos ficam presos no while: a exclusão mútua mantém-se, mas falha o progresso",
+      "Ambos entram na secção crítica em simultâneo",
+      "Um deles entra, pois a variável turn decide o desempate entre os dois processos, como em Peterson",
+      "Ambos saem do ciclo e alternam corretamente"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.21"
+  },
+  {
+    "question": "Tentativa de solução: while(flag[j]); flag[i]=true; CS; flag[i]=false. Qual o problema?",
+    "answers": [
+      "Ambos ficam presos no while para sempre",
+      "Só um dos processos consegue alguma vez entrar",
+      "Ambos podem ver flag[j] falso e entrar em simultâneo na secção crítica",
+      "A exclusão mútua é garantida, mas um dos processos sofre inanição"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.21"
+  },
+  {
+    "question": "Na implementação do produtor com counter, a instrução while(s->counter == BUFFER_SIZE); corresponde a que tipo de espera?",
+    "answers": [
+      "Bloqueio passivo do produtor numa fila do kernel",
+      "Exclusão mútua sobre o acesso ao buffer",
+      "Espera ativa por espaço livre no buffer",
+      "Espera até o consumidor terminar a execução"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.14"
+  },
+  {
+    "question": "Num sistema distribuído, a troca de mensagens é em geral mais fácil de implementar do que a memória partilhada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.5"
+  },
+  {
+    "question": "Depois de estabelecida a memória partilhada, o kernel garante automaticamente a consistência dos dados acedidos pelos processos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.5"
+  },
+  {
+    "question": "O teste exaustivo não consegue explorar todos os entrelaçamentos possíveis, pelo que a correção tem de ser garantida para qualquer escalonamento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.7"
+  },
+  {
+    "question": "Na espera passiva, o processo bloqueado continua a consumir CPU a testar a condição.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.15"
+  },
+  {
+    "question": "A espera ativa pode ser desejável ou necessária em programação de baixo nível, como no tratamento de interrupts.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.15"
+  },
+  {
+    "question": "No buffer circular com um produtor e um consumidor, in e out originam race conditions por serem variáveis partilhadas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.16"
+  },
+  {
+    "question": "A exclusão mútua exige que, se um processo estiver na sua secção crítica, nenhum outro esteja na sua.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.20"
+  },
+  {
+    "question": "A propriedade de progresso é a que limita o número de vezes que outros processos entram antes de um processo que espera.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.20"
+  },
+  {
+    "question": "O algoritmo de Peterson está restrito a dois processos que alternam entre secções críticas e secções restantes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.21"
+  },
+  {
+    "question": "O algoritmo de Peterson garante exclusão mútua em CPUs modernos mesmo com reordenação de instruções e sem memory fences.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.23"
+  },
+  {
+    "question": "O algoritmo de Dekker é conhecido como a primeira solução por software correta para a exclusão mútua.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.23"
+  },
+  {
+    "question": "No algoritmo de Peterson, Pi só sai do ciclo while quando flag[j] e turn==j são ambos verdadeiros.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.22"
+  },
+  {
+    "question": "Um semáforo inicializado a 1 pode ser usado para garantir exclusão mútua no acesso a um recurso.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.27"
+  },
+  {
+    "question": "Em Linux, o valor devolvido por sem_getvalue nunca é negativo, mesmo havendo processos bloqueados em sem_wait.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.26"
+  },
+  {
+    "question": "Num semáforo inicializado a N, podem ser feitas N chamadas consecutivas a sem_wait sem bloquear, se não houver sem_post entretanto.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.27"
+  },
+  {
+    "question": "Um semáforo inicializado a 0 pode ser usado como mutex, pois o primeiro sem_wait entra sem bloquear.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.27"
+  },
+  {
+    "question": "Num buffer de N posições, o semáforo slots, iniciado a N, conta os itens disponíveis para os consumidores.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T6 p.34"
+  },
+  {
+    "question": "Num buffer limitado com semáforos mutex(1), slots(N) e items(0), o consumidor faz sem_wait(mutex) e depois sem_wait(items). Se o buffer estiver vazio, qual é a consequência?",
+    "answers": [
+      "O consumidor liberta o mutex ao bloquear em items, permitindo que um produtor insira um item",
+      "O sem_wait(items) devolve -1 com errno EAGAIN e o consumidor continua a ler uma posição vazia",
+      "O consumidor bloqueia com o mutex retido, os produtores bloqueiam em sem_wait(mutex) e ocorre deadlock",
+      "O consumidor lê um valor inválido do buffer e a variável out fica com um valor fora do intervalo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.13"
+  },
+  {
+    "question": "Qual destas é uma das quatro condições necessárias para que ocorra um deadlock?",
+    "answers": [
+      "Busy waiting",
+      "Starvation",
+      "Inversão de prioridades",
+      "Hold and wait"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.15"
+  },
+  {
+    "question": "Com um mutex por conta (inicial 1), P1 executa transferMoney(A,B) e P2 executa transferMoney(B,A); ambos fazem sem_wait da origem e depois do destino. Que sequência leva a deadlock?",
+    "answers": [
+      "P1 faz wait(A) e wait(B) e só depois P2 começa a executar",
+      "P1 faz wait(A), P2 faz wait(B) e cada um bloqueia ao pedir o mutex do outro",
+      "P2 faz wait(B) e wait(A), conclui a transferência e só depois P1 faz wait(A), sem bloquear",
+      "P1 faz wait(A) e post(A) antes de P2 fazer wait(B)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.33"
+  },
+  {
+    "question": "Duas contas têm id(A) < id(B) e os mutexes são adquiridos por ordem crescente de id. Se P1 executa transferMoney(A,B) e P2 executa transferMoney(B,A), qual é o primeiro mutex que ambos tentam adquirir?",
+    "answers": [
+      "O da conta B, e o processo que perder fica a reter o mutex de A enquanto espera",
+      "O da conta A, e o processo que perder bloqueia sem reter nenhum mutex",
+      "O da conta de origem de cada um, ou seja, A no caso de P1 e B no caso de P2",
+      "O da conta de destino de cada um, ou seja, B no caso de P1 e A no caso de P2"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.34"
+  },
+  {
+    "question": "Que condição necessária para deadlock deixa de se verificar quando todos os processos adquirem os semáforos por uma ordem global crescente?",
+    "answers": [
+      "Exclusão mútua",
+      "Circular wait",
+      "Espera com retenção (hold and wait)",
+      "Ausência de preempção (no preemption)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.29"
+  },
+  {
+    "question": "No ciclo que faz sem_wait(from); sem_trywait(to) e, em caso de falha, sem_post(from) antes de repetir, qual é a condição de deadlock que fica eliminada?",
+    "answers": [
+      "Circular wait, pois a ordem de aquisição passa a ser sempre a mesma em todos os processos",
+      "Exclusão mútua, pois o sem_trywait permite que dois processos entrem em simultâneo",
+      "No preemption, pois o kernel retira o semáforo ao processo quando o sem_trywait falha",
+      "Hold and wait, pois liberta o que detém quando não consegue o segundo semáforo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.38"
+  },
+  {
+    "question": "Dado sem_t s inicializado a 1, depois de sem_wait(&s); int r = sem_trywait(&s); quais são o valor de r e o de errno?",
+    "answers": [
+      "r vale 0 e errno não é alterado",
+      "r vale -1 e errno vale ETIMEDOUT",
+      "r vale -1 e errno vale EINTR",
+      "r vale -1 e errno vale EAGAIN"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.37"
+  },
+  {
+    "question": "Um processo executa sem_wait(m); sem_wait(m); com m inicializado a 1 e sem mais nenhum processo a usá-lo. O que acontece?",
+    "answers": [
+      "O segundo sem_wait devolve -1 com errno EDEADLK",
+      "O segundo sem_wait passa sem bloquear, por o semáforo já pertencer ao processo",
+      "O processo termina com SIGSEGV ao repetir o sem_wait",
+      "O processo bloqueia para sempre no segundo sem_wait"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.21"
+  },
+  {
+    "question": "Dois processos repetem, sem qualquer pausa, o ciclo sem_wait(from); sem_trywait(to) falha; sem_post(from). Qual é um comportamento possível?",
+    "answers": [
+      "Ambos ficam bloqueados em sem_wait sem consumir CPU, caracterizando um deadlock",
+      "Ambos continuam a executar sem concluir a transferência, o que é um livelock",
+      "O kernel termina um dos processos por detetar uma espera circular",
+      "Um dos processos entra em starvation porque o sem_trywait nunca falha para o outro"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.40"
+  },
+  {
+    "question": "Porque é que a versão de transferMoney com sem_trywait acrescenta um usleep de duração aleatória no fim de cada tentativa?",
+    "answers": [
+      "Para garantir a exclusão mútua entre as duas contas",
+      "Para evitar que os processos repitam a tentativa ao mesmo tempo e entrem em livelock",
+      "Para que o sem_trywait passe a bloquear até o semáforo ficar livre, evitando a espera ativa",
+      "Para cumprir uma ordem global na aquisição dos semáforos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.41"
+  },
+  {
+    "question": "Vários processos criados com fork() usam rand() para calcular o atraso, sem nunca chamarem srand(). Que problema pode surgir?",
+    "answers": [
+      "O rand() devolve sempre 0 em processos filhos",
+      "Geram todos a mesma sequência de atrasos e voltam a colidir",
+      "O kernel bloqueia o rand() em cada processo filho até o processo pai chamar srand()",
+      "O resultado de rand() fica limitado a valores negativos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.42"
+  },
+  {
+    "question": "Qual é a principal diferença entre deadlock e livelock?",
+    "answers": [
+      "O deadlock só ocorre com semáforos e o livelock só ocorre com mutexes",
+      "O deadlock termina sozinho ao fim de algum tempo e o livelock nunca termina",
+      "No livelock os processos esperam num ciclo de recursos e no deadlock repetem uma operação",
+      "No deadlock os processos estão bloqueados; no livelock executam, mas sem progresso"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.41"
+  },
+  {
+    "question": "Uma aplicação protege todas as contas com um único semáforo. O que acontece ao débito (throughput) quando se aumenta muito o número de processos que as acedem?",
+    "answers": [
+      "Aumenta de forma proporcional, pois cada processo trabalha numa conta diferente",
+      "Mantém-se praticamente igual, pois o acesso fica essencialmente serializado",
+      "Diminui sempre para zero, devido a deadlock",
+      "Aumenta até ao número de contas e depois estabiliza"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.25"
+  },
+  {
+    "question": "Qual é uma desvantagem do locking de grão fino em relação ao de grão grosso?",
+    "answers": [
+      "Tem mais overhead e maior risco de erros subtis, como deadlocks e race conditions",
+      "Impede o acesso simultâneo a contas diferentes",
+      "Obriga a usar busy waiting em todas as contas",
+      "Torna impossível a existência de race conditions mas reduz o paralelismo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.27"
+  },
+  {
+    "question": "Num sistema com um semáforo por conta, as máquinas A e B acedem à conta X e a máquina C acede à conta Y. Qual é o comportamento esperado?",
+    "answers": [
+      "As máquinas A, B e C são serializadas pelo mesmo semáforo",
+      "A e B ficam serializadas entre si, mas C executa de forma independente",
+      "A, B e C executam sempre em paralelo, sem qualquer espera nem partilha de semáforos",
+      "Só C pode aceder à sua conta, enquanto A e B esperam"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.28"
+  },
+  {
+    "question": "Qual era a principal desvantagem do Big Kernel Lock adotado pelo Linux quando introduziu suporte multicore?",
+    "answers": [
+      "Impedia que o código em modo utilizador executasse em paralelo em vários cores",
+      "Obrigava a desativar os interrupts em todos os cores durante a execução de processos",
+      "Provocava sempre um deadlock quando dois processos faziam chamadas ao sistema",
+      "Só um core podia executar código do kernel de cada vez"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.26"
+  },
+  {
+    "question": "Qual das abordagens ao tratamento de deadlocks é a mais usada na maioria dos sistemas operativos de utilizador final?",
+    "answers": [
+      "Prevenção, com ordenação de todos os recursos",
+      "Evitamento, com o algoritmo do banqueiro",
+      "Ignorar o problema de deadlock, deixando-o a cargo dos programadores",
+      "Deteção e recuperação, com terminação automática dos processos em deadlock"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.20"
+  },
+  {
+    "question": "Qual é a diferença entre prevenção (prevention) e evitamento (avoidance) de deadlocks?",
+    "answers": [
+      "A prevenção elimina pelo menos uma condição necessária; o evitamento só concede pedidos que mantêm um estado seguro",
+      "A prevenção só concede pedidos que mantêm o estado seguro; o evitamento elimina uma condição necessária",
+      "A prevenção deteta o deadlock depois de ocorrer; o evitamento termina um dos processos",
+      "A prevenção usa sempre semáforos; o evitamento usa sempre trylock"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.18"
+  },
+  {
+    "question": "Num sistema com uma única instância de cada recurso, o que se pode concluir quando o grafo de alocação de recursos tem um ciclo?",
+    "answers": [
+      "Existe starvation mas não deadlock",
+      "O sistema está num estado seguro",
+      "Existe um deadlock entre os processos do ciclo",
+      "Existe apenas um risco de deadlock, que pode não se concretizar"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.19"
+  },
+  {
+    "question": "Num produtor-consumidor com buffer limitado, qual é a ordem correta das operações do produtor para evitar o deadlock?",
+    "answers": [
+      "sem_wait(mutex); sem_wait(slots); inserir; sem_post(items); sem_post(mutex)",
+      "sem_wait(slots); sem_wait(mutex); inserir; sem_post(mutex); sem_post(items)",
+      "sem_wait(items); sem_wait(mutex); inserir; sem_post(mutex); sem_post(slots)",
+      "sem_wait(mutex); sem_wait(items); inserir; sem_post(slots); sem_post(mutex)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.5"
+  },
+  {
+    "question": "Um buffer limitado tem 6 posições. Quais devem ser os valores iniciais de mutex, slots e items, por esta ordem?",
+    "answers": [
+      "1, 0 e 6",
+      "0, 6 e 0",
+      "1, 6 e 0",
+      "1, 6 e 6"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.10"
+  },
+  {
+    "question": "No produtor correto de um buffer limitado, troca-se a ordem dos dois últimos sem_post: sem_post(mutex) antes de sem_post(items). O que acontece?",
+    "answers": [
+      "Pode ocorrer uma race condition nos índices do buffer",
+      "Continua correto: a ordem dos dois sem_post só altera quando cada processo é acordado",
+      "Ocorre sempre deadlock quando o buffer está cheio, porque o mutex é libertado demasiado cedo",
+      "Os itens inseridos passam a ser perdidos pelo consumidor"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.11"
+  },
+  {
+    "question": "Segundo o protocolo de ordenação de recursos, um processo que detém o recurso 5 precisa agora do recurso 3. O que deve fazer?",
+    "answers": [
+      "Esperar pelo recurso 3 mantendo o recurso 5, pois a espera é sempre curta",
+      "Libertar tudo o que detém e recomeçar, pedindo por ordem crescente",
+      "Pedir o recurso 3 com sem_wait sem libertar nada, pois já detém um recurso",
+      "Terminar de imediato, porque o pedido viola a ordem"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.31"
+  },
+  {
+    "question": "Que valor devolve sem_timedwait() num semáforo a 0, sem qualquer sem_post, quando o tempo limite absoluto expira, e qual é o errno?",
+    "answers": [
+      "Devolve 0 e errno vale ETIMEDOUT",
+      "Devolve -1 e errno vale EAGAIN",
+      "Devolve -1 e errno vale ETIMEDOUT",
+      "Devolve -1 e errno vale EINVAL"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.37"
+  },
+  {
+    "question": "Qual é a diferença entre sem_trywait() e sem_timedwait()?",
+    "answers": [
+      "O sem_trywait() incrementa o semáforo em caso de falha e o sem_timedwait() decrementa-o",
+      "O sem_trywait() nunca bloqueia; o sem_timedwait() bloqueia, no máximo, até ao limite",
+      "O sem_trywait() bloqueia até ao tempo limite; o sem_timedwait() nunca bloqueia",
+      "O sem_trywait() só funciona com semáforos binários e o sem_timedwait() com semáforos contadores"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.37"
+  },
+  {
+    "question": "P1 faz wait(a); wait(b) e P2 faz wait(b); wait(a), com a e b a 1, e ambos libertam no fim. Qual alteração elimina o deadlock mantendo a exclusão mútua?",
+    "answers": [
+      "Inicializar a e b a 2",
+      "Fazer P2 libertar a antes de b no fim, mantendo a ordem dos pedidos",
+      "Fazer P2 pedir primeiro a e depois b",
+      "Fazer P1 libertar b antes de a no fim"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.34"
+  },
+  {
+    "question": "Na versão do produtor-consumidor em que sem_wait(mutex) é feito antes de sem_wait(slots)/sem_wait(items), que propriedades se mantêm?",
+    "answers": [
+      "Mantém-se a liveness mas perde-se a safety, pois o buffer pode ficar corrompido",
+      "Perdem-se ambas, pois o buffer fica corrompido e há deadlock",
+      "Mantêm-se ambas, pois o mutex continua a proteger o buffer",
+      "Mantém-se a safety mas perde-se a liveness, pois pode ocorrer deadlock"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.9"
+  },
+  {
+    "question": "Em termos de fairness num sistema concorrente, o que é correto afirmar?",
+    "answers": [
+      "É garantida pelos semáforos, que acordam sempre os processos por ordem de chegada ao semáforo",
+      "É imposta pelo compilador, que reordena as instruções de cada processo",
+      "É assegurada pelo escalonador do SO, e as aplicações podem influenciá-la com prioridades",
+      "Só é relevante quando existem mais cores do que processos"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.8"
+  },
+  {
+    "question": "Com sem_t a=1 e b=0, o ciclo for(i<3){sem_wait(&a); if(sem_trywait(&b)==0) sem_post(&b); else {sem_post(&a); f++;}} termina com que valores de f e de a (sem_getvalue)?",
+    "answers": [
+      "f vale 3 e a vale 1",
+      "f vale 3 e a vale 0, pois os sem_post não repõem o valor",
+      "f vale 0 e a vale 0",
+      "f vale 0 e a vale 1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.38"
+  },
+  {
+    "question": "Com sem_t s inicializado a 2, executa-se: sem_wait(&s); sem_wait(&s); r1=sem_trywait(&s); sem_post(&s); r2=sem_trywait(&s). Quais são r1, r2 e o valor final de s?",
+    "answers": [
+      "r1 vale 0, r2 vale 0 e s vale 0",
+      "r1 vale -1, r2 vale -1 e s vale 1, por falta de sem_post",
+      "r1 vale -1, r2 vale 0 e s vale 0",
+      "r1 vale -1, r2 vale 0 e s vale 1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.37"
+  },
+  {
+    "question": "Três processos retêm cada um um recurso não partilhável e P0 espera o de P1, P1 espera o de P2 e P2 espera o de P0. Sem preempção, o que se pode concluir?",
+    "answers": [
+      "Existe starvation mas não deadlock, pois os processos podem ser escalonados",
+      "Existe um livelock, pois os processos continuam a pedir os recursos",
+      "Existe um deadlock, pois as quatro condições necessárias se verificam",
+      "Não existe deadlock, pois falta a condição de hold and wait"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.17"
+  },
+  {
+    "question": "Num buffer limitado em que o buffer está cheio, um produtor detém o mutex e bloqueia em sem_wait(slots). Que efeito tem num consumidor que faça sem_wait(mutex) primeiro?",
+    "answers": [
+      "O consumidor bloqueia à espera do mutex retido pelo produtor, e ambos ficam bloqueados para sempre",
+      "O consumidor passa, retira um item do buffer e liberta a posição esperada pelo produtor, que então continua",
+      "O consumidor passa o mutex ao produtor através do sem_post(slots)",
+      "O consumidor termina com erro, porque o buffer está cheio"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.13"
+  },
+  {
+    "question": "Num buffer limitado, o consumidor faz sem_wait(items) e depois sem_wait(mutex), e o produtor faz sem_wait(slots) e depois sem_wait(mutex). Pode ocorrer deadlock?",
+    "answers": [
+      "Sim, porque o consumidor pode ficar com items decrementado à espera do mutex retido pelo produtor para sempre",
+      "Sim, porque dois consumidores podem bloquear em simultâneo em sem_wait(items) com o mutex retido",
+      "Não, porque o mutex é libertado automaticamente quando o processo bloqueia",
+      "Não, porque ninguém bloqueia à espera de slots ou items enquanto retém o mutex"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.13"
+  },
+  {
+    "question": "Deadlocks e livelocks ameaçam a propriedade de liveness de um programa concorrente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.7"
+  },
+  {
+    "question": "Um deadlock só pode ocorrer se as quatro condições necessárias (exclusão mútua, hold and wait, no preemption e circular wait) se verificarem em simultâneo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.15"
+  },
+  {
+    "question": "Impor uma ordem global na aquisição dos semáforos impede a ocorrência de espera circular.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.31"
+  },
+  {
+    "question": "Um livelock pode ocorrer quando vários processos repetem em simultâneo uma operação que continua a falhar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.41"
+  },
+  {
+    "question": "Com um único semáforo a proteger todos os dados partilhados, adicionar mais processos não aumenta o débito (throughput).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.25"
+  },
+  {
+    "question": "O sem_trywait() devolve imediatamente -1 se o semáforo não puder ser decrementado, em vez de bloquear.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.37"
+  },
+  {
+    "question": "A deteção e recuperação de deadlocks é pouco usada em sistemas operativos, mas é muito usada em sistemas de bases de dados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.19"
+  },
+  {
+    "question": "Num sistema com uma única instância de cada recurso, um ciclo no grafo de alocação de recursos implica a existência de deadlock.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.19"
+  },
+  {
+    "question": "Um processo que já fez sem_wait num semáforo inicializado a 1 pode voltar a fazer sem_wait nesse semáforo sem bloquear, por já ser o seu detentor.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.21"
+  },
+  {
+    "question": "A prevenção de deadlocks consiste em conceder um pedido de recurso apenas se o estado resultante for seguro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.18"
+  },
+  {
+    "question": "O locking de grão fino é mais simples de escrever e de provar correto do que o de grão grosso.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.27"
+  },
+  {
+    "question": "Num livelock, os processos ficam bloqueados em sem_wait sem consumir CPU.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.40"
+  },
+  {
+    "question": "Se transferMoney adquirir sempre primeiro o mutex da conta de origem e depois o da conta de destino, nunca ocorre deadlock.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.33"
+  },
+  {
+    "question": "A maioria dos sistemas operativos de utilizador final implementa o algoritmo do banqueiro para evitar deadlocks.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.20"
+  },
+  {
+    "question": "Se vários processos chamarem rand() sem srand(), cada um obtém uma sequência de números diferente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.42"
+  },
+  {
+    "question": "Na versão do produtor-consumidor com sem_wait(mutex) antes de sem_wait(slots), o risco é um deadlock e não a corrupção dos índices in e out do buffer.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.13"
+  },
+  {
+    "question": "O Big Kernel Lock do Linux impedia que o código em modo utilizador executasse em paralelo em vários cores.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p.26"
+  },
+  {
+    "question": "Num sistema com preferência aos leitores (primeiro problema leitores-escritores), novos leitores chegam sempre antes de os anteriores terminarem. Qual a consequência para um escritor à espera?",
+    "answers": [
+      "Entra assim que o leitor que está a ler terminar, pois os escritores têm prioridade na fila de espera",
+      "Fica em deadlock com os leitores, que esperam todos por um recurso que só o escritor pode libertar",
+      "Pode sofrer starvation, pois mutex_data só é libertado quando o número de leitores ativos chega a 0",
+      "Sofre um livelock, porque executa sem_wait e sem_post em ciclo sem nunca conseguir entrar na secção crítica"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8 p24"
+  },
+  {
+    "question": "Na solução com preferência aos escritores, para que serve o semáforo try_read?",
+    "answers": [
+      "Bloquear a entrada de novos leitores enquanto houver escritores à espera",
+      "Garantir que vários escritores escrevem em simultâneo sobre os mesmos dados partilhados",
+      "Proteger o contador readcnt contra race conditions entre leitores",
+      "Garantir que os leitores entram sempre pela ordem de chegada"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8 p28"
+  },
+  {
+    "question": "Na solução com preferência aos leitores, qual a função do semáforo mutex_rc?",
+    "answers": [
+      "Garantir que só um leitor de cada vez lê os dados partilhados",
+      "Bloquear os escritores enquanto existir algum leitor ativo",
+      "Impedir que dois escritores escrevam em simultâneo",
+      "Garantir exclusão mútua no acesso ao contador readcnt"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8 p24"
+  },
+  {
+    "question": "Na solução com preferência aos leitores, qual dos leitores executa sem_post(mutex_data) e assim permite que um escritor entre?",
+    "answers": [
+      "O que entrou em primeiro lugar, assim que acabar de ler",
+      "O que, ao sair, deixa readcnt com o valor 0",
+      "O que, ao sair, deixa readcnt com o valor 1",
+      "Todos os leitores, ao saírem da leitura"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8 p12"
+  },
+  {
+    "question": "Num leitor, o bloco com readcnt é removido e substituído por sem_wait(mutex_data) antes de ler e sem_post(mutex_data) depois. Que consequência tem?",
+    "answers": [
+      "Os escritores passam a poder escrever enquanto os leitores leem, perdendo a exclusão mútua",
+      "Os leitores deixam de poder ler em simultâneo, pois passam a excluir-se mutuamente",
+      "O programa entra sempre em deadlock logo que existam dois leitores ativos",
+      "Os escritores deixam de ser afetados pelos leitores e nunca sofrem starvation"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8 p23"
+  },
+  {
+    "question": "Num leitor da solução com preferência aos leitores, retira-se o par sem_wait/sem_post(mutex_rc). Qual dos comportamentos pode ocorrer?",
+    "answers": [
+      "Os leitores passam a ler um de cada vez, porque mutex_rc era o que permitia leituras em simultâneo",
+      "Os escritores passam a poder escrever em simultâneo uns com os outros",
+      "O primeiro leitor deixa de precisar de sem_wait(mutex_data) para bloquear os escritores",
+      "Dois leitores decrementam readcnt em simultâneo, o contador não chega a 0 e os escritores bloqueiam para sempre"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8 p24"
+  },
+  {
+    "question": "Na solução com preferência aos escritores, quando é que um escritor executa sem_post(try_read), reabrindo a entrada aos leitores?",
+    "answers": [
+      "Quando termina e já não há mais escritores à espera (writecnt chega a 0)",
+      "Sempre que termina de escrever, mesmo que haja outros escritores à espera",
+      "Quando executa sem_wait(mutex_data) e obtém acesso exclusivo aos dados partilhados",
+      "Quando o último leitor ativo termina de ler"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8 p29"
+  },
+  {
+    "question": "Numa solução com preferência aos escritores, vários escritores chegam continuamente, um logo após o outro. Qual a consequência para os leitores?",
+    "answers": [
+      "Entram em deadlock com os escritores, porque ambos ficam à espera do semáforo try_read para sempre",
+      "Entram sempre que um escritor termina, pois os leitores têm prioridade na saída",
+      "Podem sofrer starvation, pois o acesso fica fechado enquanto houver escritores à espera",
+      "Leem em simultâneo com os escritores, pois try_read só afeta a escrita"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8 p30"
+  },
+  {
+    "question": "Vários processos estão bloqueados em sem_wait no mesmo semáforo e outro processo executa sem_post. Que garantia dá o POSIX sobre qual dos processos é desbloqueado?",
+    "answers": [
+      "O que está bloqueado há mais tempo, pois o POSIX obriga a que a fila seja sempre FIFO",
+      "O de maior prioridade, e em caso de empate o de menor PID",
+      "O último a bloquear, pois a fila é uma stack",
+      "Nenhuma: a ordem não é definida, por isso não se pode assumir FIFO"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8 p31"
+  },
+  {
+    "question": "Um controlador FIFO recebe os pedidos R1 R2 W1 R3 R4 (leitura/escrita) e nenhum está ativo. O que acontece?",
+    "answers": [
+      "R1, R2, R3 e R4 entram juntos e W1 só entra depois de todos terminarem",
+      "R1 e R2 entram juntos; W1 espera por eles e R3 e R4 só entram depois de W1 terminar",
+      "W1 entra primeiro, por ser o único pedido de escrita, e os leitores esperam por ele",
+      "Entra um pedido de cada vez, na ordem de chegada, incluindo os leitores"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8 p33"
+  },
+  {
+    "question": "Uma thread executa, sobre um pthread_rwlock_t livre: tryrdlock; tryrdlock; trywrlock, sem qualquer unlock. Quais os valores de retorno, por esta ordem?",
+    "answers": [
+      "0, EBUSY e EBUSY",
+      "0, 0 e 0",
+      "0, 0 e EBUSY",
+      "0, EBUSY e 0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8 p37"
+  },
+  {
+    "question": "Um semáforo foi iniciado com 1. Um processo executa sem_trywait duas vezes seguidas, sem sem_post. Qual o resultado?",
+    "answers": [
+      "A primeira devolve 0 e a segunda devolve -1, com errno igual a EAGAIN",
+      "As duas devolvem 0, pois o semáforo foi iniciado com 1",
+      "A primeira devolve 0 e a segunda bloqueia o processo até haver um sem_post",
+      "A primeira devolve 0 e a segunda devolve -1, com errno igual a EINTR"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p37"
+  },
+  {
+    "question": "Um escalonador aumenta gradualmente a prioridade de processos que esperam há muito tempo. Que problema mitiga esta técnica (priority aging)?",
+    "answers": [
+      "Race condition no acesso a variáveis partilhadas",
+      "Starvation de processos de baixa prioridade",
+      "Deadlock por espera circular entre dois semáforos",
+      "Livelock causado por tentativas simultâneas"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8 p5"
+  },
+  {
+    "question": "P: sem_wait(mutex); sem_wait(slots). C: sem_wait(mutex); sem_wait(items). Buffer vazio, items=0, mutex=1, e C corre primeiro. Que acontece?",
+    "answers": [
+      "Livelock: P e C repetem tentativas sem avançar, mas sem bloquear",
+      "Starvation de C, pois P entra sempre primeiro na secção crítica",
+      "Deadlock: C bloqueia em items com mutex, e P bloqueia em mutex",
+      "Nada de anormal: C bloqueia em items, mas liberta mutex enquanto espera"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p13"
+  },
+  {
+    "question": "Qual das seguintes opções NÃO é uma das quatro condições necessárias para a ocorrência de deadlock?",
+    "answers": [
+      "Espera ativa (busy waiting)",
+      "Exclusão mútua do recurso",
+      "Hold and wait dos processos",
+      "Espera circular (ciclo)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p15"
+  },
+  {
+    "question": "Todas as threads têm de adquirir os mutexes de qualquer par de contas por ordem crescente do identificador. Que condição de deadlock fica impossível?",
+    "answers": [
+      "Exclusão mútua, pois os mutexes deixam de ser exclusivos",
+      "Hold and wait, pois a thread deixa de manter um mutex ao pedir o segundo",
+      "No preemption, pois os mutexes passam a poder ser retirados à força",
+      "Espera circular, pois não pode haver um ciclo de threads à espera umas das outras"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p31"
+  },
+  {
+    "question": "Um processo executa transferMoney(A,B) e outro transferMoney(B,A), onde cada chamada faz sem_wait do mutex da conta de origem e depois do de destino. Que problema pode ocorrer?",
+    "answers": [
+      "Livelock: ambos executam sem_trywait em ciclo sem avançar",
+      "Starvation: um dos processos nunca consegue o primeiro mutex",
+      "Deadlock: cada processo pode ficar com um mutex à espera do outro",
+      "Nenhum problema, pois cada conta tem o seu próprio mutex a proteger o saldo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p33"
+  },
+  {
+    "question": "Na transferência de fundos, sem_wait(from) é seguido de sem_trywait(to), e se este falhar liberta-se from e repete-se. Que condição de deadlock é quebrada?",
+    "answers": [
+      "Exclusão mútua, pois o mutex deixa de ser exclusivo",
+      "Espera circular, pois as contas deixam de estar ordenadas por identificador",
+      "No preemption, pois o mutex é retirado ao processo à força",
+      "Hold and wait, pois não se espera por to enquanto se mantém from"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p38"
+  },
+  {
+    "question": "Dois processos repetem: sem_wait(a); if(sem_trywait(b)!=0) sem_post(a). O outro faz o mesmo com a e b trocados, e ambos falham sempre em sincronia. Qual o fenómeno?",
+    "answers": [
+      "Deadlock: ficam bloqueados à espera um do outro",
+      "Livelock: continuam ativos, mas sem progresso",
+      "Starvation: um deles é preterido por outro de maior prioridade",
+      "Race condition: acedem ao mesmo dado sem exclusão mútua"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p40"
+  },
+  {
+    "question": "Porque é que, no livelock da transferência de fundos, um atraso aleatório antes de cada nova tentativa ajuda a resolver o problema?",
+    "answers": [
+      "Os processos deixam de repetir as tentativas em simultâneo, quebrando a interferência",
+      "Os processos deixam de precisar de qualquer semáforo",
+      "O atraso aleatório obriga o kernel a conceder o mutex ao processo mais antigo",
+      "O processo bloqueado passa a ser acordado por sinal após o atraso, ficando sempre em primeiro"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p41"
+  },
+  {
+    "question": "Dois processos filho, criados por fork a partir do mesmo pai, usam rand() sem srand para calcular o atraso entre tentativas. Que problema pode persistir?",
+    "answers": [
+      "Entram em deadlock, pois rand() usa um mutex interno partilhado entre processos",
+      "O kernel recusa rand() em processos filho, com errno igual a EINVAL",
+      "Ficam com starvation, pois rand() favorece o processo pai",
+      "Podem gerar a mesma sequência de atrasos e continuar a colidir (livelock)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p42"
+  },
+  {
+    "question": "Qual a abordagem de tratamento de deadlocks usada intensivamente em sistemas de bases de dados?",
+    "answers": [
+      "Permitir que o deadlock ocorra e depois recuperar dele",
+      "Prevenir sempre, impondo uma ordem fixa de acesso às tabelas",
+      "Ignorar o problema e deixar a resolução ao utilizador",
+      "Evitar sempre, impedindo qualquer pedido que possa levar a deadlock"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p19"
+  },
+  {
+    "question": "Num grafo de alocação de recursos em que cada recurso tem uma única instância, o que implica a existência de um ciclo?",
+    "answers": [
+      "Pode existir deadlock, mas só se algum processo tiver prioridade menor",
+      "Não existe deadlock, só um estado inseguro",
+      "Existe deadlock entre os processos do ciclo",
+      "Existe starvation dos processos do ciclo, mas não deadlock"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p19"
+  },
+  {
+    "question": "No algoritmo do banqueiro (Banker), em que condição o sistema concede um pedido de recursos a um processo?",
+    "answers": [
+      "Quando nenhum outro processo está a usar o recurso",
+      "Quando o estado resultante da concessão é um estado seguro",
+      "Quando o processo tem a maior prioridade entre os que esperam",
+      "Quando já existe um ciclo no grafo de alocação"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p18"
+  },
+  {
+    "question": "Um banco usa um único mutex para todas as contas. Que acontece ao desempenho quando se aumenta o número de processos que fazem operações?",
+    "answers": [
+      "Não melhora o débito, pois só um processo de cada vez acede às contas",
+      "Melhora de forma linear, pois cada processo trabalha numa conta diferente",
+      "Melhora, porque aumenta o paralelismo entre leituras e escritas",
+      "Piora apenas se existirem escritas, pois as leituras não usam o mutex"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p25"
+  },
+  {
+    "question": "Qual é uma desvantagem de usar um lock por conta (granularidade fina), em vez de um único lock global?",
+    "answers": [
+      "Menor concorrência, pois todas as contas ficam protegidas pelo mesmo lock global do banco",
+      "Maior custo de locking e maior risco de erros subtis, como data races ou deadlocks",
+      "Impossibilidade de duas threads acederem a contas diferentes em simultâneo",
+      "Perda de exclusão mútua nas operações sobre cada conta"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p27"
+  },
+  {
+    "question": "Numa lista ligada protegida por um único mutex, porque é que os leitores também têm de adquirir o mutex antes de percorrer a lista?",
+    "answers": [
+      "Para impedir que outros leitores leiam a lista ao mesmo tempo que o primeiro leitor",
+      "Porque ler a lista altera os apontadores dos nós",
+      "Para que o escritor possa ter prioridade sobre os leitores",
+      "Só assim o escritor garante que ninguém lê a lista enquanto a modifica"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p7"
+  },
+  {
+    "question": "Em que melhora uma lista ligada com um único rwlock em relação a um único mutex, e que problema subsiste?",
+    "answers": [
+      "Vários escritores escrevem em simultâneo, mas os leitores pagam custo de locking",
+      "Deixa de haver contenção, mas os leitores passam a bloquear os escritores",
+      "Vários leitores acedem em simultâneo, mas os escritores continuam a bloquear todos os outros",
+      "Os leitores deixam de precisar de lock, mas os escritores sofrem starvation"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p10"
+  },
+  {
+    "question": "Numa lista com um rwlock por nó, todas as threads bloqueiam os nós sempre da cabeça para a cauda. Que problema se evita?",
+    "answers": [
+      "Race condition no contador de referências do nó, que passa a ser atualizado por várias threads",
+      "Deadlock, pois a ordem global elimina a espera circular entre threads",
+      "Livelock, pois as threads deixam de repetir tentativas",
+      "Starvation dos leitores perante escritores contínuos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p12"
+  },
+  {
+    "question": "No hand-over-hand locking, porque é que uma thread adquire o lock do nó seguinte antes de libertar o do nó atual?",
+    "answers": [
+      "Para que outras threads não consigam ler o nó atual enquanto a thread avança para o seguinte",
+      "Para evitar que a thread precise de qualquer lock na cabeça da lista",
+      "Para que o nó seguinte não seja alterado por outra thread antes de lá chegar",
+      "Para duplicar o nó atual antes de o libertar"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p13"
+  },
+  {
+    "question": "No hand-over-hand locking, como obtém um escritor o lock de escrita de um nó que precisa de alterar?",
+    "answers": [
+      "Adquire logo o lock de escrita em todos os nós por onde passa",
+      "Adquire o lock de escrita da lista inteira e só depois percorre os nós um a um até ao nó pretendido",
+      "Espera que todos os leitores terminem antes de adquirir qualquer lock",
+      "Adquire lock de leitura, examina o nó e, se precisar de alterar, liberta-o e readquire em escrita"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p14"
+  },
+  {
+    "question": "Um processo faz sem_wait(m) com m iniciado a 1 e, sem fazer sem_post, chama uma função que volta a fazer sem_wait(m). Que acontece?",
+    "answers": [
+      "Bloqueia para sempre, pois espera por um semáforo que só ele libertaria",
+      "Prossegue, pois o semáforo é reentrante para o processo que já o tem",
+      "Falha com -1 e errno igual a EDEADLK",
+      "Prossegue e deixa o valor do semáforo a -1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p21"
+  },
+  {
+    "question": "Qual propriedade de um sistema concorrente é violada por starvation, e que solução típica a mitiga?",
+    "answers": [
+      "Segurança (safety), mitigada com mutexes e semáforos nas secções críticas do programa",
+      "Equidade (fairness), mitigada com filas FIFO ou ajuste de prioridades",
+      "Exclusão mútua, mitigada com ordem global de locks",
+      "Progresso global, mitigada com atrasos aleatórios"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8 p40"
+  },
+  {
+    "question": "Na solução com preferência aos leitores, o primeiro leitor a entrar executa sem_wait(mutex_data), bloqueando os escritores.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8 p23"
+  },
+  {
+    "question": "Na solução com preferência aos leitores, os escritores usam mutex_rc para proteger o acesso ao contador readcnt.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8 p12"
+  },
+  {
+    "question": "Tanto na solução com preferência aos leitores como na com preferência aos escritores, é possível haver starvation.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8 p10"
+  },
+  {
+    "question": "Um pthread_rwlock_t adquirido em modo de escrita pode ser mantido em simultâneo por várias threads.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8 p35"
+  },
+  {
+    "question": "A função pthread_rwlock_unlock serve para libertar um rwlock, quer tenha sido adquirido em modo de leitura quer em modo de escrita.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8 p37"
+  },
+  {
+    "question": "Num programa em que quase todos os acessos são leituras, um rwlock oferece menos concorrência do que um mutex.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8 p36"
+  },
+  {
+    "question": "Para prevenir deadlock basta garantir que pelo menos uma das quatro condições necessárias nunca se verifica.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p29"
+  },
+  {
+    "question": "Num livelock, os processos ficam bloqueados em sem_wait sem consumir CPU, à espera de um semáforo que nunca é libertado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p40"
+  },
+  {
+    "question": "Usar muitos locks de granularidade fina pode aumentar a concorrência, mas torna mais difícil garantir a correção do programa.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p27"
+  },
+  {
+    "question": "Impor uma ordem global na aquisição dos locks elimina a condição de hold and wait.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p31"
+  },
+  {
+    "question": "A função sem_timedwait espera pelo semáforo durante um intervalo de tempo limitado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p37"
+  },
+  {
+    "question": "O Big Kernel Lock adicionado ao Linux com o suporte multicore é um exemplo de locking de granularidade fina.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p26"
+  },
+  {
+    "question": "Dois processos que precisam dos mesmos dois mutexes, adquiridos por ordem idêntica em ambos, não entram em deadlock por causa deles.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T7 p31"
+  },
+  {
+    "question": "No priority aging, a prioridade de um processo diminui com o tempo que este passa à espera.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8 p5"
+  },
+  {
+    "question": "Na solução com preferência aos escritores, um leitor que chega depois de um escritor tem de esperar, mesmo que o escritor também esteja à espera.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8 p10"
+  },
+  {
+    "question": "Numa lista ligada protegida por um único mutex, vários leitores podem percorrer a lista em simultâneo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p8"
+  },
+  {
+    "question": "Numa lista ligada protegida por um único mutex, porque é que as threads que apenas leem a lista também têm de adquirir o mutex antes de aceder a head?",
+    "answers": [
+      "Porque a leitura de um apontador next faz sempre uma escrita na memória partilhada e altera o conteúdo do nó lido",
+      "Porque o mutex impede que o escalonador retire o processador à thread leitora durante a travessia da lista",
+      "Porque o escritor só garante que ninguém lê a lista a meio de uma modificação se todos os acessos usarem o mesmo lock",
+      "Porque sem o mutex o kernel recusaria o acesso de leitura à heap onde os nós foram alocados com malloc"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.7"
+  },
+  {
+    "question": "Qual é o principal problema de usar um único mutex a proteger toda a lista ligada partilhada por muitas threads?",
+    "answers": [
+      "Elevada contenção: só uma thread acede à lista de cada vez, mesmo que todas apenas leiam",
+      "Os leitores podem observar nós a meio de uma modificação, porque o mutex não impede acessos concorrentes de leitura",
+      "Ocorre deadlock sempre que duas threads tentam adquirir o mesmo mutex ao percorrer a lista em ordens diferentes",
+      "O mutex não garante exclusão mútua entre escritores que inserem nós em posições distintas da lista"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.8"
+  },
+  {
+    "question": "Qual a vantagem de substituir o mutex único por um único pthread_rwlock_t a proteger a lista inteira?",
+    "answers": [
+      "Escritores que alteram nós diferentes da lista passam a poder executar em simultâneo, sem esperarem uns pelos outros",
+      "Várias threads leitoras podem percorrer a lista em simultâneo, enquanto um escritor continua a ter acesso exclusivo",
+      "O custo de adquirir o lock deixa de existir para os leitores, porque estes já não precisam de o adquirir",
+      "Deixa de ser possível ocorrer deadlock e starvation, pelo que a ordem de aquisição dos locks é irrelevante"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.9"
+  },
+  {
+    "question": "Mesmo com um único read-write lock sobre a lista, que desvantagem se mantém?",
+    "answers": [
+      "Os leitores ficam bloqueados enquanto outros leitores estiverem a percorrer a lista, tal como acontece com um mutex",
+      "Os escritores deixam de ter acesso exclusivo, podendo dois escritores alterar o mesmo nó em simultâneo",
+      "O lock só pode ser adquirido por uma thread de cada vez, mesmo quando todas as threads são leitoras",
+      "Cada acesso, mesmo de leitura, paga o custo de adquirir o lock, e um escritor bloqueia todas as outras threads"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.10"
+  },
+  {
+    "question": "Numa lista com um lock por nó, o que significa reduzir a granularidade dos locks?",
+    "answers": [
+      "Cada lock passa a proteger uma região mais pequena dos dados, o que diminui a contenção",
+      "Cada lock passa a ser mantido durante menos tempo, mas continua a proteger a lista inteira ao mesmo tempo",
+      "Cada lock passa a proteger mais nós da lista, o que reduz o número de locks a adquirir por operação",
+      "Cada lock deixa de ser bloqueante, passando a falhar logo com trylock() quando o nó está ocupado"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.11"
+  },
+  {
+    "question": "Numa lista com um rwlock por nó, qual a regra simples que evita deadlock entre threads que bloqueiam vários nós?",
+    "answers": [
+      "Cada thread bloqueia no máximo dois nós ao mesmo tempo e liberta ambos antes de pedir novos locks a outras threads",
+      "Cada thread tenta adquirir os locks com trylock() e, se um falhar, repete o pedido em ciclo até conseguir",
+      "Todas as threads bloqueiam os nós pela mesma ordem total, da cabeça para a cauda da lista",
+      "As threads leitoras adquirem sempre os nós da cauda para a cabeça e as escritoras da cabeça para a cauda"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.12"
+  },
+  {
+    "question": "Numa lista com um lock por nó, T1 bloqueia o nó A e depois pede o nó B, e T2 bloqueia B e depois pede A. Qual a consequência provável?",
+    "answers": [
+      "Livelock, porque as duas threads libertam e repetem continuamente os pedidos sem nunca bloquear",
+      "Deadlock, por espera circular: cada thread aguarda o lock que a outra detém",
+      "Starvation de T2, porque T1 chegou primeiro e nunca liberta o lock do nó A enquanto executar",
+      "Race condition, porque os dois locks são adquiridos ao mesmo tempo sem exclusão mútua entre T1 e T2"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.12"
+  },
+  {
+    "question": "Em hand-over-hand locking, em que ordem uma thread passa do nó atual p para o nó seguinte?",
+    "answers": [
+      "Liberta o lock de p e só depois adquire o lock de p->next, para nunca manter dois locks em simultâneo",
+      "Adquire o lock de toda a lista, avança para p->next e só então liberta o lock da lista inteira",
+      "Pede o lock de p->next sem libertar o de p e liberta ambos antes de visitar o nó p->next",
+      "Adquire o lock de p->next e só depois liberta o lock de p"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.13"
+  },
+  {
+    "question": "Uma thread liberta o lock do nó p e só depois pede o lock de p->next. Que problema pode ocorrer?",
+    "answers": [
+      "Ocorre sempre deadlock, porque a thread fica sem qualquer lock e não consegue adquirir o do nó seguinte",
+      "Outra thread pode remover ou alterar o nó seguinte entretanto, deixando a thread com um apontador inválido",
+      "O lock de p->next fica inutilizável, porque um rwlock só pode ser adquirido por quem ainda detém o lock anterior",
+      "Nenhum, pois o nó seguinte continua protegido pelo lock do nó p que foi libertado há pouco"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.13"
+  },
+  {
+    "question": "Num escritor com hand-over-hand locking, como se decide se um nó é bloqueado para leitura ou para escrita?",
+    "answers": [
+      "Adquire primeiro o read lock, examina o nó e, se for preciso alterá-lo, liberta-o e readquire-o como write lock",
+      "Adquire sempre o write lock logo à chegada, para garantir que nenhum leitor vê o nó durante a travessia",
+      "Adquire o write lock em todos os nós percorridos e converte-os em read lock quando concluir que não os altera, antes de avançar",
+      "Decide pelo valor do campo a do nó, sem necessidade de o examinar sob proteção de qualquer lock"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.14"
+  },
+  {
+    "question": "Porque é que um escritor não adquire logo o write lock em cada nó que percorre à procura da posição de inserção?",
+    "answers": [
+      "Porque o rwlock não permite adquirir um write lock sem que a thread tenha antes obtido um read lock nesse mesmo nó da lista",
+      "Porque o write lock só pode ser adquirido no último nó da lista, onde termina a inserção, e nunca num nó intermédio",
+      "Porque o write lock é mais lento de adquirir e por isso seria bloqueado pelo kernel em cada nó da lista",
+      "Bloquearia desnecessariamente leitores e outros escritores em todos os nós percorridos, anulando a vantagem dos locks finos"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.14"
+  },
+  {
+    "question": "Para inserir um novo nó após o nó p, um escritor executa 4 passos: malloc, preencher a e b, new->next=p->next, p->next=new. Porque é que isto requer exclusão mútua?",
+    "answers": [
+      "Porque o malloc usa o mesmo lock global da heap e bloqueia todos os restantes acessos à lista até terminar",
+      "São várias escritas não atómicas, e outra thread poderia ver ou usar a lista num estado intermédio inconsistente",
+      "Porque cada atribuição de apontador demora vários quanta, sendo sempre interrompida pelo escalonador a meio",
+      "Porque o compilador transforma as atribuições numa system call, que só pode ser executada por uma thread de cada vez"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.5"
+  },
+  {
+    "question": "Numa lista 5->19->12 (campo a), p aponta para o nó 19 e w para um novo nó com a=51. Executa-se w->next=p->next; p->next=w; sem concorrência. Qual a saída ao percorrer a lista desde head e imprimir o campo a?",
+    "answers": [
+      "5 19 12 51",
+      "5 51 19 12",
+      "5 19 51 12",
+      "5 19 51 (o nó 12 perde-se)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.5"
+  },
+  {
+    "question": "Numa lista 5->19->12 (campo a), p aponta para o nó 19 e w para um novo nó com a=51. Executa-se p->next=w; w->next=p->next; sem concorrência. O que acontece ao percorrer a lista desde head?",
+    "answers": [
+      "Imprime 5 19 51 12, pois a ordem das duas atribuições não altera o resultado final",
+      "Imprime 5 19 51 e termina, perdendo-se apenas o nó 12",
+      "Termina com segmentation fault logo na execução das duas atribuições",
+      "Imprime 5 19 51 e repete 51 indefinidamente, porque w->next aponta para o próprio w"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.5"
+  },
+  {
+    "question": "Com locks por nó e hand-over-hand, uma thread vai remover o nó X. Que locks de escrita deve ter ao fazer p->next=X->next, sendo p o predecessor de X?",
+    "answers": [
+      "O do predecessor p, cujo next é alterado, e o de X, que outra thread pode estar a usar",
+      "Apenas o de X, pois é o único nó que deixa de pertencer à lista depois da remoção",
+      "Apenas o de p, pois X deixa de ser alcançável e por isso não precisa de proteção",
+      "O de X e o do nó seguinte X->next, pois são os dois nós cujos campos next ficam diferentes"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.14"
+  },
+  {
+    "question": "Uma thread percorre a lista com hand-over-hand locking e mantém todos os locks já adquiridos até terminar a tarefa. Qual a consequência?",
+    "answers": [
+      "Evita sempre o deadlock, mesmo que as outras threads bloqueiem os nós por ordem diferente",
+      "Aumenta a concorrência, porque as outras threads deixam de precisar de adquirir locks nos nós já visitados",
+      "Vê um snapshot consistente da lista até acabar, mas reduz a concorrência porque outras threads ficam bloqueadas",
+      "Perde a garantia de exclusão mútua nos nós iniciais, que ficam acessíveis a escritores"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.17"
+  },
+  {
+    "question": "Em que situação é aceitável que uma thread liberte o lock de cada nó logo que o abandona, em hand-over-hand locking?",
+    "answers": [
+      "Quando a thread é escritora, porque só os escritores precisam de manter os locks enquanto percorrem a lista",
+      "Quando a thread não precisa de ver valores já alterados por outras threads em nós anteriores da lista",
+      "Quando a lista tem poucos nós, pois só as listas longas podem ficar inconsistentes durante uma travessia",
+      "Sempre, porque o lock do nó seguinte já protege todos os nós anteriores já visitados"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.16"
+  },
+  {
+    "question": "Comparado com um único lock, qual o custo de usar um lock por nó numa lista com muitos nós?",
+    "answers": [
+      "Aumenta a contenção, porque todas as threads passam a competir pelo mesmo lock no início da lista",
+      "Deixa de ser possível ter vários leitores em simultâneo no mesmo nó da lista",
+      "Cada nó passa a poder ser acedido apenas pela thread que o criou com malloc",
+      "Cada travessia adquire muitos mais locks, pelo que o overhead de locking aumenta bastante"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.12"
+  },
+  {
+    "question": "Várias threads inserem nós em zonas distantes e independentes de uma longa lista. Qual abordagem permite maior concorrência entre elas?",
+    "answers": [
+      "Um único rwlock sobre a lista, pois permite escritas simultâneas desde que os nós sejam diferentes",
+      "Um rwlock por nó com hand-over-hand locking, pois cada escritor só bloqueia nós adjacentes à sua posição",
+      "Um único mutex sobre a lista, pois só bloqueia a thread que não encontrou a posição de inserção",
+      "Um rwlock por nó, sem hand-over-hand, em que cada escritor bloqueia a lista inteira nó a nó antes de inserir"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.18"
+  },
+  {
+    "question": "Uma thread T1 mantém um read lock no nó p e T2 pede um write lock no mesmo nó. O que acontece a T2?",
+    "answers": [
+      "Fica bloqueada até T1 libertar o read lock, porque o write lock exige acesso exclusivo",
+      "Obtém o write lock de imediato, e T1 continua a ler o nó, vendo as alterações de T2 em tempo real",
+      "Obtém o write lock de imediato, e o kernel termina T1 com um sinal por acesso concorrente",
+      "Falha logo com erro e T2 nunca mais pode pedir o lock enquanto T1 existir"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.15"
+  },
+  {
+    "question": "Com um único rwlock a proteger a lista, duas threads leitoras podem percorrer a lista ao mesmo tempo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.9"
+  },
+  {
+    "question": "Com um único rwlock a proteger a lista, dois escritores podem modificar em simultâneo nós diferentes da lista.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.10"
+  },
+  {
+    "question": "Numa lista simplesmente ligada, bloquear sempre os nós da cabeça para a cauda impede deadlock, porque quebra a condição de espera circular.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.12"
+  },
+  {
+    "question": "Reduzir a granularidade dos locks diminui o overhead de locking, porque cada thread passa a adquirir menos locks por operação.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.12"
+  },
+  {
+    "question": "A inserção de um nó, composta por várias escritas em memória, forma uma secção crítica que exige acesso exclusivo aos nós afetados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.6"
+  },
+  {
+    "question": "Basta escolher no código uma ordem adequada para as atribuições da inserção, pois o compilador e o CPU garantem que essa ordem é respeitada, dispensando locks.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.6"
+  },
+  {
+    "question": "Em hand-over-hand locking, uma thread que mantém todos os locks até terminar vê um snapshot consistente da lista.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.17"
+  },
+  {
+    "question": "Em hand-over-hand locking, a thread liberta o lock do nó atual e só depois adquire o lock do nó seguinte.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.13"
+  },
+  {
+    "question": "Um escritor que passa de read lock a write lock num nó liberta e readquire o lock, pelo que o nó pode ter sido alterado por outra thread entretanto.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.14"
+  },
+  {
+    "question": "Com um rwlock numa lista, um escritor pode manter o write lock de um nó enquanto outras threads leem esse mesmo nó.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T8b p.9"
+  }
+]

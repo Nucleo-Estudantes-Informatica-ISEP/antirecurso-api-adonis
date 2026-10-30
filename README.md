@@ -119,6 +119,10 @@ apply production changes without explicit authorization and a verified backup.
 
 `database/data/ai_generated/rcomp` contains 2,715 AI-generated RCOMP candidates. `rcomp` is excluded from raw-bank discovery, so generic seeding cannot publish it. Academic review and the reviewed-import handoff remain tracked in [#171](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso-api-adonis/issues/171), under [#123](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso-api-adonis/issues/123).
 
+#### SCOMP candidate question bank
+
+`database/data/ai_generated/scomp` contains 1,545 AI-generated SCOMP candidates (509 true/false, 1,036 multiple choice). No seeder reads this directory, so these raw candidates are never published by seeding. Academic review is required before any publication through the reviewed import.
+
 ### 5. Start Development Server
 
 Run the AdonisJS development server with Hot Module Replacement (HMR) enabled:
