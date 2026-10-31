@@ -10,7 +10,7 @@ export function captureLogger() {
       callback()
     },
   })
-  const { redact } = loggerConfig.loggers.app
-  const instance = pino({ redact }, stream)
+  const { redact, hooks } = loggerConfig.loggers.app
+  const instance = pino({ redact, hooks }, stream)
   return { instance, lines }
 }

@@ -55,7 +55,8 @@ test.group('Logger redaction', () => {
     const entry = JSON.parse(lines.join(''))
     assert.notInclude(lines.join(''), 'student@isep.ipp.pt')
     assert.equal(entry.err.code, '23505')
-    assert.equal(entry.err.message, 'duplicate key value violates unique constraint')
+    assert.equal(entry.msg, 'database operation failed')
+    assert.notProperty(entry.err, 'message')
   })
 
   test('keeps non-sensitive request fields readable', ({ assert }) => {

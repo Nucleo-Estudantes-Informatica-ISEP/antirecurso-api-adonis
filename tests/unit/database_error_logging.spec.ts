@@ -62,4 +62,27 @@ test.group('Database error logging', () => {
     assert.notInclude(output, SECRET)
     assert.include(output, '23505')
   })
+
+  test('masks PostgreSQL input echoed in message, stack, cause and top-level msg', ({ assert }) => {
+    const error = databaseError()
+    error.code = '22P02'
+    error.message = `invalid input syntax for type integer: "${SECRET}"`
+    error.stack = `error: ${error.message}\n    at database.query`
+    error.cause = new Error(`query binding: ${SECRET}`)
+    const { instance, lines } = captureLogger()
+
+    instance.error(
+      { err: error, request_id: 'request-test-123', route: '/subjects/:id' },
+      error.message
+    )
+
+    const output = lines.join('')
+    assert.notInclude(output, SECRET)
+    const entry = JSON.parse(output)
+    assert.equal(entry.err.code, '22P02')
+    assert.equal(entry.msg, 'database operation failed')
+    assert.equal(entry.request_id, 'request-test-123')
+    assert.equal(entry.route, '/subjects/:id')
+    assert.include(error.message, SECRET)
+  })
 })

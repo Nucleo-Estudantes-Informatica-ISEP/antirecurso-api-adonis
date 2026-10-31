@@ -810,3 +810,5 @@ type UserSession = CurrentUserSummary & {
 ## Account deletion and comment safety
 
 See [Mobile safety contracts](MOBILE_SAFETY.md) for `DELETE /user`, comment reports, per-viewer author blocks, the admin review queue, issued-at deletion cutoffs, storage cleanup and upload-owner rollout. All comment reads, including owned exam review, exclude globally hidden content and the viewer's blocked authors.
+
+PostgreSQL failures retain SQLSTATE and request correlation fields, but use the fixed `database operation failed` message. Raw database messages, stacks, detail, where and nested causes are omitted because PostgreSQL can echo submitted values in any of them.
