@@ -17,7 +17,11 @@ const loggerConfig = defineConfig({
       hooks: {
         streamWrite(line) {
           const entry = JSON.parse(line)
-          if (typeof entry.err?.code === 'string' && /^[0-9A-Z]{5}$/.test(entry.err.code)) {
+          const isPostgresError =
+            typeof entry.err?.severity === 'string' &&
+            typeof entry.err.code === 'string' &&
+            /^[0-9A-Z]{5}$/.test(entry.err.code)
+          if (isPostgresError) {
             // PostgreSQL may echo bindings in message, stack and nested causes.
             entry.err = { type: 'DatabaseError', code: entry.err.code }
             entry.msg = 'database operation failed'

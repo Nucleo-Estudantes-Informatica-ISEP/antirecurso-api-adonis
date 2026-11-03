@@ -45,6 +45,7 @@ test.group('Logger redaction', () => {
         err: {
           message: 'duplicate key value violates unique constraint',
           code: '23505',
+          severity: 'ERROR',
           detail: 'Key (email)=(student@isep.ipp.pt) already exists.',
           where: 'COPY users, line 1: "student@isep.ipp.pt"',
         },

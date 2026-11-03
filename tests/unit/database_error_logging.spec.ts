@@ -16,6 +16,7 @@ function failingConnection(failure: Error) {
 function databaseError() {
   const failure = new DatabaseError('duplicate key value violates unique constraint', 0, 'error')
   failure.code = '23505'
+  failure.severity = 'ERROR'
   failure.detail = `Key (text)=(${SECRET}) already exists.`
   failure.where = `COPY comments, line 1: "${SECRET}"`
   return failure
@@ -84,5 +85,22 @@ test.group('Database error logging', () => {
     assert.equal(entry.request_id, 'request-test-123')
     assert.equal(entry.route, '/subjects/:id')
     assert.include(error.message, SECRET)
+  })
+
+  test('keeps message and stack of non-PostgreSQL errors with five-character codes', ({
+    assert,
+  }) => {
+    for (const code of ['EPIPE', 'EPERM', 'EBUSY', 'EXDEV']) {
+      const error = Object.assign(new Error(`write failed with ${code}`), { code })
+      const { instance, lines } = captureLogger()
+
+      instance.error({ err: error }, error.message)
+
+      const entry = JSON.parse(lines.join(''))
+      assert.equal(entry.msg, `write failed with ${code}`)
+      assert.equal(entry.err.code, code)
+      assert.equal(entry.err.type, 'Error')
+      assert.include(entry.err.stack, code)
+    }
   })
 })
