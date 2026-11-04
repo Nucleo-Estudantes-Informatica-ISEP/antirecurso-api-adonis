@@ -14,6 +14,43 @@ const loggerConfig = defineConfig({
       enabled: true,
       name: env.get('APP_NAME'),
       level: env.get('LOG_LEVEL'),
+      hooks: {
+        streamWrite(line) {
+          const entry = JSON.parse(line)
+          const isPostgresError =
+            typeof entry.err?.severity === 'string' &&
+            typeof entry.err.code === 'string' &&
+            /^[0-9A-Z]{5}$/.test(entry.err.code)
+          if (isPostgresError) {
+            // PostgreSQL may echo bindings in message, stack and nested causes.
+            entry.err = { type: 'DatabaseError', code: entry.err.code }
+            entry.msg = 'database operation failed'
+            return JSON.stringify(entry) + '\n'
+          }
+          return line
+        },
+      },
+      redact: {
+        paths: [
+          'authorization',
+          'password',
+          'token',
+          'access_token',
+          'refresh_token',
+          'id_token',
+          '*.authorization',
+          '*.password',
+          '*.token',
+          '*.access_token',
+          '*.refresh_token',
+          '*.id_token',
+          '*.headers.authorization',
+          '*.headers.cookie',
+          'err.detail',
+          'err.where',
+        ],
+        censor: '[redacted]',
+      },
       transport: {
         targets: targets()
           .pushIf(!app.inProduction, targets.pretty())
