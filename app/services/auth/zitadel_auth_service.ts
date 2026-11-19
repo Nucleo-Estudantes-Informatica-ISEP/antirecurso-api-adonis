@@ -265,7 +265,7 @@ export default class ZitadelAuthService {
       if (discovery.userinfo_endpoint) {
         const userinfo = await this.fetchUserInfo(discovery.userinfo_endpoint, accessToken)
 
-        if (userinfo.sub && userinfo.sub !== payload.sub) {
+        if (userinfo.sub !== payload.sub) {
           throw new UnauthorizedError('User profile subject mismatch')
         }
 

@@ -152,7 +152,7 @@ test.group('ZITADEL access-token validation', (group) => {
     )
   })
 
-  test('rejects UserInfo belonging to a different AuthNEI subject', async ({ assert }) => {
+  test('requires UserInfo to identify the same AuthNEI subject', async ({ assert }) => {
     const issuer = env.get('AUTH_ISSUER_URL').replace(/\/+$/, '')
     const audience = env.get('AUTH_ALLOWED_AUDIENCES').split(',')[0].trim()
     const fixture = await signingFixture('subject-key')
@@ -162,6 +162,7 @@ test.group('ZITADEL access-token validation', (group) => {
       aud: audience,
       exp: Math.floor(Date.now() / 1000) + 3600,
     })
+    let userInfoSubject: string | undefined = 'different-subject'
     const service = new ZitadelAuthService({
       fetchImpl: async (input) => {
         const url = String(input)
@@ -174,7 +175,7 @@ test.group('ZITADEL access-token validation', (group) => {
         }
         if (url.endsWith('/keys')) return Response.json({ keys: [fixture.jwk] })
         return Response.json({
-          sub: 'different-subject',
+          sub: userInfoSubject,
           email: 'student@isep.ipp.pt',
           email_verified: true,
           name: 'Student',
@@ -183,6 +184,12 @@ test.group('ZITADEL access-token validation', (group) => {
       resolveUser: async () => ({ id: 77 }) as User,
     })
 
+    await assert.rejects(
+      () => service.authenticateAuthorizationHeader(`Bearer ${token}`),
+      'User profile subject mismatch'
+    )
+
+    userInfoSubject = undefined
     await assert.rejects(
       () => service.authenticateAuthorizationHeader(`Bearer ${token}`),
       'User profile subject mismatch'
