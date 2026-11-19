@@ -82,6 +82,7 @@ test.group('ZITADEL access-token validation', (group) => {
     }
     const service = new ZitadelAuthService({
       fetchImpl: fetchMock,
+      isRevoked: async () => false,
       resolveUser: async (claims) => {
         resolvedClaims = claims
         return { id: 77 } as User
@@ -124,12 +125,15 @@ test.group('ZITADEL access-token validation', (group) => {
         }
         throw new Error(`Unexpected identity request: ${url}`)
       },
+      isRevoked: async () => false,
       resolveUser: async () => ({ id: 77 }) as User,
     })
 
-    const session = await service.authenticateAuthorizationHeader(`Bearer ${token}`)
+    const sessions = await Promise.all(
+      Array.from({ length: 4 }, () => service.authenticateAuthorizationHeader(`Bearer ${token}`))
+    )
 
-    assert.equal(session.claims.sub, 'rotated-key-subject')
+    assert.isTrue(sessions.every((session) => session.claims.sub === 'rotated-key-subject'))
     assert.equal(jwksRequests, 2)
   })
 
@@ -152,7 +156,28 @@ test.group('ZITADEL access-token validation', (group) => {
     )
   })
 
-  test('rejects UserInfo belonging to a different AuthNEI subject', async ({ assert }) => {
+  test('rejects incorrectly typed lifetime claims before loading identity metadata', async ({
+    assert,
+  }) => {
+    const issuer = env.get('AUTH_ISSUER_URL').replace(/\/+$/, '')
+    const audience = env.get('AUTH_ALLOWED_AUDIENCES').split(',')[0].trim()
+    const fixture = await signingFixture('claims-key')
+    const token = await fixture.sign({
+      iss: issuer,
+      sub: 'synthetic-subject',
+      aud: audience,
+      exp: String(Math.floor(Date.now() / 1000) + 3600),
+    })
+    const service = new ZitadelAuthService({
+      fetchImpl: async () => assert.fail('Invalid claims must be rejected before fetching'),
+    })
+    await assert.rejects(
+      () => service.authenticateAuthorizationHeader(`Bearer ${token}`),
+      'Malformed access token claims'
+    )
+  })
+
+  test('requires UserInfo to identify the same AuthNEI subject', async ({ assert }) => {
     const issuer = env.get('AUTH_ISSUER_URL').replace(/\/+$/, '')
     const audience = env.get('AUTH_ALLOWED_AUDIENCES').split(',')[0].trim()
     const fixture = await signingFixture('subject-key')
@@ -162,6 +187,7 @@ test.group('ZITADEL access-token validation', (group) => {
       aud: audience,
       exp: Math.floor(Date.now() / 1000) + 3600,
     })
+    let userInfoSubject: string | undefined = 'different-subject'
     const service = new ZitadelAuthService({
       fetchImpl: async (input) => {
         const url = String(input)
@@ -174,15 +200,22 @@ test.group('ZITADEL access-token validation', (group) => {
         }
         if (url.endsWith('/keys')) return Response.json({ keys: [fixture.jwk] })
         return Response.json({
-          sub: 'different-subject',
+          sub: userInfoSubject,
           email: 'student@isep.ipp.pt',
           email_verified: true,
           name: 'Student',
         })
       },
+      isRevoked: async () => false,
       resolveUser: async () => ({ id: 77 }) as User,
     })
 
+    await assert.rejects(
+      () => service.authenticateAuthorizationHeader(`Bearer ${token}`),
+      'User profile subject mismatch'
+    )
+
+    userInfoSubject = undefined
     await assert.rejects(
       () => service.authenticateAuthorizationHeader(`Bearer ${token}`),
       'User profile subject mismatch'

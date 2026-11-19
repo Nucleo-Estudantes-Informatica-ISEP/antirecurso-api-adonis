@@ -6,6 +6,7 @@ import AnswerQuestion from '#models/answer_question'
 import ExamAttempt from '#models/exam_attempt'
 import Question from '#models/question'
 import type Subject from '#models/subject'
+import { InvalidExamInputError } from '#services/exams/invalid_exam_input_error'
 import { AttemptConflictError } from '#services/exams/attempt_conflict_error'
 import {
   DEFAULT_EXAM_RULE,
@@ -327,7 +328,7 @@ export default class ExamGenerationService {
   ): Question[] {
     const availableUniqueQuestions = new Set(fallbackPool.map((question) => question.id)).size
     if (availableUniqueQuestions < targetSize) {
-      throw new Error(
+      throw new InvalidExamInputError(
         `Insufficient questions to generate exam: requested ${targetSize}, available ${availableUniqueQuestions}`
       )
     }
@@ -366,7 +367,7 @@ export default class ExamGenerationService {
 
   private takeRandom<T>(items: T[], count: number): T[] {
     if (items.length < count) {
-      throw new Error(
+      throw new InvalidExamInputError(
         `Insufficient questions to generate exam: requested ${count}, available ${items.length}`
       )
     }

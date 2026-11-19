@@ -141,6 +141,9 @@ router
   .get('/exams/generate/:subject_id', (ctx) => examsController.generate(ctx))
   .use([middleware.optionalAuth(), examThrottle])
 router
+  .post('/exams/generate/:subject_id', (ctx) => examsController.generate(ctx))
+  .use([middleware.optionalAuth(), examThrottle])
+router
   .post('/exams/verify', (ctx) => examsController.verify(ctx))
   .use([middleware.optionalAuth(), examThrottle])
 router
@@ -162,6 +165,9 @@ router
   .get('/exams/:id', (ctx) => examsController.show(ctx as AuthenticatedHttpContext))
   .use(middleware.auth())
 // User (auth required)
+router
+  .post('/user/session/revoke', (ctx) => usersController.revokeSession(ctx))
+  .use(mutationThrottle)
 router
   .delete('/user', (ctx) => usersController.destroy(ctx as AuthenticatedHttpContext))
   .use([middleware.auth(), accountResolutionThrottle])

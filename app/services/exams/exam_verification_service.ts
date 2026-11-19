@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto'
+import { InvalidExamInputError } from '#services/exams/invalid_exam_input_error'
 import { AttemptConflictError } from '#services/exams/attempt_conflict_error'
 import { lockExamOwner } from '#services/exams/exam_attempt_lifecycle'
 import db from '@adonisjs/lucid/services/db'
@@ -185,7 +186,7 @@ export default class ExamVerificationService {
         if (selectedOption !== null) {
           const resolvedOptionId = optionMap.get(this.toOptionMapKey(question.id, selectedOption))
           if (resolvedOptionId === undefined) {
-            throw new Error(
+            throw new InvalidExamInputError(
               `Invalid selected_option "${answerPayload.selected_option}" for question ${question.id}`
             )
           }
@@ -283,7 +284,7 @@ export default class ExamVerificationService {
 
     if (mode === 'custom') {
       if (nOfQuestions === null) {
-        throw new Error('Custom exams require n_of_questions')
+        throw new InvalidExamInputError('Custom exams require n_of_questions')
       }
 
       return nOfQuestions
@@ -297,7 +298,7 @@ export default class ExamVerificationService {
     expectedQuestionsCount: number
   ): void {
     if (answers.length !== expectedQuestionsCount) {
-      throw new Error(
+      throw new InvalidExamInputError(
         `Invalid answers payload: expected ${expectedQuestionsCount} answers, received ${answers.length}`
       )
     }
@@ -316,7 +317,7 @@ export default class ExamVerificationService {
     }
 
     if (duplicateQuestionIds.size > 0) {
-      throw new Error(
+      throw new InvalidExamInputError(
         `Invalid answers payload: duplicate question IDs [${[...duplicateQuestionIds].join(', ')}]`
       )
     }
@@ -356,7 +357,7 @@ export default class ExamVerificationService {
         (questionId) => !foundQuestionIds.has(questionId)
       )
 
-      throw new Error(
+      throw new InvalidExamInputError(
         `Invalid question list: unknown question IDs [${missingQuestionIds.join(', ')}]`
       )
     }
@@ -366,7 +367,7 @@ export default class ExamVerificationService {
       .map((question) => `${question.id}(subject:${question.subjectId})`)
 
     if (subjectMismatches.length > 0) {
-      throw new Error(
+      throw new InvalidExamInputError(
         `Question-subject mismatch: expected subject ${subjectId}, but found questions [${subjectMismatches.join(', ')}]`
       )
     }

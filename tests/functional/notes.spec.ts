@@ -63,6 +63,7 @@ test.group('Notes', (group) => {
     const res = await client.get(`/subjects/${subject.id}/notes`)
     res.assertStatus(200)
     assert.isArray(res.body().data)
+    assert.notProperty(res.body().data[0].user, 'email')
   })
 
   test('GET /subjects/:id/notes with unknown subject returns 404', async ({ client }) => {
@@ -70,10 +71,11 @@ test.group('Notes', (group) => {
     res.assertStatus(404)
   })
 
-  test('GET /notes/:id returns note details', async ({ client }) => {
+  test('GET /notes/:id returns note details', async ({ client, assert }) => {
     const res = await client.get(`/notes/${note.id}`)
     res.assertStatus(200)
-    res.assertBodyContains({ id: note.id, title: note.title })
+    res.assertBodyContains({ id: note.id, title: note.title, user: { id: seedUser.id } })
+    assert.notProperty(res.body().user, 'email')
   })
 
   test('GET /notes/:id with unknown id returns 404', async ({ client }) => {

@@ -19,6 +19,13 @@ export default class OptionalAuthMiddleware {
     try {
       const session = await this.authService.authenticateAuthorizationHeader(authorizationHeader)
 
+      if (session.user.authSubject === null) {
+        return ctx.response.forbidden({
+          message: 'Account resolution required',
+          requires_account_resolution: true,
+        })
+      }
+
       ctx.authUser = session.user
       ctx.authClaims = session.claims
 

@@ -56,7 +56,7 @@ test.group('Auth debug logging', () => {
     const { ctx, entries } = contextFor('Bearer very-secret-token')
 
     const consoleCalls = await withAuthDebug(true, () =>
-      new AuthMiddleware(rejectingService, async () => true).handle(ctx, async () => {})
+      new AuthMiddleware(rejectingService, () => true).handle(ctx, async () => {})
     )
 
     assert.lengthOf(entries, 1)
@@ -89,7 +89,7 @@ test.group('Auth debug logging', () => {
     const { ctx, entries } = contextFor('Bearer very-secret-token')
 
     await withAuthDebug(true, () =>
-      new AuthMiddleware(rejectingService, async () => true).handle(ctx, async () => {})
+      new AuthMiddleware(rejectingService, () => true).handle(ctx, async () => {})
     )
 
     const serialized = JSON.stringify(entries)
@@ -102,7 +102,7 @@ test.group('Auth debug logging', () => {
     const { ctx, entries } = contextFor('Bearer very-secret-token')
 
     const consoleCalls = await withAuthDebug(false, () =>
-      new AuthMiddleware(rejectingService, async () => true).handle(ctx, async () => {})
+      new AuthMiddleware(rejectingService, () => true).handle(ctx, async () => {})
     )
 
     assert.lengthOf(entries, 0)

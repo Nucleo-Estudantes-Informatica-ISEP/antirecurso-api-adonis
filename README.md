@@ -192,6 +192,7 @@ The events feature is covered by these admin-only routes:
 
 - Lucid uses restricted PostgreSQL credentials and the configured schema search path.
 - StorageService uses bucket-scoped S3 credentials. API proxies PDF transfers; MinIO remains private.
+- Reviewed legacy account approvals and access-token revocation are described in [the database schema](docs/DATABASE_SCHEMA.md#legacy-account-recovery-and-session-revocation).
 - Browser upload and download links expire after five minutes and require AuthNEI login.
 
 **Authentication (ZITADEL Bearer Tokens)**

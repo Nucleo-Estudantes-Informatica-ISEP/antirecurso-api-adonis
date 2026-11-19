@@ -23,8 +23,8 @@ export default class AuthMiddleware {
 
       const rawPath = ctx.request.url()
       const path = rawPath.includes('?') ? rawPath.split('?')[0] : rawPath
-      const isAllowed = await this.pendingAccountAccess({
-        userId: session.user.id,
+      const isAllowed = this.pendingAccountAccess({
+        pending: session.user.authSubject === null,
         path,
         method: ctx.request.method(),
       })

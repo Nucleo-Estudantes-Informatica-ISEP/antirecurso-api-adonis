@@ -16,9 +16,13 @@ export function getUserAvatar(email: string): string {
   return createHash('md5').update(email.trim().toLowerCase()).digest('hex')
 }
 
+export function serializePublicUserIdentity(user: LocalIdentity) {
+  return { id: user.id, name: user.name, avatar: getUserAvatar(user.email) }
+}
+
 export function serializeUserIdentity(user: LocalIdentity, claims?: AuthClaims) {
   const email = claims?.email ?? user.email
-  const picture = claims?.picture?.trim()
+  const picture = typeof claims?.picture === 'string' ? claims.picture.trim() : undefined
   const identity = {
     id: user.id,
     name: claims?.name ?? user.name,

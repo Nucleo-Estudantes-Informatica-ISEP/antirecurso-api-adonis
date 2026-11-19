@@ -5,6 +5,7 @@ import { createOidcFixture, installFetchMock, userPayload } from '#tests/helpers
 
 test.group('Authentication boundaries', (group) => {
   let validToken: string
+  let secondToken: string
   let restoreFetch: () => void
 
   group.setup(async () => {
@@ -12,6 +13,11 @@ test.group('Authentication boundaries', (group) => {
     const fixture = await createOidcFixture()
     restoreFetch = installFetchMock(fixture.jwk)
     validToken = await fixture.sign(userPayload('auth-test-sub', 'auth-test@example.test'))
+    secondToken = await fixture.sign(
+      userPayload('auth-test-sub', 'auth-test@example.test', {
+        exp: Math.floor(Date.now() / 1000) + 1200,
+      })
+    )
   })
 
   group.teardown(() => {
@@ -84,5 +90,22 @@ test.group('Authentication boundaries', (group) => {
     const res = await client.get('/subjects/999999/notes')
     // 404 because subject doesn't exist, not 401 — optional auth passed through
     res.assertStatus(404)
+  })
+  test('sign-out revokes only the submitted access token and remains idempotent', async ({
+    client,
+  }) => {
+    const header = `Bearer ${validToken}`
+    const withoutToken = await client.post('/user/session/revoke')
+    withoutToken.assertStatus(401)
+    const first = await client.post('/user/session/revoke').header('authorization', header)
+    first.assertStatus(204)
+    const repeated = await client.post('/user/session/revoke').header('authorization', header)
+    repeated.assertStatus(204)
+
+    const revoked = await client.get('/exams').header('authorization', header)
+    revoked.assertStatus(401)
+    revoked.assertBodyContains({ message: 'Access token revoked' })
+    const separate = await client.get('/user').header('authorization', `Bearer ${secondToken}`)
+    separate.assertStatus(200)
   })
 })
