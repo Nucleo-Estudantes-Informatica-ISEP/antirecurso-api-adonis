@@ -365,6 +365,20 @@ Unique `(user_id, subject_id, mode)`; `attempt_id` index supports associations/c
 
 Migration `1791792100000_index_mobile_safety_owners.ts` adds indexes for `note_uploads.user_id`/`created_at`, `comment_reports.reporter_id` and `user_blocks.blocked_user_id` for cleanup and reverse cascades. Upload ownership rows remain a cleanup ledger after promotion; age alone is not grounds to remove them.
 
+## Legacy account recovery and session revocation
+
+The recovery migration adds nullable `account_link_pending.approved_at` and a partial unique
+index for one approved marker per user. All existing markers start unapproved. Support verifies
+ownership of the legacy account independently of current email access and records that verification
+in the restricted support record. A trusted database operator then records the exact AuthNEI subject
+and approval time for the matching, unbound user. Re-check the local user ID, verified email,
+unbound status, and issuer subject before approval. A bound account belongs to its existing issuer
+subject. Requests cannot approve or reassign a legacy link.
+
+The session migration creates `revoked_access_tokens` with a SHA-256 token fingerprint and signed
+expiry. The runtime role needs SELECT, INSERT and DELETE on this table. The API removes expired
+rows opportunistically on sign-out. The table stores no bearer tokens or user profile fields.
+
 ## Foreign Key Deletion Behavior
 
 The current schema uses these deletion rules:

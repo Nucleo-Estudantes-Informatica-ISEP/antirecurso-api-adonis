@@ -65,8 +65,8 @@ return `422 Unprocessable Entity` with Adonis validation details. Common cross-e
 - `429 Too Many Requests`: a route-specific limiter was exceeded.
 - `500 Internal Server Error`: unhandled database or upstream failure.
 
-When account resolution is pending, every route using required-auth middleware except `GET /user`
-and `POST /user/account-resolution` returns:
+An approved pending identity can request `GET /user` and `POST /user/account-resolution`.
+Other required-auth and optional-auth routes return `403` for that identity:
 
 ```json
 {
@@ -210,7 +210,7 @@ type Note = {
   title: string
   url: string | null
   views: number
-  user: UserSummary
+  user: { id: number; name: string; avatar: string }
   description: string | null
   n_pages: number | null
   subject: { id: number; name: string; slug: string }
@@ -274,6 +274,7 @@ type SavedExamState = {
 | GET    | `/exams/attempts/:id`             | Authenticated; current owner            | `200 AttemptRecovery`          | attempt UUID                   |
 | DELETE | `/exams/attempts/:id`             | Authenticated; current owner            | `204`                          | unfinished attempt UUID        |
 | GET    | `/exams/generate/:subject_id`    | Optional; mode-dependent                | `200 GeneratedQuestion[]`      | generation query               |
+| POST   | `/exams/generate/:subject_id`    | Optional; mode-dependent                | `200 GeneratedQuestion[]`      | generation input               |
 | POST   | `/exams/verify`                  | Optional; actor from token when present | `200 ExamResult`               | submitted exam                 |
 | POST   | `/exams/state`                   | Authenticated; current user             | `200 SavedState`               | exam identity and state        |
 | GET    | `/exams/state`                   | Authenticated; current user             | `200 SavedState/null`          | subject and mode query         |
@@ -282,6 +283,7 @@ type SavedExamState = {
 | GET    | `/exams`                         | Authenticated; current user             | `200 Page<ExamHistoryItem>`    | page query                     |
 | GET    | `/exams/:id`                     | Authenticated owner or Admin            | `200 ExamDetail`               | exam id                        |
 | GET    | `/user`                          | Authenticated; current user             | `200 UserSession`              | none                           |
+| POST   | `/user/session/revoke`           | Valid bearer being revoked              | `204`                          | none                           |
 | POST   | `/user/account-resolution`       | Authenticated; current user             | `200 Message`                  | `{ action }`                   |
 | GET    | `/user/scores`                   | Authenticated; current user             | `200 UserScore[]`              | none                           |
 | GET    | `/user/answers`                  | Authenticated; current user             | `200 UserAnswer[]`             | none                           |
@@ -547,7 +549,10 @@ Upload grant contains id, target, maxSize (67108864), expires, url, headers (con
 generation require a valid user. Legacy verification without `attempt_id` may be anonymous for every mode; authenticated
 verification owns answer, updates scoreboard, and completes matching saved state. Optional attempt IDs preserve the legacy contract for older clients.
 
-#### `GET /exams/generate/:subject_id`
+#### `GET /exams/generate/:subject_id` and `POST /exams/generate/:subject_id`
+
+The cookie-authenticated web client uses POST. GET remains available to guests and native clients
+that present an explicit bearer token.
 
 - Query: `mode?: ExamMode`, default `default`; `n_of_questions?: integer` in `5..50`, required for
   `custom`; `filter?: string`, with only `filter=new` changing current custom behavior. Optional `attempt_id` (UUID, all validator-supported versions) and `penalizing_factor` record an authenticated snapshot.
@@ -698,9 +703,11 @@ type AdminExamStats = {
 
 ### User, account resolution, and admin directory
 
-Authentication resolves local account by AuthNEI subject, then verified email. A legacy email match
-without same subject creates pending resolution. Until resolved, only session and resolution routes
-are allowed.
+Authentication resolves an established account by the validated AuthNEI subject. For an unbound
+legacy account, support must verify historical ownership and record approval for the exact
+issuer subject. The account must also match the verified email. A conflicting sign-in receives
+`403` with support instructions. Legacy markers created before the approval migration need explicit
+review. See [the recovery procedure](DATABASE_SCHEMA.md#legacy-account-recovery-and-session-revocation).
 
 #### `GET /user`
 
@@ -719,13 +726,20 @@ type UserSession = CurrentUserSummary & {
 }
 ```
 
+#### `POST /user/session/revoke`
+
+Submit the bearer being signed out. Returns `204` for a valid signed token, including an
+idempotent repeat. Its fingerprint is rejected by API auth until that token's expiry.
+A different signed token for the same account retains its own validity.
+The web also requests provider-side OAuth token revocation on sign-out.
+
 #### `POST /user/account-resolution`
 
 - Body: `{ action: 'keep' | 'discard' }`.
 - `keep`: preserve data, assign pending AuthNEI subject, remove marker.
 - `discard`: delete local answers, scores, reports, and user; relational cascades also apply. Later
   authentication recreates an empty local account.
-- Transaction/ownership: current user's marker is locked and resolved.
+- Transaction/ownership: locks the unbound user and exact approved subject marker, then rechecks the authenticated email and subject.
 - Response: `200 { message: 'Account linked successfully' | 'Account data discarded successfully' }`.
 - Errors: `400` invalid action/no pending marker; `429` account-resolution limit.
 
