@@ -98,6 +98,29 @@ test.group('Exams', (group) => {
     assert.lengthOf(res.body(), 10)
   })
 
+  test('generates signed-in exams through POST', async ({ client, assert }) => {
+    const res = await client
+      .post(`/exams/generate/${subject.id}`)
+      .header('authorization', `Bearer ${userToken}`)
+      .json({ mode: 'default' })
+    res.assertStatus(200)
+    assert.isArray(res.body())
+  })
+
+  test('returns a generic error for unexpected generation failures', async ({ client }) => {
+    const generate = ExamGenerationService.prototype.generate
+    ExamGenerationService.prototype.generate = async () => {
+      throw new Error('internal database diagnostic')
+    }
+    try {
+      const res = await client.get(`/exams/generate/${subject.id}`)
+      res.assertStatus(500)
+      res.assertBody({ message: 'Unable to generate exam' })
+    } finally {
+      ExamGenerationService.prototype.generate = generate
+    }
+  })
+
   test('generate exam in mode requiring auth without token returns 401', async ({ client }) => {
     const res = await client.get(`/exams/generate/${subject.id}?mode=wrong`)
     res.assertStatus(401)

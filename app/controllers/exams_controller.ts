@@ -18,6 +18,7 @@ import {
   modeRequiresUser,
 } from '#services/exams/exam_config'
 import ExamVerificationService from '#services/exams/exam_verification_service'
+import { InvalidExamInputError } from '#services/exams/invalid_exam_input_error'
 import { AttemptConflictError } from '#services/exams/attempt_conflict_error'
 import {
   clearExamStateValidator,
@@ -44,9 +45,9 @@ export default class ExamsController {
 
   /**
    * Generate an exam using one of the available modes.
-   * GET /exams/generate/:subject_id
+   * POST /exams/generate/:subject_id (GET retained for bearer-token clients and guests)
    */
-  async generate({ authUser, params, request, response }: HttpContext) {
+  async generate({ logger, authUser, params, request, response }: HttpContext) {
     const subjectId = this.parseNumericInput(params.subject_id)
     if (subjectId === null) {
       return response.badRequest({ message: 'Invalid subject id' })
@@ -99,8 +100,13 @@ export default class ExamsController {
         return response.unauthorized({ message: error.message })
       if (error instanceof AttemptConflictError)
         return response.conflict({ message: error.message })
-      const message = error instanceof Error ? error.message : 'Unable to generate exam'
-      return response.badRequest({ message })
+      if (error instanceof InvalidExamInputError)
+        return response.badRequest({ message: error.message })
+      logger.error(
+        { operation: 'generate', errorType: error instanceof Error ? error.name : 'Unknown' },
+        'exam operation failed'
+      )
+      return response.internalServerError({ message: 'Unable to generate exam' })
     }
   }
 
@@ -108,7 +114,7 @@ export default class ExamsController {
    * Verify an exam and calculate the final score.
    * POST /exams/verify
    */
-  async verify({ authUser, request, response }: HttpContext) {
+  async verify({ logger, authUser, request, response }: HttpContext) {
     const data = await request.validateUsing(verifyExamValidator)
     const mode: ExamMode = data.mode ?? 'default'
 
@@ -145,8 +151,13 @@ export default class ExamsController {
         return response.unauthorized({ message: error.message })
       if (error instanceof AttemptConflictError)
         return response.conflict({ message: error.message })
-      const message = error instanceof Error ? error.message : 'Invalid exam payload'
-      return response.badRequest({ message })
+      if (error instanceof InvalidExamInputError)
+        return response.badRequest({ message: error.message })
+      logger.error(
+        { operation: 'verify', errorType: error instanceof Error ? error.name : 'Unknown' },
+        'exam operation failed'
+      )
+      return response.internalServerError({ message: 'Unable to grade exam' })
     }
   }
 

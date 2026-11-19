@@ -15,7 +15,7 @@ import { InvalidUploadedObjectError } from '#services/uploads/upload_policy'
 import { signNoteAccess, verifyNoteAccess } from '#services/uploads/signed_note_access'
 import env from '#start/env'
 import type { Readable } from 'node:stream'
-import { serializeUserIdentity } from '#services/auth/user_identity'
+import { serializePublicUserIdentity } from '#services/auth/user_identity'
 
 const storageService = new StorageService()
 
@@ -31,7 +31,7 @@ export default class NotesController {
       title: note.title,
       url: note.url,
       views: note.views ?? 0,
-      user: serializeUserIdentity(note.user),
+      user: serializePublicUserIdentity(note.user),
       description: note.description,
       n_pages: note.nPages,
       subject: {
