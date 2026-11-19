@@ -2,32 +2,19 @@ import { test } from '@japa/runner'
 import { canAccessWithPendingAccount } from '#services/auth/pending_account_access'
 
 test.group('Pending account access', () => {
-  test('allows only session and resolution endpoints for pending users', async ({ assert }) => {
-    const lookupPending = async () => true
-
+  test('allows only session and resolution endpoints for pending users', ({ assert }) => {
+    assert.isTrue(canAccessWithPendingAccount({ pending: true, path: '/user', method: 'GET' }))
     assert.isTrue(
-      await canAccessWithPendingAccount({ userId: 1, path: '/user', method: 'GET' }, lookupPending)
+      canAccessWithPendingAccount({
+        pending: true,
+        path: '/user/account-resolution',
+        method: 'POST',
+      })
     )
-    assert.isTrue(
-      await canAccessWithPendingAccount(
-        { userId: 1, path: '/user/account-resolution', method: 'POST' },
-        lookupPending
-      )
-    )
-    assert.isFalse(
-      await canAccessWithPendingAccount({ userId: 1, path: '/exams', method: 'GET' }, lookupPending)
-    )
+    assert.isFalse(canAccessWithPendingAccount({ pending: true, path: '/exams', method: 'GET' }))
   })
 
-  test('propagates lookup failures instead of granting access', async ({ assert }) => {
-    const lookupFailure = new Error('database unavailable')
-
-    await assert.rejects(
-      () =>
-        canAccessWithPendingAccount({ userId: 1, path: '/exams', method: 'GET' }, async () => {
-          throw lookupFailure
-        }),
-      'database unavailable'
-    )
+  test('does not restrict established accounts', ({ assert }) => {
+    assert.isTrue(canAccessWithPendingAccount({ pending: false, path: '/exams', method: 'GET' }))
   })
 })

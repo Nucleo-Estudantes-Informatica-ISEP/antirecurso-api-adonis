@@ -82,6 +82,7 @@ test.group('ZITADEL access-token validation', (group) => {
     }
     const service = new ZitadelAuthService({
       fetchImpl: fetchMock,
+      isRevoked: async () => false,
       resolveUser: async (claims) => {
         resolvedClaims = claims
         return { id: 77 } as User
@@ -124,12 +125,15 @@ test.group('ZITADEL access-token validation', (group) => {
         }
         throw new Error(`Unexpected identity request: ${url}`)
       },
+      isRevoked: async () => false,
       resolveUser: async () => ({ id: 77 }) as User,
     })
 
-    const session = await service.authenticateAuthorizationHeader(`Bearer ${token}`)
+    const sessions = await Promise.all(
+      Array.from({ length: 4 }, () => service.authenticateAuthorizationHeader(`Bearer ${token}`))
+    )
 
-    assert.equal(session.claims.sub, 'rotated-key-subject')
+    assert.isTrue(sessions.every((session) => session.claims.sub === 'rotated-key-subject'))
     assert.equal(jwksRequests, 2)
   })
 
@@ -149,6 +153,27 @@ test.group('ZITADEL access-token validation', (group) => {
     await assert.rejects(
       () => service.authenticateAuthorizationHeader('Bearer token unexpected'),
       UnauthorizedError
+    )
+  })
+
+  test('rejects incorrectly typed lifetime claims before loading identity metadata', async ({
+    assert,
+  }) => {
+    const issuer = env.get('AUTH_ISSUER_URL').replace(/\/+$/, '')
+    const audience = env.get('AUTH_ALLOWED_AUDIENCES').split(',')[0].trim()
+    const fixture = await signingFixture('claims-key')
+    const token = await fixture.sign({
+      iss: issuer,
+      sub: 'synthetic-subject',
+      aud: audience,
+      exp: String(Math.floor(Date.now() / 1000) + 3600),
+    })
+    const service = new ZitadelAuthService({
+      fetchImpl: async () => assert.fail('Invalid claims must be rejected before fetching'),
+    })
+    await assert.rejects(
+      () => service.authenticateAuthorizationHeader(`Bearer ${token}`),
+      'Malformed access token claims'
     )
   })
 
@@ -181,6 +206,7 @@ test.group('ZITADEL access-token validation', (group) => {
           name: 'Student',
         })
       },
+      isRevoked: async () => false,
       resolveUser: async () => ({ id: 77 }) as User,
     })
 

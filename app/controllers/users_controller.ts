@@ -1,3 +1,5 @@
+import { DateTime } from 'luxon'
+import ZitadelAuthService, { UnauthorizedError } from '#services/auth/zitadel_auth_service'
 import type { HttpContext } from '@adonisjs/core/http'
 import db from '@adonisjs/lucid/services/db'
 import User from '#models/user'
@@ -19,6 +21,17 @@ import {
 } from '#services/auth/account_resolution_service'
 
 export default class UsersController {
+  async revokeSession({ request, response }: HttpContext) {
+    try {
+      await new ZitadelAuthService().revokeAuthorizationHeader(request.header('authorization'))
+      return response.noContent()
+    } catch (error) {
+      if (error instanceof UnauthorizedError)
+        return response.unauthorized({ message: error.message })
+      throw error
+    }
+  }
+
   async destroy({ authUser, authClaims, request, response }: AuthenticatedHttpContext) {
     if (
       (request.header('x-antirecurso-confirmation') ?? request.input('confirmation')) !==
@@ -41,11 +54,10 @@ export default class UsersController {
    * GET /user
    */
   async session({ authUser, authClaims, response }: AuthenticatedHttpContext) {
-    const pending = await AccountLinkPending.findBy('userId', authUser.id)
-    const requiresAccountResolution = pending !== null
+    const requiresAccountResolution = authUser.authSubject === null
 
     let accountSummary = null
-    if (requiresAccountResolution && pending) {
+    if (requiresAccountResolution) {
       // Fazemos as duas contagens na mesma query usando as relações do Model!
       const userCounts = await User.query()
         .where('id', authUser.id)
@@ -55,7 +67,7 @@ export default class UsersController {
 
       accountSummary = {
         email: authClaims.email,
-        pending_auth_subject: pending.authSubject,
+        pending_auth_subject: authClaims.sub,
         scores: Number((userCounts as any)?.['$extras.scores_count'] ?? 0),
         answers: Number((userCounts as any)?.['$extras.answers_count'] ?? 0),
       }
@@ -103,7 +115,7 @@ export default class UsersController {
     )
   }
 
-  async accountResolution({ authUser, request, response }: AuthenticatedHttpContext) {
+  async accountResolution({ authUser, authClaims, request, response }: AuthenticatedHttpContext) {
     const action = request.input('action')
 
     if (action !== 'keep' && action !== 'discard') {
@@ -111,9 +123,18 @@ export default class UsersController {
     }
 
     const resolved = await db.transaction(async (trx) => {
+      const user = await User.query()
+        .useTransaction(trx)
+        .where('id', authUser.id)
+        .forUpdate()
+        .first()
+      if (!user || user.authSubject !== null || user.email !== authClaims.email) return false
+
       const pending = await AccountLinkPending.query()
         .useTransaction(trx)
         .where('userId', authUser.id)
+        .where('authSubject', authClaims.sub)
+        .whereNotNull('approvedAt')
         .forUpdate()
         .first()
 
@@ -135,7 +156,11 @@ export default class UsersController {
           await User.query()
             .useTransaction(trx)
             .where('id', authUser.id)
-            .update({ authSubject: pending.authSubject })
+            .update({
+              authSubject: authClaims.sub,
+              name: authClaims.name,
+              emailVerifiedAt: user.emailVerifiedAt ?? DateTime.now(),
+            })
         },
       })
 
