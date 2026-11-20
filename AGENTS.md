@@ -58,6 +58,14 @@ Keep `README.md`, `.env.example`, `docs/API.md`, `docs/DATABASE_SCHEMA.md`, migr
 
 ## Pull request metadata
 
+- Use a Conventional Commit-style PR title with a concise imperative summary.
+  For security fixes, use `fix(security): <summary>`.
+- Use `## Issue` for applicable closing references, then `## Summary` for
+  what changed and `## Tests` for verification. Use checkboxes for completed
+  checks and identify the tested revision, environment, and any gaps.
+- When relevant, add `## Manual testing steps`, `## Configuration / migration`,
+  `## Observations`, or `## Review follow-up`. Record pending rollout or
+  verification work explicitly.
 - Whenever opening a pull request, add the applicable existing repository
   labels. Follow the repository's label conventions; do not leave the PR
   unlabeled.
