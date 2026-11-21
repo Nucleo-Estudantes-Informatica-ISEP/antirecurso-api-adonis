@@ -58,12 +58,13 @@ Keep `README.md`, `.env.example`, `docs/API.md`, `docs/DATABASE_SCHEMA.md`, migr
 
 ## Issue and pull request writing
 
-- Use plain, action-oriented issue titles. Follow the FallStack [task
-  template](https://github.com/Nucleo-Estudantes-Informatica-ISEP/fallstack-website/blob/dev/.github/ISSUE_TEMPLATE/task.md) for scoped work and the [bug
-  template](https://github.com/Nucleo-Estudantes-Informatica-ISEP/fallstack-website/blob/dev/.github/ISSUE_TEMPLATE/bug.md) for reproducible problem reports.
+- Use action-oriented issue titles and keep the template prefix (`[Type]` or
+  `[Bug]`). Follow the FallStack [task
+  template](https://github.com/Nucleo-Estudantes-Informatica-ISEP/fallstack-website/blob/9ba36c5ecf3095e21a0ea473b2691cd6cb8492db/.github/ISSUE_TEMPLATE/task.md) for scoped work and the [bug
+  template](https://github.com/Nucleo-Estudantes-Informatica-ISEP/fallstack-website/blob/9ba36c5ecf3095e21a0ea473b2691cd6cb8492db/.github/ISSUE_TEMPLATE/bug.md) for reproducible problem reports.
   Keep task acceptance criteria and applicable dependencies as checklists.
 - Use Conventional Commit titles for PRs, such as `fix(auth): restore the return path`.
-  Follow the FallStack [PR template](https://github.com/Nucleo-Estudantes-Informatica-ISEP/fallstack-website/blob/dev/.github/PULL_REQUEST_TEMPLATE.md).
+  Follow the FallStack [PR template](https://github.com/Nucleo-Estudantes-Informatica-ISEP/fallstack-website/blob/9ba36c5ecf3095e21a0ea473b2691cd6cb8492db/.github/PULL_REQUEST_TEMPLATE.md).
   Include Issue when applicable, Summary, Tests, Manual testing steps,
   Configuration / migration, and Observations. Use this repository's own check
   commands and state which verification is still outstanding.
