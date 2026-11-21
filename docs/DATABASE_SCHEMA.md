@@ -373,7 +373,9 @@ ownership of the legacy account independently of current email access and record
 in the restricted support record. A trusted database operator then records the exact AuthNEI subject
 and approval time for the matching, unbound user. Re-check the local user ID, verified email,
 unbound status, and issuer subject before approval. A bound account belongs to its existing issuer
-subject. Requests cannot approve or reassign a legacy link.
+subject. The first request for the approved subject claims the unbound account and consumes the
+marker in one transaction. The existing user ID and history rows are preserved. Requests cannot
+approve or reassign a legacy link.
 
 The session migration creates `revoked_access_tokens` with a SHA-256 token fingerprint and signed
 expiry. The runtime role needs SELECT, INSERT and DELETE on this table. The API removes expired
