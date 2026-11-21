@@ -56,6 +56,19 @@ and the review deadline are in `docs/DEPENDENCY_SECURITY.md`.
 
 Keep `README.md`, `.env.example`, `docs/API.md`, `docs/DATABASE_SCHEMA.md`, migrations, and this file synchronized. Remove “auth TODO”, public detailed-exam-review, wildcard-CORS, old migration counts, retired Laravel, and starter deployment guidance when encountered.
 
+## Issue and pull request writing
+
+- Use action-oriented issue titles and keep the template prefix (`[Type]` or
+  `[Bug]`). Follow the FallStack [task
+  template](https://github.com/Nucleo-Estudantes-Informatica-ISEP/fallstack-website/blob/9ba36c5ecf3095e21a0ea473b2691cd6cb8492db/.github/ISSUE_TEMPLATE/task.md) for scoped work and the [bug
+  template](https://github.com/Nucleo-Estudantes-Informatica-ISEP/fallstack-website/blob/9ba36c5ecf3095e21a0ea473b2691cd6cb8492db/.github/ISSUE_TEMPLATE/bug.md) for reproducible problem reports.
+  Keep task acceptance criteria and applicable dependencies as checklists.
+- Use Conventional Commit titles for PRs, such as `fix(auth): restore the return path`.
+  Follow the FallStack [PR template](https://github.com/Nucleo-Estudantes-Informatica-ISEP/fallstack-website/blob/9ba36c5ecf3095e21a0ea473b2691cd6cb8492db/.github/PULL_REQUEST_TEMPLATE.md).
+  Include Issue when applicable, Summary, Tests, Manual testing steps,
+  Configuration / migration, and Observations. Use this repository's own check
+  commands and state which verification is still outstanding.
+
 ## Pull request metadata
 
 - Use a Conventional Commit-style PR title with a concise imperative summary.
