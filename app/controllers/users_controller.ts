@@ -115,7 +115,7 @@ export default class UsersController {
       return response.forbidden({ message: 'Contact support to recover the existing account' })
     }
 
-    return response.ok({ message: 'Account linked successfully' })
+    return response.ok({ message: 'Account already linked' })
   }
 
   /**

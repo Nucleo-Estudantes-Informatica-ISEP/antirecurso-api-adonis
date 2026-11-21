@@ -69,11 +69,15 @@ When the existing operator approval matches the verified AuthNEI subject, the fi
 authenticated request associates the existing account and preserves its history.
 An unapproved or conflicting verified identity receives `403` on required-auth
 routes. Ask support to verify ownership. The response includes no legacy data.
+Optional-auth routes continue anonymously for these identities. During the
+frontend rollout, the recovery response also retains the legacy
+`requires_account_resolution` flag for older clients.
 
 ```json
 {
   "message": "Contact support to recover the existing account",
-  "code": "ACCOUNT_RECOVERY_REQUIRED"
+  "code": "ACCOUNT_RECOVERY_REQUIRED",
+  "requires_account_resolution": true
 }
 ```
 
@@ -740,8 +744,8 @@ The web also requests provider-side OAuth token revocation on sign-out.
 - Body: `{ action: 'keep' }`. Older clients may repeat this request after automatic linking.
 - The authenticated account must match the verified issuer subject and email. A subject-bound
   recovery approval is consumed in the same transaction that associates the existing account.
-- Response: `200 { message: 'Account linked successfully' }`.
-- Errors: `400` unsupported action, `403` ownership confirmation required, `429` account-resolution limit.
+- Response: `200 { message: 'Account already linked' }`.
+- Errors: `400` unsupported action, `403` recovery required from authentication middleware, `429` account-resolution limit.
 - To remove the authenticated user's data, use the separate `DELETE /user` operation with explicit confirmation.
 
 #### `GET /user/scores`

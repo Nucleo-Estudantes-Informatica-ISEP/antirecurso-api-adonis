@@ -1,4 +1,5 @@
 import { test } from '@japa/runner'
+import db from '@adonisjs/lucid/services/db'
 import { randomUUID } from 'node:crypto'
 import { DateTime } from 'luxon'
 import ZitadelAuthService from '#services/auth/zitadel_auth_service'
@@ -77,6 +78,7 @@ test.group('Verified legacy account recovery', (group) => {
   let pendingToken: string
   let restoreFetch: () => void
   let pendingUser: User
+  let staleMarker: AccountLinkPending
   let originalToken: string
   let legacyAccount: User
   let unapprovedAccount: User
@@ -154,7 +156,7 @@ test.group('Verified legacy account recovery', (group) => {
       authSubject: PENDING_SUB,
       approvedAt: DateTime.now(),
     })
-    await AccountLinkPending.create({
+    staleMarker = await AccountLinkPending.create({
       userId: legacyAccount.id,
       authSubject: `obsolete-${PENDING_SUB}`,
     })
@@ -170,6 +172,30 @@ test.group('Verified legacy account recovery', (group) => {
     await subject.delete()
   })
 
+  test('rolls back the account link when approval marker deletion fails', async ({
+    client,
+    assert,
+  }) => {
+    const approval = await AccountLinkPending.query().where('userId', pendingUser.id).firstOrFail()
+    const guardTable = `recovery_guard_${suffix}`
+    await db.rawQuery('CREATE TABLE ?? (marker_id integer REFERENCES account_link_pending(id))', [
+      guardTable,
+    ])
+    try {
+      await db.table(guardTable).insert({ marker_id: approval.id })
+      const response = await client.get('/user').header('authorization', `Bearer ${pendingToken}`)
+      response.assertStatus(500)
+
+      await pendingUser.refresh()
+      await approval.refresh()
+      assert.isNull(pendingUser.authSubject)
+      assert.equal(approval.authSubject, PENDING_SUB)
+      assert.isNotNull(approval.approvedAt)
+    } finally {
+      await db.rawQuery('DROP TABLE ??', [guardTable])
+    }
+  })
+
   test('only the approved subject can open existing history, including on concurrent requests', async ({
     client,
     assert,
@@ -178,6 +204,7 @@ test.group('Verified legacy account recovery', (group) => {
     denied.assertStatus(403)
     denied.assertBody({
       code: 'ACCOUNT_RECOVERY_REQUIRED',
+      requires_account_resolution: true,
       message: 'Contact support to recover the existing account',
     })
 
@@ -216,6 +243,9 @@ test.group('Verified legacy account recovery', (group) => {
       .header('authorization', header)
       .json({ action: 'keep' })
     resolve.assertStatus(200)
+    resolve.assertBody({ message: 'Account already linked' })
+    await staleMarker.refresh()
+    assert.equal(staleMarker.userId, legacyAccount.id)
     await legacyAccount.refresh()
     assert.equal(legacyAccount.authSubject, CONFLICTING_SUB)
   })

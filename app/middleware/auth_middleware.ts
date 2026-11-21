@@ -42,6 +42,7 @@ export default class AuthMiddleware {
       if (error instanceof AccountRecoveryRequiredError) {
         return ctx.response.forbidden({
           code: 'ACCOUNT_RECOVERY_REQUIRED',
+          requires_account_resolution: true,
           message: error.message,
         })
       }
