@@ -1,5 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import ZitadelAuthService, {
+  AccountRecoveryRequiredError,
   ForbiddenError,
   UnauthorizedError,
 } from '#services/auth/zitadel_auth_service'
@@ -38,6 +39,12 @@ export default class AuthMiddleware {
 
       await next()
     } catch (error) {
+      if (error instanceof AccountRecoveryRequiredError) {
+        return ctx.response.forbidden({
+          code: 'ACCOUNT_RECOVERY_REQUIRED',
+          message: error.message,
+        })
+      }
       if (error instanceof ForbiddenError) {
         return ctx.response.forbidden({ message: error.message })
       }

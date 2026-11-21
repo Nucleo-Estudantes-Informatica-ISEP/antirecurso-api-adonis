@@ -5,15 +5,9 @@ test.group('Account resolution service', () => {
   test('updates the auth subject before deleting the recovery marker', async ({ assert }) => {
     const calls: string[] = []
 
-    await performAccountResolution('keep', {
-      discardAccountData: async () => {
-        calls.push('discard-data')
-      },
+    await performAccountResolution({
       deletePendingMarker: async () => {
         calls.push('delete-pending')
-      },
-      deleteUser: async () => {
-        calls.push('delete-user')
       },
       updateAuthSubject: async () => {
         calls.push('update-subject')
@@ -28,12 +22,10 @@ test.group('Account resolution service', () => {
 
     await assert.rejects(
       () =>
-        performAccountResolution('keep', {
-          discardAccountData: async () => {},
+        performAccountResolution({
           deletePendingMarker: async () => {
             deletedPending = true
           },
-          deleteUser: async () => {},
           updateAuthSubject: async () => {
             throw new Error('subject conflict')
           },

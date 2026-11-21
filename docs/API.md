@@ -65,13 +65,15 @@ return `422 Unprocessable Entity` with Adonis validation details. Common cross-e
 - `429 Too Many Requests`: a route-specific limiter was exceeded.
 - `500 Internal Server Error`: unhandled database or upstream failure.
 
-An approved pending identity can request `GET /user` and `POST /user/account-resolution`.
-Other required-auth and optional-auth routes return `403` for that identity:
+When the existing operator approval matches the verified AuthNEI subject, the first
+authenticated request associates the existing account and preserves its history.
+An unapproved or conflicting verified identity receives `403` on required-auth
+routes. Ask support to verify ownership. The response includes no legacy data.
 
 ```json
 {
-  "message": "Account resolution required",
-  "requires_account_resolution": true
+  "message": "Contact support to recover the existing account",
+  "code": "ACCOUNT_RECOVERY_REQUIRED"
 }
 ```
 
@@ -126,7 +128,7 @@ Limits use authenticated local user id when available, otherwise request IP.
 
 | Policy             | Routes                                                                                                    | Limit / block    |
 | ------------------ | --------------------------------------------------------------------------------------------------------- | ---------------- |
-| Exam               | `GET /exams/generate/:subject_id`, `POST /exams/verify`, `GET /exams/attempts/:id` | 20/min; 5 min    |
+| Exam               | `GET /exams/generate/:subject_id`, `POST /exams/verify`, `GET /exams/attempts/:id`                        | 20/min; 5 min    |
 | Mutation           | Scoreboard/comment/question/report/note/event mutations, note view, exam-state save/delete, report review | 30/min; 5 min    |
 | Upload             | `POST /upload`                                                                                            | 10/5 min; 15 min |
 | Account resolution | `POST /user/account-resolution`                                                                           | 5/15 min; 1 hour |
@@ -271,8 +273,8 @@ type SavedExamState = {
 | POST   | `/subjects/:id/notes`            | Admin; actor from token                 | `201 Note`                     | note metadata and upload id    |
 | POST   | `/notes/:id/view`                | Authenticated                           | `200 { url }`                  | note id                        |
 | POST   | `/upload`                        | Authenticated                           | `200 UploadGrant`              | target and content type        |
-| GET    | `/exams/attempts/:id`             | Authenticated; current owner            | `200 AttemptRecovery`          | attempt UUID                   |
-| DELETE | `/exams/attempts/:id`             | Authenticated; current owner            | `204`                          | unfinished attempt UUID        |
+| GET    | `/exams/attempts/:id`            | Authenticated; current owner            | `200 AttemptRecovery`          | attempt UUID                   |
+| DELETE | `/exams/attempts/:id`            | Authenticated; current owner            | `204`                          | unfinished attempt UUID        |
 | GET    | `/exams/generate/:subject_id`    | Optional; mode-dependent                | `200 GeneratedQuestion[]`      | generation query               |
 | POST   | `/exams/generate/:subject_id`    | Optional; mode-dependent                | `200 GeneratedQuestion[]`      | generation input               |
 | POST   | `/exams/verify`                  | Optional; actor from token when present | `200 ExamResult`               | submitted exam                 |
@@ -735,13 +737,12 @@ The web also requests provider-side OAuth token revocation on sign-out.
 
 #### `POST /user/account-resolution`
 
-- Body: `{ action: 'keep' | 'discard' }`.
-- `keep`: preserve data, assign pending AuthNEI subject, remove marker.
-- `discard`: delete local answers, scores, reports, and user; relational cascades also apply. Later
-  authentication recreates an empty local account.
-- Transaction/ownership: locks the unbound user and exact approved subject marker, then rechecks the authenticated email and subject.
-- Response: `200 { message: 'Account linked successfully' | 'Account data discarded successfully' }`.
-- Errors: `400` invalid action/no pending marker; `429` account-resolution limit.
+- Body: `{ action: 'keep' }`. Older clients may repeat this request after automatic linking.
+- The authenticated account must match the verified issuer subject and email. A subject-bound
+  recovery approval is consumed in the same transaction that associates the existing account.
+- Response: `200 { message: 'Account linked successfully' }`.
+- Errors: `400` unsupported action, `403` ownership confirmation required, `429` account-resolution limit.
+- To remove the authenticated user's data, use the separate `DELETE /user` operation with explicit confirmation.
 
 #### `GET /user/scores`
 

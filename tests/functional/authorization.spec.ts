@@ -4,6 +4,12 @@ import { DateTime } from 'luxon'
 import ZitadelAuthService from '#services/auth/zitadel_auth_service'
 import AccountLinkPending from '#models/account_link_pending'
 import User from '#models/user'
+import Answer from '#models/answer'
+import Question from '#models/question'
+import QuestionReport from '#models/question_report'
+import QuestionType from '#models/question_type'
+import Score from '#models/score'
+import Subject from '#models/subject'
 import {
   createOidcFixture,
   installFetchMock,
@@ -67,7 +73,7 @@ test.group('USER vs ADMIN authorization', (group) => {
   })
 })
 
-test.group('Pending-account restrictions', (group) => {
+test.group('Verified legacy account recovery', (group) => {
   let pendingToken: string
   let restoreFetch: () => void
   let pendingUser: User
@@ -75,6 +81,11 @@ test.group('Pending-account restrictions', (group) => {
   let legacyAccount: User
   let unapprovedAccount: User
   let unapprovedToken: string
+  let conflictingToken: string
+  let subject: Subject
+  let answer: Answer
+  let score: Score
+  let report: QuestionReport
 
   const suffix = randomUUID().slice(0, 8)
   const PENDING_SUB = `pending-account-sub-${suffix}`
@@ -86,6 +97,7 @@ test.group('Pending-account restrictions', (group) => {
     const fixture = await createOidcFixture()
     restoreFetch = installFetchMock(fixture.jwk)
     pendingToken = await fixture.sign(userPayload(PENDING_SUB, PENDING_EMAIL))
+    conflictingToken = await fixture.sign(userPayload(`other-${PENDING_SUB}`, PENDING_EMAIL))
 
     originalToken = await fixture.sign(userPayload(CONFLICTING_SUB, `current-${PENDING_EMAIL}`))
     legacyAccount = await User.create({
@@ -99,6 +111,29 @@ test.group('Pending-account restrictions', (group) => {
       name: 'Pending User',
       emailVerifiedAt: DateTime.now(),
     })
+    subject = await Subject.create({ name: suffix, slug: suffix, year: 1 })
+    const type = await QuestionType.create({ name: 'MC', subjectId: subject.id })
+    const question = await Question.create({
+      question: 'Fixture question',
+      correctOption: 'A',
+      exam: '',
+      image: '',
+      subjectId: subject.id,
+      questionTypeId: type.id,
+    })
+    answer = await Answer.create({
+      userId: pendingUser.id,
+      subjectId: subject.id,
+      mode: 'default',
+      score: 100,
+    })
+    score = await Score.create({
+      userId: pendingUser.id,
+      subjectId: subject.id,
+      score: 100,
+      showScoreboard: false,
+    })
+    report = await QuestionReport.create({ questionId: question.id, userId: pendingUser.id })
 
     const unapprovedEmail = `legacy-${PENDING_EMAIL}`
     const unapprovedSubject = `legacy-${PENDING_SUB}`
@@ -132,20 +167,40 @@ test.group('Pending-account restrictions', (group) => {
     await pendingUser.delete()
     await legacyAccount.delete()
     await unapprovedAccount.delete()
+    await subject.delete()
   })
 
-  test('pending account is blocked on regular protected routes', async ({ client }) => {
-    const res = await client.get('/exams').header('authorization', `Bearer ${pendingToken}`)
-    res.assertStatus(403)
-    res.assertBodyContains({ requires_account_resolution: true })
+  test('only the approved subject can open existing history, including on concurrent requests', async ({
+    client,
+    assert,
+  }) => {
+    const denied = await client.get('/exams').header('authorization', `Bearer ${conflictingToken}`)
+    denied.assertStatus(403)
+    denied.assertBody({
+      code: 'ACCOUNT_RECOVERY_REQUIRED',
+      message: 'Contact support to recover the existing account',
+    })
+
+    const auth = `Bearer ${pendingToken}`
+    const results = await Promise.all([
+      client.get('/user/answers').header('authorization', auth),
+      client.get('/user').header('authorization', auth),
+    ])
+    results.forEach((response) => response.assertStatus(200))
+    assert.equal(results[0].body()[0].id, answer.id)
+    assert.equal(results[1].body().requires_account_resolution, false)
+    await pendingUser.refresh()
+    assert.equal(pendingUser.authSubject, PENDING_SUB)
+    assert.isNull(await AccountLinkPending.query().where('userId', pendingUser.id).first())
   })
 
-  test('applies the pending restriction to optional-auth exam routes', async ({ client }) => {
+  test('does not treat an unapproved legacy identity as authenticated on optional routes', async ({
+    client,
+  }) => {
     const res = await client
-      .get('/exams/generate/1')
-      .header('authorization', `Bearer ${pendingToken}`)
-    res.assertStatus(403)
-    res.assertBodyContains({ requires_account_resolution: true })
+      .get('/exams/generate/999999')
+      .header('authorization', `Bearer ${unapprovedToken}`)
+    res.assertStatus(404)
   })
 
   test('an established identity can use its account and cannot act on stale recovery markers', async ({
@@ -160,34 +215,40 @@ test.group('Pending-account restrictions', (group) => {
       .post('/user/account-resolution')
       .header('authorization', header)
       .json({ action: 'keep' })
-    resolve.assertStatus(400)
+    resolve.assertStatus(200)
     await legacyAccount.refresh()
     assert.equal(legacyAccount.authSubject, CONFLICTING_SUB)
   })
 
-  test('pending account can still access GET /user', async ({ client }) => {
+  test('repeated GET /user retains the same account', async ({ client, assert }) => {
     const res = await client.get('/user').header('authorization', `Bearer ${pendingToken}`)
     res.assertStatus(200)
+    assert.equal(res.body().id, pendingUser.id)
   })
 
-  test('pending account can reach POST /user/account-resolution (validation fails, not auth)', async ({
-    client,
-  }) => {
+  test('the old discard action preserves exams, scores and reports', async ({ client, assert }) => {
     const res = await client
       .post('/user/account-resolution')
       .header('authorization', `Bearer ${pendingToken}`)
-      .json({})
+      .json({ action: 'discard' })
     res.assertStatus(400)
+    const savedAnswer = await Answer.findOrFail(answer.id)
+    assert.equal(savedAnswer.userId, pendingUser.id)
+    const savedScore = await Score.findOrFail(score.id)
+    assert.equal(savedScore.userId, pendingUser.id)
+    const savedReport = await QuestionReport.findOrFail(report.id)
+    assert.equal(savedReport.userId, pendingUser.id)
   })
   test('email verification alone does not approve legacy recovery', async ({ client, assert }) => {
     const session = await client.get('/user').header('authorization', `Bearer ${unapprovedToken}`)
     session.assertStatus(403)
+    session.assertBodyContains({ code: 'ACCOUNT_RECOVERY_REQUIRED' })
     await unapprovedAccount.refresh()
     assert.isNull(unapprovedAccount.authSubject)
     assert.equal(unapprovedAccount.name, 'Unapproved legacy user')
   })
 
-  test('links an approved unbound account to the validated subject', async ({ client, assert }) => {
+  test('supports repeated linking requests from older clients', async ({ client, assert }) => {
     const res = await client
       .post('/user/account-resolution')
       .header('authorization', `Bearer ${pendingToken}`)

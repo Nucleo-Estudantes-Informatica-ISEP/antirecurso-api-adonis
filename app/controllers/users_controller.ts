@@ -1,12 +1,7 @@
-import { DateTime } from 'luxon'
 import ZitadelAuthService, { UnauthorizedError } from '#services/auth/zitadel_auth_service'
 import type { HttpContext } from '@adonisjs/core/http'
-import db from '@adonisjs/lucid/services/db'
 import User from '#models/user'
-import AccountLinkPending from '#models/account_link_pending'
 import Answer from '#models/answer'
-import Score from '#models/score'
-import QuestionReport from '#models/question_report'
 import { searchUsersValidator } from '#validators/user'
 import {
   deleteAccount,
@@ -15,10 +10,6 @@ import {
 } from '#services/auth/account_deletion'
 import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
 import { serializeUserIdentity } from '#services/auth/user_identity'
-import {
-  performAccountResolution,
-  type AccountResolutionAction,
-} from '#services/auth/account_resolution_service'
 
 export default class UsersController {
   async revokeSession({ request, response }: HttpContext) {
@@ -116,67 +107,15 @@ export default class UsersController {
   }
 
   async accountResolution({ authUser, authClaims, request, response }: AuthenticatedHttpContext) {
-    const action = request.input('action')
-
-    if (action !== 'keep' && action !== 'discard') {
-      return response.badRequest({ message: 'Invalid action' })
+    if (request.input('action') !== 'keep') {
+      return response.badRequest({ message: 'Only account linking is supported here' })
     }
 
-    const resolved = await db.transaction(async (trx) => {
-      const user = await User.query()
-        .useTransaction(trx)
-        .where('id', authUser.id)
-        .forUpdate()
-        .first()
-      if (!user || user.authSubject !== null || user.email !== authClaims.email) return false
-
-      const pending = await AccountLinkPending.query()
-        .useTransaction(trx)
-        .where('userId', authUser.id)
-        .where('authSubject', authClaims.sub)
-        .whereNotNull('approvedAt')
-        .forUpdate()
-        .first()
-
-      if (!pending) return false
-
-      await performAccountResolution(action as AccountResolutionAction, {
-        discardAccountData: async () => {
-          await Answer.query().useTransaction(trx).where('userId', authUser.id).delete()
-          await Score.query().useTransaction(trx).where('userId', authUser.id).delete()
-          await QuestionReport.query().useTransaction(trx).where('userId', authUser.id).delete()
-        },
-        deletePendingMarker: async () => {
-          await AccountLinkPending.query().useTransaction(trx).where('id', pending.id).delete()
-        },
-        deleteUser: async () => {
-          await User.query().useTransaction(trx).where('id', authUser.id).delete()
-        },
-        updateAuthSubject: async () => {
-          await User.query()
-            .useTransaction(trx)
-            .where('id', authUser.id)
-            .update({
-              authSubject: authClaims.sub,
-              name: authClaims.name,
-              emailVerifiedAt: user.emailVerifiedAt ?? DateTime.now(),
-            })
-        },
-      })
-
-      return true
-    })
-
-    if (!resolved) {
-      return response.badRequest({ message: 'No pending account resolution' })
+    if (authUser.authSubject !== authClaims.sub || authUser.email !== authClaims.email) {
+      return response.forbidden({ message: 'Contact support to recover the existing account' })
     }
 
-    return response.ok({
-      message:
-        action === 'discard'
-          ? 'Account data discarded successfully'
-          : 'Account linked successfully',
-    })
+    return response.ok({ message: 'Account linked successfully' })
   }
 
   /**
