@@ -2,12 +2,14 @@ import env from '#start/env'
 import { defineConfig } from '@adonisjs/lucid'
 
 const dbSslEnabled = env.get('DB_SSL')
+const knexErrorOptions = { compileSqlOnError: false }
 
 const dbConfig = defineConfig({
   connection: 'postgres',
   connections: {
     postgres: {
       client: 'pg',
+      ...knexErrorOptions,
       searchPath: [env.get('DB_SCHEMA') ?? 'public'],
       connection: {
         connectionString: env.get('DB_URL'),

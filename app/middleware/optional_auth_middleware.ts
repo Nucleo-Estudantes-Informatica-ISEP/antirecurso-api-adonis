@@ -19,6 +19,13 @@ export default class OptionalAuthMiddleware {
     try {
       const session = await this.authService.authenticateAuthorizationHeader(authorizationHeader)
 
+      if (session.user.authSubject === null) {
+        return ctx.response.forbidden({
+          message: 'Account resolution required',
+          requires_account_resolution: true,
+        })
+      }
+
       ctx.authUser = session.user
       ctx.authClaims = session.claims
 
@@ -33,13 +40,14 @@ export default class OptionalAuthMiddleware {
 
       if (error instanceof UnauthorizedError) {
         if (env.get('AUTH_DEBUG')) {
-          console.warn('[auth][api]', {
-            middleware: 'optionalAuth',
-            path: ctx.request.url(),
-            method: ctx.request.method(),
-            message: error.message,
-            hasAuthorizationHeader: Boolean(authorizationHeader),
-          })
+          ctx.logger.warn(
+            {
+              middleware: 'optionalAuth',
+              reason: error.message,
+              has_authorization_header: true,
+            },
+            'authentication rejected'
+          )
         }
 
         return ctx.response.unauthorized({ message: error.message })

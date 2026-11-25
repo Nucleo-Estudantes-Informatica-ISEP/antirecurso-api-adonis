@@ -21,6 +21,13 @@ export type SavedExamState = {
 
 export class InvalidExamStateError extends Error {}
 
+export function sameQuestionIds(left: number[], right: number[]) {
+  return (
+    JSON.stringify([...left].sort((a, b) => a - b)) ===
+    JSON.stringify([...right].sort((a, b) => a - b))
+  )
+}
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value)
 }

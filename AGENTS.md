@@ -13,6 +13,8 @@ Engineering instructions for the current Antirecurso backend. This AdonisJS repo
 
 ## Required verification
 
+For documentation-only changes (including `AGENTS.md`, `README.md`, and `docs/`), verify changed content, links, filenames, and `git diff --check`. Local application installs, lint, typecheck, tests, builds, audits, schema/migration checks, Docker builds, and runtime smoke checks are unnecessary. CI still runs its configured checks on the PR.
+
 ```bash
 npm ci
 npm run lint
@@ -26,16 +28,68 @@ docker build -t antirecurso-api-check .
 
 Use an isolated test database for migrations and API/integration tests. Never run production migrations, seeds, or destructive checks without explicit authorization and a backup.
 
+Question publication uses `node ace questions:import` with operator-supplied review notes,
+verified stable identity and a dry-run/repeat check; raw banks remain unpublished.
+Local `db:seed` creates labelled synthetic fixtures only in development/test; both
+seeders refuse production writes. Fixtures carry no academic approval.
+Academic approval is a separate human prerequisite, not authenticated by the importer.
+Retain the transactional before/after audit and backup. See `docs/QUESTION_IMPORT.md`.
+
 ## CI/CD
 
 `.github/workflows/ci.yml` requires frozen install, lint, typecheck, Japa tests, migrations against isolated PostgreSQL, production build/audit, and non-root Docker build for every PR to `dev` or `main`. The separate security workflow runs for pull requests.
 
-Deployment is a reviewed `main` image rollout. `RUN_MIGRATIONS=true` makes the entrypoint apply migrations before serving; verify the migration result before web traffic. Health is `GET /`. For cross-repository contract changes, deploy and smoke this API before the Antirecurso web PR.
+Deploy `exams:prune-attempts` as a daily runtime command after migrations. It removes only unfinished attempts inactive for 30 days; completed history remains. Keep owner-first locking across pruning, exam mutations and account deletion.
+
+Deployment is a reviewed `main` image rollout. `RUN_MIGRATIONS=true` makes the entrypoint apply migrations before serving; verify the migration result before web traffic. Health is `GET /`. For cross-repository contract changes, deploy and smoke this API before the Antirecurso web PR unless the documented rollout for that change requires a compatible web release first. Follow [the API contract](docs/API.md#common-response-and-error-rules) for legacy account recovery.
 
 Production must configure exact `CORS_ALLOWED_ORIGINS`, issuer/audiences, the shared database limiter, and bucket-scoped S3 credentials and private MinIO bucket. Actor/owner identity comes from the validated token, never request input. Stored note promotion validates object size, type, and PDF signature.
 
 Dependabot routine groups are patch/minor only. Adonis 7, Node Current, TypeScript 7, ESLint 10, or other majors require a dedicated migration PR and compatibility matrix.
 
+PR audit policy remains `npm audit --omit=dev --audit-level=critical`; weekly full-tree
+audits open/update a security issue for repository CODEOWNERS to triage. Keep install
+scripts enabled for the hash-checked upstream `braces` patch; review/removal criteria
+and the review deadline are in `docs/DEPENDENCY_SECURITY.md`.
+
 ## Documentation
 
 Keep `README.md`, `.env.example`, `docs/API.md`, `docs/DATABASE_SCHEMA.md`, migrations, and this file synchronized. Remove “auth TODO”, public detailed-exam-review, wildcard-CORS, old migration counts, retired Laravel, and starter deployment guidance when encountered.
+
+## Issue and pull request writing
+
+- Use action-oriented issue titles and keep the template prefix (`[Type]` or
+  `[Bug]`). Follow the FallStack [task
+  template](https://github.com/Nucleo-Estudantes-Informatica-ISEP/fallstack-website/blob/9ba36c5ecf3095e21a0ea473b2691cd6cb8492db/.github/ISSUE_TEMPLATE/task.md) for scoped work and the [bug
+  template](https://github.com/Nucleo-Estudantes-Informatica-ISEP/fallstack-website/blob/9ba36c5ecf3095e21a0ea473b2691cd6cb8492db/.github/ISSUE_TEMPLATE/bug.md) for reproducible problem reports.
+  Keep task acceptance criteria and applicable dependencies as checklists.
+- Use Conventional Commit titles for PRs, such as `fix(auth): restore the return path`.
+  Follow the FallStack [PR template](https://github.com/Nucleo-Estudantes-Informatica-ISEP/fallstack-website/blob/9ba36c5ecf3095e21a0ea473b2691cd6cb8492db/.github/PULL_REQUEST_TEMPLATE.md).
+  Include Issue when applicable, Summary, Tests, Manual testing steps,
+  Configuration / migration, and Observations. Use this repository's own check
+  commands and state which verification is still outstanding.
+
+## Pull request metadata
+
+- Use a Conventional Commit-style PR title with a concise imperative summary.
+  For security fixes, use `fix(security): <summary>`.
+- Use `## Issue` for applicable closing references, then `## Summary` for
+  what changed and `## Tests` for verification. Use checkboxes for completed
+  checks and identify the tested revision, environment, and any gaps.
+- When relevant, add `## Manual testing steps`, `## Configuration / migration`,
+  `## Observations`, or `## Review follow-up`. Record pending rollout or
+  verification work explicitly.
+- Whenever opening a pull request, add the applicable existing repository
+  labels. Follow the repository's label conventions; do not leave the PR
+  unlabeled.
+- Assign every pull request to its creator (the GitHub PR author). Read the PR
+  author from GitHub and use that account; use `--add-assignee @me` only when
+  the authenticated account is the PR author.
+- Link the issue the PR addresses through GitHub's **Development** relationship
+  and verify that the link exists. A plain `Refs #N` mention is not sufficient.
+  Use a closing keyword when the PR completes the issue, or explicitly link it
+  through Development for partial work. For a non-default target branch,
+  explicitly establish the Development link rather than relying on a closing
+  keyword. Do not link a parent for closure unless its full scope is completed.
+- Verify the labels, creator assignment and Development issue link before
+  reporting the PR as opened.

@@ -1,0 +1,2154 @@
+[
+  {
+    "question": "O FTP não é adequado para hipertexto, porque exige uma ligação de controlo com autenticação e depois uma ligação por cada ficheiro transferido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.2"
+  },
+  {
+    "question": "O HTTP é um protocolo de transferência orientado ao conteúdo (content-aware): troca informação sobre as características do conteúdo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.3"
+  },
+  {
+    "question": "A primeira versão totalmente funcional do HTTP, semelhante às atuais, surgiu em 1996 com o nome HTTP 1.1.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.3"
+  },
+  {
+    "question": "O HTTP usa o modelo cliente-servidor sobre TCP: o cliente estabelece uma ligação TCP e envia um pedido, ao qual o servidor responde com uma mensagem de resposta.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.3"
+  },
+  {
+    "question": "O HTTP 1.0 já definia os métodos OPTIONS, PUT, DELETE, TRACE e CONNECT.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.3"
+  },
+  {
+    "question": "Todas as mensagens HTTP, pedidos ou respostas, começam por uma sequência de linhas de texto de comprimento variável, terminada por uma linha vazia.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.4"
+  },
+  {
+    "question": "O corpo (body) de uma mensagem HTTP pode não existir e pode ter qualquer formato, não necessariamente texto.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.4"
+  },
+  {
+    "question": "O corpo de uma mensagem HTTP tem sempre formato de texto e existe sempre em todas as mensagens.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.4"
+  },
+  {
+    "question": "A primeira linha de um pedido HTTP chama-se request line e a de uma resposta chama-se status line.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.4"
+  },
+  {
+    "question": "As linhas de cabeçalho (header fields) de uma mensagem HTTP são obrigatórias e têm de ser pelo menos três.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.4"
+  },
+  {
+    "question": "O nome de um campo de cabeçalho HTTP é um identificador que não distingue maiúsculas de minúsculas, e é seguido imediatamente por dois pontos, sem espaços.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.6"
+  },
+  {
+    "question": "Os campos de cabeçalho HTTP dividem-se tradicionalmente em quatro categorias: general, request, response e entity.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.6"
+  },
+  {
+    "question": "No HTTP 1.1, o comportamento por omissão é manter as ligações abertas, para permitir vários pedidos e respostas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.7"
+  },
+  {
+    "question": "No HTTP 1.1, o comportamento por omissão é fechar a ligação TCP no fim de cada resposta, tal como no HTTP 1.0.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.16"
+  },
+  {
+    "question": "O campo Content-Length define o tamanho do conteúdo em octetos, para o recetor saber quantos bytes deve ler do corpo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.8"
+  },
+  {
+    "question": "O campo Expires contém a data e hora depois da qual as cópias em cache do conteúdo deixam de ser válidas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.8"
+  },
+  {
+    "question": "O campo Last-Modified contém a data e hora da última modificação do conteúdo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.8"
+  },
+  {
+    "question": "O campo Host contém o nome do nó e o número de porto a que se acede, sendo 80 o porto por omissão.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.9"
+  },
+  {
+    "question": "O campo Referer contém o URL do documento a partir do qual o pedido foi feito, e não existe nos pedidos escritos diretamente pelo utilizador.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.9"
+  },
+  {
+    "question": "O campo Referer contém o URL do documento que está a ser pedido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.9"
+  },
+  {
+    "question": "O campo Cookie transporta um par nome-valor fornecido pelo servidor numa resposta anterior.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.9"
+  },
+  {
+    "question": "Os campos Accept, Accept-Charset, Accept-Encoding e Accept-Language permitem ao cliente restringir o tipo, o conjunto de caracteres, a codificação e o idioma do conteúdo da resposta.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.10"
+  },
+  {
+    "question": "Os campos If-Modified-Since e If-Unmodified-Since tornam a resposta dependente da data de última modificação do recurso pedido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.10"
+  },
+  {
+    "question": "O campo Set-Cookie permite ao servidor identificar um cliente nos pedidos seguintes e assim manter com ele uma sessão com estado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.11"
+  },
+  {
+    "question": "Um pedido GET não pode ter corpo, por isso os dados de formulários são enviados na query-string, acrescentada ao URI.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.12"
+  },
+  {
+    "question": "Um pedido GET pode transportar no corpo todos os dados de um formulário, sem limite de tamanho.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.12"
+  },
+  {
+    "question": "A query-string tem inconvenientes: só suporta texto, tem limites de comprimento e os dados ficam visíveis no URL.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.12"
+  },
+  {
+    "question": "Os códigos de estado 1xx não existiam no HTTP 1.0 e indicam que são esperadas mais mensagens na mesma ligação.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.14"
+  },
+  {
+    "question": "Os códigos 4xx indicam que o servidor tem um problema próprio e não conseguiu cumprir o pedido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.15"
+  },
+  {
+    "question": "No HTTP 1.0, as ligações TCP são presumidas não persistentes: cada pedido e resposta usa uma ligação TCP, fechada depois de recebida a resposta.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.16"
+  },
+  {
+    "question": "As ligações persistentes não duram indefinidamente: cliente e servidor aplicam um keep alive timeout e fecham a ligação se não houver tráfego nesse período.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.17"
+  },
+  {
+    "question": "O HTTPS é o mesmo protocolo HTTP, mas a correr sobre TLS em vez de TCP simples.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.18"
+  },
+  {
+    "question": "O HTTPS é um protocolo diferente do HTTP, com um formato de mensagens próprio.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.18"
+  },
+  {
+    "question": "Num pedido HTTPS, o cliente primeiro estabelece a ligação TCP, depois protege-a com TLS e só então envia o pedido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.18"
+  },
+  {
+    "question": "A razão para reutilizar o HTTP/HTTPS como protocolo de uso geral é o investimento: desenhar e implementar um novo protocolo aplicacional é um esforço significativo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.19"
+  },
+  {
+    "question": "A ideia central dos web services é usar o HTTP para comunicações aplicação-a-aplicação, sem participação humana direta.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.20"
+  },
+  {
+    "question": "O URL começa pelo nome do protocolo de acesso, identifica o nó (normalmente por um nome DNS) e, opcionalmente, o porto precedido de dois pontos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.22"
+  },
+  {
+    "question": "Num pedido com XMLHttpRequest assíncrono, define-se antes uma função de tratamento da resposta, executada em segundo plano quando a resposta chegar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.23"
+  },
+  {
+    "question": "No REST, os servidores são stateless: não guardam o contexto do diálogo com o cliente, pelo que cada pedido tem de incluir todo o contexto necessário.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.24"
+  },
+  {
+    "question": "No REST, o servidor guarda o contexto do diálogo de cada cliente entre pedidos, e o cliente só envia o identificador da sessão.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.24"
+  },
+  {
+    "question": "No REST, se o servidor tiver estado, esse estado deve ser representado por um recurso endereçável (URI) a que o cliente possa fazer referência.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.24"
+  },
+  {
+    "question": "No REST, todos os conteúdos transferidos têm de estar em XML.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.24"
+  },
+  {
+    "question": "O método POST é idempotente: repetir o mesmo pedido POST não tem efeitos adicionais para além do primeiro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.25"
+  },
+  {
+    "question": "Num URI de uma coleção, o PUT substitui a coleção inteira por outra coleção.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.25"
+  },
+  {
+    "question": "Nas boas práticas de URI REST, devem usar-se hífenes em vez de underscores e evitar nomes CRUD (Create, Read, Update, Delete) nos URI.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.26"
+  },
+  {
+    "question": "No exemplo do HATEOAS, a conta com saldo zero só oferece as ações deposit e close.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.27"
+  },
+  {
+    "question": "A same-origin policy dos navegadores evita ações maliciosas baseadas em interações entre origens diferentes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.28"
+  },
+  {
+    "question": "Um script pode alterar o nome do nó da origem da página para qualquer outro domínio, incluindo um subdomínio.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.29"
+  },
+  {
+    "question": "O protocolo CORS permite ultrapassar a same-origin policy: o navegador procura na resposta cabeçalhos específicos para saber se o acesso é permitido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.30"
+  },
+  {
+    "question": "Num pedido cross-origin com CORS, o navegador só permite o acesso se o Access-Control-Allow-Origin da resposta for \"*\" ou coincidir com a origem do pedido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.30"
+  },
+  {
+    "question": "Os pedidos CORS com os métodos PUT, DELETE, CONNECT, OPTIONS, TRACE e PATCH exigem sempre pre-flight.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.31"
+  },
+  {
+    "question": "O cabeçalho Access-Control-Allow-Credentials da resposta de pre-flight indica se podem ser usadas credenciais, como cookies, cabeçalhos de autorização ou certificados TLS de cliente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.32"
+  },
+  {
+    "question": "O cabeçalho Access-Control-Max-Age indica durante quanto tempo a resposta de pre-flight pode ser guardada em cache.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.32"
+  },
+  {
+    "question": "O cabeçalho Access-Control-Max-Age indica o número máximo de pedidos que o servidor aceita da mesma origem.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.32"
+  },
+  {
+    "question": "Que porto TCP usa por omissão o HTTP?",
+    "answers": [
+      "80",
+      "443",
+      "8080",
+      "53"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.3"
+  },
+  {
+    "question": "Que porto TCP usa por omissão o HTTPS?",
+    "answers": [
+      "21",
+      "80",
+      "443",
+      "8443"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.18"
+  },
+  {
+    "question": "Que métodos define o HTTP 1.0?",
+    "answers": [
+      "GET, PUT e DELETE",
+      "GET, OPTIONS e TRACE",
+      "GET, POST e HEAD",
+      "POST, PUT e CONNECT"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.3"
+  },
+  {
+    "question": "Que métodos acrescenta o HTTP 1.1 aos do HTTP 1.0?",
+    "answers": [
+      "OPTIONS, PUT, DELETE, TRACE e CONNECT",
+      "PUT, POST, PATCH, TRACE e CONNECT",
+      "OPTIONS, GET, DELETE, HEAD e CONNECT",
+      "OPTIONS, HEAD, PUT, PATCH e TRACE"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.3"
+  },
+  {
+    "question": "Como termina cada linha de texto de uma mensagem HTTP?",
+    "answers": [
+      "Apenas com o byte LF (0x0A) do sistema",
+      "Apenas com o byte CR (0x0D) do sistema",
+      "Com os bytes CR (0x0D) e LF (0x0A)",
+      "Com um ponto e vírgula no fim da linha"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.4"
+  },
+  {
+    "question": "Como se indica o fim do cabeçalho de uma mensagem HTTP?",
+    "answers": [
+      "Com um ponto final seguido de CR+LF",
+      "Com o campo Content-Length, que define o tamanho do cabeçalho",
+      "Com uma linha vazia, ou seja, duas sequências CR+LF consecutivas",
+      "Com o byte zero no fim da última linha do cabeçalho"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.4"
+  },
+  {
+    "question": "Qual é o formato da request line de um pedido HTTP?",
+    "answers": [
+      "Método, espaço, URI, espaço, versão do HTTP, CR+LF",
+      "Método, espaço, versão do HTTP, espaço, código, CR+LF",
+      "Versão do HTTP, espaço, método, espaço, URI, CR+LF",
+      "URI, espaço, método, espaço, versão do HTTP, CR+LF"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.5"
+  },
+  {
+    "question": "Qual é o formato da status line de uma resposta HTTP?",
+    "answers": [
+      "Versão do HTTP, espaço, código de estado, espaço, descrição, CR+LF",
+      "Versão do HTTP, espaço, método, espaço, código de estado, CR+LF",
+      "Código de estado, espaço, versão do HTTP, espaço, descrição, CR+LF e linha em branco",
+      "Método, espaço, URI do recurso, espaço, versão do HTTP, CR+LF"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.5"
+  },
+  {
+    "question": "Quantos dígitos tem um código de estado HTTP?",
+    "answers": [
+      "Quatro",
+      "Três",
+      "Um",
+      "Dois"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.5"
+  },
+  {
+    "question": "Que formas pode ter o argumento (URI) da request line de um pedido HTTP?",
+    "answers": [
+      "Apenas um URL completo com o protocolo, o nó e o porto do servidor",
+      "Apenas um caminho absoluto começado por barra, relativo ao servidor",
+      "Um asterisco, um caminho absoluto começado por barra ou um URI completo",
+      "Um asterisco ou um endereço IP escrito em notação hexadecimal"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.5"
+  },
+  {
+    "question": "Na linha \"GET /index.html HTTP/1.1\", o que é \"/index.html\"?",
+    "answers": [
+      "A versão do protocolo HTTP usada pelo cliente para fazer o pedido",
+      "O nome do campo de cabeçalho mais importante do pedido enviado",
+      "O argumento (URI) que identifica o recurso sobre o qual o método é aplicado",
+      "O método do pedido, que identifica a operação a executar no servidor"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.5"
+  },
+  {
+    "question": "Na linha \"HTTP/1.1 404 Not Found\", o que é \"404\"?",
+    "answers": [
+      "O método do pedido que originou a resposta",
+      "O tamanho do corpo da resposta em octetos",
+      "A versão do protocolo HTTP",
+      "O código de estado da resposta"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.5"
+  },
+  {
+    "question": "Que campo de cabeçalho HTTP 1.0 deve ser usado em vez de Cache-Control?",
+    "answers": [
+      "Expires",
+      "Connection",
+      "Upgrade",
+      "Pragma"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.7"
+  },
+  {
+    "question": "Para que serve o campo Cache-Control?",
+    "answers": [
+      "Indicar o idioma preferido do utilizador para o conteúdo da resposta",
+      "Definir quanto tempo a ligação TCP fica aberta sem tráfego entre cliente e servidor antes de fechar",
+      "Identificar o servidor que gerou a resposta e a sua versão de software",
+      "Definir como os dados podem ser guardados em cache por clientes, servidores e proxies"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.7"
+  },
+  {
+    "question": "Para que serve o campo Upgrade e que resposta a acompanha?",
+    "answers": [
+      "O servidor pede autenticação e o cliente responde 401 Unauthorized",
+      "O cliente indica versões que suporta e o servidor responde 101 Switching Protocols",
+      "O cliente indica o idioma e o servidor responde 406 Not Acceptable",
+      "O cliente indica o seu endereço e o servidor responde 301 Moved Permanently"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.7"
+  },
+  {
+    "question": "Para que serve o campo Transfer-Encoding?",
+    "answers": [
+      "Para indicar o tipo de media do conteúdo transportado no corpo",
+      "Para informar a transformação aplicada ao corpo da mensagem",
+      "Para indicar a data de última modificação do conteúdo pedido",
+      "Para informar o tamanho total do corpo da mensagem em octetos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.7"
+  },
+  {
+    "question": "Que campo de cabeçalho indica o tipo de media do conteúdo e, portanto, como deve ser interpretado e apresentado?",
+    "answers": [
+      "Accept",
+      "Content-Type",
+      "Content-Encoding",
+      "Content-Language"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.8"
+  },
+  {
+    "question": "Que campo de cabeçalho informa sobre a codificação aplicada ao conteúdo, por exemplo gzip?",
+    "answers": [
+      "Content-Disposition",
+      "Accept-Encoding",
+      "Content-Encoding",
+      "Content-Type"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.8"
+  },
+  {
+    "question": "Para que serve o campo Content-MD5?",
+    "answers": [
+      "Guardar o resultado do algoritmo MD5 sobre o conteúdo, para verificar a integridade",
+      "Identificar a versão do protocolo HTTP usada para trocar a mensagem",
+      "Indicar o idioma natural do público a que o conteúdo da mensagem se destina",
+      "Guardar a chave pré-partilhada usada na autenticação do cliente junto do servidor"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.8"
+  },
+  {
+    "question": "Para que serve o campo Content-Range?",
+    "answers": [
+      "Indicar o intervalo de datas em que o conteúdo da mensagem continua a ser válido para o cliente",
+      "Limitar o intervalo de portos TCP que o servidor aceita para este pedido",
+      "Indicar a posição do corpo no conteúdo original e o seu tamanho total (conteúdo parcial)",
+      "Indicar o intervalo de bytes que o cliente já guardou em cache da resposta"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.8"
+  },
+  {
+    "question": "Qual é o conteúdo do campo User-Agent?",
+    "answers": [
+      "O nome do servidor web que vai tratar o pedido do cliente, indicado no cabeçalho",
+      "O URL do documento a partir do qual se seguiu o pedido",
+      "O endereço de correio eletrónico do utilizador do cliente",
+      "Uma cadeia que identifica o cliente, como um navegador web"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.9"
+  },
+  {
+    "question": "Qual é o conteúdo do campo From?",
+    "answers": [
+      "O endereço IP do servidor que vai tratar o pedido do cliente",
+      "O URL do documento a partir do qual se seguiu o pedido (referer)",
+      "O endereço de correio eletrónico do utilizador do lado do cliente",
+      "A cadeia que identifica a aplicação cliente, normalmente um navegador"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.9"
+  },
+  {
+    "question": "Que campo de cabeçalho de resposta é usado com as respostas 3xx para redirecionar o cliente?",
+    "answers": [
+      "Retry-After",
+      "Location",
+      "WWW-Authenticate",
+      "Server"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.11"
+  },
+  {
+    "question": "Que campo de cabeçalho de resposta é usado com a resposta 401 Unauthorized?",
+    "answers": [
+      "WWW-Authenticate",
+      "Proxy-Authorization",
+      "Location",
+      "Retry-After"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.11"
+  },
+  {
+    "question": "Que campo de cabeçalho de pedido deve ser incluído depois de uma resposta 401 Unauthorized?",
+    "answers": [
+      "Authorization",
+      "Referer",
+      "WWW-Authenticate",
+      "Cookie"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.9"
+  },
+  {
+    "question": "Que campo de cabeçalho de resposta é usado com a resposta 503 Service Unavailable?",
+    "answers": [
+      "Age",
+      "Allow",
+      "Location",
+      "Retry-After"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.11"
+  },
+  {
+    "question": "Que campo de cabeçalho é incluído numa resposta 405 Method Not Allowed?",
+    "answers": [
+      "Location, com o novo URI do recurso",
+      "Retry-After, com o tempo de espera",
+      "WWW-Authenticate, com o mecanismo de autenticação",
+      "Allow, com a lista de métodos suportados"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.8"
+  },
+  {
+    "question": "Que método HTTP pede ao servidor a lista dos métodos suportados, por exemplo com o argumento *?",
+    "answers": [
+      "HEAD",
+      "TRACE",
+      "CONNECT",
+      "OPTIONS"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.12"
+  },
+  {
+    "question": "Qual é a diferença entre as respostas a GET e a HEAD para o mesmo URI?",
+    "answers": [
+      "As duas respostas são idênticas, incluindo o corpo",
+      "A resposta a HEAD tem corpo mas não tem campos de cabeçalho",
+      "A resposta a HEAD tem apenas a linha de estado, sem cabeçalhos nem corpo",
+      "A resposta a HEAD tem os mesmos campos de cabeçalho mas não tem corpo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.13"
+  },
+  {
+    "question": "Para que serve o método POST?",
+    "answers": [
+      "Obter a lista de métodos suportados pelo servidor, se o URI do pedido for um asterisco",
+      "Enviar dados no corpo da mensagem para um URI, normalmente código executado no servidor",
+      "Obter o conteúdo apontado pelo URI, que pode ser um ficheiro estático ou gerado dinamicamente",
+      "Pedir a remoção do recurso no servidor, identificado pelo URI, sem enviar dados no corpo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.13"
+  },
+  {
+    "question": "Qual é a principal diferença entre GET e POST na forma de enviar dados?",
+    "answers": [
+      "No GET os dados vão no corpo da mensagem HTTP; no POST vão na query-string do URI do pedido",
+      "No GET os dados vão na query-string do URI; no POST vão no corpo da mensagem",
+      "Os dois enviam sempre os dados no corpo, mas o GET exige HTTPS",
+      "No GET os dados vão num cabeçalho Cookie; no POST vão no cabeçalho Host"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.12"
+  },
+  {
+    "question": "Para que serve o método PUT?",
+    "answers": [
+      "Para obter o conteúdo apontado pelo URI, que pode ser estático ou dinâmico",
+      "Para fazer o upload de um conteúdo para um URI, o inverso do GET",
+      "Para fechar a ligação persistente com o servidor depois da resposta",
+      "Para pedir os cabeçalhos de um recurso, sem o respetivo corpo da resposta"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.13"
+  },
+  {
+    "question": "Qual é o significado da sigla CGI (Common Gateway Interface)?",
+    "answers": [
+      "A técnica que permite a um servidor executar programas externos e devolver o resultado",
+      "O mecanismo de cache usado pelos proxies e pelos navegadores para guardar conteúdos",
+      "O protocolo que protege a ligação HTTP com TLS e certificados de chave pública do servidor",
+      "O formato de representação de dados em XML usado nos web services entre aplicações"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.12"
+  },
+  {
+    "question": "O que significa o código de estado 200 OK?",
+    "answers": [
+      "O recurso foi movido permanentemente",
+      "Sucesso total na operação pedida",
+      "O servidor aceitou o pedido mas pode não o ter executado ainda",
+      "O recurso foi criado em resposta a um PUT"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.14"
+  },
+  {
+    "question": "O que significa o código de estado 201 Created?",
+    "answers": [
+      "O conteúdo da resposta é apenas parcial, relativamente ao recurso pedido",
+      "O pedido foi aceite mas ainda pode não ter sido executado pelo servidor",
+      "O recurso não foi modificado desde o último pedido condicional feito pelo cliente",
+      "Foi criado um novo recurso em resultado do pedido (normalmente PUT)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.14"
+  },
+  {
+    "question": "O que significa o código de estado 202 Accepted?",
+    "answers": [
+      "O conteúdo da resposta é apenas parcial, e não o recurso completo",
+      "Sucesso total e imediato na operação pedida pelo cliente ao servidor",
+      "O pedido foi aceite, mas pode ainda não ter sido executado",
+      "O servidor exige autenticação do utilizador para realizar a operação"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.14"
+  },
+  {
+    "question": "O que significa o código de estado 206 Partial Content?",
+    "answers": [
+      "O recurso foi movido para outro local",
+      "O pedido foi aceite mas ainda não executado",
+      "O conteúdo do corpo da resposta é apenas parcial",
+      "Existem várias opções para executar o pedido"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.14"
+  },
+  {
+    "question": "O que significa o código de estado 301 Moved Permanently?",
+    "answers": [
+      "O recurso não foi modificado desde o último pedido condicional",
+      "O recurso mudou de local, e o novo local vem no campo Location",
+      "O recurso mudou de local temporariamente e o cliente deve voltar ao original",
+      "Existem várias opções, e é fornecida uma lista"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.14"
+  },
+  {
+    "question": "O que significa o código de estado 304 Not Modified?",
+    "answers": [
+      "O servidor não implementa o método usado no pedido enviado pelo cliente",
+      "Resposta a um GET condicional: o recurso não mudou desde a data indicada",
+      "O servidor não encontrou o recurso pedido pelo cliente no seu sistema",
+      "O recurso foi movido para outro local, indicado no campo Location"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.14"
+  },
+  {
+    "question": "O que significa o código de estado 400 Bad Request?",
+    "answers": [
+      "O método usado não é possível para aquele recurso",
+      "O recurso existe, mas não é acessível por falta de permissão",
+      "O servidor não percebeu o pedido",
+      "O recurso pedido não foi encontrado no servidor"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.15"
+  },
+  {
+    "question": "O que significa o código de estado 401 Unauthorized?",
+    "answers": [
+      "O servidor exige autenticação do utilizador para realizar a operação",
+      "O recurso existe mas o acesso está proibido por falta de permissão",
+      "O servidor tem um problema grave e inesperado e não conseguiu processar o pedido",
+      "O servidor não percebeu o pedido"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.15"
+  },
+  {
+    "question": "O que significa o código de estado 403 Forbidden?",
+    "answers": [
+      "O servidor está temporariamente sobrecarregado",
+      "O recurso existe, mas não é acessível por falta de permissão",
+      "O recurso pedido não foi encontrado no servidor",
+      "O servidor exige autenticação do utilizador para realizar a operação pedida"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.15"
+  },
+  {
+    "question": "O que significa o código de estado 404 Not Found?",
+    "answers": [
+      "O recurso pedido não foi encontrado no servidor",
+      "O servidor não percebeu o pedido",
+      "O método não é suportado pelo servidor",
+      "O recurso existe mas o acesso está proibido ao utilizador"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.15"
+  },
+  {
+    "question": "O que significa o código de estado 405 Method Not Allowed?",
+    "answers": [
+      "O recurso pedido não foi encontrado",
+      "O método usado não é possível para aceder ao recurso pedido",
+      "O servidor não implementa o método pedido, para nenhum recurso",
+      "O recurso existe mas o acesso está proibido"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.15"
+  },
+  {
+    "question": "O que significa o código de estado 406 Not Acceptable?",
+    "answers": [
+      "A pré-condição de um campo If do pedido não pôde ser satisfeita",
+      "A versão do HTTP indicada na linha do pedido não é suportada",
+      "O servidor recusa o pedido por este não incluir o campo Content-Length",
+      "Uma restrição de um campo Accept do pedido não pôde ser satisfeita"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.15"
+  },
+  {
+    "question": "O que significa o código de estado 411 Length Required?",
+    "answers": [
+      "Uma restrição de um campo Accept não pôde ser satisfeita",
+      "O servidor recusa o pedido por ter o corpo demasiado grande para o limite definido",
+      "O servidor não percebeu o pedido",
+      "O servidor recusa o pedido por não ter o campo Content-Length"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.15"
+  },
+  {
+    "question": "O que significa o código de estado 412 Precondition Failed?",
+    "answers": [
+      "Uma pré-condição de um campo If do pedido não pôde ser satisfeita",
+      "Uma restrição de um campo Accept do pedido não pôde ser satisfeita",
+      "O servidor exige autenticação do utilizador para aceder ao recurso",
+      "O servidor não implementa o método indicado no pedido do cliente"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.15"
+  },
+  {
+    "question": "O que significa o código de estado 500 Internal Server Error?",
+    "answers": [
+      "O servidor está temporariamente sobrecarregado e pede nova tentativa",
+      "O servidor não percebeu o pedido do cliente por estar mal formado",
+      "O servidor tem um problema grave e não conseguiu processar o pedido",
+      "O método do pedido não é suportado pelo servidor em nenhum recurso"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.15"
+  },
+  {
+    "question": "O que significa o código de estado 501 Not Implemented?",
+    "answers": [
+      "O servidor está temporariamente sobrecarregado",
+      "O método do pedido não é suportado pelo servidor",
+      "O servidor tem um problema grave e não conseguiu processar o pedido",
+      "A versão do HTTP do pedido não é suportada"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.15"
+  },
+  {
+    "question": "O que significa o código de estado 503 Service Unavailable?",
+    "answers": [
+      "O servidor não conseguiu processar o pedido por sobrecarga temporária",
+      "A versão do HTTP do pedido não é suportada",
+      "O método do pedido não é suportado pelo servidor",
+      "O servidor tem um problema grave e inesperado e não conseguiu processar o pedido"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.15"
+  },
+  {
+    "question": "O que significa o código de estado 505 HTTP Version Not Supported?",
+    "answers": [
+      "O método do pedido não é suportado pelo servidor",
+      "O servidor está temporariamente sobrecarregado",
+      "O servidor tem um problema grave e não conseguiu processar o pedido",
+      "A versão do HTTP do pedido não é suportada pelo servidor"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.15"
+  },
+  {
+    "question": "Que categoria de códigos de estado HTTP indica erros do lado do cliente?",
+    "answers": [
+      "3xx",
+      "4xx",
+      "5xx (cliente)",
+      "2xx"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.15"
+  },
+  {
+    "question": "Que categoria de códigos de estado HTTP indica erros do lado do servidor?",
+    "answers": [
+      "4xx, erros do lado do cliente",
+      "1xx",
+      "3xx",
+      "5xx"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.15"
+  },
+  {
+    "question": "Que categoria de códigos de estado HTTP indica sucesso?",
+    "answers": [
+      "3xx",
+      "1xx",
+      "4xx",
+      "2xx"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.14"
+  },
+  {
+    "question": "Que categoria de códigos de estado HTTP indica a necessidade de o cliente reformular o pedido, por exemplo por redireccionamento?",
+    "answers": [
+      "3xx",
+      "1xx",
+      "5xx (erro do servidor)",
+      "2xx"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.14"
+  },
+  {
+    "question": "Como se obtém uma ligação persistente no HTTP 1.0?",
+    "answers": [
+      "O cliente envia Connection: close e o servidor mantém a ligação aberta após a resposta",
+      "O cliente envia o método CONNECT ao servidor antes de enviar o primeiro pedido",
+      "O cliente envia Connection: keep-alive e o servidor responde com o mesmo campo",
+      "O cliente não precisa de fazer nada, porque é o comportamento por omissão"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.16"
+  },
+  {
+    "question": "Como se desativa a ligação persistente do HTTP 1.1?",
+    "answers": [
+      "Incluindo o campo Connection: keep-alive no pedido",
+      "Incluindo o campo Connection: close no pedido",
+      "Incluindo o campo Keep-Alive: max=0 no pedido",
+      "Enviando o método CONNECT"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.16"
+  },
+  {
+    "question": "O que indica o parâmetro max do campo Keep-Alive?",
+    "answers": [
+      "O tamanho máximo, em bytes, de cada mensagem da ligação",
+      "O número máximo de clientes que podem partilhar a ligação",
+      "O número máximo de segundos que a ligação fica aberta sem tráfego",
+      "O número máximo de sequências pedido/resposta que a ligação suporta"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.17"
+  },
+  {
+    "question": "O que indica o parâmetro timeout do campo Keep-Alive?",
+    "answers": [
+      "O número de segundos que a ligação se mantém aberta sem tráfego",
+      "O número de tentativas de retransmissão de um pedido",
+      "O número máximo de segundos que o servidor demora a responder a cada pedido",
+      "O número máximo de sequências pedido/resposta da ligação"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.17"
+  },
+  {
+    "question": "Sobre que protocolo corre o HTTPS?",
+    "answers": [
+      "TLS (Transport Layer Security), sucessor do SSL, sobre TCP",
+      "IPSEC, aplicado em todos os pacotes IP da ligação entre cliente e servidor",
+      "UDP, com cifragem aplicada em cada datagrama",
+      "SSH, com autenticação dos utilizadores por password"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.18"
+  },
+  {
+    "question": "Qual é a primeira mensagem do handshake TLS?",
+    "answers": [
+      "ServerHello, enviada pelo servidor ao cliente",
+      "Certificate, enviada pelo cliente com a chave privada",
+      "Finished, enviada pelo cliente depois do pedido HTTP",
+      "ClientHello, enviada pelo cliente ao servidor"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.18"
+  },
+  {
+    "question": "O que garante ao cliente que está a falar com o servidor autêntico num pedido HTTPS?",
+    "answers": [
+      "A utilização do porto 443, que é reservado a servidores autênticos",
+      "A utilização de uma password fornecida em cada pedido HTTP",
+      "O endereço IP do servidor, que é validado pelo DNS",
+      "Um certificado de chave pública válido apresentado pelo servidor"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.18"
+  },
+  {
+    "question": "Como é presumido o porto por omissão por um navegador?",
+    "answers": [
+      "Pelo tipo de ficheiro pedido: HTML usa 80 e imagens usam 443",
+      "Pela parte inicial do URL: http:// implica 80 e https:// implica 443",
+      "Pelo resultado de um pedido OPTIONS enviado antes do pedido real",
+      "Pelo valor do campo Host no pedido do cliente"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.18"
+  },
+  {
+    "question": "Quais são os papéis das aplicações num web service?",
+    "answers": [
+      "O consumidor (requestor) é o cliente HTTP e o publicador (provider) é o servidor",
+      "O consumidor (requestor) é o servidor HTTP e o publicador (provider) é o cliente",
+      "O consumidor (requestor) usa o protocolo FTP e o publicador (provider) usa o HTTP",
+      "Ambas as aplicações são servidores HTTP e trocam mensagens entre si, sem cliente"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.20"
+  },
+  {
+    "question": "Que content-types são usados para XML e JSON em web services?",
+    "answers": [
+      "text/xml e text/json apenas",
+      "application/html e application/js sem charset",
+      "text/plain para ambos os formatos",
+      "application/xml e application/json"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.21"
+  },
+  {
+    "question": "O que são o SOAP e o XML-RPC?",
+    "answers": [
+      "Mecanismos de segurança que cifram as mensagens HTTP trocadas pelos web services",
+      "Formatos de representação de dados em alternativa ao XML e ao JSON nos serviços",
+      "Normas de nível superior que definem como as aplicações comunicam através de web services",
+      "Protocolos de transporte alternativos ao TCP, para uso exclusivo em web services"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.21"
+  },
+  {
+    "question": "O que é a parte de origem (origin) de um URL?",
+    "answers": [
+      "O protocolo e o caminho hierárquico do recurso",
+      "O protocolo, o nome do nó e o número de porto",
+      "O caminho completo até ao recurso, incluindo a query-string",
+      "Apenas o nome do domínio de topo do nó"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.22"
+  },
+  {
+    "question": "Que parte de um URL deve ser fornecida às aplicações como configuração em tempo de execução, e não fixada no código?",
+    "answers": [
+      "A query-string, porque contém os dados do formulário de cada utilizador",
+      "A origem (protocolo, nó e porto), porque depende do ambiente de execução",
+      "O nome do método HTTP, porque depende do servidor que trata o pedido",
+      "O caminho local do recurso, porque muda a cada pedido feito ao servidor"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.22"
+  },
+  {
+    "question": "O que são o WSDL e o UDDI?",
+    "answers": [
+      "Protocolos de segurança para autenticar publicadores e consumidores de serviços",
+      "Formatos de dados alternativos ao JSON para representar recursos de serviços",
+      "Normas que disponibilizam em XML a informação sobre os recursos de um publicador",
+      "Linguagens de programação para escrever consumidores de web services em XML"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.22"
+  },
+  {
+    "question": "Para que serve o objeto XMLHttpRequest dos navegadores?",
+    "answers": [
+      "Para cifrar os pedidos HTTP enviados pelo navegador ao servidor",
+      "Para a página fazer pedidos HTTP e obter dados sem a recarregar",
+      "Para converter ficheiros XML em páginas HTML apresentadas ao utilizador",
+      "Para guardar em cache as respostas HTTP recebidas pelo navegador"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.23"
+  },
+  {
+    "question": "O que significa a sigla AJAX?",
+    "answers": [
+      "Asynchronous JavaScript and XML",
+      "Automated JSON and XML",
+      "Advanced Java and XML",
+      "Asynchronous Java Application eXchange"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.23"
+  },
+  {
+    "question": "O que significa a sigla REST?",
+    "answers": [
+      "Representational Service Transport",
+      "Resource Exchange and State Transfer",
+      "Remote State Transmission",
+      "Representational State Transfer"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.24"
+  },
+  {
+    "question": "Que métodos HTTP podem ser usados, no REST, para criar um recurso?",
+    "answers": [
+      "GET e POST",
+      "Apenas POST",
+      "POST e PUT",
+      "PUT e DELETE"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.24"
+  },
+  {
+    "question": "Que método HTTP é usado, no REST, para ler/obter um recurso?",
+    "answers": [
+      "GET",
+      "PUT",
+      "POST",
+      "HEAD"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.24"
+  },
+  {
+    "question": "Que método HTTP é usado, no REST, para atualizar/modificar um recurso?",
+    "answers": [
+      "GET",
+      "POST",
+      "PUT",
+      "DELETE"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.24"
+  },
+  {
+    "question": "Que método HTTP é usado, no REST, para apagar um recurso?",
+    "answers": [
+      "HEAD",
+      "PUT",
+      "DELETE",
+      "POST"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.24"
+  },
+  {
+    "question": "O que significa o método GET ser seguro (safe) no REST?",
+    "answers": [
+      "Que os dados são cifrados antes de serem enviados para o servidor",
+      "Que o servidor autentica sempre o cliente",
+      "Que não altera o recurso nem o estado do servidor",
+      "Que só pode ser usado sobre HTTPS"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.25"
+  },
+  {
+    "question": "O que significa um método ser idempotente no REST?",
+    "answers": [
+      "Que repetir o mesmo pedido sobre o mesmo URI não tem efeitos além do primeiro",
+      "Que o método exige sempre um corpo na mensagem de pedido e na de resposta",
+      "Que o método não altera o recurso nem o estado do servidor que o recebe, mesmo em pedidos repetidos",
+      "Que o método só pode ser invocado uma vez por cada cliente em cada servidor"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.25"
+  },
+  {
+    "question": "Quais dos seguintes métodos são idempotentes?",
+    "answers": [
+      "POST, PUT e DELETE",
+      "PUT, POST e GET",
+      "PUT, GET e DELETE",
+      "POST, GET e DELETE"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.25"
+  },
+  {
+    "question": "O que faz um pedido GET sobre o URI de uma coleção?",
+    "answers": [
+      "Cria um novo item na coleção, com um URI atribuído automaticamente",
+      "Substitui a coleção inteira por outra coleção enviada no corpo do pedido",
+      "Lista os itens da coleção, com os URI dos recursos e eventualmente outros dados",
+      "Apaga a coleção inteira, juntamente com todos os itens que ela contém"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.25"
+  },
+  {
+    "question": "O que faz um pedido POST sobre o URI de uma coleção?",
+    "answers": [
+      "Cria um novo item na coleção, com URI atribuído automaticamente",
+      "Substitui a coleção inteira por outra coleção, enviada no corpo do pedido",
+      "Apaga o último item da coleção, que foi criado mais recentemente",
+      "Lista os itens da coleção, com os URI dos recursos que a compõem"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.25"
+  },
+  {
+    "question": "O que faz um pedido PUT sobre o URI de um recurso singular?",
+    "answers": [
+      "Cria um novo item numa coleção, com URI atribuído automaticamente",
+      "Apaga o recurso",
+      "Devolve apenas os cabeçalhos do recurso",
+      "Substitui o recurso e, se não existir, cria-o"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.25"
+  },
+  {
+    "question": "O que faz um pedido DELETE sobre o URI de uma coleção?",
+    "answers": [
+      "Apaga apenas o último item da coleção",
+      "Lista os itens da coleção e depois apaga-os",
+      "Devolve um erro, porque o DELETE só se aplica a recursos singulares",
+      "Apaga a coleção inteira"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.25"
+  },
+  {
+    "question": "Qual das seguintes é uma boa prática de nomes de URI REST?",
+    "answers": [
+      "Maiúsculas e underscores para separar as palavras dos URI dos recursos",
+      "Verbos CRUD nos URI, como /createUser e /deleteUser, para clarificar a operação a executar sobre o recurso",
+      "Nomes no singular para coleções e no plural para os itens que a compõem",
+      "Nomes no plural para coleções, no singular para itens, e hífenes em vez de underscores"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.26"
+  },
+  {
+    "question": "O que é o HATEOAS?",
+    "answers": [
+      "Um método HTTP novo para listar todos os recursos disponíveis num servidor REST",
+      "Uma restrição REST: cada recurso traz ligações para as ações seguintes possíveis",
+      "Um formato de dados alternativo ao JSON para representar os recursos de um serviço",
+      "Um mecanismo de autenticação baseado em certificados TLS de cliente e servidor"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.27"
+  },
+  {
+    "question": "Que três elementos definem a origem (origin) para a same-origin policy?",
+    "answers": [
+      "Protocolo, caminho e query-string do URL",
+      "Porto, método e tipo de conteúdo do pedido",
+      "Nome do nó, endereço IP e método do pedido",
+      "Protocolo, nome do nó e número de porto"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.28"
+  },
+  {
+    "question": "Que acessos entre origens diferentes são normalmente permitidos pela same-origin policy?",
+    "answers": [
+      "Todas as leituras feitas por scripts a outras origens, incluindo APIs REST, mas não as operações de escrita",
+      "Embeber recursos estáticos (imagens, scripts) e fazer escritas, como submeter formulários",
+      "Apenas as leituras de recursos estáticos embebidos, mas nunca as operações de escrita",
+      "Todos os acessos feitos por scripts a APIs REST de origens diferentes da página"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.28"
+  },
+  {
+    "question": "O que acontece quando um script, numa página, acede a uma API REST noutra origem?",
+    "answers": [
+      "O navegador pede autenticação ao utilizador antes de permitir o acesso à API",
+      "O navegador permite o acesso se o pedido for feito por HTTPS",
+      "O navegador permite o acesso, mas só para o método GET",
+      "O navegador bloqueia o acesso por violação da same-origin policy"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.28"
+  },
+  {
+    "question": "Como pode um script ultrapassar a same-origin policy ao aceder a um web service num super-domínio?",
+    "answers": [
+      "Alterando o número de porto da página para o número de porto do web service, com document.port",
+      "Incluindo o cabeçalho Origin no pedido feito pelo script ao web service",
+      "Alterando o nome do nó da origem da página para o super-domínio, com document.domain",
+      "Alterando o protocolo da página de http para https antes de fazer o pedido"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.29"
+  },
+  {
+    "question": "Qual é o cabeçalho de resposta que autoriza uma origem num acesso cross-origin com CORS?",
+    "answers": [
+      "Access-Control-Allow-Origin",
+      "Access-Control-Allow-Methods",
+      "Access-Control-Request-Method",
+      "Origin"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.30"
+  },
+  {
+    "question": "Que valores pode ter o cabeçalho Access-Control-Allow-Origin?",
+    "answers": [
+      "O valor \"*\", que autoriza todas as origens, ou uma origem específica",
+      "Apenas o valor \"*\", que autoriza todas as origens do navegador",
+      "Uma lista de métodos HTTP separados por vírgulas, como em Allow-Methods",
+      "Apenas um endereço IP de um servidor autorizado a fazer pedidos CORS"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.30"
+  },
+  {
+    "question": "Que métodos HTTP são considerados simple requests no CORS, sem pre-flight?",
+    "answers": [
+      "POST, PUT e PATCH",
+      "GET, HEAD e POST",
+      "GET, PUT e DELETE",
+      "GET, OPTIONS e TRACE"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.31"
+  },
+  {
+    "question": "Que método HTTP é usado no pedido de pre-flight do CORS?",
+    "answers": [
+      "OPTIONS",
+      "CONNECT",
+      "GET",
+      "HEAD"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.31"
+  },
+  {
+    "question": "Que cabeçalho de pedido declara, no pre-flight, o método que será usado no pedido real?",
+    "answers": [
+      "Access-Control-Request-Method",
+      "Access-Control-Allow-Methods",
+      "Origin",
+      "Access-Control-Request-Headers"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.31"
+  },
+  {
+    "question": "Que cabeçalho de pedido declara, no pre-flight, os campos de cabeçalho que serão incluídos no pedido real?",
+    "answers": [
+      "Access-Control-Allow-Headers, na resposta",
+      "Access-Control-Request-Headers",
+      "Access-Control-Request-Method",
+      "Access-Control-Expose-Headers"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.31"
+  },
+  {
+    "question": "Que cabeçalho da resposta de pre-flight lista os métodos permitidos, separados por vírgulas?",
+    "answers": [
+      "Access-Control-Max-Age",
+      "Access-Control-Allow-Origin",
+      "Access-Control-Allow-Methods",
+      "Access-Control-Request-Method"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.32"
+  },
+  {
+    "question": "Para que serve o cabeçalho Access-Control-Expose-Headers?",
+    "answers": [
+      "Para listar campos de cabeçalho da resposta que ficam acessíveis ao cliente",
+      "Para indicar se podem ser usadas credenciais (cookies) nos pedidos entre origens",
+      "Para indicar durante quanto tempo a resposta pode ser guardada em cache pelo cliente",
+      "Para listar os métodos que o servidor aceita no pedido real, após o preflight"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.32"
+  },
+  {
+    "question": "O HTTP 1.0 apareceu em 1996 e foi a primeira versão a definir o método OPTIONS.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.3"
+  },
+  {
+    "question": "Uma mensagem de resposta HTTP não pode ter campos de cabeçalho (header fields).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.4"
+  },
+  {
+    "question": "O nome dos campos de cabeçalho HTTP distingue maiúsculas de minúsculas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.6"
+  },
+  {
+    "question": "Os campos de cabeçalho de pedido (request-header) também podem aparecer nas respostas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.6"
+  },
+  {
+    "question": "O campo Content-Length indica o número de linhas do cabeçalho da mensagem.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.8"
+  },
+  {
+    "question": "O campo Expires indica a data de criação do conteúdo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.8"
+  },
+  {
+    "question": "O campo Last-Modified indica a data em que o pedido foi recebido pelo servidor.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.8"
+  },
+  {
+    "question": "O campo Set-Cookie é enviado pelo cliente para devolver ao servidor o cookie que recebeu antes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.11"
+  },
+  {
+    "question": "Um pedido GET pode ter corpo, desde que o campo Content-Length seja incluído.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.12"
+  },
+  {
+    "question": "O método HEAD devolve os campos de cabeçalho e o corpo do recurso.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.13"
+  },
+  {
+    "question": "O método DELETE pede ao servidor que devolva uma cópia do recurso e o mantenha.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.13"
+  },
+  {
+    "question": "O código de estado 100 Continue indica que o servidor recusou o pedido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.14"
+  },
+  {
+    "question": "O código de estado 404 Not Found indica que o recurso existe mas o acesso é proibido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.15"
+  },
+  {
+    "question": "O código de estado 503 Service Unavailable indica que o método usado não é suportado pelo servidor.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.15"
+  },
+  {
+    "question": "O parâmetro max do campo Keep-Alive define o número de segundos de inatividade da ligação.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.17"
+  },
+  {
+    "question": "Num pedido HTTPS, o pedido HTTP é enviado antes de a ligação TCP ser protegida com TLS.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.18"
+  },
+  {
+    "question": "O TLS é o antecessor do SSL.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.18"
+  },
+  {
+    "question": "Num web service, o servidor HTTP é o consumidor e o cliente HTTP é o publicador.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.20"
+  },
+  {
+    "question": "O JSON e o XML são formatos binários de representação de dados, não legíveis por humanos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.21"
+  },
+  {
+    "question": "Os pedidos XMLHttpRequest devem ser síncronos, para o navegador esperar pela resposta.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.23"
+  },
+  {
+    "question": "No REST, o método PUT não é idempotente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.25"
+  },
+  {
+    "question": "Num URI de uma coleção, o POST substitui a coleção inteira.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.25"
+  },
+  {
+    "question": "Num URI de um recurso singular, o POST cria um novo item dentro da coleção.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.25"
+  },
+  {
+    "question": "A same-origin policy bloqueia também as imagens e os scripts estáticos embebidos de outras origens.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.28"
+  },
+  {
+    "question": "O pedido de pre-flight CORS usa o método GET e transporta o conteúdo do pedido real.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.31"
+  },
+  {
+    "question": "Os pedidos CORS com o método PUT dispensam o pre-flight.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.31"
+  },
+  {
+    "question": "O cabeçalho Access-Control-Allow-Origin com o valor \"*\" não autoriza nenhuma origem.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L09 p.30"
+  }
+]

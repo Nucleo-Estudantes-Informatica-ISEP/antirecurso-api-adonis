@@ -29,10 +29,23 @@ A robust backend API built with AdonisJS 7 for the Antirecurso platform. It prov
 
 ## Prerequisites
 
-- Node.js 24 LTS
+- Node.js 25
 - npm with the committed `package-lock.json`
 - Access to PostgreSQL and a private S3 bucket.
 - ZITADEL issuer and audience details if you need to exercise authenticated routes locally.
+
+### Node 25 compatibility
+
+Upstream `braces` receives a hash-checked local depth-limit patch during install;
+see [dependency security](docs/DEPENDENCY_SECURITY.md) for production exposure,
+reported advisories and scheduled audit triage. Keep install scripts enabled.
+
+| Component | Node 24 (previous) | Node 25 (current) |
+| --- | --- | --- |
+| Build and runtime image | `node:24-alpine` | `node:25-alpine` |
+| CI runtime | 24 | 25 |
+| Node type definitions | `@types/node` 24 | `@types/node` 25 |
+| Verification | Existing CI baseline | Lint, typecheck, tests, migrations, build, audit, Docker build |
 
 ---
 
@@ -65,6 +78,10 @@ Once your `.env` file is populated with the database credentials, execute all th
 node ace migration:run
 ```
 
+Native clients can opt into immutable snapshots, idempotent grading and revision-controlled cloud saves; see [API contract](docs/API.md#exams). Stored UUIDs are scoped to authenticated owners, with an atomic limit of 20 unfinished attempts per owner. At capacity, generation evicts the least recently active unfinished attempt and its linked draft; an owner-only discard endpoint also clears abandoned attempts. Generation reclaims unfinished snapshots after 30 days without cloud saves; schedule `node ace exams:prune-attempts` daily to clean inactive owners too. Completed snapshots remain for the account/subject lifetime, preserving exact replay and historical review; there is no time-based trimming. Reviewed corrections affect newly generated attempts; existing snapshots/results and scoreboard contributions keep the original key (no automatic regrade). Deploy all pending migrations before mobile; owner-scope migration preconditions, maintenance-window locks and rollback limits are documented in the [schema reference](docs/DATABASE_SCHEMA.md#immutable-attempt-recovery-and-cloud-revisions). Existing web/installed clients remain compatible.
+
+Completed snapshots require ongoing capacity planning; see the [storage budget and monitoring queries](docs/DATABASE_SCHEMA.md#completed-attempt-storage-budget) for explicit workload assumptions and one/five-year estimates.
+
 This applies the complete, versioned migration history, including pending-account and shared rate-limit state. Do not rely on a hard-coded table count; `node ace migration:status` is authoritative.
 
 You can verify the status of the migrations at any time using:
@@ -72,6 +89,39 @@ You can verify the status of the migrations at any time using:
 ```bash
 node ace migration:status
 ```
+
+#### Apply academically reviewed question corrections
+
+For a fresh local database, run `node ace migration:run` then `node ace db:seed`
+with `NODE_ENV=development` (or `test`). This creates a labelled synthetic subject,
+question type and question with options; no academic approval is claimed. Repeats
+reuse the same fixture identities. Production seeding is refused. See
+[local fixtures](./docs/QUESTION_IMPORT.md)
+for the reviewed-content workflow and fixture limits.
+
+Raw question banks are candidates only. The legacy and AI seeders refuse production publication;
+use the reviewed importer after migrations and manual subject/type bootstrap. Stable identity updates existing records,
+metadata is retained, and full question/option text is stored beyond 255 characters.
+
+```bash
+node ace questions:import reviewed-batch.json
+node ace questions:import reviewed-batch.json --apply
+node ace questions:import reviewed-batch.json
+```
+
+First command is a dry-run; apply records recoverable before/after snapshots in one
+transaction. Repeat must report only unchanged entries. See [the reviewed import workflow](docs/QUESTION_IMPORT.md)
+for separate academic sign-off, manual bootstrap, identity mapping, format, duplicate checks and recovery.
+Review fields are unauthenticated operator notes; the importer does not verify approval. Never
+apply production changes without explicit authorization and a verified backup.
+
+#### RCOMP candidate question bank
+
+`database/data/ai_generated/rcomp` contains 2,715 AI-generated RCOMP candidates. `rcomp` is excluded from raw-bank discovery, so generic seeding cannot publish it. Academic review and the reviewed-import handoff remain tracked in [#171](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso-api-adonis/issues/171), under [#123](https://github.com/Nucleo-Estudantes-Informatica-ISEP/antirecurso-api-adonis/issues/123).
+
+#### SCOMP candidate question bank
+
+`database/data/ai_generated/scomp` contains 1,545 AI-generated SCOMP candidates (509 true/false, 1,036 multiple choice). No seeder reads this directory, so these raw candidates are never published by seeding. Academic review is required before any publication through the reviewed import.
 
 ### 5. Start Development Server
 
@@ -117,7 +167,9 @@ The events feature is covered by these admin-only routes:
 │   ├── auth.ts           # Authentication configuration
 │   └── ...
 ├── database/
-│   └── migrations/       # Schema definition files
+│   ├── data/             # Question banks (questions.json, ai_generated/<subject>/*.json)
+│   ├── migrations/       # Schema definition files
+│   └── seeders/          # Synthetic local fixtures; production uses questions:import
 ├── start/
 │   ├── env.ts            # Environment variable validation
 │   ├── routes.ts         # All application endpoint definitions
@@ -140,6 +192,7 @@ The events feature is covered by these admin-only routes:
 
 - Lucid uses restricted PostgreSQL credentials and the configured schema search path.
 - StorageService uses bucket-scoped S3 credentials. API proxies PDF transfers; MinIO remains private.
+- Reviewed legacy account approvals and access-token revocation are described in [the database schema](docs/DATABASE_SCHEMA.md#legacy-account-recovery-and-session-revocation).
 - Browser upload and download links expire after five minutes and require AuthNEI login.
 
 **Authentication (ZITADEL Bearer Tokens)**
@@ -199,6 +252,11 @@ For regressions and security fixes, prefer TDD: add the focused failing Japa tes
 
 Follow [shared data deployment](./docs/SHARED_DATA_DEPLOYMENT.md). Review API and web PRs into dev, deploy and verify development, then promote reviewed dev into main. The API uses /compose.yml and the shared-data Docker network.
 
+Legacy account recovery is an exception to the usual API-first order. Deploy the compatible
+web release first and verify that a pending account opens the recovery page. Then deploy
+this API and verify that the recovery `403` opens the same page. The previous web release
+only opens recovery from a successful pending session response. See the [recovery response contract](./docs/API.md#common-response-and-error-rules).
+
 ## Troubleshooting
 
 Check the running container DB identity, current_schema(), bucket name, health endpoint, and migration status. Keep source Supabase until data and file verification passes. DB_SSL=false applies only to the private Docker network.
@@ -214,16 +272,21 @@ The web client must request `urn:zitadel:iam:org:project:id:<AUTH_PROJECT_ID>:au
 `openid email profile offline_access`). The API authorizes the resulting signed `aud` claim rather
 than trusting a client-supplied scope string.
 
-Project roles are normalized to `student`, `nei_member`, `admin`, and `employee` from the standard
-ZITADEL project-role claim (including project-ID claim variants). Authenticated application routes
-accept any valid identity with the AntiRecurso audience; they do not require a `student` role. Admin
-middleware and controller checks require `admin` from the validated token. AuthNEI owns the current
-name, email, verification state, picture, and roles. Local name, email, and verification columns are
-synchronized lookup/search caches, never authorization inputs.
+Only `admin` is retained in normalized application roles. Authenticated application routes accept
+valid identities with the AntiRecurso audience and verified email; they do not require a `student`
+role. Account-resolution and resource-ownership checks still apply. Admin middleware and controller
+checks additionally require `admin` from validated AuthNEI claims. Other role names do not grant
+separate application privileges. AuthNEI owns the current name, email, verification state, picture,
+and roles. Local name, email, and verification columns are synchronized lookup/search caches,
+never authorization inputs.
 
-Set `AUTH_ROLE_CLAIM` only when the shared NEI Platform project emits a custom claim name. The
-default is `urn:zitadel:iam:org:project:roles`.
+Roles are read only from the claim selected by `AUTH_ROLE_CLAIM`, which defaults to
+`urn:zitadel:iam:org:project:roles`. Set it to the shared NEI Platform project's claim name when
+using that project's admin assertions. When a project-specific claim is configured, other project
+claims and the generic claim cannot grant admin access.
 
 ## CI/CD gate
 
 Every PR to `main` uses `npm ci` and must pass lint, typecheck, Japa tests, migrations against isolated PostgreSQL, production build and dependency audit, a non-root production Docker image, and Gitleaks. Green CI does not prove deployment: confirm the deployed SHA, migration status, `GET /`, exact CORS behavior, shared limits, storage promotion, and owner/admin boundaries after rollout.
+
+Account deletion, comment reporting/blocking, admin moderation and upload-owner rollout: [Mobile safety contracts](docs/MOBILE_SAFETY.md).

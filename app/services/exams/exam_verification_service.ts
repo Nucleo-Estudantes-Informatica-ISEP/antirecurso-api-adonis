@@ -1,6 +1,11 @@
+import { createHash } from 'node:crypto'
+import { InvalidExamInputError } from '#services/exams/invalid_exam_input_error'
+import { AttemptConflictError } from '#services/exams/attempt_conflict_error'
+import { lockExamOwner } from '#services/exams/exam_attempt_lifecycle'
 import db from '@adonisjs/lucid/services/db'
 import Answer from '#models/answer'
 import AnswerQuestion from '#models/answer_question'
+import ExamAttempt from '#models/exam_attempt'
 import ExamState from '#models/exam_state'
 import Option from '#models/option'
 import Question from '#models/question'
@@ -27,6 +32,7 @@ export type VerifyExamInput = {
   time: number | null
   nOfQuestions: number | null
   penalizingFactor: number | null
+  attemptId?: string
 }
 
 export type VerifyExamResult = {
@@ -49,8 +55,6 @@ export default class ExamVerificationService {
     this.validateExpectedAnswerCount(input.answers, nOfQuestions)
     this.validateUniqueQuestionAnswers(input.answers)
 
-    const questionMap = await this.getQuestionMap(input.answers, input.subject.id)
-
     const questionScore = MAX_SCORE / nOfQuestions
 
     let correctAnswers = 0
@@ -58,6 +62,90 @@ export default class ExamVerificationService {
 
     const trx = await db.transaction()
     try {
+      if (input.userId !== null) await lockExamOwner(trx, input.userId)
+      if (input.userId !== null && !input.attemptId) {
+        const state = await ExamState.query({ client: trx })
+          .where('user_id', input.userId)
+          .where('subject_id', input.subject.id)
+          .where('mode', input.mode)
+          .where('is_completed', false)
+          .forUpdate()
+          .first()
+        if (state?.attemptId)
+          throw new AttemptConflictError(
+            `Stored exam state requires attempt_id; recover it with GET /exams/attempts/${state.attemptId}, or clear the draft with DELETE /exams/state?subject_id=${input.subject.id}&mode=${input.mode} before verifying a new legacy exam`
+          )
+      }
+      const attempt = input.attemptId
+        ? await ExamAttempt.query({ client: trx })
+            .where('id', input.attemptId)
+            .where('user_id', input.userId!)
+            .forUpdate()
+            .first()
+        : null
+      const requestPayload = {
+        subject: input.subject.id,
+        mode: input.mode,
+        count: nOfQuestions,
+        penalty: input.mode === 'custom' ? (input.penalizingFactor ?? 0) : null,
+        answers: input.answers
+          .map((item) => ({
+            id: item.question_id,
+            order: this.normalizeOptionValue(item.selected_option),
+          }))
+          .sort((a, b) => a.id - b.id),
+      }
+      const requestHash = createHash('sha256').update(JSON.stringify(requestPayload)).digest('hex')
+      if (input.attemptId) {
+        if (
+          input.userId === null ||
+          !attempt ||
+          attempt.userId !== input.userId ||
+          attempt.subjectId !== input.subject.id ||
+          attempt.mode !== input.mode
+        ) {
+          throw new AttemptConflictError('Attempt unavailable for this identity')
+        }
+        if (attempt.result) {
+          // Earlier hashes used raw counts/penalties, including null for custom zero penalty.
+          const previousHashes = [nOfQuestions, attempt.snapshot.nOfQuestions].map((count) =>
+            createHash('sha256')
+              .update(
+                JSON.stringify({
+                  ...requestPayload,
+                  count,
+                  penalty:
+                    input.mode !== 'custom'
+                      ? attempt.snapshot.penalizingFactor
+                      : requestPayload.penalty === 0
+                        ? null
+                        : requestPayload.penalty,
+                })
+              )
+              .digest('hex')
+          )
+          if (
+            attempt.requestHash !== requestHash &&
+            !previousHashes.some((hash) => hash === attempt.requestHash)
+          )
+            throw new AttemptConflictError('Attempt already submitted with different answers')
+          await trx.commit()
+          return attempt.result
+        }
+        if (
+          attempt.snapshot.questions.length !== nOfQuestions ||
+          (input.mode === 'custom' &&
+            (attempt.snapshot.penalizingFactor ?? 0) !== (input.penalizingFactor ?? 0)) ||
+          JSON.stringify(
+            [...attempt.snapshot.questions.map((item) => item.id)].sort((a, b) => a - b)
+          ) !== JSON.stringify(input.answers.map((item) => item.question_id).sort((a, b) => a - b))
+        ) {
+          throw new AttemptConflictError('Attempt questions or configuration changed')
+        }
+      }
+      const questionMap = attempt
+        ? new Map(attempt.snapshot.questions.map((item) => [item.id, item]))
+        : await this.getQuestionMap(input.answers, input.subject.id)
       const userAnswer = await Answer.create(
         {
           score: 0,
@@ -70,8 +158,21 @@ export default class ExamVerificationService {
       )
 
       const questionIds = [...questionMap.keys()]
-      const optionMap = await this.getOptionMap(questionIds, trx)
+      const optionMap = attempt
+        ? new Map(
+            attempt.snapshot.questions.flatMap((item) =>
+              item.options.map(
+                (option) =>
+                  [
+                    this.toOptionMapKey(item.id, this.normalizeOptionValue(option.order)!),
+                    option.id,
+                  ] as const
+              )
+            )
+          )
+        : await this.getOptionMap(questionIds, trx)
 
+      const grading: NonNullable<ExamAttempt['snapshot']['grading']> = []
       for (const answerPayload of input.answers) {
         const question = questionMap.get(answerPayload.question_id)
         if (!question) {
@@ -85,7 +186,7 @@ export default class ExamVerificationService {
         if (selectedOption !== null) {
           const resolvedOptionId = optionMap.get(this.toOptionMapKey(question.id, selectedOption))
           if (resolvedOptionId === undefined) {
-            throw new Error(
+            throw new InvalidExamInputError(
               `Invalid selected_option "${answerPayload.selected_option}" for question ${question.id}`
             )
           }
@@ -93,6 +194,7 @@ export default class ExamVerificationService {
         }
 
         const isWrong = correctOption !== selectedOption
+        grading.push({ questionId: question.id, optionId, isWrong })
         if (!isWrong) {
           correctAnswers++
         }
@@ -136,20 +238,37 @@ export default class ExamVerificationService {
           .where('user_id', input.userId)
           .where('subject_id', input.subject.id)
           .where('mode', input.mode)
+          .if(
+            !!input.attemptId,
+            (query) => query.where('attempt_id', input.attemptId!),
+            (query) => query.whereNull('attempt_id')
+          )
           .update({ isCompleted: true })
       }
 
-      await trx.commit()
-
-      return {
+      const result = {
         id: userAnswer.id,
         score: normalizedScore,
         wrong_answers: wrongAnswers,
         passed,
         subject: input.subject.name,
       }
+      if (attempt) {
+        attempt.merge({ result, requestHash, snapshot: { ...attempt.snapshot, grading } })
+        await attempt.save()
+      }
+      await trx.commit()
+      return result
     } catch (error) {
-      await trx.rollback()
+      if (!trx.isCompleted) await trx.rollback()
+      if (
+        input.attemptId &&
+        error &&
+        typeof error === 'object' &&
+        'code' in error &&
+        error.code === '23503'
+      )
+        throw new AttemptConflictError('Attempt question or option no longer available')
       throw error
     }
   }
@@ -165,7 +284,7 @@ export default class ExamVerificationService {
 
     if (mode === 'custom') {
       if (nOfQuestions === null) {
-        throw new Error('Custom exams require n_of_questions')
+        throw new InvalidExamInputError('Custom exams require n_of_questions')
       }
 
       return nOfQuestions
@@ -179,7 +298,7 @@ export default class ExamVerificationService {
     expectedQuestionsCount: number
   ): void {
     if (answers.length !== expectedQuestionsCount) {
-      throw new Error(
+      throw new InvalidExamInputError(
         `Invalid answers payload: expected ${expectedQuestionsCount} answers, received ${answers.length}`
       )
     }
@@ -198,7 +317,7 @@ export default class ExamVerificationService {
     }
 
     if (duplicateQuestionIds.size > 0) {
-      throw new Error(
+      throw new InvalidExamInputError(
         `Invalid answers payload: duplicate question IDs [${[...duplicateQuestionIds].join(', ')}]`
       )
     }
@@ -238,7 +357,7 @@ export default class ExamVerificationService {
         (questionId) => !foundQuestionIds.has(questionId)
       )
 
-      throw new Error(
+      throw new InvalidExamInputError(
         `Invalid question list: unknown question IDs [${missingQuestionIds.join(', ')}]`
       )
     }
@@ -248,7 +367,7 @@ export default class ExamVerificationService {
       .map((question) => `${question.id}(subject:${question.subjectId})`)
 
     if (subjectMismatches.length > 0) {
-      throw new Error(
+      throw new InvalidExamInputError(
         `Question-subject mismatch: expected subject ${subjectId}, but found questions [${subjectMismatches.join(', ')}]`
       )
     }
@@ -331,7 +450,7 @@ export default class ExamVerificationService {
     return normalizedValue.length > 0 ? normalizedValue : null
   }
 
-  private getValidatedCorrectOption(question: Question): string {
+  private getValidatedCorrectOption(question: Pick<Question, 'id' | 'correctOption'>): string {
     const correctOption = this.normalizeOptionValue(question.correctOption)
 
     if (!correctOption || !/^[A-Z0-9]$/.test(correctOption)) {

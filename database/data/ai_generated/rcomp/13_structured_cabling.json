@@ -1,0 +1,1485 @@
+[
+  {
+    "question": "Os padrões de cablagem estruturada definem seis subsistemas, entre os quais as instalações de entrada (EF), a sala de equipamento (ER) e as salas de telecomunicações (TR).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.14"
+  },
+  {
+    "question": "Os padrões de cablagem estruturada definem apenas três subsistemas: a cablagem horizontal, o backbone de edifício e o backbone de campus.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.14"
+  },
+  {
+    "question": "As instalações de entrada (EF) são o ponto de interface com o exterior, onde a infraestrutura liga aos sistemas externos de comunicação, como a Internet e a rede telefónica pública.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.14"
+  },
+  {
+    "question": "A sala de equipamento (ER) é o ponto de interface com o exterior, onde a infraestrutura de cablagem liga à Internet e à rede telefónica pública.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.14"
+  },
+  {
+    "question": "A sala de equipamento (ER) é um local central de ambiente controlado que aloja o hardware de terminação da cablagem e os equipamentos ativos principais, e costuma albergar o main cross-connect (MC).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.14"
+  },
+  {
+    "question": "As salas de telecomunicações (TR) alojam obrigatoriamente o main cross-connect (MC) do campus, e nunca um horizontal cross-connect (HC).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.14"
+  },
+  {
+    "question": "Uma sala de telecomunicações (TR) pode ser substituída por um armário de telecomunicações (TE) instalado numa sala não dedicada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.14"
+  },
+  {
+    "question": "O subsistema de cablagem 3 corresponde ao backbone de campus, que liga o main cross-connect (MC) aos intermediate cross-connects (IC).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.13"
+  },
+  {
+    "question": "O subsistema de cablagem 1 corresponde ao backbone de campus, e o subsistema de cablagem 3 corresponde à cablagem horizontal.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.13"
+  },
+  {
+    "question": "Os pontos de consolidação (CP), também chamados pontos de transição (TP), fazem parte da cablagem horizontal e podem convir em zonas com elevada densidade de outlets.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.13"
+  },
+  {
+    "question": "Uma área de trabalho tem no mínimo dois outlets e o rácio recomendado é de dois outlets por cada 10 m² de área.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.15"
+  },
+  {
+    "question": "Uma área de trabalho entre 10 m² e 20 m² deve ter seis outlets, e uma área entre 20 m² e 30 m² deve ter oito outlets.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.15"
+  },
+  {
+    "question": "Os patch cords fornecidos aos utilizadores para ligar o equipamento aos outlets da área de trabalho têm até cinco metros.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.15"
+  },
+  {
+    "question": "Os patch cords fornecidos aos utilizadores para ligar o equipamento aos outlets da área de trabalho podem ter até quinze metros.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.15"
+  },
+  {
+    "question": "Onde quer que esteja o equipamento do utilizador numa área de trabalho, deve existir sempre um outlet a menos de três metros.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.15"
+  },
+  {
+    "question": "Numa área de trabalho basta que exista um outlet a menos de dez metros de qualquer equipamento do utilizador.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.15"
+  },
+  {
+    "question": "Os outlets das áreas de trabalho comuns são de cobre, porque o equipamento comum dos utilizadores não suporta ligações em fibra.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.15"
+  },
+  {
+    "question": "O conector ISO 8877 (RJ45) tem oito contactos elétricos, correspondentes aos quatro pares de cobre, e um contacto adicional opcional para a blindagem.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.18"
+  },
+  {
+    "question": "Os sistemas de cablagem estruturada e os equipamentos ativos usam conectores ISO 8877 macho, que são depois interligados por patch cords com conectores fêmea.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.18"
+  },
+  {
+    "question": "Os patch cords de cobre têm entre 0,5 e 5 metros e um conector ISO 8877 macho em cada extremidade.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.18"
+  },
+  {
+    "question": "Um patch panel de cobre tem habitualmente 24 ou 48 conectores ISO 8877 fêmea, ligados na parte de trás aos cabos de cobre.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.19"
+  },
+  {
+    "question": "Se for usado cabo CAT7, todos os conectores, patch panels e patch cords do sistema devem ser também CAT7.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.19"
+  },
+  {
+    "question": "Num sistema com cabo CAT7 podem usar-se patch panels e conectores de categoria inferior, pois só o cabo condiciona o débito.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.19"
+  },
+  {
+    "question": "A ligação do cabo de cobre aos conectores ISO 8877 pode seguir o esquema T-568A ou T-568B, mas o esquema escolhido deve ser usado em todo o sistema de cablagem.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.20"
+  },
+  {
+    "question": "Num mesmo sistema de cablagem podem usar-se os esquemas T-568A e T-568B em simultâneo, desde que cada cabo tenha o mesmo esquema nas duas pontas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.20"
+  },
+  {
+    "question": "A ferrule é o componente crucial de um conector de fibra: um cilindro branco com um orifício axial onde a fibra é fixada e cuja extremidade tem de ser polida.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.21"
+  },
+  {
+    "question": "Na cablagem estruturada e nas redes locais, como a Ethernet, usa-se o polimento UPC; o polimento APC só se usa em casos mais sensíveis às perdas de retorno.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.22"
+  },
+  {
+    "question": "Os conectores com polimento APC são normalmente verdes e os conectores com polimento UPC são normalmente azuis.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.22"
+  },
+  {
+    "question": "Cada access point 802.11 garante uma cobertura de aproximadamente um círculo com 50 metros de diâmetro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.24"
+  },
+  {
+    "question": "Cada access point 802.11 garante uma cobertura de aproximadamente um círculo com 500 metros de diâmetro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.24"
+  },
+  {
+    "question": "Cada edifício e cada piso deve ter uma sala de telecomunicações, mas isso não é obrigatório: uma única sala pode alojar o IC e o HC do piso onde está.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.25"
+  },
+  {
+    "question": "Cada piso de cada edifício tem obrigatoriamente uma sala de telecomunicações própria, com um horizontal cross-connect (HC) dedicado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.25"
+  },
+  {
+    "question": "A área total coberta por um horizontal cross-connect (HC) deve ser inferior a 1000 m².",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.25"
+  },
+  {
+    "question": "Na cablagem horizontal, cada cabo, seja de que tipo for, deve ter menos de 90 metros e a distância em linha reta entre o HC e o outlet deve ser inferior a 80 metros.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.25"
+  },
+  {
+    "question": "Na cablagem horizontal, a distância em linha reta entre o HC e o outlet deve ser inferior a 90 metros, o mesmo limite do comprimento do cabo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.25"
+  },
+  {
+    "question": "Os cabos que ligam um IC a um HC estão limitados a 500 metros, e os que ligam o MC a um IC estão limitados a 1500 metros.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.25"
+  },
+  {
+    "question": "O número de cabos de rede que entram num armário de telecomunicações nunca deve ser superior a 200.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.26"
+  },
+  {
+    "question": "Um armário de telecomunicações pode receber até 1000 cabos de rede, desde que seja um armário de chão.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.26"
+  },
+  {
+    "question": "No failover manual, usa-se inicialmente apenas um dos cabos paralelos do backbone e, se este falhar, o operador comuta para outro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.26"
+  },
+  {
+    "question": "Na distribuição de carga (load balancing), os cabos alternativos ficam inativos até o cabo principal falhar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.26"
+  },
+  {
+    "question": "Para efeitos de redundância de caminhos, devem ser instaladas ligações adicionais entre cross-connects do mesmo nível, ligando IC com IC e HC com HC.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.26"
+  },
+  {
+    "question": "O desenvolvimento de um projeto de cablagem estruturada segue uma sequência de passos interdependentes: requisitos, outlets, cross-connects e percursos, tipos de cabo e inventário de hardware.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.27"
+  },
+  {
+    "question": "No desenvolvimento de um projeto de cablagem estruturada, os tipos de cabo são definidos antes de colocar os outlets nas plantas e de definir os requisitos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.27"
+  },
+  {
+    "question": "Espaços comuns como átrios e corredores podem dispensar outlets, e as casas de banho normalmente não têm outlets.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.28"
+  },
+  {
+    "question": "Em todas as divisões do edifício, incluindo corredores e casas de banho, devem existir no mínimo dois outlets.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.28"
+  },
+  {
+    "question": "A escolha do tipo de cabo segue dois critérios: a distância e o débito.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.30"
+  },
+  {
+    "question": "Abaixo dos 90 metros podem usar-se cabos de cobre; acima disso a fibra multimodo costuma chegar até aos 1000 metros e, para distâncias maiores, usa-se fibra monomodo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.30"
+  },
+  {
+    "question": "O cabo de cobre pode ser usado até aos 500 metros; só acima disso é necessária a fibra multimodo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.30"
+  },
+  {
+    "question": "O backbone deve usar sempre fibra ótica, com pelo menos 8 fibras, o que permite 4 ligações paralelas full-duplex.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.30"
+  },
+  {
+    "question": "O backbone deve usar fibra ótica com pelo menos 4 fibras, o que permite 4 ligações paralelas full-duplex.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.30"
+  },
+  {
+    "question": "Na cablagem horizontal, o cobre CAT6A ou CAT7 é normalmente a opção mais sensata, porque o equipamento dos utilizadores não está habitualmente preparado para outlets de fibra.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.30"
+  },
+  {
+    "question": "A altura vertical dos armários rack de 19 polegadas mede-se em unidades de rack (U), e cada U corresponde a 44,45 mm.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.31"
+  },
+  {
+    "question": "A altura vertical dos armários rack de 19 polegadas mede-se em unidades de rack (U), e cada U corresponde a 25,4 mm.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.31"
+  },
+  {
+    "question": "Sem informação sobre os equipamentos ativos, reserva-se no armário o mesmo espaço que os patch panels ocupam e acrescenta-se um sobredimensionamento de 100%, o que dá 4×S unidades de rack.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.32"
+  },
+  {
+    "question": "Sem informação sobre os equipamentos ativos, o armário tem 2×S unidades de rack, em que S é o espaço ocupado pelos patch panels.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.32"
+  },
+  {
+    "question": "Os armários de parede oferecem normalmente cerca de 500 mm de profundidade útil, enquanto os armários de chão podem chegar a 1000 mm.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.32"
+  },
+  {
+    "question": "O número de patch cords necessários em cada armário é igual ao número de portas dos patch panels, e costumam ter 0,5 metros.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.32"
+  },
+  {
+    "question": "Devem evitar-se condutas ou calhas partilhadas por cabos de comunicação de cobre e cabos de energia, por causa da interferência eletromagnética (EMI), mantendo-os afastados pelo menos 6 polegadas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.33"
+  },
+  {
+    "question": "Os cabos de comunicação de cobre e os cabos de energia podem partilhar a mesma conduta, porque a blindagem do CAT7 elimina a interferência eletromagnética.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.33"
+  },
+  {
+    "question": "Os cabos de fibra ótica são instalados como um único cabo com 6, 8, 12, 24, 48 ou mais fibras, e não fibra a fibra como os cabos de cobre.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.33"
+  },
+  {
+    "question": "Os cabos de fibra ótica são instalados fibra a fibra, tal como os cabos de cobre CAT7, e cada fibra é rotulada individualmente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.33"
+  },
+  {
+    "question": "Depois de instalados e ligados todos os cabos, é necessária uma certificação por uma entidade terceira, que mede as características elétricas e óticas do sistema.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.33"
+  },
+  {
+    "question": "Depois de instalados os cabos, o próprio instalador certifica o sistema de cablagem, por ser quem melhor conhece a instalação.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.33"
+  },
+  {
+    "question": "Qual dos subsistemas da cablagem estruturada é o ponto de interface com o mundo exterior?",
+    "answers": [
+      "As instalações de entrada (EF), onde a infraestrutura liga aos sistemas externos",
+      "As salas de telecomunicações (TR), onde os pisos ligam ao operador exterior",
+      "A sala de equipamento (ER), onde a infraestrutura liga à Internet e à rede telefónica",
+      "A área de trabalho (WA), onde os utilizadores ligam à rede do operador"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.14"
+  },
+  {
+    "question": "Onde costuma estar instalado o main cross-connect (MC)?",
+    "answers": [
+      "Na sala de equipamento (ER)",
+      "Nas instalações de entrada (EF)",
+      "Num ponto de consolidação (CP)",
+      "Na sala de telecomunicações de cada piso"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.14"
+  },
+  {
+    "question": "Que subsistema de cablagem corresponde ao backbone de edifício?",
+    "answers": [
+      "O subsistema 2, que liga o IC aos HC",
+      "O subsistema 2, que liga o MC aos IC",
+      "O subsistema 1, que liga o HC aos outlets",
+      "O subsistema 3, que liga o MC aos IC"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.13"
+  },
+  {
+    "question": "Que subsistema de cablagem corresponde à cablagem horizontal?",
+    "answers": [
+      "O subsistema 2, que liga o IC aos HC",
+      "O subsistema 3, que liga o MC aos IC",
+      "O subsistema 1, que liga o MC aos IC dos vários pisos",
+      "O subsistema 1, que liga o HC aos outlets"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.13"
+  },
+  {
+    "question": "Quantos outlets devem existir numa área de trabalho com 14 m²?",
+    "answers": [
+      "2 outlets",
+      "4 outlets",
+      "6 outlets",
+      "3 outlets"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.15"
+  },
+  {
+    "question": "Quantos outlets devem existir numa área de trabalho com 25 m²?",
+    "answers": [
+      "8 outlets",
+      "4 outlets",
+      "6 outlets",
+      "5 outlets"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.15"
+  },
+  {
+    "question": "Quantos outlets devem existir numa área de trabalho com 32 m²?",
+    "answers": [
+      "6 outlets",
+      "10 outlets",
+      "7 outlets",
+      "8 outlets"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.15"
+  },
+  {
+    "question": "Quantos outlets devem existir numa área de trabalho com 8 m², sabendo que o mínimo por área de trabalho é de dois outlets?",
+    "answers": [
+      "4 outlets, um por cada 2 m²",
+      "2 outlets",
+      "3 outlets",
+      "1 outlet"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.15"
+  },
+  {
+    "question": "Qual é o comprimento máximo dos patch cords fornecidos aos utilizadores nas áreas de trabalho?",
+    "answers": [
+      "5 metros",
+      "3 metros",
+      "10 metros",
+      "15 metros"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.15"
+  },
+  {
+    "question": "Qual é o comprimento máximo de um cabo de cobre na cablagem estruturada?",
+    "answers": [
+      "500 metros",
+      "90 metros",
+      "80 metros",
+      "100 metros"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.17"
+  },
+  {
+    "question": "Que tipo de cabo de cobre especificam os padrões de cablagem estruturada?",
+    "answers": [
+      "Cabo coaxial de 75 ohm, com blindagem, de categoria RG6 ou RG11",
+      "Cabo de 4 pares de 100 ohm, sem blindagem, de categoria CAT3 ou CAT4, instalado em backbones",
+      "Cabo de 4 pares de 100 ohm, UTP ou blindado, de categoria CAT6A ou CAT7",
+      "Cabo de 2 pares de 50 ohm, UTP ou blindado, de categoria CAT5 ou CAT6"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.17"
+  },
+  {
+    "question": "Quais são as cores que identificam os quatro pares de um cabo de cobre de cablagem estruturada?",
+    "answers": [
+      "Verde, castanho, cinzento e roxo",
+      "Vermelho, verde, amarelo e azul",
+      "Laranja, verde, castanho e azul",
+      "Laranja, preto, branco e azul"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.17"
+  },
+  {
+    "question": "Qual é a designação alternativa do conector ISO 8877?",
+    "answers": [
+      "SC (Subscriber Connector)",
+      "LC (Lucent Connector)",
+      "ST (Straight Tip)",
+      "RJ45 (Registered Jack)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.18"
+  },
+  {
+    "question": "Quantos contactos elétricos tem o conector ISO 8877, sem contar o contacto opcional da blindagem?",
+    "answers": [
+      "8 contactos",
+      "10 contactos",
+      "4 contactos",
+      "6 contactos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.18"
+  },
+  {
+    "question": "Quantos conectores fêmea tem habitualmente um patch panel de cobre?",
+    "answers": [
+      "16 ou 32 conectores",
+      "24 ou 48 conectores",
+      "12 ou 24 conectores",
+      "48 ou 96 conectores"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.19"
+  },
+  {
+    "question": "Como se chamam as duas formas alternativas de ligar um cabo de cobre a conectores ISO 8877?",
+    "answers": [
+      "ISO 8877-A e ISO 8877-B",
+      "TIA-11801 e TIA-8877",
+      "T-586A e T-586B",
+      "T-568A e T-568B"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.20"
+  },
+  {
+    "question": "Quais são os conectores de fibra mais comuns nos sistemas de cablagem estruturada?",
+    "answers": [
+      "ST, SC e LC",
+      "ST, SC e RJ45",
+      "RJ45, RJ11 e SC",
+      "BNC, ST e LC"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.21"
+  },
+  {
+    "question": "Que nome tem o cilindro branco, com um orifício axial, onde a fibra é fixada num conector de fibra?",
+    "answers": [
+      "Pigtail (cabo curto)",
+      "Ferrite",
+      "Patch",
+      "Ferrule"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.21"
+  },
+  {
+    "question": "Que estilo de polimento de fibra se usa na cablagem estruturada e nas redes locais Ethernet?",
+    "answers": [
+      "SPC (Super Physical Contact)",
+      "APC (Angled Physical Contact)",
+      "PC (Physical Contact) apenas",
+      "UPC (Ultra-Physical Contact)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.22"
+  },
+  {
+    "question": "Qual é a cor habitual dos conectores de fibra com polimento APC?",
+    "answers": [
+      "Amarelo",
+      "Verde",
+      "Azul",
+      "Vermelho"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.22"
+  },
+  {
+    "question": "Quantas fibras são necessárias, no mínimo, para uma ligação de fibra bidirecional entre duas extremidades?",
+    "answers": [
+      "4 fibras, duas para cada sentido",
+      "2 fibras, uma para cada sentido",
+      "8 fibras, quatro para cada sentido",
+      "1 fibra, partilhada pelos dois sentidos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.23"
+  },
+  {
+    "question": "Qual é a cobertura aproximada garantida por cada access point 802.11?",
+    "answers": [
+      "Um círculo com cerca de 50 metros de diâmetro",
+      "Um círculo com cerca de 50 metros de raio",
+      "Um círculo com cerca de 5 metros de diâmetro",
+      "Um círculo com cerca de 500 metros de diâmetro"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.24"
+  },
+  {
+    "question": "Qual é a área máxima coberta por um horizontal cross-connect (HC)?",
+    "answers": [
+      "Menos de 1000 m²",
+      "Menos de 100 m²",
+      "Menos de 10000 m²",
+      "Menos de 500 m²"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.25"
+  },
+  {
+    "question": "Qual é o limite da distância em linha reta entre o horizontal cross-connect (HC) e um outlet?",
+    "answers": [
+      "Menos de 80 metros",
+      "Menos de 100 metros",
+      "Menos de 50 metros",
+      "Menos de 90 metros"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.25"
+  },
+  {
+    "question": "Qual é o comprimento máximo dos cabos que ligam um intermediate cross-connect (IC) a um horizontal cross-connect (HC)?",
+    "answers": [
+      "1500 metros",
+      "1000 metros",
+      "90 metros",
+      "500 metros"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.25"
+  },
+  {
+    "question": "Qual é o comprimento máximo dos cabos que ligam o main cross-connect (MC) a um intermediate cross-connect (IC)?",
+    "answers": [
+      "2000 metros",
+      "500 metros",
+      "1500 metros",
+      "90 metros"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.25"
+  },
+  {
+    "question": "Quantos cabos de rede podem, no máximo, entrar num armário de telecomunicações?",
+    "answers": [
+      "500 cabos no máximo",
+      "200 cabos",
+      "24 cabos",
+      "100 cabos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.26"
+  },
+  {
+    "question": "O que é o failover automático nos cabos paralelos de um backbone?",
+    "answers": [
+      "Os cabos paralelos são desativados e o tráfego é encaminhado por um caminho exterior",
+      "Todos os cabos paralelos são usados em simultâneo para transmitir dados em partilha de carga",
+      "O operador deteta a falha de um cabo e comuta manualmente para outro cabo paralelo",
+      "Os dispositivos de camada 2 e 3 detetam a falha de um cabo e comutam automaticamente para outro"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.26"
+  },
+  {
+    "question": "O que acontece na distribuição de carga (load balancing) quando um dos cabos paralelos falha?",
+    "answers": [
+      "Todo o tráfego é interrompido até o operador substituir o cabo avariado",
+      "O tráfego é duplicado em todos os cabos para garantir a entrega dos dados",
+      "O cabo deixa de ser usado e os restantes continuam a transmitir dados",
+      "O cabo avariado continua a ser usado e o tráfego é retransmitido pelos outros"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.26"
+  },
+  {
+    "question": "Qual é o primeiro passo do desenvolvimento de um projeto de cablagem estruturada?",
+    "answers": [
+      "A colocação dos cross-connects e dos percursos de cabos",
+      "O inventário do hardware da cablagem estruturada",
+      "A definição de requisitos com o dono do projeto",
+      "A colocação dos outlets nas plantas do edifício"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.27"
+  },
+  {
+    "question": "Que passo vem imediatamente a seguir à definição de requisitos num projeto de cablagem estruturada?",
+    "answers": [
+      "O inventário do hardware da cablagem estruturada",
+      "A colocação dos cross-connects e dos percursos de cabos",
+      "A colocação dos outlets nas plantas do edifício",
+      "A definição dos tipos de cabo a usar na instalação"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.27"
+  },
+  {
+    "question": "Que passo vem imediatamente a seguir à colocação dos cross-connects e à definição dos percursos de cabos?",
+    "answers": [
+      "A definição dos tipos de cabo a usar na instalação",
+      "A certificação do sistema por uma entidade terceira",
+      "A definição de requisitos com o dono do projeto",
+      "A colocação dos outlets nas plantas do edifício"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.27"
+  },
+  {
+    "question": "Quais são os dois critérios que determinam o tipo de cabo a usar?",
+    "answers": [
+      "O custo e a cor do cabo",
+      "A distância e o débito",
+      "A blindagem e o tipo de conector",
+      "O fabricante e o comprimento"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.30"
+  },
+  {
+    "question": "Que tipo de cabo se usa, normalmente, para distâncias acima de 90 metros e até cerca de 1000 metros?",
+    "answers": [
+      "Fibra monomodo",
+      "Fibra multimodo",
+      "Cobre CAT7",
+      "Cobre CAT6A"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.30"
+  },
+  {
+    "question": "Que tipo de cabo se usa para distâncias superiores a 1000 metros?",
+    "answers": [
+      "Cobre CAT6A",
+      "Fibra monomodo",
+      "Cobre CAT7",
+      "Fibra multimodo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.30"
+  },
+  {
+    "question": "Que tipo de cabo deve ser usado na cablagem de backbone?",
+    "answers": [
+      "Fibra ótica, com pelo menos 2 fibras",
+      "Cobre CAT7, com pelo menos 4 pares",
+      "Cobre CAT6A, com pelo menos 8 pares",
+      "Fibra ótica, com pelo menos 8 fibras"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.30"
+  },
+  {
+    "question": "Qual é, em milímetros, a altura de uma unidade de rack (1U)?",
+    "answers": [
+      "50 mm",
+      "25,4 mm (1 in)",
+      "44,45 mm",
+      "19 mm"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.31"
+  },
+  {
+    "question": "Qual é a altura, em milímetros, de um armário de 16U?",
+    "answers": [
+      "304,8 mm",
+      "400 mm",
+      "711,2 mm",
+      "1866,9 mm"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.31"
+  },
+  {
+    "question": "Quantas unidades de rack ocupam os patch panels de um armário com 96 cabos horizontais, usando patch panels de 24 portas e 1U?",
+    "answers": [
+      "2U",
+      "8U no total",
+      "5U",
+      "4U"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.31"
+  },
+  {
+    "question": "Um armário de telecomunicações recebe 96 cabos horizontais, ligados a patch panels de 24 portas e 1U. Que tamanho deve ter o armário, aplicando a regra de 4×S?",
+    "answers": [
+      "8U",
+      "16U",
+      "4U",
+      "12U (3 × 4U)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.32"
+  },
+  {
+    "question": "Um armário de telecomunicações recebe 120 cabos horizontais, ligados a patch panels de 24 portas e 1U. Que tamanho deve ter o armário, aplicando a regra de 4×S?",
+    "answers": [
+      "20U",
+      "24U, porque S = 6 patch panels",
+      "10U",
+      "15U"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.32"
+  },
+  {
+    "question": "Um armário de telecomunicações recebe 72 cabos horizontais, ligados a patch panels de 24 portas e 1U. Que tamanho deve ter o armário, aplicando a regra de 4×S?",
+    "answers": [
+      "18U (3 painéis × 6U)",
+      "6U",
+      "12U",
+      "9U"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.32"
+  },
+  {
+    "question": "Um armário de telecomunicações recebe 100 cabos horizontais, ligados a patch panels de 24 portas e 1U (arredondando por excesso o número de patch panels). Que tamanho deve ter o armário, aplicando a regra de 4×S?",
+    "answers": [
+      "12U",
+      "20U",
+      "16U no total",
+      "25U"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.32"
+  },
+  {
+    "question": "Um armário de telecomunicações recebe 150 cabos horizontais, ligados a patch panels de 24 portas e 1U (arredondando por excesso o número de patch panels). Que tamanho deve ter o armário, aplicando a regra de 4×S?",
+    "answers": [
+      "25U",
+      "32U",
+      "28U",
+      "24U"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.32"
+  },
+  {
+    "question": "Quantos patch panels de 48 portas são precisos para 96 cabos horizontais?",
+    "answers": [
+      "2 patch panels",
+      "3 patch panels, porque 96 / 48 = 3",
+      "1 patch panel",
+      "4 patch panels"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.31"
+  },
+  {
+    "question": "Quantos patch cords de cobre são necessários num armário com dois patch panels de 24 portas?",
+    "answers": [
+      "24 patch cords",
+      "96 patch cords",
+      "48 patch cords",
+      "2 patch cords"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.32"
+  },
+  {
+    "question": "Qual é a profundidade útil habitual de um armário de telecomunicações de parede?",
+    "answers": [
+      "Cerca de 250 mm",
+      "Cerca de 500 mm",
+      "Cerca de 1000 mm",
+      "Cerca de 750 mm"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.32"
+  },
+  {
+    "question": "Qual é o comprimento habitual dos patch cords usados dentro de um armário de telecomunicações?",
+    "answers": [
+      "10 metros, igual ao dos cabos horizontais",
+      "5 metros",
+      "3 metros",
+      "0,5 metros"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.32"
+  },
+  {
+    "question": "Porque se devem evitar condutas partilhadas por cabos de cobre de comunicação e cabos de energia?",
+    "answers": [
+      "Por causa da diafonia entre cabos de fibra e de cobre",
+      "Por causa da atenuação provocada pela temperatura",
+      "Por causa da interferência eletromagnética (EMI)",
+      "Por causa da distorção causada pelo ruído térmico"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.33"
+  },
+  {
+    "question": "Qual é a distância mínima recomendada entre cabos de comunicação de cobre e cabos de energia?",
+    "answers": [
+      "6 polegadas",
+      "3 polegadas",
+      "2 polegadas",
+      "1 polegada"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.33"
+  },
+  {
+    "question": "Como são instalados os cabos de fibra ótica na cablagem estruturada?",
+    "answers": [
+      "Como feixes de duas fibras, montados fora da conduta antes da instalação",
+      "Fibra a fibra, tal como os cabos de cobre, rotulando cada uma individualmente",
+      "Como pares de fibras isoladas, cada par com o seu cabo e a sua conduta",
+      "Como um único cabo com um número adequado de fibras, por exemplo 6, 12, 24 ou 48"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.33"
+  },
+  {
+    "question": "Quem faz a certificação final de um sistema de cablagem estruturada?",
+    "answers": [
+      "O instalador do sistema de cablagem, com os seus equipamentos",
+      "Uma entidade terceira, com equipamento especializado",
+      "O dono do projeto, usando as plantas à escala do edifício",
+      "O fabricante dos cabos, através de uma inspeção visual"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.33"
+  },
+  {
+    "question": "O que significa a sigla MUTOA na cablagem estruturada?",
+    "answers": [
+      "Conjunto de outlets multiutilizador, cujo cabo interno se desconta do limite de 5 m do patch cord",
+      "Outlet individual de telecomunicações, que serve apenas um utilizador da área de trabalho",
+      "Armário de telecomunicações multiutilizador, que aloja os cross-connects de vários pisos",
+      "Ponto de consolidação de cabos, que agrupa os outlets de várias áreas de trabalho"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.15"
+  },
+  {
+    "question": "Como se calcula o comprimento total de cabo de um troço partilhado por vários cabos de um percurso?",
+    "answers": [
+      "Multiplicando o comprimento do troço por 4, o número de pares de cada cabo",
+      "Dividindo o comprimento do troço pelo número de cabos que o percorrem",
+      "Somando apenas o comprimento do troço, independentemente do número de cabos",
+      "Multiplicando o comprimento do troço pelo número de cabos que o percorrem"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.31"
+  },
+  {
+    "question": "Os equipamentos ativos, como os switches e os access points, fazem parte do sistema de cablagem estruturada, ao contrário dos outlets que os ligam.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.24"
+  },
+  {
+    "question": "Os cabos de cobre CAT7 são rotulados apenas na extremidade do armário de telecomunicações, porque o outlet da área de trabalho já está identificado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.33"
+  },
+  {
+    "question": "Um patch panel CAT7 típico de 24 portas ocupa 4U de altura num armário rack.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.31"
+  },
+  {
+    "question": "Os conectores de fibra mais comuns na cablagem estruturada são o RJ45, o SC e o LC.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.21"
+  },
+  {
+    "question": "Cada ligação por fibra requer apenas uma fibra, porque a fibra ótica transmite nos dois sentidos em simultâneo sem interferência.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.23"
+  },
+  {
+    "question": "Os quatro pares do cabo de cobre são identificados pelas cores vermelho, verde, amarelo e azul.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.20"
+  },
+  {
+    "question": "Uma sala de telecomunicações só pode alojar o cross-connect de um piso, e nunca o de vários pisos, mesmo que o número de outlets por piso seja muito baixo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.25"
+  },
+  {
+    "question": "O sobredimensionamento do armário de telecomunicações é desnecessário, porque o equipamento ativo cabe sempre no espaço ocupado pelos patch panels.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP01 p.32"
+  }
+]

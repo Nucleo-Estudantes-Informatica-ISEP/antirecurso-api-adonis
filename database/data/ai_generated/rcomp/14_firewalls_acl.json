@@ -1,0 +1,1729 @@
+[
+  {
+    "question": "A regra de ouro para configurar uma firewall é deixar passar o tráfego desejado (necessário) e bloquear todo o resto.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.2"
+  },
+  {
+    "question": "A regra de ouro para configurar uma firewall é bloquear apenas o tráfego conhecido como malicioso e deixar passar todo o resto.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.2"
+  },
+  {
+    "question": "Uma firewall instalada num router bloqueia também o tráfego trocado entre estações de trabalho da mesma rede local.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.2"
+  },
+  {
+    "question": "A DMZ é a zona de rede de onde se espera que provenha a maior parte das ameaças e onde ficam as estações de trabalho dos utilizadores.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.3"
+  },
+  {
+    "question": "A DMZ é uma rede local de confiança para utilizadores, e as intranets são redes só para servidores.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.3"
+  },
+  {
+    "question": "Uma firewall estática (stateless) analisa individualmente cada pacote, com base nos cabeçalhos de camada 3 e de camada 4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.4"
+  },
+  {
+    "question": "Uma firewall estática (stateless) analisa as transações de camada aplicação e altera as regras consoante o que está a acontecer.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.4"
+  },
+  {
+    "question": "Uma firewall dinâmica (stateful) acompanha as transações de camada aplicação e permite a passagem do tráfego necessário enquanto uma transação autorizada decorre.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.4"
+  },
+  {
+    "question": "Uma firewall estática tem de permitir o acesso ao serviço para o uso normal, por isso previne mal um ataque de negação de serviço (DoS).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.4"
+  },
+  {
+    "question": "Uma firewall estática consegue bloquear um ataque DoS, pois reconhece os pedidos em excesso e altera as suas regras durante o ataque.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.4"
+  },
+  {
+    "question": "Numa ACL do Cisco IOS, um pacote que não corresponde a nenhuma regra é, no final, recusado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.5"
+  },
+  {
+    "question": "Nas ACL numeradas do Cisco IOS, os números de 1 a 99 identificam ACL standard e os números de 100 a 199 identificam ACL extended.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.5"
+  },
+  {
+    "question": "Uma ACL standard só tem um critério de correspondência: o endereço de origem do pacote.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.6"
+  },
+  {
+    "question": "Uma ACL standard tem dois critérios de correspondência: o endereço de origem e o endereço de destino do pacote.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.6"
+  },
+  {
+    "question": "O comando access-list acrescenta uma regra ao fim da ACL numerada; para corrigir uma regra errada é preciso remover a ACL inteira com no access-list e reintroduzir todas as regras.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.6"
+  },
+  {
+    "question": "Numa ACL numerada é possível remover apenas uma regra errada, indicando o número da regra a eliminar no comando no access-list.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.6"
+  },
+  {
+    "question": "Num critério de endereço de uma ACL, \"host A\" equivale a \"A 0.0.0.0\" e \"any\" equivale a \"0.0.0.0 255.255.255.255\".",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.7"
+  },
+  {
+    "question": "Num critério de endereço de uma ACL, \"any\" equivale a \"0.0.0.0 0.0.0.0\" e \"host A\" equivale a \"A 255.255.255.255\".",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.7"
+  },
+  {
+    "question": "Num wildcard de uma ACL, os bits com o valor um indicam bits do endereço que têm de coincidir exatamente na comparação.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.7"
+  },
+  {
+    "question": "O número de endereços abrangidos por um wildcard é 2 elevado ao número de bits a um do wildcard.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.9"
+  },
+  {
+    "question": "O número de endereços abrangidos por um wildcard é igual ao número de bits a um do wildcard.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.9"
+  },
+  {
+    "question": "Criar uma ACL não tem efeito imediato: é preciso aplicá-la a uma interface com o comando ip access-group.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.10"
+  },
+  {
+    "question": "Uma ACL entra em vigor logo que é criada, em todas as interfaces do router, sem ser necessário aplicá-la.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.10"
+  },
+  {
+    "question": "Enquanto não for aplicada nenhuma ACL a uma interface, todo o tráfego é permitido nessa interface.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.10"
+  },
+  {
+    "question": "Numa interface, o sentido in e o sentido out são independentes: aplicar uma ACL ao tráfego de entrada não afeta o tráfego de saída.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.10"
+  },
+  {
+    "question": "Aplicar uma ACL ao tráfego de entrada de uma interface aplica-a também ao tráfego de saída dessa interface.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.10"
+  },
+  {
+    "question": "Duas ACL não podem ser aplicadas à mesma interface no mesmo sentido: a segunda aplicação remove a primeira.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.10"
+  },
+  {
+    "question": "O spoofing externo é o de um pacote que chega a uma rede local com endereço de origem pertencente a essa própria rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.11"
+  },
+  {
+    "question": "O spoofing externo é o de um pacote que sai de uma rede local com endereço de origem que não pertence a essa rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.11"
+  },
+  {
+    "question": "O spoofing interno é o de um pacote que sai de uma rede local com endereço de origem que não pertence a essa rede, e deve ser bloqueado para proteger as outras redes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.11"
+  },
+  {
+    "question": "Se não houver uma vantagem específica em fazer de outro modo, as ACL devem ser aplicadas o mais perto possível da origem do tráfego, normalmente no sentido in.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.12"
+  },
+  {
+    "question": "Se não houver uma vantagem específica em fazer de outro modo, as ACL devem ser aplicadas o mais perto possível do destino do tráfego, normalmente no sentido out.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.12"
+  },
+  {
+    "question": "No fim de cada ACL existe uma regra implícita e invisível deny any.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.13"
+  },
+  {
+    "question": "As ACL extended exigem, além do critério do endereço de origem, um critério de protocolo e um critério de endereço de destino.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.14"
+  },
+  {
+    "question": "Numa regra de ACL extended, especificar ip como protocolo faz a regra corresponder apenas a pacotes TCP e UDP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.14"
+  },
+  {
+    "question": "Uma regra de ACL extended só corresponde a um pacote se todos os critérios da regra forem satisfeitos em simultâneo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.14"
+  },
+  {
+    "question": "Numa ACL extended, especificar echo como critério ICMP equivale a especificar 8 0, porque o pedido de eco ICMP é uma mensagem do tipo 8 e código 0.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.15"
+  },
+  {
+    "question": "Numa ACL extended, especificar echo como critério ICMP equivale a especificar 0 0, porque o pedido de eco ICMP é uma mensagem do tipo 0 e código 0.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.15"
+  },
+  {
+    "question": "Numa ACL extended, especificar echo-reply equivale a especificar 0 0, pois a resposta de eco ICMP é uma mensagem do tipo 0 e código 0.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.15"
+  },
+  {
+    "question": "Numa regra de ACL extended para UDP, o critério colocado a seguir ao endereço de origem diz respeito ao porto de origem e o colocado a seguir ao endereço de destino diz respeito ao porto de destino.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.16"
+  },
+  {
+    "question": "Se numa regra de ACL extended para UDP ou TCP não for indicado nenhum critério de porto, a regra corresponde a qualquer porto.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.16"
+  },
+  {
+    "question": "Os operadores de porto das ACL extended são lt, gt, eq, neq e range, e o range exige dois portos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.16"
+  },
+  {
+    "question": "O operador range das ACL extended aceita um único porto, que corresponde ao limite máximo do intervalo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.16"
+  },
+  {
+    "question": "O critério established de uma regra TCP corresponde a segmentos com o bit ACK ou o bit RST ativo, ou seja, exclui o segmento SYN inicial de uma nova ligação.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.17"
+  },
+  {
+    "question": "O critério established de uma regra TCP corresponde apenas ao segmento SYN que inicia uma nova ligação TCP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.17"
+  },
+  {
+    "question": "Os critérios de porto das ACL são mais úteis para os portos de destino, pois os servidores usam portos fixos e os clientes usam portos atribuídos dinamicamente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.17"
+  },
+  {
+    "question": "As ACL com nome têm a vantagem de poderem ser editadas, ao contrário das ACL numeradas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.19"
+  },
+  {
+    "question": "Uma ACL com nome cria-se e edita-se com o comando ip access-list standard|extended seguido do nome, e o CLI entra no modo config-std-nacl ou config-ext-nacl.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.19"
+  },
+  {
+    "question": "Numa ACL com nome, a primeira regra recebe o número de sequência 10 e as regras seguintes são acrescentadas com um incremento de 10.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.19"
+  },
+  {
+    "question": "Numa ACL com nome, a primeira regra recebe o número de sequência 1 e as regras seguintes são acrescentadas com um incremento de 1.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.19"
+  },
+  {
+    "question": "Numa ACL com nome, se for indicado um número de sequência já ocupado, o comando falha e a regra existente tem de ser removida primeiro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.19"
+  },
+  {
+    "question": "Numa ACL com nome, uma regra remove-se com o comando no seguido do número de sequência da regra.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.20"
+  },
+  {
+    "question": "Os números de sequência de uma ACL com nome podem ser consultados com o comando show ip access-lists seguido do nome da ACL.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.20"
+  },
+  {
+    "question": "O tráfego trocado entre nós da mesma rede IPv4 não passa por nenhum router, pelo que escapa ao controlo anti-spoofing do administrador, a não ser que se use um switch de camada 3.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.22"
+  },
+  {
+    "question": "Em tráfego entrante da Internet, o administrador só consegue bloquear os pacotes com endereços de origem das suas próprias redes, e por isso é importante que cada rede bloqueie o spoofing interno.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.22"
+  },
+  {
+    "question": "Em tráfego entrante da Internet, o administrador consegue sempre distinguir os endereços de origem forjados dos verdadeiros, qualquer que seja o endereço.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.22"
+  },
+  {
+    "question": "Numa rede de trânsito, o anti-spoofing nunca é perfeito, porque nem todo o tráfego que a atravessa é originado nem destinado a essa rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.22"
+  },
+  {
+    "question": "O wildcard 0.32.255.255 aplicado ao endereço 170.0.0.0 abrange dois blocos /16: 170.0.0.0/16 e 170.32.0.0/16.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.23"
+  },
+  {
+    "question": "Qual é o critério de correspondência de pacotes numa ACL numerada standard?",
+    "answers": [
+      "Apenas o endereço IPv4 de destino do pacote e o porto de destino",
+      "Apenas o endereço IPv4 de origem do pacote",
+      "O endereço IPv4 de origem e o endereço IPv4 de destino do pacote",
+      "O protocolo, os endereços e os portos de origem e de destino do pacote"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.6"
+  },
+  {
+    "question": "Que critérios de correspondência exige uma regra de uma ACL extended?",
+    "answers": [
+      "Protocolo, endereço de origem e endereço de destino",
+      "Apenas o endereço de origem e o porto de origem",
+      "Endereço de origem e porto TCP de destino",
+      "Apenas o protocolo e o porto de destino do pacote"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.14"
+  },
+  {
+    "question": "Que gama de números identifica as ACL numeradas extended?",
+    "answers": [
+      "200 a 299",
+      "1 a 100",
+      "100 a 199",
+      "1 a 99"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.5"
+  },
+  {
+    "question": "Que gama de números identifica as ACL numeradas standard?",
+    "answers": [
+      "1 a 199",
+      "1 a 99",
+      "0 a 99",
+      "100 a 199"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.5"
+  },
+  {
+    "question": "O que acontece a um pacote que não corresponde a nenhuma das regras de uma ACL aplicada a uma interface?",
+    "answers": [
+      "É aceite, mas o router regista o pacote no log da interface",
+      "É aceite, por causa da regra implícita permit any no fim da ACL",
+      "É recusado, por causa da regra implícita deny any no fim da ACL",
+      "É devolvido ao emissor com uma mensagem ICMP de destino inalcançável"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.13"
+  },
+  {
+    "question": "Que comando associa uma ACL ao tráfego recebido numa interface?",
+    "answers": [
+      "access-list ACCESS-LIST-ID in",
+      "ip access-group in ACCESS-LIST-ID",
+      "ip access-list ACCESS-LIST-ID in",
+      "ip access-group ACCESS-LIST-ID in"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.10"
+  },
+  {
+    "question": "Que comando remove completamente uma ACL numerada de identificador 10?",
+    "answers": [
+      "delete access-list 10",
+      "no ip access-group 10",
+      "clear access-list 10",
+      "no access-list 10"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.6"
+  },
+  {
+    "question": "Qual é a principal vantagem das ACL com nome relativamente às numeradas?",
+    "answers": [
+      "Permitem filtrar tráfego IPv6, o que as ACL numeradas não permitem",
+      "São aplicadas sem a interface, porque se aplicam a todo o router",
+      "Têm mais regras, porque o seu número de identificação não é limitado",
+      "Podem ser editadas, pois as regras têm números de sequência"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.19"
+  },
+  {
+    "question": "Qual é o número de sequência da primeira regra acrescentada a uma ACL com nome, sem indicar o número?",
+    "answers": [
+      "100",
+      "1",
+      "0",
+      "10"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.19"
+  },
+  {
+    "question": "Que comando mostra os números de sequência das regras de uma ACL com nome?",
+    "answers": [
+      "show ip interface NOME",
+      "show running-config NOME",
+      "show access-group NOME",
+      "show ip access-lists NOME"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.20"
+  },
+  {
+    "question": "Em que modo do CLI se editam as regras de uma ACL extended com nome?",
+    "answers": [
+      "No modo config-std-nacl",
+      "No modo config-router",
+      "No modo config-if",
+      "No modo config-ext-nacl"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.19"
+  },
+  {
+    "question": "Qual é o wildcard que corresponde à máscara 255.255.255.0 (/24)?",
+    "answers": [
+      "0.0.0.0",
+      "255.255.255.0",
+      "0.0.0.255",
+      "0.0.255.255"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.8"
+  },
+  {
+    "question": "Qual é o wildcard equivalente à rede /26?",
+    "answers": [
+      "0.0.0.31",
+      "0.0.0.127",
+      "0.0.0.63",
+      "0.0.0.192"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.8"
+  },
+  {
+    "question": "Qual é o wildcard equivalente à rede /20?",
+    "answers": [
+      "0.0.31.255",
+      "0.0.240.0",
+      "0.0.7.255",
+      "0.0.15.255"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.8"
+  },
+  {
+    "question": "Qual é o wildcard equivalente à rede /22?",
+    "answers": [
+      "0.0.3.255",
+      "0.0.1.255",
+      "0.0.252.0",
+      "0.0.7.255, para a máscara /22"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.8"
+  },
+  {
+    "question": "Qual é o wildcard equivalente à rede /27?",
+    "answers": [
+      "0.0.0.31",
+      "0.0.0.15",
+      "0.0.0.224",
+      "0.0.0.63"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.8"
+  },
+  {
+    "question": "Qual é o wildcard equivalente à rede /29?",
+    "answers": [
+      "0.0.0.7",
+      "0.0.0.248",
+      "0.0.0.3",
+      "0.0.0.15"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.8"
+  },
+  {
+    "question": "Qual é o wildcard equivalente à rede /12?",
+    "answers": [
+      "0.15.255.255",
+      "0.240.0.0",
+      "0.7.255.255",
+      "0.31.255.255 (máscara /12)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.8"
+  },
+  {
+    "question": "Qual é o wildcard equivalente à rede /23?",
+    "answers": [
+      "0.0.254.0",
+      "0.0.1.255",
+      "0.0.3.255",
+      "0.0.0.255"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.8"
+  },
+  {
+    "question": "Qual é o wildcard equivalente à rede /21?",
+    "answers": [
+      "0.0.248.0",
+      "0.0.15.255",
+      "0.0.7.255",
+      "0.0.3.255"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.8"
+  },
+  {
+    "question": "Que prefixo de rede corresponde ao wildcard 0.0.7.255?",
+    "answers": [
+      "/21",
+      "/22",
+      "/19",
+      "/20"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.8"
+  },
+  {
+    "question": "Quantos endereços são abrangidos pelo critério 10.4.0.0 0.0.7.255?",
+    "answers": [
+      "1024 endereços",
+      "2048 endereços",
+      "2047 endereços",
+      "4096 endereços"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.9"
+  },
+  {
+    "question": "Quantos endereços são abrangidos pelo critério 10.0.0.0 0.0.15.255?",
+    "answers": [
+      "2048 endereços",
+      "4095 endereços",
+      "8192 endereços",
+      "4096 endereços"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.9"
+  },
+  {
+    "question": "Quantos endereços são abrangidos pelo critério 192.168.0.0 0.0.0.63?",
+    "answers": [
+      "32 endereços",
+      "64 endereços",
+      "63 endereços",
+      "128 endereços"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.9"
+  },
+  {
+    "question": "Quantos endereços são abrangidos pelo critério 10.0.0.1 0.0.3.0, que alterna bits a zero e a um no wildcard?",
+    "answers": [
+      "4 endereços",
+      "256 endereços",
+      "2 endereços",
+      "3 endereços"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.9"
+  },
+  {
+    "question": "Quantos endereços são abrangidos pelo critério 10.1.0.5 0.2.0.8?",
+    "answers": [
+      "10 endereços",
+      "2 endereços",
+      "16 endereços",
+      "4 endereços"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.9"
+  },
+  {
+    "question": "Quantos endereços são abrangidos pelo critério 10.0.0.0 0.0.0.0?",
+    "answers": [
+      "0 endereços",
+      "1 endereço",
+      "2 endereços",
+      "256 endereços"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.9"
+  },
+  {
+    "question": "Que endereços são abrangidos pelo critério 10.0.0.1 0.0.0.4?",
+    "answers": [
+      "10.0.0.1 a 10.0.0.4, inclusive",
+      "10.0.0.1 e 10.0.0.5",
+      "10.0.0.1 e 10.0.0.4",
+      "10.0.0.1 e 10.0.0.2"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.9"
+  },
+  {
+    "question": "Que endereços são abrangidos pelo critério 192.168.3.2 0.0.4.0?",
+    "answers": [
+      "192.168.3.2 e 192.168.3.6",
+      "192.168.3.2 e 192.168.7.2",
+      "192.168.3.2 a 192.168.7.2",
+      "192.168.3.2 e 192.168.4.2"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.9"
+  },
+  {
+    "question": "Que endereços são abrangidos pelo critério 10.8.0.9 0.16.0.2?",
+    "answers": [
+      "10.8.0.9, 10.8.0.11, 10.24.0.9 e 10.24.0.11",
+      "10.8.0.9 e 10.24.0.11",
+      "10.8.0.9, 10.8.0.11, 10.16.0.9 e 10.16.0.11",
+      "10.8.0.9 a 10.8.0.11 e 10.24.0.9 a 10.24.0.11"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.9"
+  },
+  {
+    "question": "O endereço 172.16.5.9 é abrangido pelo critério 172.16.4.0 0.0.3.255?",
+    "answers": [
+      "Sim, porque o terceiro octeto 5 está no intervalo 0 a 3",
+      "Sim, porque o terceiro octeto 5 está no intervalo 4 a 7",
+      "Não, porque o quarto octeto 9 é diferente do quarto octeto 0",
+      "Não, porque o terceiro octeto 5 é diferente do terceiro octeto 4"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.9"
+  },
+  {
+    "question": "O endereço 10.1.1.130 é abrangido pelo critério 10.1.1.0 0.0.0.63?",
+    "answers": [
+      "Não, porque o terceiro octeto 1 é diferente do quarto octeto",
+      "Sim, porque o quarto octeto 130 está no intervalo 0 a 255",
+      "Não, porque o quarto octeto 130 está fora do intervalo 0 a 63",
+      "Sim, porque o terceiro octeto coincide com o do critério"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.9"
+  },
+  {
+    "question": "O endereço 203.0.113.90 é abrangido pelo critério 203.0.113.64 0.0.0.31?",
+    "answers": [
+      "Não, porque o quarto octeto 90 está fora do intervalo 64 a 80",
+      "Não, porque o quarto octeto 90 é diferente do quarto octeto 64",
+      "Sim, porque o quarto octeto 90 está no intervalo 64 a 95",
+      "Sim, porque o quarto octeto 90 está no intervalo 64 a 127"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.9"
+  },
+  {
+    "question": "O endereço 203.0.113.100 é abrangido pelo critério 203.0.113.64 0.0.0.31?",
+    "answers": [
+      "Sim, porque o quarto octeto 100 está no intervalo 64 a 127 abrangido pela máscara",
+      "Não, porque o terceiro octeto 113 é diferente do quarto octeto",
+      "Sim, porque o quarto octeto 100 está no intervalo 64 a 100",
+      "Não, porque o quarto octeto 100 está fora do intervalo 64 a 95"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.9"
+  },
+  {
+    "question": "Que blocos de rede abrange o critério 170.0.0.0 0.32.255.255?",
+    "answers": [
+      "170.0.0.0/16 e 170.32.0.0/16",
+      "170.0.0.0/8",
+      "170.0.0.0/16, 170.16.0.0/16, 170.32.0.0/16",
+      "170.0.0.0/15"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.23"
+  },
+  {
+    "question": "Qual das seguintes regras corresponde a todo o tráfego com origem na rede 194.20.30.0/24?",
+    "answers": [
+      "access-list 10 permit 194.20.30.0 255.255.255.0",
+      "access-list 10 permit 194.20.30.0 0.0.0.255",
+      "access-list 10 permit 194.20.30.0 0.0.255.255",
+      "access-list 10 permit host 194.20.30.0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.13"
+  },
+  {
+    "question": "Numa rede local 194.20.30.0/24, que ACL, aplicada ao tráfego de entrada da interface ligada à rede local, bloqueia o spoofing interno?",
+    "answers": [
+      "access-list 20 permit 194.20.30.0 0.0.0.255, que só deixa passar a origem da rede local",
+      "access-list 20 permit any, que deixa passar todo o tráfego",
+      "access-list 20 deny 194.20.30.0 0.0.0.255, que bloqueia a origem da rede local e deixa passar as restantes",
+      "access-list 20 deny any, que bloqueia todo o tráfego"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.13"
+  },
+  {
+    "question": "Numa rede local 194.20.30.0/24, que ACL, aplicada ao tráfego de entrada da interface ligada à Internet, bloqueia o spoofing externo?",
+    "answers": [
+      "access-list 10 deny 194.20.30.0 0.0.0.255 seguida de access-list 10 permit any",
+      "access-list 10 permit any seguida de access-list 10 deny 194.20.30.0 0.0.0.255",
+      "access-list 10 deny any seguida de access-list 10 permit 194.20.30.0 0.0.0.255",
+      "access-list 10 permit 194.20.30.0 0.0.0.255 seguida de access-list 10 deny any"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.13"
+  },
+  {
+    "question": "Numa ACL anti-spoofing externo, o que acontece se a regra permit any vier antes da regra deny da rede local?",
+    "answers": [
+      "O router recusa o comando, porque a regra permit any tem de ser a última",
+      "Todos os pacotes são bloqueados, porque as duas regras se anulam mutuamente",
+      "Os pacotes com origem na rede local passam, porque a primeira regra que corresponde é a permit any",
+      "Os pacotes com origem na rede local são bloqueados, porque a regra deny tem prioridade sobre a regra permit any"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.13"
+  },
+  {
+    "question": "Que protocolo e que tipo de mensagem corresponde a \"echo\" nas ACL extended?",
+    "answers": [
+      "ICMP, mensagem do tipo 8 e código 0 (pedido de eco)",
+      "UDP, mensagem do tipo 8 e código 0 (pedido de eco)",
+      "ICMP, mensagem do tipo 0 e código 0 (resposta de eco)",
+      "ICMP, mensagem do tipo 3 e código 0 (destino inalcançável)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.15"
+  },
+  {
+    "question": "Que tipo e código ICMP correspondem a \"echo-reply\" nas ACL extended?",
+    "answers": [
+      "Tipo 3 e código 0",
+      "Tipo 0 e código 8",
+      "Tipo 0 e código 0",
+      "Tipo 8 e código 0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.15"
+  },
+  {
+    "question": "Que operador de porto de uma ACL extended corresponde a \"menor do que\"?",
+    "answers": [
+      "eq",
+      "lt",
+      "gt",
+      "neq"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.16"
+  },
+  {
+    "question": "Que operador de porto de uma ACL extended corresponde a \"diferente de\"?",
+    "answers": [
+      "not",
+      "neq",
+      "diff",
+      "ne"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.16"
+  },
+  {
+    "question": "Quantos portos tem de indicar o operador range de uma ACL extended?",
+    "answers": [
+      "Um, o limite mínimo do intervalo, que é incluído",
+      "Um, o limite máximo do intervalo, que é excluído",
+      "Dois, o início e o fim do intervalo, que são incluídos",
+      "Dois, o início e o fim do intervalo, que são excluídos"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.16"
+  },
+  {
+    "question": "A que corresponde o critério established numa regra TCP de uma ACL extended?",
+    "answers": [
+      "Segmentos com o bit ACK ou o bit RST ativo, que pertencem a ligações já estabelecidas",
+      "Apenas segmentos SYN que iniciam novas ligações TCP com o servidor de destino",
+      "Qualquer segmento TCP, esteja a ligação estabelecida ou não, de qualquer origem",
+      "Apenas segmentos com o bit FIN ativo, que terminam ligações TCP já estabelecidas"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.17"
+  },
+  {
+    "question": "Que porto representa o nome www numa ACL?",
+    "answers": [
+      "80",
+      "443",
+      "53",
+      "25"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.17"
+  },
+  {
+    "question": "Que porto representa o nome domain numa ACL?",
+    "answers": [
+      "25",
+      "80",
+      "53",
+      "110"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.17"
+  },
+  {
+    "question": "Porque são os critérios de porto de destino mais úteis do que os de porto de origem nas ACL?",
+    "answers": [
+      "Porque o porto de destino só consta do cabeçalho de segmentos UDP",
+      "Porque os servidores usam portos dinâmicos e os clientes usam portos fixos conhecidos de todos",
+      "Porque o porto de origem não consta do cabeçalho de segmentos TCP e UDP",
+      "Porque os servidores usam portos fixos e os clientes usam portos atribuídos dinamicamente"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.17"
+  },
+  {
+    "question": "Porque razão a DMZ é uma rede isolada da dos utilizadores?",
+    "answers": [
+      "Porque contém os servidores e os utilizadores, que são protegidos por firewalls locais em cada nó da rede",
+      "Porque contém os routers de acesso à Internet, que não podem partilhar a mesma rede com servidores",
+      "Porque contém só servidores de confiança, protegidos pela firewall do router, sem firewalls locais",
+      "Porque contém apenas as estações de trabalho dos utilizadores, que não são de confiança e ficam isoladas"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.2"
+  },
+  {
+    "question": "Segundo o TP06, qual é o ataque que só uma firewall dinâmica consegue prevenir?",
+    "answers": [
+      "Um acesso a um endereço IP que não pertence a nenhuma rede local do router",
+      "Um ataque DoS (negação de serviço), que inunda um serviço aberto a todos",
+      "Um ataque de IP spoofing, que forja o endereço de origem de pacotes",
+      "Um acesso a um porto TCP que não está aberto no servidor de destino"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.4"
+  },
+  {
+    "question": "Onde se deve aplicar, em regra, uma ACL para bloquear tráfego indesejado?",
+    "answers": [
+      "O mais perto possível da origem do tráfego, normalmente no sentido in",
+      "O mais perto possível do destino do tráfego, normalmente no sentido out",
+      "No meio do percurso do tráfego, normalmente no sentido out",
+      "Em todas as interfaces do router, nos dois sentidos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.12"
+  },
+  {
+    "question": "Que tipo de equipamento permite bloquear o spoofing de endereços IP entre nós da mesma rede IPv4?",
+    "answers": [
+      "Um switch de camada 2, que entende endereços MAC e permite aplicar ACL",
+      "Um repetidor, que regenera o sinal dos cabos",
+      "Um hub, que repete o tráfego recebido para todos os portos",
+      "Um switch de camada 3, que entende IPv4 e permite aplicar ACL"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.22"
+  },
+  {
+    "question": "Porque é que o anti-spoofing numa rede de trânsito não é perfeito?",
+    "answers": [
+      "Porque os routers de trânsito não suportam ACL standard nem extended em IPv4",
+      "Porque as redes de trânsito não têm endereços IPv4 de rede atribuídos pelo ISP",
+      "Porque parte do tráfego que a atravessa não é originado nem destinado a ela",
+      "Porque o tráfego de trânsito é sempre cifrado e as ACL não o conseguem analisar"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.22"
+  },
+  {
+    "question": "ACL na entrada da LAN: (1) permit tcp 10.1.0.0 0.0.3.255 host 10.1.8.10 eq 80; (2) deny ip any 10.1.8.0 0.0.0.255; (3) permit ip 10.1.0.0 0.0.3.255 any. O que acontece a um segmento TCP de 10.1.1.5 para 10.1.8.10, porto 80?",
+    "answers": [
+      "Recusado pela regra 2",
+      "Aceite pela regra 1",
+      "Aceite pela regra 2",
+      "Recusado pela regra 1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.18"
+  },
+  {
+    "question": "ACL na entrada da LAN: (1) permit tcp 10.1.0.0 0.0.3.255 host 10.1.8.10 eq 80; (2) deny ip any 10.1.8.0 0.0.0.255; (3) permit ip 10.1.0.0 0.0.3.255 any. O que acontece a um segmento TCP de 10.1.1.5 para 10.1.8.10, porto 22?",
+    "answers": [
+      "Aceite pela regra 2",
+      "Aceite pela regra 1",
+      "Recusado pela regra 2",
+      "Recusado pela regra 1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.18"
+  },
+  {
+    "question": "ACL na entrada da LAN: (1) permit tcp 10.1.0.0 0.0.3.255 host 10.1.8.10 eq 80; (2) deny ip any 10.1.8.0 0.0.0.255; (3) permit ip 10.1.0.0 0.0.3.255 any. O que acontece a um datagrama UDP de 10.1.2.9 para 10.1.8.20, porto 53?",
+    "answers": [
+      "Recusado pela regra 1",
+      "Aceite pela regra 1",
+      "Aceite pela regra 2",
+      "Recusado pela regra 2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.18"
+  },
+  {
+    "question": "ACL na entrada da LAN: (1) permit tcp 10.1.0.0 0.0.3.255 host 10.1.8.10 eq 80; (2) deny ip any 10.1.8.0 0.0.0.255; (3) permit ip 10.1.0.0 0.0.3.255 any. O que acontece a um segmento TCP de 10.1.2.9 para 8.8.8.8, porto 443?",
+    "answers": [
+      "Aceite pela regra 1",
+      "Recusado pela regra 3",
+      "Recusado pela regra 1",
+      "Aceite pela regra 3"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.18"
+  },
+  {
+    "question": "ACL na entrada da LAN: (1) permit tcp 10.1.0.0 0.0.3.255 host 10.1.8.10 eq 80; (2) deny ip any 10.1.8.0 0.0.0.255; (3) permit ip 10.1.0.0 0.0.3.255 any. O que acontece a um pedido de eco ICMP de 10.1.0.7 para 10.1.8.10?",
+    "answers": [
+      "Aceite pela regra 2",
+      "Recusado pela regra 1",
+      "Aceite pela regra 1",
+      "Recusado pela regra 2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.18"
+  },
+  {
+    "question": "ACL na entrada da LAN: (1) permit tcp 10.1.0.0 0.0.3.255 host 10.1.8.10 eq 80; (2) deny ip any 10.1.8.0 0.0.0.255; (3) permit ip 10.1.0.0 0.0.3.255 any. O que acontece a um segmento TCP de 10.1.3.255 para 10.1.8.10, porto 80?",
+    "answers": [
+      "Recusado pela regra 1",
+      "Recusado pela regra 2",
+      "Aceite pela regra 2",
+      "Aceite pela regra 1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.18"
+  },
+  {
+    "question": "ACL na entrada da Internet: (1) deny ip 10.1.0.0 0.0.15.255 any; (2) permit tcp any host 10.1.8.10 eq 80; (3) deny ip any 10.1.8.0 0.0.0.255; (4) permit ip any any. O que acontece a um segmento TCP de 203.0.113.5 para 10.1.8.10, porto 80?",
+    "answers": [
+      "Recusado pela regra 1",
+      "Recusado pela regra 2",
+      "Aceite pela regra 1",
+      "Aceite pela regra 2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.18"
+  },
+  {
+    "question": "ACL na entrada da Internet: (1) deny ip 10.1.0.0 0.0.15.255 any; (2) permit tcp any host 10.1.8.10 eq 80; (3) deny ip any 10.1.8.0 0.0.0.255; (4) permit ip any any. O que acontece a um segmento TCP de 10.1.3.3 (origem forjada) para 10.1.8.10, porto 80?",
+    "answers": [
+      "Aceite pela regra 1",
+      "Recusado pela regra 2, por ser porto 80",
+      "Recusado pela regra 1",
+      "Aceite pela regra 2"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.18"
+  },
+  {
+    "question": "ACL na entrada da Internet: (1) deny ip 10.1.0.0 0.0.15.255 any; (2) permit tcp any host 10.1.8.10 eq 80; (3) deny ip any 10.1.8.0 0.0.0.255; (4) permit ip any any. O que acontece a um segmento TCP de 203.0.113.5 para 10.1.8.20, porto 53?",
+    "answers": [
+      "Aceite pela regra 2, por ser um segmento TCP",
+      "Recusado pela regra 1",
+      "Aceite pela regra 3",
+      "Recusado pela regra 3"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.18"
+  },
+  {
+    "question": "ACL na entrada da Internet: (1) deny ip 10.1.0.0 0.0.15.255 any; (2) permit tcp any host 10.1.8.10 eq 80; (3) deny ip any 10.1.8.0 0.0.0.255; (4) permit ip any any. O que acontece a um segmento TCP de 203.0.113.5 para 10.1.20.1, porto 25?",
+    "answers": [
+      "Recusado pela regra 1",
+      "Aceite pela regra 4",
+      "Aceite pela regra 1",
+      "Recusado pela regra 4"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.18"
+  },
+  {
+    "question": "ACL na entrada da Internet: (1) deny ip 10.1.0.0 0.0.15.255 any; (2) permit tcp any host 10.1.8.10 eq 80; (3) deny ip any 10.1.8.0 0.0.0.255; (4) permit ip any any. O que acontece a um segmento TCP de 10.1.12.9 para 10.1.20.1, porto 25?",
+    "answers": [
+      "Recusado pela regra 2",
+      "Recusado pela regra 1",
+      "Aceite pela regra 2",
+      "Aceite pela regra 1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.18"
+  },
+  {
+    "question": "ACL na entrada da Internet: (1) deny ip 10.1.0.0 0.0.15.255 any; (2) permit tcp any host 10.1.8.10 eq 80; (3) deny ip any 10.1.8.0 0.0.0.255; (4) permit ip any any. O que acontece a um segmento TCP de 10.1.16.9 para 10.1.20.1, porto 25?",
+    "answers": [
+      "Aceite pela regra 1",
+      "Recusado pela regra 1",
+      "Aceite pela regra 4",
+      "Recusado pela regra 4"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.18"
+  },
+  {
+    "question": "ACL na entrada da LAN: (1) permit tcp 10.1.0.0 0.0.3.255 host 10.1.8.10 eq 80; (2) deny ip any 10.1.8.0 0.0.0.255; (3) permit ip 10.1.0.0 0.0.3.255 any. O que acontece a um segmento TCP de 10.1.4.1 para 8.8.8.8, porto 80?",
+    "answers": [
+      "Aceite pela regra 1, porque o porto de destino do segmento é o 80",
+      "Recusado pela regra 2, porque o destino está fora da rede local",
+      "Aceite pela regra 3, porque a origem pertence à rede 10.1.0.0 inteira",
+      "Recusado pela regra implícita deny any, porque a origem está fora da LAN"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.13"
+  },
+  {
+    "question": "ACL na entrada da Internet com as regras (1) permit tcp any host 10.1.8.10 eq 80 e (2) deny ip 10.1.0.0 0.0.15.255 any, por esta ordem. O que acontece a um segmento TCP de 10.1.3.3 (origem forjada) para 10.1.8.10, porto 80?",
+    "answers": [
+      "É recusado pela regra deny ip, que corresponde à origem forjada",
+      "É recusado, porque o router rejeita ACL com permit antes de deny",
+      "É aceite pela regra permit tcp, a primeira a corresponder",
+      "É recusado, porque a regra deny tem prioridade sobre a permit"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.13"
+  },
+  {
+    "question": "ACL na entrada da interface da Internet: \"permit tcp any 10.1.0.0 0.0.3.255 established\". O que acontece a um segmento TCP SYN (sem ACK nem RST) de 203.0.113.5 para 10.1.1.1?",
+    "answers": [
+      "É recusado, porque o SYN inicial não corresponde ao critério established",
+      "É recusado, porque o endereço de origem não pertence a uma rede local",
+      "É aceite, porque a regra permite qualquer segmento TCP para a LAN",
+      "É aceite, porque o critério established corresponde a segmentos SYN"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.17"
+  },
+  {
+    "question": "ACL na entrada da interface da Internet: \"permit tcp any 10.1.0.0 0.0.3.255 established\". O que acontece a um segmento TCP com o bit ACK ativo, de 203.0.113.5 para 10.1.1.1?",
+    "answers": [
+      "É aceite, porque corresponde ao critério established",
+      "É recusado, porque só são aceites segmentos SYN de novas ligações",
+      "É aceite apenas se o bit RST também estiver ativo no mesmo segmento",
+      "É recusado, porque o endereço de origem não pertence a uma rede local"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.17"
+  },
+  {
+    "question": "ACL na entrada da interface da Internet: \"permit tcp any 10.1.0.0 0.0.3.255 established\". O que acontece a um segmento TCP com o bit RST ativo, de 203.0.113.5 para 10.1.1.1?",
+    "answers": [
+      "É recusado, porque o RST termina a ligação em vez de a estabelecer",
+      "É aceite, porque o critério established corresponde também ao bit RST",
+      "É aceite apenas se o bit ACK também estiver ativo no mesmo segmento",
+      "É recusado, porque só os segmentos com o bit ACK ativo são aceites"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.17"
+  },
+  {
+    "question": "ACL na entrada: \"permit tcp any host 10.1.8.10 range 20 21\". O que acontece a um segmento TCP com destino 10.1.8.10, porto 22?",
+    "answers": [
+      "É recusado pela regra implícita deny any, porque 22 está fora do intervalo 20 a 21",
+      "É aceite, porque o porto 22 é o do serviço SSH, sempre permitido",
+      "É aceite, porque o intervalo 20 a 21 inclui os portos seguintes",
+      "É recusado pela regra range, porque o porto 22 está excluído do intervalo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.16"
+  },
+  {
+    "question": "ACL na entrada: \"permit tcp any host 10.1.8.10 range 20 21\". O que acontece a um segmento TCP com destino 10.1.8.10, porto 20?",
+    "answers": [
+      "É aceite, porque o intervalo 20 a 21 inclui os dois limites",
+      "É recusado, porque o operador range exige portos acima de 1023",
+      "É recusado, porque o limite inferior do intervalo é excluído",
+      "É aceite apenas se o segmento tiver também o bit ACK ativo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.16"
+  },
+  {
+    "question": "ACL: (1) deny tcp any any lt 1024; (2) permit ip any any. O que acontece a um segmento TCP com porto de destino 1024?",
+    "answers": [
+      "É aceite pela regra 1, porque o operador lt inclui o limite indicado",
+      "É recusado pela regra implícita, porque o porto 1024 é reservado",
+      "É aceite pela regra 2, porque 1024 não é menor do que 1024",
+      "É recusado pela regra 1, porque 1024 faz parte da gama lt 1024"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.16"
+  },
+  {
+    "question": "ACL: (1) deny tcp any any lt 1024; (2) permit ip any any. O que acontece a um segmento TCP com porto de destino 1023?",
+    "answers": [
+      "É recusado pela regra 1, porque 1023 é menor do que 1024",
+      "É aceite pela regra 1, porque o operador lt exclui o limite indicado",
+      "É aceite pela regra 2, porque 1023 não é menor do que 1024",
+      "É recusado pela regra implícita, porque o porto 1023 é reservado"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.16"
+  },
+  {
+    "question": "ACL: \"permit tcp any any neq 25\" (e mais nenhuma regra). O que acontece a um segmento TCP com porto de destino 25?",
+    "answers": [
+      "É recusado pela regra permit, porque o operador neq exclui todo o TCP",
+      "É recusado pela regra implícita deny any, porque o porto é o 25",
+      "É aceite pela regra permit, porque o operador neq aceita o porto 25",
+      "É aceite pela regra implícita permit any, porque a ACL só tem uma regra"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.16"
+  },
+  {
+    "question": "ACL: \"permit tcp any any neq 25\" (e mais nenhuma regra). O que acontece a um segmento TCP com porto de destino 110?",
+    "answers": [
+      "É recusado pela regra implícita deny any, porque o porto não é o 25",
+      "É recusado pela regra permit, porque o operador neq nega os portos",
+      "É aceite pela regra permit, porque 110 é diferente de 25",
+      "É aceite pela regra implícita permit any, porque a ACL só tem uma regra"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.16"
+  },
+  {
+    "question": "ACL: \"permit tcp any any neq 25\" (e mais nenhuma regra). O que acontece a um datagrama UDP com porto de destino 110?",
+    "answers": [
+      "É aceite pela regra permit, porque 110 é diferente de 25",
+      "É recusado pela regra implícita deny any, porque a regra só se aplica a TCP",
+      "É aceite pela regra permit, porque o UDP é transportado sobre IP",
+      "É recusado pela regra permit, porque o operador neq nega os portos e bloqueia todo o tráfego UDP"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.16"
+  },
+  {
+    "question": "Uma ACL standard permite filtrar o tráfego com base no porto de destino TCP, tal como uma ACL extended.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.6"
+  },
+  {
+    "question": "Num critério de ACL, o wildcard 0.0.0.255 abrange os endereços de uma rede /16.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.8"
+  },
+  {
+    "question": "Num critério de ACL, \"host 10.1.1.1\" abrange todos os endereços da rede 10.1.1.0/24.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.7"
+  },
+  {
+    "question": "O wildcard 0.0.0.63 abrange 63 endereços, tantos quantos os bits a um do seu último octeto.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.9"
+  },
+  {
+    "question": "Numa ACL com nome, as regras só podem ser acrescentadas ao fim da lista, tal como numa ACL numerada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.19"
+  },
+  {
+    "question": "Uma ACL aplicada a uma interface com ip access-group out filtra o tráfego que a interface recebe da rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.10"
+  },
+  {
+    "question": "A máscara de rede 255.255.255.192 corresponde ao wildcard 0.0.0.192.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.8"
+  },
+  {
+    "question": "Num critério de ACL, o wildcard 0.0.0.0 ignora todos os bits do endereço, abrangendo qualquer endereço IPv4.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP06 p.7"
+  }
+]

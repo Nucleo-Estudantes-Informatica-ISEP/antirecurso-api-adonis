@@ -1,0 +1,2655 @@
+[
+  {
+    "question": "Quais dos seguintes elementos são partilhados por todas as threads de um mesmo processo?",
+    "answers": [
+      "Código, heap, variáveis globais e descritores de ficheiros",
+      "Stack, registos, PC e identificador (TID) de cada thread",
+      "Código, heap e stack, mas não as variáveis globais",
+      "Variáveis globais e registos de dados, mas não o código"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.6"
+  },
+  {
+    "question": "Quais dos seguintes elementos são exclusivos de cada thread de um processo?",
+    "answers": [
+      "Heap, registos de dados e identificador (TID) da thread",
+      "Stack, variáveis globais e tabela de descritores de ficheiros",
+      "Stack, registos (incluindo SP e PC) e TID",
+      "Código, stack e registos de dados, mas não o PC"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.6"
+  },
+  {
+    "question": "Porque é que a mudança de contexto entre duas threads do mesmo processo é mais eficiente do que entre dois processos?",
+    "answers": [
+      "Porque as threads não precisam de guardar os registos nem o PC ao serem retiradas do CPU, ao contrário dos processos",
+      "Porque o espaço de endereçamento é o mesmo, sem trocar tabelas de páginas",
+      "Porque o kernel nunca escalona threads, deixando essa tarefa ao próprio processo",
+      "Porque as threads partilham o mesmo stack pointer, evitando salvaguardar o contexto do CPU"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.8"
+  },
+  {
+    "question": "void *f(void *a){ int *p=a; *p+=5; return NULL; } int main(){ int x=1; pthread_t t; pthread_create(&t,NULL,f,&x); pthread_join(t,NULL); printf(\"%d\",x); } Que valor imprime o programa?",
+    "answers": [
+      "1",
+      "5",
+      "Indefinido, pois a stack da main é privada",
+      "6"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.19"
+  },
+  {
+    "question": "void *f(void *a){ static int c=0; c+=10; printf(\"%d \",c); return NULL; } A main faz 3 vezes seguidas pthread_create(&t,NULL,f,NULL); pthread_join(t,NULL). Que valores imprime, por ordem?",
+    "answers": [
+      "10 20 30",
+      "10 10 10",
+      "10 20 20",
+      "Valores diferentes em cada execução"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "A thread faz errno=7 e termina. Antes, a main fez errno=5, criou a thread e, após pthread_join, imprime errno. O que imprime a main?",
+    "answers": [
+      "7",
+      "5",
+      "0",
+      "Depende do escalonamento das threads"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "A função da thread faz return (void*)42; a main faz pthread_create(&t,NULL,f,NULL); pthread_join(t,&r); printf(\"%ld\",(long)r); com void *r. Que valor imprime?",
+    "answers": [
+      "0",
+      "O identificador (TID) da thread",
+      "42",
+      "O endereço da stack da thread"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.10"
+  },
+  {
+    "question": "Com int g=0 global, um filho criado por fork() faz g=5 e termina. O pai faz wait(), imprime g, depois uma thread faz g=5 e, após join, o pai imprime g. O que imprime o pai, por ordem?",
+    "answers": [
+      "5 5",
+      "5 0",
+      "0 0, pois a thread também trabalha numa cópia de g",
+      "0 5"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.6"
+  },
+  {
+    "question": "Global r[3]; f faz int i=*(int*)a; r[i]=i*i. A main cria 3 threads com &id[i] (id={0,1,2}), faz join às 3 e imprime r[0]+r[1]+r[2]. Que valor imprime?",
+    "answers": [
+      "5",
+      "3",
+      "2",
+      "Valor indeterminado, por haver race condition"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.22"
+  },
+  {
+    "question": "Global int v[3]; f faz int i=*(int*)a; v[i]=i+1. A main faz, 3 vezes (i=0,1,2): pthread_create(&t,NULL,f,&i); pthread_join(t,NULL); e imprime v[0], v[1], v[2] seguidos. O que imprime?",
+    "answers": [
+      "333",
+      "012",
+      "123",
+      "Valores que dependem do escalonamento"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.22"
+  },
+  {
+    "question": "A main faz int *h=malloc(sizeof(int)); *h=4; cria uma thread com h, cuja função faz *(int*)a *= 2; após pthread_join imprime *h. Que valor imprime?",
+    "answers": [
+      "4",
+      "8",
+      "16",
+      "Valor indefinido, pois a heap é privada da thread que a aloca"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.17"
+  },
+  {
+    "question": "f devolve (void*)(long)(*(int*)a+1). Com a=10, b=20: t0 recebe &a, t1 recebe &b; join(t1,&x); join(t0,&y); printf(\"%ld %ld\",(long)x,(long)y). O que imprime?",
+    "answers": [
+      "11 21",
+      "10 20",
+      "21 11 ou 11 21, consoante a thread que terminar primeiro",
+      "21 11"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.10"
+  },
+  {
+    "question": "Num ciclo for(i=0;i<100;i++) a main cria threads com &i, sem join dentro do ciclo. Qual é a consequência possível?",
+    "answers": [
+      "Cada thread lê sempre um valor distinto, pois cada uma tem a sua cópia privada de i na stack",
+      "Várias threads leem o mesmo valor de i, pois todas recebem o endereço que a main continua a alterar",
+      "A segunda chamada a pthread_create falha com EAGAIN, pois o endereço de i já foi usado",
+      "Ocorre deadlock, porque as threads competem entre si pelo mesmo endereço de i na stack"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.23"
+  },
+  {
+    "question": "Qual é uma forma correta de dar a cada uma das N threads criadas num ciclo o seu valor de i, sem race condition?",
+    "answers": [
+      "Dar a cada thread um int alocado com malloc, que a própria thread liberta com free",
+      "Passar &i e declarar i como volatile, para a main e as threads verem sempre o mesmo valor",
+      "Passar &i e fazer sleep na main após cada pthread_create, para a thread ter tempo de ler i",
+      "Guardar i numa variável global que a main atualiza em cada iteração antes de criar a thread"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.25"
+  },
+  {
+    "question": "Quando é que uma variável de um programa com threads é partilhada?",
+    "answers": [
+      "Quando é declarada fora de qualquer função, mesmo que só uma thread lhe aceda",
+      "Quando é alocada na heap com malloc, mesmo que só uma thread lhe aceda",
+      "Quando é declarada sem o atributo static, mesmo que só uma thread lhe aceda",
+      "Quando mais do que uma thread referencia uma instância dessa variável"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.15"
+  },
+  {
+    "question": "Uma função declara static int cnt dentro do seu corpo e é executada por 3 threads. Quantas instâncias de cnt existem na memória virtual?",
+    "answers": [
+      "Três, uma na stack de cada thread",
+      "Quatro, uma por thread e uma na main",
+      "Uma, partilhada por todas as threads",
+      "Zero, pois static só reserva memória em tempo de compilação"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "A função executada por 3 threads declara int myid (sem static). Quantas instâncias de myid existem na memória virtual?",
+    "answers": [
+      "Uma, na zona de dados partilhada",
+      "Três, uma na stack de cada thread",
+      "Uma, na heap do processo",
+      "Três, mas todas na stack da thread principal"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.17"
+  },
+  {
+    "question": "A thread A passa à thread B o endereço de uma variável local da stack de A. O que acontece quando B escreve através desse apontador?",
+    "answers": [
+      "O valor da variável de A é alterado, pois o espaço de endereçamento é partilhado e a stack não é protegida",
+      "Ocorre segmentation fault, porque a stack de A é uma região protegida pelo kernel contra outras threads",
+      "B escreve numa cópia da variável, que o kernel cria na stack de B ao passar o apontador",
+      "A escrita é ignorada em silêncio, pois só a thread A pode escrever na sua própria stack"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.16"
+  },
+  {
+    "question": "Duas threads falham chamadas ao sistema em simultâneo com erros diferentes. Porque é que nenhuma corrompe o errno da outra?",
+    "answers": [
+      "Porque errno é protegido por um mutex global que serializa todas as chamadas ao sistema",
+      "Porque o kernel só permite uma chamada falhada de cada vez em cada processo",
+      "Porque errno é copiado para a heap em cada chamada ao sistema",
+      "Porque errno é uma variável thread-local, com uma instância privada por thread"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "Quais são as duas funções de pthread_join()?",
+    "answers": [
+      "Cancelar a thread alvo e libertar o mutex que ela tinha adquirido",
+      "Bloquear todas as threads do processo e libertar a heap do processo",
+      "Bloquear o chamador até a thread alvo terminar e libertar os seus recursos",
+      "Criar a thread alvo e esperar que esta execute o seu primeiro printf antes de continuar"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.10"
+  },
+  {
+    "question": "Após criar duas threads, a main chama pthread_exit(NULL). O que acontece?",
+    "answers": [
+      "O processo termina de imediato e as duas threads são terminadas sem chegarem a concluir",
+      "A main termina, mas as outras threads continuam; o processo só acaba quando a última terminar",
+      "As duas threads são canceladas e ficam em estado zombie até a main ser esperada",
+      "O comportamento é indefinido, pois a main não pode chamar pthread_exit com threads ativas"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.12"
+  },
+  {
+    "question": "A main cria uma thread que ainda não terminou e executa return 0, sem pthread_join. O que pode acontecer?",
+    "answers": [
+      "O processo termina e a thread pode não chegar a concluir o seu trabalho",
+      "A thread continua a executar como processo órfão até concluir o seu trabalho",
+      "A main fica bloqueada até a thread terminar",
+      "A thread passa a ser executada pelo processo pai da main"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.12"
+  },
+  {
+    "question": "O que significa dizer que uma função é thread-safe?",
+    "answers": [
+      "Nunca usa variáveis globais nem estáticas",
+      "Pode ser interrompida e chamada de novo antes de terminar, sem corromper o seu estado interno",
+      "Só pode ser invocada pela thread principal do processo",
+      "Produz sempre resultados corretos mesmo com chamadas simultâneas de várias threads"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.30"
+  },
+  {
+    "question": "Uma função protege o seu estado interno com um mutex. Qual das afirmações é correta?",
+    "answers": [
+      "É sempre reentrante, pois o mutex garante que só uma thread de cada vez executa a função",
+      "É thread-safe, mas pode não ser reentrante, havendo risco de deadlock se for reentrada",
+      "Não é thread-safe, pois o mutex só protege acessos de outros processos",
+      "Não é thread-safe nem reentrante, pois usa estado partilhado"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.37"
+  },
+  {
+    "question": "Uma thread está dentro de fprintf (com o lock interno) e recebe um sinal cujo handler chama fprintf. Qual é a consequência provável?",
+    "answers": [
+      "O handler imprime primeiro e a thread retoma depois a escrita sem qualquer problema",
+      "O lock é cedido ao handler e a impressão da thread interrompida é descartada",
+      "Deadlock, pois o handler espera pelo lock, que a thread só liberta quando o handler terminar",
+      "A chamada de fprintf no handler falha de imediato com errno igual a EINTR"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.33"
+  },
+  {
+    "question": "Porque é que rand() não é thread-safe e qual é a versão reentrante?",
+    "answers": [
+      "Porque mantém estado interno partilhado (a semente); a alternativa é rand_r()",
+      "Porque devolve sempre o mesmo valor em todas as threads; a alternativa é srand()",
+      "Porque bloqueia a thread até terminar; a alternativa é sleep()",
+      "Porque usa a heap sem free; a alternativa é malloc()"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.34"
+  },
+  {
+    "question": "Qual das seguintes funções da biblioteca C é um exemplo de função que não é thread-safe?",
+    "answers": [
+      "malloc, que reserva blocos de memória na heap do processo",
+      "printf, que escreve no ecrã através do buffer do stdout",
+      "free, que devolve à heap os blocos antes reservados",
+      "strtok, que guarda estado interno entre chamadas"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.34"
+  },
+  {
+    "question": "Qual das seguintes características é própria de uma função reentrante?",
+    "answers": [
+      "Usa variáveis estáticas protegidas por um mutex, para que só uma thread as use de cada vez",
+      "Usa apenas variáveis locais, memória fornecida pelo chamador ou armazenamento thread-local",
+      "Guarda entre chamadas o resultado anterior numa variável global partilhada",
+      "Só pode ser chamada uma vez de cada vez em todo o processo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.36"
+  },
+  {
+    "question": "Qual é uma vantagem das threads de um processo sobre processos distintos para trocar dados?",
+    "answers": [
+      "O kernel sincroniza automaticamente todos os acessos às variáveis globais do processo",
+      "Cada thread recebe uma cópia privada das variáveis globais do processo",
+      "Partilham memória por omissão, sem precisarem de pipes nem de memória partilhada explícita",
+      "A ordem de execução das threads é determinista e por isso não há conflitos"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.9"
+  },
+  {
+    "question": "Qual é um dos principais inconvenientes das threads de um processo?",
+    "answers": [
+      "Cada thread tem de copiar o código do processo para a sua própria stack ao ser criada",
+      "As threads não podem aceder a variáveis globais do processo",
+      "Criar uma thread é mais lento do que criar um processo com fork()",
+      "A partilha de memória e a ordem não determinista podem causar bugs subtis"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.9"
+  },
+  {
+    "question": "Porque é que criar uma thread é geralmente mais rápido do que criar um processo?",
+    "answers": [
+      "Porque as threads não precisam de stack nem de registos próprios, partilhando os do processo",
+      "Porque a maior parte dos recursos (memória, ficheiros, sockets) é gerida por processo",
+      "Porque o kernel não regista as threads, escalonando apenas processos inteiros",
+      "Porque as threads são executadas sempre no mesmo CPU"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.8"
+  },
+  {
+    "question": "Em qual dos cenários existe uma data race?",
+    "answers": [
+      "Duas threads incrementam sem sincronização a mesma variável global",
+      "Duas threads só leem a mesma variável global",
+      "Cada thread escreve numa variável local da sua função",
+      "Duas threads escrevem em elementos de índice diferente de um array global"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.22"
+  },
+  {
+    "question": "Como se organizam as threads de um processo, em contraste com os processos?",
+    "answers": [
+      "Formam uma árvore em que a thread principal é pai das outras, como num processo com filhos",
+      "Formam uma árvore em que cada thread espera pelas threads que criou, como os processos",
+      "Formam um conjunto de pares (peers), sem hierarquia pai-filho, enquanto os processos formam uma árvore",
+      "Formam um conjunto de pares, tal como os processos, que também não têm hierarquia"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.7"
+  },
+  {
+    "question": "Num processo com várias threads, todas partilham a mesma tabela de descritores de ficheiros.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.6"
+  },
+  {
+    "question": "Quando duas threads de um processo executam, cada uma tem a sua própria instância de cada variável global.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.17"
+  },
+  {
+    "question": "Uma thread termina quando a sua função retorna ou quando chama pthread_exit().",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.10"
+  },
+  {
+    "question": "A mudança de contexto entre duas threads do mesmo processo obriga sempre a trocar a tabela de páginas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.8"
+  },
+  {
+    "question": "Todas as funções reentrantes são thread-safe.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.37"
+  },
+  {
+    "question": "Todas as funções thread-safe são reentrantes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.37"
+  },
+  {
+    "question": "errno é implementado como uma variável thread-local, existindo uma instância por thread.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.18"
+  },
+  {
+    "question": "A heap de um processo é privada de cada thread, pois só a thread que chama malloc consegue aceder ao bloco devolvido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.17"
+  },
+  {
+    "question": "O valor devolvido pela função de uma thread pode ser obtido por outra thread através de pthread_join().",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.10"
+  },
+  {
+    "question": "Chamar pthread_join() sobre uma thread que já terminou bloqueia o chamador indefinidamente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.13"
+  },
+  {
+    "question": "Se a main chamar exit() enquanto outras threads do processo ainda executam, todas elas terminam.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.12"
+  },
+  {
+    "question": "A função rand() é thread-safe por fazer parte da biblioteca C padrão.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.34"
+  },
+  {
+    "question": "Para haver uma data race, é necessário que pelo menos um dos acessos concorrentes à mesma variável seja uma escrita.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.22"
+  },
+  {
+    "question": "Uma função thread-safe pode ser chamada com segurança dentro de um handler de sinal.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.35"
+  },
+  {
+    "question": "Uma função reentrante não depende de estado global ou estático que persista entre invocações.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.36"
+  },
+  {
+    "question": "Duas threads do mesmo processo que executam a mesma função partilham o mesmo stack pointer.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.6"
+  },
+  {
+    "question": "Uma variável da stack de uma thread torna-se partilhada se o seu endereço for passado a outra thread.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T9 p.28"
+  },
+  {
+    "question": "Numa arquitetura multicore típica com caches L1 e L2 privadas por core, qual é o nível de cache normalmente partilhado por todos os cores?",
+    "answers": [
+      "A cache L1 de dados",
+      "A cache L1 de instruções",
+      "A cache L3",
+      "A cache L2 unificada de cada core"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.6"
+  },
+  {
+    "question": "Porque é que um único barramento partilhado deixa de escalar quando aumenta o número de cores de um sistema de memória partilhada?",
+    "answers": [
+      "Cada core passa a ter um espaço de endereçamento diferente, o que obriga a copiar os dados entre cores",
+      "O barramento só consegue transportar instruções e não dados",
+      "As caches privadas deixam de poder guardar dados partilhados",
+      "Mais cores geram mais acessos simultâneos à memória e o barramento torna-se um estrangulamento"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.5"
+  },
+  {
+    "question": "Qual é o âmbito da coerência de cache (cache coherence)?",
+    "answers": [
+      "Garantir que as escritas a variáveis diferentes são vistas por todos os cores pela ordem do programa",
+      "Impedir que dois threads executem a mesma secção crítica em simultâneo",
+      "Garantir que o compilador não reordena leituras e escritas de variáveis distintas",
+      "Garantir que todos os cores veem uma ordem coerente das escritas a uma mesma posição de memória"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.15"
+  },
+  {
+    "question": "Qual é o âmbito de um modelo de consistência de memória (memory consistency)?",
+    "answers": [
+      "Garantir que todos os cores veem o mesmo valor, em cada instante, para uma única posição de memória",
+      "Decidir que blocos de cache são substituídos quando a cache está cheia e há novos acessos",
+      "Definir em que ordem as leituras e escritas a várias posições de memória se tornam visíveis aos outros cores",
+      "Evitar que dois cores escrevam em simultâneo no mesmo endereço físico da memória principal"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.15"
+  },
+  {
+    "question": "Dois cores com caches write-back sem qualquer coerência. A memória tem a=1; o core 0 executa a=2 (valor só na sua cache) e depois o core 1 lê a. Que valor lê o core 1, se a linha ainda não foi escrita na memória?",
+    "answers": [
+      "2, pois a escrita é logo propagada para todas as caches",
+      "0, pois a linha é invalidada em todos os cores",
+      "Fica bloqueado até a linha ser escrita na memória",
+      "1, pois a memória ainda não foi atualizada"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.11"
+  },
+  {
+    "question": "Num protocolo snoopy, um core pede a leitura de um bloco que está em estado Modified na cache de outro core. O que acontece?",
+    "answers": [
+      "A leitura é satisfeita pela memória, que tem sempre o valor mais recente, e o bloco continua em Modified na outra cache",
+      "O bloco passa a Invalid na cache que o tinha e o pedido falha",
+      "O core que lê fica à espera de que o outro core termine o thread",
+      "A cache que o tem em Modified fornece o valor (a memória pode estar desatualizada) e o bloco passa a Shared"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.13"
+  },
+  {
+    "question": "Num protocolo de coerência por invalidação, um core escreve num bloco que outros cores têm em estado Shared. O que acontece às cópias nesses outros cores?",
+    "answers": [
+      "São atualizadas de imediato e mantêm-se Shared",
+      "Passam a Modified",
+      "São marcadas como Invalid",
+      "Mantêm-se Shared até serem substituídas na cache"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.10"
+  },
+  {
+    "question": "Num protocolo snoopy, o que significa um bloco de cache estar no estado Invalid?",
+    "answers": [
+      "O bloco só pode ser lido, nunca escrito",
+      "O valor guardado não pode ser usado",
+      "O bloco é a única cópia válida e já foi alterado",
+      "O bloco foi escrito na memória e removido da cache"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.12"
+  },
+  {
+    "question": "Com x e y inicialmente 0, o thread 1 executa x=1; r1=y; e o thread 2 executa y=1; r2=x;. Qual dos pares (r1,r2) é impossível sob consistência sequencial?",
+    "answers": [
+      "(0,1)",
+      "(1,0)",
+      "(1,1)",
+      "(0,0)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.18"
+  },
+  {
+    "question": "Com x e y a 0, o thread 1 faz x=1; y=1; e o thread 2 faz r1=y; r2=x;. Sob consistência sequencial, qual dos pares (r1,r2) é impossível?",
+    "answers": [
+      "(0,0)",
+      "(0,1)",
+      "(1,0)",
+      "(1,1)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.18"
+  },
+  {
+    "question": "Num processador com coerência de cache, o resultado de x=1; r1=y; (thread 1) e y=1; r2=x; (thread 2) pode ser r1=0 e r2=0. Qual é a causa mais provável?",
+    "answers": [
+      "As caches não são coerentes e, por isso, cada core lê sempre o valor inicial da memória",
+      "Cada leitura passa à frente da escrita anterior do seu thread, ainda num buffer",
+      "O compilador remove as escritas por considerar que as variáveis não são partilhadas",
+      "O barramento perde uma das escritas quando há dois acessos simultâneos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.23"
+  },
+  {
+    "question": "O que impede uma acquire barrier (memory fence)?",
+    "answers": [
+      "Que as operações posteriores passem para antes da barreira",
+      "Que as operações anteriores passem para depois da barreira",
+      "Que qualquer operação, anterior ou posterior, seja reordenada",
+      "Que o thread seja escalonado noutro core"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.25"
+  },
+  {
+    "question": "O que impede uma release barrier (memory fence)?",
+    "answers": [
+      "Que as operações posteriores passem para antes da barreira, garantindo leituras atuais",
+      "Que os threads de outros cores acedam à memória enquanto a barreira está a ser executada, por completo",
+      "Que as operações anteriores passem para depois da barreira, tornando visíveis as escritas anteriores",
+      "Que o buffer de escrita seja usado nas escritas posteriores à barreira, mesmo havendo coerência"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.25"
+  },
+  {
+    "question": "O que garante uma full barrier (memory fence)?",
+    "answers": [
+      "Que só as leituras não são reordenadas",
+      "Nenhuma reordenação de operações de memória através da barreira",
+      "Que só as escritas não são reordenadas",
+      "Que os restantes cores ficam parados até a barreira terminar a execução"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.25"
+  },
+  {
+    "question": "Com que mecanismos de baixo nível são normalmente implementados mutexes, semáforos e variáveis de condição?",
+    "answers": [
+      "Instruções atómicas (como CAS ou LL/SC) e barreiras de memória",
+      "Apenas instruções de salto condicional repetidas até a variável mudar",
+      "Desativação das caches durante a secção crítica",
+      "Cópia da variável partilhada para a cache L1 de cada thread"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.26"
+  },
+  {
+    "question": "Duas threads executam volatile int c; for(i=0;i<100000;i++) c++; sem mais sincronização. Porque pode o valor final ser inferior a 200000?",
+    "answers": [
+      "volatile não torna c++ atómico, pelo que atualizações de threads diferentes se podem perder",
+      "volatile guarda c na cache do core e as escritas só chegam à memória no fim do ciclo",
+      "O compilador remove metade dos incrementos, por os considerar redundantes",
+      "O escalonador termina um dos threads antes de este completar o ciclo todo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.37"
+  },
+  {
+    "question": "Vários threads fazem global_sum += i; sem sincronização, com todos os valores i positivos. Que resultado final é possível?",
+    "answers": [
+      "Um valor superior à soma correta, por atualizações repetidas",
+      "Um valor inferior à soma correta, por perda de atualizações",
+      "Sempre a soma correta, pois cada thread soma um intervalo diferente",
+      "Sempre o valor de um único thread, o último a terminar"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.35"
+  },
+  {
+    "question": "Cada thread soma o seu intervalo com for(...){lock(&m); s+=i; unlock(&m);} sobre uma variável global s. Porque pode a versão com 8 threads ser mais lenta do que a sequencial?",
+    "answers": [
+      "Os threads serializam-se no mutex, com custo de bloqueio e de coerência a cada iteração",
+      "O mutex obriga todos os threads a executarem em sequência no mesmo core da main durante todo o ciclo",
+      "O mutex desativa a cache de dados de todos os cores durante todo o ciclo",
+      "Cada thread repete o trabalho dos restantes threads, somando todo o intervalo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.39"
+  },
+  {
+    "question": "Cada thread soma um intervalo e acumula em global_sum com lock/unlock do mutex em cada iteração. Que alteração reduz mais a contenção mantendo o resultado correto?",
+    "answers": [
+      "Acumular numa variável local e fazer lock/unlock uma só vez, no fim",
+      "Remover o mutex e declarar global_sum como volatile, para evitar perder somas",
+      "Trocar o mutex por um semáforo, mantendo o mesmo número de operações no ciclo",
+      "Criar mais threads do que cores disponíveis, para ocupar os cores parados"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.48"
+  },
+  {
+    "question": "Dois threads, em cores diferentes, incrementam sem locks, em ciclos longos, c[0] e c[1] respetivamente, sendo c um vetor de long. O resultado é correto mas lento. Qual é a causa mais provável?",
+    "answers": [
+      "Race condition, pois ambos os threads escrevem exatamente na mesma variável",
+      "False sharing, pois c[0] e c[1] ficam provavelmente na mesma linha",
+      "Deadlock, pois cada thread espera que o outro liberte a linha de cache",
+      "Starvation de um dos threads, por falta de um mutex a proteger o vetor"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.44"
+  },
+  {
+    "question": "Um vetor de unsigned long (8 bytes), alinhado a 64 bytes, guarda um acumulador por thread. Qual é o menor espaçamento, em elementos, que coloca cada acumulador numa linha de cache distinta (linhas de 64 bytes)?",
+    "answers": [
+      "8",
+      "1",
+      "4",
+      "16"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.45"
+  },
+  {
+    "question": "Um vetor de unsigned long, alinhado a 64 bytes, é acedido com o índice 2*id (id de 0 a 7), com linhas de 64 bytes. Quantos threads partilham cada linha de cache?",
+    "answers": [
+      "4",
+      "2",
+      "8",
+      "16"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.44"
+  },
+  {
+    "question": "Com acumuladores de 8 bytes e linhas de cache de 64 bytes, porque é que afastar os acumuladores mais de 8 posições deixa de trazer benefício?",
+    "answers": [
+      "A partir de 8 posições os acumuladores deixam de caber na cache L1 do core",
+      "Com 8 posições cada acumulador já ocupa uma linha só sua, pelo que não há false sharing",
+      "Com mais de 8 posições o compilador volta a juntar os acumuladores na memória",
+      "O barramento de memória só consegue suportar 8 acessos em simultâneo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.45"
+  },
+  {
+    "question": "Um processador com 8 cores e 2 threads por core (Hyper-Threading) executa quantos threads de hardware em simultâneo?",
+    "answers": [
+      "8",
+      "10",
+      "16",
+      "32"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.32"
+  },
+  {
+    "question": "Um programa sequencial demora 12 s e a versão paralela com 4 threads demora 5 s. Qual é o speedup?",
+    "answers": [
+      "2,4",
+      "0,42",
+      "7",
+      "3"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.32"
+  },
+  {
+    "question": "A versão sequencial demora 6 s e a versão paralela com mutex a cada iteração demora 15 s. Qual é o speedup da versão paralela?",
+    "answers": [
+      "2,5",
+      "0,4",
+      "0,04",
+      "1,5"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.39"
+  },
+  {
+    "question": "Um programa soma 0..99 com 8 threads, cada um com 100/8 elementos consecutivos, e a main soma os restantes no fim. Quanto vale a soma que a main acumula?",
+    "answers": [
+      "96",
+      "4560",
+      "390",
+      "4950"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.34"
+  },
+  {
+    "question": "Soma de 0..99 com 8 threads, cada um com 12 elementos consecutivos (o thread id soma de id*12 a id*12+11). Quanto soma o thread 3?",
+    "answers": [
+      "36",
+      "1260",
+      "516",
+      "498"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.41"
+  },
+  {
+    "question": "Soma de 0..9 com 4 threads, cada um com 10/4 elementos, mas a main esquece-se de somar os elementos em falta. Que resultado é obtido, sendo 45 o correto?",
+    "answers": [
+      "45",
+      "28",
+      "17",
+      "280"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.34"
+  },
+  {
+    "question": "Para criar threads, o ciclo for(i=0;i<4;i++) pthread_create(&t[i],NULL,f,&i); passa o apontador de i. Qual é o problema?",
+    "answers": [
+      "Cada thread recebe uma cópia independente de i, mas sempre com o valor inicial 0",
+      "O pthread_create falha porque o argumento não pode ser o endereço de um inteiro",
+      "Os threads podem ler um valor de i já alterado pelo ciclo",
+      "O ciclo só cria um thread, pois a variável i é partilhada pelos threads"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.34"
+  },
+  {
+    "question": "Um servidor atende pedidos independentes de clientes, cada um num thread diferente, para aumentar o débito. Que tipo de paralelismo é este?",
+    "answers": [
+      "Paralelismo de dados (data-level), orientado à latência",
+      "Paralelismo ao nível da instrução, dentro do mesmo thread",
+      "Paralelismo de dados, pois todos os pedidos usam a mesma função",
+      "Paralelismo de tarefas (task-level), orientado ao débito"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.30"
+  },
+  {
+    "question": "Dividir a soma de um vetor grande em sub-intervalos somados por threads diferentes, para reduzir o tempo de uma única tarefa, é que tipo de paralelismo?",
+    "answers": [
+      "Paralelismo de tarefas (task-level), orientado ao débito",
+      "Paralelismo ao nível da instrução",
+      "Multitarefa cooperativa, sem threads",
+      "Paralelismo de dados (data-level), orientado à latência"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.30"
+  },
+  {
+    "question": "O thread 1, com m bloqueado, faz d=7 e depois pthread_mutex_unlock(&m). Mais tarde o thread 2 faz pthread_mutex_lock(&m) e lê d. Que valor lê?",
+    "answers": [
+      "Pode ler o valor antigo, pois o mutex não afeta a visibilidade das escritas feitas a d",
+      "0, pois d foi copiado para a cache do thread 2 no início da execução",
+      "7, pois o unlock/lock estabelece uma relação happens-before que garante a visibilidade",
+      "Depende de a variável d ter sido declarada como volatile"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.28"
+  },
+  {
+    "question": "A main cria 4 threads que somam em global_sum e lê global_sum logo a seguir ao ciclo de pthread_create, sem pthread_join. O que pode acontecer?",
+    "answers": [
+      "Ler sempre o valor final, pois os threads partilham o mesmo espaço de memória",
+      "O programa bloqueia até todos os threads terminarem",
+      "O pthread_create devolve erro se a main ler a variável",
+      "Ler um valor parcial, pois alguns threads ainda podem não ter terminado"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.34"
+  },
+  {
+    "question": "Um thread executa while(!done); com done uma variável int global, sem volatile nem sincronização, e outro thread coloca done=1. Porque pode o primeiro ciclo nunca terminar?",
+    "answers": [
+      "A cache do outro core nunca é atualizada, mesmo havendo coerência de cache",
+      "O escalonador não deixa o segundo thread executar enquanto o primeiro corre",
+      "A escrita done=1 é sempre perdida por não ser atómica",
+      "O compilador pode manter done num registo e não a voltar a ler"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.37"
+  },
+  {
+    "question": "Porque é que cada thread acumular numa variável local (registo) e escrever em psum[id] uma só vez é mais rápido do que fazer psum[id] += i a cada iteração?",
+    "answers": [
+      "Os registos são partilhados entre os threads e dispensam toda a sincronização",
+      "Evita ter de usar pthread_join no fim do programa",
+      "Evita acessos à memória e partilha de linhas durante o cálculo",
+      "Faz com que cada thread corra sempre no seu próprio core"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.47"
+  },
+  {
+    "question": "Um programa com 8 threads obtém um speedup de 6 face à versão sequencial. Qual é a eficiência, definida como o speedup a dividir pelo número de threads?",
+    "answers": [
+      "0,125",
+      "1,33",
+      "48",
+      "0,75"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.32"
+  },
+  {
+    "question": "A coerência de cache é necessária, mas não suficiente para garantir a ordem pela qual os threads observam operações a variáveis diferentes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.27"
+  },
+  {
+    "question": "A coerência de cache garante que as escritas a variáveis diferentes são vistas por todos os cores pela ordem em que o programa as executa.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.15"
+  },
+  {
+    "question": "A consistência sequencial é um modelo conceptual de referência e não o comportamento real do hardware moderno.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.16"
+  },
+  {
+    "question": "Os processadores x86 implementam exatamente consistência sequencial, sem qualquer reordenação de operações de memória.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.19"
+  },
+  {
+    "question": "Dois threads podem sofrer false sharing mesmo escrevendo em variáveis diferentes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.44"
+  },
+  {
+    "question": "O false sharing só ocorre quando dois threads escrevem na mesma variável.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.46"
+  },
+  {
+    "question": "Com acumuladores de 8 bytes e linhas de cache de 64 bytes, afastar os acumuladores mais de 8 posições não reduz mais o false sharing.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.45"
+  },
+  {
+    "question": "Proteger com um mutex cada iteração de um ciclo que atualiza uma variável global é a solução que melhor escala com o número de threads.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.39"
+  },
+  {
+    "question": "A variante em que cada thread acumula numa variável local e só no fim soma ao total, com um único lock, é mais rápida do que usar um lock em cada iteração.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.48"
+  },
+  {
+    "question": "Em consistência relaxada, uma leitura posterior nunca pode ser concluída antes de uma escrita anterior do mesmo thread a outro endereço.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.20"
+  },
+  {
+    "question": "Mutexes e semáforos são implementados com instruções atómicas e barreiras de memória.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.26"
+  },
+  {
+    "question": "Num protocolo snoopy, um bloco em estado Modified implica que a memória principal já contém o valor mais recente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.13"
+  },
+  {
+    "question": "Num protocolo de coerência por invalidação, quando um core escreve num bloco, as cópias desse bloco nos outros cores ficam inválidas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.10"
+  },
+  {
+    "question": "Uma release barrier impede que operações posteriores passem para antes da barreira.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.25"
+  },
+  {
+    "question": "Uma full barrier impede qualquer reordenação de operações de memória através dela.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.25"
+  },
+  {
+    "question": "Um speedup inferior a 1 significa que a versão paralela é mais rápida do que a versão de referência.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.32"
+  },
+  {
+    "question": "O speedup depende da qualidade da versão de referência (baseline) usada na comparação.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.32"
+  },
+  {
+    "question": "Declarar uma variável como volatile garante que os incrementos a essa variável feitos por vários threads são atómicos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T10 p.37"
+  },
+  {
+    "question": "int g=0; void*f(void*a){g+=5;return NULL;} Em main, cria uma thread com f e faz join; repete essa operação uma vez e depois executa printf(\"%d\",g). Que valor se imprime?",
+    "answers": [
+      "5",
+      "0",
+      "10",
+      "Indeterminado, pois cada thread altera a sua cópia de g"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.3"
+  },
+  {
+    "question": "O filho de um fork() executa g=7; exit(0); e o pai faz wait(NULL) e imprime a global g (inicialmente 0). Se g=7 fosse executado por uma thread (com join), o que imprimiria o pai em cada caso (processo, thread)?",
+    "answers": [
+      "7 em ambos os casos",
+      "0 com o processo filho e 7 com a thread",
+      "0 em ambos os casos",
+      "7 com o processo filho e 0 com a thread"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.2"
+  },
+  {
+    "question": "void*f(void*a){*(int*)a*=3;return NULL;} Em main: int x=4; pthread_create(&t,NULL,f,&x); pthread_join(t,NULL); printf(\"%d\",x); Que valor se imprime?",
+    "answers": [
+      "4",
+      "3",
+      "Indefinido, pois a thread recebe uma cópia de x",
+      "12"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.24"
+  },
+  {
+    "question": "void*f(void*a){int*r=malloc(4); *r=*(int*)a+1; pthread_exit(r);} Em main: int x=9; void*r; pthread_create(&t,NULL,f,&x); pthread_join(t,&r); printf(\"%d %d\",x,*(int*)r); Que saída se produz?",
+    "answers": [
+      "9 10",
+      "10 10, pois a thread incrementa x",
+      "9 9",
+      "10 9"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.31"
+  },
+  {
+    "question": "typedef struct{int a,b;}P; void*f(void*p){P*q=p; q->a+=q->b; return NULL;} Em main: P v={2,3}; cria uma thread com f e &v, faz join e imprime v.a. Que valor se imprime?",
+    "answers": [
+      "2, pois a thread trabalha numa cópia de v",
+      "3",
+      "6",
+      "5"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.21"
+  },
+  {
+    "question": "Uma thread executa printf(\"A\\n\"); fflush(stdout); exit(3); e main faz pthread_join(t,NULL); printf(\"B\\n\"); Qual o efeito?",
+    "answers": [
+      "Imprime A e B; o processo termina com estado 0",
+      "Imprime A e todo o processo termina com estado 3; B não é impresso",
+      "Imprime A e B; o processo termina com estado 3",
+      "Imprime A; só a thread termina e main fica bloqueada no join para sempre"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.19"
+  },
+  {
+    "question": "void*f(void*a){printf(\"%d \",*(int*)a); return NULL;} Em main: for(i=0;i<3;i++){pthread_create(&t,NULL,f,&i); pthread_join(t,NULL);} Que saída se produz?",
+    "answers": [
+      "3 3 3",
+      "0 0 0",
+      "Não é determinista, porque a thread lê i através de um apontador",
+      "0 1 2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.25"
+  },
+  {
+    "question": "int r[4]; void*f(void*a){int i=*(int*)a; r[i]=i*i; return NULL;} Em main: int a[4]; cria 4 threads com &a[i] (a[i]=i), faz join a todas e imprime r[0]+r[1]+r[2]+r[3]. Que valor se imprime?",
+    "answers": [
+      "6, a soma de 0 a 3",
+      "0",
+      "30",
+      "14"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.26"
+  },
+  {
+    "question": "void*f(void*a){static int n=0; n++; return &n;} main cria e espera (join) por 3 threads, uma após a outra, e imprime *(int*)r, sendo r o valor devolvido pelo último join. Que valor se imprime?",
+    "answers": [
+      "1",
+      "3",
+      "0",
+      "Indefinido, pois o endereço é de uma variável local"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.30"
+  },
+  {
+    "question": "void*f(void*a){int n=0; n++; int*r=malloc(4); *r=n; return r;} main cria e espera por 3 threads, uma após a outra, soma os valores devolvidos (*r) e imprime a soma. Que valor se imprime?",
+    "answers": [
+      "6, pois cada thread vê o valor da anterior",
+      "1",
+      "3",
+      "0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.31"
+  },
+  {
+    "question": "void*g2(void*a){puts(\"B\");return 0;} pthread_t t2; void*f(void*a){puts(\"A\"); pthread_create(&t2,0,g2,0); return 0;} Em main: cria t1 (f); join(t1); join(t2); puts(\"C\"). Qual a saída?",
+    "answers": [
+      "A, B, C",
+      "A, C, B",
+      "A, B, C ou A, C, B, consoante o escalonamento",
+      "C, A, B"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.18"
+  },
+  {
+    "question": "Após pipe(p), uma thread executa close(p[1]) e termina. Depois do join, main executa write(p[1],\"x\",1). O que devolve este write?",
+    "answers": [
+      "1, pois cada thread tem a sua própria tabela de descritores",
+      "1, pois p[1] só fecha quando o processo termina",
+      "0, pois já não há leitores no pipe",
+      "-1, pois p[1] já foi fechado e a tabela é partilhada"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.3"
+  },
+  {
+    "question": "void*f(void*a){((char*)a)[0]=88; return NULL;} Em main: char s[]=\"SCOMP\"; pthread_create(&t,NULL,f,s); pthread_join(t,NULL); printf(\"%s\",s); (88 é o código de X). Que saída se produz?",
+    "answers": [
+      "XCOMP",
+      "SCOMPX",
+      "XSCOMP, pois a thread acrescenta um carácter",
+      "X"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.22"
+  },
+  {
+    "question": "int v[6]={3,9,2,8,5,7}, m[2]; cada thread k (0 ou 1) guarda em m[k] o máximo de v[3k..3k+2]. Após join às duas, main imprime m[0] e m[1]. Que valores se imprimem?",
+    "answers": [
+      "9 e 9",
+      "3 e 5",
+      "9 e 8",
+      "9 e 7"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.32"
+  },
+  {
+    "question": "void*f(void*a){return a;} Em main: int x=5; void*r; c=pthread_create(&t,NULL,f,&x); pthread_join(t,&r); printf(\"%d %d\",c,r==&x); Que valores se imprimem?",
+    "answers": [
+      "0 0",
+      "0 1",
+      "-1 0, pois a criação falhou",
+      "1 1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.8"
+  },
+  {
+    "question": "int g=0; void*f(void*a){int i; for(i=0;i<1000;i++) g++; return NULL;} Em main: create(f); join; create(f); join; printf(\"%d\",g). Que valor se imprime?",
+    "answers": [
+      "1000",
+      "Um valor entre 1000 e 2000",
+      "Um valor inferior a 2000, por haver race condition",
+      "2000"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.5"
+  },
+  {
+    "question": "f executa pthread_exit(NULL); printf(\"X\"); e main faz void*r=&t; pthread_join(t,&r); printf(\"%d\",r==NULL). Que saída se produz?",
+    "answers": [
+      "1",
+      "X1, pois o printf executa antes de a thread terminar",
+      "X0",
+      "0, pois o join não altera o valor de r"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.13"
+  },
+  {
+    "question": "int g[3]; void*f(void*a){int i=*(int*)a; g[i]=i+1; return NULL;} Em main: for(i=0;i<3;i++){pthread_create(&t,0,f,&i); pthread_join(t,0);} printf(\"%d%d%d\",g[0],g[1],g[2]). Que saída se produz?",
+    "answers": [
+      "333, pois todas as threads leem o i final",
+      "123",
+      "111",
+      "000"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.25"
+  },
+  {
+    "question": "Cada thread i (a[i]=i+1) devolve um bloco malloc com o valor 2*a[i]. main cria 3 threads e faz join por ordem t[2], t[1], t[0], acumulando s=s*10+valor. Que valor tem s no fim?",
+    "answers": [
+      "246",
+      "Indefinido, pois o join tem de seguir a ordem de criação",
+      "123",
+      "642"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.14"
+  },
+  {
+    "question": "Em main, fork() cria um filho onde uma thread executa g=*(int*)a (com x=8) e main do filho faz join e exit(0). O pai faz wait() e imprime g, inicialmente 0. O que imprime o pai?",
+    "answers": [
+      "0",
+      "8",
+      "Indefinido, pois g é partilhada entre pai e filho",
+      "-1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.2"
+  },
+  {
+    "question": "int c1=pthread_create(&t,NULL,f,NULL); int c2=pthread_join(t,NULL); printf(\"%d%d\",c1,c2); (f termina com return NULL e não ocorre qualquer erro). Que saída se produz?",
+    "answers": [
+      "-1-1",
+      "11",
+      "00",
+      "01"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.14"
+  },
+  {
+    "question": "Em main, depois de pthread_create(&t,NULL,f,NULL), executa-se printf(\"%d\",pthread_equal(pthread_self(),t)!=0). Que valor se imprime?",
+    "answers": [
+      "1, pois pthread_self() devolve o identificador da última thread criada",
+      "1, pois pthread_self() devolve sempre o identificador da primeira thread",
+      "0, pois pthread_self() devolve o identificador de main, diferente de t",
+      "Indefinido, pois os identificadores não podem ser comparados"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.12"
+  },
+  {
+    "question": "Duas threads executam, uma vez cada, g++ sobre uma variável global g inicializada a 0, sem sincronização. Após o join às duas, que valores finais de g são possíveis?",
+    "answers": [
+      "Apenas 2",
+      "0, 1 ou 2",
+      "1 ou 2",
+      "1, 2 ou 3"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.5"
+  },
+  {
+    "question": "main: int i, j; for(i=0;i<3;i++) pthread_create(&t[i],NULL,f,&i); for(j=0;j<3;j++) pthread_join(t[j],NULL); A função f lê *(int*)a uma única vez. Qual dos valores nunca pode ser lido por uma thread?",
+    "answers": [
+      "4",
+      "0",
+      "2",
+      "3"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.25"
+  },
+  {
+    "question": "void*f(void*a){int x=45; pthread_exit(&x);} main: pthread_join(t,&r); printf(\"%d\",*(int*)r). Qual o problema?",
+    "answers": [
+      "pthread_exit não aceita apontadores como argumento",
+      "O valor 45 é perdido porque o join devolve sempre NULL a quem usa pthread_exit",
+      "x não foi inicializado antes de pthread_exit",
+      "r aponta para a stack de uma thread já terminada: comportamento indefinido"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.29"
+  },
+  {
+    "question": "O que é privado a cada thread de um processo?",
+    "answers": [
+      "O heap, a stack e os registos",
+      "A stack, os registos e o Program Counter",
+      "A tabela de descritores de ficheiros e a stack",
+      "O código, os dados globais e o Program Counter"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.3"
+  },
+  {
+    "question": "Qual dos recursos é partilhado por todas as threads de um processo?",
+    "answers": [
+      "O heap",
+      "A stack",
+      "O Program Counter",
+      "Os registos do CPU"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.3"
+  },
+  {
+    "question": "Uma thread desreferencia um apontador NULL, recebendo SIGSEGV sem handler instalado. Qual a consequência?",
+    "answers": [
+      "Só essa thread termina e as restantes continuam",
+      "Só a thread main é terminada",
+      "O processo inteiro termina, incluindo todas as suas threads",
+      "O kernel cria uma nova thread para substituir a que falhou"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.5"
+  },
+  {
+    "question": "Que diferença existe entre pthread_join() e wait() quanto a quem pode ser esperado?",
+    "answers": [
+      "join só pode esperar por threads criadas pela thread que o chama, tal como wait",
+      "join pode esperar por qualquer thread do processo; wait só por filhos do processo",
+      "wait pode esperar por qualquer processo do sistema",
+      "join só pode ser chamado pela thread main"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.18"
+  },
+  {
+    "question": "Que característica torna uma função não thread-safe?",
+    "answers": [
+      "Usar apenas variáveis locais, guardadas na stack de cada chamada",
+      "Receber os argumentos por valor em vez de por apontador",
+      "Devolver um valor do tipo int em vez de void*",
+      "Usar variáveis static ou globais partilhadas sem sincronização"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.17"
+  },
+  {
+    "question": "Em que condição o POSIX garante que um write() num pipe não entrelaça com o write() de outras threads?",
+    "answers": [
+      "Quando o descritor foi aberto em modo bloqueante",
+      "Sempre, independentemente da dimensão",
+      "Quando se usa printf antes do write",
+      "Quando o número de bytes escritos não excede PIPE_BUF"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.17"
+  },
+  {
+    "question": "O que devolve pthread_create() quando falha, por exemplo por falta de recursos?",
+    "answers": [
+      "Um número de erro positivo (diferente de zero)",
+      "-1 e coloca o código do erro em errno, como as system calls",
+      "NULL, tal como o malloc quando falha",
+      "Um identificador de thread inválido, a testar com pthread_equal"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.8"
+  },
+  {
+    "question": "Quanto à unicidade dos identificadores de thread (pthread_t)?",
+    "answers": [
+      "São únicos em todo o sistema, como os PIDs",
+      "São sempre iguais ao PID do processo",
+      "Só são únicos dentro do processo a que pertencem",
+      "Só são únicos para as threads criadas pela mesma função"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.9"
+  },
+  {
+    "question": "Como se passam três valores inteiros à função de uma thread, sabendo que pthread_create aceita apenas um argumento?",
+    "answers": [
+      "Passando três argumentos separados por vírgula",
+      "Encapsulando-os numa struct e passando um apontador para ela",
+      "Passando um array de apontadores void* por valor",
+      "Chamando pthread_create três vezes com a mesma thread"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.10"
+  },
+  {
+    "question": "main termina (return) sem fazer join e sem chamar pthread_exit, enquanto as outras threads ainda executam. O que acontece?",
+    "answers": [
+      "As threads continuam até acabarem; só main termina",
+      "As threads passam a ser órfãs, adotadas pelo init",
+      "O processo fica em zombie até as threads acabarem",
+      "O processo e todas as threads terminam"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.19"
+  },
+  {
+    "question": "Qual destas formas de devolver um valor de uma thread, via pthread_exit, é segura?",
+    "answers": [
+      "Apontar para uma variável local da thread",
+      "Apontar para um bloco obtido com malloc",
+      "Apontar para um array local da start_routine",
+      "Apontar para o endereço do parâmetro arg (&arg)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.30"
+  },
+  {
+    "question": "Quando termina um processo com várias threads, sem exit() nem sinais fatais?",
+    "answers": [
+      "Quando termina a última thread",
+      "Quando termina a thread main",
+      "Quando termina a primeira thread criada",
+      "Quando terminam as threads criadas por pthread_create"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.19"
+  },
+  {
+    "question": "Os valores de variáveis globais escritos por uma thread ficam visíveis para main depois de esta fazer pthread_join a essa thread.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.3"
+  },
+  {
+    "question": "Uma thread que não seja main pode fazer pthread_join a uma thread, ainda não esperada, criada por outra thread do mesmo processo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.18"
+  },
+  {
+    "question": "Uma thread termina quando a sua start_routine executa return.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.19"
+  },
+  {
+    "question": "Em caso de sucesso, pthread_create devolve 0.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.8"
+  },
+  {
+    "question": "Se main chamar pthread_exit, as restantes threads continuam a executar até terminarem.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.21"
+  },
+  {
+    "question": "Uma função que guarda o resultado numa variável static pode devolver resultados incorretos quando chamada em simultâneo por várias threads.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.17"
+  },
+  {
+    "question": "Depois de pthread_create(&t,NULL,f,NULL); pthread_join(t,NULL); a thread t já terminou quando o join retorna.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.14"
+  },
+  {
+    "question": "Uma thread pode aceder à stack de outra thread do mesmo processo, se tiver o seu endereço.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.3"
+  },
+  {
+    "question": "Os identificadores de thread devem ser comparados com pthread_equal() por questões de portabilidade.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.12"
+  },
+  {
+    "question": "Cada thread de um processo tem a sua própria tabela de descritores de ficheiros.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.3"
+  },
+  {
+    "question": "Se uma thread chamar pthread_exit(), o processo inteiro termina de imediato.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.5"
+  },
+  {
+    "question": "Quando pthread_create falha, devolve -1 e atribui o código de erro a errno.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.8"
+  },
+  {
+    "question": "Cada thread de um processo tem o seu próprio conjunto de variáveis globais.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.3"
+  },
+  {
+    "question": "A função pthread_join falha de imediato se a thread esperada ainda estiver a executar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.19"
+  },
+  {
+    "question": "Ao passar &x a pthread_create, a thread recebe uma cópia do valor de x.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.24"
+  },
+  {
+    "question": "Duas threads do mesmo processo têm sempre o mesmo valor de pthread_self().",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.11"
+  },
+  {
+    "question": "No ciclo for(i=0;i<5;i++) pthread_create(&t[i],NULL,f,&i); cada thread recebe sempre o valor de i da sua iteração.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.25"
+  },
+  {
+    "question": "A mudança de contexto entre threads do mesmo processo exige trocar o espaço de endereçamento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP11 p.4"
+  },
+  {
+    "question": "Com m inicializado por defeito, a thread principal executa pthread_mutex_lock(&m); r=pthread_mutex_trylock(&m); printf(\"%d\",r==EBUSY); Que acontece?",
+    "answers": [
+      "Imprime 0, pois a thread que já detém o mutex volta a adquiri-lo com sucesso",
+      "Imprime 0, pois a thread que já detém o mutex volta a adquiri-lo com sucesso, sem bloquear nem erro",
+      "Imprime 1, pois trylock não bloqueia e devolve EBUSY mesmo quando o mutex pertence à própria thread",
+      "Imprime 0, pois EBUSY só é devolvido quando é outra thread a deter o mutex"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.11"
+  },
+  {
+    "question": "f executa r=pthread_mutex_trylock(&m); printf(\"%d \",r==EBUSY); main faz lock(&m); cria f; join; unlock(&m); cria f outra vez; join. Que é impresso?",
+    "answers": [
+      "1 0, pois o mutex só está ocupado durante a primeira thread",
+      "1 1, pois trylock devolve sempre EBUSY quando chamado numa thread secundária",
+      "0 0, pois trylock só falha quando chamado pela thread que fez lock",
+      "0 1, pois o mutex só fica ocupado depois do unlock da thread principal"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.11"
+  },
+  {
+    "question": "Três threads executam cada uma for(i=0;i<1000;i++){pthread_mutex_lock(&m); g++; pthread_mutex_unlock(&m);} sobre a global g=0. Depois dos três join, qual é o valor de g?",
+    "answers": [
+      "1000, pois só uma das threads consegue percorrer o ciclo completo",
+      "Entre 1000 e 3000, pois g++ não é atómico mesmo com mutex",
+      "Um valor indeterminado, pois a ordem dos lock não é garantida",
+      "3000, pois o mutex torna cada incremento exclusivo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.14"
+  },
+  {
+    "question": "main: lock(&m); cria f; printf(\"A \"); unlock(&m); join; printf(\"C \"). f: lock(&m); printf(\"B \"); unlock(&m). Que é sempre impresso?",
+    "answers": [
+      "B A C, pois a thread criada executa sempre antes do printf seguinte de main",
+      "A B C, pois f só obtém o mutex depois de main o libertar",
+      "A C B, pois o join só espera pela libertação do mutex pela thread f",
+      "A ou B primeiro, consoante o escalonamento, e depois C"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.13"
+  },
+  {
+    "question": "f: lock(&m); while(!ready) pthread_cond_wait(&c,&m); printf(\"go \"); unlock(&m). main põe ready=1 sob mutex ANTES de criar f, faz join e imprime end. Porque termina o programa?",
+    "answers": [
+      "A condição já é verdadeira, logo o while não chama wait e f não bloqueia",
+      "O join envia um signal à variável de condição quando f é criada",
+      "O wait regressa sempre logo que ninguém esteja a fazer signal",
+      "A criação da thread liberta todas as variáveis de condição que estejam bloqueadas"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.30"
+  },
+  {
+    "question": "Com m bloqueado, a thread faz pthread_cond_signal(&c) sem threads em espera e depois pthread_cond_timedwait(&c,&m,&ts) com ts daí a 200 ms. O que acontece?",
+    "answers": [
+      "Regressa de imediato com 0, pois o signal anterior fica guardado até alguém o consumir depois",
+      "Devolve ETIMEDOUT, mas m fica livre depois do regresso porque o tempo expirou",
+      "Devolve ETIMEDOUT, pois o signal não ficou guardado, e m volta a estar bloqueado pela thread ao regressar",
+      "Bloqueia para sempre, pois o tempo limite só conta quando houver um signal"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.22"
+  },
+  {
+    "question": "3 threads: lock; w++; while(!ready) wait(&c,&m); woken++; unlock. main espera w==3, faz lock; ready=1; broadcast; unlock; join às 3; imprime woken. Que imprime?",
+    "answers": [
+      "1, pois só uma thread consegue readquirir o mutex após o broadcast",
+      "3, pois o broadcast acorda todas e cada uma incrementa woken sob o mutex",
+      "0, pois ready foi alterado depois de as threads começarem a esperar",
+      "Um valor entre 0 e 3, pois o broadcast é entregue às threads por ordem de chegada ao wait"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.23"
+  },
+  {
+    "question": "Produtor, i=1..3: lock; while(full) wait(ce); v=i; full=1; signal(cf); unlock. Consumidor, 3 vezes: lock; while(!full) wait(cf); s=s*10+v; full=0; signal(ce); unlock. s=0 no início. Valor final de s?",
+    "answers": [
+      "321",
+      "3",
+      "Indeterminado, pois a ordem de consumo depende do escalonamento",
+      "123"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.30"
+  },
+  {
+    "question": "int x=21; f(void*a){int*p=a; *p=*p*2; return NULL;} main cria uma thread com f e &x, faz join e imprime x. Qual o valor impresso?",
+    "answers": [
+      "42, pois a thread altera a stack da thread principal através do endereço",
+      "21, pois a thread recebe uma cópia de x",
+      "0, pois a stack de outra thread não é acessível",
+      "Comportamento indefinido, pois x está na stack e não na heap partilhada"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.4"
+  },
+  {
+    "question": "Duas threads (id 0 e 1), 2 iterações cada: lock; while(turn!=id) wait(&c,&m); printf(\"%d\",id); turn=1-id; broadcast(&c); unlock. Com turn=0 inicial, o que se imprime?",
+    "answers": [
+      "0011",
+      "0101",
+      "1010",
+      "Depende de qual das threads foi criada primeiro"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.30"
+  },
+  {
+    "question": "Duas threads somam metade de a[10]={1,...,10} cada uma, acumulando numa local l e fazendo lock; s+=l; unlock no fim do ciclo. Qual o valor final de s e quantos lock faz cada thread?",
+    "answers": [
+      "55 e cinco lock por thread, um por elemento",
+      "55 e um lock por thread, com contenção máxima",
+      "55 e um lock por thread",
+      "Entre 15 e 55 e um lock por thread"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.15"
+  },
+  {
+    "question": "Após pthread_cond_wait(&c,&m) regressar numa thread, esta executa pthread_mutex_trylock(&m). Qual o resultado e porquê?",
+    "answers": [
+      "0, porque wait deixa o mutex livre ao regressar",
+      "0, porque o signal executado pela outra thread já libertou m",
+      "Bloqueia, porque a thread que fez signal ainda detém m",
+      "EBUSY, porque wait readquire o mutex antes de regressar"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.20"
+  },
+  {
+    "question": "Duas threads fazem cada uma 500 vezes: lock(&m); n++; (*p)++; unlock(&m), com n global e p a apontar para a variável local l[i] de main, distinta para cada thread. Valores finais de n, l[0] e l[1]?",
+    "answers": [
+      "1000, 1000 e 1000, pois as variáveis são partilhadas por todas as threads",
+      "500, 500 e 500, pois n é protegido por um só mutex e não existe cópia",
+      "1000, 500 e 500",
+      "1000, 500 e 0, pois apenas a primeira thread usa a sua variável l"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.4"
+  },
+  {
+    "question": "main: lock(&b); cria f; join. f: lock(&a); r=pthread_mutex_trylock(&b); printf(\"%d\",r==EBUSY); unlock(&a). Que acontece?",
+    "answers": [
+      "f imprime 1 e o programa termina, pois trylock não bloqueia",
+      "f imprime 1, mas o programa fica em deadlock",
+      "f imprime 0 e o programa termina",
+      "f bloqueia no trylock e main fica em join para sempre, num deadlock entre as duas"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.11"
+  },
+  {
+    "question": "2 threads: lock; w++; if(n==0) wait(&c,&m); n--; unlock. Com n=0, main espera w==2, faz lock; n++; broadcast; unlock; join; imprime n. Que imprime?",
+    "answers": [
+      "0, pois só uma thread decrementa n",
+      "-1, pois ambas decrementam n sem testar de novo a condição",
+      "1, pois o broadcast incrementa n uma vez",
+      "Nada, pois uma das threads fica bloqueada em wait para sempre e main nunca imprime"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.29"
+  },
+  {
+    "question": "f: pthread_mutex_lock(&m); return NULL. main cria f, faz join e imprime pthread_mutex_trylock(&m)==EBUSY. O que imprime?",
+    "answers": [
+      "0, pois o sistema liberta os mutexes de uma thread quando esta termina",
+      "0, pois o join desbloqueia os mutexes da thread esperada",
+      "Nada, pois trylock bloqueia até alguém libertar o mutex",
+      "1, pois o mutex continua bloqueado depois de a thread terminar"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.12"
+  },
+  {
+    "question": "O que faz pthread_cond_wait(&c,&m) chamada com m bloqueado pela própria thread?",
+    "answers": [
+      "Bloqueia a thread, mantendo m bloqueado até chegar o signal, que o liberta depois",
+      "Liberta m e regressa de imediato, ficando a thread a testar a condição em ciclo",
+      "Liberta m e bloqueia a thread, readquirindo m antes de regressar",
+      "Bloqueia a thread e deixa o signal libertar m mais tarde"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.20"
+  },
+  {
+    "question": "Uma thread testa if(elements==0) e chama cond_wait sem mutex; outra faz elements++ e cond_signal. Que problema pode ocorrer?",
+    "answers": [
+      "O signal fica em fila e acorda a primeira thread quando esta chamar wait, na chamada seguinte ao teste",
+      "O signal ocorre entre o teste e o wait, perde-se, e a thread bloqueia com elements>0",
+      "Ambas as threads entram em deadlock por um mutex que nenhuma bloqueou",
+      "A segunda thread bloqueia no signal até a primeira chamar wait"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.25"
+  },
+  {
+    "question": "Porque é obrigatório envolver pthread_cond_wait num while que reteste a condição?",
+    "answers": [
+      "A thread pode acordar sem signal, ou outra thread alterar os dados antes de ela readquirir o mutex",
+      "O wait pode regressar sem ter libertado o mutex, deixando a condição por validar",
+      "O signal só acorda a thread quando o mutex estiver livre, pelo que a condição muda sempre",
+      "O compilador remove o teste da condição se este não estiver dentro de um ciclo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.28"
+  },
+  {
+    "question": "Quando é mais adequado usar pthread_cond_broadcast em vez de pthread_cond_signal?",
+    "answers": [
+      "Quando se pretende guardar a notificação para a próxima thread que chamar wait, mesmo sem threads à espera",
+      "Quando se pretende acordar só a thread que esperou há mais tempo",
+      "Quando nenhuma thread está bloqueada e a notificação deve ficar pendente",
+      "Quando várias threads esperam a mesma mudança de estado e todas devem retestar a condição"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.23"
+  },
+  {
+    "question": "Qual a diferença entre um mutex e um semáforo quanto a quem pode libertá-lo?",
+    "answers": [
+      "Um mutex pode ser libertado por qualquer thread, mas um semáforo só pode ser libertado por quem fez wait antes",
+      "O mutex deve ser libertado pela thread que o bloqueou; no semáforo, qualquer thread pode fazer post",
+      "Ambos só podem ser libertados pela thread que os adquiriu",
+      "Nenhum dos dois tem dono, pelo que qualquer thread pode libertar qualquer um"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.12"
+  },
+  {
+    "question": "O que acontece a uma thread que chama pthread_mutex_lock num mutex ocupado por outra thread?",
+    "answers": [
+      "Fica suspensa pelo escalonador, sem consumir CPU, até o mutex ser libertado",
+      "Fica em espera ativa a testar o mutex repetidamente em ciclo, consumindo o seu quantum de CPU",
+      "Devolve EBUSY de imediato e continua a execução",
+      "Termina com erro e o mutex passa a estar destruído"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.10"
+  },
+  {
+    "question": "Qual a vantagem de pthread_mutex_trylock face a pthread_mutex_lock?",
+    "answers": [
+      "Garante que o mutex é sempre adquirido, mesmo estando ocupado",
+      "Garante que o mutex é sempre adquirido, mesmo estando ocupado, pondo a thread em espera",
+      "Ao receber EBUSY, a thread pode fazer outro trabalho e tentar mais tarde, em vez de bloquear",
+      "Permite desbloquear mutexes bloqueados por outras threads"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.11"
+  },
+  {
+    "question": "Para que serve pthread_mutex_timedlock?",
+    "answers": [
+      "Para manter o mutex bloqueado durante um tempo fixo e libertá-lo automaticamente depois disso",
+      "Para o mutex ser libertado se a thread demorar demasiado na secção crítica",
+      "Para adquirir o mutex em qualquer instante, mesmo ocupado",
+      "Para limitar o tempo de espera por um mutex, evitando bloqueios indefinidos"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.11"
+  },
+  {
+    "question": "T1 faz lock(&A); lock(&B) e T2 faz lock(&B); lock(&A), sem libertar entre eles. O que pode acontecer e como se evita?",
+    "answers": [
+      "Deadlock se cada uma obtiver o primeiro mutex; evita-se aumentando o quantum das threads",
+      "Deadlock se cada uma obtiver o primeiro mutex; evita-se com a mesma ordem de aquisição",
+      "Race condition sobre A e B; evita-se retirando os mutexes",
+      "Deadlock em todas as execuções; evita-se criando um mutex adicional"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.10"
+  },
+  {
+    "question": "Num processo com várias threads, que memória é privada de cada thread?",
+    "answers": [
+      "A stack, onde estão as variáveis locais",
+      "A heap alocada com malloc",
+      "As variáveis globais",
+      "O código do programa e as variáveis estáticas, replicados em cada thread"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.4"
+  },
+  {
+    "question": "Porque pode counter ficar abaixo de 200000 quando duas threads fazem 100000 vezes counter++ sem mutex?",
+    "answers": [
+      "O compilador executa counter++ duas vezes em paralelo",
+      "O compilador executa counter++ duas vezes em paralelo, duplicando algumas atualizações do contador",
+      "counter++ é load, incremento e store, e duas threads podem ler o mesmo valor e perder uma atualização",
+      "O kernel descarta incrementos de threads concorrentes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.5"
+  },
+  {
+    "question": "O que sucede se uma thread usar um mutex depois de pthread_mutex_destroy, sem o reinicializar?",
+    "answers": [
+      "O mutex volta ao estado por defeito e funciona normalmente",
+      "lock devolve sempre EBUSY",
+      "O programa termina sempre com SIGSEGV",
+      "O comportamento é indefinido"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.9"
+  },
+  {
+    "question": "Qual a função de uma variável de condição, face ao mutex que lhe está associado?",
+    "answers": [
+      "Guardar o valor da condição e avisar as threads, ficando o mutex apenas para proteger a chamada a wait",
+      "Suspender e acordar threads consoante o estado partilhado, que o mutex protege com exclusão mútua",
+      "Garantir exclusão mútua sobre o estado, enquanto o mutex acorda as threads",
+      "Substituir o mutex, pois guarda a condição e protege os dados em simultâneo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.16"
+  },
+  {
+    "question": "Para somar um vetor com N_T threads reduzindo a contenção, qual a melhor estratégia?",
+    "answers": [
+      "Cada thread soma a sua parte numa variável local e faz lock uma só vez para acumular o parcial",
+      "Cada thread faz lock e unlock a cada elemento que soma na variável global",
+      "Cada thread soma diretamente na soma global sem mutex, pois trabalha em posições distintas do vetor, sem interferência",
+      "Cada thread bloqueia o mutex durante toda a execução, incluindo a leitura do vetor"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.15"
+  },
+  {
+    "question": "Porque deve uma thread que imprime um contador, quando este atinge MAX, esperar com cond_wait em vez de um ciclo a testar o contador?",
+    "answers": [
+      "Porque o ciclo a testar o contador nunca consegue ver as alterações dos outros",
+      "Porque a espera ativa impede as outras threads de incrementarem o contador",
+      "Porque a espera passiva deixa-a suspensa sem consumir CPU até ser notificada",
+      "Porque cond_wait acorda sempre antes de o contador atingir MAX"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.31"
+  },
+  {
+    "question": "Várias threads estão bloqueadas na mesma variável de condição e outra faz um só pthread_cond_signal. O que é garantido?",
+    "answers": [
+      "É acordada a thread que esperou há mais tempo",
+      "São acordadas todas as threads bloqueadas",
+      "Nenhuma é acordada, pois o signal só afeta as threads que chamarem wait depois",
+      "Pelo menos uma thread é acordada, sem garantia sobre qual"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.22"
+  },
+  {
+    "question": "Porque se deve evitar fazer E/S demorada dentro de uma secção crítica protegida por um mutex?",
+    "answers": [
+      "Porque o mutex é libertado automaticamente sempre que a thread faz uma system call, perdendo a exclusão",
+      "Porque as outras threads ficam bloqueadas no lock durante esse tempo, aumentando a contenção",
+      "Porque o kernel termina threads que fiquem muito tempo com um mutex",
+      "Porque a E/S só funciona fora da exclusão mútua"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.6"
+  },
+  {
+    "question": "Qual o significado de passar NULL no segundo argumento de pthread_mutex_init(&m,NULL)?",
+    "answers": [
+      "Usar os atributos por defeito do mutex",
+      "Criar o mutex já bloqueado pela thread chamadora",
+      "Criar um mutex partilhável entre processos distintos",
+      "Dispensar a inicialização, pois o mutex fica pronto sem ela"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.8"
+  },
+  {
+    "question": "Após pthread_cond_broadcast, como prosseguem as várias threads que estavam bloqueadas?",
+    "answers": [
+      "Todas regressam em simultâneo e executam em paralelo dentro da secção crítica",
+      "Todas regressam em simultâneo e executam em paralelo dentro da secção crítica, sem qualquer exclusão mútua",
+      "Cada uma readquire o mutex antes de regressar de wait, pelo que passam pela secção crítica uma de cada vez",
+      "Regressam pela ordem em que chamaram wait, garantida pela implementação"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.23"
+  },
+  {
+    "question": "Que valor devolve pthread_cond_timedwait se abstime passar sem signal, e o que representa abstime?",
+    "answers": [
+      "ETIMEDOUT; abstime é a duração a esperar, em segundos, a partir do instante da chamada",
+      "ETIMEDOUT; abstime é um instante absoluto do relógio, não uma duração",
+      "0; abstime é um instante absoluto do relógio",
+      "EBUSY; abstime é um instante absoluto do relógio"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.21"
+  },
+  {
+    "question": "Porque é mais simples partilhar dados entre threads do que entre processos?",
+    "answers": [
+      "Porque cada thread recebe uma cópia das variáveis globais ao ser criada",
+      "Porque cada thread recebe uma cópia das variáveis globais e da heap no momento em que é criada",
+      "Porque a stack de cada thread é partilhada com as outras threads",
+      "Porque as threads partilham o mesmo espaço de endereçamento, pelo que globais e heap são comuns"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.4"
+  },
+  {
+    "question": "Se duas threads executarem f com int c=0; for(i=0;i<1000;i++) c++; e guardarem c em posições diferentes de um vetor, ambas obtêm 1000, pois c é local a cada thread.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.4"
+  },
+  {
+    "question": "Se main alocar p=malloc(sizeof(int)) e passar p a uma thread que executa *p=7, depois do join main vê o valor 7 em *p.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.4"
+  },
+  {
+    "question": "Quatro threads que escrevem cada uma só em v[k], com k distinto, não originam race condition nessas escritas, mesmo sem mutex.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.4"
+  },
+  {
+    "question": "O segundo argumento de pthread_join permite obter o valor passado a pthread_exit, ou devolvido pela função da thread.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.3"
+  },
+  {
+    "question": "Depois de pthread_mutex_destroy(&m), o mutex pode ser reinicializado com pthread_mutex_init e voltar a ser usado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.9"
+  },
+  {
+    "question": "Chamar pthread_cond_broadcast quando não há threads bloqueadas na variável de condição não tem qualquer efeito.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.23"
+  },
+  {
+    "question": "pthread_cond_wait deve ser chamada com o mutex bloqueado pela própria thread, e esse mutex é libertado enquanto a thread espera.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.20"
+  },
+  {
+    "question": "Uma thread pode passar a outra o endereço de uma variável local da sua stack, e a outra thread consegue lê-la e alterá-la.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.4"
+  },
+  {
+    "question": "Se o mutex m estiver livre, pthread_mutex_trylock(&m) devolve 0 e o mutex fica bloqueado pela thread chamadora.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.11"
+  },
+  {
+    "question": "Um pthread_cond_signal sem threads bloqueadas fica guardado, e a próxima chamada a pthread_cond_wait regressa de imediato.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.22"
+  },
+  {
+    "question": "Depois de um pthread_cond_broadcast, todas as threads acordadas executam em simultâneo dentro da secção crítica.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.23"
+  },
+  {
+    "question": "Uma thread bloqueada em pthread_mutex_lock num mutex ocupado fica em espera ativa, a consumir CPU até o mutex ser libertado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.10"
+  },
+  {
+    "question": "Com int g=0 global, uma thread executa g=5 e termina; depois do join, main imprime g e obtém 0, pois a thread alterou uma cópia de g.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.4"
+  },
+  {
+    "question": "Depois de pthread_cond_wait regressar, a condição que motivou a espera está garantidamente verdadeira, pelo que um if substitui o while.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.28"
+  },
+  {
+    "question": "Quando uma thread termina com um mutex bloqueado, o sistema desbloqueia-o automaticamente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.12"
+  },
+  {
+    "question": "pthread_cond_signal acorda sempre exatamente uma thread bloqueada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.22"
+  },
+  {
+    "question": "Com duas threads a fazer 100000 vezes counter++ sem mutex, o resultado é sempre 200000, pois counter++ é atómico.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.5"
+  },
+  {
+    "question": "pthread_self devolve o PID do processo que contém a thread que a chamou.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP12 p.3"
+  }
+]

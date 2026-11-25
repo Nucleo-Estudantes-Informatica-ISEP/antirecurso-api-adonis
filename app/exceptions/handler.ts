@@ -46,4 +46,13 @@ export default class HttpExceptionHandler extends ExceptionHandler {
   async report(error: unknown, ctx: HttpContext) {
     return super.report(error, ctx)
   }
+
+  protected context(ctx: HttpContext) {
+    return {
+      ...super.context(ctx),
+      method: ctx.request.method(),
+      route: ctx.route?.pattern ?? null,
+      user_id: ctx.authUser?.id ?? null,
+    }
+  }
 }

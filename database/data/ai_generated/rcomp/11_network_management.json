@@ -1,0 +1,1869 @@
+[
+  {
+    "question": "Uma boa prática é criar uma VLAN dedicada ao tráfego de gestão, à qual os utilizadores não devem ter acesso, funcionando basicamente como uma DMZ.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.2"
+  },
+  {
+    "question": "Uma boa prática é gerir os equipamentos de rede a partir da mesma VLAN usada pelos utilizadores finais, para simplificar a configuração.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.2"
+  },
+  {
+    "question": "A gestão de redes inclui a instalação, a configuração e a monitorização dos equipamentos de infraestrutura, mas também o projeto e o planeamento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.2"
+  },
+  {
+    "question": "A gestão de redes limita-se à monitorização dos equipamentos, não incluindo o projeto nem o planeamento de futuras atualizações.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.2"
+  },
+  {
+    "question": "A maior parte das atividades de gestão pode ser feita remotamente, usando a própria infraestrutura de rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.2"
+  },
+  {
+    "question": "Os equipamentos de rede podem ser geridos remotamente por protocolos de emulação de terminal (SSH e Telnet), por HTTP ou por protocolos de gestão específicos como o SNMP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.2"
+  },
+  {
+    "question": "O Telnet cifra a ligação, pelo que as passwords de autenticação não ficam visíveis para quem escutar a rede.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.3"
+  },
+  {
+    "question": "Sempre que possível, deve usar-se o SSH em vez do Telnet para a gestão remota por terminal.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.3"
+  },
+  {
+    "question": "A emulação de terminal remota permite, em geral, a mesma gama de operações disponível na consola, mas exige conhecimentos da interface de linha de comandos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.3"
+  },
+  {
+    "question": "Quando o acesso HTTP é um complemento do acesso por terminal, costuma oferecer apenas um pequeno subconjunto das opções disponíveis na consola.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.3"
+  },
+  {
+    "question": "O acesso HTTP à gestão de um equipamento oferece sempre todas as opções disponíveis na consola.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.3"
+  },
+  {
+    "question": "A monitorização pode ser automatizada através de um serviço central que verifica periodicamente o estado dos equipamentos e dos serviços.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.4"
+  },
+  {
+    "question": "Entre as áreas da gestão de redes contam-se a monitorização, a gestão de falhas, o registo e a contabilização (logging and accounting), a gestão de configuração e o projeto e planeamento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.4"
+  },
+  {
+    "question": "No modelo agente-gestor, o sistema de gestão é o ponto central de controlo, de onde partem os pedidos para os sistemas geridos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.5"
+  },
+  {
+    "question": "O agente é o software do sistema de gestão que envia os pedidos aos equipamentos, e o gestor é o software que corre nos equipamentos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.5"
+  },
+  {
+    "question": "O agente é, no essencial, um servidor de rede e o software do sistema de gestão é, no essencial, um cliente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.5"
+  },
+  {
+    "question": "Num protocolo de gestão, os alarmes são enviados pelo sistema de gestão aos agentes, quando deteta uma falha.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.6"
+  },
+  {
+    "question": "A MIB é a visão externa que o protocolo de gestão tem do estado interno do equipamento, criada pelo agente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.7"
+  },
+  {
+    "question": "O SNMP é atualmente o protocolo de gestão mais suportado, e há muitos equipamentos que suportam o SNMP e nenhum outro protocolo de gestão.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.8"
+  },
+  {
+    "question": "As mensagens SNMPv1 são transportadas em TCP: os agentes recebem pedidos no porto 162 e o sistema de gestão recebe traps no porto 161.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.8"
+  },
+  {
+    "question": "Os objetos da MIB estão guardados em sequência, e a mensagem GetNextRequest permite consultar a MIB sequencialmente; um dump completo faz-se com GetNextRequest a partir do OID zero.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.8"
+  },
+  {
+    "question": "No SNMPv1, o PDU Type 0 é GetResponse, 1 é GetRequest, 2 é GetNextRequest, 3 é Trap e 4 é SetRequest.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.9"
+  },
+  {
+    "question": "O campo Request ID identifica um pedido específico e é copiado para a resposta; é importante porque o SNMPv1 usa um transporte não fiável (UDP).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.9"
+  },
+  {
+    "question": "Nas mensagens GetRequest, GetNextRequest e SetRequest, os campos de erro (Error Status e Error Index) têm sempre o valor zero.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.9"
+  },
+  {
+    "question": "As mensagens Trap usam um formato de PDU SNMP próprio, diferente do das restantes mensagens.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.9"
+  },
+  {
+    "question": "Os objetos da MIB SNMP não são identificados por nomes, mas por OID (Object Identifier), um sistema numérico em árvore definido pela norma ASN.1.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.10"
+  },
+  {
+    "question": "Os objetos de gestão de rede (mib-2) começam pelo OID 1.3.6.1.4.1.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.10"
+  },
+  {
+    "question": "Uma classe de objetos SNMP descreve o tipo de valor que pode guardar, se é legível (get), se é escrevível (set) e se é obrigatória ou opcional.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.10"
+  },
+  {
+    "question": "O objeto ifNumber guarda o número de interfaces existentes, e a ifTable é uma tabela de objetos ifEntry, com os índices ifIndex a variarem entre 1 e ifNumber.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.11"
+  },
+  {
+    "question": "Um OID refere uma classe de objetos, e não uma instância; para identificar a instância o SNMP acrescenta mais um número, começando em zero.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.11"
+  },
+  {
+    "question": "Um OID identifica sempre uma instância concreta de um objeto, e nunca uma classe de objetos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.11"
+  },
+  {
+    "question": "Segurança foi pouco considerada no SNMP v1 e v2c: as communities não têm password e o nome da community é muitas vezes usado como password secreta, sem cifra.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.12"
+  },
+  {
+    "question": "As versões SNMP v2p e v2u introduziram mecanismos de segurança sofisticados, mas foram consideradas demasiado complexas e nunca foram amplamente adotadas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.12"
+  },
+  {
+    "question": "No SNMPv3, a cifra exige autenticação, porque a chave de cifra é estabelecida durante a autenticação.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.12"
+  },
+  {
+    "question": "No SNMPv3, é possível ativar a cifra dos dados sem autenticação.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.12"
+  },
+  {
+    "question": "Como o SNMP costuma ser usado em ambientes controlados, a melhor opção para reforçar a segurança é uma rede independente dedicada à gestão, física ou uma VLAN.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.13"
+  },
+  {
+    "question": "Se o SNMP for usado apenas para ler o estado dos equipamentos, basta uma community só de leitura, evitando a exposição ao risco que existe com communities de leitura e escrita.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.13"
+  },
+  {
+    "question": "Muitos agentes SNMP correm em hardware dedicado de capacidades limitadas, pelo que se tem de usar a versão SNMP que o equipamento suporta, que pode ser apenas a SNMPv1.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.13"
+  },
+  {
+    "question": "A mensagem InformRequest é uma notificação que o agente envia sem receber qualquer resposta do sistema de gestão, tal como o Trap.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.14"
+  },
+  {
+    "question": "A partir do SNMP v2, a mensagem GetResponse passou a chamar-se simplesmente Response.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.14"
+  },
+  {
+    "question": "Para analisar um equipamento por SNMP, convém conhecer primeiro a sua MIB; caso contrário, pode-se percorrer toda a MIB a partir do OID zero.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.15"
+  },
+  {
+    "question": "No ramo system da MIB-2, os objetos sysContact, sysName e sysLocation são de leitura e escrita, e os restantes são só de leitura.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.16"
+  },
+  {
+    "question": "No ramo system da MIB-2, todos os objetos, incluindo sysName, são apenas de leitura.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.16"
+  },
+  {
+    "question": "As sondas (probes) RMON são dispositivos colocados em locais da rede que recolhem estatísticas do tráfego local, guardadas numa base de dados específica, a RMON MIB.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.16"
+  },
+  {
+    "question": "Além de notificar falhas em tempo real, os dados recolhidos ao longo do tempo devem ser preservados, porque permitem análises, por exemplo sobre tendências de utilização e segurança.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.17"
+  },
+  {
+    "question": "Uma resposta de um serviço de rede \"como esperado\" pode considerar o tipo de resultado (sucesso, falha ou sem resposta), o conteúdo da resposta e o tempo que o serviço demorou a responder.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.18"
+  },
+  {
+    "question": "Se um nó não responde ao ICMP echo request, pode assumir-se que está em baixo, e é inútil verificar os serviços de rede desse nó.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.19"
+  },
+  {
+    "question": "Em equipamentos simples, como switches e impressoras, o SNMP pode ser a única opção para recolher o estado interno.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.19"
+  },
+  {
+    "question": "Nos servidores, pode usar-se software de monitorização (agentes) instalado no próprio equipamento monitorizado, em alternativa ao SNMP.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.19"
+  },
+  {
+    "question": "Na verificação passiva (passive checking), o sistema de monitorização faz as verificações, tal como na verificação ativa.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.20"
+  },
+  {
+    "question": "Na verificação passiva, o sistema de monitorização tem de detetar que um item falhou o relatório dentro do prazo esperado, usando um intervalo máximo de relatório configurável.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.20"
+  },
+  {
+    "question": "Na verificação passiva, o relatório pode incluir um campo TTL; se expirar sem ser substituído por um novo, o sistema de monitorização considera o item com falha.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.20"
+  },
+  {
+    "question": "A verificação ativa é uma alternativa pouco usada, ao passo que a verificação passiva é a mais usada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.20"
+  },
+  {
+    "question": "Qual é a principal diferença entre SSH e Telnet na gestão remota?",
+    "answers": [
+      "O SSH não cifra a ligação TCP, expondo as passwords, enquanto o Telnet cifra toda a comunicação",
+      "O Telnet só funciona na consola local; o SSH só funciona em equipamentos baratos",
+      "O SSH usa o protocolo UDP e o Telnet usa o protocolo TCP",
+      "O Telnet não cifra a ligação TCP, expondo as passwords; o SSH cifra a comunicação"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.3"
+  },
+  {
+    "question": "Para que serve uma VLAN dedicada à gestão de rede?",
+    "answers": [
+      "Para substituir o protocolo SNMP por um protocolo de camada 2",
+      "Para isolar o tráfego de gestão do dos utilizadores, como uma DMZ",
+      "Para dar acesso à gestão da rede a todos os utilizadores da rede local",
+      "Para aumentar a taxa de transmissão dos equipamentos de rede"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.2"
+  },
+  {
+    "question": "Como se designa a informação sobre o estado e a configuração que um equipamento gerido guarda?",
+    "answers": [
+      "RMON (Remote Monitoring)",
+      "MIB (Management Information Base)",
+      "ASN.1 (Abstract Syntax Notation One)",
+      "OID (Object Identifier)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.5"
+  },
+  {
+    "question": "O que é o agente num sistema de gestão de redes?",
+    "answers": [
+      "O protocolo que transporta os pedidos e as respostas entre o gestor e o agente",
+      "O administrador de rede que envia os pedidos aos equipamentos geridos através do gestor",
+      "O software do sistema gerido, que funciona essencialmente como um servidor e responde aos pedidos",
+      "O software do sistema de gestão, que funciona essencialmente como um servidor de rede"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.5"
+  },
+  {
+    "question": "Que dois tipos de transação existem na maioria dos protocolos de gestão?",
+    "answers": [
+      "Apenas alarmes do agente, sem pedidos do gestor",
+      "Apenas pedidos do gestor ao agente, com respostas do agente",
+      "Pedidos do agente ao gestor e alarmes enviados por iniciativa do gestor",
+      "Pedidos do gestor ao agente e alarmes enviados por iniciativa do agente"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.6"
+  },
+  {
+    "question": "Que porto UDP usam os agentes SNMP para receber pedidos?",
+    "answers": [
+      "67",
+      "161",
+      "162",
+      "53"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.8"
+  },
+  {
+    "question": "Que porto UDP usa o sistema de gestão SNMP para receber alarmes (traps)?",
+    "answers": [
+      "67",
+      "162",
+      "161",
+      "53"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.8"
+  },
+  {
+    "question": "Quantos tipos de mensagem tem o SNMPv1?",
+    "answers": [
+      "Três",
+      "Dez",
+      "Cinco",
+      "Sete, incluindo o InformRequest"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.8"
+  },
+  {
+    "question": "Que mensagem SNMPv1 serve para consultar a MIB sequencialmente?",
+    "answers": [
+      "Trap (alarme enviado pelo agente ao gestor)",
+      "GetNextRequest (leitura da variável seguinte)",
+      "GetRequest (leitura de uma só variável indicada)",
+      "SetRequest (alteração do valor de uma variável)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.8"
+  },
+  {
+    "question": "Que mensagem SNMPv1 serve para alterar o valor de uma variável?",
+    "answers": [
+      "SetRequest",
+      "GetNextRequest",
+      "GetResponse",
+      "GetRequest"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.8"
+  },
+  {
+    "question": "Que mensagem SNMPv1 o agente envia, por sua iniciativa, ao sistema de gestão?",
+    "answers": [
+      "SetRequest",
+      "GetNextRequest",
+      "Trap",
+      "GetResponse"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.8"
+  },
+  {
+    "question": "Como se obtém um dump completo da MIB de um agente SNMPv1?",
+    "answers": [
+      "Com um SetRequest enviado ao OID zero do agente",
+      "Com um único GetRequest ao OID 1.3.6.1 do agente",
+      "Com GetNextRequest sucessivos, desde o OID zero",
+      "Com um Trap enviado pelo agente a todos os gestores"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.8"
+  },
+  {
+    "question": "Que valor tem o campo Version nas mensagens SNMPv1?",
+    "answers": [
+      "Um (versão 1)",
+      "Dois",
+      "Três",
+      "Zero"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.9"
+  },
+  {
+    "question": "Para que serve o campo Community das mensagens SNMPv1?",
+    "answers": [
+      "Para indicar o resultado da operação pedida ao agente",
+      "Para indicar qual o objeto associado a um erro ocorrido",
+      "Para identificar o pedido, copiado para a resposta do agente",
+      "Para guardar uma cadeia usada como controlo de acesso simples"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.9"
+  },
+  {
+    "question": "Para que serve o campo Request ID das mensagens SNMP?",
+    "answers": [
+      "Para relacionar a resposta com o pedido, importante por o transporte ser UDP",
+      "Para guardar a cadeia usada como controlo de acesso simples ao agente",
+      "Para indicar a versão do protocolo SNMP usada pelo gestor e pelo agente",
+      "Para indicar o tipo de mensagem SNMP, como GetRequest ou Trap"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.9"
+  },
+  {
+    "question": "Que valor do PDU Type identifica a mensagem Trap no SNMPv1?",
+    "answers": [
+      "0",
+      "3 (SetRequest)",
+      "2",
+      "4"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.9"
+  },
+  {
+    "question": "Que valor do PDU Type identifica a mensagem GetResponse no SNMPv1?",
+    "answers": [
+      "4, que corresponde ao Trap",
+      "0",
+      "1",
+      "2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.9"
+  },
+  {
+    "question": "Que valor do PDU Type identifica a mensagem SetRequest no SNMPv1?",
+    "answers": [
+      "1",
+      "2",
+      "0",
+      "3"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.9"
+  },
+  {
+    "question": "Que valor do Error Status indica que a operação foi realizada sem erro?",
+    "answers": [
+      "5 (genErr)",
+      "1 (tooBig)",
+      "2 (noSuchName)",
+      "0 (noError)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.9"
+  },
+  {
+    "question": "Que valor do Error Status indica que o objeto pedido não existe?",
+    "answers": [
+      "4 (readOnly)",
+      "2 (noSuchName)",
+      "0 (noError)",
+      "1 (tooBig)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.9"
+  },
+  {
+    "question": "Que valor do Error Status indica que se tentou escrever num objeto só de leitura?",
+    "answers": [
+      "4 (readOnly)",
+      "3 (badValue)",
+      "2 (noSuchName)",
+      "5 (genErr)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.9"
+  },
+  {
+    "question": "Qual é o OID do objeto internet?",
+    "answers": [
+      "1.3.6.1",
+      "1.3.6.1.2.1.2",
+      "1.3.6.1.4.1",
+      "1.3.6.1.2.1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.10"
+  },
+  {
+    "question": "Qual é o OID a partir do qual começam os objetos de gestão de rede (MIB-2)?",
+    "answers": [
+      "1.3.6.1.2.1.2",
+      "1.3.6.1",
+      "1.3.6.1.4.1",
+      "1.3.6.1.2.1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.10"
+  },
+  {
+    "question": "Qual é o OID do ramo interfaces da MIB-2?",
+    "answers": [
+      "1.3.6.1.2.1.2",
+      "1.3.6.1.2.1.4 (interfaces)",
+      "1.3.6.1.2.1.6",
+      "1.3.6.1.2.1.1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.11"
+  },
+  {
+    "question": "Qual é o OID da primeira (e única) instância do objeto ifNumber, que dá o número de interfaces?",
+    "answers": [
+      "1.3.6.1.2.1.2.1",
+      "1.3.6.1.2.1.2.0.1",
+      "1.3.6.1.2.1.2.1.0",
+      "1.3.6.1.2.1.2.2.1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.11"
+  },
+  {
+    "question": "O que identifica o OID 1.3.6.1.2.1.2.2.1.2.8?",
+    "answers": [
+      "O número total de interfaces do equipamento",
+      "A velocidade (ifSpeed) da oitava interface do equipamento",
+      "O tipo (ifType) da segunda interface do equipamento",
+      "A descrição (ifDesc) da oitava interface do equipamento"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.11"
+  },
+  {
+    "question": "Que valor do ramo system da MIB-2 corresponde ao objeto sysName?",
+    "answers": [
+      ".1.3.6.1.2.1.1.6.0",
+      "1.3.6.1.2.1.1.1",
+      "1.3.6.1.2.1.1.5",
+      "1.3.6.1.2.1.1.3"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.16"
+  },
+  {
+    "question": "Qual é o OID do objeto sysDescr?",
+    "answers": [
+      "1.3.6.1.2.1.1.7",
+      "1.3.6.1.2.1.1.1",
+      "1.3.6.1.2.1.1.3",
+      "1.3.6.1.2.1.1.5"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.16"
+  },
+  {
+    "question": "Qual é o OID do objeto sysUpTime?",
+    "answers": [
+      "1.3.6.1.2.1.1.4 (sysUpTime)",
+      "1.3.6.1.2.1.1.6",
+      "1.3.6.1.2.1.1.3",
+      "1.3.6.1.2.1.1.1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.16"
+  },
+  {
+    "question": "Qual é o OID do objeto sysLocation?",
+    "answers": [
+      "1.3.6.1.2.1.1.6",
+      "1.3.6.1.2.1.1.5",
+      "1.3.6.1.2.1.1.7",
+      "1.3.6.1.2.1.1.4"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.16"
+  },
+  {
+    "question": "Qual é o OID do objeto sysContact?",
+    "answers": [
+      "1.3.6.1.2.1.1.5 (sysContact)",
+      "1.3.6.1.2.1.1.3",
+      "1.3.6.1.2.1.1.6",
+      "1.3.6.1.2.1.1.4"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.16"
+  },
+  {
+    "question": "Qual dos seguintes objetos do ramo system da MIB-2 é só de leitura?",
+    "answers": [
+      "sysLocation",
+      "sysUpTime",
+      "sysContact",
+      "sysName"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.16"
+  },
+  {
+    "question": "Qual dos seguintes objetos do ramo system da MIB-2 é de leitura e escrita?",
+    "answers": [
+      "sysDescr",
+      "sysLocation",
+      "sysUpTime (em ticks)",
+      "sysServices"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.16"
+  },
+  {
+    "question": "Qual é o OID do ramo private, gerido pela IANA?",
+    "answers": [
+      "1.3.6.1.4.1",
+      "1.3.6.1.4",
+      "1.3.6.1.2",
+      "1.3.6.1.5"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.15"
+  },
+  {
+    "question": "Para que serve o ramo enterprise (1.3.6.1.4.1) da MIB?",
+    "answers": [
+      "Guardar os objetos de gestão de rede padrão de todos os equipamentos do mundo",
+      "Guardar as estatísticas de tráfego recolhidas pelas sondas RMON espalhadas na rede",
+      "Atribuir árvores de objetos aos fabricantes, para registarem as MIB dos seus equipamentos",
+      "Guardar os alarmes que os agentes enviam ao sistema de gestão por iniciativa própria"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.15"
+  },
+  {
+    "question": "Que nível de segurança do SNMPv3 não tem autenticação por password nem cifra de dados?",
+    "answers": [
+      "noAuthPriv",
+      "authNoPriv",
+      "noAuthNoPriv",
+      "authPriv"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.12"
+  },
+  {
+    "question": "Que nível de segurança do SNMPv3 autentica o utilizador mas não cifra os dados?",
+    "answers": [
+      "authNoPriv",
+      "authPriv",
+      "noAuthNoPriv",
+      "noAuthPriv"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.12"
+  },
+  {
+    "question": "Que nível de segurança do SNMPv3 autentica o utilizador e cifra os dados?",
+    "answers": [
+      "noAuthNoPriv",
+      "noAuthPriv",
+      "authNoPriv",
+      "authPriv"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.12"
+  },
+  {
+    "question": "Porque é que o SNMPv3 não permite cifra sem autenticação?",
+    "answers": [
+      "Porque a autenticação já cifra os dados enviados na rede",
+      "Porque o DES só funciona depois de um Trap do agente",
+      "Porque a cifra usa a community em claro como chave de cifra",
+      "Porque a chave de cifra é estabelecida durante a autenticação"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.12"
+  },
+  {
+    "question": "Que mecanismos de segurança usa o SNMPv3?",
+    "answers": [
+      "Autenticação com RSA e cifra assimétrica com certificados",
+      "Autenticação com MD5 ou SHA e cifra simétrica com DES",
+      "Autenticação com Kerberos e cifra com AES de 256 bits",
+      "Autenticação por community em claro e cifra com TLS"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.13"
+  },
+  {
+    "question": "Qual é a melhor forma de melhorar a segurança do SNMP, segundo a aula?",
+    "answers": [
+      "Usar uma rede independente para a gestão, física ou VLAN, com todo o tráfego SNMP",
+      "Mover o tráfego SNMP para o porto TCP 443 e manter as communities por omissão",
+      "Usar sempre communities de leitura e escrita com nomes difíceis de adivinhar",
+      "Desativar a autenticação por community para reduzir a carga nos agentes de rede"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.13"
+  },
+  {
+    "question": "O que acontece em SNMP v1 e v2c quanto à segurança?",
+    "answers": [
+      "A community é cifrada com MD5, mas os restantes dados da mensagem seguem em claro",
+      "Há cifra DES de todos os dados, mas sem qualquer tipo de autenticação prévia",
+      "Não há password nem cifra, e o nome da community serve muitas vezes de password",
+      "Há autenticação por utilizador e password, mas as mensagens seguem sem cifra"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.12"
+  },
+  {
+    "question": "Que mensagem SNMPv2 pede várias variáveis seguintes da MIB numa única mensagem?",
+    "answers": [
+      "GetRequest",
+      "InformRequest",
+      "GetBulkRequest",
+      "GetNextRequest"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.14"
+  },
+  {
+    "question": "Qual é a diferença entre Trap e InformRequest?",
+    "answers": [
+      "O Trap é enviado pelo gestor ao agente e o InformRequest pelo agente ao gestor",
+      "O InformRequest é respondido pelo gestor com uma mensagem Response, que funciona como confirmação",
+      "O InformRequest é usado só em SNMPv1 e o Trap só em SNMPv3",
+      "O Trap é respondido pelo gestor com uma mensagem Response, que funciona como confirmação"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.14"
+  },
+  {
+    "question": "O que é um proxy agent em SNMP v2 e superiores?",
+    "answers": [
+      "Uma entidade que agrupa numa vista única as MIB de vários agentes locais",
+      "Um gestor que consulta apenas os agentes SNMP que estão na mesma VLAN dele",
+      "Um agente que apenas reencaminha os traps recebidos para o porto 162 do gestor",
+      "Uma sonda RMON que recolhe estatísticas do tráfego da rede onde está ligada"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.14"
+  },
+  {
+    "question": "O que são as sondas (probes) no RMON?",
+    "answers": [
+      "Agentes que enviam traps sobre o estado interno do equipamento onde estão a correr",
+      "Dispositivos que recolhem estatísticas do tráfego local e as guardam na RMON MIB",
+      "Gestores que consultam periodicamente todos os agentes existentes na rede local",
+      "Servidores que guardam as communities de leitura e escrita de todos os agentes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.16"
+  },
+  {
+    "question": "Qual é a principal missão de um sistema de monitorização de rede?",
+    "answers": [
+      "Configurar automaticamente os equipamentos de rede quando falham",
+      "Cifrar o tráfego de gestão entre os equipamentos e os gestores",
+      "Detetar componentes com falhas e notificar os administradores",
+      "Substituir os administradores na gestão diária da rede"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.17"
+  },
+  {
+    "question": "Como se notificam, de preferência, os administradores de uma falha?",
+    "answers": [
+      "Em tempo real, por mensagens instantâneas ou correio eletrónico",
+      "Apenas em relatórios diários, enviados em papel",
+      "Apenas no painel (dashboard) do sistema de monitorização",
+      "Apenas através de traps SNMP enviados pelo agente para o porto 161 do gestor"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.17"
+  },
+  {
+    "question": "O que são verificações ativas (active checks) num sistema de monitorização?",
+    "answers": [
+      "O sistema de monitorização executa periodicamente uma ação para obter o estado de cada item",
+      "O administrador verifica manualmente o estado de cada equipamento",
+      "O agente envia um trap ao detetar uma falha no equipamento",
+      "O item monitorizado contacta periodicamente o sistema para reportar o seu estado"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.18"
+  },
+  {
+    "question": "O que são verificações passivas (passive checking) num sistema de monitorização?",
+    "answers": [
+      "O administrador verifica manualmente o estado de cada equipamento",
+      "O sistema de monitorização executa periodicamente uma ação para obter o estado do item",
+      "O item monitorizado contacta periodicamente o sistema de monitorização para reportar o seu estado",
+      "O sistema só verifica os itens quando o utilizador abre o painel"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.20"
+  },
+  {
+    "question": "Como se monitoriza ativamente um serviço de rede?",
+    "answers": [
+      "O sistema envia um trap ao serviço e aguarda a confirmação com uma Response",
+      "O sistema simula um cliente do serviço, faz um pedido e verifica a resposta",
+      "O sistema espera que o serviço lhe envie periodicamente um relatório de estado",
+      "O sistema lê diretamente a memória do equipamento onde o serviço está a correr"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.18"
+  },
+  {
+    "question": "Como verifica o sistema de monitorização, ao nível mais baixo, se um nó está acessível?",
+    "answers": [
+      "Envia um pedido HTTP e verifica o código de estado da resposta do nó",
+      "Envia um ICMP echo request e verifica se há resposta num certo prazo (ping)",
+      "Envia um pedido ARP em broadcast e espera uma resposta unicast do nó verificado",
+      "Envia um trap SNMP ao nó e aguarda a mensagem InformRequest de volta"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.19"
+  },
+  {
+    "question": "Que protocolo pode recolher o estado interno de um switch ou de uma impressora, como a carga de CPU ou as temperaturas?",
+    "answers": [
+      "ICMP, com mensagens Echo",
+      "DHCP",
+      "ARP",
+      "SNMP"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.19"
+  },
+  {
+    "question": "Como se deteta falha na verificação passiva?",
+    "answers": [
+      "Quando o sistema de monitorização não consegue enviar um ICMP echo request ao item no intervalo definido",
+      "Quando o item não reporta dentro do intervalo máximo configurado, ou o TTL do relatório expira",
+      "Quando o item envia um trap com o valor de Error Status diferente de zero",
+      "Quando o administrador não confirma a notificação que recebeu no painel"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.20"
+  },
+  {
+    "question": "Qual é a utilização habitual do GetRequest, do GetNextRequest e do SetRequest do SNMPv1, quanto aos campos de erro?",
+    "answers": [
+      "Têm sempre zero nos campos Error Status e Error Index",
+      "Têm sempre o valor 1 (tooBig) no campo Error Status",
+      "Têm o campo Error Index igual ao Request ID",
+      "Não têm campos de erro, que só existem no Trap"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.9"
+  },
+  {
+    "question": "O SSH é um protocolo sem cifra, usado sobretudo em equipamentos de rede mais baratos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.3"
+  },
+  {
+    "question": "O sistema de monitorização é um software distribuído que corre dentro de cada equipamento monitorizado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.17"
+  },
+  {
+    "question": "As mensagens Trap do SNMP são enviadas para o porto UDP 161 do sistema de gestão.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.8"
+  },
+  {
+    "question": "A mensagem GetNextRequest serve para alterar o valor de uma variável da MIB.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.8"
+  },
+  {
+    "question": "O campo Community das mensagens SNMPv1 identifica o tipo da mensagem.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.9"
+  },
+  {
+    "question": "Todos os agentes SNMP têm exatamente a mesma MIB, com os mesmos objetos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.15"
+  },
+  {
+    "question": "O OID 1.3.6.1.2.1.2.1.0 identifica a descrição da oitava interface do equipamento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.11"
+  },
+  {
+    "question": "A cifra DES, com chaves de 56 bits, é considerada muito segura nos dias de hoje.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.13"
+  },
+  {
+    "question": "O SNMPv3 baseia a segurança em criptografia assimétrica com certificados de chave pública.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.12"
+  },
+  {
+    "question": "Uma community só de leitura permite alterar a configuração do equipamento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.13"
+  },
+  {
+    "question": "A mensagem InformRequest faz parte do conjunto original de cinco mensagens do SNMPv1.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.14"
+  },
+  {
+    "question": "O objeto sysUpTime da MIB-2 é de leitura e escrita.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.16"
+  },
+  {
+    "question": "O RMON serve apenas para gerir o estado interno do próprio equipamento onde corre o agente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.16"
+  },
+  {
+    "question": "Um sistema de monitorização só deve guardar o estado atual, descartando os dados antigos por não terem utilidade.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.17"
+  },
+  {
+    "question": "Se um nó não responde ao ICMP echo request, deve continuar-se a verificar os serviços de rede desse nó.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.19"
+  },
+  {
+    "question": "A verificação ativa de um servidor HTTP consiste em enviar um ICMP echo request a esse servidor.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.18"
+  },
+  {
+    "question": "O SNMP é o único protocolo de gestão de redes que existe.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.8"
+  },
+  {
+    "question": "A MIB é uma coleção de dados que existe apenas no sistema de gestão e não nos agentes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.7"
+  },
+  {
+    "question": "O ramo enterprise (1.3.6.1.4.1) é usado para os objetos de gestão de rede padrão, comuns a todos os equipamentos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.15"
+  },
+  {
+    "question": "Na verificação passiva, o item monitorizado fica à espera de ser consultado pelo sistema de monitorização.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.20"
+  },
+  {
+    "question": "O SNMPv3 elimina a necessidade de proteger a rede de gestão com uma VLAN dedicada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.13"
+  },
+  {
+    "question": "Qual das áreas da gestão de redes inclui o registo de eventos e a contabilização do uso dos serviços?",
+    "answers": [
+      "Fault management",
+      "Design and planning",
+      "Configuration management",
+      "Logging and accounting"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.4"
+  },
+  {
+    "question": "Qual das áreas da gestão de redes trata de detetar falhas ou problemas potenciais e de os corrigir, com contramedidas automáticas?",
+    "answers": [
+      "Design and planning",
+      "Configuration management",
+      "Logging and accounting",
+      "Fault management"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.4"
+  },
+  {
+    "question": "Qual das áreas da gestão de redes trata de planear as atualizações da infraestrutura a médio prazo?",
+    "answers": [
+      "Design and planning",
+      "Monitoring",
+      "Fault management",
+      "Logging and accounting"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.4"
+  },
+  {
+    "question": "Qual das áreas da gestão de redes trata de ajustar as configurações para melhorar a eficiência e a segurança?",
+    "answers": [
+      "Design and planning",
+      "Logging and accounting management",
+      "Fault management",
+      "Configuration management"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.4"
+  },
+  {
+    "question": "O que significa a sigla SNMP?",
+    "answers": [
+      "System Network Message Protocol",
+      "Secure Network Monitoring and Management Protocol",
+      "Simple Node Management Procedure",
+      "Simple Network Management Protocol"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.8"
+  },
+  {
+    "question": "O que significa a sigla MIB?",
+    "answers": [
+      "Management Information Base",
+      "Message Information Block Table",
+      "Managed Interface Bridge",
+      "Monitoring Interface Base"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.5"
+  },
+  {
+    "question": "O que significa a sigla OID no SNMP?",
+    "answers": [
+      "Online Information Directory",
+      "Object Identifier",
+      "Operation Identifier",
+      "Object Interface Descriptor"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.10"
+  },
+  {
+    "question": "O que significa a sigla RMON?",
+    "answers": [
+      "Remote Management Object Network",
+      "Resource Monitor",
+      "Remote Monitoring",
+      "Router Management Online"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.16"
+  },
+  {
+    "question": "Que norma define o sistema universal de nomes numéricos em árvore usado pelos OID do SNMP?",
+    "answers": [
+      "ASN.1 (Abstract Syntax Notation One)",
+      "IEEE 802.1Q (etiquetas de VLAN em Ethernet)",
+      "RFC 1213 (definição da MIB-2 padrão)",
+      "X.500 (serviços de diretório da ITU-T)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.10"
+  },
+  {
+    "question": "Qual é o RFC que define a MIB-2?",
+    "answers": [
+      "RFC 1035",
+      "RFC 2136",
+      "RFC 791",
+      "RFC 1213"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.16"
+  },
+  {
+    "question": "Qual é o OID do ramo system da MIB-2?",
+    "answers": [
+      "1.3.6.1.2.1.1",
+      "1.3.6.1.2.1.4",
+      "1.3.6.1.2.1.4.20",
+      "1.3.6.1.2.1.2"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.16"
+  },
+  {
+    "question": "Qual é o OID do ramo ip da MIB-2?",
+    "answers": [
+      "1.3.6.1.2.1.1",
+      "1.3.6.1.2.1.6",
+      "1.3.6.1.2.1.4",
+      "1.3.6.1.2.1.5"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.10"
+  },
+  {
+    "question": "Qual é o OID do ramo tcp da MIB-2?",
+    "answers": [
+      "1.3.6.1.2.1.6",
+      "1.3.6.1.2.1.7",
+      "1.3.6.1.2.1.4",
+      "1.3.6.1.2.1.5"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.10"
+  },
+  {
+    "question": "Qual é o OID do ramo udp da MIB-2?",
+    "answers": [
+      "1.3.6.1.2.1.6",
+      "1.3.6.1.2.1.7",
+      "1.3.6.1.2.1.25",
+      "1.3.6.1.2.1.5"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.10"
+  },
+  {
+    "question": "Qual é o OID do ramo icmp da MIB-2?",
+    "answers": [
+      "1.3.6.1.2.1.7 (udp)",
+      "1.3.6.1.2.1.4",
+      "1.3.6.1.2.1.6",
+      "1.3.6.1.2.1.5"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.10"
+  },
+  {
+    "question": "Qual é o OID da tabela de interfaces (ifTable)?",
+    "answers": [
+      "1.3.6.1.2.1.2.2.1",
+      "1.3.6.1.2.1.1.2",
+      "1.3.6.1.2.1.2.2",
+      "1.3.6.1.2.1.2.1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.11"
+  },
+  {
+    "question": "Qual é o OID de cada elemento (ifEntry) da tabela de interfaces?",
+    "answers": [
+      "1.3.6.1.2.1.2.2.1",
+      "1.3.6.1.2.1.2.2",
+      "1.3.6.1.2.1.2.1",
+      "1.3.6.1.2.1.2.2.1.1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.11"
+  },
+  {
+    "question": "Que objeto do ifEntry guarda o número da interface, único e de 1 até ifNumber?",
+    "answers": [
+      "ifIndex",
+      "ifDesc",
+      "ifType",
+      "ifNumber, que conta as interfaces"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.11"
+  },
+  {
+    "question": "Que objeto do ifEntry guarda a velocidade da interface?",
+    "answers": [
+      "ifSpeed",
+      "ifMtu",
+      "ifOperStatus",
+      "ifType"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.11"
+  },
+  {
+    "question": "Que objeto do ifEntry guarda a MTU da interface?",
+    "answers": [
+      "ifIndex",
+      "ifSpeed",
+      "ifMtu",
+      "ifType"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.11"
+  },
+  {
+    "question": "Qual é o OID da instância do objeto sysName, para pedir o nome de um equipamento?",
+    "answers": [
+      "1.3.6.1.2.1.1.5.0",
+      "1.3.6.1.2.1.2.5.0",
+      "1.3.6.1.2.1.1.1.0",
+      "1.3.6.1.2.1.1.5, sem o sufixo .0 da instância"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.11"
+  },
+  {
+    "question": "Que versão do SNMP introduziu a mensagem GetBulkRequest?",
+    "answers": [
+      "SNMP v1",
+      "SNMP v2",
+      "Nenhuma: existe desde a primeira versão",
+      "SNMP v3 apenas"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.14"
+  },
+  {
+    "question": "Qual é a versão do SNMP que ainda é muito usada por haver muitos equipamentos que não suportam versões posteriores?",
+    "answers": [
+      "SNMPv3",
+      "SNMPv2c",
+      "SNMPv1",
+      "SNMPv2u"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.8"
+  },
+  {
+    "question": "Quantos níveis de segurança existem no SNMPv3?",
+    "answers": [
+      "Dois: noAuth e auth",
+      "Três: noAuthNoPriv, authNoPriv e authPriv",
+      "Cinco: um por cada tipo de mensagem",
+      "Quatro: noAuth, auth, priv e authPriv"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.12"
+  },
+  {
+    "question": "Qual é o valor do campo Error Status que indica um erro genérico (genErr)?",
+    "answers": [
+      "1",
+      "3",
+      "5",
+      "0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.9"
+  },
+  {
+    "question": "Qual é o objetivo da gestão remota por emulação de terminal?",
+    "answers": [
+      "Recolher o estado do equipamento através de pedidos SNMP periódicos ao agente",
+      "Notificar automaticamente os administradores de falhas detetadas nos equipamentos",
+      "Realizar, a partir de outro local, as operações da consola do equipamento",
+      "Aceder a um subconjunto de opções do equipamento através de um navegador"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "L11 p.3"
+  }
+]

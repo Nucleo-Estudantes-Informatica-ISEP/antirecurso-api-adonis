@@ -1,15 +1,17 @@
-FROM node:24-alpine AS builder
+FROM node:25-alpine AS builder
 
 WORKDIR /app
 ENV NODE_ENV=development
 
 COPY package*.json ./
+COPY scripts/patch_braces.mjs ./scripts/patch_braces.mjs
+COPY patches/braces-3.0.3.json ./patches/braces-3.0.3.json
 RUN npm ci --include=dev
 
 COPY . .
 RUN npm run build
 
-FROM node:24-alpine AS runner
+FROM node:25-alpine AS runner
 
 WORKDIR /app
 

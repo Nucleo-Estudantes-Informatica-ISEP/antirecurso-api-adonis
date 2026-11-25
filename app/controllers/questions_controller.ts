@@ -36,8 +36,13 @@ export default class QuestionsController {
     try {
       await db.transaction(async (trx) => {
         question.useTransaction(trx)
+        // Admin edits invalidate the operator review note; stable identity remains intact.
+        question.review = null
         question.question = data.question
         question.correctOption = data.correct_option
+        if (data.source !== undefined && data.source !== null) {
+          question.source = data.source
+        }
         await question.save()
 
         // Knex .update() returns different types depending on the DB driver:
@@ -97,6 +102,7 @@ export default class QuestionsController {
       question: question.question,
       exam: question.exam,
       image: question.image,
+      source: question.source,
       question_type: question.questionType.name,
       options: question.options.map((opt) => ({
         id: opt.id,

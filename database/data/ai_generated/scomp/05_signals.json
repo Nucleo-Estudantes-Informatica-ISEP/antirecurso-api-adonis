@@ -1,0 +1,1976 @@
+[
+  {
+    "question": "Qual dos seguintes eventos é tratado como uma exceção síncrona?",
+    "answers": [
+      "A conclusão de uma leitura de um bloco do disco, assinalada pelo respetivo controlador",
+      "A expiração do timer do sistema, que ocorre de poucos em poucos milissegundos",
+      "A execução de uma instrução de divisão inteira com divisor igual a zero",
+      "O utilizador premir Ctrl-C no teclado enquanto o programa está em execução"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.13"
+  },
+  {
+    "question": "Um processo escreve numa página válida do seu espaço de endereçamento que está em disco. Depois de o kernel a copiar para memória, onde continua a execução do processo?",
+    "answers": [
+      "Na instrução seguinte à que originou a page fault, pois essa já foi concluída",
+      "Na mesma instrução que originou a page fault, que é executada de novo",
+      "No início da função main, porque o contexto foi perdido",
+      "O processo é terminado, porque a page fault é sempre irrecuperável"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.19-20"
+  },
+  {
+    "question": "Qual das classes de exceção nunca devolve o controlo ao programa que estava a ser executado?",
+    "answers": [
+      "Fault, por exemplo uma page fault de uma página que está em disco",
+      "Trap, por exemplo a execução de uma system call",
+      "Abort, por exemplo um erro de paridade da memória",
+      "Interrupt, por exemplo a do timer que provoca o escalonamento"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.22-23"
+  },
+  {
+    "question": "Em Linux/x86-64, em que registo é passado ao kernel o número da system call a executar quando se usa a instrução syscall?",
+    "answers": [
+      "%rdi, que contém o primeiro argumento",
+      "%rsp, que contém o apontador da stack",
+      "%rbx, que é preservado entre chamadas",
+      "%rax"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.17"
+  },
+  {
+    "question": "Uma system call devolve o valor -2 em %rax ao wrapper da biblioteca C. O que significa?",
+    "answers": [
+      "A chamada foi bem-sucedida e o seu resultado é -2",
+      "O kernel terminou o processo, porque o resultado negativo indica uma violação grave",
+      "Ocorreu um erro: o wrapper coloca errno a 2 e devolve -1 ao programa",
+      "A chamada foi bem-sucedida e foram lidos ou escritos 2 bytes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.17-18"
+  },
+  {
+    "question": "Qual é uma diferença real entre uma system call e uma chamada a uma função normal?",
+    "answers": [
+      "Os argumentos da system call são sempre passados na stack, ao contrário das funções normais",
+      "A system call é desencadeada por um trap e o respetivo código executa-se em kernel mode",
+      "A system call executa em user mode, mas com maior prioridade de escalonamento",
+      "O resultado da system call nunca é devolvido num registo, mas sim em memória"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.18"
+  },
+  {
+    "question": "Numa tabela de exceções, como obtém o CPU o código a executar quando ocorre a exceção de número k?",
+    "answers": [
+      "Percorre a tabela até encontrar uma entrada que declare tratar a exceção k, testando as entradas uma a uma",
+      "Usa k como índice da tabela, cuja entrada contém o endereço do handler respetivo",
+      "Executa sempre o handler da posição 0, que depois decide qual o tratamento",
+      "Procura no código do processo em user mode uma função registada para k"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.7-8"
+  },
+  {
+    "question": "O que desencadeia a mudança de contexto em multitarefa preemptiva?",
+    "answers": [
+      "Um interrupt periódico de um timer, tratado pelo kernel",
+      "A chamada voluntária do processo a uma função de mudança de contexto",
+      "O fim da execução de cada instrução de máquina do processo",
+      "O processo executar sempre uma system call de entrada e saída"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.28"
+  },
+  {
+    "question": "Quando o kernel retira um processo A do CPU, onde guarda o estado do CPU de A (registos, program counter, stack pointer e flags)?",
+    "answers": [
+      "No PCB de A",
+      "Na stack do processo que vai ser executado a seguir",
+      "No registo do timer, até A voltar a ser escalonado",
+      "No disco, na área de troca, até A voltar ao CPU"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.36"
+  },
+  {
+    "question": "Porque é desejável reduzir a frequência das mudanças de contexto?",
+    "answers": [
+      "Cada mudança de contexto apaga o conteúdo da memória dos processos envolvidos, que tem de ser recarregado do disco",
+      "Nesse intervalo o SO não executa aplicações, pelo que o tempo gasto não é útil",
+      "Cada mudança de contexto obriga o utilizador a reiniciar manualmente o programa que estava em execução",
+      "As mudanças de contexto impedem a utilização de memória virtual pelos processos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.37"
+  },
+  {
+    "question": "Um processo chama read() sobre um disco magnético, cuja operação demora vários milissegundos. O que faz o SO enquanto a operação decorre?",
+    "answers": [
+      "Mantém o processo em busy waiting, consultando o estado do disco repetidamente até terminar",
+      "Suspende todos os processos do sistema até a operação do disco terminar",
+      "Termina read() de imediato, devolvendo 0 ao processo",
+      "Bloqueia o processo e dá o CPU a outro processo pronto"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.38"
+  },
+  {
+    "question": "Quando o controlador de disco gera o interrupt de fim de uma leitura, o que faz o respetivo handler?",
+    "answers": [
+      "Identifica o dispositivo, obtém o resultado e passa o processo em espera a ready",
+      "Cria um novo processo para consumir os dados lidos do disco e entregá-los depois ao pedido",
+      "Termina o processo que estava em execução no CPU, para libertar o CPU para o pedido",
+      "Executa diretamente o código do processo que pediu a leitura, sem sair de kernel mode"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.39"
+  },
+  {
+    "question": "Um processo pai não registou nenhum handler para SIGCHLD. O que acontece ao pai quando um filho termina?",
+    "answers": [
+      "O pai é terminado pelo kernel, porque a ação por omissão do sinal é terminar o processo que o recebe",
+      "O pai é suspenso pelo kernel até executar wait()",
+      "O sinal é gerado, mas a ação por omissão é ignorá-lo, pelo que o pai continua a executar",
+      "O pai é obrigado a executar um handler fornecido pelo kernel"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.43"
+  },
+  {
+    "question": "Porque pode chamar printf() dentro de um handler de sinal provocar um deadlock?",
+    "answers": [
+      "O sinal interrompe um printf() que detém o lock do stdout e o printf() do handler espera por esse lock",
+      "printf() cria sempre um novo processo, que fica à espera do processo original que o criou",
+      "printf() bloqueia todos os sinais do processo e por isso o handler nunca consegue terminar",
+      "printf() é uma system call, pelo que só pode ser chamada a partir da função main do programa principal, nunca de handlers"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.45"
+  },
+  {
+    "question": "Um handler h() faz n++ (n começa a 0) e está registado para SIGUSR1. O processo bloqueia SIGUSR1, executa 3 vezes kill(getpid(),SIGUSR1), desbloqueia SIGUSR1 e imprime n. Que valor é impresso?",
+    "answers": [
+      "3, porque o kernel guarda um contador de sinais pendentes",
+      "0, porque os sinais enviados com o sinal bloqueado são descartados",
+      "2, porque o kernel só guarda o primeiro e o último",
+      "1, porque o mesmo sinal pendente não é acumulado"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.41-45"
+  },
+  {
+    "question": "O handler h() de SIGALRM faz write(1,\"A\",1). Em main: signal(SIGALRM,h); alarm(1); int r=pause(); printf(\"B%d\",r); Que é impresso?",
+    "answers": [
+      "AB-1",
+      "AB0",
+      "B-1, porque o handler não chega a executar",
+      "Nada, porque o processo é terminado por SIGALRM"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.44"
+  },
+  {
+    "question": "Após signal(SIGUSR1,SIG_IGN); raise(SIGUSR1); printf(\"B\"); qual é o comportamento do processo?",
+    "answers": [
+      "O processo é terminado por SIGUSR1 sem imprimir nada",
+      "raise() bloqueia até chegar um segundo sinal SIGUSR1",
+      "raise() devolve -1 e o processo termina com erro",
+      "Imprime B, porque o sinal é ignorado"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.44"
+  },
+  {
+    "question": "h() faz write(1,\"H\",1) e é o handler de SIGUSR1 do pai. O pai faz fork, wait(0) e printf(\"F\"); o filho faz kill(getppid(),SIGUSR1) e _exit(0). Que é impresso?",
+    "answers": [
+      "HF",
+      "FH",
+      "F, porque o filho não pode enviar sinais ao pai",
+      "H, porque o pai é terminado pelo sinal"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.44"
+  },
+  {
+    "question": "O filho executa *(int*)0=1; o pai faz wait(&st) e imprime WIFSIGNALED(st) e WTERMSIG(st). Que valores são impressos?",
+    "answers": [
+      "0 e 11, pois o filho terminou normalmente",
+      "1 e 9, pois o filho foi terminado por SIGKILL",
+      "0 e 0, pois o filho terminou com exit(0)",
+      "1 e 11 (SIGSEGV)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.21"
+  },
+  {
+    "question": "Um handler vazio é registado com sigaction (sa_flags a 0) para SIGALRM. Com um pipe vazio mas com as pontas abertas, executa-se alarm(1); r=read(p[0],&c,1). Que acontece?",
+    "answers": [
+      "Passado 1 segundo, read() devolve -1 com errno igual a EINTR",
+      "read() devolve 0, porque não há dados no pipe",
+      "O kernel reinicia sempre read() e o processo fica bloqueado para sempre",
+      "O processo é terminado por SIGALRM"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.21"
+  },
+  {
+    "question": "Um handler faz ready=1. Em main: if(!ready) pause(); Qual é o problema deste código?",
+    "answers": [
+      "pause() não pode ser chamada depois de um if, porque o compilador a elimina do executável",
+      "O handler nunca consegue alterar ready, pois uma variável global está sempre na stack",
+      "Um sinal entre o teste de ready e pause() fica sem efeito e pause() bloqueia",
+      "A chamada pause() consome o sinal e impede por isso a execução do handler registado"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.41-45"
+  },
+  {
+    "question": "Um handler faz done=1 com int done global. A função main executa while(!done); Porque pode, com otimizações, o ciclo nunca terminar?",
+    "answers": [
+      "O compilador pode manter done num registo e nunca voltar a lê-lo da memória",
+      "O handler corre noutro processo e altera apenas a sua própria cópia de done, não a de main",
+      "O kernel impede que um handler altere variáveis globais",
+      "Um ciclo sem corpo bloqueia a entrega de todos os sinais"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.41,45"
+  },
+  {
+    "question": "Com act.sa_handler=SIG_IGN, o que acontece ao executar sigaction(SIGKILL,&act,NULL)?",
+    "answers": [
+      "Devolve 0 e o processo passa a ignorar o SIGKILL, como acontece com qualquer outro sinal",
+      "Devolve -1 com errno EINVAL; o SIGKILL continua a poder terminar o processo",
+      "Devolve 0, mas o sinal só é ignorado se o processo for executado pelo administrador",
+      "O processo é terminado de imediato pelo kernel por tentar alterar o SIGKILL"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.43"
+  },
+  {
+    "question": "O pai bloqueia SIGUSR1, executa kill(getpid(),SIGUSR1) e depois fork(). Cada processo chama sigpending() e imprime sigismember(&p,SIGUSR1). Que valores imprimem o filho e o pai?",
+    "answers": [
+      "Filho 1 e pai 1, pois o filho herda os pendentes",
+      "Filho 0 e pai 1",
+      "Filho 1 e pai 0, pois os pendentes passam ao filho",
+      "Filho 0 e pai 0, pois o sinal é descartado ao ser bloqueado"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.41-45"
+  },
+  {
+    "question": "Qual é o efeito de kill(pid,0)?",
+    "answers": [
+      "Termina o processo pid de forma ordenada, dando-lhe tempo para libertar recursos",
+      "Envia o sinal número 0, que o processo pid ignora sempre por ser um sinal reservado",
+      "Não envia sinal nenhum: testa se o processo pid existe e pode receber sinais",
+      "Suspende o processo pid até este receber o sinal seguinte enviado por outro processo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.42"
+  },
+  {
+    "question": "h1 (SIGUSR1) faz write S, raise(SIGUSR2), write s; h2 (SIGUSR2) faz write T. Em main: raise(SIGUSR1); write M. Os handlers estão registados com sigaction, sem flags especiais. Qual é a saída?",
+    "answers": [
+      "SsTM, pois T só corre depois de S terminar",
+      "SMTs, pois T só corre depois de main continuar",
+      "STsM",
+      "SsMT, pois T fica pendente até ao fim de main"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.46"
+  },
+  {
+    "question": "Um programa executa apenas alarm(1); for(;;); sem registar nenhum handler. O que acontece?",
+    "answers": [
+      "Corre indefinidamente, porque a ação por omissão de SIGALRM é ignorá-lo como em SIGCHLD",
+      "É terminado ao fim de 1 s, pois a ação por omissão de SIGALRM é terminar",
+      "É terminado de imediato, porque alarm() sem handler registado é um erro",
+      "É suspenso ao fim de 1 segundo e só continua quando receber SIGCONT"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.43"
+  },
+  {
+    "question": "Qual é a principal diferença entre um trap e um interrupt de hardware?",
+    "answers": [
+      "O trap resulta de uma instrução do próprio programa; o interrupt vem de um evento externo",
+      "O trap só ocorre em kernel mode e o interrupt só ocorre em user mode, por razões de segurança",
+      "O trap é assíncrono e o interrupt é síncrono, relativamente à instrução em execução",
+      "Após um trap o processo é sempre terminado, enquanto após um interrupt retoma"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.13,25"
+  },
+  {
+    "question": "Em Linux, qual das seguintes informações é mantida na estrutura task_struct, que representa o PCB?",
+    "answers": [
+      "A tabela de exceções do CPU, partilhada por todos os processos",
+      "O apontador para o pai e a lista dos filhos",
+      "A stack de kernel de todos os outros processos do sistema",
+      "O código dos handlers de cada interrupt"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.35"
+  },
+  {
+    "question": "O que acontece num processador multicore?",
+    "answers": [
+      "Todos os cores têm de executar o mesmo processo ao mesmo tempo",
+      "Cada core tem a sua memória principal, sem partilha de dados com os restantes cores do chip",
+      "Só um core pode executar código de um processo de cada vez",
+      "Cada core pode executar um processo diferente, partilhando a memória principal"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.33"
+  },
+  {
+    "question": "Em x86-64, a quem cabe definir o significado das exceções com números entre 32 e 255?",
+    "answers": [
+      "Ao sistema operativo, por exemplo interrupts e traps",
+      "Aos arquitetos do processador, sendo iguais em qualquer sistema x86-64",
+      "Ao programa em user mode, que as regista no arranque",
+      "Ao compilador, que as atribui na geração do executável"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.9"
+  },
+  {
+    "question": "Qual dos seguintes sinais não pode ser capturado nem ignorado por um processo?",
+    "answers": [
+      "SIGINT, gerado por Ctrl-C",
+      "SIGKILL",
+      "SIGALRM, gerado por alarm()",
+      "SIGUSR1, definido pelo utilizador"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.43"
+  },
+  {
+    "question": "Um processo regista h para SIGUSR1 e executa exec de outro programa, que não regista nada. Se o novo programa receber SIGUSR1, o que acontece?",
+    "answers": [
+      "A função h é executada, pois o handler é herdado e permanece válido através de exec, tal como acontece com fork",
+      "O sinal é sempre ignorado, pois exec faz ignorar todos os sinais recebidos",
+      "O sinal fica bloqueado até o novo programa terminar por si",
+      "O handler não existe no novo programa e aplica-se a ação por omissão, que termina o processo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.45"
+  },
+  {
+    "question": "Um trap é uma exceção assíncrona causada por um dispositivo externo e, depois do tratamento, a execução retoma na própria instrução que a originou.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.13"
+  },
+  {
+    "question": "Depois de tratada uma system call, a execução do processo prossegue na instrução seguinte à instrução syscall.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.13,17"
+  },
+  {
+    "question": "Depois de uma page fault recuperável, o kernel retoma a execução na instrução seguinte à que falhou.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.19-20"
+  },
+  {
+    "question": "O handler de uma exceção do tipo abort nunca devolve o controlo ao programa de aplicação que estava em execução.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.23"
+  },
+  {
+    "question": "O sinal SIGSEGV é uma classe de exceção de hardware, tal como as faults e os aborts.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.41"
+  },
+  {
+    "question": "Os interrupts do timer permitem ao kernel recuperar o controlo do CPU mesmo que o processo em execução nunca chame uma system call.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.26"
+  },
+  {
+    "question": "Em multitarefa cooperativa, a mudança de contexto é desencadeada periodicamente por um interrupt do timer.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.28"
+  },
+  {
+    "question": "Um acesso a um endereço inválido origina uma page fault que o kernel não consegue recuperar, pelo que o processo recebe SIGSEGV.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.21"
+  },
+  {
+    "question": "Num handler de sinal pode chamar-se printf() com segurança, porque printf() é uma função async-signal-safe.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.45"
+  },
+  {
+    "question": "Se um processo não registar nenhum handler para um sinal, a disposição desse sinal é a ação por omissão.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.45"
+  },
+  {
+    "question": "Um processo criado por fork() herda do pai o conjunto dos sinais que estão pendentes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.41-45"
+  },
+  {
+    "question": "Depois de exec, os sinais que o programa anterior capturava com um handler voltam a ter a ação por omissão.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.45"
+  },
+  {
+    "question": "Por omissão, quando o handler de um sinal S está a executar, a chegada de outro S interrompe-o e executa o handler de novo de imediato.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.46"
+  },
+  {
+    "question": "Enquanto um sinal S está bloqueado, três envios de S ao processo resultam, no máximo, numa só entrega de S quando for desbloqueado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.41-45"
+  },
+  {
+    "question": "As exceções de 0 a 31 do x86-64 são definidas pelo sistema operativo, podendo diferir entre sistemas.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.9"
+  },
+  {
+    "question": "Quando termina a operação de entrada e saída de um processo bloqueado, o tratamento do interrupt permite que esse processo volte a ficar ready.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.39"
+  },
+  {
+    "question": "Os sinais são enviados diretamente de um processo para outro, sem intervenção do kernel.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T5 p.42"
+  },
+  {
+    "question": "Com h(int s){n++;} registado com sigaction para SIGUSR1 (n global, volatile sig_atomic_t, inicialmente 0), que valor imprime printf(\"%d\",n) depois de raise(SIGUSR1); raise(SIGUSR1); raise(SIGUSR1);?",
+    "answers": [
+      "3, porque cada raise() só retorna depois de o handler ter terminado",
+      "1, porque sinais iguais consecutivos são fundidos num só e o handler executa uma vez",
+      "0, porque o handler só executa quando o processo fica bloqueado em pause() ou sleep()",
+      "2, porque o último raise() termina o processo antes de o handler correr"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.16"
+  },
+  {
+    "question": "O filho executa pause(); (sem handler para SIGUSR1) e o pai faz kill(p,SIGUSR1); wait(&s);. Qual das afirmações sobre s é correta?",
+    "answers": [
+      "WIFEXITED(s) é verdadeiro e o estado de saída é 0, porque pause() retorna normalmente",
+      "WIFSIGNALED(s) é verdadeiro e WTERMSIG(s) é o número de SIGUSR1",
+      "WIFEXITED(s) é verdadeiro e WEXITSTATUS(s) é o número de SIGUSR1",
+      "O pai fica bloqueado em wait(), porque o filho ignora SIGUSR1 por omissão"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.14"
+  },
+  {
+    "question": "Depois de act.sa_handler = SIG_IGN; sigaction(SIGUSR1,&act,NULL); (act zerada com memset), o programa executa raise(SIGUSR1); printf(\"fim\");. O que acontece?",
+    "answers": [
+      "O processo termina sem imprimir, porque a ação por omissão de SIGUSR1 é terminar",
+      "Imprime fim, mas só depois de o kernel adiar o sinal até ao fim do programa",
+      "Imprime fim, porque o sinal é ignorado e o processo continua",
+      "O processo fica bloqueado em raise() até outro processo lhe enviar SIGUSR1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.24"
+  },
+  {
+    "question": "Com um handler registado para SIGUSR1, que valores devolvem kill(getpid(),SIGUSR1) e kill(99999999,SIGUSR1) (pid inexistente), e qual o errno da segunda chamada?",
+    "answers": [
+      "0 e -1, com errno igual a EINVAL, porque o sinal é inválido para esse pid",
+      "1 e 0, com errno igual a ESRCH, porque o pid não existe",
+      "-1 e -1, com errno igual a EPERM, porque o pid pertence a outro utilizador",
+      "0 e -1, com errno igual a ESRCH"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.11"
+  },
+  {
+    "question": "Que valores ficam em a, b e c depois de alarm(10); a=alarm(3); b=alarm(0); c=alarm(0); (executadas de seguida, sem esperas relevantes)?",
+    "answers": [
+      "10, 3 e 0",
+      "0, 10 e 3, porque cada chamada devolve o valor do alarme que acabou de definir",
+      "10, 10 e 0, porque alarm(3) acrescenta segundos ao alarme que já existia",
+      "0, 0 e 0, porque alarm() devolve sempre 0 quando consegue armar o alarme"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.17"
+  },
+  {
+    "question": "Com h(int s){n++;} registado para SIGALRM, o que acontece em alarm(1); r=pause();?",
+    "answers": [
+      "r fica 0, errno não é alterado e n vale 1, porque a espera correu bem",
+      "r fica -1, errno é EINTR e n vale 0, porque o handler só corre depois de pause() retornar",
+      "r fica 1 e pause() retorna sem o handler ter executado, que será chamado mais tarde",
+      "r fica -1, errno é EINTR e n vale 1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.13"
+  },
+  {
+    "question": "O filho executa alarm(1); pause(); _exit(0); sem handler para SIGALRM. O pai chama wait(&s). Como é visto o fim do filho?",
+    "answers": [
+      "WIFEXITED(s) é verdadeiro com estado 0, ao fim de cerca de 1 segundo",
+      "WIFSIGNALED(s) é verdadeiro e WTERMSIG(s) é SIGALRM",
+      "O filho nunca termina, porque SIGALRM é ignorado por omissão",
+      "WIFEXITED(s) é verdadeiro e WEXITSTATUS(s) é o número de SIGALRM, ao fim de 1 segundo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.8"
+  },
+  {
+    "question": "Sem handler para SIGALRM, o que acontece com alarm(1); alarm(0); sleep(2); printf(\"ok\");?",
+    "answers": [
+      "O processo é terminado por SIGALRM ao fim de 1 segundo, sem imprimir",
+      "O processo é terminado de imediato, porque alarm(0) envia SIGALRM sem esperar",
+      "Imprime ok ao fim de 2 segundos, porque alarm(0) cancelou o alarme pendente",
+      "sleep(2) retorna ao fim de 1 segundo e imprime ok, porque o alarme interrompe sleep()"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.17"
+  },
+  {
+    "question": "O pai trata só SIGALRM (h faz n++), cria um filho que executa _exit(0) e depois faz alarm(1); pause(); printf(\"%d\",n);. Quando e o que imprime?",
+    "answers": [
+      "Imprime 0 assim que o filho termina, porque SIGCHLD acorda pause()",
+      "Imprime 1 assim que o filho termina, porque SIGCHLD faz o handler de SIGALRM correr",
+      "O pai é terminado quando o filho termina, porque SIGCHLD termina o processo por omissão",
+      "Imprime 1 ao fim de cerca de 1 segundo, porque SIGCHLD é ignorado por omissão e não acorda pause()"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.8"
+  },
+  {
+    "question": "Com act.sa_handler = h (act zerada), o que devolve sigaction(SIGKILL,&act,NULL) e qual o errno?",
+    "answers": [
+      "-1, com errno igual a EINVAL, porque SIGKILL não pode ser tratado",
+      "0, e h passa a executar sempre que o processo receber SIGKILL",
+      "-1, com errno igual a EPERM, porque só processos de root alteram SIGKILL",
+      "0, mas h só executa se o processo não estiver bloqueado em pause()"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.23"
+  },
+  {
+    "question": "Com act.sa_handler = h, executam-se duas vezes seguidas sigaction(SIGUSR1,&act,&old);. O que vale old.sa_handler depois da primeira e depois da segunda chamada?",
+    "answers": [
+      "h nas duas chamadas, porque old guarda sempre a ação acabada de instalar",
+      "SIG_DFL e depois h",
+      "SIG_IGN e depois h, porque SIGUSR1 é ignorado até ser instalado um handler",
+      "SIG_DFL nas duas chamadas, porque old guarda sempre a ação por omissão"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.19"
+  },
+  {
+    "question": "O handler de SIGUSR1 (n++, n volatile sig_atomic_t) foi registado antes de fork(). O filho faz while(!n); _exit(5); e o pai faz kill(0,SIGUSR1); wait(&s); printf(\"%d %d\",n,WEXITSTATUS(s));. O que imprime?",
+    "answers": [
+      "0 5, porque kill(0,...) nunca atinge o processo emissor",
+      "1 0, porque o filho é terminado antes de poder sair com 5",
+      "1 5, porque pid 0 atinge todo o grupo, incluindo o próprio emissor",
+      "Nada, porque o filho nunca recebe o sinal e wait() bloqueia para sempre"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.11"
+  },
+  {
+    "question": "O handler hh escreve H com write() e está registado para SIGUSR1. Que sequência de caracteres escreve write(1,\"A\",1); raise(SIGUSR1); write(1,\"B\",1);?",
+    "answers": [
+      "AHB",
+      "ABH, porque o handler só corre quando o processo terminar o código atual",
+      "HAB, porque o sinal é entregue antes de qualquer instrução anterior",
+      "AB, porque o handler não executa quando o sinal é enviado pelo próprio processo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.16"
+  },
+  {
+    "question": "O handler de SIGALRM faz n++. Depois de alarm(1); r=sleep(5);, o que acontece?",
+    "answers": [
+      "sleep() só retorna ao fim de 5 segundos, com r igual a 0, e n vale 1",
+      "sleep() retorna ao fim de 1 segundo com r igual a 0, porque o tempo pedido foi cumprido",
+      "sleep() retoma o sono depois do handler, retorna aos 5 segundos e n vale 0",
+      "sleep() retorna ao fim de cerca de 1 segundo com r maior que 0, e n vale 1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.26"
+  },
+  {
+    "question": "O handler de SIGALRM faz n++. O que imprime alarm(1); alarm(3); sleep(2); printf(\"%d \",n); pause(); printf(\"%d\",n);?",
+    "answers": [
+      "0 1",
+      "1 1, porque o primeiro alarme dispara ao fim de 1 segundo",
+      "1 2, porque os dois alarmes disparam, um aos 1 s e outro aos 3 s",
+      "0 0, porque pause() não retorna com um handler instalado"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.17"
+  },
+  {
+    "question": "Antes de fork(), regista-se h (n++, n global a 0) para SIGUSR1. O filho faz raise(SIGUSR1); _exit(n+10); e o pai, depois de wait(&s), imprime n e WEXITSTATUS(s). O que imprime?",
+    "answers": [
+      "1 e 11, porque o n do pai e o do filho são a mesma variável",
+      "0 e 10, porque o filho não herda o handler",
+      "0 e 11",
+      "1 e 10, porque o handler do filho incrementa o n do pai"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.12"
+  },
+  {
+    "question": "O handler hs(int s){printf(\"%d \",s);} está registado para SIGINT e SIGTERM. O que imprime raise(SIGTERM); raise(SIGINT); raise(SIGTERM);?",
+    "answers": [
+      "15 2 15",
+      "2 15 2, porque o handler recebe o número do último sinal registado",
+      "15 2, porque os dois SIGTERM são fundidos num só",
+      "15 15 2, porque os sinais iguais são agrupados antes de serem entregues"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.23"
+  },
+  {
+    "question": "Um handler (h faz n++) está registado para SIGALRM com sa_flags = 0. Com um pipe vazio, de extremo de escrita aberto, que valores têm r, errno==EINTR e n depois de alarm(1); r=read(p[0],&c,1);?",
+    "answers": [
+      "r é 0, errno==EINTR é falso e n vale 1, porque read() assinala fim de ficheiro",
+      "r é -1, errno==EINTR é verdadeiro e n vale 1",
+      "r é -1, errno==EINTR é verdadeiro e n vale 0, porque o handler corre antes",
+      "r é 1, errno==EINTR é falso e n vale 1, porque o sinal conta como um byte"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.21"
+  },
+  {
+    "question": "Igual ao caso anterior, mas com sa_flags = SA_RESTART e um pipe vazio de extremo de escrita aberto. O que acontece depois de alarm(1); r=read(p[0],&c,1);?",
+    "answers": [
+      "read() retorna -1 com errno igual a EINTR logo que o handler termina de executar",
+      "read() retorna 0 depois do handler, a indicar que chegou ao fim de ficheiro",
+      "O handler executa e read() volta a bloquear, sem retornar enquanto não houver dados",
+      "read() retorna 1, com c igual ao número do sinal que foi tratado"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.21"
+  },
+  {
+    "question": "O filho executa *(volatile int*)0 = 1; (escrita num apontador nulo). Que valores tem o estado s obtido com wait(&s) no pai?",
+    "answers": [
+      "WIFEXITED(s) é verdadeiro e WEXITSTATUS(s) é diferente de 0, porque o filho terminou com erro",
+      "WIFSIGNALED(s) é verdadeiro e WTERMSIG(s) é SIGSEGV",
+      "WIFSIGNALED(s) é verdadeiro e WTERMSIG(s) é SIGKILL, enviado pelo kernel",
+      "WIFEXITED(s) é verdadeiro e o estado de saída é 0, porque o erro é ignorado"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.8"
+  },
+  {
+    "question": "O filho faz _exit(0); o pai faz wait(&s); r=kill(p,SIGUSR1); printf(\"%d %d\",r,errno==ESRCH);. O que imprime?",
+    "answers": [
+      "0 0, porque o kernel guarda o sinal até ao próximo filho",
+      "0 1, porque kill() devolve 0 sempre que o sinal é válido",
+      "-1 1",
+      "-1 0, porque o filho já terminou e errno guarda EPERM"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.11"
+  },
+  {
+    "question": "Dois handlers escrevem U e A com write() e tratam SIGUSR1 e SIGALRM, respetivamente. O que acontece com raise(SIGUSR1); alarm(1); pause();?",
+    "answers": [
+      "Escreve só U e pause() retorna de imediato, porque SIGUSR1 já tinha sido tratado",
+      "Escreve U e fica bloqueado para sempre, porque SIGALRM não acorda pause()",
+      "Escreve A e depois U, porque o alarme tem prioridade sobre SIGUSR1",
+      "Escreve U de imediato e A ao fim de cerca de 1 segundo, quando pause() retorna"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.15"
+  },
+  {
+    "question": "O filho regista h para SIGUSR1 e executa pause() em ciclo. Que valor tem WTERMSIG(s) depois de o pai fazer kill(p,SIGKILL); wait(&s);?",
+    "answers": [
+      "SIGUSR1, porque o processo termina com o último sinal tratado",
+      "SIGKILL, porque este sinal não pode ser tratado",
+      "Nenhum, porque o filho trata o sinal e continua a executar pause()",
+      "SIGKILL, mas só se o filho ainda não tiver chegado a registar o handler"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.23"
+  },
+  {
+    "question": "O filho regista h (n++) para SIGUSR1; raise; passa o sinal a SIG_IGN; raise; escreve X; repõe SIG_DFL; raise; escreve Y. Como acaba o filho?",
+    "answers": [
+      "Escreve X e Y e sai normalmente, porque o handler anterior é reutilizado",
+      "Escreve só Y, porque o raise com SIG_IGN termina o processo",
+      "Escreve X e é terminado por SIGUSR1, sem escrever Y",
+      "Não escreve nada, porque o primeiro raise já termina o processo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.23"
+  },
+  {
+    "question": "O pai regista h (n++) para SIGUSR1 e cria um filho que faz kill(getppid(),SIGUSR1); _exit(0);. O pai repete wait(NULL) enquanto devolver -1 com EINTR e imprime n. O que imprime?",
+    "answers": [
+      "1, porque o sinal é entregue ao pai antes de wait() terminar",
+      "0, porque o handler só executa se o pai estiver em pause()",
+      "2, porque o sinal é entregue uma vez ao enviar e outra ao terminar o filho",
+      "Nada, porque o pai é terminado por SIGUSR1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.12"
+  },
+  {
+    "question": "hr(int s){n++; alarm(1);} trata SIGALRM. O que imprime e quando: alarm(1); while(n<2) pause(); printf(\"%d\",n);?",
+    "answers": [
+      "2, ao fim de cerca de 1 segundo, porque os dois alarmes são entregues juntos",
+      "1, ao fim de cerca de 1 segundo, porque o alarme dentro do handler é descartado",
+      "2, ao fim de cerca de 2 segundos",
+      "Nada, porque alarm() não pode ser chamada dentro de um handler"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.26"
+  },
+  {
+    "question": "O handler de SIGUSR1 faz n++. O que imprime r=raise(SIGUSR1); printf(\"%d%d \",r,n); r=kill(getpid(),SIGUSR1); printf(\"%d%d\",r,n);?",
+    "answers": [
+      "01 01, porque o segundo sinal é descartado",
+      "00 01, porque o handler só corre depois de raise() retornar",
+      "11 12, porque raise() e kill() devolvem 1 em caso de sucesso",
+      "01 02"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.16"
+  },
+  {
+    "question": "O filho executa abort(); e o pai faz wait(&s);. Como é visto o fim do filho?",
+    "answers": [
+      "WIFSIGNALED(s) é verdadeiro e WTERMSIG(s) é SIGABRT",
+      "WIFEXITED(s) é verdadeiro e WEXITSTATUS(s) é 0, pois abort() é apenas uma saída anormal",
+      "WIFEXITED(s) é verdadeiro e WEXITSTATUS(s) é o número de SIGABRT",
+      "O filho fica bloqueado, à espera de um handler para SIGABRT"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.4"
+  },
+  {
+    "question": "Um utilizador sem privilégios executa kill(1,SIGUSR1), sendo o processo 1 propriedade de root. O que acontece?",
+    "answers": [
+      "kill() devolve 0 e o processo 1 é terminado por SIGUSR1",
+      "kill() devolve -1 com errno igual a EPERM, sem enviar o sinal",
+      "kill() devolve -1 com errno igual a ESRCH, porque o processo 1 não aceita sinais",
+      "kill() devolve 0, e o sinal fica pendente até root o aceitar"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.11"
+  },
+  {
+    "question": "Um processo sem handler nem SIG_IGN para SIGUSR1 recebe esse sinal. Porque é que termina em vez de o ignorar?",
+    "answers": [
+      "Porque o kernel termina qualquer processo que receba um sinal sem handler, sejam quais forem as ações predefinidas",
+      "Porque SIGUSR1 não pode ser ignorado, tal como SIGKILL e SIGSTOP",
+      "Porque a ação por omissão de SIGUSR1 é gerar um core dump e continuar",
+      "Porque a ação por omissão de SIGUSR1 é terminar o processo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.12"
+  },
+  {
+    "question": "Que par de sinais não pode ser tratado com um handler nem ignorado com SIG_IGN?",
+    "answers": [
+      "SIGINT e SIGTERM",
+      "SIGKILL e SIGSTOP",
+      "SIGKILL e SIGTERM",
+      "SIGSTOP e SIGCHLD"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.23"
+  },
+  {
+    "question": "A ação por omissão de SIGCHLD é ignorar. Se o pai nunca chamar wait() ou waitpid(), qual é a consequência dos filhos que terminam?",
+    "answers": [
+      "São terminados à força pelo kernel, que envia SIGKILL ao pai",
+      "Continuam a executar, porque o seu estado nunca é guardado",
+      "Ficam como processos zombie, porque o pai não recolhe o seu estado",
+      "Deixam de existir de imediato, porque SIGCHLD ignorado dispensa wait()"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.9"
+  },
+  {
+    "question": "Num handler de sinal, porque se deve usar write() em vez de printf()?",
+    "answers": [
+      "Porque write() é async-signal-safe e printf() não é",
+      "Porque printf() só funciona na stack principal, e não dentro de handlers",
+      "Porque write() é mais rápido do que printf() e o handler não pode demorar",
+      "Porque printf() bloqueia sempre o processo até receber outro sinal"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.25"
+  },
+  {
+    "question": "O pai regista um handler para SIGUSR1, cria um filho que envia SIGUSR1 ao pai de imediato, e só depois o pai chama pause(). Qual poderá ser a consequência?",
+    "answers": [
+      "pause() retornar de imediato, porque o sinal fica na fila até pause() ser chamado",
+      "O pai ser terminado, porque o sinal chegou antes do handler executar",
+      "pause() bloquear para sempre, porque o sinal já foi tratado e não é guardado",
+      "pause() retornar com 0, porque a entrega do sinal foi adiada pelo kernel"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.15"
+  },
+  {
+    "question": "Um programa regista um handler para SIGINT que escreve uma mensagem e depois fica num ciclo. O utilizador carrega em CTRL+C. O que acontece?",
+    "answers": [
+      "O programa termina logo, porque SIGINT termina sempre o processo",
+      "O handler escreve a mensagem e, ao retornar, o programa continua o ciclo",
+      "O handler executa, e o programa termina quando o handler retorna",
+      "O programa é suspenso até receber SIGCONT"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.3"
+  },
+  {
+    "question": "Que campo de struct sigaction e que flag permitem que o handler receba informação adicional sobre o sinal?",
+    "answers": [
+      "O campo sa_handler, juntamente com a flag SA_RESTART",
+      "O campo sa_mask, juntamente com a flag SA_SIGINFO",
+      "O campo sa_sigaction, juntamente com a flag SA_RESTART",
+      "O campo sa_sigaction, juntamente com a flag SA_SIGINFO"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.21"
+  },
+  {
+    "question": "Qual é a ação por omissão de SIGSEGV?",
+    "answers": [
+      "Ignorar o sinal e continuar a execução",
+      "Terminar o processo sem gerar core dump, tal como SIGINT",
+      "Gerar um core dump e terminar o processo",
+      "Suspender o processo até receber SIGCONT"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.9"
+  },
+  {
+    "question": "Os sinais SIGKILL e SIGSTOP não podem ser tratados nem ignorados por um processo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.23"
+  },
+  {
+    "question": "raise(sig) é equivalente a kill(getpid(),sig).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.16"
+  },
+  {
+    "question": "pause() só retorna quando um sinal é tratado por um handler e este termina.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.13"
+  },
+  {
+    "question": "Um sinal standard que chegue antes de pause() ser chamada não a acorda.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.15"
+  },
+  {
+    "question": "alarm(0) cancela o alarme pendente do processo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.17"
+  },
+  {
+    "question": "A ação por omissão de SIGUSR1 é terminar o processo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.8"
+  },
+  {
+    "question": "Em sigaction(), se o terceiro argumento não for NULL, recebe a ação que estava definida antes da chamada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.19"
+  },
+  {
+    "question": "Sem SA_RESTART, uma chamada bloqueante ao sistema interrompida por um handler pode falhar com errno igual a EINTR.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.21"
+  },
+  {
+    "question": "O handler instalado com sa_handler recebe como único argumento o número do sinal.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.23"
+  },
+  {
+    "question": "Um utilizador sem privilégios pode usar kill() para enviar sinais a processos de outros utilizadores.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.11"
+  },
+  {
+    "question": "A ação por omissão de SIGCHLD é terminar o processo pai.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.9"
+  },
+  {
+    "question": "alarm(5) faz com que SIGALRM seja enviado ao processo de 5 em 5 segundos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.17"
+  },
+  {
+    "question": "Quando um handler de sinal termina, pause() devolve 0.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.13"
+  },
+  {
+    "question": "Se um processo chamar alarm(10) e depois alarm(3), recebe dois SIGALRM, aos 3 e aos 10 segundos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.17"
+  },
+  {
+    "question": "Com act.sa_handler = SIG_IGN, sigaction() consegue ignorar SIGKILL.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.23"
+  },
+  {
+    "question": "kill(pid,sig) só retorna depois de o handler do processo destino ter terminado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.11"
+  },
+  {
+    "question": "Com pid igual a 0, kill() envia o sinal apenas ao processo cujo identificador é 0.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.11"
+  },
+  {
+    "question": "A ação por omissão de SIGINT é ignorar o sinal.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP3 p.8"
+  },
+  {
+    "question": "Um processo regista h (n++) para SIGUSR1, bloqueia SIGUSR1 com sigprocmask(SIG_BLOCK), executa raise(SIGUSR1) três vezes e depois desbloqueia-o. Quantas vezes executa h?",
+    "answers": [
+      "Nenhuma, porque os sinais bloqueados são descartados pelo kernel",
+      "Três vezes, uma por cada chamada a raise()",
+      "Uma vez, pois o kernel só regista que o sinal está pendente",
+      "Duas vezes, porque o kernel guarda no máximo dois sinais"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.16"
+  },
+  {
+    "question": "h1 escreve A, faz raise(SIGUSR2) e escreve B; h2 escreve C. h1 trata SIGUSR1 com sa_mask={SIGUSR2}, h2 trata SIGUSR2. O main faz raise(SIGUSR1) e escreve D. Qual a saída?",
+    "answers": [
+      "ACBD, porque h2 interrompe h1 logo que o sinal é gerado",
+      "ABDC, porque h2 só corre depois do main escrever D",
+      "ACDB, com h2 a correr dentro de h1 e h1 a acabar no fim",
+      "ABCD, pois h2 só corre depois de h1 terminar"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.19"
+  },
+  {
+    "question": "h escreve I, só na 1.ª execução faz raise(SIGUSR1) e escreve O. Registado com SA_NODEFER e sa_mask vazia, qual a saída após um raise(SIGUSR1) no main?",
+    "answers": [
+      "IIOO, porque h é interrompido por si próprio",
+      "IOIO, porque o segundo sinal fica pendente até h terminar",
+      "IOO, porque o segundo sinal é perdido enquanto h corre",
+      "IIO, porque o segundo h termina o primeiro"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.16"
+  },
+  {
+    "question": "h (sem sa_mask nem flags) imprime sigismember(&c,SIGUSR1), com c obtido por sigprocmask(SIG_BLOCK,0,&c). Que valores imprimem h e o main (mesma consulta, depois do raise(SIGUSR1)), por esta ordem?",
+    "answers": [
+      "0 e 0, porque o sinal já foi entregue antes de h correr",
+      "1 e 0, pois a máscara é reposta ao sair de h",
+      "1 e 1, porque a máscara não é reposta ao sair de h",
+      "0 e 1, pois h corre sem o sinal bloqueado"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.16"
+  },
+  {
+    "question": "O pai bloqueia SIGUSR1, faz raise(SIGUSR1) e depois fork(). No filho, qual é o estado de SIGUSR1 segundo sigprocmask e sigpending?",
+    "answers": [
+      "Bloqueado e pendente, pois o filho herda também o conjunto de pendentes",
+      "Desbloqueado e pendente",
+      "Bloqueado e não pendente",
+      "Desbloqueado e não pendente"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.25"
+  },
+  {
+    "question": "Após sigfillset(&m) e sigprocmask(SIG_SETMASK,&m,0), qual a afirmação correta sobre SIGKILL e SIGSTOP?",
+    "answers": [
+      "A chamada devolve -1 e a máscara do processo não é alterada",
+      "Devolve 0 e todos os sinais, incluindo SIGKILL, ficam bloqueados",
+      "O processo é terminado de imediato com SIGKILL",
+      "A chamada devolve 0, mas SIGKILL e SIGSTOP não chegam a ficar bloqueados"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.23"
+  },
+  {
+    "question": "Máscara inicial vazia. Executa-se: BLOCK{SIGUSR1}; BLOCK{SIGUSR2} com oldset=&o; SETMASK{SIGUSR2} com oldset=&o. Quais são o conteúdo final de o e a máscara atual?",
+    "answers": [
+      "o={USR1,USR2}; máscara={USR2}",
+      "o={USR2}; máscara={USR2}, porque SETMASK não guarda o anterior",
+      "o={USR1}; máscara={USR1,USR2}",
+      "o={USR1,USR2}; máscara={USR1,USR2}"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.23"
+  },
+  {
+    "question": "h escreve H e está registado para SIGUSR1, que o main bloqueia. Sequência: raise(SIGUSR1); escreve 1; sigprocmask(SIG_UNBLOCK) de SIGUSR1; escreve 2. Qual a ordem das escritas?",
+    "answers": [
+      "H 1 2, porque raise() executa h de imediato",
+      "1 H 2, pois h só corre ao desbloquear",
+      "1 2 H, porque h corre no fim do main",
+      "1 2, porque o sinal bloqueado é descartado"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.22"
+  },
+  {
+    "question": "h tem sa_mask={SIGUSR2}: faz raise(SIGUSR2) e imprime sigismember(&pendentes,SIGUSR2). g (handler de SIGUSR2) imprime g. O main faz raise(SIGUSR1) e imprime end. Que saída?",
+    "answers": [
+      "g 1 end, porque SIGUSR2 interrompe h de imediato",
+      "0 g end, porque SIGUSR2 não fica pendente em h",
+      "1 g end, porque g só corre depois de h terminar",
+      "1 end g, porque g só corre no fim do main"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.19"
+  },
+  {
+    "question": "Um filho executa kill(getppid(),SIGUSR1). O handler do pai (SA_SIGINFO) guarda i->si_pid. Qual o valor guardado?",
+    "answers": [
+      "O PID do pai, que recebeu o sinal",
+      "0, porque o campo só é preenchido por sinais gerados pelo kernel",
+      "O PID do processo init",
+      "O PID do filho que enviou o sinal"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.11"
+  },
+  {
+    "question": "O pai regista h para SIGUSR1 com sigaction e depois executa fork(). O filho executa raise(SIGUSR1). O que acontece no filho?",
+    "answers": [
+      "Executa h, porque herda as ações dos sinais",
+      "É terminado, porque o handler não é herdado pelo filho",
+      "O sinal é ignorado, porque o filho começa com todos os sinais ignorados",
+      "Fica bloqueado até o pai enviar o sinal"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.25"
+  },
+  {
+    "question": "O pai regista um handler para SIGUSR1 e o filho faz exec de um programa que executa raise(SIGUSR1) sem instalar handler. Como termina o filho?",
+    "answers": [
+      "Normalmente, porque o exec mantém o handler instalado pelo pai",
+      "Terminado por SIGUSR1, pois o exec repõe a ação por omissão",
+      "Normalmente, porque o exec faz ignorar o sinal",
+      "O exec falha porque existe um handler instalado"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.25"
+  },
+  {
+    "question": "Depois de sigaction(SIGUSR1,&a,0) com a.sa_handler=h, chama-se sigaction(SIGUSR1,&b,&o) com b.sa_handler=SIG_IGN. Que valor fica em o.sa_handler?",
+    "answers": [
+      "SIG_IGN, a nova ação",
+      "SIG_DFL, porque oact guarda a ação por omissão",
+      "h, a ação instalada antes da segunda chamada",
+      "NULL, porque oact só é preenchido na primeira chamada"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.7"
+  },
+  {
+    "question": "O handler de SIGALRM escreve 1 byte num pipe vazio. O main usa SA_RESTART, faz alarm(1) e read() desse pipe. O que devolve read?",
+    "answers": [
+      "-1 com errno EINTR, porque o handler interrompeu a chamada read",
+      "0, porque o pipe estava vazio quando read começou",
+      "Nada, bloqueia para sempre",
+      "1, pois após o handler a chamada é retomada e lê o byte"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.6"
+  },
+  {
+    "question": "SIGUSR1 (handler incrementa n) está bloqueado e pendente. O main chama sigsuspend com máscara vazia. O que acontece?",
+    "answers": [
+      "O handler corre, sigsuspend devolve -1 e SIGUSR1 volta a ficar bloqueado",
+      "sigsuspend bloqueia, pois o sinal pendente já foi entregue",
+      "sigsuspend devolve 0 e SIGUSR1 fica desbloqueado",
+      "O handler não corre, porque a máscara original ainda bloqueia SIGUSR1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.22"
+  },
+  {
+    "question": "SIGUSR1 tem handler (n++) e está bloqueado e pendente. O main chama sigwait(&m,&s) com m={SIGUSR1}. Qual o resultado?",
+    "answers": [
+      "Devolve 0, s=SIGUSR1 e o handler corre uma vez antes do regresso",
+      "Devolve 0, s=SIGUSR1, n não muda e o sinal deixa de estar pendente",
+      "Devolve -1 com errno EINTR, depois de o handler correr uma vez",
+      "Bloqueia, pois sigwait só espera por sinais que ainda vão chegar"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.22"
+  },
+  {
+    "question": "SIGCHLD (handler n++) está bloqueado. O pai cria 3 filhos que terminam logo e recolhe-os com wait(). Que valores tem n antes e depois de desbloquear SIGCHLD?",
+    "answers": [
+      "0 e 3, uma execução por cada filho que termina, com 3 pendentes",
+      "3 e 3",
+      "0 e 1, pois os sinais pendentes não se acumulam",
+      "1 e 1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.17"
+  },
+  {
+    "question": "O filho executa signal(SIGTERM,SIG_IGN); raise(SIGTERM); _exit(5). O pai faz wait(&st). Que valores dão WIFEXITED(st) e WEXITSTATUS(st)?",
+    "answers": [
+      "Falso e 15, pois o filho foi terminado pelo sinal SIGTERM recebido",
+      "Verdadeiro e 0, pois o sinal foi ignorado",
+      "Falso e 5, porque houve um sinal",
+      "Verdadeiro e 5, pois o sinal ignorado não mata o filho"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.30"
+  },
+  {
+    "question": "Com handler vazio para SIGALRM e alarm(1), o que devolve sleep(10)?",
+    "answers": [
+      "Cerca de 9, os segundos que faltavam",
+      "0, pois o sleep termina sempre normalmente",
+      "10, pois o sinal é ignorado pelo sleep",
+      "-1 com errno EINTR"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.2"
+  },
+  {
+    "question": "O filho bloqueia SIGINT, faz raise(SIGINT), escreve A, desbloqueia SIGINT (sem handler) e escreve B. O que ocorre?",
+    "answers": [
+      "Escreve A e B, pois o raise foi bloqueado e o sinal descartado",
+      "Escreve A e é terminado por SIGINT ao desbloquear, sem escrever B",
+      "É terminado por SIGINT logo no raise, sem chegar a escrever A",
+      "Escreve A e B, pois o SIGINT é ignorado após desbloquear"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.26"
+  },
+  {
+    "question": "SIGUSR1 e SIGUSR2 partilham o handler h (n++). Ambos bloqueados; raise(SIGUSR1); raise(SIGUSR2); raise(SIGUSR1); raise(SIGUSR2); depois desbloqueados. Qual o valor de n?",
+    "answers": [
+      "4, uma execução por cada uma das quatro chamadas a raise()",
+      "1, porque só um sinal pendente é entregue",
+      "2, uma execução por cada tipo de sinal pendente",
+      "0, pois os sinais bloqueados são ignorados"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.16"
+  },
+  {
+    "question": "O pai faz signal(SIGCHLD,SIG_IGN), cria um filho que termina logo e chama wait(&st). Em Linux, o que devolve wait?",
+    "answers": [
+      "O PID do filho, como habitualmente, deixando-o zombie até ao fim",
+      "0, porque SIGCHLD ignorado impede a espera",
+      "-1 com errno EINTR",
+      "-1 com errno ECHILD, depois de o filho terminar"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.25"
+  },
+  {
+    "question": "h escreve 1 (SIGUSR1) e g escreve 2 (SIGUSR2), registados antes do fork. O filho faz raise(SIGUSR1), raise(SIGUSR2) e escreve c; o pai, após wait, faz raise(SIGUSR2) e escreve p. Saída?",
+    "answers": [
+      "12c2p, pois o filho herda os handlers",
+      "12cp, porque o pai não executa o handler após o wait",
+      "c12p2, porque os handlers só correm no fim",
+      "1c22p, porque g corre depois do write do filho"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.25"
+  },
+  {
+    "question": "SIGUSR1 (handler n++) está bloqueado. O filho envia-o ao pai e termina; o pai faz wait(0), depois sigsuspend com máscara vazia e imprime n. O que sucede?",
+    "answers": [
+      "Fica bloqueado para sempre, porque o sinal chegou antes do sigsuspend",
+      "Imprime 1, pois o sinal pendente é entregue no sigsuspend",
+      "Imprime 0, pois o sinal foi perdido por estar bloqueado",
+      "Imprime 2, uma vez no wait e outra no sigsuspend"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.22"
+  },
+  {
+    "question": "Com sa_flags=SA_RESETHAND, h escreve H. O main faz raise(SIGUSR1), escreve A, raise(SIGUSR1) e escreve B. O que ocorre?",
+    "answers": [
+      "Escreve H, A, H e B, pois o handler continua instalado após correr",
+      "Escreve H, A e B; o segundo sinal é ignorado pelo processo",
+      "Escreve H e A; o segundo sinal termina o processo (ação por omissão)",
+      "Escreve H e A, e fica bloqueado à espera de outro sinal"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.8"
+  },
+  {
+    "question": "Um handler faz f=1 (int f global). O main executa if(!f) pause(); Qual a consequência possível se o sinal chegar entre o teste de f e a chamada a pause()?",
+    "answers": [
+      "O handler não chega a ser executado, porque o sinal chega antes do pause",
+      "O pause devolve de imediato -1",
+      "O programa termina com segmentation fault",
+      "O pause bloqueia, pois o sinal já foi tratado e só acorda com outro"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.27"
+  },
+  {
+    "question": "Em int f; void h(int s){f=1;} o main faz while(!f); Compilado com otimização, qual o risco de f não ser volatile?",
+    "answers": [
+      "O compilador pode manter f num registo e o ciclo nunca terminar",
+      "O handler pode ser executado duas vezes seguidas, pois f não é atómico",
+      "A escrita f=1 pode ficar a meio",
+      "O ciclo termina, mas o sinal é perdido"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.4"
+  },
+  {
+    "question": "Porque é que chamar printf() dentro de um handler é perigoso?",
+    "answers": [
+      "Porque printf desativa o handler após a primeira chamada, repondo SIG_DFL",
+      "Pode interromper o main a meio de um printf ou malloc e corromper o estado partilhado",
+      "Porque o stdout não é acessível dentro de handlers, que usam outro processo",
+      "Porque printf bloqueia sempre todos os sinais até o main terminar"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.3"
+  },
+  {
+    "question": "Numa secção crítica usa-se sigprocmask(SIG_BLOCK,&m,0) e, no fim, sigprocmask(SIG_UNBLOCK,&m,0) em vez de repor a máscara antiga. Que problema pode surgir?",
+    "answers": [
+      "Os sinais que ficaram pendentes durante a secção são descartados pelo kernel",
+      "SIG_UNBLOCK desbloqueia também SIGKILL",
+      "Desbloqueia sinais de m que já estavam bloqueados antes da secção",
+      "A máscara fica vazia, apagando todos os bloqueios"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.29"
+  },
+  {
+    "question": "O handler de SIGCHLD chama wait() uma só vez. Três filhos terminam quase em simultâneo. Que problema pode ocorrer?",
+    "answers": [
+      "O pai fica bloqueado até todos terminarem",
+      "O kernel recolhe automaticamente os filhos restantes",
+      "O handler executa três vezes em paralelo, uma por cada filho que terminou",
+      "Ficam filhos zombie, pois vários SIGCHLD pendentes colapsam num só"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.17"
+  },
+  {
+    "question": "Um sinal S pertence à sa_mask do handler de T. S chega enquanto esse handler executa. O que acontece a S?",
+    "answers": [
+      "Fica pendente e é entregue depois de o handler terminar",
+      "É descartado pelo kernel, como se a sua ação fosse SIG_IGN",
+      "Interrompe de imediato o handler de T e executa o seu próprio",
+      "Termina o processo, pela ação por omissão"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.19"
+  },
+  {
+    "question": "O que acontece se se atribuir act.sa_sigaction=h (três parâmetros) mas sa_flags não incluir SA_SIGINFO?",
+    "answers": [
+      "sigaction falha e devolve -1 com errno igual a EINVAL de imediato",
+      "h é tratado como handler simples e info e ucontext não são preenchidos",
+      "h corre normalmente, com info e ucontext preenchidos pelo kernel",
+      "O sinal passa a ser ignorado, sem que h chegue a correr"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.9"
+  },
+  {
+    "question": "O que garante sig_atomic_t numa variável global modificada por um handler?",
+    "answers": [
+      "Que f++ é executado de forma atómica em qualquer arquitetura",
+      "Que o compilador não guarda a variável em registos",
+      "Que uma leitura ou escrita simples é atómica, mas não f++",
+      "Que o handler só é interrompido por sinais diferentes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.4"
+  },
+  {
+    "question": "Para que serve memset(&act,0,sizeof(struct sigaction)) antes de preencher act?",
+    "answers": [
+      "Reservar memória na heap para a estrutura e inicializá-la com os valores por omissão",
+      "Instalar o handler por omissão",
+      "Bloquear todos os sinais durante o handler",
+      "Evitar que campos não preenchidos, como sa_flags e sa_mask, tenham lixo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.6"
+  },
+  {
+    "question": "Porque se chama sigemptyset(&s) antes de sigaddset(&s,SIGINT) numa variável local sigset_t s?",
+    "answers": [
+      "Porque s tem valor indeterminado e pode conter sinais indesejados",
+      "Porque sigaddset falha com EINVAL quando o conjunto não foi inicializado antes",
+      "Porque sigaddset remove os sinais já presentes",
+      "Porque sigemptyset bloqueia os sinais de s"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.20"
+  },
+  {
+    "question": "Com sigfillset(&act.sa_mask), sigdelset(&act.sa_mask,SIGCHLD) e sigaction(SIGUSR2,&act,0), que sinais ficam bloqueados enquanto o handler de SIGUSR2 corre?",
+    "answers": [
+      "Apenas SIGCHLD, que é o único sinal removido",
+      "Todos os bloqueáveis, exceto SIGCHLD",
+      "Nenhum, pois sigdelset anula o efeito de sigfillset",
+      "Todos os sinais bloqueáveis, incluindo SIGCHLD"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.21"
+  },
+  {
+    "question": "Após fork, o pai faz logo kill(k,SIGUSR1); o filho só depois instala o handler de SIGUSR1. Qual poderá ser a consequência?",
+    "answers": [
+      "O sinal fica pendente até o filho chamar sigaction, sem mais efeitos",
+      "O kill falha com ESRCH, porque o filho ainda não chamou sigaction",
+      "O filho pode ser terminado pela ação por omissão, se o sinal chegar cedo",
+      "O sinal é sempre ignorado pelo filho"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.25"
+  },
+  {
+    "question": "sigprocmask com SIG_SETMASK substitui a máscara de sinais bloqueados do processo pelo conjunto indicado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.23"
+  },
+  {
+    "question": "Um sinal bloqueado com sigprocmask é descartado pelo kernel e nunca chega a ser entregue ao processo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.22"
+  },
+  {
+    "question": "No padrão seguro, o handler limita-se a atribuir um valor a uma variável volatile sig_atomic_t, que o main testa mais tarde.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.5"
+  },
+  {
+    "question": "_exit() pode ser chamada num handler, mas exit() não é async-signal-safe.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.3"
+  },
+  {
+    "question": "O conjunto devolvido por sigpending contém os sinais que estão a ser tratados por um handler nesse momento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.24"
+  },
+  {
+    "question": "sigprocmask com o argumento set igual a NULL limita-se a devolver a máscara atual em oldset, sem a alterar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.23"
+  },
+  {
+    "question": "O campo sa_mask de struct sigaction indica os sinais que ficam ignorados de forma permanente após o handler ser instalado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.19"
+  },
+  {
+    "question": "Um sinal cuja ação é SIG_IGN continua ignorado no programa carregado por exec.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.25"
+  },
+  {
+    "question": "sigaction(SIGKILL,&a,0) com a.sa_handler=SIG_IGN falha e devolve -1 com errno igual a EINVAL.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.7"
+  },
+  {
+    "question": "waitpid(-1,&st,WNOHANG) devolve 0 se existirem filhos, mas nenhum tiver terminado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.17"
+  },
+  {
+    "question": "Tal como os sinais standard, os sinais de tempo real pendentes nunca são acumulados em fila.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.16"
+  },
+  {
+    "question": "A função sigwait devolve como valor de retorno o número do sinal que foi aceite.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.22"
+  },
+  {
+    "question": "No handler de sa_sigaction, o apontador para siginfo_t é o terceiro parâmetro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.10"
+  },
+  {
+    "question": "Os sinais incluídos em sa_mask continuam bloqueados para sempre depois de o handler terminar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.19"
+  },
+  {
+    "question": "O filho criado por fork() herda a máscara de sinais bloqueados do pai.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.25"
+  },
+  {
+    "question": "O sinal SIGCHLD é enviado ao processo filho quando o processo pai termina.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.17"
+  },
+  {
+    "question": "Um handler pode ser interrompido pelo handler de outro sinal que não esteja bloqueado nem em sa_mask.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.17"
+  },
+  {
+    "question": "A função write() não deve ser usada num handler porque não é async-signal-safe.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP4 p.6"
+  }
+]

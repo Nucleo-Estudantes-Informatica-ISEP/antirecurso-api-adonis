@@ -47,7 +47,7 @@ test.group('Protected endpoint AuthNEI middleware contract', () => {
         return { accessToken: 'valid-authnei-token', claims, user }
       },
     } as unknown as ZitadelAuthService
-    const middleware = new AuthMiddleware(authService, async () => true)
+    const middleware = new AuthMiddleware(authService, () => true)
 
     for (const path of [
       '/exams/generate/17?mode=hard',
@@ -77,7 +77,7 @@ test.group('Protected endpoint AuthNEI middleware contract', () => {
         throw new UnauthorizedError('Token audience mismatch')
       },
     } as unknown as ZitadelAuthService
-    const middleware = new AuthMiddleware(authService, async () => true)
+    const middleware = new AuthMiddleware(authService, () => true)
     const { ctx, result } = contextFor('/exams')
 
     await middleware.handle(ctx, async () => assert.fail('invalid tokens must not continue'))
@@ -94,7 +94,7 @@ test.group('Protected endpoint AuthNEI middleware contract', () => {
         user,
       }),
     } as unknown as ZitadelAuthService
-    const middleware = new AuthMiddleware(authService, async () => false)
+    const middleware = new AuthMiddleware(authService, () => false)
     const { ctx, result } = contextFor('/notes/42/view')
 
     await middleware.handle(ctx, async () => assert.fail('pending users must not continue'))

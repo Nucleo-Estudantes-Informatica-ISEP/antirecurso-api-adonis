@@ -1,0 +1,3474 @@
+[
+  {
+    "question": "Em C (RV32), com unsigned char m = 0xC3; unsigned char r = m & 0x3C;, qual é o valor de r?",
+    "answers": [
+      "0",
+      "1",
+      "-1",
+      "16"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int p = 0x6E, q = 0x00;, qual é o valor de p && q?",
+    "answers": [
+      "1",
+      "0",
+      "110",
+      "0x6E"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int p = 0x6E, q = 0x31;, qual é o valor de p && q?",
+    "answers": [
+      "0",
+      "110",
+      "1",
+      "49"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int p = 0x6E, q = 0x31;, qual é o valor de p & q (em hexadecimal)?",
+    "answers": [
+      "0xDF",
+      "0x02",
+      "0x00",
+      "0x20"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int p = 0x6E, q = 0x31;, qual é o valor de p | q (em hexadecimal)?",
+    "answers": [
+      "0x7F",
+      "0x80",
+      "0x07",
+      "0xF0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int p = 0x6E, q = 0x31;, qual é o valor de p ^ q (em hexadecimal)?",
+    "answers": [
+      "0xA0",
+      "0x5F",
+      "0x05",
+      "0xF0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int p = 0x6E, q = 0x31;, qual é o valor de !p?",
+    "answers": [
+      "1",
+      "0x91",
+      "0",
+      "-110"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int p = 0x6E;, qual é o valor de ~p?",
+    "answers": [
+      "-110",
+      "-112",
+      "145",
+      "-111"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned char w[4] = {0x12, 0x34, 0x56, 0x78}; unsigned int x = *(unsigned int*) w;, qual é o valor de x, num processador little-endian (em hexadecimal)?",
+    "answers": [
+      "0x78563412",
+      "0x12345678",
+      "0x34127856",
+      "0x56781234"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned char w[4] = {0x12, 0x34, 0x56, 0x78}; unsigned short x = *(unsigned short*) (w + 2);, qual é o valor de x, num processador little-endian (em hexadecimal)?",
+    "answers": [
+      "0x5678",
+      "0x7856",
+      "0x3412",
+      "0x87A9"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned int x = 0xCAFE1234; unsigned char *p = (unsigned char*) &x;, qual é o valor de p[0], num processador little-endian (em hexadecimal)?",
+    "answers": [
+      "0xCA",
+      "0xFE",
+      "0x34",
+      "0xCB"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned int x = 0xCAFE1234; unsigned char *p = (unsigned char*) &x;, qual é o valor de p[3], num processador little-endian (em hexadecimal)?",
+    "answers": [
+      "0x12",
+      "0x34",
+      "0xFE",
+      "0xCA"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned int x = 0xCAFE1234; unsigned short *p = (unsigned short*) &x;, qual é o valor de p[1], num processador little-endian (em hexadecimal)?",
+    "answers": [
+      "0xCAFE",
+      "0x1234",
+      "0xFECA",
+      "0x3412"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned short v[3] = {0x1111, 0x2222, 0x3333}; unsigned char *p = (unsigned char*) v;, qual é o valor de p[3], num processador little-endian (em hexadecimal)?",
+    "answers": [
+      "0x11",
+      "0x22",
+      "0x33",
+      "0xDD"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com signed char s = -50; int t = s;, qual é o valor de t?",
+    "answers": [
+      "-49",
+      "-51",
+      "-50",
+      "-100"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com signed char s = -50; unsigned int t = s;, qual é o valor de t (em hexadecimal)?",
+    "answers": [
+      "0x000000CE",
+      "0x0000FFCE",
+      "0xFFFFFF32",
+      "0xFFFFFFCE"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned char s = 200; int t = s;, qual é o valor de t?",
+    "answers": [
+      "200",
+      "-56",
+      "201",
+      "199"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned char s = 250; s = s + 10;, qual é o valor de s?",
+    "answers": [
+      "260",
+      "4",
+      "5",
+      "3"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned char s = 250;, qual é o valor de s + 10?",
+    "answers": [
+      "4",
+      "261",
+      "260",
+      "259"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int x = 0x1FF92; signed char c = (signed char) x;, qual é o valor de c?",
+    "answers": [
+      "146",
+      "255",
+      "-109",
+      "-110"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int x = 0x1FF92; unsigned char c = (unsigned char) x;, qual é o valor de c?",
+    "answers": [
+      "146",
+      "-110",
+      "255",
+      "-1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int x = 70000; short s = (short) x;, qual é o valor de s?",
+    "answers": [
+      "70000",
+      "4464",
+      "-4464",
+      "4465"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com short s = -3; unsigned short u = s;, qual é o valor de u?",
+    "answers": [
+      "3",
+      "-3",
+      "65533",
+      "32765"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned short s = 40000; short t = (short) s;, qual é o valor de t?",
+    "answers": [
+      "40000",
+      "-40000",
+      "25536",
+      "-25536"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int i = -4; unsigned int u = 3;, a expressão i < u tem o valor 0",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int i = -4; int j = 3;, a expressão i < j tem o valor 0",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com double d = 7.9; int i = (int) d;, qual é o valor de i?",
+    "answers": [
+      "7",
+      "8",
+      "6",
+      "14"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com double d = -7.9; int i = (int) d;, qual é o valor de i?",
+    "answers": [
+      "-8",
+      "-7",
+      "-6",
+      "-14"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int a = 9, b = 4; double r = a / b;, qual é o valor de (int) (r * 10)?",
+    "answers": [
+      "22",
+      "25",
+      "20",
+      "21"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int a = 9, b = 4; double r = (double) a / b;, qual é o valor de (int) (r * 100)?",
+    "answers": [
+      "200",
+      "250",
+      "226",
+      "225"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com signed char c = 100; signed char d = 100; int s = c + d;, qual é o valor de s?",
+    "answers": [
+      "200",
+      "-56",
+      "100",
+      "127"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com signed char c = 100; signed char d = 100; signed char s = c + d;, qual é o valor de s?",
+    "answers": [
+      "200",
+      "-56",
+      "127",
+      "-200"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int a = 5; int *p = &a; int **q = &p; **q += 7;, qual é o valor de a?",
+    "answers": [
+      "5",
+      "7",
+      "12",
+      "35"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int a = 5, b = 8; int *p = &a; int *q = &b; p = q; *p = 1;, qual é o valor de a?",
+    "answers": [
+      "1",
+      "8",
+      "13",
+      "5"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int a = 5, b = 8; int *p = &a; int *q = &b; p = q; *p = 1;, qual é o valor de b?",
+    "answers": [
+      "1",
+      "5",
+      "8",
+      "13"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int v[5] = {10, 20, 30, 40, 50}; int *p = v + 1; p += 2;, qual é o valor de *p?",
+    "answers": [
+      "20",
+      "40",
+      "30",
+      "50"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int v[5] = {10, 20, 30, 40, 50}; int *p = v; int *q = v + 4;, qual é o valor de q - p?",
+    "answers": [
+      "16",
+      "5",
+      "4",
+      "3"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int v[5] = {10, 20, 30, 40, 50}; char *p = (char*) v; char *q = (char*) (v + 4);, qual é o valor de q - p?",
+    "answers": [
+      "4",
+      "5",
+      "20",
+      "16"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com short v[6] = {1, 2, 3, 4, 5, 6}; short *p = v + 5;, qual é o valor de *(p - 3)?",
+    "answers": [
+      "3",
+      "4",
+      "5",
+      "2"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int v[4] = {7, 8, 9, 10}; int *p = v + 3;, qual é o valor de p[-2]?",
+    "answers": [
+      "7",
+      "8",
+      "9",
+      "10"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com char t[16]; char *p = t;, qual é o valor de (char*) ((short*) p + 5) - p?",
+    "answers": [
+      "5",
+      "20",
+      "10",
+      "40"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int m[3][4];, qual é o valor de (char*) &m[2][1] - (char*) &m[0][0]?",
+    "answers": [
+      "44",
+      "9",
+      "37",
+      "36"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com short m[3][4];, qual é o valor de (char*) &m[1][3] - (char*) &m[0][0]?",
+    "answers": [
+      "14",
+      "28",
+      "7",
+      "15"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int m[3][4] = {{1,2,3,4},{5,6,7,8},{9,10,11,12}};, qual é o valor de *(*(m + 2) + 1)?",
+    "answers": [
+      "2",
+      "10",
+      "6",
+      "9"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int m[3][4] = {{1,2,3,4},{5,6,7,8},{9,10,11,12}};, qual é o valor de *(&m[0][0] + 6)?",
+    "answers": [
+      "6",
+      "8",
+      "7",
+      "9"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int m[3][4];, qual é o valor de sizeof(m[1])?",
+    "answers": [
+      "4",
+      "12",
+      "48",
+      "16"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int m[3][4];, qual é o valor de sizeof(m) / sizeof(m[0])?",
+    "answers": [
+      "3",
+      "4",
+      "12",
+      "48"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned int x = 0x00F0;, qual é o valor de x << 4 (em hexadecimal)?",
+    "answers": [
+      "0x000F",
+      "0x0F00",
+      "0x00F0",
+      "0xF0FF"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int x = -40;, qual é o valor de x >> 3?",
+    "answers": [
+      "-6",
+      "5",
+      "-5",
+      "-4"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned int x = 0xFFFFFF00u;, qual é o valor de x >> 4 (em hexadecimal)?",
+    "answers": [
+      "0xFFFFFFF0",
+      "0xFFFFF000",
+      "0xF0FFFF0F",
+      "0x0FFFFFF0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned int x = 0x2D;, qual é o valor de x & (x - 1) (em hexadecimal)?",
+    "answers": [
+      "0x2C",
+      "0x01",
+      "0x29",
+      "0xD3"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned int x = 0x2D;, qual é o valor de x & -x (em hexadecimal)?",
+    "answers": [
+      "0x2D",
+      "0x01",
+      "0x20",
+      "0x08"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned int x = 0x2D;, qual é o valor de (x >> 2) & 0x7 (em hexadecimal)?",
+    "answers": [
+      "0x05",
+      "0x0B",
+      "0x03",
+      "0x2D"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned int x = 0x2D;, qual é o valor de x | (1u << 6) (em hexadecimal)?",
+    "answers": [
+      "0x4D",
+      "0x2D",
+      "0x92",
+      "0x6D"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned int x = 0x2D;, qual é o valor de x & ~(1u << 5) (em hexadecimal)?",
+    "answers": [
+      "0x0D",
+      "0x2D",
+      "0x0C",
+      "0x0F"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned int x = 0x2D;, qual é o valor de x ^ (3u << 1) (em hexadecimal)?",
+    "answers": [
+      "0x2F",
+      "0x2B",
+      "0x29",
+      "0xD4"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned int x = 0x12345678;, qual é o valor de (x << 8) | (x >> 24) (em hexadecimal)?",
+    "answers": [
+      "0x78123456",
+      "0x12345678",
+      "0x34567812",
+      "0x34567800"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned int x = 0x12345678;, qual é o valor de (x >> 12) | (x << 20) (em hexadecimal)?",
+    "answers": [
+      "0x45678123",
+      "0x00012345",
+      "0x45678000",
+      "0x67812345"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned int x = 77;, qual é o valor de x % 16?",
+    "answers": [
+      "13",
+      "14",
+      "12",
+      "26"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned int x = 77;, qual é o valor de x & 15?",
+    "answers": [
+      "14",
+      "13",
+      "12",
+      "26"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned int x = 77;, qual é o valor de (x + 15) & ~15u?",
+    "answers": [
+      "64",
+      "77",
+      "80",
+      "81"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned int x = 77;, qual é o valor de x & ~15u?",
+    "answers": [
+      "80",
+      "77",
+      "65",
+      "64"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int x = 20, y = 33;, qual é o valor de x ^ y ^ x?",
+    "answers": [
+      "33",
+      "20",
+      "53",
+      "0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned int x = 0xB6;, qual é o valor de (x >> 3) & 1?",
+    "answers": [
+      "2",
+      "0",
+      "8",
+      "6"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned int x = 0xB6;, qual é o valor de (x & 0xF0) >> 4 (em hexadecimal)?",
+    "answers": [
+      "0xB0",
+      "0x06",
+      "0x0B",
+      "0xB6"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int x = 13;, qual é o valor de x << 3?",
+    "answers": [
+      "39",
+      "16",
+      "208",
+      "104"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int x = 13;, a expressão x * 8 == (x << 3) tem o valor 1",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int a = 7; int b = a++ + 2;, qual é o valor de b?",
+    "answers": [
+      "9",
+      "10",
+      "8",
+      "7"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int a = 7; int b = a++ + 2;, qual é o valor de a?",
+    "answers": [
+      "7",
+      "8",
+      "9",
+      "10"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int a = 7; int b = ++a + 2;, qual é o valor de b?",
+    "answers": [
+      "9",
+      "8",
+      "10",
+      "11"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int a = 6; a *= 3 + 1;, qual é o valor de a?",
+    "answers": [
+      "19",
+      "22",
+      "6",
+      "24"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int a = 2;, qual é o valor de a + 3 << 1?",
+    "answers": [
+      "10",
+      "8",
+      "12",
+      "7"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int a = 12;, a expressão a & 3 == 0 tem o valor 1",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int a = 12;, a expressão (a & 3) == 0 tem o valor 1",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int a = 17, b = 5;, qual é o valor de (a / b) * b + a % b?",
+    "answers": [
+      "15",
+      "17",
+      "3",
+      "2"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int a = -17, b = 5;, qual é o valor de a / b?",
+    "answers": [
+      "-4",
+      "3",
+      "-3",
+      "-2"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int a = -17, b = 5;, qual é o valor de a % b?",
+    "answers": [
+      "2",
+      "-3",
+      "3",
+      "-2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int s = 0; for (int i = 1; i <= 6; i++) { if (i % 2) continue; s += i; }, qual é o valor de s?",
+    "answers": [
+      "12",
+      "9",
+      "21",
+      "13"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int n = 0; int i = 20; while (i > 1) { i /= 2; n++; }, qual é o valor de n?",
+    "answers": [
+      "5",
+      "4",
+      "3",
+      "10"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int n = 0; int i = 0; do { n += 3; i++; } while (i < 0);, qual é o valor de n?",
+    "answers": [
+      "0",
+      "6",
+      "3",
+      "9"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int r = 0; int k = 1; switch (k) { case 0: r += 1; case 1: r += 20; case 2: r += 300; break; case 3: r += 4000; }, qual é o valor de r?",
+    "answers": [
+      "20",
+      "4320",
+      "321",
+      "320"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int a = 4, b = 9; int m = (a > b) ? a : b;, qual é o valor de m?",
+    "answers": [
+      "9",
+      "4",
+      "13",
+      "5"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com char s[] = \"porto\";, qual é o valor de sizeof(s)?",
+    "answers": [
+      "5",
+      "6",
+      "7",
+      "4"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com char s[] = \"porto\";, qual é o valor de strlen(s)?",
+    "answers": [
+      "6",
+      "4",
+      "5",
+      "7"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com char s[20] = \"porto\";, qual é o valor de strlen(s)?",
+    "answers": [
+      "20",
+      "6",
+      "19",
+      "5"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com char s[20] = \"porto\";, qual é o valor de sizeof(s)?",
+    "answers": [
+      "20",
+      "5",
+      "6",
+      "21"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com char s[] = \"ab\\0cd\";, qual é o valor de strlen(s)?",
+    "answers": [
+      "5",
+      "2",
+      "4",
+      "6"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com char s[] = \"ab\\0cd\";, qual é o valor de sizeof(s)?",
+    "answers": [
+      "2",
+      "5",
+      "6",
+      "7"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com char c = 'k';, qual é o valor de c - 'a'?",
+    "answers": [
+      "11",
+      "9",
+      "75",
+      "10"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com char c = 'q';, qual é o valor de c & 0xDF?",
+    "answers": [
+      "81",
+      "113",
+      "17",
+      "32"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com char c = '3';, qual é o valor de c - '0' + 4?",
+    "answers": [
+      "51",
+      "7",
+      "3",
+      "55"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com float f = 2.75f; int i = (int) f;, qual é o valor de i?",
+    "answers": [
+      "3",
+      "2,75",
+      "2",
+      "2.75"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned int u = 0xFFFFFFFFu; u = u + 2;, qual é o valor de u?",
+    "answers": [
+      "1",
+      "0",
+      "2",
+      "4294967297"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com signed char s = 127; s++;, qual é o valor de s?",
+    "answers": [
+      "128",
+      "-128",
+      "127",
+      "0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com unsigned int a = 10, b = 20;, a expressão (a - b) > 100 tem o valor 0",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C (RV32), com int a = 10, b = 20;, a expressão (a - b) > 100 tem o valor 0",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "O assembler converte ficheiros em assembly em object files",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, compilação"
+  },
+  {
+    "question": "O linker é responsável por traduzir código C para código assembly",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, compilação"
+  },
+  {
+    "question": "Os object files já são executáveis e podem ser carregados diretamente em memória",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, compilação"
+  },
+  {
+    "question": "O pré-processador resolve as diretivas que começam por # antes da compilação propriamente dita",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, compilação"
+  },
+  {
+    "question": "Uma macro definida com #define é verificada quanto a tipos pelo compilador no ponto da definição",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, compilação"
+  },
+  {
+    "question": "Compilar com -O2 pode alterar a ordem das instruções geradas sem alterar o comportamento observável do programa",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, compilação"
+  },
+  {
+    "question": "Um cross-compiler gera código para uma arquitetura diferente daquela onde corre",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, compilação"
+  },
+  {
+    "question": "Uma biblioteca estática é copiada para o executável durante a fase de ligação",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, compilação"
+  },
+  {
+    "question": "Uma referência a uma função não definida em nenhum ficheiro é detetada pelo pré-processador",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, compilação"
+  },
+  {
+    "question": "Um executável compilado para x86-64 pode ser executado diretamente num processador RISC-V",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, compilação"
+  },
+  {
+    "question": "Qual é a sequência correta das fases do GCC desde o código C até ao executável?",
+    "answers": [
+      "Compilação, pré-processamento, ligação e assemblagem",
+      "Assemblagem, compilação, pré-processamento e ligação",
+      "Pré-processamento, compilação, assemblagem e ligação",
+      "Ligação, assemblagem, compilação e pré-processamento"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, compilação"
+  },
+  {
+    "question": "Que tipo de erro ocorre quando uma função chamada não está definida em nenhum dos ficheiros ligados?",
+    "answers": [
+      "Um erro de pré-processamento, detetado pelo cpp",
+      "Um erro de assemblagem, detetado pelo as",
+      "Nenhum erro, porque o compilador cria a função vazia",
+      "Um erro de ligação, detetado pelo linker"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, compilação"
+  },
+  {
+    "question": "Que ficheiros são produzidos pela fase de compilação do GCC, antes da assemblagem?",
+    "answers": [
+      "Ficheiros em linguagem assembly",
+      "Object files em código máquina",
+      "Ficheiros executáveis em formato ELF",
+      "Ficheiros de cabeçalho com extensão .h"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, compilação"
+  },
+  {
+    "question": "O tamanho da word de um processador corresponde ao número de bits que processa de uma só vez nos seus registos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, arquitetura"
+  },
+  {
+    "question": "O RV32IM inclui instruções de multiplicação e divisão inteiras",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, arquitetura"
+  },
+  {
+    "question": "A arquitetura RISC-V acede diretamente à memória em quase todas as instruções aritméticas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, arquitetura"
+  },
+  {
+    "question": "Numa arquitetura load-store, as instruções aritméticas operam sobre registos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, arquitetura"
+  },
+  {
+    "question": "O pipelining permite sobrepor a execução de várias instruções, cada uma numa fase diferente",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, arquitetura"
+  },
+  {
+    "question": "O pipelining aumenta o número de núcleos existentes no processador",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, arquitetura"
+  },
+  {
+    "question": "O registo x0 do RISC-V guarda sempre o valor zero e as escritas nele são ignoradas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, arquitetura"
+  },
+  {
+    "question": "O RISC-V tem um registo de flags que guarda o carry das somas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, arquitetura"
+  },
+  {
+    "question": "Em RV32, o registo pc contém o endereço da instrução em execução ou da próxima a executar",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, arquitetura"
+  },
+  {
+    "question": "O address bus é bidirecional e transporta dados entre a memória e o processador",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, arquitetura"
+  },
+  {
+    "question": "As fases clássicas do datapath são Fetch, Decode, Execute, Memory e Write-back",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, arquitetura"
+  },
+  {
+    "question": "A instrução addi sp, sp, -16 reserva 16 bytes na stack",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, arquitetura"
+  },
+  {
+    "question": "Um processador little-endian guarda o byte mais significativo no endereço mais baixo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, arquitetura"
+  },
+  {
+    "question": "Uma instrução RV32 de formato fixo ocupa sempre 4 bytes, sem contar a extensão de instruções comprimidas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, arquitetura"
+  },
+  {
+    "question": "O que significa dizer que o RISC-V é uma arquitetura load-store?",
+    "answers": [
+      "Todas as instruções podem ter um operando em memória",
+      "Só as instruções de load e de store acedem à memória",
+      "Só as instruções de salto acedem à memória",
+      "A memória é acedida apenas durante o arranque do sistema"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, arquitetura"
+  },
+  {
+    "question": "Qual é a principal vantagem do pipelining?",
+    "answers": [
+      "Reduzir a latency de cada instrução individual",
+      "Diminuir o tamanho do ficheiro executável",
+      "Mais instruções concluídas por unidade de tempo",
+      "Eliminar a necessidade de cache"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, arquitetura"
+  },
+  {
+    "question": "Para que serve o registo pc num processador RISC-V?",
+    "answers": [
+      "Guardar o número de instruções já executadas",
+      "Guardar o resultado da última operação aritmética",
+      "Guardar o endereço do topo da stack",
+      "Guardar o endereço da instrução a executar"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, arquitetura"
+  },
+  {
+    "question": "Que fase do datapath lê os operandos do register file?",
+    "answers": [
+      "Decode",
+      "Fetch",
+      "Memory",
+      "Write-back"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, arquitetura"
+  },
+  {
+    "question": "Que fase do datapath acede à memória de dados para executar um lw?",
+    "answers": [
+      "Fetch",
+      "Memory",
+      "Decode",
+      "Write-back"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, arquitetura"
+  },
+  {
+    "question": "Em RV32, qual é o tamanho em bytes de struct S { char a; int b; }?",
+    "answers": [
+      "5",
+      "6",
+      "8",
+      "9"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32, qual é o offset do membro b em struct S { char a; int b; }?",
+    "answers": [
+      "1",
+      "2",
+      "8",
+      "4"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32, qual é o tamanho em bytes de struct S { int b; char a; }?",
+    "answers": [
+      "8",
+      "5",
+      "6",
+      "12"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32, qual é o tamanho em bytes de struct S { char a; short b; char c; }?",
+    "answers": [
+      "4",
+      "6",
+      "5",
+      "8"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32, qual é o tamanho em bytes de struct S { char a; char c; short b; }?",
+    "answers": [
+      "3",
+      "6",
+      "4",
+      "8"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32, qual é o tamanho em bytes de struct S { short a; long long b; char c; }?",
+    "answers": [
+      "11",
+      "12",
+      "25",
+      "24"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32, qual é o offset do membro b em struct S { short a; long long b; char c; }?",
+    "answers": [
+      "8",
+      "2",
+      "4",
+      "12"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32, qual é o tamanho em bytes de struct S { char a[5]; short b; int c; }?",
+    "answers": [
+      "11",
+      "12",
+      "16",
+      "13"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32, qual é o offset do membro b em struct S { char a[5]; short b; int c; }?",
+    "answers": [
+      "5",
+      "8",
+      "6",
+      "7"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32, qual é o offset do membro c em struct S { char a[5]; short b; int c; }?",
+    "answers": [
+      "7",
+      "9",
+      "12",
+      "8"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32, qual é o tamanho em bytes de struct S { int a[3]; char b; }?",
+    "answers": [
+      "16",
+      "13",
+      "15",
+      "17"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32, com struct T { char x; short y; } e struct S { struct T t; int z; }, qual é o tamanho de struct S?",
+    "answers": [
+      "7",
+      "8",
+      "12",
+      "16"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32, com struct T { char x; short y; } e struct S { char w; struct T t; }, qual é o offset de t em struct S?",
+    "answers": [
+      "1",
+      "4",
+      "2",
+      "3"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32, qual é o tamanho em bytes de union U { char c; short s; int i; }?",
+    "answers": [
+      "7",
+      "2",
+      "1",
+      "4"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32, qual é o tamanho em bytes de union U { char c[5]; short s; }?",
+    "answers": [
+      "6",
+      "2",
+      "7",
+      "5"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32, qual é o tamanho em bytes de union U { char c[6]; int i; }?",
+    "answers": [
+      "6",
+      "8",
+      "10",
+      "4"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32 little-endian, com union U { unsigned int i; unsigned char c[4]; } e u.i = 0x0A0B0C0D, qual é o valor de u.c[0]?",
+    "answers": [
+      "0x0A",
+      "0x0B",
+      "0x0D",
+      "0x0C"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32 little-endian, com union U { unsigned int i; unsigned char c[4]; } e u.i = 0x0A0B0C0D, qual é o valor de u.c[3]?",
+    "answers": [
+      "0x0D",
+      "0x0B",
+      "0x0C",
+      "0x0A"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32 little-endian, com union U { unsigned int i; unsigned short h[2]; } e u.i = 0x0A0B0C0D, qual é o valor de u.h[1]?",
+    "answers": [
+      "0x0A0B",
+      "0x0C0D",
+      "0x0D0C",
+      "0x0B0A"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32, com struct S { char a; int b; } e struct S v[3], quanto vale sizeof(v)?",
+    "answers": [
+      "15",
+      "24",
+      "18",
+      "25"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32, com struct S { char a; int b; short c; } e struct S v[4], qual é a distância em bytes entre &v[0] e &v[3].c?",
+    "answers": [
+      "36",
+      "40",
+      "44",
+      "45"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32, com struct S { int a; char b; } e struct S *p, quantos bytes avança p + 1 relativamente a p?",
+    "answers": [
+      "5",
+      "4",
+      "12",
+      "8"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32, qual é o tamanho em bytes de struct S { char a; char b; char c; }?",
+    "answers": [
+      "3",
+      "4",
+      "6",
+      "8"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Em RV32, quantos bytes de prepadding tem struct S { short a; int b; char c; }?",
+    "answers": [
+      "0",
+      "5",
+      "3",
+      "6"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Os membros de uma union ocupam posições de memória consecutivas, sem sobreposição",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "O compilador pode inserir prepadding no fim de uma struct",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Duas variáveis struct com o mesmo conteúdo podem ser comparadas com o operador ==",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "Numa union, escrever num membro não afeta os restantes membros",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, struct"
+  },
+  {
+    "question": "A memória alocada com malloc fica no heap até ser libertada com free",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "A memória alocada com malloc é libertada automaticamente no fim da função que a pediu",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "A função malloc devolve NULL quando não consegue alocar a memória pedida",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "O conteúdo de um block devolvido por malloc é sempre inicializado a zero",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "A função calloc inicializa a zero o block que aloca",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "Chamar free duas vezes sobre o mesmo apontador é uma operação segura",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "Aceder a memória depois de a libertar com free é um erro conhecido como use after free",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "Fazer free de um endereço de uma variável local da stack é válido",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "Uma memory leak acontece quando se perde o último apontador para um block alocado sem o libertar",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "A fragmentação interna resulta de espaço não usado dentro de blocks já alocados",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "A função realloc pode mover o block para outro endereço",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "Depois de um realloc bem-sucedido que move o block, o apontador antigo continua válido",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "Um buffer overflow consiste em escrever para além dos limites de um vetor",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "A função strcpy verifica se a cadeia de destino tem espaço suficiente",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "O Stack Smashing Protector coloca um valor de controlo antes do endereço de retorno para detetar a sua alteração",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "O ASLR faz com que as regiões de memória do processo comecem em endereços aleatórios",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "Uma variável local de uma função continua a existir na stack depois de a função terminar",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "Devolver o endereço de uma variável local e aceder-lhe depois do regresso da função é seguro",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "O espaço de endereçamento de um processo tem a stack e o heap em regiões distintas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "Que acontece quando se acede a memória já libertada com free?",
+    "answers": [
+      "O acesso devolve sempre o valor zero",
+      "O compilador impede o acesso em tempo de compilação",
+      "Comportamento indefinido",
+      "O sistema operativo repõe o block automaticamente"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "Qual das opções é uma consequência de não libertar memória alocada dinamicamente?",
+    "answers": [
+      "Um erro de ligação",
+      "Um stack overflow imediato",
+      "Uma fragmentação interna garantida",
+      "Uma memory leak"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "Quantos bytes reserva calloc(6, sizeof(short)) em RV32?",
+    "answers": [
+      "12",
+      "6",
+      "24",
+      "8"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "Quantos bytes reserva malloc(5 * sizeof(long long)) em RV32?",
+    "answers": [
+      "20",
+      "40",
+      "10",
+      "48"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "Para que serve o canary colocado pelo SSP?",
+    "answers": [
+      "Impedir que a stack cresça acima de um limite",
+      "Aleatorizar o endereço base do heap",
+      "Detetar a corrupção do endereço de retorno",
+      "Libertar a memória da stack automaticamente"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "O que acontece a p = realloc(p, n) se realloc falhar e devolver NULL?",
+    "answers": [
+      "O block original é libertado pelo realloc",
+      "O block original passa a ter tamanho n",
+      "O programa termina de imediato com erro",
+      "Perde-se o block original, pois p fica NULL"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "Onde são normalmente guardadas as variáveis locais de uma função em C?",
+    "answers": [
+      "Na stack",
+      "No heap",
+      "Na secção de código",
+      "Na secção .bss"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "Onde são guardadas as variáveis globais não inicializadas de um programa?",
+    "answers": [
+      "Na stack",
+      "Na secção .bss",
+      "No heap",
+      "Na secção .text"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "Que secção contém as instruções de um programa executável?",
+    "answers": [
+      ".data",
+      ".bss",
+      ".text",
+      ".rodata"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "Em RV32, com t0 = 0x7FFFFFF0, qual é o valor de t1 depois de addi t1, t0, 32?",
+    "answers": [
+      "0x80000020",
+      "0x00000010",
+      "0x7FFFFFF0",
+      "0x80000010"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, com t0 = 100 e t1 = -7, qual é o valor de t2 depois de rem t2, t0, t1?",
+    "answers": [
+      "2",
+      "-2",
+      "14",
+      "-14"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, com t0 = -100 e t1 = 7, qual é o valor de t2 depois de div t2, t0, t1?",
+    "answers": [
+      "-15",
+      "-14",
+      "15",
+      "14"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, com t0 = -100 e t1 = 7, qual é o valor de t2 depois de rem t2, t0, t1?",
+    "answers": [
+      "2",
+      "-14",
+      "-2",
+      "14"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, com t0 = 25 e t1 = 0, qual é o valor de t2 depois de div t2, t0, t1?",
+    "answers": [
+      "0",
+      "25",
+      "1",
+      "-1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, com t0 = 25 e t1 = 0, qual é o valor de t2 depois de rem t2, t0, t1?",
+    "answers": [
+      "25",
+      "0",
+      "-1",
+      "1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, com t0 = 0xFFFFFFF6, qual é o valor de t1 depois de srai t1, t0, 1?",
+    "answers": [
+      "0x7FFFFFFB",
+      "0xFFFFFFFB",
+      "0xFFFFFFEC",
+      "0x0000000B"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, com t0 = 0xFFFFFFF6, qual é o valor de t1 depois de srli t1, t0, 4?",
+    "answers": [
+      "0xFFFFFFFF",
+      "0xFFFFFF6F",
+      "0x0FFFFFFF",
+      "0xFFFFFF60"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, qual é o valor de t0 depois de li t0, 0x12345800?",
+    "answers": [
+      "0x12345000",
+      "0x12346800",
+      "0x12344800",
+      "0x12345800"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, em que par de instruções reais se expande li t0, 0x12345800?",
+    "answers": [
+      "lui t0, 0x12346 / addi t0, t0, -2048",
+      "lui t0, 0x12345 / addi t0, t0, 0x800",
+      "lui t0, 0x12345 / addi t0, t0, -2048",
+      "lui t0, 0x12346 / addi t0, t0, 2048"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, qual é o intervalo de valores do imediato de uma instrução addi?",
+    "answers": [
+      "De -4096 a 4095",
+      "De -2048 a 2047",
+      "De 0 a 4095",
+      "De -1024 a 1023"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, qual é o resultado de lui t0, 0xABCDE?",
+    "answers": [
+      "0x000ABCDE",
+      "0xABCDE",
+      "0xABCDE000",
+      "0xFFFABCDE"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, que faz a pseudoinstrução mv a0, a1?",
+    "answers": [
+      "Copia a0 para a1, como addi a1, a0, 0",
+      "Troca os valores de a0 e a1",
+      "Move o apontador a1 para a0 e limpa a1",
+      "Copia a1 para a0, como addi a0, a1, 0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, a que instrução real corresponde not t0, t1?",
+    "answers": [
+      "xori t0, t1, -1",
+      "xori t0, t1, 1",
+      "andi t0, t1, -1",
+      "sub t0, x0, t1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, a que instrução real corresponde neg t0, t1?",
+    "answers": [
+      "sub t0, t1, x0",
+      "sub t0, x0, t1",
+      "xori t0, t1, -1",
+      "addi t0, t1, -1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, a que instrução real corresponde beqz t0, fim?",
+    "answers": [
+      "bne t0, x0, fim",
+      "beq t0, t0, fim",
+      "beq t0, x0, fim",
+      "blt t0, x0, fim"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, a que instrução real corresponde ret?",
+    "answers": [
+      "jalr ra, 0(ra)",
+      "jal x0, ra",
+      "jal ra, 0(x0)",
+      "jalr x0, 0(ra)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, a que instrução real corresponde j label?",
+    "answers": [
+      "jal x0, label",
+      "jal ra, label",
+      "jalr x0, label",
+      "beq x0, x0, ra"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, com a memória a partir de 0x100 igual a 0x80 0x01 0x02 0x03 (bytes), qual é o valor de t0 depois de lb t0, 0(a0), com a0 = 0x100?",
+    "answers": [
+      "0x00000080",
+      "0xFFFFFF80",
+      "0x80000000",
+      "0x00000001"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, com a memória a partir de 0x100 igual a 0x80 0x01 0x02 0x03 (bytes), qual é o valor de t0 depois de lbu t0, 0(a0), com a0 = 0x100?",
+    "answers": [
+      "0xFFFFFF80",
+      "0x80000000",
+      "0x00000080",
+      "0x00000003"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, com a memória a partir de 0x100 igual a 0x80 0x01 0x02 0x03 (bytes), qual é o valor de t0 depois de lw t0, 0(a0), com a0 = 0x100?",
+    "answers": [
+      "0x80010203",
+      "0x00000080",
+      "0x03020100",
+      "0x03020180"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, com a memória a partir de 0x100 igual a 0x80 0x01 0x02 0x03 (bytes), qual é o valor de t0 depois de lhu t0, 2(a0), com a0 = 0x100?",
+    "answers": [
+      "0x00000302",
+      "0x00000203",
+      "0x00000180",
+      "0x00008001"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, com t0 = 0x11223344 e a0 = 0x200, que bytes ficam a partir de 0x200 depois de sw t0, 0(a0)?",
+    "answers": [
+      "0x11 0x22 0x33 0x44",
+      "0x44 0x33 0x22 0x11",
+      "0x44 0x00 0x00 0x00",
+      "0x33 0x44 0x11 0x22"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, com t0 = 0x11223344 e a0 = 0x200, que bytes ficam a partir de 0x200 depois de sh t0, 0(a0)?",
+    "answers": [
+      "0x11 0x22",
+      "0x33 0x44",
+      "0x44 0x33",
+      "0x22 0x11"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, com a0 = 7 e a1 = 9, qual é o valor de a2 depois de slt a2, a0, a1?",
+    "answers": [
+      "0",
+      "7",
+      "9",
+      "1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, com a0 = -1 e a1 = 1, qual é o valor de a2 depois de sltu a2, a0, a1?",
+    "answers": [
+      "0",
+      "1",
+      "-1",
+      "2"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, com a0 = -1 e a1 = 1, qual é o valor de a2 depois de slt a2, a0, a1?",
+    "answers": [
+      "0",
+      "1",
+      "-1",
+      "2"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, com a0 = 5, qual é o valor de a1 depois de seqz a1, a0?",
+    "answers": [
+      "1",
+      "5",
+      "0",
+      "-5"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, com a0 = 0, qual é o valor de a1 depois de snez a1, a0?",
+    "answers": [
+      "1",
+      "-1",
+      "2",
+      "0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, com a0 = 3, a1 = 4, qual é o valor de a0 depois de mul a0, a0, a1 / addi a0, a0, 1?",
+    "answers": [
+      "13",
+      "12",
+      "14",
+      "7"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, quantas vezes se executa o corpo do ciclo em: li t0, 0 / li t1, 5 / ciclo: addi t0, t0, 1 / blt t0, t1, ciclo?",
+    "answers": [
+      "4",
+      "5",
+      "6",
+      "1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, qual é o valor de a0 no fim de: li a0, 0 / li t0, 1 / ciclo: add a0, a0, t0 / addi t0, t0, 2 / li t1, 8 / blt t0, t1, ciclo?",
+    "answers": [
+      "9",
+      "15",
+      "16",
+      "25"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, que valor tem a0 no fim de: li a0, 1 / li t0, 4 / ciclo: slli a0, a0, 1 / addi t0, t0, -1 / bnez t0, ciclo?",
+    "answers": [
+      "8",
+      "32",
+      "4",
+      "16"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, quantos bytes ocupa .word 1, 2, 3 seguido de .half 4, 5 seguido de .byte 6?",
+    "answers": [
+      "17",
+      "15",
+      "16",
+      "21"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, quantos bytes ocupa .asciz \"arqcp\"?",
+    "answers": [
+      "5",
+      "6",
+      "4",
+      "7"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, quantos bytes ocupa .ascii \"arqcp\"?",
+    "answers": [
+      "6",
+      "4",
+      "5",
+      "10"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, qual é o efeito de x: .skip 12?",
+    "answers": [
+      "Atribui a x o valor 12",
+      "Salta 12 instruções a partir de x",
+      "Define x como constante com valor 12",
+      "Reserva 12 bytes a partir de x"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, qual é o efeito de .equ tam, 24?",
+    "answers": [
+      "Define a constante tam sem reservar memória",
+      "Reserva 24 bytes na secção .data",
+      "Define uma variável em memória com o valor 24",
+      "Alinha o endereço seguinte a 24 bytes"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, em que secção são colocadas as variáveis declaradas com .comm?",
+    "answers": [
+      ".text",
+      ".bss",
+      ".data",
+      ".rodata"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "No GNU as para RISC-V, qual é a diretiva que alinha o endereço seguinte a um múltiplo de 8 bytes?",
+    "answers": [
+      ".align 8",
+      ".align 2",
+      ".align 3",
+      ".align 4"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, que argumentos são passados na stack numa chamada com 10 argumentos inteiros?",
+    "answers": [
+      "O décimo apenas",
+      "Os dois primeiros",
+      "Do quinto ao décimo",
+      "O nono e o décimo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, em que registos são devolvidos os 64 bits de um long long?",
+    "answers": [
+      "a0 e a1",
+      "a0 e a2",
+      "t0 e t1",
+      "ra e a0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, em que registo se espera o valor de retorno de uma função que devolve um int?",
+    "answers": [
+      "a1",
+      "a0",
+      "ra",
+      "t0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, qual é o tamanho mínimo da reserva de stack que mantém sp alinhado a 16 bytes, para guardar 20 bytes, partindo de um sp alinhado?",
+    "answers": [
+      "20",
+      "24",
+      "32",
+      "16"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, qual dos registos tem de ser guardado pela função chamada antes de o modificar?",
+    "answers": [
+      "t1",
+      "a2",
+      "a0",
+      "s1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, qual dos registos pode a função chamada alterar livremente sem o guardar?",
+    "answers": [
+      "t2",
+      "s1",
+      "s0",
+      "sp"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, o que faz jal ra, f?",
+    "answers": [
+      "Salta para f sem guardar o endereço de retorno",
+      "Guarda o endereço seguinte em ra e salta para f",
+      "Salta para o endereço guardado em ra",
+      "Guarda f em ra e continua na instrução seguinte"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, o prólogo de uma função que chama outras tem de guardar ra na stack",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, uma função folha (que não chama outras) tem sempre de reservar uma frame na stack",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, addi sp, sp, 32 no epílogo liberta uma frame de 32 bytes",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, a instrução lw t0, 4(sp) lê o valor guardado 4 bytes acima do topo da stack",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, os registos a0 a a7 são preservados pela função chamada",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, uma label é convertida num endereço pelo assembler ou pelo linker",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, a diretiva .data indica a secção onde as declarações seguintes devem ser colocadas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, o assembler aceita lw t0, 4096(a0) por o imediato caber em 12 bits",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, as instruções de branch condicional comparam dois registos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, a stack cresce de endereços mais altos para mais baixos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "O loop unrolling (loop unrolling) reduz o número de iterações e de testes de condição de um ciclo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, otimização"
+  },
+  {
+    "question": "O constant folding consiste em calcular em tempo de compilação expressões com operandos constantes",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, otimização"
+  },
+  {
+    "question": "Mover para fora de um ciclo um cálculo que não depende dele é uma otimização válida (code motion)",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, otimização"
+  },
+  {
+    "question": "O compilador pode sempre substituir duas chamadas à mesma função por uma só",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, otimização"
+  },
+  {
+    "question": "A existência de apontadores que podem referir a mesma memória (aliasing) limita as otimizações do compilador",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, otimização"
+  },
+  {
+    "question": "Substituir x * 8 por x << 3 é uma redução de custo (strength reduction)",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, otimização"
+  },
+  {
+    "question": "Chamar strlen no teste de um ciclo for sobre uma cadeia de n caracteres leva tempo linear no total",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, otimização"
+  },
+  {
+    "question": "O CPE (ciclos por elemento) mede o número médio de ciclos de relógio gastos por elemento processado",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, otimização"
+  },
+  {
+    "question": "Usar vários acumuladores num ciclo pode aumentar o paralelismo ao nível da instrução",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, otimização"
+  },
+  {
+    "question": "Uma otimização do compilador pode alterar o resultado correto de um programa sem comportamento indefinido",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, otimização"
+  },
+  {
+    "question": "Que otimização transforma x * 16 numa operação mais barata?",
+    "answers": [
+      "Substituir a multiplicação por srli x, x, 4",
+      "Substituir a multiplicação por addi x, x, 16",
+      "Substituir a multiplicação por slli x, x, 4",
+      "Substituir a multiplicação por uma chamada a função"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, otimização"
+  },
+  {
+    "question": "Quanto tempo gasta um ciclo de 2000 elementos a 1,5 CPE num processador de 3 GHz (em microssegundos)?",
+    "answers": [
+      "0,5",
+      "2",
+      "3",
+      "1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, otimização"
+  },
+  {
+    "question": "Que problema pode impedir o compilador de eliminar uma chamada de função repetida?",
+    "answers": [
+      "A função poder ter efeitos secundários",
+      "A função ter nome longo",
+      "A função devolver um valor inteiro",
+      "A função estar definida no mesmo ficheiro"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, otimização"
+  },
+  {
+    "question": "Uma cache aproveita a temporal locality quando os mesmos dados são acedidos várias vezes em pouco tempo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, cache"
+  },
+  {
+    "question": "Percorrer uma matriz em C por colunas tem melhor spatial locality do que por linhas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, cache"
+  },
+  {
+    "question": "Um cache hit ocorre quando o dado pedido pelo processador já está na cache",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, cache"
+  },
+  {
+    "question": "A SRAM é mais lenta e mais barata por bit do que a DRAM",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, cache"
+  },
+  {
+    "question": "A DRAM precisa de ser refrescada periodicamente para não perder os dados",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, cache"
+  },
+  {
+    "question": "A virtual memory permite que cada processo veja um espaço de endereçamento próprio",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, cache"
+  },
+  {
+    "question": "Numa hierarquia de memória, os níveis mais próximos do processador são menores e mais rápidos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, cache"
+  },
+  {
+    "question": "Numa cache direct-mapped, cada block de memória pode ser guardado em qualquer line da cache",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, cache"
+  },
+  {
+    "question": "Que tipo de locality explora a leitura sequencial de um vetor de int?",
+    "answers": [
+      "Temporal locality apenas",
+      "Spatial locality",
+      "Locality de código apenas",
+      "Nenhuma locality"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, cache"
+  },
+  {
+    "question": "Numa cache direct-mapped, qual dos campos do endereço seleciona a line?",
+    "answers": [
+      "A tag",
+      "O offset",
+      "O index",
+      "O valid bit"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, cache"
+  },
+  {
+    "question": "Qual é a taxa de misses de uma cache de blocks de 32 bytes ao percorrer um vetor de int sequencialmente, depois de vazia, com blocks alinhados?",
+    "answers": [
+      "25%",
+      "6,25%",
+      "50%",
+      "12,5%"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, cache"
+  },
+  {
+    "question": "Numa cache direct-mapped de 16 lines com blocks de 16 bytes, quantos bits tem o index?",
+    "answers": [
+      "4",
+      "2",
+      "8",
+      "16"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, cache"
+  },
+  {
+    "question": "Numa cache com blocks de 64 bytes, quantos bits tem o offset?",
+    "answers": [
+      "4",
+      "6",
+      "5",
+      "8"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, cache"
+  },
+  {
+    "question": "O pré-processador gera código máquina diretamente a partir do código C",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, compilação"
+  },
+  {
+    "question": "Em RV32, a instrução lui carrega um imediato de 12 bits nos 12 bits menos significativos de um registo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, a instrução bne salta quando os dois registos são iguais",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em C, o operador sizeof aplicado a um apontador devolve o tamanho do objeto apontado",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em RV32, com int a[4], a expressão sizeof(a) tem o valor 4",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Depois de free(p), o valor do apontador p passa a ser NULL",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "Uma variável declarada como static dentro de uma função é guardada na stack",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C, o operador && avalia sempre os dois operandos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C, a conversão de um int para char mantém sempre o valor original",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C, a função strlen devolve o número de bytes do vetor que contém a cadeia",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Em C, a soma de dois unsigned char é calculada com 8 bits",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, C"
+  },
+  {
+    "question": "Por norma, o heap cresce dos endereços mais altos para os mais baixos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, heap"
+  },
+  {
+    "question": "A cache de dados guarda exclusivamente instruções",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, cache"
+  },
+  {
+    "question": "Em RV32, o alinhamento natural de um short é de 4 bytes",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  },
+  {
+    "question": "Em RV32, uma divisão inteira por zero provoca uma exceção",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, assembly"
+  }
+]

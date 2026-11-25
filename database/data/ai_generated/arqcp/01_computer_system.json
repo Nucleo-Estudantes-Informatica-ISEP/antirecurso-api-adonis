@@ -1,0 +1,1098 @@
+[
+  {
+    "question": "Um sistema computacional é constituído por hardware e software de sistema que trabalham em conjunto para executar programas de aplicação",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.5"
+  },
+  {
+    "question": "A forma como os componentes de um sistema computacional interagem entre si não afeta a correção nem o desempenho dos programas de aplicação",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.5"
+  },
+  {
+    "question": "O que é o software?",
+    "answers": [
+      "Um conjunto de programas que dizem ao hardware do computador o que fazer",
+      "Todos os componentes físicos que formam o sistema computacional",
+      "Os circuitos elétricos que transportam bytes entre os componentes",
+      "O device temporário onde ficam guardados o programa e os dados"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.5"
+  },
+  {
+    "question": "Os buses transferem sempre um único byte de cada vez, qualquer que seja o sistema",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.8"
+  },
+  {
+    "question": "O número de bytes de uma word é igual em todos os sistemas computacionais",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.8"
+  },
+  {
+    "question": "Nas máquinas atuais, qual é o tamanho de word mais comum?",
+    "answers": [
+      "1 byte (8 bits) ou 2 bytes (16 bits)",
+      "4 bytes (32 bits) ou 8 bytes (64 bits)",
+      "16 bytes (128 bits) ou 32 bytes (256 bits)",
+      "3 bytes (24 bits) ou 6 bytes (48 bits)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.8"
+  },
+  {
+    "question": "Os buses são conjuntos de circuitos elétricos que transportam bytes de informação entre os componentes do sistema",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.8"
+  },
+  {
+    "question": "Cada I/O device liga-se diretamente ao CPU, sem recorrer a um controller nem a um adapter",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.9"
+  },
+  {
+    "question": "Qual é a função do controller ou do adapter de um I/O device?",
+    "answers": [
+      "Guardar as instruções do programa enquanto este é executado pelo CPU",
+      "Calcular o endereço da próxima instrução que o CPU vai ter de executar",
+      "Transferir informação entre o I/O bus e o I/O device",
+      "Traduzir o código assembly do programa em linguagem máquina"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.9"
+  },
+  {
+    "question": "A main memory guarda apenas os dados do programa, ficando as instruções guardadas no CPU",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.10"
+  },
+  {
+    "question": "A main memory é um storage device permanente",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.10"
+  },
+  {
+    "question": "Logicamente, como está organizada a main memory?",
+    "answers": [
+      "Como um vetor de words, cada uma com um endereço único, a começar em um",
+      "Como uma matriz de bits endereçada por linha e por coluna",
+      "Como uma stack onde só se consegue aceder ao último byte guardado",
+      "Como um vetor linear de bytes, cada um com um endereço único, a começar em zero"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.10"
+  },
+  {
+    "question": "O CPU limita-se a guardar as instruções do programa, sendo a main memory que as interpreta e executa",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.11"
+  },
+  {
+    "question": "O que contém o registo PC (program counter)?",
+    "answers": [
+      "O endereço de memória de uma instrução do programa em execução",
+      "A quantidade de instruções que ainda faltam executar",
+      "O resultado da última instrução executada",
+      "O endereço da última posição de memória livre"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.12"
+  },
+  {
+    "question": "O program counter é um storage device (registo) com o tamanho de uma word",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.12"
+  },
+  {
+    "question": "No modelo simplificado de quatro passos do ciclo de instrução do CPU, qual é a sequência correta?",
+    "answers": [
+      "Decode, fetch, execute, store do resultado",
+      "Fetch, decode, execute, store do resultado",
+      "Fetch, execute, decode, store do resultado",
+      "Fetch, decode, store do resultado, execute"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.13"
+  },
+  {
+    "question": "O ciclo de instrução é o tempo necessário ao CPU para executar uma única instrução",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.13"
+  },
+  {
+    "question": "No fim de cada ciclo de instrução, o CPU avança o registo PC",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.13"
+  },
+  {
+    "question": "No passo decode, o CPU executa a instrução que acabou de ir buscar à memória",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.13"
+  },
+  {
+    "question": "O que faz o CPU no passo fetch do ciclo de instrução?",
+    "answers": [
+      "Escreve o resultado da instrução num registo",
+      "Interpreta os bits da instrução que já tem em mãos",
+      "Vai buscar a próxima instrução à memória",
+      "Carrega o programa do disco para a main memory"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.13"
+  },
+  {
+    "question": "Um programa de computador, pronto a ser executado pelo CPU, é um ficheiro de texto escrito em linguagem C",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.14"
+  },
+  {
+    "question": "As instruções de um programa são carregadas para a main memory (RAM) para serem executadas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.14"
+  },
+  {
+    "question": "O CPU executa o programa lendo as instruções diretamente do disco, sem as carregar para a main memory",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.14"
+  },
+  {
+    "question": "Para executar um programa, o CPU carrega de uma só vez todas as instruções da memória para os registos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.14"
+  },
+  {
+    "question": "Qual é o papel do ISA (Instruction Set Architecture)?",
+    "answers": [
+      "Guardar em memória as instruções do programa enquanto este é executado",
+      "Traduzir o código-fonte escrito em C para código assembly em texto",
+      "Gerir a virtual memory atribuída a cada um dos processos em execução",
+      "Definir o que o CPU consegue fazer e como é controlado pelo software"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.16"
+  },
+  {
+    "question": "Os processadores RISC-V, Intel x86-64, PowerPC e ARM têm todos o mesmo ISA",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.16"
+  },
+  {
+    "question": "Sem emulação, um programa compilado para um tipo de máquina não corre numa máquina com um ISA diferente",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.16"
+  },
+  {
+    "question": "Um ficheiro de código-fonte em C é um ficheiro binário e deve ser guardado com a extensão .o",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.18"
+  },
+  {
+    "question": "Cada byte de um ficheiro .c tem uma representação em bits que corresponde a um carácter",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.19"
+  },
+  {
+    "question": "O programa hello.c é um programa de alto nível porque o processador o consegue interpretar diretamente",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.20"
+  },
+  {
+    "question": "O que é a linguagem máquina?",
+    "answers": [
+      "O conjunto mais básico de instruções que um computador executa, próprio de cada processador",
+      "Uma linguagem de alto nível, legível por humanos e igual em todos os processadores existentes",
+      "O conjunto dos ficheiros de texto onde ficam guardadas as instruções escritas pelo programador",
+      "A representação em hexadecimal do código-fonte escrito em C, byte a byte"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.20"
+  },
+  {
+    "question": "O conjunto de instruções em linguagem máquina de cada tipo de processador é definido pelo respetivo ISA",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.20"
+  },
+  {
+    "question": "O que é um compilador?",
+    "answers": [
+      "Um programa que carrega o executável do disco para a main memory do computador",
+      "Um programa que traduz código-fonte para código máquina, de acordo com o ISA correspondente",
+      "Um programa que lê comandos do teclado e os entrega ao sistema operativo para execução",
+      "Um device que liga o I/O bus aos periféricos do sistema computacional"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.20"
+  },
+  {
+    "question": "A tradução do código C em instruções máquina de baixo nível designa-se ligação (linking)",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.20"
+  },
+  {
+    "question": "O GCC é um conjunto de compiladores e ferramentas de desenvolvimento livre e de código aberto, disponível para Linux, Windows e outros sistemas",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.21"
+  },
+  {
+    "question": "O que faz o comando gcc -o hello hello.c?",
+    "answers": [
+      "Executa o programa contido em hello.c e mostra o seu resultado",
+      "Gera apenas o object file hello.o, sem fazer a ligação",
+      "Lê o ficheiro hello.c e traduz-o para o ficheiro executável hello",
+      "Copia o ficheiro hello.c para um novo ficheiro chamado hello"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.21"
+  },
+  {
+    "question": "A tradução do código-fonte para o executável é feita em apenas duas fases: compilação e ligação",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.21"
+  },
+  {
+    "question": "Por que ordem decorrem as quatro fases da compilação feita pelo GCC?",
+    "answers": [
+      "Compilação, pré-processamento, assemblagem e ligação",
+      "Pré-processamento, assemblagem, compilação e ligação",
+      "Pré-processamento, compilação, ligação e assemblagem",
+      "Pré-processamento, compilação, assemblagem e ligação"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.22"
+  },
+  {
+    "question": "Que programa executa a fase de pré-processamento?",
+    "answers": [
+      "O pré-processador (cpp)",
+      "O compilador (cc1)",
+      "O assembler (as)",
+      "O linker (ld)"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.22"
+  },
+  {
+    "question": "A diretiva #include <stdio.h> faz o pré-processador ler o conteúdo do ficheiro de cabeçalho stdio.h e inseri-lo diretamente no texto do programa",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.22"
+  },
+  {
+    "question": "O resultado da fase de pré-processamento é um ficheiro de texto, tipicamente com o sufixo .i",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.22"
+  },
+  {
+    "question": "Que programa traduz o ficheiro hello.i para o ficheiro hello.s?",
+    "answers": [
+      "O pré-processador (cpp)",
+      "O compilador (cc1)",
+      "O assembler (as)",
+      "O linker (ld)"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.22"
+  },
+  {
+    "question": "O ficheiro hello.s, produzido na fase de compilação, é um ficheiro binário",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.22"
+  },
+  {
+    "question": "Cada instrução base do ISA, escrita em assembly, descreve exatamente uma instrução em linguagem máquina, numa forma de texto padrão",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.22"
+  },
+  {
+    "question": "Na fase de assemblagem, o assembler traduz o ficheiro hello.s para instruções máquina e guarda o resultado no object file hello.o",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.23"
+  },
+  {
+    "question": "O ficheiro hello.o é um ficheiro binário cujos bytes codificam instruções máquina e não caracteres",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.23"
+  },
+  {
+    "question": "A fase de assemblagem produz um relocatable object program",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.23"
+  },
+  {
+    "question": "A função printf reside num object file pré-compilado separado, que tem de ser fundido com hello.o na fase de ligação",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.23"
+  },
+  {
+    "question": "Que programa junta o código objeto com o código das bibliotecas para produzir o ficheiro executável?",
+    "answers": [
+      "O pré-processador (cpp)",
+      "O compilador (cc1)",
+      "O linker (ld)",
+      "O assembler (as)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.23"
+  },
+  {
+    "question": "O resultado da fase de ligação ainda não é executável: tem de passar por uma nova fase de assemblagem antes de ser carregado na memória",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.23"
+  },
+  {
+    "question": "Qual das seguintes opções é um ficheiro de texto?",
+    "answers": [
+      "Um object file",
+      "Um ficheiro executável",
+      "Um ficheiro de áudio",
+      "Um ficheiro de código-fonte"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.28"
+  },
+  {
+    "question": "Os ficheiros de texto são, em geral, maiores do que os binários, por causa da codificação em caracteres",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.28"
+  },
+  {
+    "question": "Um ficheiro binário é legível por humanos, ao contrário de um ficheiro de texto, que exige software específico",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.28"
+  },
+  {
+    "question": "Um object file é, por si só, diretamente executável",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.29"
+  },
+  {
+    "question": "Que programas produzem, respetivamente, os object files e os ficheiros executáveis?",
+    "answers": [
+      "O assembler e o linker",
+      "O linker e o assembler",
+      "O compilador e o assembler",
+      "O pré-processador e o linker"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.29"
+  },
+  {
+    "question": "Por convenção, os object files terminam em .o, embora em alguns sistemas (por exemplo, Windows) possam terminar em .obj",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.29"
+  },
+  {
+    "question": "Para ser executável, um ficheiro precisa de um ponto de entrada, que é o ponto a partir do qual o CPU deve começar a executar o programa",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.29"
+  },
+  {
+    "question": "Que faz o sistema operativo, relativamente ao ponto de entrada, depois de carregar o programa para a main memory?",
+    "answers": [
+      "Coloca no PC o endereço zero da main memory, para o programa arrancar",
+      "Coloca no PC o endereço do ponto de entrada, para o programa arrancar",
+      "Guarda o ponto de entrada num novo object file, para o programa arrancar",
+      "Pede ao linker que calcule agora o ponto de entrada do programa"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.29"
+  },
+  {
+    "question": "Nos sistemas Unix, os executáveis binários têm obrigatoriamente o sufixo .exe",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.29"
+  },
+  {
+    "question": "Uma shell é um programa que recebe comandos do teclado e os entrega ao sistema operativo para execução",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.31"
+  },
+  {
+    "question": "Quando escrevemos ./hello na shell, os caracteres são guardados diretamente em disco, sem passar por registos nem pela memória",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.31"
+  },
+  {
+    "question": "Como viajam os dados do disco para a main memory quando o programa hello é carregado?",
+    "answers": [
+      "Por DMA, passando primeiro pelo CPU",
+      "Por instruções do CPU que copiam o ficheiro byte a byte do disco para a memória",
+      "Por DMA, diretamente do disco para a main memory, sem passar pelo CPU",
+      "Pelo linker, durante a fase de ligação"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.33"
+  },
+  {
+    "question": "Depois de o hello estar carregado em memória, o CPU começa a executar as instruções da rotina main do programa",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.34"
+  },
+  {
+    "question": "No programa hello, que imprime uma string, por onde passam os bytes da string até chegarem ao ecrã?",
+    "answers": [
+      "Do disco diretamente para o ecrã, sem passar pela main memory",
+      "Da memória diretamente para o ecrã, sem passar pelo CPU nem pelos registos",
+      "Do teclado para o ecrã, passando pelo linker e pelo assembler",
+      "Da memória para o register file e daí para o device de visualização"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.34"
+  },
+  {
+    "question": "Compilação cruzada é compilar aplicações para correrem num sistema com um ISA diferente do da máquina onde se compila",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.36"
+  },
+  {
+    "question": "O que é um cross-compiler?",
+    "answers": [
+      "Um compilador que corre na plataforma A (host) mas gera executáveis para a plataforma B (target)",
+      "Um compilador que gera executáveis para correr na mesma máquina onde foi compilado",
+      "Um programa que emula uma máquina diferente da máquina real",
+      "Um compilador que traduz várias linguagens de programação em simultâneo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.36"
+  },
+  {
+    "question": "Na compilação nativa, o executável gerado destina-se a correr num sistema diferente daquele onde foi compilado",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.36"
+  },
+  {
+    "question": "Num cross-compiler, as plataformas host e target podem diferir no CPU, no sistema operativo e/ou no formato do executável",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.36"
+  },
+  {
+    "question": "Num contexto de compilação cruzada, a Build platform é a plataforma onde o código vai acabar por correr",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.37"
+  },
+  {
+    "question": "Quando se constrói um compilador, o que é a Target platform?",
+    "answers": [
+      "A plataforma onde as ferramentas de compilação são executadas",
+      "A plataforma para a qual o compilador vai gerar código",
+      "A plataforma onde o compilador vai acabar por correr",
+      "A plataforma onde está guardado o código-fonte"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.37"
+  },
+  {
+    "question": "Qual é o formato de um target triplet?",
+    "answers": [
+      "<vendor>-<arch>-<operatingsystem>",
+      "<operatingsystem>-<arch>-<vendor>",
+      "<arch>-<vendor>-<operatingsystem>",
+      "<arch>-<operatingsystem>-<compiler>"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.38"
+  },
+  {
+    "question": "No target triplet, o campo vendor é obrigatório e não pode ser omitido",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.38"
+  },
+  {
+    "question": "Qual dos seguintes é um exemplo de ferramenta cujo nome tem o prefixo de um target triplet?",
+    "answers": [
+      "gcc-riscv32-linux",
+      "riscv32.gcc.linux",
+      "linux-riscv32-gcc",
+      "riscv32-linux-gcc"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.38"
+  },
+  {
+    "question": "O GCC prefixa as ferramentas de compilação com o target triplet, o que evita que seja usado o compilador errado",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.38"
+  },
+  {
+    "question": "O comando gcc -dumpmachine imprime o target triplet do compilador da máquina",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.38"
+  },
+  {
+    "question": "O que é um emulador?",
+    "answers": [
+      "Uma plataforma que permite a um sistema (host) comportar-se como outro (guest) e correr aplicações feitas para este",
+      "Um compilador que gera código para um ISA diferente do da máquina onde corre, sem correr esse código",
+      "Um programa que traduz object files em ficheiros executáveis, juntando o código das bibliotecas",
+      "Um mecanismo do sistema operativo que intercala a execução de vários processos no mesmo CPU"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.39"
+  },
+  {
+    "question": "O que permite o QEMU, quando usado como emulador de máquinas?",
+    "answers": [
+      "Compilar programas em C diretamente para código máquina RISC-V sem usar um compilador",
+      "Correr programas feitos para uma máquina (por exemplo, ARM) noutra máquina (por exemplo, um PC x86)",
+      "Substituir o sistema operativo da máquina real por outro sistema operativo",
+      "Ligar novos I/O devices ao system bus, através de um adapter"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.39"
+  },
+  {
+    "question": "Quando a shell carrega e executa o hello, nem a shell nem o hello acedem diretamente ao teclado, ao ecrã, ao disco ou à main memory, mas sim através dos serviços do sistema operativo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1_a p.5"
+  },
+  {
+    "question": "Quais são os dois principais objetivos do sistema operativo?",
+    "answers": [
+      "Compilar os programas das aplicações e gerir o conjunto de instruções (ISA) do processador",
+      "Aumentar o tamanho da word e acelerar a transferência de dados nos system buses",
+      "Proteger o hardware contra uso indevido e dar às aplicações acesso simples e uniforme a ele",
+      "Traduzir código assembly em linguagem máquina e ligar os object files das aplicações"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1_a p.5"
+  },
+  {
+    "question": "Um processo é a abstração do sistema operativo para um programa em execução",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1_a p.6"
+  },
+  {
+    "question": "Um processo é um ficheiro em disco que contém o código máquina de um programa",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1_a p.6"
+  },
+  {
+    "question": "Do ponto de vista do sistema operativo, o propósito de um processo é ser a entidade à qual são atribuídos recursos do sistema, como tempo de CPU e memória",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1_a p.6"
+  },
+  {
+    "question": "Que duas virtualizações proporciona um processo?",
+    "answers": [
+      "Disco virtualizado e rede virtualizada",
+      "Compilador virtualizado e linker virtualizado",
+      "Registos virtualizados e bus virtualizado",
+      "Processador virtualizado e memória virtualizada"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1_a p.6"
+  },
+  {
+    "question": "O sistema operativo intercala as instruções de vários processos através de um mecanismo designado context switching",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1_a p.7"
+  },
+  {
+    "question": "Em geral, há menos processos para executar do que CPUs disponíveis para os executar",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1_a p.7"
+  },
+  {
+    "question": "O que é a virtual memory?",
+    "answers": [
+      "Uma abstração que dá a cada processo a ilusão de ter uso exclusivo da main memory",
+      "Uma zona do disco onde ficam guardados os object files",
+      "Uma memória partilhada por todos os processos, sem qualquer separação entre eles",
+      "Uma memória que guarda apenas as instruções do kernel"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1_a p.8"
+  },
+  {
+    "question": "O código e os dados do kernel do sistema operativo só são carregados em memória quando ocorre um interrupt ou uma chamada ao sistema",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1_a p.8"
+  },
+  {
+    "question": "Cada processo tem a mesma vista uniforme da memória, designada espaço de endereçamento virtual",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1_a p.9"
+  },
+  {
+    "question": "O que é o paging?",
+    "answers": [
+      "Uma técnica que divide a memória em blocos de tamanho variável, chamados segmentos, ajustados ao programa",
+      "Uma técnica de gestão de memória que a divide em blocos de bytes de tamanho fixo, as páginas",
+      "Uma técnica que guarda cada processo num único bloco contíguo da memória física do sistema",
+      "Um mecanismo que intercala as instruções de processos diferentes no mesmo processador"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1_a p.10"
+  },
+  {
+    "question": "O paging obriga a que a memória física de um processo seja alocada de forma contígua",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1_a p.10"
+  },
+  {
+    "question": "Os endereços virtuais são mapeados para memória física por page tables, mantidas pelo CPU e consultadas pelo sistema operativo",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1_a p.11"
+  },
+  {
+    "question": "O que acontece quando um processo acede a uma posição de memória que não está na memória física?",
+    "answers": [
+      "O CPU termina imediatamente o processo que tentou aceder a essa posição de memória",
+      "O linker carrega a página em falta durante a execução do programa, antes do acesso",
+      "Ocorre um page fault e o sistema operativo carrega a página do disco para a memória, atualizando a page table",
+      "O sistema operativo cria um novo processo só para guardar a página que estava em falta"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1_a p.12"
+  },
+  {
+    "question": "Todos os processos partilham uma única page table",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1_a p.13"
+  },
+  {
+    "question": "O mecanismo de mapeamento de memória permite que a memória seja partilhada entre vários processos",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1_a p.13"
+  }
+]

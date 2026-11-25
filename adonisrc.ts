@@ -41,6 +41,10 @@ export default defineConfig({
 
   metaFiles: [
     {
+      pattern: '{scripts/patch_braces.mjs,patches/braces-3.0.3.json}',
+      reloadServer: false,
+    },
+    {
       pattern: 'database/data/**/*.json',
       reloadServer: false,
     },

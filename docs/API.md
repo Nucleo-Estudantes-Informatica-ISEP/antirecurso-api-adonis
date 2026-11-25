@@ -12,11 +12,31 @@ changes must update this file in the same pull request.
 - Bearer tokens are validated for signature, issuer, audience, expiry, subject, and verified email.
 - `Public`: no token required.
 - `Optional`: a request with no token is accepted; a supplied invalid token returns `401`.
-- `Student`: valid token with the AuthNEI `student` application role.
+- `Authenticated`: valid token for the configured AntiRecurso audience; no `student` role required.
 - `Admin`: valid token with the AuthNEI `admin` application role.
 - AuthNEI owns current name, email, verification, picture, and roles. Local name/email values are
   synchronized caches for lookup, search, account resolution, and historical display.
-- Roles come only from validated AuthNEI claims. Persisted user rows never grant access.
+- Only `admin` is retained from validated AuthNEI claims under the configured `AUTH_ROLE_CLAIM`.
+  Other role names are ignored. Persisted user rows never grant access.
+
+### Request correlation
+
+Every response, including errors and CORS preflights, carries an `X-Request-Id` header. A client
+or proxy may send its own `X-Request-Id` (8 to 128 characters from `A-Z a-z 0-9 . _ -`) and the API
+echoes it back; any missing or malformed value is replaced by a generated UUID. Browsers can send
+and read the header across origins because CORS allows and exposes it.
+
+Each request produces one structured log line (`request completed`) with `request_id`, `method`,
+`route` (the route pattern, `null` when unmatched), `status`, `duration_ms`, `user_id` (local id,
+`null` when anonymous) and `completed` (`false` if the client disconnected early). Server errors
+share the same `request_id`, so a failed call can be traced from the frontend through the proxy to
+the API. Authorization headers, tokens, passwords, cookies, query strings and request bodies are
+never logged. With `AUTH_DEBUG=true`, authentication diagnostics use the same structured logger. Reported
+errors also carry `method`, `route` and `user_id`. Failed queries are reported with their `$n`
+placeholders (`compileSqlOnError` is disabled), and the PostgreSQL error `detail`/`where` fields
+are masked, because both can echo submitted values. The daily `exams:prune-attempts` job logs
+`job started`, `job finished` (with `owners_processed` and `duration_ms`) or `job failed` under the
+stable identifier `job: "exams.prune_attempts"`.
 
 Authenticated requests resolve the token subject to one local `users.id`. That local id owns scores,
 answers, comments, notes, likes, reports, and saved exam state. Clients must never send an actor or
@@ -38,19 +58,29 @@ return `422 Unprocessable Entity` with Adonis validation details. Common cross-e
 
 - `401 Unauthorized`: token missing where required, malformed, invalid, expired, wrong issuer or
   audience, or identity-provider email not verified.
-- `403 Forbidden`: required AuthNEI role missing, exam belongs to another user, or account resolution
-  is pending.
+- `403 Forbidden`: required AuthNEI `admin` role missing, exam belongs to another user, or account
+  resolution is pending.
 - `404 Not Found`: route exists but referenced row does not.
 - `422 Unprocessable Entity`: request fails its Vine or domain schema.
 - `429 Too Many Requests`: a route-specific limiter was exceeded.
 - `500 Internal Server Error`: unhandled database or upstream failure.
 
-When account resolution is pending, every route using required-auth middleware except `GET /user`
-and `POST /user/account-resolution` returns:
+When the existing operator approval matches the verified AuthNEI subject, the first
+authenticated request associates the existing account and preserves its history.
+An unapproved or conflicting verified identity receives `403` on required-auth
+routes. Ask support to verify ownership. The response includes no legacy data.
+Optional-auth routes continue anonymously for these identities. The recovery response
+retains the legacy `requires_account_resolution` flag.
+
+Deploy the compatible web release before this API. It opens recovery for both the old
+successful pending session and the new `403` below. The previous web release only opens
+recovery when the session request succeeds, so including the legacy flag in a `403` does
+not make the new response compatible with that release.
 
 ```json
 {
-  "message": "Account resolution required",
+  "message": "Contact support to recover the existing account",
+  "code": "ACCOUNT_RECOVERY_REQUIRED",
   "requires_account_resolution": true
 }
 ```
@@ -106,7 +136,7 @@ Limits use authenticated local user id when available, otherwise request IP.
 
 | Policy             | Routes                                                                                                    | Limit / block    |
 | ------------------ | --------------------------------------------------------------------------------------------------------- | ---------------- |
-| Exam               | `GET /exams/generate/:subject_id`, `POST /exams/verify`                                                   | 20/min; 5 min    |
+| Exam               | `GET /exams/generate/:subject_id`, `POST /exams/verify`, `GET /exams/attempts/:id`                        | 20/min; 5 min    |
 | Mutation           | Scoreboard/comment/question/report/note/event mutations, note view, exam-state save/delete, report review | 30/min; 5 min    |
 | Upload             | `POST /upload`                                                                                            | 10/5 min; 15 min |
 | Account resolution | `POST /user/account-resolution`                                                                           | 5/15 min; 1 hour |
@@ -135,6 +165,7 @@ type CurrentUserSummary = {
 type Comment = {
   id: number
   comment: string
+  user_id: number
   user: string
   question_id: number
   created_at: string // ISO 8601
@@ -150,6 +181,8 @@ type Event = {
   updated_at: string // ISO 8601
 }
 
+type QuestionSource = 'REAL_EXAM' | 'AI_GENERATED' | 'MANUAL'
+
 type QuestionOption = { id: number; name: string; order: string }
 
 type Question = {
@@ -157,6 +190,7 @@ type Question = {
   question: string
   exam: string
   image: string
+  source: QuestionSource
   question_type: string
   options: QuestionOption[]
 }
@@ -186,7 +220,7 @@ type Note = {
   title: string
   url: string | null
   views: number
-  user: UserSummary
+  user: { id: number; name: string; avatar: string }
   description: string | null
   n_pages: number | null
   subject: { id: number; name: string; slug: string }
@@ -225,51 +259,55 @@ type SavedExamState = {
 
 ## Route matrix
 
-| Method | Path                             | Access                                  | Success                     | Request summary                |
-| ------ | -------------------------------- | --------------------------------------- | --------------------------- | ------------------------------ |
-| GET    | `/`                              | Public                                  | `200`                       | none                           |
-| GET    | `/subjects`                      | Public                                  | `200 Subject[]`             | query `with_questions?`        |
-| GET    | `/subjects/:id`                  | Public                                  | `200 Subject`               | positive subject id            |
-| GET    | `/subjects/:id/stats`            | Student; current user                   | `200 SubjectStats`          | positive subject id            |
-| GET    | `/subjects/:id/scoreboard/:mode` | Public                                  | `200 Scoreboard`            | subject id and scoreboard mode |
-| POST   | `/subjects/:id/scoreboard`       | Student; current user                   | `200 Message`               | `{ visibility }`               |
-| GET    | `/comments`                      | Student                                 | `200 CommentPage`           | sort and pagination query      |
-| POST   | `/comments`                      | Student; actor from token               | `201 Comment`               | `{ comment, question_id }`     |
-| GET    | `/comments/:id`                  | Student                                 | `200 Comment`               | comment id                     |
-| GET    | `/questions/:id`                 | Public                                  | `200 Question`              | question id                    |
-| PUT    | `/questions/:id`                 | Admin                                   | `204`                       | question and option updates    |
-| POST   | `/question-reports`              | Student; actor from token               | `201 QuestionReport`        | `{ question_id, reason? }`     |
-| GET    | `/subjects/:id/notes`            | Optional                                | `200 Page<Note>`            | pagination query               |
-| GET    | `/notes/:id`                     | Optional                                | `200 Note`                  | note id                        |
-| PATCH  | `/notes/:id`                     | Admin                                   | `200 Note`                  | partial note update            |
-| DELETE | `/notes/:id`                     | Admin                                   | `204`                       | note id                        |
-| POST   | `/notes/:id/like`                | Student; actor from token               | `200 Note`                  | note id                        |
-| POST   | `/subjects/:id/notes`            | Admin; actor from token                 | `201 Note`                  | note metadata and upload id    |
-| POST   | `/notes/:id/view`                | Student                                 | `200 { url }`               | note id                        |
-| POST   | `/upload`                        | Student                                 | `200 UploadGrant`           | target and content type        |
-| GET    | `/exams/generate/:subject_id`    | Optional; mode-dependent                | `200 GeneratedQuestion[]`   | generation query               |
-| POST   | `/exams/verify`                  | Optional; actor from token when present | `200 ExamResult`            | submitted exam                 |
-| POST   | `/exams/state`                   | Student; current user                   | `200 SavedState`            | exam identity and state        |
-| GET    | `/exams/state`                   | Student; current user                   | `200 SavedState/null`       | subject and mode query         |
-| DELETE | `/exams/state`                   | Student; current user                   | `204`                       | subject and mode query         |
-| GET    | `/exams/pending`                 | Student; current user                   | `200 { data: PendingState[] }` | none                         |
-| GET    | `/exams`                         | Student; current user                   | `200 Page<ExamHistoryItem>` | page query                     |
-| GET    | `/exams/:id`                     | Student owner or Admin                  | `200 ExamDetail`            | exam id                        |
-| GET    | `/user`                          | Student; current user                   | `200 UserSession`           | none                           |
-| POST   | `/user/account-resolution`       | Student; current user                   | `200 Message`               | `{ action }`                   |
-| GET    | `/user/scores`                   | Student; current user                   | `200 UserScore[]`           | none                           |
-| GET    | `/user/answers`                  | Student; current user                   | `200 UserAnswer[]`          | none                           |
-| GET    | `/search`                        | Admin                                   | `200 Page<UserSummary>`     | query and page                 |
-| GET    | `/users`                         | Admin                                   | `200 Page<UserSummary>`     | page query                     |
-| GET    | `/admin`                         | Admin; current user                     | `200 CurrentUserSummary`    | none                           |
-| GET    | `/admin/exams`                   | Admin                                   | `200 AdminExamStats`        | none                           |
-| GET    | `/events`                        | Admin                                   | `200 Page<Event>`           | pagination query               |
-| POST   | `/events/new`                    | Admin                                   | `201 Event`                 | event body                     |
-| PATCH  | `/events/:id`                    | Admin                                   | `200 Event`                 | partial event body             |
-| DELETE | `/events/:id`                    | Admin                                   | `204`                       | event id                       |
-| GET    | `/question-reports`              | Admin                                   | `200 QuestionReport[]`      | filter/sort query              |
-| POST   | `/question-reports/review`       | Admin; reviewer from token              | `200 QuestionReport[]`      | report ids                     |
-| GET    | `/question-reports/:id`          | Admin                                   | `200 QuestionReport`        | report id                      |
+| Method | Path                             | Access                                  | Success                        | Request summary                |
+| ------ | -------------------------------- | --------------------------------------- | ------------------------------ | ------------------------------ |
+| GET    | `/`                              | Public                                  | `200`                          | none                           |
+| GET    | `/subjects`                      | Public                                  | `200 Subject[]`                | query `with_questions?`        |
+| GET    | `/subjects/:id`                  | Public                                  | `200 Subject`                  | positive subject id            |
+| GET    | `/subjects/:id/stats`            | Authenticated; current user             | `200 SubjectStats`             | positive subject id            |
+| GET    | `/subjects/:id/scoreboard/:mode` | Public                                  | `200 Scoreboard`               | subject id and scoreboard mode |
+| POST   | `/subjects/:id/scoreboard`       | Authenticated; current user             | `200 Message`                  | `{ visibility }`               |
+| GET    | `/comments`                      | Authenticated                           | `200 CommentPage`              | sort and pagination query      |
+| POST   | `/comments`                      | Authenticated; actor from token         | `201 Comment`                  | `{ comment, question_id }`     |
+| GET    | `/comments/:id`                  | Authenticated                           | `200 Comment`                  | comment id                     |
+| GET    | `/questions/:id`                 | Public                                  | `200 Question`                 | question id                    |
+| PUT    | `/questions/:id`                 | Admin                                   | `204`                          | question and option updates    |
+| POST   | `/question-reports`              | Authenticated; actor from token         | `201 QuestionReport`           | `{ question_id, reason? }`     |
+| GET    | `/subjects/:id/notes`            | Optional                                | `200 Page<Note>`               | pagination query               |
+| GET    | `/notes/:id`                     | Optional                                | `200 Note`                     | note id                        |
+| PATCH  | `/notes/:id`                     | Admin                                   | `200 Note`                     | partial note update            |
+| DELETE | `/notes/:id`                     | Admin                                   | `204`                          | note id                        |
+| POST   | `/notes/:id/like`                | Authenticated; actor from token         | `200 Note`                     | note id                        |
+| POST   | `/subjects/:id/notes`            | Admin; actor from token                 | `201 Note`                     | note metadata and upload id    |
+| POST   | `/notes/:id/view`                | Authenticated                           | `200 { url }`                  | note id                        |
+| POST   | `/upload`                        | Authenticated                           | `200 UploadGrant`              | target and content type        |
+| GET    | `/exams/attempts/:id`            | Authenticated; current owner            | `200 AttemptRecovery`          | attempt UUID                   |
+| DELETE | `/exams/attempts/:id`            | Authenticated; current owner            | `204`                          | unfinished attempt UUID        |
+| GET    | `/exams/generate/:subject_id`    | Optional; mode-dependent                | `200 GeneratedQuestion[]`      | generation query               |
+| POST   | `/exams/generate/:subject_id`    | Optional; mode-dependent                | `200 GeneratedQuestion[]`      | generation input               |
+| POST   | `/exams/verify`                  | Optional; actor from token when present | `200 ExamResult`               | submitted exam                 |
+| POST   | `/exams/state`                   | Authenticated; current user             | `200 SavedState`               | exam identity and state        |
+| GET    | `/exams/state`                   | Authenticated; current user             | `200 SavedState/null`          | subject and mode query         |
+| DELETE | `/exams/state`                   | Authenticated; current user             | `204`                          | subject and mode query         |
+| GET    | `/exams/pending`                 | Authenticated; current user             | `200 { data: PendingState[] }` | none                           |
+| GET    | `/exams`                         | Authenticated; current user             | `200 Page<ExamHistoryItem>`    | page query                     |
+| GET    | `/exams/:id`                     | Authenticated owner or Admin            | `200 ExamDetail`               | exam id                        |
+| GET    | `/user`                          | Authenticated; current user             | `200 UserSession`              | none                           |
+| POST   | `/user/session/revoke`           | Valid bearer being revoked              | `204`                          | none                           |
+| POST   | `/user/account-resolution`       | Authenticated; current user             | `200 Message`                  | `{ action }`                   |
+| GET    | `/user/scores`                   | Authenticated; current user             | `200 UserScore[]`              | none                           |
+| GET    | `/user/answers`                  | Authenticated; current user             | `200 UserAnswer[]`             | none                           |
+| GET    | `/search`                        | Admin                                   | `200 Page<UserSummary>`        | query and page                 |
+| GET    | `/users`                         | Admin                                   | `200 Page<UserSummary>`        | page query                     |
+| GET    | `/admin`                         | Admin; current user                     | `200 CurrentUserSummary`       | none                           |
+| GET    | `/admin/exams`                   | Admin                                   | `200 AdminExamStats`           | none                           |
+| GET    | `/events`                        | Admin                                   | `200 Page<Event>`              | pagination query               |
+| POST   | `/events/new`                    | Admin                                   | `201 Event`                    | event body                     |
+| PATCH  | `/events/:id`                    | Admin                                   | `200 Event`                    | partial event body             |
+| DELETE | `/events/:id`                    | Admin                                   | `204`                          | event id                       |
+| GET    | `/question-reports`              | Admin                                   | `200 QuestionReport[]`         | filter/sort query              |
+| POST   | `/question-reports/review`       | Admin; reviewer from token              | `200 QuestionReport[]`         | report ids                     |
+| GET    | `/question-reports/:id`          | Admin                                   | `200 QuestionReport`           | report id                      |
 
 ## Endpoint details
 
@@ -400,6 +438,7 @@ type Scoreboard = {
 {
   question: string
   correct_option: string
+  source?: QuestionSource | null // omitted or null keeps the stored value
   options: {
     id: number
     name: string
@@ -409,8 +448,15 @@ type Scoreboard = {
 ```
 
 - Authorization: AuthNEI `admin` is checked by middleware and controller.
-- Semantics: option ids must belong to question; only names change; `correct_option` must match an
-  existing option order. Entire update is transactional.
+- Semantics: a non-null `source` must be `REAL_EXAM`, `AI_GENERATED`, or `MANUAL`; omitted or
+  `null` keeps the stored value; option ids
+  must belong to question; only names change; `correct_option` must match an existing option
+  order. Entire update is transactional.
+- Question and option text supports more than 255 characters without truncation.
+- Stable import identity and review/repeated/in-plan metadata are managed through the
+  [reviewed import command](QUESTION_IMPORT.md). Admin edits clear the unauthenticated
+  operator review note and preserve the stable key and repetition/curriculum metadata.
+  This endpoint does not record academic sign-off.
 - Response: `204 No Content`.
 - Errors: `404` missing question; `422` invalid body, option ownership, or correct option.
 
@@ -450,7 +496,7 @@ type Scoreboard = {
 
 ### Notes and uploads
 
-Authenticated student or admin creates upload grant with POST /upload. Browser PUTs raw PDF bytes to the returned same-origin /api/protected/uploads/:id URL with Content-Type application/pdf. The web proxy forwards bytes with the AuthNEI token; S3 credentials stay server-side. Grant expires after five minutes. Admin then creates note with POST /subjects/:id/notes using upload_id. API verifies size, content type, and PDF signature before copying uploaded/notes/:id to distribution/notes/:id.
+An authenticated user creates an upload grant with POST /upload. Browser PUTs raw PDF bytes to the returned same-origin /api/protected/uploads/:id URL with Content-Type application/pdf. The web proxy forwards bytes with the AuthNEI token; S3 credentials stay server-side. Grant expires after five minutes. Admin then creates note with POST /subjects/:id/notes using upload_id. API verifies size, content type, and PDF signature before copying uploaded/notes/:id to distribution/notes/:id.
 
 Upload grant contains id, target, maxSize (67108864), expires, url, headers (content-type), and uploadMode raw-put. PUT rejects expired or forged grants, unauthenticated requests, non-PDF content, oversized uploads, duplicate IDs, and mismatched lengths. Private note downloads return authenticated, five-minute signed same-origin URLs.
 
@@ -510,16 +556,19 @@ Upload grant contains id, target, maxSize (67108864), expires, url, headers (con
 ### Exams
 
 `default` and `realistic` generation work anonymously. `new`, `wrong`, `hard`, and `custom`
-generation require a valid user. Verification may be anonymous for every mode; authenticated
-verification owns answer, updates scoreboard, and completes matching saved state.
+generation require a valid user. Legacy verification without `attempt_id` may be anonymous for every mode; authenticated
+verification owns answer, updates scoreboard, and completes matching saved state. Optional attempt IDs preserve the legacy contract for older clients.
 
-#### `GET /exams/generate/:subject_id`
+#### `GET /exams/generate/:subject_id` and `POST /exams/generate/:subject_id`
+
+The cookie-authenticated web client uses POST. GET remains available to guests and native clients
+that present an explicit bearer token.
 
 - Query: `mode?: ExamMode`, default `default`; `n_of_questions?: integer` in `5..50`, required for
-  `custom`; `filter?: string`, with only `filter=new` changing current custom behavior.
+  `custom`; `filter?: string`, with only `filter=new` changing current custom behavior. Optional `attempt_id` (UUID, all validator-supported versions) and `penalizing_factor` record an authenticated snapshot.
 - Response: `200 GeneratedQuestion[]`.
 - Errors: `400` invalid id/custom count/generation; `401` user-dependent mode without user or invalid
-  token; `404` missing subject; `422` invalid query; `429` exam limit.
+  token; `404` missing subject; `409` repeated owner/attempt ID; `422` invalid query; `429` exam limit. Stored attempts require auth (`401`). Generation is not idempotent: after a lost response, recover the existing owner-scoped ID; use a new ID for a new exam. Each owner may retain at most 20 unfinished snapshots across subjects/modes; an owner-row lock makes the cap atomic across workers. At capacity, generation evicts the least recently active unfinished attempt (oldest `updated_at`, then internal row ID), cascading only its linked draft, and creates the new attempt in the same transaction. Generation succeeds without requiring client discard support. Completing or explicitly discarding one also frees a slot. Completed history is excluded, and another owner may reuse the same UUID independently. Before checking the cap, generation deletes this owner’s unfinished attempts inactive for over 30 days (creation or last successful cloud save), cascading only their bound cloud drafts. A daily `node ace exams:prune-attempts` job also cleans inactive owners; completed attempts never expire through this job. Local-only progress does not refresh server retention. Owners can also discard abandoned/ungradable attempts with `DELETE /exams/attempts/:id`. Recovery of an evicted attempt returns 404 and verification returns 409; clients must offer a new exam after local progress expires. Duplicate UUID generation returns 409 before cleanup/eviction and leaves existing attempts intact.
 
 #### `POST /exams/verify`
 
@@ -528,6 +577,7 @@ verification owns answer, updates scoreboard, and completes matching saved state
 ```ts
 {
   subject_id: number
+  attempt_id?: string // UUID recorded during generation
   mode?: ExamMode
   time?: number // positive integer
   n_of_questions?: number // 5..50, required for custom
@@ -538,18 +588,24 @@ verification owns answer, updates scoreboard, and completes matching saved state
 
 - Validation: answer count matches mode; question ids are unique, exist, and belong to subject;
   selected option is one alphanumeric character and must exist for question.
-- Transaction: answer/detail, score, scoreboard, and saved-state completion commit together.
+- Transaction: answer/detail, scoreboard, state completion and optional attempt result commit together. Stable UUIDs require authentication and are scoped to the owner; concurrent/sequential identical submissions return the exact original result and score once. Changed answers or configuration after completion return 409. Retry time is excluded from the request hash; the first committed elapsed time remains stored. Different UUIDs remain distinct. Grading uses the original snapshot. Deleted underlying question/option rows invalidate ungraded attempts with a clean 409; grading rolls back and no replacement questions are generated.
+- Correction policy: reviewed imports and admin edits affect attempts generated afterward. In-flight stored attempts grade against the content/key shown at generation; completed results, reviews and scoreboard contributions remain unchanged, even if that historical key was wrong. There is no automatic regrade. A retrospective score correction requires a separately reviewed operation covering answers, snapshot grading/result and scoreboard deltas atomically.
+- Count validation compares the effective mode count with the original snapshot length. Non-custom verification may omit `n_of_questions` or send an explicit value; mode rules supply its effective count. Custom count remains required and must match the snapshot. Replay hashes use that effective count and accept earlier completed hashes. `penalizing_factor` is compared and hashed only for custom mode, where it must match the effective generation penalty; omission defaults to `0`, including older snapshots/hashes stored with `null`. Other modes ignore it.
+- New-attempt completion only completes the cloud row with that same UUID. Legacy verification without `attempt_id` is rejected with `409` when the matching owner/subject/mode state is unfinished and attempt-bound. No answer or scoreboard write occurs; this prevents legacy-then-UUID double scoring. After stored completion, legacy verification is allowed for a new exam in the same subject/mode. Legacy state/no state remains supported. Clients must send the stored ID to grade/complete a stored attempt.
 - Response: `200 { id, score, wrong_answers, passed, subject }` with numeric fields as numbers.
-- Errors: `400` domain mismatch; `401` invalid supplied token; `404` missing subject; `422` invalid
+- Errors: `400` domain mismatch; `401` missing auth for stored attempts or invalid supplied token; `404` missing subject; `422` invalid
   body; `429` exam limit.
 
 #### `POST /exams/state`
 
-- Body: `{ subject_id: number, mode: ExamMode, state: SavedExamState }`.
+- Body: `{ subject_id: number, mode: ExamMode, state: SavedExamState, attempt_id?: string, expected_revision?: number, expected_state_id?: number, restart_completed?: boolean }`.
+- CAS: send expected revision zero for absence/completion, or both positive revision and state ID for an active row. Mismatch returns 409 without writing; owner locking serializes competing initial saves. Legacy saves increment revision.
+- Explicit `restart_completed: true` replaces a completed row. A newer active row still fails absence CAS. Optional UUIDs must belong to this owner/subject/mode, be incomplete and contain the same question IDs as the snapshot. Membership checks ignore order; the submitted sequence and `currentQuestionIndex` are stored unchanged. Reordering a legacy save with the same IDs preserves its attempt association. A successful bound save refreshes that unfinished attempt’s retention timestamp.
+- Bound custom saves must match the snapshot's question count and effective penalty (`null` in older snapshots means `0`). This applies to explicit UUIDs and preserved bindings when `attempt_id` is omitted. A mismatch returns `409` before changing progress, revision or attempt activity; non-custom scoring fields remain ignored by verification.
 - Identity: inner subject/mode match outer fields; question ids are unique and belong to subject;
   answers reference unique ids in `questionIds`.
-- Ownership/upsert: current user + subject + mode. Completed state cannot change.
-- Response: `200 { id: number, state: SavedExamState }`.
+- Ownership/upsert: current user + subject + mode. Completed state requires explicit restart. Legacy saves with the same question IDs preserve an existing attempt association.
+- Response: `200 { id: number, revision: number, attempt_id: string | null, state: SavedExamState & { savedAt: number } }`.
 - Errors: `400` invalid state/cross-subject questions; `404` missing subject; `409` completed state;
   `422` invalid outer body; `429` mutation limit.
 
@@ -558,15 +614,30 @@ verification owns answer, updates scoreboard, and completes matching saved state
 - Query: required positive integer `subject_id`; `mode?: ExamMode`, default `default`.
 - Ownership: current user's incomplete state only.
 - Response: `200 { state: null }` when absent/invalid stored state, otherwise
-  `200 { id: number, state: SavedExamState & { savedAt: number } }`; `savedAt` is epoch milliseconds.
+  `200 { id: number, revision: number, attempt_id: string | null, state: SavedExamState & { savedAt: number } }`; `savedAt` is epoch milliseconds.
 - Errors: `422` invalid query.
 
 #### `DELETE /exams/state`
 
-- Query: required positive integer `subject_id`; `mode?: ExamMode`, default `default`.
+- Query: required positive integer `subject_id`; `mode?: ExamMode`, default `default`; optional `expected_revision` and `expected_state_id` use the same CAS. Stale deletes return 409 without deleting newer progress; omitting CAS preserves legacy behavior.
 - Ownership: current user's matching state only; absent state is success.
 - Response: `204 No Content`.
 - Errors: `422` invalid query; `429` mutation limit.
+
+#### `GET /exams/attempts/:id`
+
+- Authentication required (`401`); only the stored owner can recover. An ID is resolved only within the authenticated owner; another identity (including admin) gets `404` unless it has its own separately generated attempt with that same ID. UUID validation matches generation/verification, including v7 (`422` for invalid IDs). Exam throttle applies (`429`). Existing anonymous snapshots cannot be recovered.
+- Response: `{ id: string, questions: GeneratedQuestion[], result: ExamResult | null }`. Immutable original content and exact committed result; never correct answers or internal option IDs. Null result does not prove verification is not running.
+- Clients may explicitly retry verification with the same answers/configuration and UUID after confirming this endpoint; never automatically replay against a legacy API.
+- For completed selections and question-by-question grading, clients must request `GET /exams/:id` using the numeric `result.id`, not the attempt UUID. Recovery returns the summary only. Owned `/exams/:id` review uses original snapshots and atomically stored per-question grading for newly completed attempts, retaining all questions, selected option IDs, original order and correctness after canonical question/option deletion. Comments remain live; deleted questions have no comments. Recovery still strips private grading. Legacy results and snapshots completed before grading was stored retain live answer-detail behavior; already lost selections/details cannot be reconstructed.
+- Verification adds 409 for unavailable/mismatched/already-submitted attempts. An unfinished bound draft blocks verification without `attempt_id`; its error message identifies the owned recovery endpoint and `DELETE /exams/state?subject_id=...&mode=...`. Recover and submit the UUID for that stored exam, or explicitly clear the draft before grading a new legacy exam. Clearing a draft does not consume or discard its stored attempt. Read state first and supply `expected_state_id`/`expected_revision` when clearing if newer progress must be protected.
+
+#### `DELETE /exams/attempts/:id`
+
+- Authentication required; deletes only the current owner's unfinished attempt. UUID validation matches recovery (`422`); mutation throttle applies (`429`).
+- Response: `204`, including absent/discarded IDs or an ID belonging only to another owner. Completed attempts return `409` and are retained for history/replay.
+- The owner lock serializes discard with generation, cloud-state saves and grading. Deleting an attempt cascades only its bound cloud draft and releases a cap slot; another owner using the same UUID and newer drafts tied to another attempt are untouched.
+- Racing verification either commits first (discard gets `409`) or discard commits first (verification gets `409`, with no score). Confirm discard before dropping local progress.
 
 #### `GET /exams/pending`
 
@@ -577,6 +648,8 @@ verification owns answer, updates scoreboard, and completes matching saved state
 ```ts
 type PendingState = {
   id: number
+  revision: number
+  attempt_id: string | null
   subject: string
   subject_id: number
   mode: ExamMode
@@ -624,7 +697,7 @@ type ExamDetail = {
 }
 ```
 
-- Errors: `400` invalid id; `403` not owner/admin; `404` missing attempt.
+- Errors: `400` invalid id; `403` not owner/admin; `404` missing attempt; `409` inconsistent/missing review details. Removed legacy questions cascade their details, so legacy review may omit them; it cannot reconstruct historical content without a snapshot.
 
 #### `GET /admin/exams`
 
@@ -640,9 +713,11 @@ type AdminExamStats = {
 
 ### User, account resolution, and admin directory
 
-Authentication resolves local account by AuthNEI subject, then verified email. A legacy email match
-without same subject creates pending resolution. Until resolved, only session and resolution routes
-are allowed.
+Authentication resolves an established account by the validated AuthNEI subject. For an unbound
+legacy account, support must verify historical ownership and record approval for the exact
+issuer subject. The account must also match the verified email. A conflicting sign-in receives
+`403` with support instructions. Legacy markers created before the approval migration need explicit
+review. See [the recovery procedure](DATABASE_SCHEMA.md#legacy-account-recovery-and-session-revocation).
 
 #### `GET /user`
 
@@ -661,15 +736,21 @@ type UserSession = CurrentUserSummary & {
 }
 ```
 
+#### `POST /user/session/revoke`
+
+Submit the bearer being signed out. Returns `204` for a valid signed token, including an
+idempotent repeat. Its fingerprint is rejected by API auth until that token's expiry.
+A different signed token for the same account retains its own validity.
+The web also requests provider-side OAuth token revocation on sign-out.
+
 #### `POST /user/account-resolution`
 
-- Body: `{ action: 'keep' | 'discard' }`.
-- `keep`: preserve data, assign pending AuthNEI subject, remove marker.
-- `discard`: delete local answers, scores, reports, and user; relational cascades also apply. Later
-  authentication recreates an empty local account.
-- Transaction/ownership: current user's marker is locked and resolved.
-- Response: `200 { message: 'Account linked successfully' | 'Account data discarded successfully' }`.
-- Errors: `400` invalid action/no pending marker; `429` account-resolution limit.
+- Body: `{ action: 'keep' }`. Older clients may repeat this request after automatic linking.
+- The authenticated account must match the verified issuer subject and email. A subject-bound
+  recovery approval is consumed in the same transaction that associates the existing account.
+- Response: `200 { message: 'Account already linked' }`.
+- Errors: `400` unsupported action, `403` recovery required from authentication middleware, `429` account-resolution limit.
+- To remove the authenticated user's data, use the separate `DELETE /user` operation with explicit confirmation.
 
 #### `GET /user/scores`
 
@@ -748,3 +829,9 @@ type UserSession = CurrentUserSummary & {
 
 - Response: `204 No Content`.
 - Errors: `404` missing event; `429` mutation limit.
+
+## Account deletion and comment safety
+
+See [Mobile safety contracts](MOBILE_SAFETY.md) for `DELETE /user`, comment reports, per-viewer author blocks, the admin review queue, issued-at deletion cutoffs, storage cleanup and upload-owner rollout. All comment reads, including owned exam review, exclude globally hidden content and the viewer's blocked authors.
+
+PostgreSQL failures retain SQLSTATE and request correlation fields, but use the fixed `database operation failed` message. Raw database messages, stacks, detail, where and nested causes are omitted because PostgreSQL can echo submitted values in any of them.

@@ -1,0 +1,1236 @@
+[
+  {
+    "question": "Com int fd[2] e pipe(fd) já executado: write(fd[1],\"abc\",3); write(fd[1],\"de\",2); n=read(fd[0],b,10); Qual é o valor de n?",
+    "answers": [
+      "2",
+      "3",
+      "5",
+      "10, o tamanho do buffer"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.14"
+  },
+  {
+    "question": "Com int fd[2] e pipe(fd) já executado, char b[8]: write(fd[1],\"abc\",3); close(fd[1]); a=read(fd[0],b,2); c=read(fd[0],b,5); d=read(fd[0],b,5); Que valores têm a, c e d?",
+    "answers": [
+      "2, 1 e 0",
+      "2, 3 e 0",
+      "2, 1 e -1",
+      "2, 1 e a terceira chamada bloqueia"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.14"
+  },
+  {
+    "question": "Com int fd[2] e pipe(fd) já executado, ainda sem dados escritos: close(fd[1]); n=read(fd[0],b,4); O que acontece?",
+    "answers": [
+      "n fica com -1 e o processo recebe SIGPIPE",
+      "n fica com 0, porque já não existe nenhum descritor de escrita aberto",
+      "O processo bloqueia até alguém escrever no pipe ou o sistema o interromper",
+      "n fica com 4, preenchido com bytes nulos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.19"
+  },
+  {
+    "question": "Com int fd[2] e pipe(fd) já executado e SIGPIPE ignorado: close(fd[0]); n=write(fd[1],\"x\",1); Que valor tem n e qual é o errno?",
+    "answers": [
+      "1, ficando o byte guardado no pipe até este ser destruído",
+      "0 e EAGAIN",
+      "-1 e EBADF",
+      "-1 e EPIPE"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.19"
+  },
+  {
+    "question": "Com int fd[2] e pipe(fd) já executado: if(fork()==0){close(fd[0]); write(fd[1],\"hi\",2); close(fd[1]); _exit(0);} wait(NULL); while(read(fd[0],&c,1)>0) n++; Porque é que o pai nunca termina?",
+    "answers": [
+      "O wait bloqueia porque o filho não consegue terminar",
+      "O filho fecha fd[1] antes de o pai ler, o que apaga os dados que já estavam no pipe",
+      "O pai não fechou fd[1], pelo que o terceiro read bloqueia em vez de devolver 0",
+      "O read devolve sempre -1 por o pai ter fd[0] aberto"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.18"
+  },
+  {
+    "question": "Com int x=200,y=100,t e pipe(fd): if(fork()==0){read(fd[0],&x,4); read(fd[0],&y,4); _exit(x+y);} write(fd[1],&x,4); write(fd[1],&y,4); wait(&t); printf(\"%d\",WEXITSTATUS(t)); O que imprime?",
+    "answers": [
+      "300, a soma sem truncagem",
+      "44",
+      "255",
+      "100"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.26"
+  },
+  {
+    "question": "Num processo só com os descritores 0, 1 e 2 abertos, que valores imprime printf(\"%d %d\",fd[0],fd[1]) logo a seguir a pipe(fd)?",
+    "answers": [
+      "3 e 4",
+      "0 e 1",
+      "4 e 5",
+      "2 e 3, contando o stderr"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.6"
+  },
+  {
+    "question": "Num processo só com os descritores 0, 1 e 2 abertos, após close(0); pipe(fd); que valores ficam em fd[0] e fd[1]?",
+    "answers": [
+      "3 e 4",
+      "0 e 1",
+      "0 e 4, pois o 3 fica reservado",
+      "0 e 3"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.17"
+  },
+  {
+    "question": "Com int fd[2] e pipe(fd) já executado, char b[8]: dup2(fd[1],1); close(fd[1]); write(1,\"xyz\",3); n=read(fd[0],b,8); Qual é o valor de n?",
+    "answers": [
+      "0, porque o descritor fd[1] foi fechado antes do write e nada foi escrito",
+      "3, porque o descritor 1 passou a referir a extremidade de escrita do pipe",
+      "8, porque read preenche sempre o buffer pedido",
+      "-1, porque o descritor 1 pertence ao ecrã"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL3"
+  },
+  {
+    "question": "Com int fd[2] e pipe(fd) já executado, char b[20], int a[3]={1,2,3}: write(fd[1],a,sizeof a); n=read(fd[0],b,5); m=read(fd[0],b,100); Se sizeof(int)==4, que valores têm n e m?",
+    "answers": [
+      "5 e 12, pois ler não remove dados",
+      "12 e 0",
+      "5 e 7",
+      "5 e 100"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.13"
+  },
+  {
+    "question": "Com int fd[2] e pipe(fd) já executado: close(fd[0]); n=close(fd[0]); Que valor tem n e qual é o errno?",
+    "answers": [
+      "-1 e EBADF",
+      "0, com o pipe a ser destruído",
+      "0 e nenhum erro",
+      "-1 e EPIPE"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.17"
+  },
+  {
+    "question": "Com int fd[2] e pipe(fd) já executado: n=write(fd[0],\"x\",1); m=read(fd[1],b,1); Que valores têm n e m?",
+    "answers": [
+      "1 e 1, pois ambos os descritores servem para ler e escrever",
+      "-1 e 0, pois o pipe está vazio",
+      "1 e a leitura bloqueia",
+      "-1 e -1, com errno EBADF"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.12"
+  },
+  {
+    "question": "Com int fd[2] e pipe(fd) já executado e sem outros descritores: close(fd[0]); if(fork()==0){write(fd[1],\"x\",1); _exit(0);} wait(&s); Como termina o filho?",
+    "answers": [
+      "Normalmente, com estado 0 por o write ter sido bem sucedido",
+      "Terminado pelo sinal SIGPIPE",
+      "Normalmente, com estado 1 por o write ter falhado",
+      "Fica bloqueado no write à espera de um leitor"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.19"
+  },
+  {
+    "question": "Com int fd[2] e pipe(fd) já executado: write(fd[1],\"A\",1); if(fork()==0){read(fd[0],&c,1); _exit(0);} wait(NULL); close(fd[1]); n=read(fd[0],&c,1); Qual é o valor de n?",
+    "answers": [
+      "1, pois o pai tem a sua cópia do pipe com o byte",
+      "-1, pois o pai fechou o descritor de escrita",
+      "Bloqueia, pois o pai ainda tem o pipe aberto",
+      "0, pois o filho consumiu o byte do pipe partilhado"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.11"
+  },
+  {
+    "question": "Com int fd[2] e pipe(fd) já executado, n=0: if(fork()==0){close(fd[0]); dup2(fd[1],1); close(fd[1]); execlp(\"echo\",\"echo\",\"hi\",NULL);} close(fd[1]); while(read(fd[0],&c,1)>0) n++; Que valor tem n no fim?",
+    "answers": [
+      "2, só os carateres hi",
+      "0, pois o exec fecha os descritores do pipe",
+      "3, incluindo o fim de linha",
+      "Bloqueia, pois o filho não escreve em fd[1]"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL3"
+  },
+  {
+    "question": "Com int fd[2] e pipe(fd) já executado: if(fork()==0){dup2(fd[0],0); close(fd[0]); close(fd[1]); execlp(\"wc\",\"wc\",\"-c\",NULL);} close(fd[0]); write(fd[1],\"hello\",5); wait(NULL); Porque é que não termina?",
+    "answers": [
+      "O pai não fechou fd[1], logo o wc nunca vê fim de ficheiro",
+      "O wc bloqueia porque o filho fechou fd[0] antes do exec",
+      "O write bloqueia porque o pipe só aceita 5 bytes se estiver vazio",
+      "O exec fecha os descritores 0 e 1 do processo filho"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL3"
+  },
+  {
+    "question": "Com int fd[2] e pipe(fd) já executado, s=0: for(i=1;i<=3;i++) if(fork()==0){close(fd[0]); v=i*10; write(fd[1],&v,4); _exit(0);} close(fd[1]); for(i=0;i<3;i++){read(fd[0],&v,4); s+=v;} Qual o valor de s?",
+    "answers": [
+      "30, porque só o último filho consegue escrever",
+      "60, qualquer que seja a ordem de escrita",
+      "0, porque o pai fechou fd[1] antes de ler",
+      "Depende da ordem em que os filhos são escalonados"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.24"
+  },
+  {
+    "question": "Com int x=0 e pipe(fd): if(fork()==0){close(fd[0]); sleep(1); x=7; write(fd[1],&x,4); _exit(0);} close(fd[1]); read(fd[0],&x,4); printf(\"%d\",x); O que imprime o pai?",
+    "answers": [
+      "7, porque o read bloqueia até haver dados",
+      "0, porque o read devolve logo com o pipe vazio",
+      "-1, porque o pipe ainda não tem dados",
+      "Nada, porque o pai termina antes do filho escrever"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.16"
+  },
+  {
+    "question": "Com int v=5 e dois pipes up e dn: if(fork()==0){write(up[1],&v,4); read(dn[0],&v,4); printf(\"%d\",v); exit(0);} read(up[0],&v,4); v++; write(dn[1],&v,4); wait(NULL); O que imprime o filho?",
+    "answers": [
+      "5",
+      "0",
+      "11, a soma de 5 e 6",
+      "6"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL3"
+  },
+  {
+    "question": "Com int v,s=0,a[3]={90,90,90},t: if(fork()==0){close(fd[1]); while(read(fd[0],&v,4)>0) s+=v; _exit(s);} close(fd[0]); write(fd[1],a,12); close(fd[1]); wait(&t); printf(\"%d\",WEXITSTATUS(t)); O que imprime?",
+    "answers": [
+      "270, a soma sem truncagem",
+      "255",
+      "14",
+      "90"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.26"
+  },
+  {
+    "question": "Com int fd[2], char b[8] e pid_t p: p=fork(); pipe(fd); if(p==0){close(fd[1]); n=read(fd[0],b,1); printf(\"%d\",n); exit(0);} close(fd[0]); wait(NULL); O que imprime o filho?",
+    "answers": [
+      "Nada, porque o read bloqueia à espera do pai",
+      "0, porque o pipe do filho não tem escritores",
+      "-1, porque fd não foi herdado do pai",
+      "1, porque o pai e o filho partilham o mesmo pipe criado"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.11"
+  },
+  {
+    "question": "Com int fd[2] e pipe(fd) já executado, char b[8]: write(fd[1],\"ab\",2); write(fd[1],\"cd\",2); read(fd[0],b,3); b[3]=0; printf(\"%s\",b); O que imprime?",
+    "answers": [
+      "abc",
+      "ab",
+      "cd",
+      "abcd, pois read lê as duas escritas"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.13"
+  },
+  {
+    "question": "Com char c, int s=0,t,i e pipe(fd): for(i=0;i<2;i++) if(fork()==0){read(fd[0],&c,1); _exit(c);} write(fd[1],\"AB\",2); for(i=0;i<2;i++){wait(&t); s+=WEXITSTATUS(t);} printf(\"%d\",s); (A=65, B=66) O que imprime?",
+    "answers": [
+      "130, com os dois filhos a ler A",
+      "132",
+      "197",
+      "131"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.13"
+  },
+  {
+    "question": "Com int fd[2] e pipe(fd) já executado, char b[8]: if(fork()==0){close(fd[0]); dup2(fd[1],1); printf(\"hi\"); _exit(0);} close(fd[1]); wait(NULL); n=read(fd[0],b,8); printf(\"%d\",n); O que imprime?",
+    "answers": [
+      "2, porque o filho escreveu hi no pipe antes de terminar com _exit(0)",
+      "Nada, porque o read bloqueia",
+      "0, porque o buffer do stdout não chegou a ser escrito no pipe",
+      "-1, porque o filho não fechou fd[1]"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL3"
+  },
+  {
+    "question": "Com int fd[2] e pipe(fd) já executado, char b[9]: o filho executa write(fd[1],\"hello\",5) e termina; o pai fez close(fd[1]); wait(NULL); e depois chama read(fd[0],b,2), read(fd[0],b,9) e read(fd[0],b,9). Que valores devolvem?",
+    "answers": [
+      "2, 5 e 0",
+      "2, 3 e 0",
+      "2, 9 e 0",
+      "2, 3 e bloqueia"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.14"
+  },
+  {
+    "question": "Com int fd[2] e pipe(fd) já executado, char b[9]: write(fd[1],\"abc\",strlen(\"abc\")+1); n=read(fd[0],b,9); Qual é o valor de n?",
+    "answers": [
+      "3, só os carateres abc",
+      "9",
+      "1",
+      "4"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.15"
+  },
+  {
+    "question": "Com int fd[2] e pipe(fd) já executado, char b[8]: if(fork()==0){close(fd[0]); write(fd[1],\"x\",1); _exit(0);} wait(NULL); close(fd[1]); n=read(fd[0],b,8); Qual é o valor de n?",
+    "answers": [
+      "0, porque o único escritor já terminou e o kernel descartou os dados",
+      "1, pois os dados continuam no pipe depois de o escritor terminar",
+      "-1, porque o pipe ficou sem escritores",
+      "Bloqueia, porque o filho não fechou fd[1]"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.19"
+  },
+  {
+    "question": "Porque é que um processo que apenas lê de um pipe deve fechar o seu descritor de escrita?",
+    "answers": [
+      "Porque o kernel copia o buffer do pipe quando há dois descritores abertos",
+      "Porque um pipe só aceita dados se o leitor não tiver escrita",
+      "Senão read() não devolve 0 quando os outros escritores fecham e o leitor bloqueia",
+      "Para que write() devolva o número de bytes escritos"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.18"
+  },
+  {
+    "question": "Porque é que o pipe tem de ser criado antes de fork() para ligar um pai ao seu filho?",
+    "answers": [
+      "O pipe só pode ser criado pelo processo que tem o PID mais baixo da árvore",
+      "O fork() cria o pipe automaticamente se existir fd[2]",
+      "O filho abre o pipe pelo nome no sistema de ficheiros",
+      "O filho herda uma cópia da tabela de descritores que refere o mesmo pipe"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.11"
+  },
+  {
+    "question": "Dois filhos escrevem mensagens de 50 bytes, com um write() cada, no mesmo pipe. O que está garantido, sendo 50 menor que PIPE_BUF?",
+    "answers": [
+      "As mensagens não se misturam, mas a ordem de chegada é imprevisível",
+      "As mensagens ficam sempre ordenadas pelo PID do escritor, com o menor PID primeiro",
+      "As mensagens são intercaladas byte a byte pelo kernel",
+      "Só o filho que escreve primeiro consegue completar a escrita"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.23"
+  },
+  {
+    "question": "Como se implementa comunicação bidirecional entre pai e filho com pipes sem nome?",
+    "answers": [
+      "Com um só pipe, em que o pai lê por fd[0] e o filho lê pelo mesmo pipe por fd[1]",
+      "Com um pipe aberto em modo O_RDWR pelos dois processos",
+      "Com dois pipes, um por sentido, fechando em cada processo as extremidades que não usa",
+      "Com um pipe e dup2(fd[0],fd[1]) no processo filho"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.8"
+  },
+  {
+    "question": "O que sucede a um write() num pipe cheio, sem O_NONBLOCK, enquanto existir um leitor que ainda não leu?",
+    "answers": [
+      "Devolve -1 de imediato com errno EAGAIN, sem esperar que o leitor leia",
+      "O processo bloqueia até o leitor retirar dados e existir espaço",
+      "O kernel descarta os bytes mais antigos do pipe",
+      "O processo recebe SIGPIPE e termina"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.16"
+  },
+  {
+    "question": "Que acontece aos descritores de um pipe abertos num processo que chama execlp(), se não tiverem a flag FD_CLOEXEC?",
+    "answers": [
+      "São fechados pelo kernel antes de iniciar o novo programa",
+      "Só se mantêm os descritores 0, 1 e 2, os restantes fecham",
+      "Passam a referir o ficheiro do programa executado",
+      "Continuam abertos no programa executado"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.7"
+  },
+  {
+    "question": "O que devolve pipe(fd) quando é bem sucedida?",
+    "answers": [
+      "0, ficando em fd[0] o descritor de leitura e em fd[1] o de escrita",
+      "Um descritor bidirecional, que fica em fd[0] e é copiado para fd[1]",
+      "0, ficando em fd[0] o descritor de escrita e em fd[1] o de leitura",
+      "O PID do processo que passa a poder ler do pipe"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.12"
+  },
+  {
+    "question": "Dois processos com o mesmo pipe aberto leem dele enquanto outro escreve 10 bytes. O que acontece a cada byte?",
+    "answers": [
+      "É lido pelos dois, pois cada leitor tem a sua cópia do pipe",
+      "É lido por um só dos processos, porque ler remove o byte do pipe",
+      "É lido sempre pelo processo mais antigo dos dois",
+      "É lido alternadamente, um byte por processo, por ordem de PID"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.13"
+  },
+  {
+    "question": "Num pipeline como ls | wc -l, implementado com pipe, fork, dup2 e exec, o que tem o processo que executa ls?",
+    "answers": [
+      "O descritor 0 redirecionado para a extremidade de leitura do pipe, para receber o resultado",
+      "O descritor 1 redirecionado para a extremidade de leitura do pipe",
+      "O descritor 1 redirecionado para a extremidade de escrita do pipe",
+      "Os dois descritores do pipe ligados ao descritor 2"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL3"
+  },
+  {
+    "question": "Vários filhos enviam, cada um, uma struct de 24 bytes num único write() no mesmo pipe. Qual a vantagem face a dois write() separados?",
+    "answers": [
+      "As mensagens passam a chegar ordenadas pelo PID do filho que as envia ao pai",
+      "Os dois campos de uma mensagem ficam juntos, sem se misturarem com os de outro filho",
+      "O pipe passa a aceitar escritas maiores do que PIPE_BUF bytes",
+      "O pai deixa de precisar de fechar o descritor de escrita"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL3"
+  },
+  {
+    "question": "Com pipe(fd) feito, if(fork()==0){close(fd[0]); write(fd[1],\"hi\",2); close(fd[1]); _exit(0);} close(fd[1]); wait(NULL); while(read(fd[0],&c,1)>0) n++; printf(\"%d\",n); imprime 2 se n começar a 0.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.19"
+  },
+  {
+    "question": "Com pipe(fd) feito, if(fork()==0){close(fd[0]); write(fd[1],\"x\",1); _exit(0);} wait(&s); o filho é terminado pelo sinal SIGPIPE.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.19"
+  },
+  {
+    "question": "Com pipe(fd) feito, if(fork()==0){close(fd[0]); sleep(1); write(fd[1],\"ab\",2); close(fd[1]); _exit(0);} close(fd[1]); while(read(fd[0],&c,1)>0) write(1,&c,1); write(1,\"fim\",3); o pai escreve ab e depois fim.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.18"
+  },
+  {
+    "question": "Com pipe(fd) feito, dup2(fd[1],5) devolve 0 quando é bem sucedida.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL3"
+  },
+  {
+    "question": "Os bytes lidos de um pipe são removidos dele, pelo que não podem voltar a ser lidos por outro processo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.13"
+  },
+  {
+    "question": "Dois processos que abrem o mesmo ficheiro obtêm sempre o mesmo valor de descritor.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.7"
+  },
+  {
+    "question": "Um pipe criado com pipe() tem um nome no sistema de ficheiros através do qual outros processos o podem abrir.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.10"
+  },
+  {
+    "question": "Escritas num pipe com mais de PIPE_BUF bytes podem ser intercaladas com escritas de outros processos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.13"
+  },
+  {
+    "question": "Se pai e filho chamarem pipe(fd) depois do fork(), ficam ligados pelo mesmo pipe.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.11"
+  },
+  {
+    "question": "Depois de fork(), os descritores copiados para o filho referem os mesmos pipes do pai.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.11"
+  },
+  {
+    "question": "read() num pipe vazio, com um descritor de escrita ainda aberto, devolve 0 de imediato.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.16"
+  },
+  {
+    "question": "A capacidade de um pipe é limitada e depende do sistema.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.9"
+  },
+  {
+    "question": "Um único pipe permite o envio de pedidos e respostas nos dois sentidos, sem risco de um processo ler os seus próprios dados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.8"
+  },
+  {
+    "question": "read() pode devolver menos bytes do que os pedidos sem que haja erro nem fim de ficheiro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.14"
+  },
+  {
+    "question": "Se pai e filho têm o descritor de escrita aberto e só o pai o fecha, o read do filho num pipe vazio devolve 0.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.18"
+  },
+  {
+    "question": "Cada processo tem a sua própria tabela de descritores, com 0, 1 e 2 correspondentes a stdin, stdout e stderr.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.6"
+  },
+  {
+    "question": "Depois de close(fd[0]), read(fd[0],b,1) devolve 0 por não haver mais dados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.17"
+  },
+  {
+    "question": "Para ligar a saída de um comando a um pipe, o filho usa dup2(fd[1],0) antes do exec.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "PL3"
+  },
+  {
+    "question": "Um processo fechou o descritor 0 e executa depois \"int a=dup(1); printf(\"%d\\n\",a);\". Qual é o valor impresso?",
+    "answers": [
+      "0, porque dup escolhe o menor descritor livre",
+      "1, porque dup devolve o mesmo número do descritor copiado",
+      "3, porque os descritores 0, 1 e 2 estão sempre reservados",
+      "-1, porque dup não pode usar o descritor 0 como destino"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.7"
+  },
+  {
+    "question": "O que imprime \"int r=dup2(1,1); int s=dup2(1,7); printf(\"%d %d\\n\",r,s);\" num processo com os descritores 0, 1 e 2 abertos?",
+    "answers": [
+      "1 7, porque dup2 devolve o valor de fd2 quando tem sucesso",
+      "-1 7, porque dup2(1,1) falha ao tentar fechar o próprio descritor antes de o duplicar",
+      "1 3, porque dup2 devolve o menor descritor livre",
+      "-1 -1, porque dup2 só funciona se fd2 estiver fechado"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.10"
+  },
+  {
+    "question": "Em \"int r=dup2(99,1);\", o descritor 99 não está aberto. O que acontece ao descritor 1?",
+    "answers": [
+      "Fica fechado, porque dup2 fecha sempre fd2 antes de tentar duplicar",
+      "Passa a apontar para o mesmo recurso que o descritor 99",
+      "Continua aberto e inalterado, e dup2 devolve -1 com errno EBADF",
+      "Passa a apontar para /dev/null, porque o destino é inválido"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.10"
+  },
+  {
+    "question": "Qual é o resultado de \"int p[2]; pipe(p); int d=dup(p[1]); close(p[1]); write(d,\"ab\",2); close(d);\" seguido de dois read(p[0],b,8) consecutivos?",
+    "answers": [
+      "Devolvem 2 e 2, porque os dados continuam no pipe após a primeira leitura",
+      "Devolvem 2 e depois bloqueiam, porque p[1] continua aberto",
+      "Devolvem 0 e 0, porque o write foi feito através de uma cópia",
+      "Devolvem 2 e 0, porque os dois extremos de escrita estão fechados"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.7"
+  },
+  {
+    "question": "O filho faz dup2(p[1],1); close(p[1]); printf(\"hi\"); execlp(\"true\",\"true\",NULL). O pai fechou p[1] e faz n=read(p[0],b,16). Qual é o valor de n?",
+    "answers": [
+      "2, porque o printf escreveu hi no pipe antes de ser feito o exec do true",
+      "3, porque o printf acrescenta um fim de linha",
+      "0, porque o buffer do stdio é perdido no exec sem ser escrito",
+      "-1, porque o descritor 1 foi substituído pelo exec"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.15"
+  },
+  {
+    "question": "O pai cria um pipe p e dois filhos que fazem dup2 e exec de \"echo a b c\" (stdout no pipe) e \"wc -w\" (stdin do pipe). O pai fecha só p[0] e faz wait duas vezes. O que acontece?",
+    "answers": [
+      "O programa termina e o wc imprime 3, o número de palavras lidas do pipe",
+      "O echo fica bloqueado, porque o pai fechou p[0] e o echo não consegue escrever",
+      "O programa termina sem output, porque o wc não consegue ler dados do pipe vazio",
+      "O programa não termina, porque o wc nunca recebe EOF com p[1] ainda aberto no pai"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.17"
+  },
+  {
+    "question": "Três filhos ligados por dois pipes executam \"printf a\\nb\\nc\\n\", \"grep -v b\" e \"wc -l\", por esta ordem. O pai fecha todos os descritores dos pipes e espera pelos filhos. Que valor imprime o wc?",
+    "answers": [
+      "3, o número de linhas produzidas pelo printf",
+      "0, porque o grep consome todas as linhas",
+      "1, porque o wc só conta a última linha recebida",
+      "2, o número de linhas que o grep deixa passar"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.17"
+  },
+  {
+    "question": "Um filho herda p (p[0]=3, p[1]=4), fecha p[0] e executa execlp(\"sh\",\"sh\",\"-c\",\"echo hi >&4\",NULL), sem usar dup2. O pai fechou p[1] e lê do pipe. O que acontece?",
+    "answers": [
+      "O pai lê 3 bytes, pois o descritor 4 continua aberto após o exec",
+      "O pai fica bloqueado, porque o exec fecha todos os descritores de pipe do processo",
+      "O pai lê 0 bytes, porque o novo programa não conhece o array p",
+      "O pai recebe SIGPIPE, porque o sh escreve num descritor inválido"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.5"
+  },
+  {
+    "question": "Antes do fork, o pai executa fcntl(p[1],F_SETFD,FD_CLOEXEC) (p[0]=3, p[1]=4). O filho faz exec de \"sh -c echo hi >&4\". O pai fechou p[1] e lê do pipe. Qual é o resultado?",
+    "answers": [
+      "O pai lê 3 bytes, porque o exec preserva todos os descritores",
+      "O pai fica bloqueado para sempre, porque o filho nunca chega a escrever no pipe",
+      "O pai recebe SIGPIPE, porque o descritor 4 está fechado para leitura",
+      "O pai lê 0 bytes, pois o exec fechou o descritor 4 e o sh falhou"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.5"
+  },
+  {
+    "question": "O filho faz dup2(p[1],1); dup2(p[1],2); close(p[1]); write(1,\"a\",1); write(2,\"b\",1); exit(0). O pai fechou p[1], espera pelo filho e lê com um read grande. O que obtém?",
+    "answers": [
+      "2 bytes, ab",
+      "1 byte, a, porque o stderr não é redirecionado",
+      "0 bytes, porque o pipe é fechado antes da leitura",
+      "2 bytes, mas a ordem pode ser ba"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.10"
+  },
+  {
+    "question": "Um processo fecha o descritor 0 e depois executa \"int p[2]; pipe(p); printf(\"%d %d\\n\",p[0],p[1]);\". Que valores imprime?",
+    "answers": [
+      "3 4, porque pipe usa sempre os descritores a seguir ao descritor 2",
+      "0 1, porque pipe reutiliza os dois primeiros descritores",
+      "0 3, porque pipe usa os dois menores descritores livres",
+      "1 0, porque a escrita ocupa o descritor mais baixo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.7"
+  },
+  {
+    "question": "Com \"int f=open(\"o.txt\",O_RDWR|O_CREAT|O_TRUNC,0644); int d=dup(f); write(f,\"ab\",2); write(d,\"cd\",2);\", que conteúdo tem o ficheiro?",
+    "answers": [
+      "cd, porque a segunda escrita começa de novo no início do ficheiro",
+      "ab, porque d tem uma cópia privada que não é gravada",
+      "abcd, porque f e d partilham a posição no ficheiro",
+      "cdab, porque a escrita por d é feita no início"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.7"
+  },
+  {
+    "question": "Que linhas imprime, por ordem, \"if(fork()==0){execlp(\"echo\",\"echo\",\"X\",NULL); printf(\"Y\\n\"); exit(0);} wait(NULL); printf(\"Z\\n\");\" se o execlp tiver sucesso?",
+    "answers": [
+      "X, Y e Z, porque o filho continua a executar o código depois do exec",
+      "X e Z, porque o código a seguir ao exec não é executado",
+      "Y e Z, porque o echo escreve no pipe",
+      "Só Z, porque o filho termina sem imprimir"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.5"
+  },
+  {
+    "question": "Um processo escreve 10 bytes num pipe e fecha p[1]. Depois executa \"while((n=read(p[0],b,4))>=0){printf(\"%d \",n); if(n==0)break;}\" com b de 4 bytes. O que imprime?",
+    "answers": [
+      "10 0, porque o read devolve tudo o que está no pipe",
+      "4 4 2 0, porque o último read encontra EOF",
+      "4 4 2, porque o ciclo termina quando o pipe fica vazio",
+      "4 4 4 0, porque o read devolve sempre o tamanho pedido"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.3"
+  },
+  {
+    "question": "O filho escreve 200000 bytes de uma só vez no pipe e termina. O pai fecha p[1], chama wait(NULL) e só depois faz read. Qual é a consequência?",
+    "answers": [
+      "O pai lê 200000 bytes, porque o pipe cresce até caber a escrita",
+      "Deadlock: o filho bloqueia em write com o pipe cheio e o pai em wait",
+      "O filho recebe SIGPIPE, porque o pipe não aguenta tanta informação",
+      "O write falha com -1 e o filho termina normalmente"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.16"
+  },
+  {
+    "question": "Após pipe(p) e fork, um processo executa n=read(p[1],b,8), em que p[1] é o extremo de escrita. O que sucede?",
+    "answers": [
+      "O read devolve 0, porque o pipe está vazio",
+      "O read bloqueia até o outro processo escrever algo no pipe",
+      "O read devolve -1, porque p[1] só permite escrita",
+      "O read lê os dados que o próprio processo escreveu antes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.3"
+  },
+  {
+    "question": "O filho escreve \"ab\" em p[1] e termina. O pai, que não fechou p[1], faz duas leituras seguidas com read(p[0],b,8). O que acontece?",
+    "answers": [
+      "A primeira devolve 2 e a segunda bloqueia, pois o pai ainda tem p[1] aberto",
+      "A primeira devolve 2 e a segunda devolve 0 por EOF, porque o filho terminou",
+      "A primeira devolve 2 e a segunda devolve -1, porque o pipe ficou vazio",
+      "As duas devolvem 2, porque os dados lidos não são removidos do pipe"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.3"
+  },
+  {
+    "question": "Com stdout redirecionado para um ficheiro, o que fica nesse ficheiro após \"printf(\"A\"); fork(); printf(\"B\\n\");\"?",
+    "answers": [
+      "AB numa só linha, porque só o pai escreve no ficheiro",
+      "ABAB sem mudança de linha, porque os buffers se juntam",
+      "A seguida de duas linhas B, porque o buffer é descartado",
+      "Duas linhas AB, porque o buffer com A é copiado"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.14"
+  },
+  {
+    "question": "Dois pipes a e b: o pai escreve o inteiro 7 em a e lê de b; o filho lê de a, multiplica por 2 e escreve em b. Cada processo fecha os extremos que não usa. O que imprime o pai?",
+    "answers": [
+      "7, porque o pai lê o que escreveu",
+      "14, o valor processado pelo filho",
+      "0, porque o filho termina antes de escrever",
+      "Nada, por deadlock entre os dois pipes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.16"
+  },
+  {
+    "question": "Um processo executa mkfifo(\"ff\",0600) duas vezes seguidas, sem apagar o ficheiro. Qual é o resultado?",
+    "answers": [
+      "A segunda devolve -1 com errno EEXIST, pois o nome existe",
+      "As duas devolvem 0 e a segunda recria a FIFO desde o início",
+      "A segunda bloqueia até a primeira FIFO ser fechada",
+      "A segunda devolve 0 e substitui a FIFO por um ficheiro normal"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.10"
+  },
+  {
+    "question": "O filho abre a FIFO \"ff\" com O_WRONLY, escreve \"hello\" e fecha. O pai abre-a com O_RDONLY e faz dois read(f,b,16) seguidos. Que valores são devolvidos?",
+    "answers": [
+      "5 e depois bloqueia, porque a FIFO fica vazia",
+      "5 e 5, porque os dados persistem na FIFO",
+      "5 e 0, porque o segundo read encontra EOF",
+      "0 e 0, porque o open do pai não espera pelo filho"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.10"
+  },
+  {
+    "question": "Um único processo cria uma FIFO com mkfifo e faz de seguida open(\"ff\",O_RDONLY), sem existir nenhum outro processo. O que acontece?",
+    "answers": [
+      "open devolve -1 com errno ENOENT",
+      "open fica bloqueado até outro processo abrir a FIFO para escrita",
+      "open devolve um descritor válido e o read seguinte devolve 0",
+      "open devolve -1 com errno EPERM"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.10"
+  },
+  {
+    "question": "O que acontece a uma FIFO criada com mkfifo depois de todos os processos que a abriram terminarem?",
+    "answers": [
+      "Continua a existir no sistema de ficheiros até ser apagada com unlink",
+      "É removida automaticamente pelo kernel quando o último descritor da FIFO é fechado",
+      "Deixa de ter nome, mas guarda os dados no kernel",
+      "Passa a ser um pipe sem nome acessível só ao processo pai"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.10"
+  },
+  {
+    "question": "Não existe nenhum processo com a FIFO \"ff\" aberta para leitura. O que devolve open(\"ff\",O_WRONLY|O_NONBLOCK)?",
+    "answers": [
+      "Um descritor válido, e o write seguinte bloqueia",
+      "-1 com errno EEXIST",
+      "0, porque a FIFO está vazia",
+      "-1 com errno ENXIO"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.10"
+  },
+  {
+    "question": "Porque é que se usa dup2(fd,1) em vez de close(1) seguido de dup(fd) para redirecionar o stdout?",
+    "answers": [
+      "Porque dup só funciona com descritores de ficheiros normais",
+      "Porque dup devolve sempre um número superior a 2 nesse caso",
+      "Porque dup2 fecha e reutiliza fd2 de forma atómica",
+      "Porque dup2 também fecha o descritor original fd depois de copiar"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.10"
+  },
+  {
+    "question": "Porque é que um único pipe não permite uma conversa bidirecional fiável entre pai e filho?",
+    "answers": [
+      "Porque o pipe só aceita uma escrita por cada processo que o utiliza no programa",
+      "Porque o kernel impede um processo de ler e escrever no mesmo pipe ao mesmo tempo",
+      "Porque os dados lidos de um pipe não são removidos e voltariam a ser lidos",
+      "Cada processo pode ler o que ele próprio escreveu, e o outro não o receberia"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.3"
+  },
+  {
+    "question": "Depois de um exec, como pode o novo programa saber que descritor corresponde ao extremo do pipe?",
+    "answers": [
+      "Lê o array fd do programa anterior, que continua em memória após o exec e o fork",
+      "Por um dup2 antes do exec (pipe no descritor 0 ou 1) ou por um argumento com o seu número",
+      "Através de uma variável global que o kernel mantém partilhada com o programa anterior",
+      "O kernel coloca sempre o pipe nos descritores 3 e 4"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.5"
+  },
+  {
+    "question": "Cinco filhos escrevem cada um um inteiro no mesmo pipe, e o pai lê inteiros num ciclo até read devolver 0, depois de fechar o seu p[1]. Quando é que o read devolve 0?",
+    "answers": [
+      "Quando o pipe fica vazio depois de todos os inteiros terem sido lidos pelo pai",
+      "Quando o primeiro filho termina e fecha o seu descritor de escrita no pipe",
+      "Quando o pai chama wait pela quinta vez para recolher os filhos",
+      "Quando todos os filhos terminaram e não resta nenhum descritor de escrita aberto"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.3"
+  },
+  {
+    "question": "Um pipe tem o extremo de leitura fechado em todos os processos e SIGPIPE está ignorado. O que devolve write no extremo de escrita?",
+    "answers": [
+      "0, porque não há ninguém para ler",
+      "-1 com errno EPIPE",
+      "Bloqueia até o pipe ter leitores",
+      "O número de bytes escritos, que ficam perdidos"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.3"
+  },
+  {
+    "question": "Depois de dup2(p[1],1) e antes de close(p[1]), quantos descritores do processo apontam para o extremo de escrita do pipe?",
+    "answers": [
+      "Apenas um, porque dup2 move o descritor",
+      "Dois, o p[1] e o descritor 1",
+      "Três, contando o descritor 2",
+      "Nenhum, porque o extremo passa para o kernel"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.15"
+  },
+  {
+    "question": "Em dup2(fd1,fd2), se fd2 já estiver aberto, é fechado e reutilizado numa operação atómica.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.10"
+  },
+  {
+    "question": "A chamada dup(fd) devolve um descritor com o mesmo número de fd, a apontar para o mesmo ficheiro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.7"
+  },
+  {
+    "question": "Se execlp falhar, devolve -1 e o processo continua a executar as instruções seguintes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.5"
+  },
+  {
+    "question": "Todos os descritores abertos de um processo são fechados automaticamente por uma chamada exec bem-sucedida, salvo indicação em contrário.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.5"
+  },
+  {
+    "question": "Num pipeline de dois filhos com exec, o pai tem de fechar os dois extremos do pipe para o leitor receber EOF.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.17"
+  },
+  {
+    "question": "Com dois pipes, um por sentido, pai e filho podem trocar dados nos dois sentidos, fechando cada um os extremos que não usa.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.16"
+  },
+  {
+    "question": "Uma FIFO permite comunicação entre processos sem relação de parentesco, porque tem um nome no sistema de ficheiros.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.10"
+  },
+  {
+    "question": "Um open bloqueante de uma FIFO para escrita só termina quando outro processo a abrir para leitura.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.10"
+  },
+  {
+    "question": "Um processo que não seja descendente do criador de um pipe pode usá-lo, desde que conheça os números dos descritores.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP5 p.11"
+  },
+  {
+    "question": "Se todos os descritores de leitura de um pipe estiverem fechados, write devolve 0 sem gerar sinal.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.3"
+  },
+  {
+    "question": "Depois de dup2(fd[1],1), o descritor fd[1] deixa de estar aberto.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.10"
+  },
+  {
+    "question": "Ao contrário dos ficheiros, ler de um pipe remove os dados lidos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.2"
+  },
+  {
+    "question": "Num pipe cheio, um write bloqueante devolve -1 com errno EAGAIN em vez de esperar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.2"
+  },
+  {
+    "question": "Escritas de menos de PIPE_BUF bytes feitas por vários processos no mesmo pipe não se misturam.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.4"
+  },
+  {
+    "question": "Num pipeline ls | wc, o wc só começa a ler depois de o ls terminar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP6 p.17"
+  }
+]

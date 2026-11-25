@@ -1,0 +1,666 @@
+[
+  {
+    "question": "int a=open(\"f\",O_RDONLY), b=open(\"f\",O_RDONLY); char x,y,z; read(a,&x,1); read(a,&y,1); read(b,&z,1); printf(\"%c%c%c\",x,y,z); Se f contém abcdef, qual é o texto impresso?",
+    "answers": [
+      "aba",
+      "abc, porque os dois descritores partilham a mesma posição",
+      "aab, porque o segundo read repete o byte anterior",
+      "abb, porque b continua onde a ficou"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.23"
+  },
+  {
+    "question": "int a=open(\"f\",O_RDONLY), b=dup(a); char x,y; read(a,&x,1); read(b,&y,1); printf(\"%c%c\",x,y); Se f contém abcdef, o que imprime este excerto?",
+    "answers": [
+      "aa, porque dup cria uma posição de leitura independente",
+      "ac, porque dup avança a posição em um byte",
+      "bb, porque dup troca entre si os dois descritores",
+      "ab"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.26"
+  },
+  {
+    "question": "f contém wxyz. int a=open(\"f\",O_RDONLY), b=open(\"f\",O_RDONLY), c=open(\"f\",O_RDONLY); dup2(a,c); read(a,&p,1); read(c,&q,1); read(b,&r,1); Que valores têm p, q e r?",
+    "answers": [
+      "p=w, q=w, r=x, porque c continua independente de a",
+      "p=w, q=x, r=x, porque b partilha a posição de a",
+      "p=w, q=x, r=w",
+      "p=w, q=w, r=w, porque cada descritor tem posição própria"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.29"
+  },
+  {
+    "question": "f contém abcdef. int a=open(\"f\",O_RDONLY); lseek(a,3,SEEK_SET); read(a,&x,1); lseek(a,-1,SEEK_END); read(a,&y,1); Que valores têm os carateres x e y?",
+    "answers": [
+      "x=c, y=f, porque os deslocamentos começam a contar em 1",
+      "x=d, y=f",
+      "x=d, y=e, porque SEEK_END com -1 recua dois bytes",
+      "x=d, y=a, porque SEEK_END recomeça no início do ficheiro"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.5"
+  },
+  {
+    "question": "f tem 6 bytes. char b[4]; int a=open(\"f\",O_RDONLY); n1=read(a,b,4); n2=read(a,b,4); n3=read(a,b,4); Que valores têm n1, n2 e n3?",
+    "answers": [
+      "4, 4 e 0, porque o segundo read repete a leitura de 4 bytes",
+      "4, 2 e 0",
+      "4, 2 e -1, porque o fim de ficheiro é sempre um erro",
+      "4, 4 e 2, porque o buffer b é circular"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.15"
+  },
+  {
+    "question": "f contém abcdef. O pai faz read(fd,&x,1) e depois fork(); o filho faz read(fd,&y,1) e termina; o pai faz wait(NULL) e depois read(fd,&z,1). Qual é o valor de z?",
+    "answers": [
+      "c",
+      "b, porque o pai tem uma posição própria, que só avançou uma vez",
+      "a, porque o fork repõe a posição no início do ficheiro",
+      "d, porque o filho avançou a posição em dois bytes"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.25"
+  },
+  {
+    "question": "int main(){ printf(\"A\"); fork(); } Com stdout redirecionado para um ficheiro, quantas vezes aparece o carácter A nesse ficheiro?",
+    "answers": [
+      "Uma, porque o buffer é esvaziado pelo kernel antes do fork",
+      "Nenhuma, porque sem \\n o printf nunca escreve no ficheiro",
+      "Quatro, porque cada processo escreve duas vezes ao terminar",
+      "Duas, pois o buffer é duplicado"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.37"
+  },
+  {
+    "question": "printf(\"x\"); write(1,\"y\",1); Com stdout redirecionado para um ficheiro, qual é o conteúdo final deste?",
+    "answers": [
+      "xy, porque a ordem do código é sempre respeitada",
+      "x, porque write substitui o conteúdo do buffer do stdio",
+      "yx",
+      "y, porque o buffer do printf é descartado ao terminar"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.37"
+  },
+  {
+    "question": "printf(\"a\"); fflush(stdout); fork(); printf(\"b\"); Com stdout redirecionado para um ficheiro, qual é o conteúdo final?",
+    "answers": [
+      "ab, porque só o pai escreve o carácter b",
+      "aabb, porque o fork duplica também o carácter a",
+      "abb",
+      "abab, porque pai e filho escrevem alternadamente"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.37"
+  },
+  {
+    "question": "printf(\"O\"); fprintf(stderr,\"E\"); Com stdout e stderr ligados ao mesmo pipe, qual é a ordem dos carateres lidos do pipe?",
+    "answers": [
+      "OE, porque as instruções executam por esta ordem e a escrita é imediata",
+      "EO",
+      "OE, porque stdout tem prioridade sobre stderr dentro do kernel",
+      "Indeterminada, porque stdout e stderr são escritos por processos diferentes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.34"
+  },
+  {
+    "question": "printf(\"A\"); write(1,\"B\",1); printf(\"C\\n\"); Com stdout redirecionado para um ficheiro, qual é a saída?",
+    "answers": [
+      "BAC",
+      "ABC, porque o printf escreve sempre de imediato no ecrã",
+      "ACB, porque write só é executado depois do printf final",
+      "BCA, porque o buffer é esvaziado só no fim do programa"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.37"
+  },
+  {
+    "question": "f existe. close(0); int fd=open(\"f\",O_RDONLY); printf(\"%d\",fd); Que valor é impresso?",
+    "answers": [
+      "3, porque os descritores 0, 1 e 2 estão sempre reservados",
+      "-1, porque o descritor 0 não pode ser reutilizado",
+      "5, porque descritores fechados nunca são reutilizados",
+      "0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.13"
+  },
+  {
+    "question": "Com 0, 1 e 2 abertos e f existente: int a=open(\"f\",O_RDONLY), b=open(\"f\",O_RDONLY); close(a); int c=open(\"f\",O_RDONLY); Quais são os valores de a, b e c?",
+    "answers": [
+      "3, 4 e 5, porque os descritores fechados nunca são reutilizados",
+      "3, 4 e 0, porque o kernel preenche sempre a partir de 0",
+      "3, 3 e 3, porque o kernel devolve o descritor mais recente",
+      "3, 4 e 3"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.13"
+  },
+  {
+    "question": "int a=open(\"f\",O_RDONLY); close(a); char c; n=read(a,&c,1); Que valor devolve read e que valor fica em errno?",
+    "answers": [
+      "n=0, indicando fim de ficheiro, com errno inalterado",
+      "n=1, porque os dados ainda estão no buffer do kernel",
+      "n=-1 e errno=EBADF",
+      "n=-1 e errno=ENOENT, porque o ficheiro já não existe"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.15"
+  },
+  {
+    "question": "f tem 6 bytes e foi aberto com fopen em modo r. char b[100]; Que valores devolvem fread(b,1,100,f) e, depois de rewind(f), fread(b,100,1,f)?",
+    "answers": [
+      "6 e 1, porque lê um item incompleto de 100 bytes",
+      "6 e 0",
+      "100 e 1, porque devolve o número de bytes pedidos",
+      "1 e 0, porque devolve o número de chamadas ao kernel"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.33"
+  },
+  {
+    "question": "Quantos carateres, no máximo, são lidos para o buffer por fgets(buf,8,f), sem contar o terminador nulo?",
+    "answers": [
+      "7",
+      "8, e o terminador nulo é escrito fora do buffer",
+      "9, incluindo o \\n final e o terminador nulo",
+      "Todos até ao \\n, ignorando o limite indicado"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.39"
+  },
+  {
+    "question": "int v[5]; FILE *f=fopen(\"g\",\"w\"); n=fwrite(v,sizeof(int),5,f); Que valor tem n se tudo correr bem e o int tiver 4 bytes?",
+    "answers": [
+      "5",
+      "20, porque fwrite devolve o número de bytes escritos",
+      "1, porque escreve todos os elementos como um único bloco",
+      "0, porque os dados ainda estão no buffer do stdio"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.33"
+  },
+  {
+    "question": "f contém abc. FILE *f=fopen(\"f\",\"w\"); fclose(f); Depois, a=open(\"f\",O_RDONLY); n=read(a,&c,1); Que valor tem n?",
+    "answers": [
+      "1, porque o fclose repõe o conteúdo anterior do ficheiro",
+      "-1, porque o ficheiro foi fechado e já não pode ser aberto",
+      "3, porque o read devolve o tamanho original do ficheiro",
+      "0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.33"
+  },
+  {
+    "question": "FILE *f=fopen(\"g\",\"w\"); fputs(\"xy\",f); Um read noutro descritor aberto sobre g, executado antes e depois de fflush(f), devolve que valores?",
+    "answers": [
+      "2 e 2, porque fputs escreve logo no kernel",
+      "0 e 0, porque fflush apenas limpa o buffer sem escrever",
+      "0 e 2",
+      "2 e 0, porque fflush descarta os dados em buffer"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.37"
+  },
+  {
+    "question": "Um programa copia para stdout um ficheiro de 150 bytes com read(fd,&c,1) e write(1,&c,1) em ciclo até read devolver 0. Quantas chamadas read e write executa no total?",
+    "answers": [
+      "300, esquecendo o read final que devolve 0",
+      "301",
+      "150, pois cada byte exige apenas uma chamada",
+      "302, porque write também é chamado no fim"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.17"
+  },
+  {
+    "question": "Mesma cópia de um ficheiro de 150 bytes, mas com um buffer de 64 bytes: n=read(fd,buf,64) e write(1,buf,n) em ciclo até n ser 0. Quantas chamadas read e write no total?",
+    "answers": [
+      "6, esquecendo o read final que devolve 0",
+      "7",
+      "8, porque write também é chamado com 0 bytes no fim",
+      "5, porque o último bloco incompleto é descartado"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.19"
+  },
+  {
+    "question": "Qual opção do strace faz também seguir os processos filhos criados pelo programa observado?",
+    "answers": [
+      "-tt, que escreve o instante de cada chamada ao sistema",
+      "-o, que regista as chamadas de todos os processos num ficheiro",
+      "-e trace=%process, que filtra as chamadas relativas a processos",
+      "-f"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "strace p.2"
+  },
+  {
+    "question": "Qual é um comando adequado para ver apenas as chamadas ao sistema relacionadas com sinais de ./p?",
+    "answers": [
+      "strace -e trace=%ipc ./p, que filtra apenas chamadas de sinais",
+      "strace -o %signal ./p, que regista apenas os sinais",
+      "strace -e trace=%signal ./p",
+      "strace -f %signal ./p, que segue apenas processos de sinais"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "strace p.2"
+  },
+  {
+    "question": "Um processo abre um ficheiro (refcnt=1 na open file table) e faz fork. Qual é o estado depois do fork?",
+    "answers": [
+      "É criada uma cópia da entrada, com posição independente em cada processo",
+      "O filho recebe todos os descritores fechados até chamar open",
+      "A entrada passa a refcnt=2 e é partilhada",
+      "A v-node é duplicada e cada cópia da entrada fica com refcnt=1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.25"
+  },
+  {
+    "question": "Em que estrutura do kernel é mantida a posição corrente de leitura e escrita de um ficheiro aberto?",
+    "answers": [
+      "Na tabela de descritores de cada processo, junto ao inteiro do descritor",
+      "Na entrada da open file table",
+      "Na v-node, partilhada por todos os processos que abriram o ficheiro",
+      "No inode em disco, para persistir entre execuções do programa"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.22"
+  },
+  {
+    "question": "Um processo chama open duas vezes para o mesmo ficheiro em disco. Quantas entradas novas surgem na open file table e na v-node table?",
+    "answers": [
+      "Duas e uma",
+      "Uma e uma, porque o kernel reconhece o mesmo nome",
+      "Duas e duas, porque cada open cria também uma v-node nova",
+      "Uma e duas, porque a posição fica na v-node"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.23"
+  },
+  {
+    "question": "Qual das funções pode ser chamada com segurança dentro de um handler de sinal?",
+    "answers": [
+      "printf, porque escreve diretamente em stdout",
+      "fprintf(stderr, ...), porque stderr não tem buffer",
+      "fopen, porque abre o ficheiro sem usar buffer",
+      "write"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.41"
+  },
+  {
+    "question": "Qual é a principal vantagem do buffering do stdio em relação a chamar read e write byte a byte?",
+    "answers": [
+      "Garante que cada byte chega ao disco de imediato",
+      "Permite consultar os metadados do ficheiro aberto",
+      "Dispensa a chamada a fclose no fim do programa",
+      "Faz menos system calls"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.35"
+  },
+  {
+    "question": "Qual é a função do Linux I/O, e não do stdio, usada para obter o tamanho e as permissões de um ficheiro?",
+    "answers": [
+      "fseek, que devolve a dimensão após deslocar a posição",
+      "fflush, que devolve o estado do buffer e do ficheiro",
+      "stat",
+      "fgets, que devolve a primeira linha com os atributos"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.20"
+  },
+  {
+    "question": "Num diretório /home/luis, a que corresponde a entrada especial .. ?",
+    "answers": [
+      "Ao próprio diretório /home/luis",
+      "Ao diretório /home",
+      "À raiz do sistema de ficheiros, /",
+      "Ao diretório de trabalho atual do processo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.9"
+  },
+  {
+    "question": "Como executa o shell o comando ls > foo.txt?",
+    "answers": [
+      "No filho: open, dup2 para o descritor 1 e exec",
+      "No pai, depois do fork: lê a saída do ls e escreve-a com write",
+      "O ls abre foo.txt e usa dup2 sobre o seu stdout",
+      "No filho: exec do ls e só depois open e dup2 de foo.txt"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.26"
+  },
+  {
+    "question": "O que caracteriza um heisenbug num programa concorrente?",
+    "answers": [
+      "Comportamento não determinista, difícil de reproduzir",
+      "Falha sempre que o programa corre, qualquer que seja o escalonamento, sendo fácil de depurar",
+      "Falha apenas no compilador, devido a um erro de sintaxe",
+      "Falha sempre no mesmo ponto, mas só em programas de um só processo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.23"
+  },
+  {
+    "question": "int x=1; if(fork()==0) x=x+5; else { wait(NULL); x=x+10; } printf(\"%d \",x); Com stdout redirecionado para um ficheiro, qual é a saída?",
+    "answers": [
+      "6 16, porque o pai vê a alteração feita pelo filho",
+      "11 11, porque x é partilhado entre pai e filho",
+      "11 6, porque o pai escreve antes do filho terminar",
+      "6 11"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.19"
+  },
+  {
+    "question": "while (read(fd,&c,1) != 0) write(1,&c,1); Se fd for um descritor inválido, o que acontece a este ciclo?",
+    "answers": [
+      "Termina logo, porque read devolve 0 em descritores inválidos",
+      "Termina com SIGSEGV, porque c não foi inicializado",
+      "Não termina, pois read devolve sempre -1",
+      "Executa uma única vez e termina com errno igual a EBADF"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.15"
+  },
+  {
+    "question": "f contém abcdef. int a=open(\"f\",O_RDONLY); char c; read(a,&c,1); int b=dup(a); close(a); read(b,&c,1); Qual é o valor final de c?",
+    "answers": [
+      "a, porque o close repõe a posição no início",
+      "b",
+      "c, porque o close avança a posição em um byte",
+      "Indefinido, porque read falha ao usar b"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.26"
+  },
+  {
+    "question": "Com stdout redirecionado para um ficheiro, printf(\"A\\n\"); fork(); faz com que A e a mudança de linha apareçam duas vezes no ficheiro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.37"
+  },
+  {
+    "question": "Quando stderr é redirecionado para um ficheiro, passa a ter buffering total, tal como stdout.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.34"
+  },
+  {
+    "question": "Se fd é um descritor válido, dup2(fd,fd) devolve fd e não fecha o descritor.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.26"
+  },
+  {
+    "question": "Quando open falha, devolve 0 e o motivo do erro fica registado em errno.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.13"
+  },
+  {
+    "question": "Um short count devolvido por read não é necessariamente um erro; por exemplo, ocorre ao encontrar o fim do ficheiro a meio de um pedido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.18"
+  },
+  {
+    "question": "O kernel Linux distingue ficheiros de texto de ficheiros binários e trata de forma diferente a mudança de linha em cada tipo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.7"
+  },
+  {
+    "question": "Os descritores abertos por um processo mantêm-se abertos após uma chamada a exec, a menos que sejam configurados de outra forma.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.24"
+  },
+  {
+    "question": "As funções do stdio, como printf, são async-signal-safe e por isso adequadas a handlers de sinal.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.42"
+  },
+  {
+    "question": "A biblioteca C Standard I/O inclui fstat para obter o tamanho e as permissões de um ficheiro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.42"
+  },
+  {
+    "question": "Um file descriptor é um inteiro pequeno não negativo que identifica um ficheiro aberto na tabela de descritores do processo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.13"
+  },
+  {
+    "question": "lseek(fd,0,SEEK_END) devolve o tamanho do ficheiro menos um, pois coloca a posição no último byte.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.5"
+  },
+  {
+    "question": "Se fd é válido, close(fd); r=close(fd); faz com que a segunda chamada devolva -1 com errno igual a EBADF.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.14"
+  },
+  {
+    "question": "Executar strace exige privilégios especiais e acesso ao código-fonte do programa observado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "strace p.1"
+  },
+  {
+    "question": "O stdio esvazia o buffer de stdout quando o programa termina com exit, mesmo sem mudança de linha nem fflush.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.37"
+  },
+  {
+    "question": "fread(b,sizeof(int),n,f) devolve o número de bytes lidos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.33"
+  },
+  {
+    "question": "Concorrência significa que várias tarefas progridem em períodos sobrepostos, enquanto paralelismo exige execução no mesmo instante.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1 p.17"
+  },
+  {
+    "question": "Com 0, 1 e 2 abertos, depois de close(1) a chamada seguinte a open devolve 3.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.13"
+  },
+  {
+    "question": "No redirecionamento ls > foo.txt, o ls não sabe que a saída foi redirecionada, pois limita-se a escrever no descritor 1.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.26"
+  },
+  {
+    "question": "A tabela de descritores é única e partilhada por todos os processos, tal como a v-node table.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "T1b p.22"
+  }
+]

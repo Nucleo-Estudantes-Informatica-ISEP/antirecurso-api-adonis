@@ -1,0 +1,1175 @@
+[
+  {
+    "question": "sem_t *s=sem_open(\"/a\",O_CREAT,0644,2); sem_wait(s); sem_wait(s); int r=sem_trywait(s); Quais os valores de r e de errno depois da última chamada?",
+    "answers": [
+      "r vale -1 e errno vale EINTR",
+      "r vale 0 e o valor do semáforo passa a ser -1",
+      "r vale -1 e errno vale EAGAIN",
+      "O processo bloqueia até outro processo executar sem_post"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.21"
+  },
+  {
+    "question": "sem_t *a=sem_open(\"/m\",O_CREAT,0644,1); sem_t *b=sem_open(\"/m\",O_CREAT,0644,5); int v; sem_getvalue(b,&v); Se /m não existia antes, que valor fica em v?",
+    "answers": [
+      "1, porque o valor inicial só é usado quando o semáforo é criado",
+      "5, porque a segunda chamada reinicializa o semáforo",
+      "6, porque os dois valores iniciais são somados",
+      "Nenhum, porque a segunda sem_open falha e devolve SEM_FAILED"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.16"
+  },
+  {
+    "question": "Semáforo s criado com valor inicial 0. O processo executa sem_post(s); sem_post(s); sem_post(s); sem_wait(s); e depois sem_getvalue(s,&v). Que valor fica em v?",
+    "answers": [
+      "3, pois o sem_wait só decrementa se houver processos bloqueados",
+      "1",
+      "0",
+      "2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.19"
+  },
+  {
+    "question": "s tem valor inicial 0. if(fork()==0){ printf(\"C \"); sem_post(s); exit(0); } sem_wait(s); printf(\"P \"); wait(NULL); Com stdout sem buffer, que saída é produzida?",
+    "answers": [
+      "P C, sempre por esta ordem",
+      "C P, sempre por esta ordem",
+      "C P ou P C, conforme o escalonamento dos processos",
+      "Nada, porque o pai fica bloqueado para sempre em sem_wait"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.9"
+  },
+  {
+    "question": "a (valor 1) e b (valor 0). Filho, 3 vezes: sem_wait(b); printf(\"B\"); sem_post(a). Pai, 3 vezes: sem_wait(a); printf(\"A\"); sem_post(b). Com stdout sem buffer, o que imprime o programa?",
+    "answers": [
+      "AAABBB",
+      "ABABAB",
+      "BABABA",
+      "Varia de execução para execução, pois pai e filho correm em paralelo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.10"
+  },
+  {
+    "question": "s=sem_open(\"/e\",O_CREAT,0644,1); sem_wait(s); sem_close(s); s=sem_open(\"/e\",0); sem_getvalue(s,&v); Que valor fica em v (o semáforo nunca foi removido)?",
+    "answers": [
+      "1, porque sem_close repõe o valor inicial do semáforo",
+      "1, porque a nova sem_open cria de novo o semáforo com o valor 1",
+      "Nenhum, porque a segunda sem_open falha, já que o semáforo foi fechado",
+      "0, porque sem_close não destrói nem reinicializa o semáforo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.23"
+  },
+  {
+    "question": "s e t com valor 0. Filho 1: sem_wait(t); printf(\"C\"). Filho 2: sem_wait(s); printf(\"B\"); sem_post(t). Pai: printf(\"A\"); sem_post(s); e espera pelos filhos. Com stdout sem buffer, qual a saída?",
+    "answers": [
+      "ABC",
+      "ACB",
+      "CBA",
+      "Depende do escalonamento, pois os filhos nascem em ordem arbitrária"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.10"
+  },
+  {
+    "question": "Um semáforo tem valor inicial 1 e um processo executa, por esta ordem, sem_post, sem_post, sem_wait e sem_post. Que valor tem o semáforo no fim?",
+    "answers": [
+      "2, porque o valor máximo só admite um incremento seguido",
+      "4",
+      "3",
+      "1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.8"
+  },
+  {
+    "question": "s=sem_open(\"/f\",O_CREAT,0644,2); if(fork()==0){ sem_wait(s); exit(0); } wait(NULL); sem_getvalue(s,&v); Que valor fica em v no processo pai?",
+    "answers": [
+      "2, porque o filho decrementou apenas a sua cópia do semáforo",
+      "0, porque o filho decrementou o semáforo duas vezes",
+      "1, porque pai e filho acedem ao mesmo semáforo com nome",
+      "Indefinido, porque o pai nunca chamou sem_wait"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.15"
+  },
+  {
+    "question": "static sem_t m; sem_init(&m,0,2); if(fork()==0){ sem_wait(&m); exit(0); } wait(NULL); sem_getvalue(&m,&v); Que valor fica em v no pai?",
+    "answers": [
+      "2, porque o filho decrementou a sua própria cópia de m",
+      "1, porque o filho e o pai partilham o mesmo semáforo m",
+      "0, porque o sem_wait do filho bloqueou e terminou o semáforo",
+      "Indefinido, porque sem_init só pode ser usado em threads"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.8"
+  },
+  {
+    "question": "d[2] em memória partilhada; w=1 e r=0. Pai, para i=1..3: sem_wait(w); d[0]=i; d[1]=10*i; sem_post(r). Filho, 3 vezes: sem_wait(r); printf(\"%d \",d[0]+d[1]); sem_post(w). Que sai no ecrã?",
+    "answers": [
+      "33 33 33",
+      "1 2 3",
+      "11 11 11, porque o filho lê sempre o primeiro conjunto",
+      "11 22 33"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.28"
+  },
+  {
+    "question": "Semáforo s criado com valor 0. O processo faz sem_post(s); sem_post(s); e depois imprime o resultado de sem_trywait(s) três vezes seguidas. O que é impresso?",
+    "answers": [
+      "0 -1 -1",
+      "0 0 -1",
+      "0 0 0",
+      "-1 -1 -1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.21"
+  },
+  {
+    "question": "s tem valor inicial 0. Três filhos executam, cada um, sem_post(s) e terminam. O pai espera pelos três, faz sem_wait(s) e lê o valor com sem_getvalue. Que valor lê?",
+    "answers": [
+      "3",
+      "2",
+      "0, pois o pai bloqueia até todos os filhos terminarem",
+      "1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.19"
+  },
+  {
+    "question": "s tem valor 1. O pai faz sem_wait(s) e depois fork. O filho imprime sem_trywait(s) e termina. O pai espera, faz sem_post(s) e imprime sem_getvalue. Que valores são impressos?",
+    "answers": [
+      "0 e 1",
+      "-1 e 0",
+      "0 e 0, pois o semáforo é partilhado e o filho o obteve",
+      "-1 e 1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.21"
+  },
+  {
+    "question": "mutex tem valor 1. Dois filhos executam sem_wait(mutex); sem_post(mutex); e terminam. O pai espera pelos dois e chama sem_getvalue. Que valor obtém?",
+    "answers": [
+      "1",
+      "2, pois cada filho incrementa uma vez",
+      "0",
+      "-1, pois houve dois sem_wait"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.11"
+  },
+  {
+    "question": "printf(\"A\"); if(fork()==0){ printf(\"B\\n\"); exit(0); } wait(NULL); printf(\"C\\n\"); Se stdout for redirecionado para um ficheiro, qual o conteúdo do ficheiro?",
+    "answers": [
+      "Uma linha: ABC",
+      "Duas linhas: AB e C",
+      "Duas linhas: AB e AC",
+      "Três linhas: A, B e C"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.26"
+  },
+  {
+    "question": "s tem valor 0. Filho: sem_wait(s); printf(\"F\\n\"); exit(0). Pai: printf(\"E\\n\"); sem_post(s); wait(NULL); printf(\"G\\n\"). Com stdout sem buffer, qual a única saída possível?",
+    "answers": [
+      "F E G",
+      "E G F",
+      "E F G",
+      "E F G ou F E G, conforme quem for escalonado primeiro"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.9"
+  },
+  {
+    "question": "*c é um inteiro em memória partilhada, inicialmente 0. Pai e filho fazem 100000 vezes { sem_wait(s); (*c)++; sem_post(s); } com s criado com valor 1. Após wait(NULL), que valor tem *c no pai?",
+    "answers": [
+      "200000, sempre",
+      "Um valor entre 100000 e 200000, por poderem perder-se incrementos",
+      "100000, porque só um processo consegue executar o ciclo completo",
+      "0, porque o semáforo impede ambos de entrarem no ciclo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.25"
+  },
+  {
+    "question": "Dois processos executam sem_wait(m); secção_crítica(); sem_post(m); com m criado com valor inicial 0. O que acontece?",
+    "answers": [
+      "Só um deles entra na secção crítica de cada vez",
+      "Os dois entram em simultâneo na secção crítica",
+      "O primeiro entra na secção crítica e o segundo recebe um erro",
+      "Ficam ambos bloqueados em sem_wait para sempre"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.10"
+  },
+  {
+    "question": "s=sem_open(\"/g\",O_CREAT,0644,3); imprime-se 5 vezes o resultado de sem_trywait(s); depois faz-se sem_post(s) e imprime-se sem_trywait(s) mais uma vez. O que é impresso?",
+    "answers": [
+      "0 0 0 0 0 e depois 0",
+      "0 0 0 -1 -1 e depois 0",
+      "0 0 0 -1 -1 e depois -1",
+      "0 0 -1 -1 -1 e depois 0, porque o valor inicial 3 inclui um decremento já feito"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.21"
+  },
+  {
+    "question": "P1 faz sem_wait(a); sem_wait(b); trabalho; sem_post(b); sem_post(a). P2 faz sem_wait(b); sem_wait(a); trabalho; sem_post(a); sem_post(b). a e b valem 1. Que consequência pode ocorrer?",
+    "answers": [
+      "Starvation permanente de P1, mas nunca de P2, pois P2 é sempre escalonado primeiro",
+      "Deadlock, se cada um obtiver o primeiro semáforo antes de pedir o segundo",
+      "Violação da exclusão mútua sobre o trabalho",
+      "Nenhum problema, pois cada semáforo vale 1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.13"
+  },
+  {
+    "question": "Produtor: sem_wait(mutex); sem_wait(slots); insere; sem_post(mutex); sem_post(items). Consumidor: sem_wait(items); sem_wait(mutex); retira; sem_post(mutex); sem_post(slots). Que problema há?",
+    "answers": [
+      "Perda da exclusão mútua sobre o buffer",
+      "Deadlock quando o buffer está vazio, pois o consumidor espera por items com o mutex tomado",
+      "O consumidor nunca consegue retirar itens",
+      "Deadlock quando o buffer está cheio, pois o produtor espera por slots com o mutex tomado"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.13"
+  },
+  {
+    "question": "if((s=sem_open(\"/z\",O_CREAT,0644,1))==NULL){ perror(\"sem_open\"); exit(1); } Qual é o defeito deste teste de erro?",
+    "answers": [
+      "sem_open devolve SEM_FAILED se falha, pelo que NULL nunca é devolvido",
+      "sem_open devolve -1 em caso de erro, por isso o apontador devolvido nunca é NULL",
+      "sem_open nunca falha quando se usa O_CREAT",
+      "O teste só é válido se o valor inicial for 0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.16"
+  },
+  {
+    "question": "O processo B só deve executar B() depois de o processo A (sem relação de parentesco) ter concluído A(). A faz A(); sem_post(s) e B faz sem_wait(s); B(). Qual deve ser o valor inicial de s?",
+    "answers": [
+      "1, para que o B não fique bloqueado na primeira chamada",
+      "2",
+      "0",
+      "Qualquer valor positivo, pois o sem_post repõe a ordem"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.10"
+  },
+  {
+    "question": "s tem valor inicial 3 e cinco processos executam sem_wait(s); usar_recurso(); sem_post(s); em simultâneo. Quantos processos podem estar em usar_recurso() ao mesmo tempo?",
+    "answers": [
+      "No máximo 1, pois só um semáforo protege o recurso",
+      "No máximo 5, pois sem_post liberta os restantes",
+      "No máximo 3",
+      "Exatamente 3, pois o escalonador acorda sempre três"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.10"
+  },
+  {
+    "question": "Semáforo com nome s, valor inicial 0. Em sem_timedwait(s, &ts) com ts a 100 ms no futuro, ninguém executa sem_post. O que acontece?",
+    "answers": [
+      "Devolve -1 com errno ETIMEDOUT passados cerca de 100 ms",
+      "Bloqueia para sempre, tal como o sem_wait, porque o semáforo vale 0",
+      "Devolve 0 e o valor do semáforo fica -1",
+      "Devolve -1 imediatamente com errno EAGAIN"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.21"
+  },
+  {
+    "question": "Cinco processos estão bloqueados em sem_wait no mesmo semáforo e outro executa um sem_post. O que garante o POSIX quanto ao processo que é acordado?",
+    "answers": [
+      "Acorda sempre o último processo que ficou bloqueado",
+      "Acorda sempre o que esperava há mais tempo",
+      "Acordam todos, mas só um consegue decrementar o valor",
+      "Não garante que seja o que esperava há mais tempo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.13"
+  },
+  {
+    "question": "Porque é que o valor devolvido por sem_getvalue não deve servir para decidir se um processo avança sem fazer sem_wait?",
+    "answers": [
+      "Porque a função só funciona com semáforos sem nome",
+      "Porque o valor pode já ter mudado quando a função retorna",
+      "Porque devolve sempre o valor inicial do semáforo",
+      "Porque a função altera o valor do semáforo ao lê-lo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.22"
+  },
+  {
+    "question": "Um processo executa sem_unlink(\"/x\") enquanto outros ainda têm o semáforo /x aberto. Qual é o efeito?",
+    "answers": [
+      "O semáforo é destruído de imediato e os processos bloqueados falham",
+      "O nome é removido, mas o semáforo só é destruído quando todos o fecharem",
+      "Nada acontece enquanto houver processos com o semáforo aberto",
+      "Só o processo que o criou deixa de poder usar o semáforo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.24"
+  },
+  {
+    "question": "Qual é a diferença entre sem_close e sem_unlink?",
+    "answers": [
+      "sem_close destrói o semáforo; sem_unlink apenas o fecha no processo",
+      "sem_close decrementa o semáforo; sem_unlink incrementa-o",
+      "sem_close recebe o nome do semáforo; sem_unlink recebe o seu apontador",
+      "sem_close liberta a referência do processo; sem_unlink remove o nome do sistema"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.23"
+  },
+  {
+    "question": "Dois processos fazem (*cnt)++ sobre o mesmo inteiro em memória partilhada, sem sincronização, com cnt a 0. Porque pode o valor final ser 1 e não 2?",
+    "answers": [
+      "Ambos leem 0 antes de qualquer um escrever, e uma escrita sobrepõe a outra",
+      "O compilador executa o incremento duas vezes no mesmo processo, descartando a outra cópia",
+      "A memória partilhada só aceita uma escrita por processo",
+      "O kernel descarta a segunda escrita por ser igual à primeira"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.6"
+  },
+  {
+    "question": "O pai escreve 3 conjuntos de 2 inteiros na memória partilhada e só escreve o seguinte depois de o filho confirmar a leitura. Quantos semáforos e que valores iniciais permitem ao pai escrever de imediato o primeiro?",
+    "answers": [
+      "Um, com valor inicial 1",
+      "Dois, ambos com valor inicial 0",
+      "Dois: um com 1 para o pai escrever e outro com 0 para o filho ler",
+      "Três, um por cada conjunto lido, todos com valor inicial 0, para sinalizar as leituras"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.28"
+  },
+  {
+    "question": "Qual é o papel do parâmetro mode em sem_open(\"/s\",O_CREAT,mode,1)?",
+    "answers": [
+      "Define o valor inicial do semáforo",
+      "Indica se o semáforo é binário ou contador, conforme o valor inicial dado a seguir",
+      "Define as permissões do semáforo, de leitura e escrita para quem o usar",
+      "Define o modo de bloqueio do sem_wait"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.18"
+  },
+  {
+    "question": "Dois processos tentam obter dois semáforos com sem_trywait; se falham o segundo, libertam o primeiro e repetem de imediato. Que problema pode surgir?",
+    "answers": [
+      "Livelock, se repetirem indefinidamente sem ninguém progredir",
+      "Deadlock, pois ficam bloqueados dentro de sem_trywait",
+      "Perda de exclusão mútua",
+      "Nenhum, pois sem_trywait garante progresso"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.21"
+  },
+  {
+    "question": "Um programa cria o semáforo \"/s\" com sem_open e termina sem chamar sem_unlink. Que consequência tem para uma execução seguinte com O_CREAT|O_EXCL?",
+    "answers": [
+      "O semáforo foi removido ao terminar, pelo que a nova sem_open tem sucesso",
+      "A nova sem_open tem sucesso e reinicializa o valor do semáforo",
+      "A nova sem_open falha com ENOENT",
+      "O semáforo continua no sistema, pelo que a nova sem_open falha com EEXIST"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.17"
+  },
+  {
+    "question": "Que característica dos semáforos POSIX descreve melhor o bloqueio em sem_wait com valor 0?",
+    "answers": [
+      "O processo repete a leitura do valor em ciclo até ser positivo",
+      "O processo vai para a fila de espera do semáforo e liberta o CPU",
+      "O processo fica a executar com prioridade reduzida",
+      "O semáforo passa a valor -1 e o processo continua a correr"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.8"
+  },
+  {
+    "question": "s tem valor inicial 0. Três filhos fazem sem_wait(s) e terminam. O pai faz sem_post(s) três vezes, espera pelos três filhos e lê sem_getvalue. Que valor lê?",
+    "answers": [
+      "3, porque os filhos só leem o valor sem o alterar, ficando os três posts",
+      "0, porque cada sem_post foi consumido por um sem_wait",
+      "1, porque o último sem_post fica sempre por consumir",
+      "Nenhum valor, pois um dos filhos fica bloqueado para sempre"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.19"
+  },
+  {
+    "question": "Com sem_open(\"/s\",O_CREAT|O_EXCL,0644,1), se o semáforo /s já existir, a chamada devolve SEM_FAILED e errno fica com o valor EEXIST.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.17"
+  },
+  {
+    "question": "sem_open(\"/q\",0), com um semáforo /q que não existe, cria-o com valor 0.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.16"
+  },
+  {
+    "question": "Depois de um sem_unlink(\"/a\") bem-sucedido, um segundo sem_unlink(\"/a\") devolve -1 com errno ENOENT, se entretanto ninguém criar um semáforo com esse nome.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.24"
+  },
+  {
+    "question": "Se s=sem_open(\"/m\",O_CREAT,0644,1); sem_unlink(\"/m\");, então sem_wait(s) ainda funciona, mas sem_open(\"/m\",0) devolve SEM_FAILED.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.24"
+  },
+  {
+    "question": "Se o filho executar sem_close(s) sobre um semáforo herdado do pai, o pai deixa de poder usar sem_wait(s).",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.23"
+  },
+  {
+    "question": "Se o filho executar sem_unlink do nome de um semáforo que o pai abriu antes do fork, o sem_post(s) do pai falha, porque o nome desapareceu.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.24"
+  },
+  {
+    "question": "Um sem_t iniciado com sem_init(m,1,2) numa região criada por mmap com MAP_SHARED|MAP_ANONYMOUS é partilhado: se o filho fizer sem_wait(m) e terminar, o pai vê o valor 1.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.8"
+  },
+  {
+    "question": "O valor de um semáforo POSIX nunca é negativo: um sem_wait com o valor 0 bloqueia o processo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.8"
+  },
+  {
+    "question": "Num semáforo binário usado como mutex, o processo que executa sem_post tem de ser o mesmo que executou o sem_wait anterior.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.19"
+  },
+  {
+    "question": "sem_post devolve 0 em caso de sucesso e -1 em caso de erro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.19"
+  },
+  {
+    "question": "Para proteger uma secção crítica com um semáforo binário, executa-se sem_wait antes de entrar na secção e sem_post depois de sair dela.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.11"
+  },
+  {
+    "question": "Quando um processo executa sem_close(s), o valor do semáforo é decrementado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.23"
+  },
+  {
+    "question": "Dois processos que chamam sem_open com o mesmo nome obtêm acesso ao mesmo semáforo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.16"
+  },
+  {
+    "question": "sem_wait pode devolver 0 sem ter decrementado o valor do semáforo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.20"
+  },
+  {
+    "question": "Um processo bloqueado em sem_wait consome CPU a verificar repetidamente o valor do semáforo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.8"
+  },
+  {
+    "question": "sem_unlink recebe como argumento o apontador sem_t devolvido por sem_open.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.24"
+  },
+  {
+    "question": "Se sem_post é executado quando nenhum processo está bloqueado, o incremento não se perde: o valor do semáforo fica maior.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.19"
+  },
+  {
+    "question": "sem_trywait bloqueia o processo durante um tempo limite, enquanto sem_timedwait nunca bloqueia.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP9 p.21"
+  },
+  {
+    "question": "Com sem_t s; sem_init(&s,0,2); sem_trywait(&s); sem_trywait(&s); int r=sem_trywait(&s); o que acontece na terceira chamada?",
+    "answers": [
+      "Devolve 0 e o valor do semáforo passa a -1",
+      "Bloqueia até que outro processo execute sem_post(&s)",
+      "Devolve -1 sem bloquear e errno fica com EAGAIN",
+      "Devolve -1 sem bloquear e errno fica com ETIMEDOUT"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.2"
+  },
+  {
+    "question": "sem_t s; int v; sem_init(&s,0,3); sem_wait(&s); sem_wait(&s); sem_post(&s); sem_getvalue(&s,&v); printf(\"%d\",v); Que valor é escrito?",
+    "answers": [
+      "3, porque o valor inicial não se altera",
+      "1",
+      "2",
+      "0"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.2"
+  },
+  {
+    "question": "Com sem_t s; sem_init(&s,0,1); e t uma struct timespec com a hora atual menos 5 segundos, o que devolvem duas chamadas consecutivas a sem_timedwait(&s,&t)?",
+    "answers": [
+      "0 em ambas, porque o prazo é ignorado",
+      "-1 em ambas, porque o prazo já tinha terminado",
+      "0 e depois -1, com errno ETIMEDOUT",
+      "0 na primeira e a segunda bloqueia para sempre"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.2"
+  },
+  {
+    "question": "sem_init(&s,0,0); for(i=0;i<3;i++) sem_post(&s); for(i=0;i<5;i++) if(sem_trywait(&s)==0) k++; Qual é o valor final de k?",
+    "answers": [
+      "5",
+      "Nenhum, porque o semáforo começa a 0",
+      "2",
+      "3"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.2"
+  },
+  {
+    "question": "O semáforo s está em memória partilhada, com valor 0. Pai: write(1,\"A\",1); sem_post(s); wait(NULL). Filho: sem_wait(s); write(1,\"B\",1). Qual é a saída?",
+    "answers": [
+      "AB, em todas as execuções",
+      "BA, em todas as execuções",
+      "AB ou BA, consoante o escalonamento",
+      "Apenas A, porque o filho fica bloqueado"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.7"
+  },
+  {
+    "question": "Com sem_t s; sem_init(&s,1,0); if(fork()==0){sem_post(&s); exit(0);} wait(NULL); sem_getvalue(&s,&v); printf(\"%d\",v); porque é que o pai escreve 0?",
+    "answers": [
+      "O semáforo não é partilhado e o filho incrementou a sua cópia",
+      "O sem_post() só atua quando o processo que o chama é o dono",
+      "O sem_getvalue() devolve sempre 0 no processo pai",
+      "O sem_post() foi anulado pelo exit(0) do filho"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.3"
+  },
+  {
+    "question": "O semáforo s está em memória partilhada com valor 0. Três filhos fazem sem_post(s); exit(0). O pai faz três wait(NULL) e depois sem_getvalue(s,&v). Qual é o valor de v?",
+    "answers": [
+      "0",
+      "3",
+      "1",
+      "Depende da ordem em que os filhos terminam"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.2"
+  },
+  {
+    "question": "O semáforo s está em memória partilhada com valor 2. Cinco filhos executam sem_trywait(s) uma vez e escrevem \"ok\" se devolver 0, ou \"no\" caso contrário. Ninguém faz sem_post(). Quantos \"ok\" são escritos?",
+    "answers": [
+      "5",
+      "2",
+      "Nenhum, porque ninguém fez sem_post()",
+      "3"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.2"
+  },
+  {
+    "question": "O nome \"/s\" já existe no sistema. O que acontece com sem_open(\"/s\",O_CREAT|O_EXCL,0644,1)?",
+    "answers": [
+      "Substitui o semáforo existente por um novo com valor 1",
+      "Abre o semáforo existente e ignora o valor 1",
+      "Devolve SEM_FAILED e errno fica com EEXIST",
+      "Bloqueia até que o semáforo existente seja removido"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.14"
+  },
+  {
+    "question": "Código: s=sem_open(\"/q\",O_CREAT,0644,1); sem_unlink(\"/q\"); sem_post(s); sem_getvalue(s,&v); printf(\"%d\",v); Que valor é escrito?",
+    "answers": [
+      "0",
+      "1",
+      "O programa falha, porque s já foi removido",
+      "2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.3"
+  },
+  {
+    "question": "Os semáforos a e b têm valor 0. P1: write(1,\"1\",1); sem_post(a). P2: sem_wait(a); write(1,\"2\",1); sem_post(b). P3: sem_wait(b); write(1,\"3\",1). Qual é a única saída possível?",
+    "answers": [
+      "213",
+      "132",
+      "312",
+      "123"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.7"
+  },
+  {
+    "question": "Com sem_t s; sem_init(&s,0,1); sem_post(&s); sem_post(&s); sem_trywait(&s); sem_getvalue(&s,&v); qual é o valor de v?",
+    "answers": [
+      "1, porque sem_trywait() não decrementa",
+      "3",
+      "0",
+      "2"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.2"
+  },
+  {
+    "question": "Num buffer de 3 posições, empty começa a 3 e full a 0. Um produtor faz sem_wait(&empty); sem_post(&full) três vezes e um consumidor faz sem_wait(&full); sem_post(&empty) uma vez. Quais são os valores de empty e full?",
+    "answers": [
+      "empty=1 e full=2",
+      "empty=2 e full=1",
+      "empty=0 e full=3, porque o consumidor não atuou",
+      "empty=3 e full=0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.5"
+  },
+  {
+    "question": "Com sem_t m; sem_init(&m,0,1); int a=sem_trywait(&m); int b=sem_trywait(&m); sem_post(&m); int c=sem_trywait(&m); quais são os valores de a, b e c?",
+    "answers": [
+      "0, 0 e 0",
+      "0, -1 e 0",
+      "-1, 0 e -1",
+      "0, -1 e -1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.2"
+  },
+  {
+    "question": "Na barreira para 3 processos, sem_nproc começa a 1 e sem_barrier a 0. O último a chegar faz sem_post(sem_barrier) e cada processo, ao passar, faz sem_wait e sem_post a sem_barrier. Qual é o valor final de sem_barrier?",
+    "answers": [
+      "1",
+      "0, porque cada processo consome o seu post",
+      "2",
+      "3"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.15"
+  },
+  {
+    "question": "O semáforo s está em memória partilhada com valor 0. Quatro filhos executam sem_post(s); sem_post(s); exit(0). O pai espera pelos filhos e lê o valor com sem_getvalue(). Qual é o valor lido?",
+    "answers": [
+      "4",
+      "2",
+      "0, porque os filhos já terminaram",
+      "8"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.2"
+  },
+  {
+    "question": "O semáforo s está em memória partilhada com valor 0. Três filhos fazem write(1,\"c\",1); sem_post(s). O pai faz três sem_wait(s) e depois write(1,\"d\",1). Qual é a única saída possível?",
+    "answers": [
+      "dccc",
+      "cccd",
+      "Qualquer ordem dos quatro carateres",
+      "ccdc"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.8"
+  },
+  {
+    "question": "Um semáforo em memória partilhada tem valor inicial 3. Três filhos executam sem_wait(s) e terminam. Depois, o pai mostra o resultado de sem_getvalue() e o de sem_trywait(). Quais são esses valores?",
+    "answers": [
+      "3 e 0, porque os filhos não alteram s",
+      "0 e -1",
+      "0 e 0",
+      "1 e -1"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.2"
+  },
+  {
+    "question": "Com sem_t s; struct timespec t={2,0}; sem_init(&s,0,0); r=sem_timedwait(&s,&t); o que acontece?",
+    "answers": [
+      "Espera 2 segundos e depois devolve -1 com errno ETIMEDOUT",
+      "Bloqueia para sempre, porque ninguém faz sem_post() no semáforo",
+      "Devolve 0 ao fim de 2 segundos",
+      "Devolve -1 de imediato com ETIMEDOUT, pois t é um instante já passado"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.2"
+  },
+  {
+    "question": "Num programa com um só processo e um só thread, sem_init(&s,0,0); sem_wait(&s); sem_post(&s); o que acontece?",
+    "answers": [
+      "O sem_wait() devolve 0 e o valor fica a 1",
+      "O sem_wait() devolve -1 com EAGAIN",
+      "O processo fica bloqueado em sem_wait() para sempre",
+      "O valor do semáforo passa a -1 e o processo prossegue"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.4"
+  },
+  {
+    "question": "Produtor: sem_wait(&mutex); sem_wait(&empty); inserir; sem_post(&mutex); sem_post(&full). Consumidor: sem_wait(&full); sem_wait(&mutex); remover; sem_post(&mutex); sem_post(&empty). Qual é o problema?",
+    "answers": [
+      "Pode ocorrer deadlock quando o buffer está cheio",
+      "O mutex deixa de proteger o buffer",
+      "O consumidor sofre sempre de starvation",
+      "Há uma condição de corrida no acesso ao buffer, apesar do mutex"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.5"
+  },
+  {
+    "question": "Num problema de leitores-escritores, só o primeiro leitor faz sem_wait(&wrt) e só o último faz sem_post(&wrt). Porquê?",
+    "answers": [
+      "Para que os leitores leiam um de cada vez, em exclusão mútua entre si",
+      "Para bloquear escritores enquanto houver leitores, permitindo leitores em simultâneo",
+      "Para dar prioridade aos escritores em relação aos leitores, que esperam sempre",
+      "Para que o contador de leitores não precise de ser protegido"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.5"
+  },
+  {
+    "question": "P1: sem_wait(&b); sem_post(&a). P2: sem_wait(&a); sem_post(&b). Os semáforos a e b começam ambos a 0. Qual é o resultado?",
+    "answers": [
+      "Ambos avançam, porque os dois semáforos partilham o valor",
+      "Fica bloqueado apenas P1",
+      "Fica bloqueado apenas P2",
+      "Ficam ambos bloqueados para sempre (deadlock)"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.4"
+  },
+  {
+    "question": "B só pode começar depois de A terminar e D só depois de C terminar. O pai espera por A e por C e avisa B e D. Quantos semáforos e com que valores iniciais?",
+    "answers": [
+      "Dois semáforos, ambos a 1",
+      "Um semáforo partilhado por B e D, a 0, com um sem_post() do pai por cada fim",
+      "Dois semáforos, um por dependência, ambos a 0",
+      "Um semáforo a 2, partilhado por B e D"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.8"
+  },
+  {
+    "question": "Cada um de 2 processos executa if(t>0){sem_wait(&s); t--; sem_post(&s);} com t=1 em memória partilhada. Que consequência é possível?",
+    "answers": [
+      "O semáforo nunca é libertado",
+      "O valor de t pode ficar a -1",
+      "Um dos processos fica bloqueado para sempre",
+      "O valor de t fica sempre a 0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.9"
+  },
+  {
+    "question": "Um semáforo s começa com valor 3 e 8 processos fazem sem_wait(&s); usar o recurso; sem_post(&s). Qual é o número máximo de processos a usar o recurso ao mesmo tempo?",
+    "answers": [
+      "1",
+      "8, porque todos os processos chegam a entrar",
+      "3",
+      "4"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.4"
+  },
+  {
+    "question": "Porque é que a barreira com um contador e sem_barrier a 0, sem repor o contador, não pode ser usada em duas rondas seguidas?",
+    "answers": [
+      "O contador passa de NPROC e sem_barrier fica a 1, pelo que ninguém espera na segunda ronda",
+      "O semáforo sem_nproc fica com valor negativo depois da primeira ronda completa",
+      "O sem_barrier é destruído automaticamente depois de todos passarem a barreira",
+      "Os processos não podem voltar a chamar sem_wait() sobre o mesmo semáforo de barreira"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.14"
+  },
+  {
+    "question": "A sequência sem_getvalue(&s,&v); if(v>0) sem_wait(&s); garante que o sem_wait() nunca bloqueia, mesmo com vários processos a usar s.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.2"
+  },
+  {
+    "question": "Com sem_init(&s,0,0), uma chamada a sem_trywait(&s) devolve -1 sem bloquear.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.2"
+  },
+  {
+    "question": "Um semáforo com valor inicial 0 permite que um processo espere por um evento sinalizado por outro através de sem_post().",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.7"
+  },
+  {
+    "question": "Um único semáforo com valor inicial 1, a proteger uma secção crítica, é suficiente para garantir que o processo B só executa depois de o processo A terminar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.5"
+  },
+  {
+    "question": "Com sem_t s; sem_init(&s,0,1); e t uma hora de prazo já ultrapassada, sem_timedwait(&s,&t) devolve 0 e decrementa o semáforo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.2"
+  },
+  {
+    "question": "Depois de sem_unlink() sobre o nome de um semáforo, um processo que já o tinha aberto deixa de conseguir usar sem_post() e sem_wait() sobre ele.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.3"
+  },
+  {
+    "question": "Se o teste if(tickets>0) e o decremento tickets-- estiverem ambos entre sem_wait() e sem_post(), evita-se a condição de corrida de check-then-act.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.9"
+  },
+  {
+    "question": "Numa barreira para N processos, nenhum deles avança antes de os N terem chegado ao ponto de sincronização.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.12"
+  },
+  {
+    "question": "Depois de sem_t s; sem_init(&s,1,0); e de um fork(), o pai e o filho passam a partilhar o mesmo semáforo, mesmo que s seja uma variável local.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.14"
+  },
+  {
+    "question": "Dois processos usam os semáforos a e b, ambos a 0. P1: sem_post(a); sem_wait(b). P2: sem_post(b); sem_wait(a). Esta ordem evita o deadlock.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.4"
+  },
+  {
+    "question": "Num buffer circular de N posições, o semáforo que conta os lugares livres deve começar com valor 0.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.5"
+  },
+  {
+    "question": "Um semáforo com valor inicial N pode ser usado para deixar até N processos usar em simultâneo um recurso.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.4"
+  },
+  {
+    "question": "sem_post() bloqueia o processo que a chama quando não existe nenhum processo à espera no semáforo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "TP10 p.2"
+  }
+]

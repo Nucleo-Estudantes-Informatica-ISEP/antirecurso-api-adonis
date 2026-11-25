@@ -1,15 +1,15 @@
-import type { HttpContext } from '@adonisjs/core/http'
 import Comment from '#models/comment'
 import Question from '#models/question'
 import { createCommentValidator } from '#validators/comment'
 import type { AuthenticatedHttpContext } from '../../contracts/auth.js'
+import { visibleComments } from '#services/comment_visibility'
 
 export default class CommentsController {
   /**
    * List comments with optional sorting.
    * GET /comments?sort=created_at&order=desc
    */
-  async index({ request, response }: HttpContext) {
+  async index({ authUser, request, response }: AuthenticatedHttpContext) {
     const ALLOWED_SORT_COLUMNS = ['created_at', 'id'] as const
     const ALLOWED_ORDER_DIRS = ['asc', 'desc'] as const
 
@@ -19,7 +19,7 @@ export default class CommentsController {
     const sort = ALLOWED_SORT_COLUMNS.includes(sortInput) ? sortInput : null
     const order = ALLOWED_ORDER_DIRS.includes(orderInput) ? orderInput : 'asc'
 
-    const query = Comment.query().preload('user')
+    const query = visibleComments(Comment.query(), authUser.id).preload('user')
 
     if (sort) {
       query.orderBy(sort, order)
@@ -47,6 +47,7 @@ export default class CommentsController {
         id: comment.id,
         comment: comment.comment,
         user: comment.user.name,
+        user_id: comment.userId,
         question_id: comment.questionId,
         created_at: comment.createdAt.toISO(),
       })),
@@ -78,6 +79,7 @@ export default class CommentsController {
       id: comment.id,
       comment: comment.comment,
       user: comment.user.name,
+      user_id: comment.userId,
       question_id: comment.questionId,
       created_at: comment.createdAt.toISO(),
     })
@@ -87,13 +89,17 @@ export default class CommentsController {
    * Show a single comment by ID.
    * GET /comments/:id
    */
-  async show({ params, response }: HttpContext) {
-    const comment = await Comment.query().where('id', params.id).preload('user').firstOrFail()
+  async show({ authUser, params, response }: AuthenticatedHttpContext) {
+    const comment = await visibleComments(Comment.query(), authUser.id)
+      .where('id', params.id)
+      .preload('user')
+      .firstOrFail()
 
     return response.ok({
       id: comment.id,
       comment: comment.comment,
       user: comment.user.name,
+      user_id: comment.userId,
       question_id: comment.questionId,
       created_at: comment.createdAt.toISO(),
     })

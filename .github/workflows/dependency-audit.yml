@@ -1,0 +1,50 @@
+name: Scheduled dependency audit
+
+on:
+  schedule:
+    - cron: '23 8 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: scheduled-dependency-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 25
+          cache: npm
+      - run: npm ci
+      - name: Audit all dependencies
+        id: audit
+        continue-on-error: true
+        run: npm audit --json > dependency-audit.json
+      - name: Open or update security tracking issue
+        if: steps.audit.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          {
+            printf 'Full dependency audit failed on `%s`.\n\n' "$GITHUB_SHA"
+            printf 'Triage owners: repository CODEOWNERS. Review new advisories and update remediation.\n\n'
+            printf 'Run: %s/%s/actions/runs/%s\n\n' "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID"
+            jq -r '.vulnerabilities // {} | to_entries[] | "- \(.key): \(.value.severity) \(.value.via | map(select(type == "object") | .url) | unique | join(", "))"' dependency-audit.json
+            jq -r 'if .error then "Audit error: \(.error.summary // .error.code)" else empty end' dependency-audit.json
+          } > audit-issue.md
+          issue=$(gh issue list --state open --label security --search '"Dependency audit findings (scheduled)" in:title' --json number,title --jq 'map(select(.title == "Dependency audit findings (scheduled)"))[0].number // empty')
+          if [ -n "$issue" ]; then
+            gh issue edit "$issue" --body-file audit-issue.md
+          else
+            gh issue create --title 'Dependency audit findings (scheduled)' --label security --body-file audit-issue.md
+          fi

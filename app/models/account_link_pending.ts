@@ -15,6 +15,9 @@ export default class AccountLinkPending extends BaseModel {
   @column()
   declare authSubject: string
 
+  @column.dateTime()
+  declare approvedAt: DateTime | null
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 

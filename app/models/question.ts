@@ -6,6 +6,7 @@ import QuestionType from '#models/question_type'
 import Option from '#models/option'
 import Comment from '#models/comment'
 import QuestionReport from '#models/question_report'
+import type { QuestionSource } from '#services/questions/question_source'
 
 export default class Question extends BaseModel {
   @column({ isPrimary: true })
@@ -22,6 +23,30 @@ export default class Question extends BaseModel {
 
   @column()
   declare correctOption: string
+
+  @column()
+  declare source: QuestionSource
+
+  @column()
+  declare importKey: string | null
+
+  @column()
+  declare review: {
+    status: 'approved'
+    reviewer: string
+    reviewed_at: string
+    reference: string
+    duplicates_checked: true
+  } | null
+
+  @column()
+  declare repeated: boolean | null
+
+  @column()
+  declare inPlan: boolean | null
+
+  @column()
+  declare ref: string | null
 
   @column()
   declare subjectId: number

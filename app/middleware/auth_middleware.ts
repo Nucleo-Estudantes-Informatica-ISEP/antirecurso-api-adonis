@@ -1,5 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import ZitadelAuthService, {
+  AccountRecoveryRequiredError,
   ForbiddenError,
   UnauthorizedError,
 } from '#services/auth/zitadel_auth_service'
@@ -23,8 +24,8 @@ export default class AuthMiddleware {
 
       const rawPath = ctx.request.url()
       const path = rawPath.includes('?') ? rawPath.split('?')[0] : rawPath
-      const isAllowed = await this.pendingAccountAccess({
-        userId: session.user.id,
+      const isAllowed = this.pendingAccountAccess({
+        pending: session.user.authSubject === null,
         path,
         method: ctx.request.method(),
       })
@@ -38,19 +39,27 @@ export default class AuthMiddleware {
 
       await next()
     } catch (error) {
+      if (error instanceof AccountRecoveryRequiredError) {
+        return ctx.response.forbidden({
+          code: 'ACCOUNT_RECOVERY_REQUIRED',
+          requires_account_resolution: true,
+          message: error.message,
+        })
+      }
       if (error instanceof ForbiddenError) {
         return ctx.response.forbidden({ message: error.message })
       }
 
       if (error instanceof UnauthorizedError) {
         if (env.get('AUTH_DEBUG')) {
-          console.warn('[auth][api]', {
-            middleware: 'auth',
-            path: ctx.request.url(),
-            method: ctx.request.method(),
-            message: error.message,
-            hasAuthorizationHeader: Boolean(ctx.request.header('authorization')),
-          })
+          ctx.logger.warn(
+            {
+              middleware: 'auth',
+              reason: error.message,
+              has_authorization_header: Boolean(ctx.request.header('authorization')),
+            },
+            'authentication rejected'
+          )
         }
 
         return ctx.response.unauthorized({ message: error.message })

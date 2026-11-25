@@ -1,0 +1,3009 @@
+[
+  {
+    "question": "Considere: fork(); fork() && fork(); printf(\"A\\n\"); Quantas linhas imprime, se todos os fork() tiverem sucesso?",
+    "answers": [
+      "Oito, pois cada um dos três fork() duplica sempre o número de processos existentes nesse momento",
+      "Quatro, pois o operador && impede que qualquer filho prossiga depois do segundo fork()",
+      "Seis, pois só os processos que recebem um pid positivo no segundo fork() executam o terceiro",
+      "Cinco, pois o processo original não chega a executar o printf() depois de criar filhos"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, fork"
+  },
+  {
+    "question": "Considere: printf(\"A\"); fork(); printf(\"B\\n\"); Quantas vezes aparece a letra A na saída, se o fork() tiver sucesso?",
+    "answers": [
+      "Duas vezes, pois o A ainda está no buffer do stdio quando o processo é duplicado",
+      "Uma vez, pois o fork() descarrega o buffer de saída do pai antes de criar o processo filho",
+      "Uma vez, pois o filho começa com o buffer do stdio vazio e só o pai imprime o A",
+      "Nenhuma, pois um printf() sem \\n nunca escreve nada no ficheiro de saída"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, fork e stdio"
+  },
+  {
+    "question": "Considere: printf(\"A\\n\"); fflush(stdout); execlp(\"echo\",\"echo\",\"B\",NULL); printf(\"C\\n\"); O que fica escrito, se execlp() tiver sucesso?",
+    "answers": [
+      "A, B e C, pois execlp() regressa ao programa original quando o echo termina",
+      "Apenas B, pois o exec descarta tudo o que o programa tinha escrito antes",
+      "A e B, pois a imagem do processo é substituída e o último printf() nunca é executado",
+      "A e C, pois o echo escreve na sua própria saída e não no ecrã do processo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, exec"
+  },
+  {
+    "question": "Considere: execlp(\"xyz\",\"xyz\",NULL); printf(\"falhou\"); Que acontece se o programa xyz não existir?",
+    "answers": [
+      "O processo termina de imediato com SIGSEGV por tentar executar uma imagem inexistente",
+      "execlp() devolve -1 com errno ENOENT e o processo continua na linha seguinte",
+      "execlp() devolve 0 e o processo fica bloqueado à espera de que o programa apareça",
+      "O kernel cria um processo filho zombie e o printf() é executado apenas nesse filho"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, exec"
+  },
+  {
+    "question": "O filho a sai com 10 e o b com 20; a termina primeiro. O pai faz waitpid(b,&x,0); waitpid(a,&y,0). Que valores têm WEXITSTATUS(x) e WEXITSTATUS(y)?",
+    "answers": [
+      "20 e 10, pois o estado de a fica retido como zombie até ser recolhido",
+      "10 e 20, pois o estado é atribuído pela ordem em que os filhos terminam",
+      "O primeiro waitpid() devolve -1 porque a terminou antes de b e já não pode ser esperado",
+      "20 e 10 só se b terminar antes de a; caso contrário os valores trocam-se"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, wait/waitpid"
+  },
+  {
+    "question": "Considere: for(i=0;i<4;i++) if(fork()==0) break; printf(\"x\\n\"); Quantas linhas imprime, se todos os fork() tiverem sucesso?",
+    "answers": [
+      "Dezasseis, pois em cada iteração todos os processos existentes criam um novo filho",
+      "Quatro, pois o processo original não chega a imprimir depois de sair do ciclo",
+      "Oito, pois cada filho continua o ciclo a partir da iteração em que foi criado",
+      "Cinco, pois cada filho sai do ciclo logo após ser criado e o pai cria quatro"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, árvore de processos"
+  },
+  {
+    "question": "Considere: for(i=0;i<3;i++) if(fork()==0) exit(i); while(wait(&s)>0) n++; wait(&s); Depois do ciclo, qual o valor de n e o que devolve o último wait()?",
+    "answers": [
+      "n é 3 e o wait() bloqueia, pois o último filho pode ainda estar a executar",
+      "n é 3 e o wait() devolve -1 com errno ECHILD",
+      "n é 2 e o wait() devolve o pid do filho que saiu com exit(2)",
+      "n é 3 e o wait() devolve 0, pois já não existem filhos para recolher"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, wait/waitpid"
+  },
+  {
+    "question": "SIGUSR1 está bloqueado e o handler incrementa n. O processo faz raise(SIGUSR1) três vezes e depois desbloqueia o sinal. Qual o valor de n após o desbloqueio?",
+    "answers": [
+      "3, pois o kernel guarda uma fila com uma entrada por cada raise()",
+      "0, pois um sinal enviado enquanto está bloqueado é sempre descartado",
+      "1, pois os sinais standard pendentes não são enfileirados",
+      "2, pois só o primeiro raise() fica pendente e os restantes são entregues logo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, sinais bloqueados"
+  },
+  {
+    "question": "Com a.sa_handler a apontar para um handler válido, qual o resultado de sigaction(SIGKILL,&a,NULL)?",
+    "answers": [
+      "Devolve -1 com errno EINVAL, pois o SIGKILL não pode ser capturado",
+      "Devolve 0, mas o handler é ignorado silenciosamente quando o sinal chega",
+      "Devolve 0 e o handler é chamado quando o sinal é enviado por outro processo",
+      "Devolve -1 com errno EPERM, a menos que o processo tenha privilégios de root"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, sigaction"
+  },
+  {
+    "question": "Considere: signal(SIGUSR1,SIG_IGN); execlp(\"sh\",\"sh\",\"-c\",\"kill -USR1 $$; echo vivo\",NULL); Que imprime o shell?",
+    "answers": [
+      "Nada, pois o shell é terminado pelo SIGUSR1 já que o exec repõe todas as ações por omissão",
+      "Nada, pois o kernel termina o processo quando ele envia um sinal a si próprio",
+      "vivo, mas apenas se o sh voltar a executar signal(SIGUSR1,SIG_IGN)",
+      "vivo, pois um sinal ignorado continua ignorado depois do exec"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, sinais e exec"
+  },
+  {
+    "question": "Considere: alarm(10); a = alarm(3); b = alarm(0); Se as três chamadas demoram bem menos de um segundo, que valores têm a e b?",
+    "answers": [
+      "a é 0 e b é 0, pois cada chamada cancela o alarme anterior sem o contabilizar no valor devolvido",
+      "a é 10 e b é 3, pois cada alarm() devolve o tempo que faltava para o alarme anterior",
+      "a é 10 e b é 10, pois alarm(0) devolve sempre o primeiro valor programado",
+      "a é 0 e b é 3, pois o primeiro alarm() não tinha nenhum alarme anterior"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, alarm"
+  },
+  {
+    "question": "O filho executa raise(SIGTERM) sem handler e o pai faz wait(&s). Que valores têm WIFEXITED(s), WIFSIGNALED(s) e WTERMSIG(s)?",
+    "answers": [
+      "1, 0 e 15, pois o filho terminou normalmente e 15 é o código de saída",
+      "0, 1 e 0, pois WTERMSIG() só é preenchido quando existe core dump",
+      "0, 1 e 15, pois o filho foi terminado pelo sinal 15 e não por exit()",
+      "1, 1 e 15, pois o sinal e a saída normal ficam ambos registados no estado"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, estado de saída"
+  },
+  {
+    "question": "Considere: printf(\"X\"); if(fork()==0) exit(0); wait(NULL); printf(\"Y\\n\"); Que texto fica escrito?",
+    "answers": [
+      "XXY, pois o filho descarrega o buffer herdado ao chamar exit()",
+      "XY, pois o filho não herda o conteúdo pendente do buffer do pai",
+      "XYY, pois só o pai escreve a letra Y mas ambos escrevem o Y final",
+      "Y, pois o X é perdido quando o filho termina antes do pai"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, exit e stdio"
+  },
+  {
+    "question": "Um filho com pid p já terminou, mas o pai ainda não o esperou. Que devolve kill(p,0) antes e depois de waitpid(p,NULL,0)?",
+    "answers": [
+      "-1 com ESRCH em ambos os casos, pois um processo terminado já não é encontrado",
+      "0 em ambos os casos, pois o pid só é libertado quando o pai termina",
+      "-1 com EPERM antes, pois não se pode sinalizar um zombie, e 0 depois",
+      "0 antes, pois o zombie ainda existe, e -1 com ESRCH depois"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, zombies"
+  },
+  {
+    "question": "Considere: if(fork()==0){ if(fork()==0){ puts(\"N\"); exit(0); } wait(NULL); puts(\"F\"); exit(0); } wait(NULL); puts(\"P\"); Qual a ordem das linhas?",
+    "answers": [
+      "P, F, N, pois o pai original é o primeiro a ser escalonado após o fork()",
+      "N, F, P, pois cada processo espera pelo seu filho antes de imprimir",
+      "F, N, P, pois o wait() do filho termina quando o neto é criado",
+      "Qualquer ordem, pois o escalonamento dos processos não é determinista"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, árvore de processos"
+  },
+  {
+    "question": "O handler h tem: static int f; printf(\"[\"); if(!f++) raise(SIGUSR1); printf(\"]\"); fflush(stdout). Instalado com sigaction sem flags, um raise(SIGUSR1) escreve o quê?",
+    "answers": [
+      "[[]], pois o novo sinal interrompe de imediato o handler que está a executar",
+      "[], pois o segundo SIGUSR1 é descartado enquanto o handler está ativo",
+      "[][], pois o SIGUSR1 fica bloqueado enquanto o handler executa",
+      "[][], mas só se o handler tiver sido instalado com SA_NODEFER"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, handlers"
+  },
+  {
+    "question": "SIGUSR1 está bloqueado, o pai faz raise(SIGUSR1) e depois fork(). O que devolvem sigismember() sobre sigpending() no filho e no pai?",
+    "answers": [
+      "No filho 0 e no pai 1, pois os sinais pendentes não são herdados",
+      "No filho 1 e no pai 1, pois o filho herda os sinais pendentes do pai",
+      "No filho 1 e no pai 0, pois o sinal pendente passa para o filho",
+      "Em ambos 0, pois o fork() entrega os sinais pendentes antes de criar o filho"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, sinais e fork"
+  },
+  {
+    "question": "Com signal(SIGCHLD,SIG_IGN) no pai, o filho faz exit(3) e o pai executa r = wait(&s). Que acontece ao wait()?",
+    "answers": [
+      "Devolve o pid do filho e s guarda 3, pois o SIG_IGN só afeta a entrega do sinal",
+      "Devolve 0 imediatamente, pois o sinal ignorado indica que não há filhos prontos",
+      "Bloqueia para sempre, pois ninguém chega a notificar o pai da morte do filho",
+      "Devolve -1 com ECHILD depois de o filho terminar, pois ele não fica zombie"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, SIGCHLD"
+  },
+  {
+    "question": "O pai bloqueia SIGUSR1 (handler escreve h), faz fork(); o filho executa kill(getppid(),SIGUSR1). O pai chama sigsuspend() com máscara vazia e escreve fim. O que ocorre?",
+    "answers": [
+      "Pode ficar bloqueado para sempre se o filho enviar o sinal antes do sigsuspend()",
+      "Escreve h e depois fim, mesmo que o filho envie o sinal antes do sigsuspend()",
+      "Escreve fim e depois h, pois o handler só corre quando o pai termina",
+      "Escreve h duas vezes, pois o sinal é entregue no fork() e no sigsuspend()"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, sigsuspend"
+  },
+  {
+    "question": "Considere: execl(\"/bin/echo\",\"a\",\"b\",NULL); Que imprime o programa, se o exec tiver sucesso?",
+    "answers": [
+      "a b, pois o echo imprime todos os argumentos que recebe",
+      "a, pois o echo só imprime o primeiro argumento depois do caminho",
+      "b, pois o primeiro argumento depois do caminho é o argv[0] do novo programa",
+      "Nada, pois execl() devolve -1 por faltar o nome do programa em argv[0]"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, exec"
+  },
+  {
+    "question": "Considere: if(fork() && fork()) puts(\"A\"); puts(\"B\"); Quantas linhas, no total, imprime o excerto?",
+    "answers": [
+      "Seis, pois os três processos imprimem B e dois deles imprimem também a linha A",
+      "Quatro, pois só o processo original executa o segundo fork()",
+      "Três, pois só o pai original chega a executar o puts(\"A\")",
+      "Cinco, pois os dois filhos imprimem B e o pai imprime A e depois o B duas vezes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, árvore de processos"
+  },
+  {
+    "question": "Considere: for(i=0;i<2;i++){ printf(\"%d \", i); fork(); } Se todos os fork() tiverem sucesso, quantas vezes aparece o dígito 0 na saída?",
+    "answers": [
+      "Uma, pois o 0 é impresso apenas pelo processo original na primeira iteração",
+      "Duas, pois só os processos criados na primeira iteração herdam o 0",
+      "Três, pois o processo original escreve o 0 e cada um dos dois fork() copia-o",
+      "Quatro, pois cada fork() copia o buffer e os 4 processos o descarregam"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, fork e stdio"
+  },
+  {
+    "question": "Considere: signal(SIGALRM,h); alarm(1); r = pause(); Com h vazio, que valor fica em r?",
+    "answers": [
+      "0, pois a chegada do sinal é considerada uma terminação bem-sucedida",
+      "-1 com errno EINTR, depois de o handler terminar",
+      "14, o número do sinal que a fez regressar",
+      "Nunca regressa, pois o handler consome o sinal que pause() esperava"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, alarm e pause"
+  },
+  {
+    "question": "O filho executa pause(). O pai faz a = waitpid(p,&s,WNOHANG); kill(p,SIGTERM); b = waitpid(p,&s,0). Que valores têm a e b?",
+    "answers": [
+      "a é -1, pois o filho ainda não terminou, e b é o pid p",
+      "a é o pid p, pois o filho está bloqueado, e b é 0",
+      "a é 0, pois o filho ainda está vivo, e b é o pid p",
+      "a é 0 e b é 0, pois o filho terminado por sinal não é devolvido por waitpid()"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, wait/waitpid"
+  },
+  {
+    "question": "Um programa testa if(!flag) pause(); em que o handler de SIGUSR1 põe flag a 1. Qual poderá ser a consequência?",
+    "answers": [
+      "O sinal pode chegar entre o teste e o pause() e o processo bloquear para sempre",
+      "O handler nunca é chamado, pois pause() desliga a entrega de sinais ao processo",
+      "O pause() devolve sempre 0, mesmo que o sinal chegue antes do teste do flag",
+      "O kernel guarda o sinal numa fila e acorda o pause() algum tempo depois"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, race condition"
+  },
+  {
+    "question": "Um pai usa um handler de SIGCHLD com um único waitpid(-1,NULL,0) e cria 5 filhos que terminam quase em simultâneo. Qual poderá ser a consequência?",
+    "answers": [
+      "O pai é terminado pelo kernel, pois recebe mais SIGCHLD do que consegue tratar",
+      "Os filhos em falta são recolhidos pelo init, pois o pai deixa de os poder esperar",
+      "Nenhuma, pois o kernel entrega um SIGCHLD por cada filho e o handler corre cinco vezes",
+      "Podem ficar zombies, pois vários SIGCHLD se fundem num só e só um filho é recolhido pelo handler"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, SIGCHLD"
+  },
+  {
+    "question": "Um handler chama printf() quando o programa principal já estava no meio de outro printf(). Qual poderá ser a consequência?",
+    "answers": [
+      "Nenhuma, pois o kernel adia o handler até o printf() terminar",
+      "Deadlock ou buffer corrompido, pois o printf() não é async-signal-safe",
+      "O handler é ignorado, pois o kernel proíbe chamadas ao sistema dentro de handlers",
+      "O programa recebe SIGSEGV, pois o handler tem uma stack própria sem buffers"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, async-signal-safe"
+  },
+  {
+    "question": "Qual o tipo mais adequado para uma variável global que o handler altera e o main lê?",
+    "answers": [
+      "int protegido com mutex, para que o handler espere até o main libertar o mutex",
+      "long com cache desativada, para a escrita do handler ser visível",
+      "volatile sig_atomic_t, por ser atómico e não ficar só em registos",
+      "static const int, para o handler não poder ser interrompido a meio"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, handlers"
+  },
+  {
+    "question": "Um processo pai termina enquanto o filho ainda executa. Qual o destino do filho?",
+    "answers": [
+      "Torna-se órfão e é adotado pelo init (ou subreaper), que o recolhe quando terminar",
+      "É terminado pelo kernel com SIGHUP, para não ficar sem pai",
+      "Fica zombie até a máquina ser reiniciada, pois ninguém o pode recolher",
+      "Passa a ser filho do avô e é recolhido por este quando o avô executar wait()"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, órfãos"
+  },
+  {
+    "question": "Um servidor cria um filho por pedido mas nunca chama wait(). Qual poderá ser a consequência a longo prazo?",
+    "answers": [
+      "Os filhos terminados continuam a consumir tempo de CPU, pois ninguém os esperou",
+      "Os filhos ficam zombie e a tabela de processos enche, podendo fork() falhar com EAGAIN",
+      "O kernel termina o servidor assim que ele tiver mais de um filho zombie",
+      "Os filhos são recolhidos pelo init de imediato, sem custo algum para o servidor"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, zombies"
+  },
+  {
+    "question": "Qual dos seguintes elementos de um processo se mantém após um execvp() bem-sucedido?",
+    "answers": [
+      "As variáveis globais e os dados da heap do programa anterior",
+      "Os handlers instalados com sigaction() pelo programa anterior",
+      "O conteúdo do buffer do stdio que ainda não foi descarregado",
+      "O pid e os descritores abertos sem FD_CLOEXEC"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, exec"
+  },
+  {
+    "question": "Para que serve o campo sa_mask de struct sigaction?",
+    "answers": [
+      "Indica os sinais que o processo passa a ignorar de forma permanente",
+      "Indica os sinais que o handler tem autorização para enviar a outros processos",
+      "Indica sinais que ficam bloqueados enquanto o handler executa, além do próprio sinal",
+      "Indica os sinais cuja entrega é adiada até ao próximo exec do processo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, sigaction"
+  },
+  {
+    "question": "Se SIGUSR1 estiver bloqueado e o processo executar raise(SIGUSR1), uma chamada seguinte a sigpending() assinala SIGUSR1 como pendente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, sinais bloqueados"
+  },
+  {
+    "question": "Um processo zombie pode ser eliminado enviando-lhe SIGKILL.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, zombies"
+  },
+  {
+    "question": "Depois de fork(), uma alteração a uma variável global feita pelo filho é visível no pai.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, fork"
+  },
+  {
+    "question": "Com a flag SA_NODEFER em sa_flags, um sinal recebido durante o seu próprio handler pode interromper esse handler.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, handlers"
+  },
+  {
+    "question": "Os sinais SIGKILL e SIGSTOP podem ser bloqueados com sigprocmask().",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, sigprocmask"
+  },
+  {
+    "question": "Um processo filho criado por fork() herda as ações definidas pelo pai para os sinais.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, sinais e fork"
+  },
+  {
+    "question": "Depois de um execvp() bem-sucedido, os handlers instalados pelo programa original continuam ativos no novo programa.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, sinais e exec"
+  },
+  {
+    "question": "A função write() é async-signal-safe, pelo que pode ser chamada dentro de um handler.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, async-signal-safe"
+  },
+  {
+    "question": "A ação por omissão do sinal SIGCHLD é terminar o processo que o recebe.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, SIGCHLD"
+  },
+  {
+    "question": "O pai pode obter o código de saída de um filho que terminou antes de ele chamar wait().",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, zombies"
+  },
+  {
+    "question": "Se um pai terminar sem esperar pelos filhos zombie, estes ficam para sempre na tabela de processos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, órfãos"
+  },
+  {
+    "question": "Durante a execução de um handler, um sinal diferente que não esteja bloqueado pode interromper esse handler.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, handlers"
+  },
+  {
+    "question": "Na macro WEXITSTATUS(s), o valor só tem significado se WIFEXITED(s) for verdadeiro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, estado de saída"
+  },
+  {
+    "question": "Uma chamada a sleep() nunca é interrompida por sinais e só regressa depois de decorrido o tempo pedido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame, alarm e pause"
+  },
+  {
+    "question": "Depois de pipe(p); write(p[1],\"xyz\",3); close(p[1]); n=read(p[0],b,8); r=read(p[0],b,8); que valores têm n e r?",
+    "answers": [
+      "n=8 e r=0",
+      "n=3 e r=0",
+      "n=3 e r=-1 com EPIPE",
+      "n=3 e r=3, repetindo os bytes"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Pipes"
+  },
+  {
+    "question": "Depois de pipe(p); write(p[1],\"hello\",5); (nenhum descritor é fechado), que valores devolvem, por ordem, três chamadas read(p[0],b,2) consecutivas?",
+    "answers": [
+      "2, 2 e depois fica bloqueada",
+      "5 na primeira e 0 nas restantes",
+      "2, 2 e 0, por já não haver dados",
+      "2, 2 e 1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Pipes"
+  },
+  {
+    "question": "signal(SIGPIPE,SIG_IGN); pipe(p); close(p[0]); r=write(p[1],\"a\",1); printf(\"%d %d\",r,errno==EPIPE); Que imprime?",
+    "answers": [
+      "-1 1",
+      "1 0",
+      "0 1",
+      "-1 -1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Pipes"
+  },
+  {
+    "question": "pipe(p); close(p[0]); if(fork()==0){write(p[1],\"x\",1); _exit(0);} wait(&s); Como termina o filho, com as ações por omissão dos sinais?",
+    "answers": [
+      "Normalmente, com estado 0, tendo o write devolvido 1 byte",
+      "Fica bloqueado indefinidamente à espera de um leitor no write",
+      "Pelo sinal SIGPIPE, por não haver leitores",
+      "Normalmente, com estado 0, tendo o write devolvido -1 e errno EPIPE"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Pipes"
+  },
+  {
+    "question": "pipe(p); if(fork()==0){close(p[0]); write(p[1],\"x\",1);} wait(NULL); O pai nunca fecha p[0]. O que acontece ao write do filho?",
+    "answers": [
+      "Falha com -1 e errno EPIPE, pois o filho fechou o seu p[0]",
+      "Sucede e devolve 1, pois o pai ainda tem p[0] aberto",
+      "O filho é terminado por SIGPIPE, pois fechou o seu p[0]",
+      "Bloqueia até o pai fechar o seu descritor p[0]"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Pipes"
+  },
+  {
+    "question": "O pai lê de p[0] em ciclo até read devolver 0, mas nunca fecha p[1]. O filho escreve 2 bytes em p[1] e termina. Qual o comportamento do pai?",
+    "answers": [
+      "Lê os 2 bytes e o read seguinte devolve 0, indicando o fim",
+      "O read seguinte devolve -1 com errno EPIPE, pois o filho terminou",
+      "Recebe SIGPIPE quando o filho termina e fecha o seu p[1]",
+      "Lê os 2 bytes e bloqueia depois no read"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Pipes"
+  },
+  {
+    "question": "pipe(p); dup2(p[1],1); write(1,\"hi\",2); n=read(p[0],b,9); fprintf(stderr,\"%d\",n); Que valor é impresso?",
+    "answers": [
+      "2",
+      "0",
+      "9",
+      "Fica bloqueado no read"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Pipes"
+  },
+  {
+    "question": "close(0); pipe(p); printf(\"%d %d\",p[0],p[1]); Que imprime, assumindo que 0, 1 e 2 estavam inicialmente abertos?",
+    "answers": [
+      "3 4",
+      "0 1",
+      "0 3",
+      "1 3"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Pipes"
+  },
+  {
+    "question": "pipe(p); if(fork()==0){dup2(p[1],1); close(p[0]); close(p[1]); execlp(\"echo\",\"echo\",\"oi\",NULL);} close(p[1]); n=read(p[0],b,32); Quantos bytes lê o pai?",
+    "answers": [
+      "2",
+      "3",
+      "0",
+      "32"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Pipes"
+  },
+  {
+    "question": "O ficheiro f, com o conteúdo abcdef, é aberto com offset 0. if(fork()==0){read(f,b,2); _exit(0);} wait(NULL); read(f,b,1); Que carácter fica em b[0] no pai?",
+    "answers": [
+      "a, pois o pai mantém uma cópia própria do offset",
+      "b, pois o pai continua logo após o primeiro carácter",
+      "d, pois o filho avançou três posições no ficheiro",
+      "c, pois o offset é partilhado"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Descritores de ficheiro"
+  },
+  {
+    "question": "O ficheiro com abcdef é aberto em f, depois g=dup(f). Após read(f,&c,1); read(g,&c,1); que valor tem c?",
+    "answers": [
+      "b, porque f e g partilham o mesmo offset",
+      "a, porque g tem o seu offset a zero",
+      "a, porque dup abre o ficheiro de novo",
+      "c, porque cada read avança duas posições"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Descritores de ficheiro"
+  },
+  {
+    "question": "O ficheiro com abcdef é aberto duas vezes (f e g, com open). Após read(f,&c,1); read(f,&c,1); read(g,&d,1); que valores têm c e d?",
+    "answers": [
+      "c é b e d é b",
+      "c é a e d é a",
+      "c é b e d é a",
+      "c é b e d é c"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Descritores de ficheiro"
+  },
+  {
+    "question": "printf(\"A\"); write(1,\"B\",1); Se o programa terminar normalmente, que sequência é escrita em stdout?",
+    "answers": [
+      "AB, pois as instruções executam e escrevem pela ordem do código",
+      "BA, pois o buffer do stdio só é descarregado no fim",
+      "Apenas B, pois o printf sem newline nunca chega a escrever",
+      "Apenas A, pois o write limpa o buffer do stdio sem o escrever"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame stdio e I/O de baixo nível"
+  },
+  {
+    "question": "O que acontece ao texto de printf(\"ola\"); _exit(0);?",
+    "answers": [
+      "Nada é escrito, pois o buffer do stdio não chega a ser descarregado",
+      "Escreve ola, pois o buffer é descarregado por _exit",
+      "Escreve ola, porque o texto é enviado de imediato ao kernel",
+      "Escreve ola apenas se stdout for um ficheiro"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame stdio e I/O de baixo nível"
+  },
+  {
+    "question": "Quantas letras A produz no total printf(\"A\"); fork();, sem newline e com ambos os processos a terminarem normalmente?",
+    "answers": [
+      "Uma, pois só o pai escreve",
+      "Zero, pois sem newline o stdio descarta o buffer",
+      "Quatro, pois cada processo descarrega duas vezes",
+      "Duas, pois o filho herda o buffer ainda por descarregar"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame stdio e I/O de baixo nível"
+  },
+  {
+    "question": "f=open(\"/dev/null\",O_RDONLY); a=close(f); c=close(f); e=errno; Que valores têm a, c e e?",
+    "answers": [
+      "a=0, c=0 e e=0",
+      "a=-1, c=-1 e e=EBADF",
+      "a=0, c=-1 e e=EBADF",
+      "a=0, c=-1 e e=ENOENT"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame errno"
+  },
+  {
+    "question": "O objeto /q não existe. Duas chamadas seguidas a shm_open(\"/q\",O_CREAT|O_EXCL|O_RDWR,0600) sem shm_unlink entre elas. O que devolve a segunda?",
+    "answers": [
+      "-1, com errno igual a EEXIST",
+      "Um novo descritor para o mesmo objeto",
+      "O mesmo descritor da primeira chamada",
+      "-1, com errno igual a ENOENT"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória partilhada"
+  },
+  {
+    "question": "Com o mapa q ativo, shm_unlink(\"/s\"); *q=7; h=shm_open(\"/s\",O_RDWR,0); O que sucede?",
+    "answers": [
+      "A escrita em *q termina o processo com SIGSEGV",
+      "A escrita funciona e h é um descritor do mesmo objeto",
+      "A escrita funciona, mas o objeto é recriado em h",
+      "A escrita em *q funciona e h vale -1"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória partilhada"
+  },
+  {
+    "question": "int g=0; *q=0, com q em memória MAP_SHARED. if(fork()==0){g=5; *q=5; _exit(0);} wait(NULL); Que valores de g e *q vê o pai?",
+    "answers": [
+      "g vale 5 e *q vale 5",
+      "g vale 0 e *q vale 5",
+      "g vale 5 e *q vale 0",
+      "g vale 0 e *q vale 0"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória partilhada"
+  },
+  {
+    "question": "Foram escritos os inteiros 1, 2 e 3 em três write(p[1],&x,sizeof x) e depois executa-se n=read(p[0],a,2*sizeof(int)). Que se obtém?",
+    "answers": [
+      "n vale 4, com a[0]=1",
+      "n vale 12, com a[0]=1, a[1]=2 e a[2]=3",
+      "n vale 8, com a[0]=1 e a[1]=2",
+      "O read bloqueia até haver os três inteiros"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Pipes"
+  },
+  {
+    "question": "O filho escreve 10000000 bytes de uma vez num pipe e o pai executa wait(NULL) antes de qualquer read. Qual o resultado?",
+    "answers": [
+      "Deadlock: filho bloqueado no write e pai no wait",
+      "O write do filho falha de imediato com -1 por o pipe ser pequeno",
+      "O pai recebe SIGPIPE e termina, pois o pipe está cheio",
+      "O kernel expande o pipe até caberem todos os dados escritos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Pipes"
+  },
+  {
+    "question": "Pai e filho usam um único pipe nos dois sentidos: cada um escreve uma mensagem e lê a resposta no mesmo pipe. Qual o risco?",
+    "answers": [
+      "O kernel recusa as escritas do segundo processo no mesmo pipe",
+      "Um processo pode ler a sua própria mensagem",
+      "O pipe fica bloqueado para escrita depois de ocorrer o fork",
+      "Os dados são sempre entregues pela ordem inversa à escrita"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Pipes"
+  },
+  {
+    "question": "Dois programas lançados em shells distintas, sem qualquer parentesco, devem trocar bytes pela ordem de envio. Qual o mecanismo adequado?",
+    "answers": [
+      "Um pipe criado com pipe() por um deles e herdado pelo outro",
+      "Um pipe sem nome partilhado através de dup2",
+      "Um FIFO, criado com mkfifo, com nome no sistema de ficheiros",
+      "Dois pipes sem nome ligados por exec"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Pipes"
+  },
+  {
+    "question": "Porque é que a memória partilhada é, em regra, mais rápida do que os pipes para grandes volumes de dados?",
+    "answers": [
+      "Não há uma system call por cada transferência",
+      "O kernel garante a exclusão mútua dos acessos à região",
+      "Dispensa por completo qualquer sincronização entre processos",
+      "Os dados ficam sempre guardados nos registos do processador"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória partilhada"
+  },
+  {
+    "question": "Dois processos fazem 100000 vezes counter++ sobre um contador em memória partilhada (valor inicial 0), sem sincronização. Que valor final é garantido?",
+    "answers": [
+      "É sempre 200000, pois cada ++ é atómico",
+      "É pelo menos 100000",
+      "Nunca é superior a 200000, mas pode ser inferior",
+      "É sempre 100000, pois o kernel serializa os acessos"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória partilhada"
+  },
+  {
+    "question": "O pai liga cat e sort por um pipe com dup2 e espera pelos filhos, mas não fechou no pai nenhum descritor do pipe. Qual o sintoma?",
+    "answers": [
+      "O cat termina com SIGPIPE ao escrever no pipe que o pai tem aberto",
+      "O sort termina de imediato sem ler dados, devolvendo erro",
+      "O pai recebe SIGPIPE quando chama wait sobre o sort",
+      "O sort não recebe EOF e o pai fica preso no wait"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Pipes"
+  },
+  {
+    "question": "dup2(p[1],9); no filho execlp(\"sh\",\"sh\",\"-c\",\"echo ok >&9\",NULL); o pai fecha p[1] e 9 e faz n=read(p[0],b,32). Que valor tem n?",
+    "answers": [
+      "0, pois o exec fecha automaticamente o descritor 9",
+      "3, pois o descritor 9 sobrevive ao exec",
+      "-1, pois o descritor 9 deixa de ser válido após o exec",
+      "Bloqueia, pois o sh nunca chega a escrever no pipe"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Descritores de ficheiro"
+  },
+  {
+    "question": "shm_open(...,O_CREAT|O_RDWR,0600) sem ftruncate; depois q=mmap(NULL,100,PROT_READ|PROT_WRITE,MAP_SHARED,fd,0); q[0]=1; O que acontece?",
+    "answers": [
+      "O mmap sucede, mas a escrita causa SIGBUS (objeto vazio)",
+      "O mmap devolve MAP_FAILED, por o objeto ter tamanho zero",
+      "A escrita faz crescer automaticamente o objeto para 100 bytes",
+      "A escrita sucede, mas não fica visível para outros processos"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória partilhada"
+  },
+  {
+    "question": "O processo A cria /d, ajusta o tamanho, mapeia, escreve, faz munmap e close e termina sem shm_unlink. O que faz B com shm_open(\"/d\",O_RDWR,0)?",
+    "answers": [
+      "Falha com ENOENT, pois o objeto desaparece ao ser fechado",
+      "Abre o objeto, mas com todos os bytes a zero",
+      "Abre o objeto existente, com os dados escritos por A",
+      "Falha com EEXIST, pois o objeto já existe"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória partilhada"
+  },
+  {
+    "question": "fd=shm_open(\"/s\",O_RDONLY,0); q=mmap(NULL,100,PROT_READ|PROT_WRITE,MAP_SHARED,fd,0); O objeto tem 100 bytes. O que devolve mmap?",
+    "answers": [
+      "Um endereço válido, com escrita permitida",
+      "MAP_FAILED, com errno igual a EACCES",
+      "Um endereço válido, e a escrita falha com SIGSEGV",
+      "MAP_FAILED, com errno igual a ENOENT"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória partilhada"
+  },
+  {
+    "question": "Os bytes lidos de um pipe são removidos do pipe, pelo que dois processos que leiam do mesmo pipe nunca recebem os mesmos bytes.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Pipes"
+  },
+  {
+    "question": "Um único pipe criado com pipe() permite a pai e filho comunicarem nos dois sentidos em simultâneo sem qualquer risco de um processo ler os seus próprios dados.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Pipes"
+  },
+  {
+    "question": "Uma escrita num pipe com um número de bytes não superior a PIPE_BUF é atómica, não sendo intercalada com escritas de outros processos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Pipes"
+  },
+  {
+    "question": "Chamar munmap e close sobre um objeto de memória partilhada POSIX remove o objeto do sistema.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória partilhada"
+  },
+  {
+    "question": "Depois de shm_unlink, o objeto só é efetivamente destruído quando todos os processos o tiverem deixado de usar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória partilhada"
+  },
+  {
+    "question": "O argumento mode de shm_open é aplicado sempre, mesmo quando o objeto já existe e O_CREAT é indicado.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória partilhada"
+  },
+  {
+    "question": "Um FIFO tem um nome no sistema de ficheiros e permite que processos sem parentesco comuniquem.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Pipes"
+  },
+  {
+    "question": "Declarar uma variável partilhada como volatile garante exclusão mútua e elimina as condições de corrida.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória partilhada"
+  },
+  {
+    "question": "Em sistemas modernos, errno é implementado como uma variável local a cada thread.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame errno"
+  },
+  {
+    "question": "Um read sobre um ficheiro que devolve menos bytes do que os pedidos indica sempre que ocorreu um erro.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Descritores de ficheiro"
+  },
+  {
+    "question": "Depois de um fork, o pai e o filho têm descritores que apontam para as mesmas entradas da tabela de ficheiros abertos do kernel.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Descritores de ficheiro"
+  },
+  {
+    "question": "As funções do stdio, como printf, escrevem sempre diretamente no kernel em cada chamada, sem qualquer buffer.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame stdio e I/O de baixo nível"
+  },
+  {
+    "question": "Uma função que aloca um novo descritor, como pipe ou dup, usa sempre o menor número de descritor que esteja livre.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Descritores de ficheiro"
+  },
+  {
+    "question": "Por omissão, todos os descritores abertos são fechados automaticamente pela execução de uma função exec.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Descritores de ficheiro"
+  },
+  {
+    "question": "Dois processos executam cada um 1000 vezes counter++ sobre um int em memória partilhada, sem qualquer sincronização. Porque é que o valor final pode ser inferior a 2000?",
+    "answers": [
+      "Porque o kernel descarta incrementos quando dois processos escrevem na mesma página de memória partilhada em simultâneo",
+      "Porque a memória partilhada só guarda o valor escrito pelo último processo a terminar, ignorando todos os restantes",
+      "Porque o load, o incremento e o store de um processo podem intercalar-se com os do outro, perdendo-se atualizações",
+      "Porque cada counter++ é executado através de duas system calls que o kernel pode recusar quando há concorrência"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Race condition"
+  },
+  {
+    "question": "Dois processos alternam estritamente a entrada na secção crítica com uma variável turn (0 ou 1). O processo P0 termina e deixa de pedir a entrada. Que propriedade deixa de ser garantida a P1?",
+    "answers": [
+      "Progresso, pois P1 acaba bloqueado sem que exista alguém na secção crítica",
+      "Exclusão mútua, pois P1 passa a entrar na secção crítica ao mesmo tempo que P0",
+      "Preempção, pois P1 perde o CPU antes de terminar a secção crítica",
+      "Atomicidade, pois a variável turn deixa de poder ser lida de forma indivisível"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Secção crítica"
+  },
+  {
+    "question": "Dois processos usam este protocolo de entrada: flag[i]=1; while(flag[j]); e à saída fazem flag[i]=0. Se ambos executarem flag[i]=1 antes de qualquer um testar flag[j], o que acontece?",
+    "answers": [
+      "Ambos entram na secção crítica em simultâneo, violando a exclusão mútua",
+      "Entra apenas o processo de menor índice e o outro aguarda até que ele saia da secção crítica",
+      "Entra o primeiro que testou flag[j] e o segundo desiste, passando à secção restante do código",
+      "Ambos ficam indefinidamente em espera ativa, sem nunca entrarem na secção crítica"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Exclusão mútua"
+  },
+  {
+    "question": "Duas threads executam if(lock==0) lock=1; antes da secção crítica para tentar adquirir um lock. Porque é que este protocolo não garante a exclusão mútua?",
+    "answers": [
+      "Porque a atribuição lock=1 só pode ser realizada por uma system call que o kernel executa uma thread de cada vez",
+      "Porque o teste e a atribuição não são atómicos: ambas podem ver lock==0 antes de qualquer uma o pôr a 1",
+      "Porque duas threads nunca conseguem ler a mesma variável global ao mesmo tempo",
+      "Porque a segunda thread só vê lock==0 depois de a primeira ter saído da secção crítica e libertado o lock"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Instruções atómicas"
+  },
+  {
+    "question": "Num único núcleo, uma thread espera por um spinlock implementado com xchg. A thread que detém o lock é retirada do CPU a meio da secção crítica. O que faz a thread em espera durante o seu quantum?",
+    "answers": [
+      "Fica bloqueada numa fila do kernel, libertando de imediato o CPU para outras threads",
+      "Continua a testar o lock em ciclo, gastando o quantum sem progredir",
+      "Liberta o lock à força, porque a thread que o detinha foi retirada do CPU",
+      "Recebe um interrupt do hardware que a faz regressar de imediato ao escalonador"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Espera ativa"
+  },
+  {
+    "question": "Um semáforo usado como mutex é inicializado por engano com o valor 2. Três processos executam sem_wait() antes da secção crítica. Quantos podem estar dentro dela ao mesmo tempo?",
+    "answers": [
+      "Um, ficando os outros dois bloqueados, pois um semáforo é sempre binário",
+      "Três, pois o valor inicial apenas limita o número de chamadas a sem_post()",
+      "Nenhum, pois um valor inicial diferente de 1 faz o primeiro sem_wait() falhar",
+      "Dois, ficando o terceiro bloqueado até alguém executar sem_post()"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Semáforos"
+  },
+  {
+    "question": "O processo B só pode executar o passo S2 depois de o processo A concluir o passo S1. Como se garante isto com um único semáforo?",
+    "answers": [
+      "Iniciado a 0: A executa sem_post() depois de S1 e B executa sem_wait() antes de S2",
+      "Iniciado a 1: A executa sem_post() depois de S1 e B executa sem_wait() antes de S2, o que bloqueia B",
+      "Iniciado a 0: A executa sem_wait() depois de S1 e B executa sem_post() antes de S2",
+      "Iniciado a 0: ambos executam sem_wait() antes e sem_post() depois do respetivo passo"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Semáforos"
+  },
+  {
+    "question": "O processo P1 executa sem_wait(a); sem_wait(b) e o processo P2 executa sem_wait(b); sem_wait(a), com a e b iniciados a 1. Qual é uma consequência possível?",
+    "answers": [
+      "Violação da exclusão mútua, pois P1 e P2 entram em simultâneo nas regiões protegidas por a e b",
+      "Livelock, pois ambos repetem continuamente a tentativa de obter os semáforos sem ficarem bloqueados em nenhum momento",
+      "Se cada um obtiver o primeiro semáforo antes de o outro pedir o segundo, ficam ambos bloqueados para sempre",
+      "Inanição apenas de P1, pois P2 obtém sempre os dois semáforos antes dele"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Deadlock"
+  },
+  {
+    "question": "Três processos partilham s[0], s[1] e s[2], iniciados a 1. O processo i executa sem_wait(s[i]); sem_wait(s[(i+1)%3]). Que alteração elimina o risco de deadlock?",
+    "answers": [
+      "Iniciar os três semáforos a 0, para que ninguém retenha um semáforo enquanto pede o outro",
+      "Trocar o segundo sem_wait() por sem_post(), de modo a que ninguém espere por dois semáforos",
+      "Acrescentar um sleep() entre os dois pedidos, para que o escalonador dê tempo aos outros processos",
+      "O processo 2 pedir primeiro s[0] e depois s[2], impondo uma ordem global crescente"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Deadlock"
+  },
+  {
+    "question": "Num produtor-consumidor com buffer circular de 8 posições, vários produtores e vários consumidores, quais são os semáforos e os valores iniciais corretos?",
+    "answers": [
+      "mutex=1, slots=8, items=0",
+      "mutex=1, slots=0, items=8",
+      "mutex=0, slots=8, items=0",
+      "slots=8 e items=0 bastam, sem mutex, pois os dois contadores já impedem acessos simultâneos ao buffer"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Produtor-consumidor"
+  },
+  {
+    "question": "Um produtor executa sem_wait(mutex), escreve no buffer de N=4 posições, avança in e executa sem_post(items) e sem_post(mutex), sem nunca usar slots. Nenhum consumidor corre. O que pode acontecer?",
+    "answers": [
+      "Bloqueia ao quinto item, pois o semáforo mutex deixa de ter valor disponível",
+      "Os itens extra ficam na memória e são lidos por consumidores sem qualquer perda de dados de itens",
+      "Sobrescreve itens ainda não consumidos, pois nada limita o produtor a N itens no buffer",
+      "O kernel termina o produtor quando in excede o tamanho do buffer"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Produtor-consumidor"
+  },
+  {
+    "question": "Dois produtores usam slots e items corretamente, mas nenhum usa um semáforo mutex em volta de buf[in]=x; in=(in+1)%N. Que defeito pode ocorrer?",
+    "answers": [
+      "Deadlock, porque slots e items passam a ser pedidos por ordem inversa",
+      "Ambos podem ler o mesmo valor de in e escrever na mesma posição, perdendo-se um item",
+      "O valor de slots torna-se negativo quando os dois produtores atuam em simultâneo sobre o buffer partilhado",
+      "O consumidor lê sempre uma posição antes de ela ser escrita por qualquer produtor"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Produtor-consumidor"
+  },
+  {
+    "question": "Num buffer de 1 elemento, o produtor faz wait(empty), escreve, post(full) e o consumidor faz wait(full), lê, post(empty). Que acontece se empty e full forem ambos iniciados a 1?",
+    "answers": [
+      "O consumidor pode ler logo no início, antes de o produtor ter escrito qualquer item",
+      "Ambos bloqueiam de imediato à espera um do outro, sem que nada seja produzido",
+      "O produtor pode escrever duas vezes seguidas, sem que o consumidor tenha lido o primeiro item",
+      "Funciona exatamente como com empty=1 e full=0, pois só o desempenho muda"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Produtor-consumidor"
+  },
+  {
+    "question": "Na solução de leitores-escritores que favorece os leitores, R1 está a ler e W1 espera. Chega R2. Que acontece?",
+    "answers": [
+      "R2 espera por W1, para que o escritor não sofra inanição",
+      "R2 e W1 entram em simultâneo, pois mutex_data só protege escritores entre si",
+      "R2 entra de imediato, pois readcnt passa a 2 e não pede mutex_data; W1 espera",
+      "R2 bloqueia em mutex_data até que R1 termine, como acontece com W1"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Leitores-escritores"
+  },
+  {
+    "question": "Na solução que favorece os leitores, um leitor sai sem executar readcnt-- nem o teste seguinte. Havendo apenas esse leitor, qual é a consequência?",
+    "answers": [
+      "Os escritores entram, mas em simultâneo com outros leitores que cheguem depois do primeiro",
+      "mutex_data nunca é libertado, pelo que os escritores ficam bloqueados para sempre",
+      "Os leitores seguintes ficam bloqueados, pois readcnt nunca volta a ser 0",
+      "readcnt fica negativo e o primeiro escritor a chegar recebe um erro de sem_wait()"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Leitores-escritores"
+  },
+  {
+    "question": "Na solução com prioridade aos escritores, que situação pode atrasar indefinidamente um leitor?",
+    "answers": [
+      "A chegada contínua de outros leitores, que ocupam sempre a secção crítica",
+      "A existência de um único escritor ativo, que nunca liberta mutex_data",
+      "O valor inicial 1 do semáforo mutex_rc, que só admite um leitor de cada vez",
+      "A chegada contínua de escritores, que mantêm try_read bloqueado"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Leitores-escritores"
+  },
+  {
+    "question": "Todas as threads adquirem os locks por ordem crescente do respetivo número. Qual das condições necessárias para deadlock fica assim impedida?",
+    "answers": [
+      "Exclusão mútua (mutual exclusion)",
+      "Retenção e espera (hold and wait)",
+      "Espera circular (circular wait)",
+      "Ausência de preempção (no preemption)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Deadlock"
+  },
+  {
+    "question": "Uma thread usa pthread_mutex_trylock() no segundo lock e, se falhar, liberta o primeiro e recomeça. Qual condição de deadlock é assim eliminada?",
+    "answers": [
+      "Retenção e espera (hold and wait)",
+      "Exclusão mútua (mutual exclusion)",
+      "Espera circular (circular wait), pois a ordem dos locks passa a ser fixa",
+      "Ausência de preempção (no preemption), pois o kernel retira o lock à thread"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Deadlock"
+  },
+  {
+    "question": "Dois processos pedem sem_wait(a) e depois sem_trywait(b); se falham, libertam a e repetem de imediato, em sincronia. Que alteração diminui o risco de livelock?",
+    "answers": [
+      "Repetir sem qualquer pausa, para tentar obter o semáforo mais depressa",
+      "Trocar o sem_trywait() por sem_post(), para que o semáforo b nunca falte",
+      "Iniciar os dois semáforos a 0 para que nenhuma tentativa falhe",
+      "Esperar um intervalo aleatório antes de cada nova tentativa"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Livelock"
+  },
+  {
+    "question": "Qual das situações descreve inanição (starvation), mas não deadlock?",
+    "answers": [
+      "Dois processos bloqueados, cada um à espera de um semáforo detido pelo outro",
+      "Um escritor espera indefinidamente porque chegam sempre novos leitores, mas o sistema progride",
+      "Dois processos que tentam e libertam recursos repetidamente sem nunca concluírem a tarefa",
+      "Um processo que lê uma variável enquanto outro a escreve, obtendo um valor inconsistente"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Inanição"
+  },
+  {
+    "question": "P1 (prioridade alta), P2 (média) e P3 (baixa): P3 detém um mutex pedido por P1, que bloqueia; P2 fica pronto. Sem nenhum protocolo especial, o que pode ocorrer?",
+    "answers": [
+      "P2 preempte P3, atrasando P1 por um tempo difícil de limitar",
+      "P1 preempte P3 e entra no mutex enquanto P3 ainda o detém",
+      "P3 termina sempre antes de P2 poder executar, pois detém o mutex",
+      "P2 bloqueia no mutex, pois está à espera do mesmo recurso que P1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Inversão de prioridades"
+  },
+  {
+    "question": "Com herança de prioridade (priority inheritance), o que muda no cenário em que P3 (baixa) detém o mutex pedido por P1 (alta) e P2 (média) fica pronto?",
+    "answers": [
+      "P2 herda a prioridade de P1 e passa a executar antes de P3, que continua a deter o mutex pedido por P1",
+      "P1 desce para a prioridade de P3 até que o mutex seja libertado",
+      "O mutex é atribuído a P2, que tem prioridade superior à de P3",
+      "P3 executa com a prioridade de P1 até libertar o mutex, pelo que P2 não o preempte"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Inversão de prioridades"
+  },
+  {
+    "question": "Um processo espera com while(*f==0); sem usar funções de sincronização, e outro processo coloca *f=1 em memória partilhada. Porque é que o ciclo pode nunca terminar com otimização?",
+    "answers": [
+      "O kernel bloqueia a escrita de *f enquanto o ciclo executa, devido à falta de um mutex",
+      "O compilador pode ler *f uma só vez e manter o valor num registo, nunca vendo a atualização",
+      "A escrita *f=1 só chega à memória quando o processo que espera terminar",
+      "Um ciclo while sem corpo gera sempre um erro de compilação e o programa nem arranca"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Espera ativa"
+  },
+  {
+    "question": "Num único núcleo, o consumidor espera com while(counter==0); e o produtor tem de executar para o desbloquear. Qual é o efeito desta espera ativa?",
+    "answers": [
+      "O produtor corre em paralelo com o consumidor, num segundo núcleo implícito",
+      "O kernel bloqueia o consumidor assim que deteta o ciclo, libertando o CPU",
+      "O produtor só corre quando o quantum do consumidor termina, desperdiçando CPU",
+      "O produtor nunca chega a executar, pois o consumidor mantém o CPU para sempre"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Espera ativa"
+  },
+  {
+    "question": "Duas threads executam em simultâneo cmpxchg(&x, 0, 1), que escreve 1 em x se x for 0 e devolve se teve sucesso. Sendo x==0 no início, quantas têm sucesso?",
+    "answers": [
+      "Ambas, pois as duas veem x==0 antes de qualquer escrita",
+      "Exatamente uma, pois a comparação e a escrita são indivisíveis",
+      "Nenhuma, pois as duas instruções entram em conflito e são ambas anuladas",
+      "Uma ou duas, conforme o escalonamento das threads"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Instruções atómicas"
+  },
+  {
+    "question": "Com sem_t s; sem_init(&s,0,2); sem_wait(&s); sem_wait(&s); r=sem_trywait(&s); qual é o resultado desta última chamada?",
+    "answers": [
+      "r vale -1 e errno é EAGAIN, sem bloquear",
+      "r vale 0 e o valor do semáforo passa a -1",
+      "r vale -1 e errno é EINTR, pois a chamada foi interrompida",
+      "A chamada bloqueia até que outra thread execute sem_post()"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Semáforos"
+  },
+  {
+    "question": "Com sem_init(&s,0,1); sem_post(&s); sem_post(&s); sem_wait(&s); sem_post(&s); sem_post(&s); sem_wait(&s); sem_getvalue(&s,&v); qual é o valor de v?",
+    "answers": [
+      "2",
+      "4",
+      "3",
+      "5"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Semáforos"
+  },
+  {
+    "question": "Duas threads com a=1 e b=0: a primeira repete 3 vezes sem_wait(&a); printf(A); sem_post(&b) e a segunda 3 vezes sem_wait(&b); printf(B); sem_post(&a). Que é impresso?",
+    "answers": [
+      "AAABBB, pois a primeira thread corre as 3 iterações antes da segunda",
+      "Qualquer intercalação com três A e três B, consoante o escalonamento",
+      "Nada, pois ambos os semáforos ficam a 0 e as threads bloqueiam",
+      "ABABAB, sempre nesta ordem"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Semáforos"
+  },
+  {
+    "question": "Uma thread executa pthread_mutex_lock(&m) num mutex por omissão e depois, sem o libertar, r=pthread_mutex_trylock(&m). Qual é o resultado?",
+    "answers": [
+      "r vale 0, pois a thread que já detém o mutex volta a obtê-lo",
+      "r vale -1 e errno é EBUSY, tal como acontece nas chamadas ao sistema de ficheiros",
+      "A chamada bloqueia para sempre, pois a thread espera por si própria até que ela mesma o liberte",
+      "r vale EBUSY, sem bloquear, mesmo sendo a própria thread a detê-lo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Mutex"
+  },
+  {
+    "question": "O processo A executa sem_open(\"/s\",O_CREAT,0644,1) e depois o processo B, com o semáforo já criado, executa sem_open(\"/s\",O_CREAT,0644,5). Qual é o valor do semáforo?",
+    "answers": [
+      "5, pois a última chamada a sem_open() redefine o valor do semáforo para o valor que indicou",
+      "1, pois o valor inicial só é usado quando o semáforo é criado",
+      "6, pois os valores iniciais de cada chamada se somam",
+      "0, pois a segunda chamada falha por o semáforo já existir"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Semáforos"
+  },
+  {
+    "question": "Quatro threads executam l++ 50000 vezes numa variável local e, no fim, lock(&m); c+=l; unlock(&m). Qual é o valor final de c e a vantagem face a um lock por iteração?",
+    "answers": [
+      "200000; só há uma aquisição do mutex por thread, o que reduz a contenção",
+      "Indeterminado, pois c+=l é executado por várias threads em simultâneo sem qualquer proteção",
+      "200000; mas é pior, pois acumular em l introduz uma race condition",
+      "200000; mas é equivalente, pois o tempo de espera pelo mutex não muda"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Mutex"
+  },
+  {
+    "question": "int f(){ lock(&m); if(x<0) return -1; x--; unlock(&m); return 0; } Que defeito tem esta função?",
+    "answers": [
+      "x pode ser decrementado por duas threads em simultâneo, pois o lock só protege o teste",
+      "O mutex é libertado antes de x--, pelo que duas threads podem decrementar x ao mesmo tempo",
+      "Quando x<0, o mutex fica bloqueado e as outras threads que chamarem f() bloqueiam para sempre",
+      "Quando x>=0, a função devolve 0 sem que o decremento de x seja visível às outras threads, que continuam a ver o valor antigo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Mutex"
+  },
+  {
+    "question": "A única thread de um programa executa, com s iniciado a 1: sem_wait(&s); sem_wait(&s); sem_post(&s); sem_post(&s). O que acontece?",
+    "answers": [
+      "O segundo sem_wait() devolve -1 de imediato, por a thread já deter o semáforo e não poder pedi-lo outra vez",
+      "Bloqueia no segundo sem_wait() para sempre, pois ninguém mais executa sem_post()",
+      "O valor desce para -1 e o segundo sem_wait() prossegue",
+      "O segundo sem_wait() é ignorado, pois a thread já detém o semáforo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Semáforos"
+  },
+  {
+    "question": "O valor de counter é 5. Um produtor executa counter++ e um consumidor counter--, em simultâneo, cada um com load, operação e store separados. Qual valor final é impossível?",
+    "answers": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Race condition"
+  },
+  {
+    "question": "Dois processos devem concluir o passo 1 antes de qualquer um iniciar o passo 2, com os semáforos a e b iniciados a 0. Qual é a solução correta?",
+    "answers": [
+      "A: sem_wait(b); sem_post(a) | B: sem_wait(a); sem_post(b), esperando ambos primeiro",
+      "A: sem_post(a); sem_wait(a) | B: sem_post(b); sem_wait(b)",
+      "A: sem_post(a); sem_wait(b) | B: sem_post(b); sem_wait(a)",
+      "A: sem_wait(a); sem_post(b) | B: sem_wait(b); sem_post(a)"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Semáforos"
+  },
+  {
+    "question": "Os passos S1, S2 e S3 correm em três processos e devem seguir esta ordem. Quantos semáforos são precisos e com que valor inicial?",
+    "answers": [
+      "Dois semáforos, ambos iniciados a 0",
+      "Um semáforo iniciado a 3, que conta os passos",
+      "Três semáforos, todos iniciados a 1",
+      "Dois semáforos, ambos iniciados a 1"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Semáforos"
+  },
+  {
+    "question": "Num banco, um mutex global protege todas as contas. Duas transferências entre contas completamente distintas ocorrem ao mesmo tempo. Qual é a consequência?",
+    "answers": [
+      "Executam em paralelo, pois contas distintas nunca partilham dados nem precisam de exclusão mútua",
+      "Executam uma de cada vez, o que reduz a concorrência, mas simplifica a prova de correção",
+      "Provocam deadlock, pois ambas pedem o mesmo mutex em simultâneo e nenhuma o liberta",
+      "Provocam uma race condition, pois o mutex global não protege nenhuma das contas em particular"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Granularidade de locks"
+  },
+  {
+    "question": "Um sem_post() executado quando nenhum processo está bloqueado incrementa o valor do semáforo, e esse incremento permite que um sem_wait() posterior não bloqueie.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Semáforos"
+  },
+  {
+    "question": "Um semáforo iniciado a 1 pode ser libertado com sem_post() por um processo diferente do que executou o sem_wait() correspondente.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Semáforos"
+  },
+  {
+    "question": "Mesmo num sistema com um único núcleo, a preempção pode provocar race conditions em dados partilhados sem proteção.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Race condition"
+  },
+  {
+    "question": "Uma instrução atómica como xchg permite implementar um lock sem recorrer a system calls.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Instruções atómicas"
+  },
+  {
+    "question": "A inanição pode ocorrer num sistema sem deadlock, bastando que um processo seja continuamente preterido.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Inanição"
+  },
+  {
+    "question": "Na solução de leitores-escritores com prioridade aos leitores, o primeiro leitor a entrar bloqueia o acesso dos escritores.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Leitores-escritores"
+  },
+  {
+    "question": "Um processo bloqueado em sem_wait() não consome tempo de CPU enquanto espera.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Espera ativa"
+  },
+  {
+    "question": "Um deadlock exige que as quatro condições necessárias se verifiquem em simultâneo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Deadlock"
+  },
+  {
+    "question": "Um ciclo no grafo de alocação de recursos implica sempre deadlock, mesmo havendo várias instâncias de cada recurso.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Deadlock"
+  },
+  {
+    "question": "Num produtor-consumidor com buffer de N posições, o semáforo que conta os itens disponíveis é iniciado com o valor N.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Produtor-consumidor"
+  },
+  {
+    "question": "A herança de prioridade garante, por si só, que não ocorrem deadlocks.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Inversão de prioridades"
+  },
+  {
+    "question": "Com a solução de leitores-escritores que favorece os leitores, os escritores nunca sofrem inanição.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Leitores-escritores"
+  },
+  {
+    "question": "Um único mutex global permite mais concorrência do que um mutex por conta.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Granularidade de locks"
+  },
+  {
+    "question": "A instrução counter++ sobre um int é sempre executada de forma atómica, pelo que dispensa um mutex.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Instruções atómicas"
+  },
+  {
+    "question": "Numa espera ativa, o processo liberta o CPU enquanto a condição não se verifica.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Espera ativa"
+  },
+  {
+    "question": "Na prevenção de deadlock por ordem de locks, uma thread que precise de um lock anterior na ordem pode pedi-lo sem libertar os que já detém.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Deadlock"
+  },
+  {
+    "question": "Num processo com várias threads, qual dos seguintes elementos é privado de cada thread?",
+    "answers": [
+      "A tabela de descritores de ficheiros abertos, partilhada por todo o processo",
+      "A heap onde malloc() reserva a memória dinâmica",
+      "O conjunto de registos, incluindo o PC e o apontador da stack",
+      "O segmento de dados com as variáveis globais"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Threads"
+  },
+  {
+    "question": "int x=1; void *f(void *a){x+=10; return NULL;} Em main: pthread_create(&t,0,f,0); pthread_join(t,0); printf(\"%d-\",x); fflush(stdout); if(fork()==0){x+=100; _exit(0);} wait(0); printf(\"%d\",x); Qual é a saída?",
+    "answers": [
+      "11-11",
+      "11-111",
+      "111-111",
+      "1-11"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Threads"
+  },
+  {
+    "question": "Uma thread faz sleep(1); printf(\"fim\\n\"); e regressa. Em main: pthread_create(&t,0,f,0); printf(\"a\\n\"); return 0; sem pthread_join(). O que acontece?",
+    "answers": [
+      "Imprime a e, passado um segundo, fim, porque a thread continua depois de main regressar",
+      "Imprime fim e só depois a, pois main espera sempre pelas threads criadas",
+      "Não imprime nada, porque main não chamou pthread_join() antes de regressar",
+      "Imprime só a, pois o fim de main termina o processo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Threads"
+  },
+  {
+    "question": "Uma thread executa exit(3). Em main: pthread_create(&t,0,f,0); sleep(1); printf(\"fim\\n\"); return 0; O que acontece?",
+    "answers": [
+      "Termina só a thread, e main imprime fim e o processo termina depois com estado 0",
+      "O processo inteiro termina com estado 3 e main não imprime fim",
+      "Termina só a thread, e main fica bloqueada no sleep() para sempre sem terminar",
+      "Main imprime fim e o processo termina com estado 3, pois exit() só afeta a thread"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Threads"
+  },
+  {
+    "question": "O que acontece aos recursos de uma thread, marcada com pthread_detach(), quando termina?",
+    "answers": [
+      "Ficam retidos até que outra thread chame pthread_join() sobre ela",
+      "Ficam retidos até que o processo termine, como acontece com um processo zombie",
+      "São libertados automaticamente quando a thread termina",
+      "Terminam o processo inteiro, pois já não pode ser esperada"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Threads"
+  },
+  {
+    "question": "for(i=0;i<3;i++) pthread_create(&t[i],0,f,&i); Cada thread executa int v=*(int*)a; e só depois main faz os joins. Qual poderá ser a consequência?",
+    "answers": [
+      "Várias threads podem ler o mesmo valor de i, por exemplo 3",
+      "Cada thread recebe sempre uma cópia do valor que i tinha no instante da criação dessa thread",
+      "O programa termina com erro, porque uma thread não pode ler variáveis locais de main",
+      "pthread_create() bloqueia main até que a nova thread leia o argumento recebido"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Threads"
+  },
+  {
+    "question": "Uma thread termina com pthread_exit(&x), sendo x uma variável local dela. Main faz pthread_join(t,&r) e lê *(int*)r. Porque é este código incorreto?",
+    "answers": [
+      "O valor de saída de pthread_exit() tem de ser um inteiro e nunca um apontador",
+      "A heap da thread é libertada quando esta termina, e r passa a apontar para memória inválida",
+      "pthread_exit() não permite devolver valores a pthread_join()",
+      "A stack da thread é libertada ao terminar, e r fica a apontar para memória inválida"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Threads"
+  },
+  {
+    "question": "void *f(void *a){long n=*(long*)a; return (void*)(n*3);} Main faz v=7; pthread_create(&t,0,f,&v); pthread_join(t,&r); e imprime (long)r com %ld. Qual é o valor impresso?",
+    "answers": [
+      "7",
+      "21",
+      "3",
+      "Um endereço de memória, porque r é um apontador"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Threads"
+  },
+  {
+    "question": "void *f(void *a){*(int*)a+=1; return NULL;} Main: int v[3]={5,6,7}; for(i=0;i<3;i++){pthread_create(&t[i],0,f,&v[i]); pthread_join(t[i],0);} Qual é o conteúdo final de v?",
+    "answers": [
+      "5 6 7",
+      "8 8 8",
+      "6 7 8",
+      "Indeterminado, pois há uma race condition entre as threads"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Threads"
+  },
+  {
+    "question": "Duas threads fazem, cada uma, 100000 vezes counter++ numa variável int global, sem sincronização. Main faz join e imprime counter. O que se pode afirmar sobre o valor?",
+    "answers": [
+      "É sempre 200000, porque counter++ é uma só instrução em C e logo atómica",
+      "Pode ser superior a 200000, porque as duas threads incrementam em simultâneo e somam os dois valores",
+      "É sempre 100000, porque só conta a escrita da última thread a terminar",
+      "Pode ser inferior a 200000, pois counter++ lê, incrementa e escreve de forma não atómica"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Mutex"
+  },
+  {
+    "question": "pthread_mutex_t m com valores por omissão. Uma thread faz pthread_mutex_lock(&m) e depois, na mesma thread, pthread_mutex_trylock(&m). O que acontece?",
+    "answers": [
+      "trylock() regressa de imediato com EBUSY, sem bloquear",
+      "A thread bloqueia para sempre, ficando em deadlock consigo própria",
+      "trylock() devolve 0, porque a thread que o bloqueou já é a proprietária do mutex",
+      "O mutex é libertado e voltado a adquirir, e a chamada devolve 0"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Mutex"
+  },
+  {
+    "question": "T1 faz lock(&A); lock(&B); ... e T2 faz lock(&B); lock(&A); ... Que problema pode ocorrer?",
+    "answers": [
+      "Livelock, porque lock() faz espera ativa e repete tentativas sem bloquear",
+      "Deadlock, se cada thread obtiver o primeiro mutex antes da outra",
+      "Race condition, porque lock() não impede o acesso simultâneo a A e B por duas threads",
+      "Nenhum, porque dois mutex diferentes nunca bloqueiam as threads"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Mutex"
+  },
+  {
+    "question": "Cada thread declara pthread_mutex_t m localmente, inicializa-o e faz lock(&m); g++; unlock(&m); sobre uma variável global g. Porque é que g++ continua a não estar protegido?",
+    "answers": [
+      "Um mutex local é sempre ignorado por pthread_mutex_lock()",
+      "Só é possível proteger variáveis globais com mutex também globais, caso contrário lock() falha",
+      "Cada thread bloqueia o seu próprio mutex, pelo que nunca há exclusão mútua entre elas",
+      "O mutex só protege se for libertado por outra thread diferente"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Mutex"
+  },
+  {
+    "question": "Várias threads alteram uma struct partilhada dentro de lock/unlock de um mutex, mas uma thread leitora lê a struct sem fazer lock. Qual poderá ser a consequência?",
+    "answers": [
+      "Nenhuma, porque ler nunca causa uma race condition",
+      "A leitora é bloqueada automaticamente enquanto o mutex estiver ocupado",
+      "As escritoras bloqueiam para sempre, pois o mutex nunca foi pedido pela leitora",
+      "A leitora pode ver a struct a meio de uma atualização"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Mutex"
+  },
+  {
+    "question": "Dois consumidores fazem: lock(&m); if(n==0) pthread_cond_wait(&c,&m); n--; unlock(&m); e esperam. O produtor faz n=1 e pthread_cond_broadcast(&c). Que problema pode ocorrer?",
+    "answers": [
+      "Ambos acordam, e o segundo faz n-- quando n já é 0, ficando n com valor -1",
+      "O broadcast acorda apenas um consumidor e o outro bloqueia para sempre",
+      "Deadlock, porque o consumidor acordado nunca consegue readquirir o mutex",
+      "O segundo consumidor volta a esperar automaticamente, pois cond_wait() repete o teste"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Variáveis de condição"
+  },
+  {
+    "question": "Produtor: lock; ready=1; cond_signal(&c); unlock. Termina antes de o consumidor correr. Consumidor: lock; while(!ready) cond_wait(&c,&m); unlock. O que acontece ao consumidor?",
+    "answers": [
+      "Bloqueia para sempre, pois o sinal foi enviado sem threads em espera e perdeu-se, ficando sem quem a acorde",
+      "Bloqueia até receber um segundo sinal, que o sistema reenvia",
+      "Não bloqueia, porque testa ready antes de esperar, mesmo tendo o sinal sido perdido",
+      "Tem comportamento indefinido, porque cond_wait() não pode seguir-se a cond_signal()"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Variáveis de condição"
+  },
+  {
+    "question": "T1: if(n==0){ lock(&m); cond_wait(&c,&m); unlock(&m); } T2: lock(&m); n++; cond_signal(&c); unlock(&m). Que cenário é possível?",
+    "answers": [
+      "T2 bloqueia em lock(&m) para sempre, porque T1 testou n sem o mutex e ficou com ele retido",
+      "T1 vê n==0, T2 sinaliza e só depois T1 chama cond_wait(), bloqueando sem novo sinal",
+      "cond_wait() devolve de imediato, pois n já foi incrementado",
+      "T1 é acordada duas vezes pelo mesmo cond_signal()"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Variáveis de condição"
+  },
+  {
+    "question": "Threads esperam na mesma variável de condição, umas por n>0 e outras por fechado!=0. Uma thread muda o estado que interessa a todas. Porque é mais seguro usar broadcast do que signal?",
+    "answers": [
+      "broadcast garante que as threads acordam exatamente pela ordem em que ficaram à espera",
+      "signal só funciona se o mutex estiver livre no momento da chamada",
+      "broadcast evita ter de testar a condição num ciclo while",
+      "signal poderia acordar uma thread que não pode avançar, deixando outra bloqueada"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Variáveis de condição"
+  },
+  {
+    "question": "Quatro threads executam fase1(); pthread_barrier_wait(&b); fase2(); com a barreira b inicializada para 4 threads. O que garante a barreira?",
+    "answers": [
+      "As quatro threads começam fase2() exatamente no mesmo instante, em paralelo",
+      "Nenhuma thread inicia fase2() antes de as quatro concluírem fase1()",
+      "Apenas uma thread de cada vez executa fase2()",
+      "As threads executam fase1() pela ordem em que foram criadas"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Barreiras"
+  },
+  {
+    "question": "Quatro threads chamam uma vez pthread_barrier_wait(&b), com b inicializada para 5 threads. Main faz join das quatro. O que acontece?",
+    "answers": [
+      "As quatro threads ficam bloqueadas na barreira e main fica bloqueada no join",
+      "A barreira liberta as quatro threads assim que a quarta chega, ignorando a contagem com que foi inicializada",
+      "As quatro threads recebem um erro de pthread_barrier_wait() e prosseguem",
+      "Três threads ficam bloqueadas e a quarta prossegue"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Barreiras"
+  },
+  {
+    "question": "A thread A detém um rwlock em modo de leitura (rdlock) e a thread B chama pthread_rwlock_wrlock() no mesmo rwlock. O que acontece a B?",
+    "answers": [
+      "Obtém o lock de imediato, porque a escrita tem prioridade sobre a leitura",
+      "Obtém o lock de imediato e A passa a modo de escrita",
+      "Bloqueia até todos os leitores libertarem o rwlock",
+      "Falha com erro, pois o modo de leitura não pode coexistir com pedidos de escrita"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Rwlocks"
+  },
+  {
+    "question": "Várias threads fazem pthread_rwlock_rdlock(&rw); cnt++; pthread_rwlock_unlock(&rw); Qual é o problema?",
+    "answers": [
+      "Race condition, pois vários leitores entram em simultâneo e cnt++ não fica protegido",
+      "Deadlock, porque rdlock() bloqueia sempre que já exista outro leitor a segurar o lock",
+      "Nenhum, porque o rwlock protege qualquer acesso a cnt",
+      "Starvation obrigatória dos leitores, que nunca obtêm o lock"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Rwlocks"
+  },
+  {
+    "question": "Um rwlock dá preferência a leitores, e há sempre leitores que se sobrepõem uns aos outros. Qual o risco para uma thread escritora?",
+    "answers": [
+      "Deadlock imediato, porque o escritor não consegue pedir wrlock()",
+      "Corrupção dos dados, porque o escritor obtém o lock em simultâneo com os leitores que ainda estão a ler",
+      "Nenhum, pois wrlock() interrompe os leitores que estão a ler",
+      "Starvation, pois pode esperar indefinidamente se o conjunto de leitores nunca ficar vazio"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Rwlocks"
+  },
+  {
+    "question": "Uma função devolve o endereço de um buffer static preenchido em cada chamada. Duas threads chamam-na ao mesmo tempo. Qual o problema?",
+    "answers": [
+      "Nenhum, porque cada thread tem a sua própria instância das variáveis declaradas static",
+      "Race condition no buffer static partilhado",
+      "Stack overflow, porque o buffer static fica na stack",
+      "Só há problema se a função for chamada num handler de sinal"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Thread safety"
+  },
+  {
+    "question": "Uma função thread-safe usa um mutex interno. Um handler de sinal chama-a enquanto a thread interrompida estava dentro dela, com o mutex bloqueado. Que pode ocorrer?",
+    "answers": [
+      "Nada, pois o mutex é libertado automaticamente quando a thread é interrompida por um sinal",
+      "Livelock, pois o handler repete lock() sem nunca bloquear",
+      "Deadlock: o handler espera por um mutex que só seria libertado depois dele",
+      "Race condition, porque o handler e a thread acedem em simultâneo"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Thread safety"
+  },
+  {
+    "question": "4 threads fazem N vezes c[id]++ sobre um array long c[4], cada uma no seu índice. O resultado está certo, mas o tempo é mau. Qual é a correção mais adequada?",
+    "answers": [
+      "Acumular numa variável local e só escrever em c[id] no fim, ou separar os contadores",
+      "Proteger cada c[id]++ com um único mutex partilhado por todas as threads do programa em execução",
+      "Declarar o array c como volatile",
+      "Criar mais threads do que cores disponíveis"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame False sharing"
+  },
+  {
+    "question": "Com a=0 e b=0: T1 faz a=1; r1=b; e T2 faz b=1; r2=a; Qual dos pares (r1,r2) é impossível sob consistência sequencial?",
+    "answers": [
+      "r1=0 e r2=1",
+      "r1=1 e r2=0",
+      "r1=1 e r2=1, com as duas escritas antes das duas leituras",
+      "r1=0 e r2=0"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Consistência de memória"
+  },
+  {
+    "question": "Um programa sequencial demora 90 s e a versão com 6 threads demora 25 s. Qual é o speedup obtido?",
+    "answers": [
+      "0,28",
+      "65",
+      "3,6",
+      "15"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Speedup"
+  },
+  {
+    "question": "Na soma paralela, cada thread faz lock; total+=i; unlock em cada iteração. O resultado é correto, mas mais lento do que o sequencial. Porquê?",
+    "answers": [
+      "O acesso frequente ao mesmo mutex serializa as threads e anula o paralelismo",
+      "O mutex impede o compilador de manter a soma em registos e obriga a escrever cada valor em disco",
+      "As threads criadas ficam sempre num único core por causa do mutex",
+      "lock() e unlock() obrigam a criar um processo novo por cada chamada"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Speedup"
+  },
+  {
+    "question": "Quatro threads fazem lock(&m); sleep(1); unlock(&m); e terminam. Main faz join das quatro. Aproximadamente, quanto tempo demora o programa?",
+    "answers": [
+      "Cerca de 1 segundo, porque as threads correm em paralelo",
+      "Cerca de 4 segundos",
+      "Cerca de 2 segundos",
+      "Menos de 1 segundo"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Mutex"
+  },
+  {
+    "question": "Soma de 103 elementos com 8 threads, em que cada thread soma n/8 elementos (divisão inteira). Quantos elementos sobram para a main somar no fim?",
+    "answers": [
+      "0",
+      "12",
+      "7",
+      "13"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Speedup"
+  },
+  {
+    "question": "Como se passam dois inteiros à função de uma thread, se pthread_create() só aceita um argumento void *?",
+    "answers": [
+      "Agrupando-os numa struct e passando o seu endereço, que tem de ficar válido",
+      "Passando os dois endereços como quarto e quinto argumentos de pthread_create()",
+      "Passando um array com os dois valores no argumento attr",
+      "Chamando pthread_create() duas vezes seguidas, uma para cada inteiro"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Threads"
+  },
+  {
+    "question": "Main faz p=malloc(sizeof(int)); *p=5; pthread_create(&t,0,f,p); free(p); pthread_join(t,0); e a thread lê *p. Qual poderá ser a consequência?",
+    "answers": [
+      "Nenhuma, pois pthread_create() copia o conteúdo de p",
+      "free(p) bloqueia até a thread terminar",
+      "A thread lê sempre 5, porque a memória só é libertada depois do join da thread",
+      "A thread pode ler memória já libertada"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Threads"
+  },
+  {
+    "question": "Qual das funções é reentrante?",
+    "answers": [
+      "int g(int x){ static int s; s+=x; return s; }",
+      "int h(int x){ return x+cnt++; } com cnt global",
+      "int f(int x){ return x*2+1; }",
+      "char *k(){ static char b[8]; b[0]=97; return b; }"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Thread safety"
+  },
+  {
+    "question": "Se main() terminar com pthread_exit() em vez de return, o processo só termina quando as restantes threads terminarem.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Threads"
+  },
+  {
+    "question": "Várias threads podem deter simultaneamente o mesmo pthread_rwlock_t em modo de leitura.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Rwlocks"
+  },
+  {
+    "question": "Quando pthread_cond_wait() regressa, a thread chamadora volta a deter o mutex que passou como argumento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Variáveis de condição"
+  },
+  {
+    "question": "Uma função reentrante é necessariamente thread-safe.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Thread safety"
+  },
+  {
+    "question": "A variável errno é privada de cada thread, e por isso uma thread não altera o errno das outras.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Threads"
+  },
+  {
+    "question": "Se main passar a uma thread o endereço de uma variável local sua, essa variável passa a ser partilhada entre as duas threads.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Threads"
+  },
+  {
+    "question": "A coerência de cache, por si só, não garante a ordem pela qual as escritas a variáveis diferentes são vistas por outros cores.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Consistência de memória"
+  },
+  {
+    "question": "Uma thread bloqueada em pthread_cond_wait() pode regressar sem que alguma thread tenha chamado signal ou broadcast.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Variáveis de condição"
+  },
+  {
+    "question": "Em caso de erro, pthread_create() devolve -1 e coloca o código do erro em errno.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Threads"
+  },
+  {
+    "question": "Uma função thread-safe é sempre reentrante.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Thread safety"
+  },
+  {
+    "question": "Declarar um contador como volatile torna counter++ atómico entre threads.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Consistência de memória"
+  },
+  {
+    "question": "O false sharing pode fazer com que o resultado final de um programa fique incorreto.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame False sharing"
+  },
+  {
+    "question": "Um pthread_cond_signal() feito sem threads em espera fica guardado e acorda a próxima thread que chamar pthread_cond_wait().",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Variáveis de condição"
+  },
+  {
+    "question": "Só a thread que criou outra com pthread_create() pode esperar por ela com pthread_join().",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Threads"
+  },
+  {
+    "question": "Cada thread de um processo tem a sua própria heap, que as outras threads não podem usar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Threads"
+  },
+  {
+    "question": "Uma variável local declarada static dentro da função de uma thread tem uma instância privada em cada thread.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Threads"
+  },
+  {
+    "question": "Porque é que write() tem de usar uma instrução de trap em vez de uma chamada de função normal para o código do kernel?",
+    "answers": [
+      "Para o CPU passar a modo kernel de forma controlada, num ponto de entrada definido pelo kernel",
+      "Porque o código do kernel só pode ser ligado ao programa durante a execução, nunca antes dela",
+      "Porque uma chamada normal não consegue passar argumentos em registos para outra função",
+      "Porque o programa não consegue conhecer o endereço da função write() na sua biblioteca"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Kernel e chamadas ao sistema"
+  },
+  {
+    "question": "Um programa em modo utilizador tenta executar uma instrução privilegiada que altera uma entrada da TLB. Qual é a consequência mais provável?",
+    "answers": [
+      "A instrução é executada normalmente, mas só afeta o espaço de endereçamento do processo",
+      "A instrução é ignorada pelo CPU e o programa continua na instrução seguinte sem qualquer aviso",
+      "O CPU gera uma exceção e o kernel trata-a, normalmente terminando o processo",
+      "O CPU passa a modo kernel apenas durante essa instrução e regressa ao fim dela a modo utilizador"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Interrupções e exceções"
+  },
+  {
+    "question": "Uma instrução privilegiada executada em modo utilizador provoca uma exceção tratada pelo kernel, em vez de ser executada.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Interrupções e exceções"
+  },
+  {
+    "question": "Um processo executa a divisão de um inteiro por zero. Que tipo de evento ocorre e quem trata dele?",
+    "answers": [
+      "Um interrupt assíncrono de um dispositivo, tratado diretamente pelo próprio processo",
+      "Uma falta síncrona gerada pelo CPU e tratada pelo kernel, que normalmente envia um sinal",
+      "Um trap intencional do programa, após o qual o kernel continua sempre na instrução seguinte a ele",
+      "Um abort, que obriga o kernel a reiniciar sempre a máquina"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Interrupções e exceções"
+  },
+  {
+    "question": "Um processo fica preso em for(;;); num sistema com um só núcleo e escalonamento preemptivo. Porque é que os outros processos continuam a executar?",
+    "answers": [
+      "Porque o compilador insere uma chamada a sched_yield() dentro de qualquer ciclo infinito",
+      "Porque o kernel deteta o ciclo infinito e termina o processo de imediato",
+      "Porque cada processo dispõe de um núcleo de CPU virtual próprio, independentemente do número de núcleos físicos existentes na máquina",
+      "Porque o temporizador gera interrupts periódicos que devolvem o controlo ao kernel, que pode escolher outro processo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Interrupções e exceções"
+  },
+  {
+    "question": "Uma chamada ao sistema é um interrupt assíncrono gerado por um dispositivo externo, sem relação com a instrução em execução.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Interrupções e exceções"
+  },
+  {
+    "question": "Um processo executa read() num ficheiro cujos dados ainda estão no disco. O que faz o kernel enquanto o disco não termina a operação?",
+    "answers": [
+      "Mantém o processo a executar em espera ativa dentro do kernel até que o disco termine a leitura pedida",
+      "Devolve de imediato -1 com errno igual a EAGAIN, para o processo voltar a tentar mais tarde sem ficar bloqueado",
+      "Coloca o processo numa fila de espera e escalona outro processo; o interrupt do disco torna depois o processo pronto",
+      "Coloca o processo no estado terminado e cria outro processo para concluir a leitura em seu lugar"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Kernel e chamadas ao sistema"
+  },
+  {
+    "question": "Qual dos seguintes eventos é um interrupt assíncrono, e não uma exceção síncrona?",
+    "answers": [
+      "A chegada de um pacote à placa de rede enquanto o processo executa outras instruções",
+      "A execução de uma instrução syscall por um processo para pedir um serviço ao kernel",
+      "Um acesso a uma página que não está presente na memória física do computador",
+      "Uma divisão de inteiros por zero numa das instruções do código do próprio processo em execução"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Interrupções e exceções"
+  },
+  {
+    "question": "Em multitarefa cooperativa, um processo que nunca liberta o CPU voluntariamente pode impedir os restantes de executar.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Interrupções e exceções"
+  },
+  {
+    "question": "Depois de o kernel tratar com sucesso um page fault causado por uma escrita numa página que estava em disco, onde retoma o processo?",
+    "answers": [
+      "Na instrução imediatamente a seguir à instrução que causou a falta de página",
+      "No início da função main(), com a memória necessária já carregada",
+      "Na primeira instrução do handler de SIGSEGV registado pelo processo",
+      "Na própria instrução que causou a falta, que é executada de novo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Interrupções e exceções"
+  },
+  {
+    "question": "Num kernel monolítico, um driver de dispositivo escreve em memória fora dos seus limites. Qual é a consequência possível?",
+    "answers": [
+      "Terminar apenas o processo que usou o dispositivo, porque o driver executa em modo utilizador",
+      "Corromper estruturas do kernel e fazer falhar todo o sistema, porque o driver executa em modo kernel",
+      "Nenhuma, porque o MMU impede sempre escritas fora dos limites do driver, mesmo quando este executa em modo kernel",
+      "Reiniciar apenas o driver, o que é feito automaticamente pelo escalonador"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Arquiteturas de SO"
+  },
+  {
+    "question": "Num microkernel, os drivers e o sistema de ficheiros executam em modo kernel, no mesmo espaço de endereçamento do núcleo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Arquiteturas de SO"
+  },
+  {
+    "question": "Num microkernel, uma aplicação lê um ficheiro através de um serviço de ficheiros e de um driver de disco, ambos em modo utilizador. Que consequência de desempenho resulta?",
+    "answers": [
+      "O desempenho melhora sempre, porque os serviços deixam de precisar do kernel para comunicar",
+      "O desempenho mantém-se igual, porque a IPC não implica qualquer troca de contexto",
+      "Há mais mensagens IPC e mais transições entre modos, o que aumenta a latência face a um kernel monolítico",
+      "O desempenho depende só do disco, porque os serviços comunicam por chamadas de função diretas"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Arquiteturas de SO"
+  },
+  {
+    "question": "Qual dos seguintes exemplos é uma política e não um mecanismo?",
+    "answers": [
+      "Guardar e restaurar os registos do processo que sai do CPU numa troca de contexto",
+      "Mudar a tabela de páginas ativa ao passar de um processo para outro",
+      "Programar o temporizador para gerar um interrupt periódico",
+      "Dar preferência aos processos interativos em relação aos de cálculo intensivo"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Arquiteturas de SO"
+  },
+  {
+    "question": "O Linux é um kernel monolítico que permite carregar e descarregar módulos em tempo de execução.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Arquiteturas de SO"
+  },
+  {
+    "question": "Com páginas de 4 KiB, um acesso usa o endereço virtual 0x5B3E4. Qual é o número da página virtual e o deslocamento?",
+    "answers": [
+      "Página 0x05B3 e deslocamento 0x0E4",
+      "Página 0x5B, deslocamento 0x3E4",
+      "Página 0x5 e deslocamento 0xB3E4",
+      "Página 0x3E4 e deslocamento 0x5B"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória virtual"
+  },
+  {
+    "question": "Num sistema de 32 bits com páginas de 16 KiB, a tabela de páginas é linear e cada entrada ocupa 4 bytes. Qual é o tamanho dessa tabela por processo?",
+    "answers": [
+      "1 MiB",
+      "4 MiB",
+      "256 KiB",
+      "16 MiB"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória virtual"
+  },
+  {
+    "question": "Numa troca de contexto entre processos, o kernel tem de copiar para o disco todas as páginas do processo que sai do CPU.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória virtual"
+  },
+  {
+    "question": "Páginas de 1 KiB. A página virtual 3 está mapeada na moldura física 9. Qual é o endereço físico correspondente ao endereço virtual 3300?",
+    "answers": [
+      "9444",
+      "12516",
+      "3300",
+      "9216"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória virtual"
+  },
+  {
+    "question": "Uma tradução gasta 5 ns na TLB e cada acesso à memória 80 ns. Com 95% de hits na TLB e uma tabela de páginas de um nível, qual é o tempo médio de acesso?",
+    "answers": [
+      "85 ns",
+      "80,75 ns",
+      "89 ns",
+      "165 ns"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória virtual"
+  },
+  {
+    "question": "A TLB é uma pequena cache de traduções de páginas virtuais para páginas físicas, que evita muitas consultas à tabela de páginas na memória.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória virtual"
+  },
+  {
+    "question": "Um processo escreve numa posição de uma página válida que o kernel tinha movido para o disco. Qual é o resultado visível para o programa?",
+    "answers": [
+      "O processo recebe SIGSEGV, porque o acesso a uma página que já não está na RAM é sempre ilegal",
+      "A escrita conclui-se, o kernel traz a página para a RAM e a instrução é repetida, apenas com atraso",
+      "A escrita perde-se e o programa continua na instrução seguinte, sem qualquer indicação de erro",
+      "A escrita falha e o programa recebe -1 com errno igual a ENOMEM, pois falta memória física"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória virtual"
+  },
+  {
+    "question": "Considere char *a = mmap(NULL, 4096, PROT_READ, MAP_PRIVATE|MAP_ANON, -1, 0); a[0] = 1; Qual é o resultado da escrita?",
+    "answers": [
+      "a[0] passa a valer 1, porque MAP_PRIVATE permite escrever numa cópia privada",
+      "mmap() devolve MAP_FAILED, por isso a escrita falha com um erro",
+      "A escrita é ignorada em silêncio e a[0] continua a valer 0",
+      "O MMU deteta a violação de permissões e o processo recebe SIGSEGV"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória virtual"
+  },
+  {
+    "question": "Ao mudar de processo, o kernel pode alterar o espaço de endereçamento visível trocando a tabela de páginas ativa, sem copiar os dados do processo.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória virtual"
+  },
+  {
+    "question": "Após fork(), o filho faz x = 9 e termina. Depois de wait(), o pai imprime x e &x; o filho imprimiu o mesmo &x. Qual é a explicação correta?",
+    "answers": [
+      "O pai tem x igual a 9, porque pai e filho partilham a mesma página física onde x está guardado",
+      "Os endereços só podem ser iguais se x estiver guardado numa zona de memória partilhada",
+      "O pai tem x igual a 5: o mesmo endereço virtual corresponde a páginas físicas diferentes",
+      "O valor de x no pai fica indefinido, porque a escrita do filho corrompe a sua página"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória virtual"
+  },
+  {
+    "question": "Um objeto com 8192 bytes tem descritor fd válido. Qual é o resultado de mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 100) com páginas de 4 KiB?",
+    "answers": [
+      "Devolve MAP_FAILED, porque o deslocamento tem de ser múltiplo do tamanho da página",
+      "Mapeia a partir do byte 100 do objeto e devolve um apontador válido para essa posição",
+      "Arredonda 100 para 0 e mapeia a partir do início do objeto",
+      "Devolve NULL e define errno como ENOMEM"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória virtual"
+  },
+  {
+    "question": "Quando todos os processos chegam ao mesmo tempo, o SJF não preemptivo dá o menor tempo médio de espera possível entre os algoritmos de escalonamento.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Escalonamento"
+  },
+  {
+    "question": "Dois processos mapeiam o mesmo objeto com MAP_SHARED. O processo A guarda nele o apontador devolvido por mmap() e o processo B usa-o. Porque pode falhar?",
+    "answers": [
+      "Porque MAP_SHARED só permite guardar valores inteiros no objeto",
+      "Porque o apontador só é válido enquanto o processo A estiver em modo kernel",
+      "Porque o kernel limpa os apontadores escritos em memória partilhada",
+      "Porque cada processo pode ter o objeto mapeado num endereço virtual diferente"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória virtual"
+  },
+  {
+    "question": "Uma tradução de endereço falha na TLB, mas a página está presente na RAM. O que acontece?",
+    "answers": [
+      "Ocorre sempre um page fault e o kernel carrega a página a partir do disco para a memória",
+      "A tabela de páginas é consultada e a entrada válida é guardada na TLB, sem page fault",
+      "O processo é terminado com SIGSEGV, porque a tradução não existe",
+      "O acesso é feito com o endereço virtual, sem tradução"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória virtual"
+  },
+  {
+    "question": "Em round-robin, se o quantum for maior do que o burst de todos os processos, o comportamento é igual ao do FCFS.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Escalonamento"
+  },
+  {
+    "question": "Vários processos têm conjuntos de trabalho cuja soma excede a RAM disponível. Que comportamento é esperado?",
+    "answers": [
+      "Os processos ficam todos mais rápidos, porque o kernel liberta páginas da RAM para os outros processos usarem",
+      "A TLB passa a conter todas as páginas, eliminando os misses",
+      "Muitos page faults e troca constante de páginas com o disco, com queda do trabalho útil (thrashing)",
+      "O kernel termina de imediato todos os processos em execução"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória virtual"
+  },
+  {
+    "question": "Um processo em modo utilizador lê um endereço de uma página marcada como só acessível em modo kernel. O que acontece?",
+    "answers": [
+      "A leitura é feita normalmente, porque as leituras de memória não exigem qualquer privilégio",
+      "O CPU passa a modo kernel e devolve o valor lido ao processo",
+      "O kernel copia a página para o espaço do processo e repete a leitura",
+      "O MMU deteta a violação de privilégio, gera uma falta e o processo recebe SIGSEGV"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória virtual"
+  },
+  {
+    "question": "Em round-robin, o tempo de espera entre duas execuções consecutivas de um processo pode ser ilimitado devido a starvation.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Escalonamento"
+  },
+  {
+    "question": "Quatro processos chegam em t=0, por ordem P1 a P4, com bursts de 7, 3, 9 e 2 u.t. Em FCFS, qual é o tempo médio de espera?",
+    "answers": [
+      "4,75 u.t.",
+      "9 u.t.",
+      "14,25 u.t.",
+      "7 u.t."
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Escalonamento"
+  },
+  {
+    "question": "Processos (chegada, burst): A(0, 8), B(1, 4), C(2, 2), D(3, 1). Com SJF não preemptivo, qual é o tempo médio de espera?",
+    "answers": [
+      "5,5 u.t.",
+      "4,25 u.t.",
+      "7 u.t.",
+      "9,25 u.t."
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Escalonamento"
+  },
+  {
+    "question": "O SJF não preemptivo nunca causa starvation, mesmo que cheguem continuamente processos curtos.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Escalonamento"
+  },
+  {
+    "question": "Em t=0 chegam A, B e C, por esta ordem, com bursts de 7, 4 e 2 u.t. Em round-robin com quantum de 3 u.t., qual é o tempo médio de turnaround?",
+    "answers": [
+      "11 u.t.",
+      "6,67 u.t.",
+      "8 u.t.",
+      "12,5 u.t."
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Escalonamento"
+  },
+  {
+    "question": "Processos (chegada, burst): A(0, 7), B(2, 4), C(4, 1), D(5, 3). Com SRTF, qual é o tempo médio de espera?",
+    "answers": [
+      "3,75 u.t.",
+      "6,5 u.t. (turnaround médio)",
+      "2,75 u.t.",
+      "4 u.t."
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Escalonamento"
+  },
+  {
+    "question": "Num MLFQ, um processo que usa sempre o quantum completo é promovido para uma fila de maior prioridade.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Escalonamento"
+  },
+  {
+    "question": "Escalonamento por prioridades com preempção (1 é a mais alta): A(chega 0, burst 6, prio 3), B(1, 3, 1), C(2, 4, 2). Em que instante termina A?",
+    "answers": [
+      "t = 6 (sem preempção)",
+      "t = 13",
+      "t = 9",
+      "t = 10"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Escalonamento"
+  },
+  {
+    "question": "Em FCFS, um processo de cálculo longo chega antes de vários processos curtos e interativos. Qual é o efeito mais provável?",
+    "answers": [
+      "Os processos curtos ultrapassam o longo, porque o FCFS escolhe sempre o processo com menor burst",
+      "O processo longo é preemptado ao fim de poucos milissegundos",
+      "O tempo de espera dos processos curtos é independente da ordem de chegada",
+      "Os processos curtos esperam muito atrás do longo (efeito de comboio) e a resposta piora"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Escalonamento"
+  },
+  {
+    "question": "O escalonador decide qual é o próximo processo a executar, enquanto o dispatcher realiza a troca de contexto e entrega-lhe o CPU.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Escalonamento"
+  },
+  {
+    "question": "Em round-robin, o quantum é de 6 ms e cada troca de contexto custa 2 ms. Se todos usarem o quantum completo, que fração do tempo de CPU é trabalho útil?",
+    "answers": [
+      "25%",
+      "33% (2 ms em 6 ms)",
+      "75%",
+      "67%"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Escalonamento"
+  },
+  {
+    "question": "Num escalonador por prioridades fixas chegam sempre processos de alta prioridade e um de baixa prioridade nunca executa. Que técnica resolve isto?",
+    "answers": [
+      "Aging: aumentar gradualmente a prioridade dos processos à medida que esperam na fila de prontos",
+      "Dar prioridade mais alta aos processos que chegaram há menos tempo à fila de prontos do sistema",
+      "Reduzir para metade o quantum de todos os processos, de modo a haver mais trocas de contexto",
+      "Aumentar a prioridade dos processos enquanto estes executam no CPU, até terminarem"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Escalonamento"
+  },
+  {
+    "question": "O tempo de espera de um processo inclui o tempo que este passou a executar no CPU.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Escalonamento"
+  },
+  {
+    "question": "Num MLFQ, um processo usa sempre o quantum completo e outro bloqueia por I/O muito antes do fim do quantum. Qual é o comportamento típico?",
+    "answers": [
+      "O primeiro sobe para a fila de maior prioridade e o segundo desce para a de menor prioridade",
+      "Ambos descem de fila, porque todos os processos acabam por ser rebaixados com o passar do tempo de execução",
+      "Ambos mantêm a fila inicial, porque a prioridade nunca muda",
+      "O primeiro desce para filas de menor prioridade e o segundo mantém-se na fila de maior prioridade"
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Escalonamento"
+  },
+  {
+    "question": "P3 (baixa prioridade) detém o lock R; P1 (alta) bloqueia em R; P2 (média) está pronto. Sem nenhum protocolo, o que acontece?",
+    "answers": [
+      "P1 executa à frente de P3 por ter maior prioridade, apesar de estar bloqueado à espera do lock R",
+      "P2 executa antes de P3 libertar R e atrasa indiretamente P1 (inversão de prioridades)",
+      "P3 é terminado pelo kernel para P1 poder avançar",
+      "P2 fica bloqueado até P1 terminar, porque P1 tem maior prioridade"
+    ],
+    "correct_index": 1,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Escalonamento"
+  },
+  {
+    "question": "Com mmap() e MAP_PRIVATE, as escritas feitas por um processo ficam visíveis para os outros processos que mapeiam o mesmo objeto.",
+    "answers": [
+      "FALSO",
+      "VERDADEIRO"
+    ],
+    "correct_index": 0,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Memória virtual"
+  },
+  {
+    "question": "Num escalonamento multinível com prioridade fixa entre filas (sistema, interativa, batch), a fila interativa nunca fica vazia. O que acontece aos processos batch?",
+    "answers": [
+      "Executam em round-robin com os processos interativos, recebendo partes iguais do tempo de CPU",
+      "São promovidos automaticamente para a fila interativa depois de esperarem algum tempo",
+      "Podem ficar em starvation, pois só executam quando as filas de maior prioridade estão vazias",
+      "Executam sempre primeiro que os outros, por serem processos mais longos e menos urgentes"
+    ],
+    "correct_index": 2,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Escalonamento"
+  },
+  {
+    "question": "Três processos chegam em t=0 com bursts de 9, 5 e 6 u.t., por esta ordem. Em round-robin com quantum de 4 u.t., qual é o tempo médio de resposta (até à primeira execução)?",
+    "answers": [
+      "12 u.t.",
+      "6 u.t.",
+      "18,67 u.t.",
+      "4 u.t."
+    ],
+    "correct_index": 3,
+    "source": "AI_GENERATED",
+    "in_plan": true,
+    "ref": "Exame Escalonamento"
+  }
+]
