@@ -250,7 +250,12 @@ For regressions and security fixes, prefer TDD: add the focused failing Japa tes
 
 ## Deployment
 
-Follow [shared data deployment](./docs/SHARED_DATA_DEPLOYMENT.md). Before releasing the legacy account recovery change, deploy the web release that handles `ACCOUNT_RECOVERY_REQUIRED`. The previous web release can only route pending users to recovery after a successful user response. Review API and web PRs into dev, deploy and verify development, then promote reviewed dev into main. The API uses /compose.yml and the shared-data Docker network.
+Follow [shared data deployment](./docs/SHARED_DATA_DEPLOYMENT.md). Review API and web PRs into dev, deploy and verify development, then promote reviewed dev into main. The API uses /compose.yml and the shared-data Docker network.
+
+Legacy account recovery is an exception to the usual API-first order. Deploy the compatible
+web release first, then deploy this API. The web release handles both the previous pending
+session response and the new recovery `403`. The previous web release only opens recovery
+from a successful session response. See the [recovery response contract](./docs/API.md#common-response-and-error-rules).
 
 ## Troubleshooting
 

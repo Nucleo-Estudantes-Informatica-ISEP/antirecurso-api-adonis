@@ -69,9 +69,12 @@ When the existing operator approval matches the verified AuthNEI subject, the fi
 authenticated request associates the existing account and preserves its history.
 An unapproved or conflicting verified identity receives `403` on required-auth
 routes. Ask support to verify ownership. The response includes no legacy data.
-Optional-auth routes continue anonymously for these identities. During the
-frontend rollout, the recovery response also retains the legacy
-`requires_account_resolution` flag for older clients.
+Optional-auth routes continue anonymously for these identities. The recovery response
+retains the legacy `requires_account_resolution` flag.
+
+Deploy the compatible web release before this API. It opens recovery for both the old
+successful pending session and the new `403` below. The previous web release only opens
+recovery when the session request succeeds.
 
 ```json
 {
