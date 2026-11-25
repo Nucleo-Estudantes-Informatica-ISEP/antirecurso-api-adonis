@@ -41,7 +41,7 @@ Retain the transactional before/after audit and backup. See `docs/QUESTION_IMPOR
 
 Deploy `exams:prune-attempts` as a daily runtime command after migrations. It removes only unfinished attempts inactive for 30 days; completed history remains. Keep owner-first locking across pruning, exam mutations and account deletion.
 
-Deployment is a reviewed `main` image rollout. `RUN_MIGRATIONS=true` makes the entrypoint apply migrations before serving; verify the migration result before web traffic. Health is `GET /`. For cross-repository contract changes, deploy and smoke this API before the Antirecurso web PR.
+Deployment is a reviewed `main` image rollout. `RUN_MIGRATIONS=true` makes the entrypoint apply migrations before serving; verify the migration result before web traffic. Health is `GET /`. For cross-repository contract changes, deploy and smoke this API before the Antirecurso web PR unless the documented rollout for that change requires a compatible web release first. Follow [the API contract](docs/API.md#common-response-and-error-rules) for legacy account recovery.
 
 Production must configure exact `CORS_ALLOWED_ORIGINS`, issuer/audiences, the shared database limiter, and bucket-scoped S3 credentials and private MinIO bucket. Actor/owner identity comes from the validated token, never request input. Stored note promotion validates object size, type, and PDF signature.
 

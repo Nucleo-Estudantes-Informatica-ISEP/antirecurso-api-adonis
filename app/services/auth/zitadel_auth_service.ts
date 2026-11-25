@@ -7,6 +7,7 @@ import db from '@adonisjs/lucid/services/db'
 import logger from '@adonisjs/core/services/logger'
 import type { TransactionClientContract } from '@adonisjs/lucid/types/database'
 import { accountSubjectHash } from '#services/auth/user_identity'
+import { performAccountResolution } from '#services/auth/account_resolution_service'
 import { getAuthNeiRoles, type AuthNeiRole } from '#services/auth/auth_nei_roles'
 
 type JsonWebKey = {
@@ -79,6 +80,12 @@ class ForbiddenError extends Error {
   constructor(message: string) {
     super(message)
     this.name = 'ForbiddenError'
+  }
+}
+
+class AccountRecoveryRequiredError extends ForbiddenError {
+  constructor() {
+    super('Contact support to recover the existing account')
   }
 }
 
@@ -443,9 +450,23 @@ export default class ZitadelAuthService {
               .where('userId', existingByEmail.id)
               .where('authSubject', claims.sub)
               .whereNotNull('approvedAt')
+              .forUpdate()
               .first()
           : null
-      if (!approval) throw new ForbiddenError('Contact support to recover the existing account')
+      if (!approval) throw new AccountRecoveryRequiredError()
+
+      existingByEmail.useTransaction(trx)
+      existingByEmail.merge({
+        authSubject: claims.sub,
+        name: claims.name,
+        emailVerifiedAt: existingByEmail.emailVerifiedAt ?? DateTime.now(),
+      })
+      await performAccountResolution({
+        updateAuthSubject: async () => {
+          await existingByEmail.save()
+        },
+        deletePendingMarker: () => approval.useTransaction(trx).delete(),
+      })
       return existingByEmail
     }
 
@@ -566,4 +587,4 @@ export default class ZitadelAuthService {
   }
 }
 
-export { ForbiddenError, UnauthorizedError }
+export { AccountRecoveryRequiredError, ForbiddenError, UnauthorizedError }
