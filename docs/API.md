@@ -74,7 +74,8 @@ retains the legacy `requires_account_resolution` flag.
 
 Deploy the compatible web release before this API. It opens recovery for both the old
 successful pending session and the new `403` below. The previous web release only opens
-recovery when the session request succeeds.
+recovery when the session request succeeds, so including the legacy flag in a `403` does
+not make the new response compatible with that release.
 
 ```json
 {

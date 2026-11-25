@@ -253,9 +253,9 @@ For regressions and security fixes, prefer TDD: add the focused failing Japa tes
 Follow [shared data deployment](./docs/SHARED_DATA_DEPLOYMENT.md). Review API and web PRs into dev, deploy and verify development, then promote reviewed dev into main. The API uses /compose.yml and the shared-data Docker network.
 
 Legacy account recovery is an exception to the usual API-first order. Deploy the compatible
-web release first, then deploy this API. The web release handles both the previous pending
-session response and the new recovery `403`. The previous web release only opens recovery
-from a successful session response. See the [recovery response contract](./docs/API.md#common-response-and-error-rules).
+web release first and verify that a pending account opens the recovery page. Then deploy
+this API and verify that the recovery `403` opens the same page. The previous web release
+only opens recovery from a successful pending session response. See the [recovery response contract](./docs/API.md#common-response-and-error-rules).
 
 ## Troubleshooting
 
